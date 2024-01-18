@@ -6,18 +6,22 @@ import {
   SettingsIcon,
 } from "../../../../../assets/icons";
 import "./profileMenu.scss";
+import { useNavigate } from "react-router-dom";
 
 interface ProfileMenuProps {}
 
 const ProfileLink = ({
   icon,
   linkTitle,
+  link,
 }: {
   icon: ReactNode;
   linkTitle: string;
+  link?: string;
 }) => {
+  const navigate = useNavigate();
   return (
-    <div className="profileLinkContainer">
+    <div className="profileLinkContainer" onClick={() => navigate(link || "")}>
       <div className="icon">{icon}</div>
       <p className="linkName">{linkTitle}</p>
     </div>
@@ -42,7 +46,8 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = () => {
       <div className="flexProfileLinks">
         <ProfileLink
           icon={<ReferralLinkIcon />}
-          linkTitle="Referral Program "
+          link="/lender"
+          linkTitle="See loan offers"
         />
         <ProfileLink icon={<GiftIcon />} linkTitle="Boost cubes" />
       </div>
