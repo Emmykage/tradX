@@ -1,5 +1,6 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Platform from "./pages/private/platform/Platform";
+import Lender from "./pages/private/lender/Lender";
 
 interface AppProps {}
 
@@ -8,6 +9,7 @@ const App: React.FunctionComponent<AppProps> = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Platform />} />
+        <Route path="/lender" element={<Lender />} />
       </Routes>
     </BrowserRouter>
   );
