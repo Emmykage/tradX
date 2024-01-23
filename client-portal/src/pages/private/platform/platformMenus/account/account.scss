@@ -1,0 +1,39 @@
+.accountsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.accountCardWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .leftSide {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    .accountDeets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      .accountType {
+        color: #fff;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.75rem;
+      }
+      .amount {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.25rem;
+      }
+      .secAmount {
+        color: var(--white-white-50, rgba(255, 255, 255, 0.5));
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.25rem;
+      }
+    }
+  }
+}

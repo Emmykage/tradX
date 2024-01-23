@@ -12,6 +12,7 @@ import HelpMenu from "./platformMenus/help/HelpMenu";
 import PaymentsMenu from "./platformMenus/payments/PaymentsMenu";
 import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 import ProfileMenu from "./platformMenus/profile/ProfileMenu";
+import AccountMenu from "./platformMenus/account/AccountMenu";
 
 interface PlatformProps {}
 
@@ -27,10 +28,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   const RenderConversionDrawerContent = () => {
     return <p>conv contents...</p>;
-  };
-
-  const RenderAccountDrawerContent = () => {
-    return <p>account contents...</p>;
   };
 
   useEffect(() => {
@@ -111,7 +108,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             ) : rightDrawerContent === "profile" ? (
               <ProfileMenu />
             ) : rightDrawerContent === "account" ? (
-              <RenderAccountDrawerContent />
+              <AccountMenu />
             ) : (
               <></>
             )}
