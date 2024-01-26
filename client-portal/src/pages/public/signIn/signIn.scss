@@ -1,0 +1,90 @@
+.loginContainer {
+  background: #000;
+  min-height: 100vh;
+  background-image: url("https://res.cloudinary.com/dt9pwfpi5/image/upload/v1706260638/Vector_11_zjegm3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .centerWrapper {
+    width: 360px;
+    background: #0e0f12;
+    padding: 0rem 1.5rem 2em 1.5rem;
+    .ant-tabs-top > .ant-tabs-nav::before,
+    .ant-tabs-bottom > .ant-tabs-nav::before,
+    .ant-tabs-top > div > .ant-tabs-nav::before,
+    .ant-tabs-bottom > div > .ant-tabs-nav::before {
+      border-bottom: 1px solid #2d3138;
+    }
+    .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: #ff0000;
+    }
+    .ant-tabs .ant-tabs-tab {
+      color: #9fa0a2;
+      font-size: 1rem;
+    }
+    .ant-tabs .ant-tabs-tab:hover {
+      color: #ff0000;
+    }
+    .ant-tabs .ant-tabs-ink-bar {
+      background: #ff0000;
+    }
+    input#email,
+    .ant-input-affix-wrapper {
+      border-radius: 0.53894rem;
+      border: 0.862px solid #272930;
+      background: #14161a;
+      padding: 1.125rem 0.9375rem;
+      width: 100%;
+      outline: 0;
+      color: #fff;
+      margin: 0.94rem 0rem;
+      &::placeholder {
+        color: #9cb0c2;
+      }
+    }
+    .ant-input-affix-wrapper {
+      background: #14161a;
+      padding: 0.85rem 0.9375rem;
+      margin: 0 0 0.94rem 0;
+      svg {
+        fill: #70808c;
+      }
+    }
+    .ant-input {
+      background: #14161a;
+      color: #fff;
+      &::placeholder {
+        color: #9cb0c2;
+      }
+    }
+    .ant-checkbox-inner {
+      background-color: #1a1d21;
+      border: 1px solid #70808c;
+    }
+    .ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover
+      .ant-checkbox-checked:not(.ant-checkbox-disabled)
+      .ant-checkbox-inner {
+      background-color: #ff0000;
+    }
+    .ant-checkbox-wrapper {
+      color: #fff;
+      font-weight: 400;
+    }
+    p.forgotPass {
+      color: #f00;
+      font-weight: 400;
+      margin: 1rem 0rem 1.8rem 0rem;
+    }
+    button.login,
+    button.register {
+      width: 100%;
+      border-radius: 0.53894rem;
+      background: #f00;
+      color: #fff;
+      padding: 0.8125rem 4.0625rem;
+      font-weight: 500;
+    }
+  }
+}
