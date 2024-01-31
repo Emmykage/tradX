@@ -130,7 +130,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               save_image={false}
               allow_symbol_change
               style="3"
-              //backgroundColor="#0e0f12"
               withdateranges={false}
               symbol="EURUSD"
             ></AdvancedRealTimeChart>
