@@ -134,6 +134,20 @@ export const CloseIcon = () => {
   );
 };
 
+export const ArrowLeftOS = () => {
+  return (
+    <svg
+      width="12"
+      height="18"
+      viewBox="0 0 12 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M4.43741 8.99998L11.0374 15.6L9.15208 17.4853L0.666748 8.99998L9.15208 0.514648L11.0374 2.39998L4.43741 8.99998Z" fill="white" />
+    </svg>
+  );
+};
+
 export const CraetDownIcon = () => {
   return (
     <svg

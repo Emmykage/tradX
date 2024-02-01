@@ -4,7 +4,7 @@ import Topbar from "../../../components/topbar/Topbar";
 import TradeForm from "../../../components/tradeForm/TradeForm";
 import "./platform.scss";
 import { Drawer } from "antd";
-import { CloseIcon } from "../../../assets/icons";
+import { ArrowLeftOS, CloseIcon } from "../../../assets/icons";
 import TradesMenu from "./platformMenus/trades/TradesMenu";
 import MarketMenu from "./platformMenus/market/MarketMenu";
 import EventsMenu from "./platformMenus/events/EventsMenu";
@@ -13,6 +13,7 @@ import PaymentsMenu from "./platformMenus/payments/PaymentsMenu";
 import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 import ProfileMenu from "./platformMenus/profile/ProfileMenu";
 import AccountMenu from "./platformMenus/account/AccountMenu";
+import TwoFactorMenu from "./platformMenus/twoFactor/TwoFactorMenu";
 
 interface PlatformProps {}
 
@@ -95,7 +96,16 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
                 ? "Payments"
                 : rightDrawerContent === "profile"
                 ? "Profile"
+                : rightDrawerContent === "twofactor"
+                ? "Two-factor Authentication"
                 : ""
+            }
+            extra={
+              rightDrawerContent === "twofactor" ? (
+                <div onClick={() => setIsRightDrawerOpen(false)}>
+                  <ArrowLeftOS />
+                </div>
+              ) : null
             }
             placement="right"
             onClose={() => setIsRightDrawerOpen(false)}
@@ -109,6 +119,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               <ProfileMenu />
             ) : rightDrawerContent === "account" ? (
               <AccountMenu />
+            ) : rightDrawerContent === "twofactor" ? (
+              <TwoFactorMenu />
             ) : (
               <></>
             )}
