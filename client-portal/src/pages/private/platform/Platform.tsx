@@ -32,10 +32,23 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [currentDrawer, setCurrentDrawer] = useState<
     "trades" | "market" | "events" | "help" | "convert" | null
   >(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const RenderConversionDrawerContent = () => {
     return <p>conv contents...</p>;
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+  
+    window.addEventListener("resize", handleResize);
+  
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const res = window.document;
@@ -74,6 +87,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         className="ml-106"
         closeIcon={<CloseIcon />}
         mask={false}
+        width={windowWidth <= 768 ? `calc(100% - 106px)` : 468}
       >
         <div>
           {currentDrawer === "trades" ? (
@@ -117,6 +131,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           open={isRightDrawerOpen}
           closeIcon={<CloseIcon />}
           className="rightDrawer"
+          width={windowWidth <= 768 ? `calc(100% - 106px)` : 468}
         >
           {rightDrawerContent === "payments" ? (
             <PaymentsMenu />
@@ -152,6 +167,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           closeIcon={<CloseIcon />}
           className="rightDrawer rightSubDrawer"
           maskClassName="rightSubDrawerMask"
+          width={windowWidth <= 768 ? `calc(100% - 106px)` : 468}
         >
           {rightSubDrawerContent === "settings" ? <SettingsMenu /> : <></>}
         </Drawer>
