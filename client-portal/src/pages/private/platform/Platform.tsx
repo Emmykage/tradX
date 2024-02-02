@@ -14,6 +14,7 @@ import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 import ProfileMenu from "./platformMenus/profile/ProfileMenu";
 import AccountMenu from "./platformMenus/account/AccountMenu";
 import TwoFactorMenu from "./platformMenus/twoFactor/TwoFactorMenu";
+import SettingsMenu from "./platformMenus/settings/SettingsMenu";
 
 interface PlatformProps {}
 
@@ -152,7 +153,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           className="rightDrawer rightSubDrawer"
           maskClassName="rightSubDrawerMask"
         >
-          {rightSubDrawerContent === "settings" ? <></> : <></>}
+          {rightSubDrawerContent === "settings" ? <SettingsMenu /> : <></>}
         </Drawer>
 
         <Topbar

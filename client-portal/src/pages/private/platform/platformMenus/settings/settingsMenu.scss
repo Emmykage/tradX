@@ -1,0 +1,102 @@
+.settingsMenu {
+  .securityEnhancements {
+    .securityTitle {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .securitySubtitle {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #969698;
+      margin-bottom: 15px;
+    }
+    .securityItem {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .securityItemIcon {
+        min-height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      p {
+        margin-top: 10px;
+        font-size: 0.75rem;
+        color: #ffffff99;
+        font-weight: 400;
+        text-align: center;
+      }
+    }
+  }
+
+  .settingsMenuTitle {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 25px;
+    margin-bottom: 20px;
+  }
+
+  .settingsItemCard {
+    position: relative;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+
+    &.danger {
+      box-shadow: 0px 2px 0px 2px rgba(0, 0, 0, 0.05),
+        0px 1px 0px 1px inset #f15131;
+      border-radius: 5px;
+    }
+
+    .cardLeftIcon {
+      margin-right: 15px;
+
+      &.textCenter {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-42%);
+      }
+    }
+
+    .cardRightContent {
+      width: 100%;
+
+      .settingsItemCardTitle {
+        font-size: 1.125rem;
+        color: #fff;
+        font-weight: 500;
+        margin-bottom: 5px;
+
+        &.noMargin {
+          margin-bottom: 0;
+        }
+
+        &.danger {
+          color: #f15131;
+        }
+
+        &.textCenter {
+          text-align: center;
+          justify-content: center;
+        }
+      }
+      .settingsItemCardSubtitle {
+        font-size: 0.875rem;
+        color: #ffffff99;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .settingsLogoutButton {
+    margin-top: 40px;
+  }
+}
