@@ -123,6 +123,29 @@ export const ProfileIcon = () => {
   );
 };
 
+export const DropUpIcon = () => {
+  return (
+    <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 0L0 1.55172V5L4.5 3.44828L9 5V1.55172L4.5 0Z" fill="#0094FF"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 2.9067L8.53448 4.2979V1.93278L4.5 0.541578L0.465517 1.93278V4.2979L4.5 2.9067ZM0 5V1.55172L4.5 0L9 1.55172V5L4.5 3.44828L0 5Z" fill="url(#paint0_linear_81_14156)"/>
+      <defs>
+        <linearGradient id="paint0_linear_81_14156" x1="0" y1="5" x2="4.01819" y2="0.67608" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#DBF0FF"/>
+          <stop offset="1" stop-color="#0094FF"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
+
+export const CaretDownIcon = () => {
+  return (
+    <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 1.5L5.12043 5.36291C5.20114 5.43857 5.32795 5.43434 5.40343 5.35346L9 1.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  );
+};
+
 export const CloseIcon = () => {
   return (
     <svg
@@ -286,23 +309,6 @@ export const CheckIcon = () => {
       <path
         d="M8.83323 13.2293L21.0892 0.971924L22.9759 2.85726L8.83323 16.9999L0.3479 8.51459L2.23323 6.62926L8.83323 13.2293Z"
         fill="#1FBF75"
-      />
-    </svg>
-  );
-};
-
-export const CraetDownIcon = () => {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12.0001 15L7.75708 10.758L9.17208 9.34399L12.0001 12.172L14.8281 9.34399L16.2431 10.758L12.0001 15Z"
-        fill="#9CB0C2"
       />
     </svg>
   );
