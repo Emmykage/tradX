@@ -37,6 +37,11 @@
   }
 }
 .rightDrawer {
+  &.rightSubDrawer {
+    .ant-drawer-wrapper-body {
+      background: none;
+    }
+  }
   .ant-drawer-wrapper-body {
     background: rgba(255, 255, 255, 0.13);
     backdrop-filter: blur(50px);

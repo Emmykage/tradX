@@ -9,7 +9,10 @@ import {
 import "./profileMenu.scss";
 import { Col, Row } from "antd";
 
-interface ProfileMenuProps {}
+interface ProfileMenuProps {
+  setIsRightSubDrawerOpen: (value: boolean) => void;
+  setIsRightSubDrawerContent: (value: string | null) => void;
+}
 
 // const ProfileLink = ({
 //   icon,
@@ -29,7 +32,10 @@ interface ProfileMenuProps {}
 //   );
 // };
 
-const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = () => {
+const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   const infos = [
     {
       title: "Recieve a 50% Bonus",
@@ -117,7 +123,13 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = () => {
         </Row>
       </div>
 
-      <div className="profileCard settingsButton" onClick={() => {}}>
+      <div
+        className="profileCard settingsButton"
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("settings");
+        }}
+      >
         <button className="settings">
           <span className="icon">
             <SettingsIcon />

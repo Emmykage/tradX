@@ -23,6 +23,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [rightDrawerContent, setIsRightDrawerContent] = useState<string | null>(
     null
   );
+  const [isRightSubDrawerOpen, setIsRightSubDrawerOpen] =
+    useState<boolean>(false);
+  const [rightSubDrawerContent, setIsRightSubDrawerContent] = useState<
+    string | null
+  >(null);
   const [currentDrawer, setCurrentDrawer] = useState<
     "trades" | "market" | "events" | "help" | "convert" | null
   >(null);
@@ -116,7 +121,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             {rightDrawerContent === "payments" ? (
               <PaymentsMenu />
             ) : rightDrawerContent === "profile" ? (
-              <ProfileMenu />
+              <ProfileMenu
+                setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+                setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+              />
             ) : rightDrawerContent === "account" ? (
               <AccountMenu />
             ) : rightDrawerContent === "twofactor" ? (
@@ -124,6 +132,29 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             ) : (
               <></>
             )}
+          </Drawer>
+        )}
+        {isRightSubDrawerOpen && (
+          <Drawer
+            title={rightSubDrawerContent === "settings" ? "Settings" : ""}
+            extra={
+              rightSubDrawerContent === "settings" ? (
+                <div onClick={() => setIsRightSubDrawerOpen(false)}>
+                  <ArrowLeftOS />
+                </div>
+              ) : null
+            }
+            placement="right"
+            onClose={() => {
+              setIsRightDrawerOpen(false);
+              setIsRightSubDrawerOpen(false);
+            }}
+            open={isRightSubDrawerOpen}
+            closeIcon={<CloseIcon />}
+            className="rightDrawer rightSubDrawer"
+            maskClassName="rightSubDrawerMask"
+          >
+            {rightSubDrawerContent === "settings" ? <></> : <></>}
           </Drawer>
         )}
         <Topbar
