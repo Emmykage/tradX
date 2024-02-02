@@ -152,22 +152,26 @@
 //   }
 // }
 
-button.settings {
-  margin: 10px 0;
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1.25rem;
-  background: transparent;
-  text-align: center;
-  color: #fff;
-  font-size: 1.125rem;
-  span.icon {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
+.settingsButton {
+  cursor: pointer;
+
+  button.settings {
+    margin: 10px 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.25rem;
+    background: transparent;
+    text-align: center;
+    color: #fff;
+    font-size: 1.125rem;
+    span.icon {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
   }
 }

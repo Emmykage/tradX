@@ -117,7 +117,7 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = () => {
         </Row>
       </div>
 
-      <div className="profileCard">
+      <div className="profileCard settingsButton" onClick={() => {}}>
         <button className="settings">
           <span className="icon">
             <SettingsIcon />
