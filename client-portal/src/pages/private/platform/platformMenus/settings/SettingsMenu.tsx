@@ -17,7 +17,7 @@ interface SettingsMenuProps {}
 const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = () => {
   return (
     <div className="settingsMenu">
-      <MainItemCard variant={2} className="securityEnhancements">
+      <MainItemCard variant={2} className="securityEnhancements" pointer={false}>
         <p className="securityTitle">Enhance your account security</p>
         <p className="securitySubtitle">
           Add extra protection to your account and get a 50% deposit bonus

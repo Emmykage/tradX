@@ -15,6 +15,7 @@ import ProfileMenu from "./platformMenus/profile/ProfileMenu";
 import AccountMenu from "./platformMenus/account/AccountMenu";
 import TwoFactorMenu from "./platformMenus/twoFactor/TwoFactorMenu";
 import SettingsMenu from "./platformMenus/settings/SettingsMenu";
+import VerificationMenu from "./platformMenus/verification/VerificationMenu";
 
 interface PlatformProps {}
 
@@ -42,9 +43,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-  
+
     window.addEventListener("resize", handleResize);
-  
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -117,6 +118,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Profile"
               : rightDrawerContent === "twofactor"
               ? "Two-factor Authentication"
+              : rightDrawerContent === "verification"
+              ? "Verification"
               : ""
           }
           extra={
@@ -144,6 +147,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <AccountMenu />
           ) : rightDrawerContent === "twofactor" ? (
             <TwoFactorMenu />
+          ) : rightDrawerContent === "verification" ? (
+            <VerificationMenu />
           ) : (
             <></>
           )}

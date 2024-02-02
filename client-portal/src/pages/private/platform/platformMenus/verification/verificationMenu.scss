@@ -1,0 +1,61 @@
+.verificationsContainer {
+  .verificationBadge {
+    background: linear-gradient(
+      230deg,
+      #458dbf,
+      #45b3e9,
+      #4591c3,
+      #446e99,
+      #3d5172,
+      #37425c,
+      rgba(105, 86, 179, 0)
+    );
+    min-height: 336px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+
+    img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+    }
+  }
+
+  .infoCard {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+
+    p {
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 400;
+      margin-left: 10px;
+    }
+  }
+
+  .verificationDetail {
+    margin-top: 30px;
+
+    p {
+      color: #ffffff99;
+      font-size: 0.875rem;
+      font-weight: 400;
+    }
+  }
+
+  .verificationLearnMore {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      font-size: 1.125rem;
+      color: #fff;
+      font-weight: 500;
+    }
+  }
+}
