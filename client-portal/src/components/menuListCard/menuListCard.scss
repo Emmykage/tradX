@@ -12,6 +12,8 @@
 
   .cardLeftIcon {
     margin-right: 15px;
+    display: flex;
+    align-items: center;
 
     &.textCenter {
       position: absolute;
