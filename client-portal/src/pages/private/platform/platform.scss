@@ -2,6 +2,7 @@
   display: flex;
   background: #0e0f12;
   .trade-section {
+    transition: margin-left 0.25s ease;
     margin-left: 106px;
     background: #0e0f12;
     width: 100%;
@@ -17,6 +18,7 @@
   }
   .ml-378 {
     margin-left: 484px;
+    transition: margin-left 0.25s ease;
   }
 }
 .ml-106 {
