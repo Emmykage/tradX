@@ -12,12 +12,20 @@ import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import SettingsItemCard from "./SettingsItemCard";
 import "./settingsMenu.scss";
 
-interface SettingsMenuProps {}
+interface SettingsMenuProps {
+  setIsRightSubDrawerContent: (value: string | null) => void;
+}
 
-const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = () => {
+const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="settingsMenu">
-      <MainItemCard variant={2} className="securityEnhancements" pointer={false}>
+      <MainItemCard
+        variant={2}
+        className="securityEnhancements"
+        pointer={false}
+      >
         <p className="securityTitle">Enhance your account security</p>
         <p className="securitySubtitle">
           Add extra protection to your account and get a 50% deposit bonus
@@ -53,6 +61,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = () => {
           title="Two-factor authentication"
           subtitle="Set it up to enhance your security"
           icon={<PhoneIcon />}
+          onClick={() => setIsRightSubDrawerContent('twofactor')}
         />
         <SettingsItemCard
           title="Password"

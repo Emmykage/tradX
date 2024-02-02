@@ -116,18 +116,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Payments"
               : rightDrawerContent === "profile"
               ? "Profile"
-              : rightDrawerContent === "twofactor"
-              ? "Two-factor Authentication"
               : rightDrawerContent === "verification"
               ? "Verification"
               : ""
-          }
-          extra={
-            rightDrawerContent === "twofactor" ? (
-              <div onClick={() => setIsRightDrawerOpen(false)}>
-                <ArrowLeftOS />
-              </div>
-            ) : null
           }
           placement="right"
           onClose={() => setIsRightDrawerOpen(false)}
@@ -145,8 +136,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             />
           ) : rightDrawerContent === "account" ? (
             <AccountMenu />
-          ) : rightDrawerContent === "twofactor" ? (
-            <TwoFactorMenu />
           ) : rightDrawerContent === "verification" ? (
             <VerificationMenu />
           ) : (
@@ -155,10 +144,20 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         </Drawer>
 
         <Drawer
-          title={rightSubDrawerContent === "settings" ? "Settings" : ""}
+          title={
+            rightSubDrawerContent === "settings"
+              ? "Settings"
+              : rightSubDrawerContent === "twofactor"
+              ? "Two-factor Authentication"
+              : ""
+          }
           extra={
             rightSubDrawerContent === "settings" ? (
               <div onClick={() => setIsRightSubDrawerOpen(false)}>
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "twofactor" ? (
+              <div onClick={() => setIsRightSubDrawerContent("settings")}>
                 <ArrowLeftOS />
               </div>
             ) : null
@@ -174,7 +173,15 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           maskClassName="rightSubDrawerMask"
           width={windowWidth <= 768 ? `calc(100% - 106px)` : 468}
         >
-          {rightSubDrawerContent === "settings" ? <SettingsMenu /> : <></>}
+          {rightSubDrawerContent === "settings" ? (
+            <SettingsMenu
+              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+            />
+          ) : rightSubDrawerContent === "twofactor" ? (
+            <TwoFactorMenu />
+          ) : (
+            <></>
+          )}
         </Drawer>
 
         <Topbar
