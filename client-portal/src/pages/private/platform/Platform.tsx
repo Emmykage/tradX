@@ -49,114 +49,112 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         currentDrawer={currentDrawer}
         setCurrentDrawer={setCurrentDrawer}
       />
-      {isDrawerOpen && (
+
+      <Drawer
+        title={
+          currentDrawer === "trades"
+            ? "Trades"
+            : currentDrawer === "events"
+            ? "Events"
+            : currentDrawer === "market"
+            ? "Market"
+            : currentDrawer === "help"
+            ? "Help"
+            : currentDrawer === "convert"
+            ? "Assests"
+            : ""
+        }
+        placement="left"
+        onClose={() => {
+          setIsDrawerOpen(false);
+          setCurrentDrawer(null);
+        }}
+        open={isDrawerOpen}
+        className="ml-106"
+        closeIcon={<CloseIcon />}
+        mask={false}
+      >
+        <div>
+          {currentDrawer === "trades" ? (
+            <TradesMenu />
+          ) : currentDrawer === "market" ? (
+            <MarketMenu />
+          ) : currentDrawer === "events" ? (
+            <EventsMenu />
+          ) : currentDrawer === "help" ? (
+            <HelpMenu />
+          ) : currentDrawer === "convert" ? (
+            <RenderConversionDrawerContent />
+          ) : (
+            <></>
+          )}
+        </div>
+      </Drawer>
+
+      <div className={isDrawerOpen ? "trade-section ml-378" : "trade-section"}>
         <Drawer
           title={
-            currentDrawer === "trades"
-              ? "Trades"
-              : currentDrawer === "events"
-              ? "Events"
-              : currentDrawer === "market"
-              ? "Market"
-              : currentDrawer === "help"
-              ? "Help"
-              : currentDrawer === "convert"
-              ? "Assests"
+            rightDrawerContent === "account"
+              ? "Accounts"
+              : rightDrawerContent === "payments"
+              ? "Payments"
+              : rightDrawerContent === "profile"
+              ? "Profile"
+              : rightDrawerContent === "twofactor"
+              ? "Two-factor Authentication"
               : ""
           }
-          placement="left"
-          onClose={() => {
-            setIsDrawerOpen(false);
-            setCurrentDrawer(null);
-          }}
-          open={isDrawerOpen}
-          className="ml-106"
+          extra={
+            rightDrawerContent === "twofactor" ? (
+              <div onClick={() => setIsRightDrawerOpen(false)}>
+                <ArrowLeftOS />
+              </div>
+            ) : null
+          }
+          placement="right"
+          onClose={() => setIsRightDrawerOpen(false)}
+          open={isRightDrawerOpen}
           closeIcon={<CloseIcon />}
-          mask={false}
+          className="rightDrawer"
         >
-          <div>
-            {currentDrawer === "trades" ? (
-              <TradesMenu />
-            ) : currentDrawer === "market" ? (
-              <MarketMenu />
-            ) : currentDrawer === "events" ? (
-              <EventsMenu />
-            ) : currentDrawer === "help" ? (
-              <HelpMenu />
-            ) : currentDrawer === "convert" ? (
-              <RenderConversionDrawerContent />
-            ) : (
-              <></>
-            )}
-          </div>
+          {rightDrawerContent === "payments" ? (
+            <PaymentsMenu />
+          ) : rightDrawerContent === "profile" ? (
+            <ProfileMenu
+              setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+            />
+          ) : rightDrawerContent === "account" ? (
+            <AccountMenu />
+          ) : rightDrawerContent === "twofactor" ? (
+            <TwoFactorMenu />
+          ) : (
+            <></>
+          )}
         </Drawer>
-      )}
-      <div className={isDrawerOpen ? "trade-section ml-378" : "trade-section"}>
-        {isRightDrawerOpen && (
-          <Drawer
-            title={
-              rightDrawerContent === "account"
-                ? "Accounts"
-                : rightDrawerContent === "payments"
-                ? "Payments"
-                : rightDrawerContent === "profile"
-                ? "Profile"
-                : rightDrawerContent === "twofactor"
-                ? "Two-factor Authentication"
-                : ""
-            }
-            extra={
-              rightDrawerContent === "twofactor" ? (
-                <div onClick={() => setIsRightDrawerOpen(false)}>
-                  <ArrowLeftOS />
-                </div>
-              ) : null
-            }
-            placement="right"
-            onClose={() => setIsRightDrawerOpen(false)}
-            open={isRightDrawerOpen}
-            closeIcon={<CloseIcon />}
-            className="rightDrawer"
-          >
-            {rightDrawerContent === "payments" ? (
-              <PaymentsMenu />
-            ) : rightDrawerContent === "profile" ? (
-              <ProfileMenu
-                setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-                setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-              />
-            ) : rightDrawerContent === "account" ? (
-              <AccountMenu />
-            ) : rightDrawerContent === "twofactor" ? (
-              <TwoFactorMenu />
-            ) : (
-              <></>
-            )}
-          </Drawer>
-        )}
-        {isRightSubDrawerOpen && (
-          <Drawer
-            title={rightSubDrawerContent === "settings" ? "Settings" : ""}
-            extra={
-              rightSubDrawerContent === "settings" ? (
-                <div onClick={() => setIsRightSubDrawerOpen(false)}>
-                  <ArrowLeftOS />
-                </div>
-              ) : null
-            }
-            placement="right"
-            onClose={() => {
-              setIsRightDrawerOpen(false);
-              setIsRightSubDrawerOpen(false);
-            }}
-            open={isRightSubDrawerOpen}
-            closeIcon={<CloseIcon />}
-            className="rightDrawer rightSubDrawer"
-            maskClassName="rightSubDrawerMask"
-          >
-            {rightSubDrawerContent === "settings" ? <></> : <></>}
-          </Drawer>
-        )}
+
+        <Drawer
+          title={rightSubDrawerContent === "settings" ? "Settings" : ""}
+          extra={
+            rightSubDrawerContent === "settings" ? (
+              <div onClick={() => setIsRightSubDrawerOpen(false)}>
+                <ArrowLeftOS />
+              </div>
+            ) : null
+          }
+          placement="right"
+          onClose={() => {
+            setIsRightDrawerOpen(false);
+            setIsRightSubDrawerOpen(false);
+          }}
+          open={isRightSubDrawerOpen}
+          closeIcon={<CloseIcon />}
+          className="rightDrawer rightSubDrawer"
+          maskClassName="rightSubDrawerMask"
+        >
+          {rightSubDrawerContent === "settings" ? <></> : <></>}
+        </Drawer>
+
         <Topbar
           setIsRightDrawerOpen={setIsRightDrawerOpen}
           setIsRightDrawerContent={setIsRightDrawerContent}
@@ -164,6 +162,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           setCurrentDrawer={setCurrentDrawer}
           currentDrawer={currentDrawer}
         />
+
         <div className="trade-content">
           <div className="trade-graph">
             <AdvancedRealTimeChart
