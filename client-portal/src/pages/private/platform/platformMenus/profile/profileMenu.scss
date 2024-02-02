@@ -2,63 +2,172 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 15px;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0px 2px 0px 2px rgba(0, 0, 0, 0.05),
+    0px 1px 0px 1px inset rgba(39, 162, 255, 0.05);
+
   .trader {
     .traderHead {
-      color: #fff;
-      font-size: 1.5rem;
+      color: #f9b42b;
+      font-size: 1.125rem;
       font-weight: 600;
     }
     p.traderBottom {
+      font-size: 0.9rem;
+      font-weight: 600;
       margin-top: 0.75rem;
       span.id {
         color: #9cb0c2;
       }
       span.id-number {
         color: #0094ff;
-        margin-left: 0.3rem;
+        margin-left: 0.2rem;
       }
     }
   }
-  .bigProfileIcon {
-    border-radius: 100%;
-    background: #1f2227;
-    width: 5.88rem;
-    height: 5.88rem;
+  .reloadIcon {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
-.flexProfileLinks {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 4.3rem;
-  .profileLinkContainer {
-    height: 7rem;
-    border-radius: 1.25rem;
-    background: #1a1d21;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem;
-    cursor: pointer;
-  }
-  p.linkName {
-    color: #fff;
-    font-size: 1.125rem;
+
+.traderInfoImages {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
   }
 }
+
+.profileCard {
+  height: 100%;
+  padding: 10px 15px;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0px 2px 0px 2px rgba(0, 0, 0, 0.05),
+    0px 1px 0px 1px inset rgba(39, 162, 255, 0.14);
+}
+
+.levelCard {
+  padding-top: 10px;
+  padding-bottom: 5px;
+
+  .levelCardTitleContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .levelCardTitle {
+      color: #ffffff;
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-left: 15px;
+    }
+  }
+
+  .levelBar {
+    width: 100%;
+    background: linear-gradient(
+      to right,
+      #4e97ce,
+      #5a6975,
+      #5a6975,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    border-radius: 10px;
+    padding: 2px 8px;
+
+    .levelText {
+      margin-right: 40px;
+    }
+  }
+}
+
+.statusTooltip {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  color: #ffffff80;
+  font-size: 0.75rem;
+  margin-bottom: 20px;
+
+  p {
+    margin-right: 5px;
+  }
+}
+
+.taskCards {
+  margin-bottom: 50px;
+
+  .taskCard {
+    padding: 10px 0;
+
+    .taskCardIcon {
+      margin-bottom: 5px;
+    }
+
+    .taskCardSubtitle {
+      color: #5d86a6;
+      font-size: 0.875rem;
+      margin-bottom: 5px;
+      min-height: 17px;
+    }
+    .taskCardTitle {
+      color: #ffffff;
+      font-size: 1.125rem;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+// .flexProfileLinks {
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 4.3rem;
+//   .profileLinkContainer {
+//     height: 7rem;
+//     border-radius: 1.25rem;
+//     background: #1a1d21;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     padding: 1rem;
+//     cursor: pointer;
+//   }
+//   p.linkName {
+//     color: #fff;
+//     font-size: 1.125rem;
+//   }
+// }
+
 button.settings {
+  margin: 10px 0;
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 1.25rem;
-  background: #1a1d21;
+  background: transparent;
+  text-align: center;
   color: #fff;
-  padding: 0.94rem 1.62rem;
-  font-size: 1.25rem;
-  margin-top: 10rem;
+  font-size: 1.125rem;
   span.icon {
-    margin-right: 5.31rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
   }
 }
