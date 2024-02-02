@@ -9,7 +9,7 @@ import {
   UserIcon,
 } from "../../../../../assets/icons";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
-import SettingsItemCard from "./SettingsItemCard";
+import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./settingsMenu.scss";
 
 interface SettingsMenuProps {
@@ -52,18 +52,18 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
 
       <div className="settingsSection">
         <p className="settingsMenuTitle">Profile</p>
-        <SettingsItemCard
+        <MenuListCard
           title="Personal"
           subtitle="Name and contacts"
           icon={<UserIcon />}
         />
-        <SettingsItemCard
+        <MenuListCard
           title="Two-factor authentication"
           subtitle="Set it up to enhance your security"
           icon={<PhoneIcon />}
-          onClick={() => setIsRightSubDrawerContent('twofactor')}
+          onClick={() => setIsRightSubDrawerContent("twofactor")}
         />
-        <SettingsItemCard
+        <MenuListCard
           title="Password"
           subtitle="Keep your account secure"
           icon={<LockIcon />}
@@ -72,17 +72,17 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
 
       <div className="settingsSection">
         <p className="settingsMenuTitle">Setup</p>
-        <SettingsItemCard
+        <MenuListCard
           title="Appearance"
           subtitle="Language, themes, and sounds"
           icon={<UserIcon />}
         />
-        <SettingsItemCard
+        <MenuListCard
           title="Trading"
           subtitle="Trades, Forex, charts"
           icon={<TradingIcon />}
         />
-        <SettingsItemCard
+        <MenuListCard
           title="Notifications"
           subtitle="Promos, trading, pushes"
           icon={<NotificationIcon />}
@@ -90,12 +90,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
       </div>
 
       <div className="settingsLogoutButton">
-        <SettingsItemCard
-          danger
-          textCenter
-          title="Log out"
-          icon={<ExitIcon />}
-        />
+        <MenuListCard danger textCenter title="Log out" icon={<ExitIcon />} />
       </div>
     </div>
   );

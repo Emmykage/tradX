@@ -1,8 +1,8 @@
 import React from "react";
-import "./settingsMenu.scss";
-import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
+import MainItemCard from "../mainItemCard/MainItemCard";
+import "./menuListCard.scss";
 
-interface SettingsItemCardProps {
+interface MenuListCardProps {
   icon: React.ReactNode;
   title: string;
   subtitle?: string;
@@ -11,7 +11,7 @@ interface SettingsItemCardProps {
   onClick?: () => void;
 }
 
-const SettingsItemCard: React.FC<SettingsItemCardProps> = ({
+const MenuListCard: React.FC<MenuListCardProps> = ({
   icon,
   title,
   subtitle,
@@ -21,7 +21,7 @@ const SettingsItemCard: React.FC<SettingsItemCardProps> = ({
 }) => {
   return (
     <MainItemCard
-      className={`settingsItemCard ${danger ? "danger" : ""}`}
+      className={`menuListCard ${danger ? "danger" : ""}`}
       variant={2}
       onClick={onClick}
     >
@@ -32,7 +32,7 @@ const SettingsItemCard: React.FC<SettingsItemCardProps> = ({
         {title && (
           <p
             className={`
-            settingsItemCardTitle
+            menuListCardTitle
             ${!subtitle && "noMargin"}
             ${danger ? "danger" : ""}
             ${textCenter ? "textCenter" : ""}`}
@@ -40,10 +40,10 @@ const SettingsItemCard: React.FC<SettingsItemCardProps> = ({
             {title}
           </p>
         )}
-        {subtitle && <p className="settingsItemCardSubtitle">{subtitle}</p>}
+        {subtitle && <p className="menuListCardSubtitle">{subtitle}</p>}
       </div>
     </MainItemCard>
   );
 };
 
-export default SettingsItemCard;
+export default MenuListCard;
