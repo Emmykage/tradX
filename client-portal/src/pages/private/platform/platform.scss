@@ -9,6 +9,7 @@
     height: 100vh;
     .trade-content {
       display: flex;
+      padding-top: 1rem;
       .trade-graph {
         width: 86%;
         height: calc(100vh - 139px);
