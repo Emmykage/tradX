@@ -26,7 +26,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   currentDrawer,
 }) => {
   return (
-    <div className="topbarContainer">
+    <div className="topbarContainer" id="topbarContainer">
       <div
         className="conversionTab"
         onClick={() => {

@@ -34,6 +34,26 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     "trades" | "market" | "events" | "help" | "convert" | null
   >(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [topbarHeight, setTopbarHeight] = useState(0);
+  const [tradeFormHeight, setTradeFormHeight] = useState(0);
+
+  useEffect(() => {
+    const topbarElement = document.getElementById("topbarContainer");
+    const tradeFormElement = document.getElementById("tradeForm");
+
+    if (topbarElement) {
+      setTopbarHeight(topbarElement.clientHeight);
+    }
+
+    if (tradeFormElement && window.innerWidth <= 767) {
+      setTradeFormHeight(tradeFormElement.clientHeight);
+    }
+  }, [window.innerWidth]);
+
+  const calculateTradeContentHeight = () => {
+    const totalHeight = topbarHeight + (window.innerWidth <= 767 ? tradeFormHeight : 0);
+    return `calc(100% - ${totalHeight}px)`;
+  };
 
   const RenderConversionDrawerContent = () => {
     return <p>conv contents...</p>;
@@ -192,7 +212,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           currentDrawer={currentDrawer}
         />
 
-        <div className="trade-content">
+        <div className="trade-content" id="tradeContent" style={{ height: calculateTradeContentHeight() }}>
           <div className="trade-graph">
             <AdvancedRealTimeChart
               theme="dark"
