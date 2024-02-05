@@ -24,7 +24,9 @@ const MainItemCard: React.FC<React.PropsWithChildren<MainItemCardProps>> = ({
         pointer ? "" : "none-pointer"
       }`}
     >
-      <div className={`mainItemCardContent ${className}`}>{children}</div>
+      <div className={`mainItemCardContent ${className ? className : ""}`}>
+        {children}
+      </div>
     </div>
   ) : (
     <div
@@ -33,7 +35,9 @@ const MainItemCard: React.FC<React.PropsWithChildren<MainItemCardProps>> = ({
         pointer ? "" : "none-pointer"
       }`}
     >
-      <div className={`mainItemCardv2Content ${className}`}>{children}</div>
+      <div className={`mainItemCardv2Content ${className ? className : ""}`}>
+        {children}
+      </div>
     </div>
   );
 };

@@ -16,6 +16,7 @@ import AccountMenu from "./platformMenus/account/AccountMenu";
 import TwoFactorMenu from "./platformMenus/twoFactor/TwoFactorMenu";
 import SettingsMenu from "./platformMenus/settings/SettingsMenu";
 import VerificationMenu from "./platformMenus/verification/VerificationMenu";
+import PersonalSettingsMenu from "./platformMenus/personalSettings/PersonalSettingsMenu";
 
 interface PlatformProps {}
 
@@ -202,6 +203,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Settings"
               : rightSubDrawerContent === "twofactor"
               ? "Two-factor Authentication"
+              : rightSubDrawerContent === "personalSettings"
+              ? "Personal settings"
               : ""
           }
           extra={
@@ -210,6 +213,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
                 <ArrowLeftOS />
               </div>
             ) : rightSubDrawerContent === "twofactor" ? (
+              <div onClick={() => setIsRightSubDrawerContent("settings")}>
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "personalSettings" ? (
               <div onClick={() => setIsRightSubDrawerContent("settings")}>
                 <ArrowLeftOS />
               </div>
@@ -234,6 +241,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             />
           ) : rightSubDrawerContent === "twofactor" ? (
             <TwoFactorMenu />
+          ) : rightSubDrawerContent === "personalSettings" ? (
+            <PersonalSettingsMenu />
           ) : (
             <></>
           )}
