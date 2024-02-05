@@ -36,10 +36,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [topbarHeight, setTopbarHeight] = useState(0);
   const [tradeFormHeight, setTradeFormHeight] = useState(0);
+  const [mainSidebarWidth, setMainSidebarWidth] = useState(0);
 
   useEffect(() => {
     const topbarElement = document.getElementById("topbarContainer");
     const tradeFormElement = document.getElementById("tradeForm");
+    const mainSidebarElement = document.getElementById("main_sidebar");
 
     if (topbarElement) {
       setTopbarHeight(topbarElement.clientHeight);
@@ -48,10 +50,15 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     if (tradeFormElement && window.innerWidth <= 767) {
       setTradeFormHeight(tradeFormElement.clientHeight);
     }
+
+    if (mainSidebarElement) {
+      setMainSidebarWidth(mainSidebarElement.clientWidth);
+    }
   }, [window.innerWidth]);
 
   const calculateTradeContentHeight = () => {
-    const totalHeight = topbarHeight + (window.innerWidth <= 767 ? tradeFormHeight : 0);
+    const totalHeight =
+      topbarHeight + (window.innerWidth <= 767 ? tradeFormHeight : 0);
     return `calc(100% - ${totalHeight}px)`;
   };
 
@@ -106,9 +113,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         }}
         open={isDrawerOpen}
         className="ml-106"
+        style={{ marginLeft: `${mainSidebarWidth}px` }}
         closeIcon={<CloseIcon />}
         mask={false}
-        width={windowWidth <= 768 ? `calc(100% - 106px)` : 468}
+        width={windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : 468}
       >
         <div>
           {currentDrawer === "trades" ? (
@@ -127,7 +135,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         </div>
       </Drawer>
 
-      <div className={isDrawerOpen ? "trade-section ml-378" : "trade-section"}>
+      <div
+        className={isDrawerOpen ? "trade-section ml-378" : "trade-section"}
+        style={{ marginLeft: `${mainSidebarWidth}px` }}
+      >
         <Drawer
           title={
             rightDrawerContent === "account"
@@ -145,7 +156,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           open={isRightDrawerOpen}
           closeIcon={<CloseIcon />}
           className="rightDrawer"
-          width={windowWidth <= 768 ? `calc(100% - 106px)` : 468}
+          width={
+            windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : 468
+          }
         >
           {rightDrawerContent === "payments" ? (
             <PaymentsMenu />
@@ -191,7 +204,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           closeIcon={<CloseIcon />}
           className="rightDrawer rightSubDrawer"
           maskClassName="rightSubDrawerMask"
-          width={windowWidth <= 768 ? `calc(100% - 106px)` : 468}
+          width={
+            windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : 468
+          }
         >
           {rightSubDrawerContent === "settings" ? (
             <SettingsMenu
@@ -212,7 +227,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           currentDrawer={currentDrawer}
         />
 
-        <div className="trade-content" id="tradeContent" style={{ height: calculateTradeContentHeight() }}>
+        <div
+          className="trade-content"
+          id="tradeContent"
+          style={{ height: calculateTradeContentHeight() }}
+        >
           <div className="trade-graph">
             <AdvancedRealTimeChart
               theme="dark"
