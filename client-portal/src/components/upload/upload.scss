@@ -1,0 +1,19 @@
+.ant-upload.ant-upload-select {
+  width: 100%;
+}
+
+.upload_main {
+  .uploadContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px 15px;
+
+    .uploadPlaceholder {
+      font-size: 1.125rem;
+      color: #fff;
+      margin-left: 10px;
+    }
+  }
+}
