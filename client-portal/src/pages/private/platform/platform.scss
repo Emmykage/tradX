@@ -58,10 +58,16 @@
   }
   .ant-drawer-header {
     flex-direction: row-reverse;
+    border-bottom: 0;
 
     .ant-drawer-extra {
       padding-left: 5px;
       padding-right: 15px;
+
+      > div {
+        display: flex;
+        align-items: center;
+      }
     }
   }
   .ant-drawer-header-title {
@@ -69,8 +75,8 @@
   }
   .ant-drawer-title {
     color: #fff;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.875rem;
+    font-weight: 500;
   }
 }
 
