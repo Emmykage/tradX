@@ -10,6 +10,7 @@ import "./sidebar.scss";
 interface SidebarProps {
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isDrawerOpen: boolean;
+  id?: string;
   currentDrawer: "trades" | "market" | "events" | "help" | "convert" | null;
   setCurrentDrawer: React.Dispatch<
     React.SetStateAction<
@@ -22,9 +23,10 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
   setIsDrawerOpen,
   currentDrawer,
   setCurrentDrawer,
+  id,
 }) => {
   return (
-    <div className="sidebar" id="main_sidebar">
+    <div className="sidebar" id={id ? id : ""}>
       <div className="top">
         <div className="logo">
           <LogoIcon />

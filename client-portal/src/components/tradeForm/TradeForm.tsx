@@ -8,11 +8,21 @@ import {
 } from "../../assets/icons";
 import "./tradeform.scss";
 
-interface TradeFormProps {}
+interface TradeFormProps {
+  bottomSidebarHeight: number;
+}
 
-const TradeForm: React.FunctionComponent<TradeFormProps> = () => {
+const TradeForm: React.FunctionComponent<TradeFormProps> = ({
+  bottomSidebarHeight,
+}) => {
   return (
-    <div className="trade-form" id="tradeForm">
+    <div
+      className="trade-form"
+      id="tradeForm"
+      style={{
+        marginBottom: window.innerWidth <= 767 ? bottomSidebarHeight : 0,
+      }}
+    >
       <div className="coinInfo">
         <div className="timeMode">
           <p className="coinTitle">EUR/USD OTC</p>

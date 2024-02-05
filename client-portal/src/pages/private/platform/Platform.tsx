@@ -37,11 +37,13 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [topbarHeight, setTopbarHeight] = useState(0);
   const [tradeFormHeight, setTradeFormHeight] = useState(0);
   const [mainSidebarWidth, setMainSidebarWidth] = useState(0);
+  const [bottomSidebarHeight, setBottomSidebarHeight] = useState(0);
 
   useEffect(() => {
     const topbarElement = document.getElementById("topbarContainer");
     const tradeFormElement = document.getElementById("tradeForm");
     const mainSidebarElement = document.getElementById("main_sidebar");
+    const bottomSidebarElement = document.getElementById("bottom_sidebar");
 
     if (topbarElement) {
       setTopbarHeight(topbarElement.clientHeight);
@@ -51,14 +53,22 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       setTradeFormHeight(tradeFormElement.clientHeight);
     }
 
+    if (bottomSidebarElement && window.innerWidth <= 767) {
+      setBottomSidebarHeight(bottomSidebarElement.clientHeight);
+    }
+
     if (mainSidebarElement) {
       setMainSidebarWidth(mainSidebarElement.clientWidth);
+    } else {
+      setMainSidebarWidth(0);
     }
   }, [window.innerWidth]);
 
   const calculateTradeContentHeight = () => {
     const totalHeight =
-      topbarHeight + (window.innerWidth <= 767 ? tradeFormHeight : 0);
+      topbarHeight +
+      (window.innerWidth <= 767 ? tradeFormHeight : 0) +
+      (window.innerWidth <= 767 ? bottomSidebarHeight : 0);
     return `calc(100% - ${totalHeight}px)`;
   };
 
@@ -78,20 +88,30 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const res = window.document;
-    console.log(res);
-  });
+  // useEffect(() => {
+  //   const res = window.document;
+  //   console.log(res);
+  // });
 
-  return (
-    <div className="platformWrapper">
+  const MainSidebar = ({ id }: { id?: string }) => {
+    return (
       <Sidebar
         setIsDrawerOpen={setIsDrawerOpen}
         isDrawerOpen={isDrawerOpen}
         currentDrawer={currentDrawer}
         setCurrentDrawer={setCurrentDrawer}
+        id={id ? id : ""}
       />
+    );
+  };
 
+  return (
+    <div className="platformWrapper">
+      {windowWidth >= 768 ? (
+        <MainSidebar id="main_sidebar" />
+      ) : (
+        <MainSidebar id="bottom_sidebar" />
+      )}
       <Drawer
         title={
           currentDrawer === "trades"
@@ -244,7 +264,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               symbol="EURUSD"
             ></AdvancedRealTimeChart>
           </div>
-          <TradeForm />
+          <TradeForm bottomSidebarHeight={bottomSidebarHeight} />
         </div>
       </div>
     </div>

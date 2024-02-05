@@ -16,21 +16,32 @@
   }
 
   @media (max-width: 767px) {
-    width: 50px;
+    z-index: 100;
+    position: absolute;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    padding: 0.5rem;
   }
   .top {
     display: flex;
     flex-direction: column;
     gap: 3.25rem;
 
+    @media (max-width: 767px) {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
     .logo {
+      @media (max-width: 767px) {
+        display: none;
+      }
       svg {
         @media (max-width: 991px) {
           width: 45px;
-        }
-
-        @media (max-width: 767px) {
-          width: 40px;
         }
       }
     }
@@ -87,6 +98,10 @@
   }
   .bottom {
     justify-self: flex-end;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
     .online {
       text-align: center;
 
@@ -97,7 +112,7 @@
         @media (max-width: 991px) {
           font-size: 0.775rem;
         }
-  
+
         @media (max-width: 767px) {
           font-size: 0.675rem;
         }
@@ -108,9 +123,9 @@
         font-size: 0.75rem;
 
         @media (max-width: 991px) {
-          font-size: 0.70rem;
+          font-size: 0.7rem;
         }
-  
+
         @media (max-width: 767px) {
           font-size: 0.65rem;
         }
