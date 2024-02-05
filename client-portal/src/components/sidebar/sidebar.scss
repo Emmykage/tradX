@@ -1,23 +1,59 @@
 .sidebar {
-  width: 106px;
+  width: 80px;
   position: fixed;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  border: 1px solid #2b2d35;
-  background: #14161a;
+  background: #08090a;
   justify-content: space-between;
   padding: 2.5rem 0rem 6.25rem 0rem;
   align-items: center;
   z-index: 10000;
+  transition: all 0.25s;
+
+  @media (max-width: 991px) {
+    width: 65px;
+  }
+
+  @media (max-width: 767px) {
+    width: 50px;
+  }
   .top {
     display: flex;
     flex-direction: column;
     gap: 3.25rem;
+
+    .logo {
+      svg {
+        @media (max-width: 991px) {
+          width: 45px;
+        }
+
+        @media (max-width: 767px) {
+          width: 40px;
+        }
+      }
+    }
     button {
       color: #9cb0c2;
       background-color: transparent;
       cursor: pointer;
+
+      @media (max-width: 991px) {
+        p {
+          display: none;
+        }
+
+        svg {
+          width: 28px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        svg {
+          width: 24px;
+        }
+      }
     }
     button:hover {
       color: #fff;
@@ -53,11 +89,31 @@
     justify-self: flex-end;
     .online {
       text-align: center;
+
       p.numberOnline {
         color: #fff;
+        font-size: 0.875rem;
+
+        @media (max-width: 991px) {
+          font-size: 0.775rem;
+        }
+  
+        @media (max-width: 767px) {
+          font-size: 0.675rem;
+        }
       }
       p.onl {
         color: #9cb0c2;
+
+        font-size: 0.75rem;
+
+        @media (max-width: 991px) {
+          font-size: 0.70rem;
+        }
+  
+        @media (max-width: 767px) {
+          font-size: 0.65rem;
+        }
       }
     }
   }

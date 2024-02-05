@@ -24,7 +24,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
   setCurrentDrawer,
 }) => {
   return (
-    <div className="sidebar">
+    <div className="sidebar" id="main_sidebar">
       <div className="top">
         <div className="logo">
           <LogoIcon />
