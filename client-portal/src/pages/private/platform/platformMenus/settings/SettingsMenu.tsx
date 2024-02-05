@@ -1,6 +1,4 @@
-import { Col, Row } from "antd";
 import {
-  CheckIcon,
   ExitIcon,
   LockIcon,
   NotificationIcon,
@@ -8,7 +6,7 @@ import {
   TradingIcon,
   UserIcon,
 } from "../../../../../assets/icons";
-import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
+import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./settingsMenu.scss";
 
@@ -21,34 +19,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
 }) => {
   return (
     <div className="settingsMenu">
-      <MainItemCard
-        variant={2}
-        className="securityEnhancements"
-        pointer={false}
-      >
-        <p className="securityTitle">Enhance your account security</p>
-        <p className="securitySubtitle">
-          Add extra protection to your account and get a 50% deposit bonus
-        </p>
-        <Row gutter={[16, 16]} justify="start">
-          <Col span={12}>
-            <MainItemCard fullHeight className="securityItem">
-              <div className="securityItemIcon">
-                <PhoneIcon />
-              </div>
-              <p>Enable two-factor authentication</p>
-            </MainItemCard>
-          </Col>
-          <Col span={12}>
-            <MainItemCard fullHeight className="securityItem">
-              <div className="securityItemIcon">
-                <CheckIcon />
-              </div>
-              <p>Confirm your email</p>
-            </MainItemCard>
-          </Col>
-        </Row>
-      </MainItemCard>
+      <EnhanceSecurityCard />
 
       <div className="settingsSection">
         <p className="settingsMenuTitle">Profile</p>
@@ -56,6 +27,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           title="Personal"
           subtitle="Name and contacts"
           icon={<UserIcon />}
+          onClick={() => setIsRightSubDrawerContent("personalSettings")}
         />
         <MenuListCard
           title="Two-factor authentication"
