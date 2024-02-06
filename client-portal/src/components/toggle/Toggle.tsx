@@ -7,6 +7,8 @@ interface ToggleProps {
   subtext?: string;
   onChange?: (checked: boolean) => void;
   defaultChecked?: boolean;
+  infoText?: string;
+  onClickInfo?: () => void;
 }
 
 const Toggle: React.FunctionComponent<ToggleProps> = ({
@@ -14,14 +16,23 @@ const Toggle: React.FunctionComponent<ToggleProps> = ({
   subtext,
   onChange,
   defaultChecked = false,
+  infoText,
+  onClickInfo,
 }) => {
   return (
-    <MainItemCard className="toggleContainer" variant={2}>
-      <div className="toggleTextContainer">
-        {label ? <p className="toggleLabel">{label}</p> : null}
-        {subtext ? <p className="toggleSubtext">{subtext}</p> : null}
+    <MainItemCard className="customToggle" variant={2}>
+      <div className="toggleContainer">
+        <div className="toggleTextContainer">
+          {label ? <p className="toggleLabel">{label}</p> : null}
+          {subtext ? <p className="toggleSubtext">{subtext}</p> : null}
+        </div>
+        <Switch defaultChecked={defaultChecked} onChange={onChange} />
       </div>
-      <Switch defaultChecked={defaultChecked} onChange={onChange} />
+      {infoText ? (
+        <p className="infoText" onClick={onClickInfo}>
+          {infoText}
+        </p>
+      ) : null}
     </MainItemCard>
   );
 };
