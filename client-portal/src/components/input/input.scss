@@ -1,5 +1,23 @@
 .input_main {
   padding: 0.625rem 0.938rem !important;
+  display: flex;
+  align-items: center;
+
+  .inputIcon {
+    display: flex;
+    align-items: center;
+    width: 2rem;
+    margin-right: 0.625rem;
+
+    img,
+    svg {
+      width: 2rem;
+    }
+  }
+
+  .inputContainer {
+    width: 100%;
+  }
 
   label {
     color: #ffffff99;
@@ -16,9 +34,10 @@
     color: #fff;
     padding: 0;
     margin-top: 0.313rem;
+    width: 100%;
 
     &:focus {
-      box-shadow: 0 0.125rem 0 0.063rem rgba(5, 145, 255, 0.1);
+      box-shadow: none;
     }
 
     &::placeholder {

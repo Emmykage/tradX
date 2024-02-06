@@ -6,12 +6,14 @@ interface InputProps {
   placeholder?: string;
   title?: string;
   className?: string;
+  icon?: React.ReactNode;
 }
 
 const Input: React.FunctionComponent<InputProps> = ({
   placeholder,
   title,
   className,
+  icon,
 }) => {
   return (
     <MainItemCard
@@ -19,8 +21,11 @@ const Input: React.FunctionComponent<InputProps> = ({
       pointer={false}
       className={`input_main ${className ? className : ""}`}
     >
-      {title ? <label>{title}</label> : null}
-      <InputOriginal placeholder={placeholder} />
+      {icon ? <div className="inputIcon">{icon}</div> : null}
+      <div className="inputContainer">
+        {title ? <label>{title}</label> : null}
+        <InputOriginal placeholder={placeholder} />
+      </div>
     </MainItemCard>
   );
 };
