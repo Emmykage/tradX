@@ -20,7 +20,7 @@ const Toggle: React.FunctionComponent<ToggleProps> = ({
   onClickInfo,
 }) => {
   return (
-    <MainItemCard className="customToggle" variant={2}>
+    <MainItemCard className="customToggle" variant={2} pointer={false}>
       <div className="toggleContainer">
         <div className="toggleTextContainer">
           {label ? <p className="toggleLabel">{label}</p> : null}
