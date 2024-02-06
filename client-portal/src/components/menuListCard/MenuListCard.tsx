@@ -3,7 +3,7 @@ import MainItemCard from "../mainItemCard/MainItemCard";
 import "./menuListCard.scss";
 
 interface MenuListCardProps {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   title: string;
   subtitle?: string;
   danger?: boolean;
@@ -29,9 +29,11 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
       variant={2}
       onClick={onClick}
     >
-      <div className={`cardLeftIcon ${textCenter ? "textCenter" : ""}`}>
-        {icon}
-      </div>
+      {icon ? (
+        <div className={`cardLeftIcon ${textCenter ? "textCenter" : ""}`}>
+          {icon}
+        </div>
+      ) : null}
       <div className="cardRightContent">
         {title && (
           <p
