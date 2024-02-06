@@ -1,36 +1,64 @@
 import { Col, Row } from "antd";
 import "./interfaceScale.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface InterfaceScaleProps {}
 
 const InterfaceScale: React.FunctionComponent<InterfaceScaleProps> = () => {
-  const [activeTab, selectActiveTab] = useState("100");
+  const [activeTab, selectActiveTab] = useState("1");
+
+  useEffect(() => {
+    const storedScale = localStorage.getItem("scale");
+
+    if (storedScale) {
+      selectActiveTab(storedScale);
+    }
+  }, []);
+
+  const updateScale = (scale: number) => {
+    const root = document.documentElement;
+    root.style.fontSize = `${scale}rem`;
+    localStorage.setItem("scale", scale.toString());
+  };
+
   return (
     <div className="interfaceScale">
       <p className="interfaceScaleTitle">Interface scale</p>
       <Row gutter={[2, 2]} justify="start">
         <Col span={8}>
           <div
-            onClick={() => selectActiveTab("80")}
-            className={`interfaceTab one ${activeTab === "80" ? "active" : ""}`}
+            onClick={() => {
+              selectActiveTab("0.8");
+              updateScale(0.8);
+            }}
+            className={`interfaceTab one ${
+              activeTab === "0.8" ? "active" : ""
+            }`}
           >
             80%
           </div>
         </Col>
         <Col span={8}>
           <div
-            onClick={() => selectActiveTab("90")}
-            className={`interfaceTab two ${activeTab === "90" ? "active" : ""}`}
+            onClick={() => {
+              selectActiveTab("0.9");
+              updateScale(0.9);
+            }}
+            className={`interfaceTab two ${
+              activeTab === "0.9" ? "active" : ""
+            }`}
           >
             90%
           </div>
         </Col>
         <Col span={8}>
           <div
-            onClick={() => selectActiveTab("100")}
+            onClick={() => {
+              selectActiveTab("1");
+              updateScale(1);
+            }}
             className={`interfaceTab three ${
-              activeTab === "100" ? "active" : ""
+              activeTab === "1" ? "active" : ""
             }`}
           >
             100%
