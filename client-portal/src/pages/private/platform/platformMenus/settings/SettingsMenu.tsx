@@ -54,6 +54,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           title="Trading"
           subtitle="Trades, Forex, charts"
           icon={<TradingIcon />}
+          onClick={() => setIsRightSubDrawerContent("trading")}
         />
         <MenuListCard
           title="Notifications"
