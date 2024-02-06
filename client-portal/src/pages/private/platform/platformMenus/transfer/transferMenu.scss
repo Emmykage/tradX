@@ -1,0 +1,22 @@
+.transferMenu {
+  .currencyInput {
+    margin-bottom: 0.9375rem;
+  }
+
+  .amountInputs {
+    margin-bottom: 1.875rem;
+
+    .warningText {
+      font-size: 0.875rem;
+      color: #fff;
+      font-weight: 400;
+    }
+  }
+
+  .infoText {
+    font-size: 0.8125rem;
+    color: #969798;
+    font-weight: 400;
+    margin-top: 1.25rem;
+  }
+}

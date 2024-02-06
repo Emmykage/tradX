@@ -18,6 +18,7 @@ import SettingsMenu from "./platformMenus/settings/SettingsMenu";
 import VerificationMenu from "./platformMenus/verification/VerificationMenu";
 import PersonalSettingsMenu from "./platformMenus/personalSettings/PersonalSettingsMenu";
 import AppearanceMenu from "./platformMenus/appearance/AppearanceMenu";
+import TransferMenu from "./platformMenus/transfer/TransferMenu";
 
 interface PlatformProps {}
 
@@ -188,7 +189,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           }
         >
           {rightDrawerContent === "payments" ? (
-            <PaymentsMenu />
+            <PaymentsMenu
+              setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+            />
           ) : rightDrawerContent === "profile" ? (
             <ProfileMenu
               setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
@@ -213,14 +217,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Personal settings"
               : rightSubDrawerContent === "appearance"
               ? "Appearance"
+              : rightSubDrawerContent === "transfer"
+              ? "Transfer"
               : ""
           }
           extra={
-            rightSubDrawerContent === "settings" ? (
-              <div onClick={() => setIsRightSubDrawerOpen(false)}>
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "twofactor" ? (
+            rightSubDrawerContent === "twofactor" ? (
               <div onClick={() => setIsRightSubDrawerContent("settings")}>
                 <ArrowLeftOS />
               </div>
@@ -232,7 +234,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               <div onClick={() => setIsRightSubDrawerContent("settings")}>
                 <ArrowLeftOS />
               </div>
-            ) : null
+            ) : (
+              <div onClick={() => setIsRightSubDrawerOpen(false)}>
+                <ArrowLeftOS />
+              </div>
+            )
           }
           placement="right"
           onClose={() => {
@@ -259,6 +265,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <PersonalSettingsMenu />
           ) : rightSubDrawerContent === "appearance" ? (
             <AppearanceMenu />
+          ) : rightSubDrawerContent === "transfer" ? (
+            <TransferMenu />
           ) : (
             <></>
           )}
