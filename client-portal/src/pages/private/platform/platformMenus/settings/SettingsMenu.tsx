@@ -48,6 +48,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           title="Appearance"
           subtitle="Language, themes, and sounds"
           icon={<UserIcon />}
+          onClick={() => setIsRightSubDrawerContent("appearance")}
         />
         <MenuListCard
           title="Trading"
