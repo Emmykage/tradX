@@ -9,6 +9,7 @@ interface MenuListCardProps {
   danger?: boolean;
   textCenter?: boolean;
   onClick?: () => void;
+  className?: string;
 }
 
 const MenuListCard: React.FC<MenuListCardProps> = ({
@@ -18,10 +19,13 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
   danger,
   textCenter,
   onClick,
+  className,
 }) => {
   return (
     <MainItemCard
-      className={`menuListCard ${danger ? "danger" : ""}`}
+      className={`menuListCard ${danger ? "danger" : ""} ${
+        className ? className : ""
+      }`}
       variant={2}
       onClick={onClick}
     >
