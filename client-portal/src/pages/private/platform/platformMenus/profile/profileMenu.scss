@@ -2,11 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   position: relative;
-  border-radius: 5px;
-  box-shadow: 0px 2px 0px 2px rgba(0, 0, 0, 0.05),
-    0px 1px 0px 1px inset rgba(39, 162, 255, 0.05);
+  border-radius: 0.3125rem;
+  box-shadow: 0rem 0.125rem 0rem 0.125rem rgba(0, 0, 0, 0.05),
+    0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.05);
 
   .trader {
     .traderHead {
@@ -35,39 +35,39 @@
 }
 
 .traderInfoImages {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 
   img {
     width: 100%;
     height: auto;
-    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.2);
   }
 }
 
 .profileCard {
   height: 100%;
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   position: relative;
-  border-radius: 5px;
-  box-shadow: 0px 2px 0px 2px rgba(0, 0, 0, 0.05),
-    0px 1px 0px 1px inset rgba(39, 162, 255, 0.14);
+  border-radius: 0.3125rem;
+  box-shadow: 0rem 0.125rem 0rem 0.125rem rgba(0, 0, 0, 0.05),
+    0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.14);
 }
 
 .levelCard {
-  padding-top: 10px;
-  padding-bottom: 5px;
+  padding-top: 0.625rem;
+  padding-bottom: 0.3125rem;
 
   .levelCardTitleContainer {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
 
     .levelCardTitle {
       color: #ffffff;
       font-size: 1.125rem;
       font-weight: 600;
-      margin-left: 15px;
+      margin-left: 0.9375rem;
     }
   }
 
@@ -85,49 +85,49 @@
     align-items: center;
     justify-content: space-between;
     color: #fff;
-    border-radius: 10px;
-    padding: 2px 8px;
+    border-radius: 0.625rem;
+    padding: 0.125rem 0.5rem;
 
     .levelText {
-      margin-right: 40px;
+      margin-right: 2.5rem;
     }
   }
 }
 
 .statusTooltip {
-  margin-top: 15px;
+  margin-top: 0.9375rem;
   display: flex;
   align-items: center;
   justify-content: end;
   color: #ffffff80;
   font-size: 0.75rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 
   p {
-    margin-right: 5px;
+    margin-right: 0.3125rem;
   }
 }
 
 .taskCards {
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
 
   .taskCard {
-    padding: 10px 0;
+    padding: 0.625rem 0;
 
     .taskCardIcon {
-      margin-bottom: 5px;
+      margin-bottom: 0.3125rem;
     }
 
     .taskCardSubtitle {
       color: #5d86a6;
       font-size: 0.875rem;
-      margin-bottom: 5px;
-      min-height: 17px;
+      margin-bottom: 0.3125rem;
+      min-height: 1.0625rem;
     }
     .taskCardTitle {
       color: #ffffff;
       font-size: 1.125rem;
-      margin-bottom: 5px;
+      margin-bottom: 0.3125rem;
     }
   }
 }
@@ -156,7 +156,7 @@
   cursor: pointer;
 
   button.settings {
-    margin: 10px 0;
+    margin: 0.625rem 0;
     position: relative;
     width: 100%;
     display: flex;

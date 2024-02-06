@@ -1,7 +1,7 @@
 .lenderWrapper {
   background: #010006;
   min-height: 100vh;
-  padding-bottom: 50px;
+  padding-bottom: 3.125rem;
   .lendContainer {
     padding: 0rem 6.5rem;
     p.lendTxt {
@@ -36,8 +36,8 @@
 }
 .ant-drawer .lenderDrawer {
   background: #303033;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(27.5px);
+  box-shadow: 0rem 0.25rem 0.625rem 0rem rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(26px);
 }
 .lenderDrawer {
   padding: 0rem 2rem;

@@ -6,8 +6,8 @@ $background: linear-gradient(to bottom, #3c3d40, #2d2e32);
   width: 100%;
   position: relative;
   background: $gradientBorderColor;
-  border-radius: 5px;
-  box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 0.313rem;
+  box-shadow: 0 0.188rem 0.125rem rgba(0, 0, 0, 0.15);
 
   &.none-pointer {
     cursor: default;
@@ -24,9 +24,9 @@ $background: linear-gradient(to bottom, #3c3d40, #2d2e32);
     right: 0;
     bottom: 0;
     left: 0;
-    border-radius: 5px;
-    border: 2px solid transparent;
-    border-bottom-width: 0px;
+    border-radius: 0.313rem;
+    border: 0.125rem solid transparent;
+    border-bottom-width: 0;
     background-image: $background;
     background-clip: padding-box;
     z-index: 1;
@@ -35,7 +35,7 @@ $background: linear-gradient(to bottom, #3c3d40, #2d2e32);
   .mainItemCardContent {
     position: relative;
     z-index: 2;
-    padding: 10px;
+    padding: 0.625rem;
   }
 }
 
@@ -44,9 +44,9 @@ $background: linear-gradient(to bottom, #3c3d40, #2d2e32);
   width: 100%;
   height: 100%;
   position: relative;
-  border-radius: 5px;
-  box-shadow: 0px 2px 0px 2px rgba(0, 0, 0, 0.05),
-    0px 1px 0px 1px inset rgba(39, 162, 255, 0.14);
+  border-radius: 0.313rem;
+  box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+    0 0.063rem 0 0.063rem inset rgba(39, 162, 255, 0.14);
 
   &.none-pointer {
     cursor: default;
@@ -57,6 +57,6 @@ $background: linear-gradient(to bottom, #3c3d40, #2d2e32);
   }
 
   .mainItemCardv2Content {
-    padding: 15px;
+    padding: 0.938rem;
   }
 }

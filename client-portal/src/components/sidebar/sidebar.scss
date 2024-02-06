@@ -1,5 +1,5 @@
 .sidebar {
-  width: 80px;
+  width: 5rem;
   position: fixed;
   height: 100vh;
   display: flex;
@@ -12,7 +12,7 @@
   transition: all 0.25s;
 
   @media (max-width: 991px) {
-    width: 65px;
+    width: 4.063rem;
   }
 
   @media (max-width: 767px) {
@@ -41,7 +41,7 @@
       }
       svg {
         @media (max-width: 991px) {
-          width: 45px;
+          width: 2.813rem;
         }
       }
     }
@@ -56,13 +56,13 @@
         }
 
         svg {
-          width: 28px;
+          width: 1.75rem;
         }
       }
 
       @media (max-width: 767px) {
         svg {
-          width: 24px;
+          width: 1.5rem;
         }
       }
     }

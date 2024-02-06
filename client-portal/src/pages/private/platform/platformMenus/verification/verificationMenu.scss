@@ -10,21 +10,21 @@
       #37425c,
       rgba(105, 86, 179, 0)
     );
-    min-height: 336px;
+    min-height: 21rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 
     img {
       width: 100%;
-      max-width: 200px;
+      max-width: 12.5rem;
       height: auto;
     }
   }
 
   .infoCard {
-    margin-top: 30px;
+    margin-top: 1.875rem;
     display: flex;
     align-items: center;
 
@@ -32,12 +32,12 @@
       color: #fff;
       font-size: 0.875rem;
       font-weight: 400;
-      margin-left: 10px;
+      margin-left: 0.625rem;
     }
   }
 
   .verificationDetail {
-    margin-top: 30px;
+    margin-top: 1.875rem;
 
     p {
       color: #ffffff99;
@@ -47,7 +47,7 @@
   }
 
   .verificationLearnMore {
-    margin-top: 30px;
+    margin-top: 1.875rem;
     display: flex;
     align-items: center;
     justify-content: center;

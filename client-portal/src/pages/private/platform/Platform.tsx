@@ -40,6 +40,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [tradeFormHeight, setTradeFormHeight] = useState(0);
   const [mainSidebarWidth, setMainSidebarWidth] = useState(0);
   const [bottomSidebarHeight, setBottomSidebarHeight] = useState(0);
+  const storedScale = localStorage.getItem("scale");
 
   useEffect(() => {
     const topbarElement = document.getElementById("topbarContainer");
@@ -64,7 +65,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     } else {
       setMainSidebarWidth(0);
     }
-  }, [window.innerWidth]);
+  }, [window.innerWidth, storedScale]);
 
   const calculateTradeContentHeight = () => {
     const totalHeight =
@@ -138,7 +139,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         style={{ marginLeft: `${mainSidebarWidth}px` }}
         closeIcon={<CloseIcon />}
         mask={false}
-        width={windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : 468}
+        width={
+          windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : `29.25rem`
+        }
       >
         <div>
           {currentDrawer === "trades" ? (
@@ -179,7 +182,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           closeIcon={<CloseIcon />}
           className="rightDrawer"
           width={
-            windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : 468
+            windowWidth <= 768
+              ? `calc(100% - ${mainSidebarWidth}px)`
+              : `29.25rem`
           }
         >
           {rightDrawerContent === "payments" ? (
@@ -239,7 +244,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           className="rightDrawer rightSubDrawer"
           maskClassName="rightSubDrawerMask"
           width={
-            windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : 468
+            windowWidth <= 768
+              ? `calc(100% - ${mainSidebarWidth}px)`
+              : `29.25rem`
           }
         >
           {rightSubDrawerContent === "settings" ? (
