@@ -1,3 +1,4 @@
+import { ReloadIcon } from "../../../../../assets/icons";
 import "./account.scss";
 
 interface AccountCardProps {
@@ -6,6 +7,8 @@ interface AccountCardProps {
   accountType: string;
   amount?: string;
   secAmount: string;
+  selected?: boolean;
+  tag?: string;
 }
 
 const AccountCard: React.FunctionComponent<AccountCardProps> = ({
@@ -14,18 +17,23 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
   amount,
   secAmount,
   suffixIcon,
+  selected,
+  tag,
 }) => {
   return (
-    <div className="accountCardWrapper">
+    <div className={`accountCardWrapper ${selected ? "selected" : ""}`}>
       <div className="leftSide">
         <div className="icon">{icon}</div>
         <div className="accountDeets">
           <div className="accountType">{accountType}</div>
-          <div className="amount">{amount}</div>
+          {amount ? <div className="amount">{amount}</div> : null}
           <div className="secAmount">{secAmount}</div>
         </div>
       </div>
-      <div className="suffixIcon">{suffixIcon}</div>
+      <div className="suffixIcon">
+        {tag ? <div className="tag">{tag}</div> : null}
+        {selected ? <ReloadIcon /> : suffixIcon}
+      </div>
     </div>
   );
 };

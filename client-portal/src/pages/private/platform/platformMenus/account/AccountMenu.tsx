@@ -1,4 +1,10 @@
-import { GlobeIcon, ThreeDotsMenu, UsdIcon } from "../../../../../assets/icons";
+import {
+  AddIcon,
+  GlobeIcon,
+  TetherIcon,
+  ThreeDotsMenu,
+  UsdIcon,
+} from "../../../../../assets/icons";
 import AccountCard from "./AccountCard";
 import "./account.scss";
 
@@ -9,22 +15,24 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = () => {
     {
       icon: <GlobeIcon />,
       accountType: "Demo Account",
-      secAmount: "D999.00",
+      secAmount: "D9,999.00",
       suffixIcon: <ThreeDotsMenu />,
+      selected: true,
     },
     {
       icon: <UsdIcon />,
       accountType: "USD Account",
       amount: "$20.00",
-      secAmount: "D999.00",
+      secAmount: "D9,999.00",
       suffixIcon: <ThreeDotsMenu />,
     },
     {
-      icon: <GlobeIcon />,
+      icon: <TetherIcon />,
       accountType: "USDT Account USDT",
       amount: "₮0.00",
       secAmount: "₮0.00 Bonus",
       suffixIcon: <ThreeDotsMenu />,
+      crypto: true,
     },
   ];
   return (
@@ -36,8 +44,15 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = () => {
           secAmount={account.secAmount}
           amount={account.amount}
           suffixIcon={account.suffixIcon}
+          selected={account?.selected}
+          tag={account?.crypto ? "Crypto" : ""}
         />
       ))}
+      <div className="addIconContainer">
+        <div className="addIcon">
+          <AddIcon />
+        </div>
+      </div>
     </div>
   );
 };
