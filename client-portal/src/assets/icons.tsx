@@ -668,6 +668,19 @@ export const EyeIcon = () => {
   );
 };
 
+export const EyeSlashIcon = () => {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.3732 12.6266L12.6266 19.3732C11.7599 18.5066 11.2266 17.3199 11.2266 15.9999C11.2266 13.3599 13.3599 11.2266 15.9999 11.2266C17.3199 11.2266 18.5066 11.7599 19.3732 12.6266Z" stroke="#969798" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M23.76 7.69339C21.4267 5.93339 18.76 4.97339 16 4.97339C11.2934 4.97339 6.9067 7.74672 3.85337 12.5467C2.65337 14.4267 2.65337 17.5867 3.85337 19.4667C4.9067 21.1201 6.13337 22.5467 7.4667 23.6934" stroke="#969798" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M11.2266 26.0399C12.7466 26.6799 14.3599 27.0266 15.9999 27.0266C20.7066 27.0266 25.0932 24.2532 28.1466 19.4532C29.3466 17.5732 29.3466 14.4132 28.1466 12.5332C27.7066 11.8399 27.2266 11.1866 26.7332 10.5732" stroke="#969798" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M20.6799 16.9333C20.3333 18.8133 18.7999 20.3467 16.9199 20.6934" stroke="#969798" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M12.6267 19.3733L2.66675 29.3333" stroke="#969798" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M29.3333 2.66675L19.3733 12.6267" stroke="#969798" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+};
+
 export const BellIconLender = () => {
   return (
     <svg
