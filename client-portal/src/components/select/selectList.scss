@@ -1,0 +1,85 @@
+.selectContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+    0 0.063rem 0 0.063rem inset rgba(39, 162, 255, 0.14);
+
+  .selectList {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .iconContainer {
+      width: 2rem;
+      margin-left: 0.7rem;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+
+      img,
+      svg {
+        width: 2rem;
+      }
+    }
+
+    label {
+      position: absolute;
+      top: 0.7rem;
+      left: 0.7rem;
+      color: #ffffff99;
+      font-size: 0.875rem;
+      font-weight: 400;
+    }
+
+    .ant-select {
+      width: 100% !important;
+      height: 4.25rem;
+
+      .ant-select-arrow {
+        width: 2rem;
+      }
+
+      .ant-select-selector {
+        background: transparent;
+        border: none;
+
+        .ant-select-selection-item {
+          color: #fff;
+          font-weight: 500;
+          font-size: 1.125rem;
+          margin-top: 1.1875rem;
+        }
+      }
+    }
+
+    &.withIcon {
+      label {
+        left: 3.2rem;
+      }
+
+      .ant-select-selector {
+        padding-left: 3.2rem;
+      }
+    }
+  }
+}
+
+.ant-select-dropdown {
+  background-color: #1a1d21;
+
+  .ant-select-item {
+    background-color: #1a1d21 !important;
+    color: #fff;
+  }
+
+  .ant-select-item-option-selected {
+    background-color: #5d86a6 !important;
+    color: #fff !important;
+  }
+}
