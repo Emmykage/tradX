@@ -5,6 +5,7 @@ import {
   ThreeDotsMenu,
   UsdIcon,
 } from "../../../../../assets/icons";
+import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import AccountCard from "./AccountCard";
 import "./account.scss";
 
@@ -49,9 +50,9 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = () => {
         />
       ))}
       <div className="addIconContainer">
-        <div className="addIcon">
+        <MainItemCard className="addIcon" variant={2}>
           <AddIcon />
-        </div>
+        </MainItemCard>
       </div>
     </div>
   );
