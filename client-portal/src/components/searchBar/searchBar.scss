@@ -8,6 +8,10 @@
 
     .searchIcon {
       padding-top: 0.5rem;
+
+      svg {
+        width: 2rem;
+      }
     }
   }
 
@@ -15,6 +19,10 @@
     .searchIcon {
       display: flex;
       align-items: center;
+
+      svg {
+        width: 2rem;
+      }
     }
   }
 
