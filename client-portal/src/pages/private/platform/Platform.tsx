@@ -127,7 +127,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             : currentDrawer === "market"
             ? "Market"
             : currentDrawer === "help"
-            ? "Help"
+            ? "Help Center"
             : currentDrawer === "convert"
             ? "Assests"
             : ""
@@ -135,7 +135,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         placement="left"
         onClose={() => {
           setIsDrawerOpen(false);
-          setCurrentDrawer(null);
         }}
         open={isDrawerOpen}
         className="ml-106"

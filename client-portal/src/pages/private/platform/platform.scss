@@ -30,15 +30,17 @@
 }
 .ml-106 {
   .ant-drawer-wrapper-body {
-    background: #08090a;
+    background: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(30px);
+    border-radius: 0rem 0.9375rem 0.9375rem 0rem;
   }
   .ant-drawer-header-title {
     flex-direction: row-reverse;
   }
   .ant-drawer-title {
     color: #fff;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.875rem;
+    font-weight: 500;
   }
   p {
     color: #fff;
@@ -52,7 +54,7 @@
   }
   .ant-drawer-wrapper-body {
     background: rgba(255, 255, 255, 0.13);
-    backdrop-filter: blur(50px);
+    backdrop-filter: blur(30px);
     border-radius: 0.9375rem 0rem 0rem 0.9375rem;
   }
   .ant-drawer-header {

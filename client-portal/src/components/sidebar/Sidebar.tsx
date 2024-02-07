@@ -21,6 +21,7 @@ interface SidebarProps {
 
 const Sidebar: React.FunctionComponent<SidebarProps> = ({
   setIsDrawerOpen,
+  isDrawerOpen,
   currentDrawer,
   setCurrentDrawer,
   id,
@@ -33,11 +34,12 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
         </div>
         <button
           onClick={() => {
-            setIsDrawerOpen(currentDrawer === "trades" ? false : true);
+            setIsDrawerOpen(
+              isDrawerOpen && currentDrawer === "trades" ? false : true
+            );
             setCurrentDrawer("trades");
-            currentDrawer === "trades" && setCurrentDrawer(null);
           }}
-          className={currentDrawer === "trades" ? "active" : ""}
+          className={isDrawerOpen && currentDrawer === "trades" ? "active" : ""}
         >
           <div className="icon">
             <TradesIcon />
@@ -46,11 +48,12 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
         </button>
         <button
           onClick={() => {
-            setIsDrawerOpen(currentDrawer === "market" ? false : true);
+            setIsDrawerOpen(
+              isDrawerOpen && currentDrawer === "market" ? false : true
+            );
             setCurrentDrawer("market");
-            currentDrawer === "market" && setCurrentDrawer(null);
           }}
-          className={currentDrawer === "market" ? "active" : ""}
+          className={isDrawerOpen && currentDrawer === "market" ? "active" : ""}
         >
           <div className="icon">
             <MarketIcon />
@@ -59,11 +62,12 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
         </button>
         <button
           onClick={() => {
-            setIsDrawerOpen(currentDrawer === "events" ? false : true);
+            setIsDrawerOpen(
+              isDrawerOpen && currentDrawer === "events" ? false : true
+            );
             setCurrentDrawer("events");
-            currentDrawer === "events" && setCurrentDrawer(null);
           }}
-          className={currentDrawer === "events" ? "active" : ""}
+          className={isDrawerOpen && currentDrawer === "events" ? "active" : ""}
         >
           <div className="icon">
             <EventsIcon />
@@ -72,11 +76,12 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
         </button>
         <button
           onClick={() => {
-            setIsDrawerOpen(currentDrawer === "help" ? false : true);
+            setIsDrawerOpen(
+              isDrawerOpen && currentDrawer === "help" ? false : true
+            );
             setCurrentDrawer("help");
-            currentDrawer === "help" && setCurrentDrawer(null);
           }}
-          className={currentDrawer === "help" ? "active" : ""}
+          className={isDrawerOpen && currentDrawer === "help" ? "active" : ""}
         >
           <div className="icon">
             <HelpIcon />
