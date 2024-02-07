@@ -69,7 +69,7 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       <div className="traderInfoImages">
         <Row gutter={[16, 16]} justify="start">
           {infos.map((item, index) => (
-            <Col key={item.title + index} span={8}>
+            <Col key={item.title + index} span={8} xs={7} sm={5} md={7}>
               <img src={item.image} alt={item.title} key={index} />
             </Col>
           ))}
