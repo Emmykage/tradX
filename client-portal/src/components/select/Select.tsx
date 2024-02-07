@@ -29,6 +29,7 @@ const Select: React.FunctionComponent<SelectProps> = ({
           onChange={handleChange}
           options={options}
           suffixIcon={<DropdownIcon />}
+          rootClassName="customSelectDropdown"
         />
       </div>
     </div>

@@ -70,16 +70,18 @@
   }
 }
 
-.ant-select-dropdown {
-  background-color: #1a1d21;
+.customSelectDropdown {
+  &.ant-select-dropdown {
+    background-color: #1a1d21;
 
-  .ant-select-item {
-    background-color: #1a1d21 !important;
-    color: #fff;
-  }
+    .ant-select-item {
+      background-color: #1a1d21 !important;
+      color: #fff;
+    }
 
-  .ant-select-item-option-selected {
-    background-color: #5d86a6 !important;
-    color: #fff !important;
+    .ant-select-item-option-selected {
+      background-color: #5d86a6 !important;
+      color: #fff !important;
+    }
   }
 }
