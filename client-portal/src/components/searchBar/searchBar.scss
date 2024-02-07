@@ -1,0 +1,25 @@
+.searchBar {
+  display: flex;
+  padding: 0.625rem 0.938rem 1.5625rem 0.4375rem !important;
+  margin-bottom: 1.25rem;
+
+  input {
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    font-weight: 500;
+
+    &::placeholder {
+      color: #969798;
+      font-weight: 400;
+      font-size: 0.875rem;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
