@@ -1,0 +1,44 @@
+.barcodeMenu {
+  .barcodeCardContent {
+    .cardTop {
+      display: flex;
+      align-items: center;
+
+      .cardTitle {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #fff;
+      }
+
+      .cardTime {
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: #969798;
+        margin-left: 0.625rem;
+      }
+    }
+
+    .cardBottom {
+      display: flex;
+      align-items: center;
+
+      .cardSubtext {
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: #969798;
+      }
+
+      .cardRating {
+        display: flex;
+        align-items: center;
+
+        & > p {
+          font-size: 1.125rem;
+          font-weight: 500;
+          color: #fff;
+          margin: 0 0.625rem;
+        }
+      }
+    }
+  }
+}

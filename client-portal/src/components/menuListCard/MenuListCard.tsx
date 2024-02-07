@@ -4,13 +4,14 @@ import "./menuListCard.scss";
 
 interface MenuListCardProps {
   icon?: React.ReactNode;
-  title: string;
+  title?: string;
   subtitle?: string;
   danger?: boolean;
   textCenter?: boolean;
   onClick?: () => void;
   className?: string;
   primary?: boolean;
+  customContent?: React.ReactNode;
 }
 
 const MenuListCard: React.FC<MenuListCardProps> = ({
@@ -22,6 +23,7 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
   onClick,
   className,
   primary = false,
+  customContent,
 }) => {
   return (
     <MainItemCard
@@ -37,20 +39,24 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
           {icon}
         </div>
       ) : null}
-      <div className="cardRightContent">
-        {title && (
-          <p
-            className={`
+      {customContent ? (
+        customContent
+      ) : (
+        <div className="cardRightContent">
+          {title && (
+            <p
+              className={`
             menuListCardTitle
             ${!subtitle && "noMargin"}
             ${danger ? "danger" : ""}
             ${textCenter ? "textCenter" : ""}`}
-          >
-            {title}
-          </p>
-        )}
-        {subtitle && <p className="menuListCardSubtitle">{subtitle}</p>}
-      </div>
+            >
+              {title}
+            </p>
+          )}
+          {subtitle && <p className="menuListCardSubtitle">{subtitle}</p>}
+        </div>
+      )}
     </MainItemCard>
   );
 };

@@ -21,6 +21,7 @@ import AppearanceMenu from "./platformMenus/appearance/AppearanceMenu";
 import TransferMenu from "./platformMenus/transfer/TransferMenu";
 import TradingMenu from "./platformMenus/trading/TradingMenu";
 import NotificationsMenu from "./platformMenus/notifications/NotificationsMenu";
+import BarcodeMenu from "./platformMenus/barcode/BarcodeMenu";
 
 interface PlatformProps {}
 
@@ -224,6 +225,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Trading"
               : rightSubDrawerContent === "notifications"
               ? "Notifications"
+              : rightSubDrawerContent === "barcode"
+              ? "Barcode"
               : ""
           }
           extra={
@@ -284,6 +287,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <TradingMenu />
           ) : rightSubDrawerContent === "notifications" ? (
             <NotificationsMenu />
+          ) : rightSubDrawerContent === "barcode" ? (
+            <BarcodeMenu />
           ) : (
             <></>
           )}
