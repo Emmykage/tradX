@@ -11,10 +11,10 @@ interface SidebarProps {
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isDrawerOpen: boolean;
   id?: string;
-  currentDrawer: "trades" | "market" | "events" | "help" | "convert" | null;
+  currentDrawer: "trades" | "market" | "events" | "help" | "assets" | null;
   setCurrentDrawer: React.Dispatch<
     React.SetStateAction<
-      "trades" | "market" | "events" | "help" | "convert" | null
+      "trades" | "market" | "events" | "help" | "assets" | null
     >
   >;
 }

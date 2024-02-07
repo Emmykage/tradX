@@ -7,18 +7,20 @@ import {
 import "./topbar.scss";
 
 interface TopbarProps {
+  isDrawerOpen: boolean;
   setIsRightDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsRightDrawerContent: React.Dispatch<React.SetStateAction<string | null>>;
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentDrawer: React.Dispatch<
     React.SetStateAction<
-      "trades" | "market" | "events" | "help" | "convert" | null
+      "trades" | "market" | "events" | "help" | "assets" | null
     >
   >;
-  currentDrawer: "trades" | "market" | "events" | "help" | "convert" | null;
+  currentDrawer: "trades" | "market" | "events" | "help" | "assets" | null;
 }
 
 const Topbar: React.FunctionComponent<TopbarProps> = ({
+  isDrawerOpen,
   setIsRightDrawerOpen,
   setIsRightDrawerContent,
   setIsDrawerOpen,
@@ -30,9 +32,10 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
       <div
         className="conversionTab"
         onClick={() => {
-          setIsDrawerOpen(currentDrawer === "convert" ? false : true);
-          setCurrentDrawer("convert");
-          currentDrawer === "convert" && setCurrentDrawer(null);
+          setIsDrawerOpen(
+            isDrawerOpen && currentDrawer === "assets" ? false : true
+          );
+          setCurrentDrawer("assets");
         }}
       >
         <div className="convImg">

@@ -22,6 +22,7 @@ import TransferMenu from "./platformMenus/transfer/TransferMenu";
 import TradingMenu from "./platformMenus/trading/TradingMenu";
 import NotificationsMenu from "./platformMenus/notifications/NotificationsMenu";
 import BarcodeMenu from "./platformMenus/barcode/BarcodeMenu";
+import AssetsMenu from "./platformMenus/assets/AssetsMenu";
 
 interface PlatformProps {}
 
@@ -37,7 +38,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     string | null
   >(null);
   const [currentDrawer, setCurrentDrawer] = useState<
-    "trades" | "market" | "events" | "help" | "convert" | null
+    "trades" | "market" | "events" | "help" | "assets" | null
   >(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [topbarHeight, setTopbarHeight] = useState(0);
@@ -77,10 +78,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       (window.innerWidth <= 767 ? tradeFormHeight : 0) +
       (window.innerWidth <= 767 ? bottomSidebarHeight : 0);
     return `calc(100% - ${totalHeight}px)`;
-  };
-
-  const RenderConversionDrawerContent = () => {
-    return <p>conv contents...</p>;
   };
 
   useEffect(() => {
@@ -129,8 +126,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             ? "Market"
             : currentDrawer === "help"
             ? "Help Center"
-            : currentDrawer === "convert"
-            ? "Assests"
+            : currentDrawer === "assets"
+            ? "Assets"
             : ""
         }
         placement="left"
@@ -155,8 +152,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <EventsMenu />
           ) : currentDrawer === "help" ? (
             <HelpMenu />
-          ) : currentDrawer === "convert" ? (
-            <RenderConversionDrawerContent />
+          ) : currentDrawer === "assets" ? (
+            <AssetsMenu />
           ) : (
             <></>
           )}
@@ -295,6 +292,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         </Drawer>
 
         <Topbar
+          isDrawerOpen={isDrawerOpen}
           setIsRightDrawerOpen={setIsRightDrawerOpen}
           setIsRightDrawerContent={setIsRightDrawerContent}
           setIsDrawerOpen={setIsDrawerOpen}
