@@ -1,47 +1,32 @@
-import { ReactNode } from "react";
-import "./helpMenu.scss";
+import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
+import SearchBar from "../../../../../components/searchBar/SearchBar";
 import {
-  GraduateIcon,
-  HelpIcon,
-  SupportChartIcon,
+  DepositsIcon,
+  HierarchyIcon,
+  StatusIcon,
+  UserDoubleIcon,
+  UserIcon2,
+  WithdrawalsIcon,
 } from "../../../../../assets/icons";
+import "./helpMenu.scss";
 
 interface HelpMenuProps {}
-
-const HelpLink = ({
-  icon,
-  heading,
-  text,
-}: {
-  icon: ReactNode;
-  heading: string;
-  text: string;
-}) => {
-  return (
-    <div className="helpLnkContainer">
-      <div className="icon">{icon}</div>
-      <p className="helpHead">{heading}</p>
-      <p className="helpTxt">{text}</p>
-    </div>
-  );
-};
 
 const HelpMenu: React.FunctionComponent<HelpMenuProps> = () => {
   return (
     <div className="helpMenu">
-      <div className="flexHelpLnks">
-        <HelpLink icon={<HelpIcon />} heading="Support" text="Ask a question" />
-        <HelpLink
-          icon={<GraduateIcon />}
-          heading="Help Center"
-          text="Find answers"
-        />
-      </div>
-      <HelpLink
-        icon={<SupportChartIcon />}
-        heading="Support"
-        text="Get to know our trading modes"
-      />
+      <SearchBar placeholder="Find the help you need" />
+
+      <p className="helpSectionTitle">User Guide</p>
+
+      <MenuListCard title="Trading platform" icon={<HierarchyIcon />} />
+      <MenuListCard title="Profile" icon={<UserIcon2 />} />
+      <MenuListCard title="Account types" icon={<UserDoubleIcon />} />
+      <MenuListCard title="Deposits" icon={<DepositsIcon />} />
+      <MenuListCard title="Withdrawals" icon={<WithdrawalsIcon />} />
+      <MenuListCard title="Statuses" icon={<StatusIcon />} />
+
+      <MenuListCard className="showMore" title="Show More" textCenter primary />
     </div>
   );
 };

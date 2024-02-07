@@ -1,18 +1,13 @@
 .helpMenu {
-  .flexHelpLnks {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2.87rem;
+  .helpSectionTitle {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.9375rem;
   }
-  .helpLnkContainer {
-    padding: 1.75rem;
-    border-radius: 1.25rem;
-    background: #1a1d21;
-    cursor: pointer;
-    p.helpHead {
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin: 1rem 0rem 0.5rem 0rem;
-    }
+
+  .showMore {
+    margin-top: 1.25rem;
+    padding: 1.25rem !important;
   }
 }
