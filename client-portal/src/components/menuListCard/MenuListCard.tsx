@@ -10,6 +10,7 @@ interface MenuListCardProps {
   textCenter?: boolean;
   onClick?: () => void;
   className?: string;
+  primary?: boolean;
 }
 
 const MenuListCard: React.FC<MenuListCardProps> = ({
@@ -20,6 +21,7 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
   textCenter,
   onClick,
   className,
+  primary = false,
 }) => {
   return (
     <MainItemCard
@@ -28,6 +30,7 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
       }`}
       variant={2}
       onClick={onClick}
+      primary={primary}
     >
       {icon ? (
         <div className={`cardLeftIcon ${textCenter ? "textCenter" : ""}`}>

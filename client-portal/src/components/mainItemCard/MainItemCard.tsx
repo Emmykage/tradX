@@ -7,6 +7,7 @@ interface MainItemCardProps {
   fullHeight?: boolean;
   onClick?: () => void;
   pointer?: boolean;
+  primary?: boolean;
 }
 
 const MainItemCard: React.FC<React.PropsWithChildren<MainItemCardProps>> = ({
@@ -16,13 +17,14 @@ const MainItemCard: React.FC<React.PropsWithChildren<MainItemCardProps>> = ({
   fullHeight,
   onClick,
   pointer = true,
+  primary = false,
 }) => {
   return variant === 1 ? (
     <div
       onClick={onClick}
-      className={`mainItemCard ${fullHeight ? "fullHeight" : ""} ${
-        pointer ? "" : "none-pointer"
-      }`}
+      className={`mainItemCard ${primary ? "primary" : ""} ${
+        fullHeight ? "fullHeight" : ""
+      } ${pointer ? "" : "none-pointer"}`}
     >
       <div className={`mainItemCardContent ${className ? className : ""}`}>
         {children}
@@ -31,9 +33,9 @@ const MainItemCard: React.FC<React.PropsWithChildren<MainItemCardProps>> = ({
   ) : (
     <div
       onClick={onClick}
-      className={`mainItemCardv2 ${fullHeight ? "fullHeight" : ""} ${
-        pointer ? "" : "none-pointer"
-      }`}
+      className={`mainItemCardv2 ${primary ? "primary" : ""} ${
+        fullHeight ? "fullHeight" : ""
+      } ${pointer ? "" : "none-pointer"}`}
     >
       <div className={`mainItemCardv2Content ${className ? className : ""}`}>
         {children}
