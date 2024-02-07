@@ -1,7 +1,22 @@
 .searchBar {
   display: flex;
-  padding: 0.625rem 0.938rem 1.5625rem 0.4375rem !important;
+  padding: 0.5rem 0.875rem 0.5rem 0.3125rem !important;
   margin-bottom: 1.25rem;
+
+  &.extraSpacing {
+    padding: 0 0.938rem 1.5625rem 0.3125rem !important;
+
+    .searchIcon {
+      padding-top: 0.5rem;
+    }
+  }
+
+  &:not(.extraSpacing) {
+    .searchIcon {
+      display: flex;
+      align-items: center;
+    }
+  }
 
   input {
     width: 100%;
@@ -11,6 +26,7 @@
     box-shadow: none;
     color: #fff;
     font-weight: 500;
+    padding: 0.25rem 0.6875rem;
 
     &::placeholder {
       color: #969798;

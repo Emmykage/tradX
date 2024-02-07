@@ -6,15 +6,19 @@ import "./searchBar.scss";
 interface SearchBarProps {
   placeholder?: string;
   className?: string;
+  extraSpacing?: boolean;
 }
 
 const SearchBar: React.FunctionComponent<SearchBarProps> = ({
   placeholder = "Search",
   className,
+  extraSpacing,
 }) => {
   return (
     <MainItemCard
-      className={`searchBar ${className ? className : ""}`}
+      className={`searchBar ${className ? className : ""} ${
+        extraSpacing ? "extraSpacing" : ""
+      }`}
       variant={2}
     >
       <Input placeholder={placeholder} />

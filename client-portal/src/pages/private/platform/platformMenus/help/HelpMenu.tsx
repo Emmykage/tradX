@@ -15,7 +15,7 @@ interface HelpMenuProps {}
 const HelpMenu: React.FunctionComponent<HelpMenuProps> = () => {
   return (
     <div className="helpMenu">
-      <SearchBar placeholder="Find the help you need" />
+      <SearchBar extraSpacing placeholder="Find the help you need" />
 
       <p className="helpSectionTitle">User Guide</p>
 
