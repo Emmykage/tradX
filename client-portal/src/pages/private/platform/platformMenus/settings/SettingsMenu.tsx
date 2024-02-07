@@ -60,6 +60,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           title="Notifications"
           subtitle="Promos, trading, pushes"
           icon={<NotificationIcon />}
+          onClick={() => setIsRightSubDrawerContent("notifications")}
         />
       </div>
 

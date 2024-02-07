@@ -20,6 +20,7 @@ import PersonalSettingsMenu from "./platformMenus/personalSettings/PersonalSetti
 import AppearanceMenu from "./platformMenus/appearance/AppearanceMenu";
 import TransferMenu from "./platformMenus/transfer/TransferMenu";
 import TradingMenu from "./platformMenus/trading/TradingMenu";
+import NotificationsMenu from "./platformMenus/notifications/NotificationsMenu";
 
 interface PlatformProps {}
 
@@ -222,6 +223,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Transfer"
               : rightSubDrawerContent === "trading"
               ? "Trading"
+              : rightSubDrawerContent === "notifications"
+              ? "Notifications"
               : ""
           }
           extra={
@@ -238,6 +241,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
                 <ArrowLeftOS />
               </div>
             ) : rightSubDrawerContent === "trading" ? (
+              <div onClick={() => setIsRightSubDrawerContent("settings")}>
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "notifications" ? (
               <div onClick={() => setIsRightSubDrawerContent("settings")}>
                 <ArrowLeftOS />
               </div>
@@ -276,6 +283,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <TransferMenu />
           ) : rightSubDrawerContent === "trading" ? (
             <TradingMenu />
+          ) : rightSubDrawerContent === "notifications" ? (
+            <NotificationsMenu />
           ) : (
             <></>
           )}
