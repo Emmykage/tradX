@@ -2,6 +2,7 @@ import {
   ArrowUpOS,
   BookmarkIcon,
   BoxedCheckedIcon,
+  NotificationIcon2,
   ReloadIcon,
   SettingsIcon,
   TooltipIcon,
@@ -53,6 +54,15 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
 
   return (
     <div>
+      <div
+        className="headerExtraIcon"
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("user-notifications");
+        }}
+      >
+        <NotificationIcon2 />
+      </div>
       <div className="flexTraderProfile">
         <div className="trader">
           <p className="traderHead">Trader</p>

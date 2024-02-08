@@ -25,6 +25,7 @@ import BarcodeMenu from "./platformMenus/barcode/BarcodeMenu";
 import AssetsMenu from "./platformMenus/assets/AssetsMenu";
 import HelpCenter from "./platformMenus/helpCenter/HelpCenter";
 import SupportMenu from "./platformMenus/support/SupportMenu";
+import UserNotificationsMenu from "./platformMenus/userNotifications/UserNotificationsMenu";
 
 interface PlatformProps {}
 
@@ -271,6 +272,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Notifications"
               : rightSubDrawerContent === "barcode"
               ? "Barcode"
+              : rightSubDrawerContent === "user-notifications"
+              ? "Notifications"
               : ""
           }
           extra={
@@ -333,6 +336,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <NotificationsMenu />
           ) : rightSubDrawerContent === "barcode" ? (
             <BarcodeMenu />
+          ) : rightSubDrawerContent === "user-notifications" ? (
+            <UserNotificationsMenu />
           ) : (
             <></>
           )}
