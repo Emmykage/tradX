@@ -29,10 +29,29 @@
   }
 }
 .ml-106 {
+  &.leftSubDrawer {
+    .ant-drawer-wrapper-body {
+      background: none;
+    }
+  }
   .ant-drawer-wrapper-body {
     background: rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(35px);
     border-radius: 0rem 0.9375rem 0.9375rem 0rem;
+  }
+  .ant-drawer-header {
+    flex-direction: row-reverse;
+    border-bottom: 0;
+
+    .ant-drawer-extra {
+      padding-left: 0.3125rem;
+      padding-right: 0.9375rem;
+
+      > div {
+        display: flex;
+        align-items: center;
+      }
+    }
   }
   .ant-drawer-header-title {
     flex-direction: row-reverse;

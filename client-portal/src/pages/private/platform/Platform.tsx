@@ -23,11 +23,14 @@ import TradingMenu from "./platformMenus/trading/TradingMenu";
 import NotificationsMenu from "./platformMenus/notifications/NotificationsMenu";
 import BarcodeMenu from "./platformMenus/barcode/BarcodeMenu";
 import AssetsMenu from "./platformMenus/assets/AssetsMenu";
+import HelpCenter from "./platformMenus/helpCenter/HelpCenter";
 
 interface PlatformProps {}
 
 const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [isLeftSubDrawerOpen, setIsLeftSubDrawerOpen] =
+    useState<boolean>(false);
   const [isRightDrawerOpen, setIsRightDrawerOpen] = useState<boolean>(false);
   const [rightDrawerContent, setIsRightDrawerContent] = useState<string | null>(
     null
@@ -40,6 +43,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [currentDrawer, setCurrentDrawer] = useState<
     "trades" | "market" | "events" | "help" | "assets" | null
   >(null);
+  const [leftSubDrawer, setLeftSubDrawer] = useState<string | null>(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [topbarHeight, setTopbarHeight] = useState(0);
   const [tradeFormHeight, setTradeFormHeight] = useState(0);
@@ -102,6 +106,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       <Sidebar
         setIsDrawerOpen={setIsDrawerOpen}
         isDrawerOpen={isDrawerOpen}
+        setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen}
+        isLeftSubDrawerOpen={isLeftSubDrawerOpen}
         currentDrawer={currentDrawer}
         setCurrentDrawer={setCurrentDrawer}
         id={id ? id : ""}
@@ -125,7 +131,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             : currentDrawer === "market"
             ? "Market"
             : currentDrawer === "help"
-            ? "Help Center"
+            ? "Help"
             : currentDrawer === "assets"
             ? "Assets"
             : ""
@@ -151,13 +157,39 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           ) : currentDrawer === "events" ? (
             <EventsMenu />
           ) : currentDrawer === "help" ? (
-            <HelpMenu />
+            <HelpMenu
+              setLeftSubDrawer={setLeftSubDrawer}
+              setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen}
+            />
           ) : currentDrawer === "assets" ? (
             <AssetsMenu />
           ) : (
             <></>
           )}
         </div>
+      </Drawer>
+      <Drawer
+        title={leftSubDrawer === "help-center" ? "Help Center" : ""}
+        extra={
+          <div onClick={() => setIsLeftSubDrawerOpen(false)}>
+            <ArrowLeftOS />
+          </div>
+        }
+        placement="left"
+        onClose={() => {
+          setIsDrawerOpen(false);
+          setIsLeftSubDrawerOpen(false);
+        }}
+        open={isLeftSubDrawerOpen}
+        className="ml-106 leftSubDrawer"
+        style={{ marginLeft: `${mainSidebarWidth}px` }}
+        closeIcon={<CloseIcon />}
+        mask={false}
+        width={
+          windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : `29.25rem`
+        }
+      >
+        <div>{leftSubDrawer === "help-center" ? <HelpCenter /> : <></>}</div>
       </Drawer>
 
       <div
