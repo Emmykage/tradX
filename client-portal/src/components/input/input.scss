@@ -44,5 +44,10 @@
       color: #ffffff99;
       font-weight: 400;
     }
+
+    &.ant-input-disabled {
+      background-color: transparent;
+      color: #fff;
+    }
   }
 }

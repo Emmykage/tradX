@@ -15,14 +15,32 @@ const PersonalSettingsMenu: React.FunctionComponent<
 
       <div>
         <p className="menuSectionTitle">Personal</p>
-        <Input placeholder="Eneter your Name" title="Name" />
+        <Input
+          placeholder="Eneter your Name"
+          title="Name"
+          defaultValue="Support"
+          type="text"
+          disabled
+        />
         <Upload placeholder="Upload Profile Picture" />
       </div>
 
       <div>
         <p className="menuSectionTitle">Contacts</p>
-        <Input placeholder="Enter your email" title="Email" />
-        <Input placeholder="Enter your phonenumber" title="Phone number" />
+        <Input
+          placeholder="Enter your email"
+          title="Email"
+          defaultValue="support@moneybee.loan"
+          type="email"
+          disabled
+        />
+        <Input
+          placeholder="Enter your phonenumber"
+          title="Phone number"
+          defaultValue="(555) 555-1234"
+          type="phone"
+          disabled
+        />
       </div>
 
       <div className="socialButtons">
