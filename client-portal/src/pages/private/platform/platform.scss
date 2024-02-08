@@ -50,11 +50,21 @@
       > div {
         display: flex;
         align-items: center;
+
+        svg {
+          width: 0.75rem;
+        }
       }
     }
   }
   .ant-drawer-header-title {
     flex-direction: row-reverse;
+
+    button {
+      svg {
+        width: 1.125rem;
+      }
+    }
   }
   .ant-drawer-title {
     color: #fff;
@@ -87,11 +97,21 @@
       > div {
         display: flex;
         align-items: center;
+
+        svg {
+          width: 0.75rem;
+        }
       }
     }
   }
   .ant-drawer-header-title {
     flex-direction: row-reverse;
+
+    button {
+      svg {
+        width: 1.125rem;
+      }
+    }
   }
   .ant-drawer-title {
     color: #fff;

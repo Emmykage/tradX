@@ -15,6 +15,11 @@
     display: flex;
     align-items: center;
 
+    img,
+    svg {
+      width: 1.5625rem;
+    }
+
     &.textCenter {
       position: absolute;
       left: 0.938rem;
