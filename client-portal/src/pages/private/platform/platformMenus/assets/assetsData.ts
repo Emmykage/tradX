@@ -1,0 +1,177 @@
+export const times = [
+  {
+    value: 0,
+    name: "Quickler",
+    profit: "85",
+    image: "/menu-images/timezones/timezone-1.png",
+    quickTrading: true,
+    inProfit: true,
+  },
+  {
+    value: 1,
+    name: "Asia Composite Index",
+    profit: "85",
+    image: "/menu-images/timezones/timezone-2.png",
+    inProfit: true,
+  },
+  {
+    value: 2,
+    name: "Bras Index",
+    profit: "85",
+    image: "/menu-images/timezones/timezone-3.png",
+    inProfit: true,
+  },
+  {
+    value: 3,
+    name: "Cafeina Index",
+    profit: "85",
+    image: "/menu-images/timezones/timezone-4.png",
+    inProfit: true,
+  },
+  {
+    value: 4,
+    name: "Commodity Composite Index",
+    profit: "85",
+    image: "/menu-images/timezones/timezone-5.png",
+    inProfit: true,
+  },
+  {
+    value: 5,
+    name: "Europe Composite Index",
+    profit: "85",
+    image: "/menu-images/timezones/timezone-6.png",
+    inProfit: true,
+  },
+  {
+    value: 6,
+    name: "LATAM Index",
+    profit: "82",
+    image: "/menu-images/timezones/timezone-7.png",
+    inProfit: true,
+  },
+  {
+    value: 7,
+    name: "EUR/USD",
+    profit: "80",
+    image: "/menu-images/timezones/timezone-8.png",
+  },
+  {
+    value: 8,
+    name: "GBP/USD",
+    profit: "80",
+    image: "/menu-images/timezones/timezone-9.png",
+  },
+];
+
+export const forex = [
+  {
+    value: 1,
+    name: "Asia Composite Index",
+    profit: "-0.06",
+    image: "/menu-images/timezones/timezone-2.png",
+  },
+  {
+    value: 2,
+    name: "Bras Index",
+    profit: "+0.07",
+    image: "/menu-images/timezones/timezone-3.png",
+    inProfit: true,
+  },
+  {
+    value: 3,
+    name: "Cafeina Index",
+    profit: "+0.26",
+    image: "/menu-images/timezones/timezone-4.png",
+    inProfit: true,
+  },
+  {
+    value: 4,
+    name: "Commodity Composite Index",
+    profit: "+0.01",
+    image: "/menu-images/timezones/timezone-5.png",
+    inProfit: true,
+  },
+  {
+    value: 5,
+    name: "Europe Composite Index",
+    profit: "-3.52",
+    image: "/menu-images/timezones/timezone-6.png",
+  },
+  {
+    value: 6,
+    name: "LATAM Index",
+    profit: "+0.21",
+    image: "/menu-images/timezones/timezone-7.png",
+    inProfit: true,
+  },
+  {
+    value: 7,
+    name: "EUR/USD",
+    profit: "-2.12",
+    image: "/menu-images/timezones/timezone-8.png",
+    inProfit: true,
+  },
+  {
+    value: 8,
+    name: "GBP/USD",
+    profit: "+3.04",
+    image: "/menu-images/timezones/timezone-9.png",
+  },
+  {
+    value: 9,
+    name: "Quickler",
+    profit: "-0.86",
+    image: "/menu-images/timezones/timezone-1.png",
+  },
+];
+
+export const stocks = [
+  {
+    value: 0,
+    name: "BMV",
+    profit: "€92.97",
+    image: "/menu-images/stocks/stock1.png",
+  },
+  {
+    value: 1,
+    name: "3M Company",
+    profit: "",
+    image: "/menu-images/stocks/stock2.png",
+  },
+  {
+    value: 2,
+    name: "Alibaba",
+    profit: "",
+    image: "/menu-images/stocks/stock3.png",
+  },
+  {
+    value: 3,
+    name: "Amazon",
+    profit: "",
+    image: "/menu-images/stocks/stock4.png",
+  },
+  {
+    value: 4,
+    name: "AMD",
+    profit: "",
+    image: "/menu-images/stocks/stock5.png",
+  },
+  {
+    value: 5,
+    name: "Apple",
+    profit: "",
+    image: "/menu-images/stocks/stock6.png",
+  },
+  {
+    value: 6,
+    name: "Baidu",
+    profit: "",
+    image: "/menu-images/stocks/stock7.png",
+  },
+  {
+    value: 7,
+    name: "Boeing",
+    profit: "",
+    image: "/menu-images/stocks/stock8.png",
+  },
+];
