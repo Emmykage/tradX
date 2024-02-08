@@ -26,6 +26,7 @@ import AssetsMenu from "./platformMenus/assets/AssetsMenu";
 import HelpCenter from "./platformMenus/helpCenter/HelpCenter";
 import SupportMenu from "./platformMenus/support/SupportMenu";
 import UserNotificationsMenu from "./platformMenus/userNotifications/UserNotificationsMenu";
+import ChangePassword from "./platformMenus/changePassword/ChangePassword";
 
 interface PlatformProps {}
 
@@ -274,6 +275,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Barcode"
               : rightSubDrawerContent === "user-notifications"
               ? "Notifications"
+              : rightSubDrawerContent === "change-password"
+              ? "Change Password"
               : ""
           }
           extra={
@@ -294,6 +297,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
                 <ArrowLeftOS />
               </div>
             ) : rightSubDrawerContent === "notifications" ? (
+              <div onClick={() => setIsRightSubDrawerContent("settings")}>
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "change-password" ? (
               <div onClick={() => setIsRightSubDrawerContent("settings")}>
                 <ArrowLeftOS />
               </div>
@@ -338,6 +345,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <BarcodeMenu />
           ) : rightSubDrawerContent === "user-notifications" ? (
             <UserNotificationsMenu />
+          ) : rightSubDrawerContent === "change-password" ? (
+            <ChangePassword />
           ) : (
             <></>
           )}

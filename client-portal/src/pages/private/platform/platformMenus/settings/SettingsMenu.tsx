@@ -39,6 +39,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           title="Password"
           subtitle="Keep your account secure"
           icon={<LockIcon />}
+          onClick={() => setIsRightSubDrawerContent("change-password")}
         />
       </div>
 
