@@ -27,6 +27,9 @@ import HelpCenter from "./platformMenus/helpCenter/HelpCenter";
 import SupportMenu from "./platformMenus/support/SupportMenu";
 import UserNotificationsMenu from "./platformMenus/userNotifications/UserNotificationsMenu";
 import ChangePassword from "./platformMenus/changePassword/ChangePassword";
+import EditName from "./platformMenus/editName/EditName";
+import ConfirmMail from "./platformMenus/confirmMail/ConfirmMail";
+import ConfirmPhone from "./platformMenus/confirmPhone/ConfirmPhone";
 
 interface PlatformProps {}
 
@@ -277,6 +280,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Notifications"
               : rightSubDrawerContent === "change-password"
               ? "Change Password"
+              : rightSubDrawerContent === "edit-name"
+              ? "Edit name"
+              : rightSubDrawerContent === "confirm-email"
+              ? "Confirm your email"
+              : rightSubDrawerContent === "confirm-phone"
+              ? "Confirm phone number"
               : ""
           }
           extra={
@@ -302,6 +311,24 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               </div>
             ) : rightSubDrawerContent === "change-password" ? (
               <div onClick={() => setIsRightSubDrawerContent("settings")}>
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "edit-name" ? (
+              <div
+                onClick={() => setIsRightSubDrawerContent("personalSettings")}
+              >
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "confirm-email" ? (
+              <div
+                onClick={() => setIsRightSubDrawerContent("personalSettings")}
+              >
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "confirm-phone" ? (
+              <div
+                onClick={() => setIsRightSubDrawerContent("personalSettings")}
+              >
                 <ArrowLeftOS />
               </div>
             ) : (
@@ -332,7 +359,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           ) : rightSubDrawerContent === "twofactor" ? (
             <TwoFactorMenu />
           ) : rightSubDrawerContent === "personalSettings" ? (
-            <PersonalSettingsMenu />
+            <PersonalSettingsMenu
+              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+            />
           ) : rightSubDrawerContent === "appearance" ? (
             <AppearanceMenu />
           ) : rightSubDrawerContent === "transfer" ? (
@@ -347,6 +376,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <UserNotificationsMenu />
           ) : rightSubDrawerContent === "change-password" ? (
             <ChangePassword />
+          ) : rightSubDrawerContent === "edit-name" ? (
+            <EditName />
+          ) : rightSubDrawerContent === "confirm-email" ? (
+            <ConfirmMail />
+          ) : rightSubDrawerContent === "confirm-phone" ? (
+            <ConfirmPhone />
           ) : (
             <></>
           )}
