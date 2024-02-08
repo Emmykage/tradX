@@ -6,6 +6,7 @@ interface InputProps extends OriginalInputProps {
   title?: string;
   className?: string;
   icon?: React.ReactNode;
+  suffixIcon?: React.ReactNode;
 }
 
 const Input: React.FunctionComponent<InputProps> = ({
@@ -13,6 +14,7 @@ const Input: React.FunctionComponent<InputProps> = ({
   title,
   className,
   icon,
+  suffixIcon,
   defaultValue,
   onChange,
   type,
@@ -35,6 +37,7 @@ const Input: React.FunctionComponent<InputProps> = ({
           {...rest}
         />
       </div>
+      {suffixIcon ? <div className="suffixIcon">{suffixIcon}</div> : null}
     </MainItemCard>
   );
 };

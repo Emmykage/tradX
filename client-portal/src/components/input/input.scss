@@ -15,6 +15,18 @@
     }
   }
 
+  .suffixIcon {
+    display: flex;
+    align-items: center;
+    width: 1.5rem;
+    margin-left: 0.625rem;
+
+    img,
+    svg {
+      width: 1.5rem;
+    }
+  }
+
   .inputContainer {
     width: 100%;
   }
