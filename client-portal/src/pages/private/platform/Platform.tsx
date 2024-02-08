@@ -24,6 +24,7 @@ import NotificationsMenu from "./platformMenus/notifications/NotificationsMenu";
 import BarcodeMenu from "./platformMenus/barcode/BarcodeMenu";
 import AssetsMenu from "./platformMenus/assets/AssetsMenu";
 import HelpCenter from "./platformMenus/helpCenter/HelpCenter";
+import SupportMenu from "./platformMenus/support/SupportMenu";
 
 interface PlatformProps {}
 
@@ -169,7 +170,13 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         </div>
       </Drawer>
       <Drawer
-        title={leftSubDrawer === "help-center" ? "Help Center" : ""}
+        title={
+          leftSubDrawer === "help-center"
+            ? "Help Center"
+            : leftSubDrawer === "support"
+            ? "Support"
+            : ""
+        }
         extra={
           <div onClick={() => setIsLeftSubDrawerOpen(false)}>
             <ArrowLeftOS />
@@ -189,7 +196,15 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : `29.25rem`
         }
       >
-        <div>{leftSubDrawer === "help-center" ? <HelpCenter /> : <></>}</div>
+        <div>
+          {leftSubDrawer === "help-center" ? (
+            <HelpCenter />
+          ) : leftSubDrawer === "support" ? (
+            <SupportMenu />
+          ) : (
+            <></>
+          )}
+        </div>
       </Drawer>
 
       <div

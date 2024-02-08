@@ -38,7 +38,15 @@ const HelpMenu: React.FunctionComponent<HelpMenuProps> = ({
   return (
     <div className="helpMenu">
       <div className="flexHelpLnks">
-        <HelpLink icon={<HelpIcon />} heading="Support" text="Ask a question" />
+        <HelpLink
+          icon={<HelpIcon />}
+          heading="Support"
+          text="Ask a question"
+          onClick={() => {
+            setLeftSubDrawer("support");
+            setIsLeftSubDrawerOpen(true);
+          }}
+        />
         <HelpLink
           icon={<GraduateIcon />}
           heading="Help Center"
