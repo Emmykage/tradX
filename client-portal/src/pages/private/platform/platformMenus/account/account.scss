@@ -1,3 +1,14 @@
+.headerAddIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 1.7rem;
+  right: 5.3125rem;
+
+  svg {
+    width: 1.1669rem;
+  }
+}
+
 .accountsContainer {
   display: flex;
   flex-direction: column;

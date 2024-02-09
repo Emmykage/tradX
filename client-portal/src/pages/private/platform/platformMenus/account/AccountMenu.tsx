@@ -5,13 +5,18 @@ import {
   ThreeDotsMenu,
   UsdIcon,
 } from "../../../../../assets/icons";
-import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import AccountCard from "./AccountCard";
 import "./account.scss";
 
-interface AccountMenuProps {}
+interface AccountMenuProps {
+  setIsRightSubDrawerOpen: (value: boolean) => void;
+  setIsRightSubDrawerContent: (value: string | null) => void;
+}
 
-const AccountMenu: React.FunctionComponent<AccountMenuProps> = () => {
+const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   const accounts = [
     {
       icon: <GlobeIcon />,
@@ -37,22 +42,28 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = () => {
     },
   ];
   return (
-    <div className="accountsContainer">
-      {accounts.map((account) => (
-        <AccountCard
-          icon={account.icon}
-          accountType={account.accountType}
-          secAmount={account.secAmount}
-          amount={account.amount}
-          suffixIcon={account.suffixIcon}
-          selected={account?.selected}
-          tag={account?.crypto ? "Crypto" : ""}
-        />
-      ))}
-      <div className="addIconContainer">
-        <MainItemCard className="addIcon" variant={2}>
-          <AddIcon />
-        </MainItemCard>
+    <div>
+      <div
+        className="headerAddIcon"
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("add-account");
+        }}
+      >
+        <AddIcon />
+      </div>
+      <div className="accountsContainer">
+        {accounts.map((account) => (
+          <AccountCard
+            icon={account.icon}
+            accountType={account.accountType}
+            secAmount={account.secAmount}
+            amount={account.amount}
+            suffixIcon={account.suffixIcon}
+            selected={account?.selected}
+            tag={account?.crypto ? "Crypto" : ""}
+          />
+        ))}
       </div>
     </div>
   );
