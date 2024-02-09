@@ -176,6 +176,24 @@ export const ArrowLeftOS = () => {
   );
 };
 
+export const ArrowRightOS = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5.96667 2.72003L10.3133 7.0667C10.8267 7.58003 10.8267 8.42003 10.3133 8.93336L5.96667 13.28"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 export const ArrowUpOS = () => {
   return (
     <svg

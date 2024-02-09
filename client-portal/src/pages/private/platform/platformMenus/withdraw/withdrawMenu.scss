@@ -1,0 +1,52 @@
+.withdrawMenu {
+  .cardContent {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .cardLeft {
+      width: 100%;
+
+      .cardTop {
+        display: flex;
+
+        .cardTitle {
+          font-size: 1rem;
+          font-weight: 500;
+          color: #ffffffb3;
+          margin-bottom: 0.3125rem;
+        }
+
+        .infoText {
+          font-size: 1rem;
+          font-weight: 400;
+          color: #ffffffb3;
+          margin-bottom: 0.3125rem;
+        }
+      }
+
+      .cardBottom {
+        display: flex;
+        align-items: center;
+
+        .cardSubtext {
+          font-size: 1.25rem;
+          font-weight: 500;
+          color: #ffffffb3;
+        }
+
+        .cardLink {
+          font-size: 1rem;
+          font-weight: 400;
+          color: #0094ff;
+        }
+      }
+    }
+
+    .cardRight {
+      svg {
+        width: 1rem;
+      }
+    }
+  }
+}

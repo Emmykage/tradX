@@ -31,6 +31,7 @@ import EditName from "./platformMenus/editName/EditName";
 import ConfirmMail from "./platformMenus/confirmMail/ConfirmMail";
 import ConfirmPhone from "./platformMenus/confirmPhone/ConfirmPhone";
 import SelectAccount from "./platformMenus/selectAccount/SelectAccount";
+import WithdrawMenu from "./platformMenus/withdraw/WithdrawMenu";
 
 interface PlatformProps {}
 
@@ -289,6 +290,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Confirm phone number"
               : rightSubDrawerContent === "select-account"
               ? "To:"
+              : rightSubDrawerContent === "withdraw"
+              ? "Withdraw"
               : ""
           }
           extra={
@@ -393,6 +396,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <ConfirmPhone />
           ) : rightSubDrawerContent === "select-account" ? (
             <SelectAccount />
+          ) : rightSubDrawerContent === "withdraw" ? (
+            <WithdrawMenu />
           ) : (
             <></>
           )}

@@ -18,7 +18,14 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
   return (
     <div className="paymentsMenu">
       <MenuListCard title="Deposit" icon={<WalletIcon />} />
-      <MenuListCard title="Withdraw" icon={<WithdrawIcon />} />
+      <MenuListCard
+        title="Withdraw"
+        icon={<WithdrawIcon />}
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("withdraw");
+        }}
+      />
       <MenuListCard
         title="Transfer"
         icon={<TransactionIcon />}
