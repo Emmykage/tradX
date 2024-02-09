@@ -1,4 +1,69 @@
 .market-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  .menufirstCard {
+    display: flex;
+    align-items: center;
+    .menufirstCardText {
+      font-size: 1.25rem;
+      font-weight: 600;
+      flex: 1;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  .menuSecondCardCon {
+    margin-bottom: 2.5rem;
+    .menuSecondCard {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      // margin-bottom: 2.5rem;
+      .menuSecondCardText1 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #5d86a6;
+      }
+      .menuSecondCardText2 {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #ffffff;
+      }
+    }
+  }
+  .menuthirdCardCon {
+    margin-top: -0.6rem;
+    .menuthirdCard {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      .menuthirdCardText1 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #5d86a6;
+      }
+      .menuthirdCardText2 {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #ffffff;
+      }
+    }
+  }
+
+  //
   .market-link {
     display: flex;
     justify-content: space-between;
