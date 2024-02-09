@@ -54,6 +54,11 @@
       font-size: 0.875rem;
       color: #ffffff99;
       font-weight: 400;
+     
+      &.subTextCenter {
+        text-align: center;
+        justify-content: center;
+      }
     }
   }
 }
