@@ -32,6 +32,7 @@ import ConfirmMail from "./platformMenus/confirmMail/ConfirmMail";
 import ConfirmPhone from "./platformMenus/confirmPhone/ConfirmPhone";
 import SelectAccount from "./platformMenus/selectAccount/SelectAccount";
 import WithdrawMenu from "./platformMenus/withdraw/WithdrawMenu";
+import AddAccountMenu from "./platformMenus/add-account/AddAccount";
 
 interface PlatformProps {}
 
@@ -252,7 +253,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               setIsRightSubDrawerContent={setIsRightSubDrawerContent}
             />
           ) : rightDrawerContent === "account" ? (
-            <AccountMenu />
+            <AccountMenu
+              setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+            />
           ) : rightDrawerContent === "verification" ? (
             <VerificationMenu />
           ) : (
@@ -292,6 +296,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "To:"
               : rightSubDrawerContent === "withdraw"
               ? "Withdraw"
+              : rightSubDrawerContent === "add-account"
+              ? "Add an account"
               : ""
           }
           extra={
@@ -398,6 +404,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <SelectAccount />
           ) : rightSubDrawerContent === "withdraw" ? (
             <WithdrawMenu />
+          ) : rightSubDrawerContent === "add-account" ? (
+            <AddAccountMenu />
           ) : (
             <></>
           )}
