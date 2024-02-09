@@ -1,75 +1,62 @@
 .eventsContainer {
-  .flexEvents {
-    display: flex;
-    gap: 1rem;
-    .event {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-radius: 1.25rem;
-      background: #1a1d21;
-      padding: 0.5rem 0.5rem 1rem 1.1875rem;
-      width: 10.75rem;
-      .flexImgsEv {
-        display: flex;
-        justify-content: space-between;
-      }
-      p.evehead {
-        color: #fff;
-        font-size: 1.375rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-      }
-      p.subEve {
-        color: #9cb0c2;
-        display: flex;
-        gap: 0.62rem;
-      }
-      .endImg {
-        display: flex;
-        justify-content: flex-end;
-      }
+  .eventsTagLineCon {
+    margin-top: -1rem;
+    margin-bottom: 1.8rem;
+    .eventsTagLine {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: #969798;
     }
   }
-  .mainEvent {
-    border-radius: 1.25rem;
-    margin-top: 4.5rem;
-    padding: 1.5rem;
-    background: radial-gradient(
-      477.8% 112.71% at 69.79% -5.21%,
-      #43c3fa 0%,
-      rgba(105, 86, 179, 0) 100%
-    );
-    .flexHapps {
+  .eventMainItemCard {
+    margin-top: 1.4rem;
+    .eventMainItemRow {
       display: flex;
-      align-items: flex-start;
-      p.happen {
-        color: #fff;
-        font-size: 1.1rem;
-        padding: 0.625rem;
-        border-radius: 2.4375rem;
-        background: rgba(39, 41, 48, 0.3);
-      }
-      img {
-        height: 130px;
-      }
-    }
-    p.newyr {
-      font-size: 2rem;
-      margin-bottom: 2.5rem;
-    }
-    .flexEnds {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      .rightIcon {
-        width: 3.1875rem;
-        height: 3.1875rem;
-        background: rgba(39, 41, 48, 0.9);
-        border-radius: 100%;
+      svg {
+        width: 2rem;
+      }
+      .eventMainItemTextDiv {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-top: 0.8rem;
+        margin-bottom: 0.8rem;
+        .happeningNowText {
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: #5d86a6;
+        }
+        .secondText {
+          font-size: 1.125rem;
+          font-weight: 600;
+          color: #ffffffe5;
+        }
+        .thirdTextRow {
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          .endsText {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #969798;
+          }
+          .dateText {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #5d86a6;
+          }
+        }
+      }
+      .rightIconDiv {
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+        svg {
+          width: 2rem;
+          height: 2rem;
+          stroke-width: 0.1rem;
+        }
       }
     }
   }

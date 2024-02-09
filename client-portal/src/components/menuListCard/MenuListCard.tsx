@@ -8,6 +8,7 @@ interface MenuListCardProps {
   subtitle?: string;
   danger?: boolean;
   textCenter?: boolean;
+  subTextCenter?: boolean;
   onClick?: () => void;
   className?: string;
   primary?: boolean;
@@ -20,11 +21,13 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
   subtitle,
   danger,
   textCenter,
+  subTextCenter,
   onClick,
   className,
   primary = false,
   customContent,
 }) => {
+  console.log("subTextCenter", subTextCenter);
   return (
     <MainItemCard
       className={`menuListCard ${danger ? "danger" : ""} ${
@@ -54,7 +57,15 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
               {title}
             </p>
           )}
-          {subtitle && <p className="menuListCardSubtitle">{subtitle}</p>}
+          {subtitle && (
+            <p
+              className={`
+            menuListCardSubtitle
+            ${subTextCenter ? "subTextCenter" : ""}`}
+            >
+              {subtitle}
+            </p>
+          )}
         </div>
       )}
     </MainItemCard>

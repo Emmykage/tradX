@@ -15,6 +15,54 @@ export const LogoIcon = () => {
   );
 };
 
+export const EventIcon = () => {
+  return (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.6665 20.0003V10.667"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.99984 29.3337C9.39307 29.3337 11.3332 27.3936 11.3332 25.0003C11.3332 22.6071 9.39307 20.667 6.99984 20.667C4.6066 20.667 2.6665 22.6071 2.6665 25.0003C2.6665 27.3936 4.6066 29.3337 6.99984 29.3337Z"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.6665 10.667C8.87564 10.667 10.6665 8.87613 10.6665 6.66699C10.6665 4.45785 8.87564 2.66699 6.6665 2.66699C4.45736 2.66699 2.6665 4.45785 2.6665 6.66699C2.6665 8.87613 4.45736 10.667 6.6665 10.667Z"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M25.3333 10.667C27.5424 10.667 29.3333 8.87613 29.3333 6.66699C29.3333 4.45785 27.5424 2.66699 25.3333 2.66699C23.1241 2.66699 21.3333 4.45785 21.3333 6.66699C21.3333 8.87613 23.1241 10.667 25.3333 10.667Z"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.83984 20C7.43984 17.6666 9.57318 15.9333 12.0932 15.9466L16.6665 15.96C20.1598 15.9733 23.1332 13.7333 24.2265 10.6133"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
 export const InfoCircleIcon = () => (
   <svg 
     width="32" 
