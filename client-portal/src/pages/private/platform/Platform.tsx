@@ -30,6 +30,7 @@ import ChangePassword from "./platformMenus/changePassword/ChangePassword";
 import EditName from "./platformMenus/editName/EditName";
 import ConfirmMail from "./platformMenus/confirmMail/ConfirmMail";
 import ConfirmPhone from "./platformMenus/confirmPhone/ConfirmPhone";
+import SelectAccount from "./platformMenus/selectAccount/SelectAccount";
 
 interface PlatformProps {}
 
@@ -286,6 +287,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Confirm your email"
               : rightSubDrawerContent === "confirm-phone"
               ? "Confirm phone number"
+              : rightSubDrawerContent === "select-account"
+              ? "To:"
               : ""
           }
           extra={
@@ -331,6 +334,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               >
                 <ArrowLeftOS />
               </div>
+            ) : rightSubDrawerContent === "select-account" ? (
+              <div onClick={() => setIsRightSubDrawerContent("transfer")}>
+                <ArrowLeftOS />
+              </div>
             ) : (
               <div onClick={() => setIsRightSubDrawerOpen(false)}>
                 <ArrowLeftOS />
@@ -365,7 +372,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           ) : rightSubDrawerContent === "appearance" ? (
             <AppearanceMenu />
           ) : rightSubDrawerContent === "transfer" ? (
-            <TransferMenu />
+            <TransferMenu
+              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+            />
           ) : rightSubDrawerContent === "trading" ? (
             <TradingMenu />
           ) : rightSubDrawerContent === "notifications" ? (
@@ -382,6 +391,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <ConfirmMail />
           ) : rightSubDrawerContent === "confirm-phone" ? (
             <ConfirmPhone />
+          ) : rightSubDrawerContent === "select-account" ? (
+            <SelectAccount />
           ) : (
             <></>
           )}

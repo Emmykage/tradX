@@ -4,9 +4,13 @@ import Input from "../../../../../components/input/Input";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./transferMenu.scss";
 
-interface TransferMenuProps {}
+interface TransferMenuProps {
+  setIsRightSubDrawerContent: (value: string | null) => void;
+}
 
-const TransferMenu: React.FunctionComponent<TransferMenuProps> = () => {
+const TransferMenu: React.FunctionComponent<TransferMenuProps> = ({
+  setIsRightSubDrawerContent,
+}) => {
   const warning = true;
 
   return (
@@ -22,6 +26,7 @@ const TransferMenu: React.FunctionComponent<TransferMenuProps> = () => {
         className="walletSelect"
         title="Select the account"
         icon={<WalletIcon />}
+        onClick={() => setIsRightSubDrawerContent("select-account")}
       />
 
       <div className="amountInputs">
