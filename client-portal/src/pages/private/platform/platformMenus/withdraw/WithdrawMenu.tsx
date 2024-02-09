@@ -1,4 +1,8 @@
-import { ArrowRightOS, InfoCircleIcon } from "../../../../../assets/icons";
+import {
+  ArrowRightOS,
+  InfoCircleIcon,
+  InfoCircleIconWhite,
+} from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./withdrawMenu.scss";
 
@@ -45,21 +49,28 @@ const WithdrawMenu: React.FunctionComponent<WithdrawMenuProps> = () => {
   );
 
   return (
-    <div className="withdrawMenu">
-      <MenuListCard
-        icon={<img src="/menu-images/us-flag.png" alt="USD" />}
-        customContent={<Account account="From USD Account" amount="USD 0.00" />}
-      />
+    <div>
+      <div className="withdrawInfoIcon" onClick={() => {}}>
+        <InfoCircleIconWhite />
+      </div>
+      <div className="withdrawMenu">
+        <MenuListCard
+          icon={<img src="/menu-images/us-flag.png" alt="USD" />}
+          customContent={
+            <Account account="From USD Account" amount="USD 0.00" />
+          }
+        />
 
-      <MenuListCard
-        icon={<InfoCircleIcon />}
-        customContent={
-          <Info
-            text="You have insufficient funds to make a withdrawal from this account"
-            linkText="Make Deposit"
-          />
-        }
-      />
+        <MenuListCard
+          icon={<InfoCircleIcon />}
+          customContent={
+            <Info
+              text="You have insufficient funds to make a withdrawal from this account"
+              linkText="Make Deposit"
+            />
+          }
+        />
+      </div>
     </div>
   );
 };
