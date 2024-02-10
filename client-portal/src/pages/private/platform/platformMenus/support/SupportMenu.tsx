@@ -1,4 +1,8 @@
-import { ChatIcon } from "../../../../../assets/icons";
+import {
+  BellIconLender,
+  ChatIcon,
+  DownloadIcon,
+} from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./supportMenu.scss";
 
@@ -14,6 +18,12 @@ const SupportMenu: React.FunctionComponent<SupportMenuProps> = () => {
       <MenuListCard
         icon={<ChatIcon />}
         title="Chat"
+        subtitle="Our chatbot and support team are here to hep"
+      />
+      <MenuListCard
+        className="secondMenulistCard"
+        icon={<DownloadIcon />}
+        title="Download"
         subtitle="Our chatbot and support team are here to hep"
       />
     </div>
