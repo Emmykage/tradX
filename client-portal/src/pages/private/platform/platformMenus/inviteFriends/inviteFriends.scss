@@ -1,0 +1,71 @@
+.headerExtraIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 1.3125rem;
+  right: 5.3125rem;
+
+  svg {
+    width: 2rem;
+  }
+}
+
+.InviteFriendsCon {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  .getyourreferaltext {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #969798;
+  }
+  .step1Card {
+    display: flex;
+    align-items: center;
+    .textRow {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      .titletext {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #ffffff;
+      }
+      .subtext {
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: #969798;
+      }
+    }
+    .rightIconDiv {
+      display: flex;
+      justify-content: flex-end;
+      flex: 1;
+      svg {
+        width: 2rem;
+        height: 2rem;
+        stroke-width: 0.1rem;
+      }
+    }
+  }
+  .textdiv {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.3rem;
+    .referalRewardsText {
+      color: #5d86a6;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+    .megaboxText {
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+  }
+  .listCard{
+    margin: 0.7rem;
+  }
+}
