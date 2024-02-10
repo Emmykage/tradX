@@ -33,6 +33,7 @@ import ConfirmPhone from "./platformMenus/confirmPhone/ConfirmPhone";
 import SelectAccount from "./platformMenus/selectAccount/SelectAccount";
 import WithdrawMenu from "./platformMenus/withdraw/WithdrawMenu";
 import AddAccountMenu from "./platformMenus/add-account/AddAccount";
+import TradersWayMenu from "./platformMenus/tradersWay/TradersWayMenu";
 
 interface PlatformProps {}
 
@@ -298,6 +299,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Withdraw"
               : rightSubDrawerContent === "add-account"
               ? "Add an account"
+              : rightSubDrawerContent === "traders-way"
+              ? "Trader`s Way"
               : ""
           }
           extra={
@@ -406,6 +409,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <WithdrawMenu />
           ) : rightSubDrawerContent === "add-account" ? (
             <AddAccountMenu />
+          ) : rightSubDrawerContent === "traders-way" ? (
+            <TradersWayMenu />
           ) : (
             <></>
           )}

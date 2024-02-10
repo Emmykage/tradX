@@ -1,0 +1,52 @@
+.tradersWay {
+  .menuText {
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+  }
+
+  .timeContainer {
+    margin: 1.25rem 0;
+
+    .timeCountdown {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 0.9375rem;
+    }
+
+    .timeLeftContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .timeLeftText {
+        font-size: 16px;
+        font-weight: 400;
+        color: #969798;
+      }
+
+      svg {
+        width: 2rem;
+        margin-bottom: 0.3125rem;
+      }
+    }
+  }
+
+  .levelBar {
+    margin-bottom: 1.5625rem;
+  }
+
+  .traderOptions {
+    .menuListCard {
+      padding: 1.25rem;
+
+      .tradesWayOption {
+        font-size: 1.5rem;
+        font-weight: 500;
+        // color: #fff;
+      }
+    }
+  }
+}
