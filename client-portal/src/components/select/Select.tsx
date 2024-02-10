@@ -5,6 +5,7 @@ import "./selectList.scss";
 
 interface SelectProps {
   handleChange?: (value: any) => void;
+  onClick?: (value: any) => void;
   options?: { value: string; label: string }[];
   defaultValue?: string;
   label: string;
@@ -13,6 +14,7 @@ interface SelectProps {
 
 const Select: React.FunctionComponent<SelectProps> = ({
   handleChange,
+  onClick,
   options = [],
   defaultValue = "",
   label,
@@ -30,6 +32,7 @@ const Select: React.FunctionComponent<SelectProps> = ({
           options={options}
           suffixIcon={<DropdownIcon />}
           rootClassName="customSelectDropdown"
+          onClick={onClick}
         />
       </div>
     </div>

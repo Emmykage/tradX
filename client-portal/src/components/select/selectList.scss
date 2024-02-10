@@ -72,15 +72,27 @@
 
 .customSelectDropdown {
   &.ant-select-dropdown {
-    background-color: #1a1d21;
-
-    .ant-select-item {
-      background-color: #1a1d21 !important;
-      color: #fff;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    .rc-virtual-list-holder {
+      max-height: 28rem !important;
     }
-
+    .ant-select-item-option-content {
+      background-color: transparent !important;
+    }
+    .ant-select-item {
+      background-color: transparent !important;
+      color: #ffffff;
+      border-radius: 0.3rem;
+      padding: 0.6rem 1.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
     .ant-select-item-option-selected {
-      background-color: #5d86a6 !important;
+      background-color: #383838 !important;
+      box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
       color: #fff !important;
     }
   }
