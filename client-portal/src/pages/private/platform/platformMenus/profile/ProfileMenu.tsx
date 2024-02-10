@@ -86,7 +86,13 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
         </Row>
       </div>
 
-      <div className="profileCard">
+      <div
+        className="profileCard"
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("traders-way");
+        }}
+      >
         <div className="levelCard">
           <div className="levelCardTitleContainer">
             <ArrowUpOS />
