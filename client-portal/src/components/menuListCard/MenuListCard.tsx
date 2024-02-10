@@ -12,7 +12,9 @@ interface MenuListCardProps {
   onClick?: () => void;
   className?: string;
   primary?: boolean;
+  disabled?: boolean;
   customContent?: React.ReactNode;
+  variant?: 1 | 2 | 3;
 }
 
 const MenuListCard: React.FC<MenuListCardProps> = ({
@@ -25,7 +27,9 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
   onClick,
   className,
   primary = false,
+  disabled = false,
   customContent,
+  variant = 2,
 }) => {
   console.log("subTextCenter", subTextCenter);
   return (
@@ -33,12 +37,17 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
       className={`menuListCard ${danger ? "danger" : ""} ${
         className ? className : ""
       }`}
-      variant={2}
+      variant={variant}
       onClick={onClick}
       primary={primary}
+      pointer={!disabled}
     >
       {icon ? (
-        <div className={`cardLeftIcon ${textCenter ? "textCenter" : ""}`}>
+        <div
+          className={`cardLeftIcon ${textCenter ? "textCenter" : ""} ${
+            disabled ? "disabled" : ""
+          }`}
+        >
           {icon}
         </div>
       ) : null}
@@ -52,6 +61,7 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
             menuListCardTitle
             ${!subtitle && "noMargin"}
             ${danger ? "danger" : ""}
+            ${disabled ? "disabled" : ""}
             ${textCenter ? "textCenter" : ""}`}
             >
               {title}

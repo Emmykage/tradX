@@ -14,10 +14,15 @@
     margin-right: 0.938rem;
     display: flex;
     align-items: center;
+    color: #fff;
 
     img,
     svg {
-      width: 1.5625rem;
+      width: 2rem;
+    }
+
+    &.disabled {
+      color: #969798;
     }
 
     &.textCenter {
@@ -41,6 +46,10 @@
         margin-bottom: 0;
       }
 
+      &.disabled {
+        color: #969798;
+      }
+
       &.danger {
         color: #f15131;
       }
@@ -54,7 +63,7 @@
       font-size: 0.875rem;
       color: #ffffff99;
       font-weight: 400;
-     
+
       &.subTextCenter {
         text-align: center;
         justify-content: center;
