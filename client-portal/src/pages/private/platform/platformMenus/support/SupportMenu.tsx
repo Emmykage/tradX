@@ -1,8 +1,4 @@
-import {
-  BellIconLender,
-  ChatIcon,
-  DownloadIcon,
-} from "../../../../../assets/icons";
+import { ChatIcon, DownloadIcon } from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./supportMenu.scss";
 
