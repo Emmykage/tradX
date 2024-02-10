@@ -1,19 +1,7 @@
-import {
-  ArrowRightOS,
-  ArrowUpOS,
-  BookmarkIcon,
-  BoxedCheckedIcon,
-  EventIcon,
-  InfoCircleIconWhite,
-  NotificationIcon2,
-  ReloadIcon,
-  SettingsIcon,
-  TooltipIcon,
-} from "../../../../../assets/icons";
+import { ArrowRightOS, InfoCircleIconWhite } from "../../../../../assets/icons";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./inviteFriends.scss";
-import { Col, Row } from "antd";
 
 interface InviteFriendsProps {}
 
