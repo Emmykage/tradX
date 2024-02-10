@@ -1,5 +1,5 @@
 import { Col, Row } from "antd";
-import { WalletIcon } from "../../../../../assets/icons";
+import { InfoCircleIcon, WalletIcon } from "../../../../../assets/icons";
 import Input from "../../../../../components/input/Input";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./transferMenu.scss";
@@ -20,6 +20,7 @@ const TransferMenu: React.FunctionComponent<TransferMenuProps> = ({
         className="currencyInput"
         placeholder="USD 0.00"
         title="From: USD Account"
+        suffixIcon={<InfoCircleIcon />}
       />
 
       <MenuListCard
