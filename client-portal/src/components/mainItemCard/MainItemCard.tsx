@@ -2,7 +2,7 @@ import React from "react";
 import "./mainItemCard.scss";
 
 interface MainItemCardProps {
-  variant?: 1 | 2;
+  variant?: 1 | 2 | 3;
   className?: string;
   fullHeight?: boolean;
   onClick?: () => void;
@@ -34,8 +34,8 @@ const MainItemCard: React.FC<React.PropsWithChildren<MainItemCardProps>> = ({
     <div
       onClick={onClick}
       className={`mainItemCardv2 ${primary ? "primary" : ""} ${
-        fullHeight ? "fullHeight" : ""
-      } ${pointer ? "" : "none-pointer"}`}
+        variant === 3 ? "cardv3" : ""
+      } ${fullHeight ? "fullHeight" : ""} ${pointer ? "" : "none-pointer"}`}
     >
       <div className={`mainItemCardv2Content ${className ? className : ""}`}>
         {children}
