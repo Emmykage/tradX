@@ -59,6 +59,22 @@ const MarketMenu: React.FunctionComponent<MarketMenuProps> = () => {
           </p>
         </MainItemCard>
       </div>
+      <div className="menuthirdCardCon">
+        <MainItemCard className="menuthirdCard">
+          <p className="menuthirdCardText1">Signals</p>
+          <p className="menuthirdCardText2">
+            Algorithm-based recommendations on when to open trades
+          </p>
+        </MainItemCard>
+      </div>
+      <div className="menuthirdCardCon">
+        <MainItemCard className="menuthirdCard">
+          <p className="menuthirdCardText1">Custom Strategies</p>
+          <p className="menuthirdCardText2">
+            Buy trader-created strategies best suited to your trading style
+          </p>
+        </MainItemCard>
+      </div>
     </div>
   );
 };
