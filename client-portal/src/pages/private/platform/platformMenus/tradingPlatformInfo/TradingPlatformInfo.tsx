@@ -3,10 +3,18 @@ import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./TradingPlatformInfo.scss";
 import { ArrowRightIcon } from "../../../../../assets/icons";
 
-const TradingPlatformInfo = () => {
+interface TradingPlatformInfoProps {
+  setLeftSubDrawer: (value: string | null) => void;
+}
+
+const TradingPlatformInfo: React.FunctionComponent<
+  TradingPlatformInfoProps
+> = ({ setLeftSubDrawer }) => {
   return (
     <div className="trading-platforms-info">
-      <Button className="btn">Back to User Guide</Button>
+      <Button className="btn" onClick={() => setLeftSubDrawer("help-center")}>
+        Back to User Guide
+      </Button>
       <MainItemCard className="trading-platforms-info-about">
         <h3>What is a Trading Platform?</h3>
         <p>
@@ -15,7 +23,10 @@ const TradingPlatformInfo = () => {
           broker.
         </p>
       </MainItemCard>
-      <div className="olymp-trade">
+      <div
+        className="olymp-trade"
+        onClick={() => setLeftSubDrawer("why-coose-us")}
+      >
         <ArrowRightIcon width="" height="" color="#0094FF" />
         <div>Why Should I Choose Olymp Trade?</div>
       </div>
