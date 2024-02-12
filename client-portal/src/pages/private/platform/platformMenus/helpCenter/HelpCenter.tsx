@@ -10,16 +10,24 @@ import {
 } from "../../../../../assets/icons";
 import "./helpCenter.scss";
 
-interface HelpCenterProps {}
+interface HelpCenterProps {
+  setLeftSubDrawer: (value: string | null) => void;
+}
 
-const HelpCenter: React.FunctionComponent<HelpCenterProps> = () => {
+const HelpCenter: React.FunctionComponent<HelpCenterProps> = ({
+  setLeftSubDrawer,
+}) => {
   return (
     <div className="helpCenter">
       <SearchBar extraSpacing placeholder="Find the help you need" />
 
       <p className="helpSectionTitle">User Guide</p>
 
-      <MenuListCard title="Trading platform" icon={<HierarchyIcon />} />
+      <MenuListCard
+        title="Trading platform"
+        icon={<HierarchyIcon />}
+        onClick={() => setLeftSubDrawer("trading-platform")}
+      />
       <MenuListCard title="Profile" icon={<UserIcon2 />} />
       <MenuListCard title="Account types" icon={<UserDoubleIcon />} />
       <MenuListCard title="Deposits" icon={<DepositsIcon />} />
