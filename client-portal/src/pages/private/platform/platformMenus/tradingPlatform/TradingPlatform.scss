@@ -12,6 +12,7 @@
             color: white;
         }
         .link-button {
+            cursor: default;
            text-align: left;
            padding: 2rem 1rem 3rem 0rem;
         }
@@ -53,6 +54,22 @@
                     }
                 }
             }
+        }
+    }
+    .olymp-trade {
+        cursor: pointer;
+        margin-top: 1.575rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #1A1D21;
+        padding: 2rem;
+        border-radius: 0.438rem;
+        gap: 2.563rem;
+        div {
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
         }
     }
 }
