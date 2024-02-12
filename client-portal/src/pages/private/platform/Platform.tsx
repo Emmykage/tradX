@@ -34,6 +34,9 @@ import SelectAccount from "./platformMenus/selectAccount/SelectAccount";
 import WithdrawMenu from "./platformMenus/withdraw/WithdrawMenu";
 import AddAccountMenu from "./platformMenus/add-account/AddAccount";
 import TradersWayMenu from "./platformMenus/tradersWay/TradersWayMenu";
+import TradingPlatform from "./platformMenus/tradingPlatform/TradingPlatform";
+import TradingPlatformInfo from "./platformMenus/tradingPlatformInfo/TradingPlatformInfo";
+import OlympTradeInfo from "./platformMenus/olympTradeInfo/OlympTradeInfo";
 
 interface PlatformProps {}
 
@@ -184,6 +187,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             ? "Help Center"
             : leftSubDrawer === "support"
             ? "Support"
+            : leftSubDrawer === "trading-platform"
+            ? "Help Center"
+            : leftSubDrawer === "what-is-trading"
+            ? "Help Center"
+            : leftSubDrawer === "why-coose-us"
+            ? "Help Center"
             : ""
         }
         extra={
@@ -207,9 +216,15 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       >
         <div>
           {leftSubDrawer === "help-center" ? (
-            <HelpCenter />
+            <HelpCenter setLeftSubDrawer={setLeftSubDrawer} />
           ) : leftSubDrawer === "support" ? (
             <SupportMenu />
+          ) : leftSubDrawer === "trading-platform" ? (
+            <TradingPlatform setLeftSubDrawer={setLeftSubDrawer} />
+          ) : leftSubDrawer === "what-is-trading" ? (
+            <TradingPlatformInfo setLeftSubDrawer={setLeftSubDrawer} />
+          ) : leftSubDrawer === "why-coose-us" ? (
+            <OlympTradeInfo setLeftSubDrawer={setLeftSubDrawer} />
           ) : (
             <></>
           )}
