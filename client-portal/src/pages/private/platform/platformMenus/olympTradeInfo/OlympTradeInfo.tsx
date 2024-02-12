@@ -3,10 +3,18 @@ import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./OlympTradeInfo.scss";
 import { ArrowRightIcon } from "../../../../../assets/icons";
 
-const OlympTradeInfo = () => {
+interface OlympTradeInfoProps {
+  setLeftSubDrawer: (value: string | null) => void;
+}
+
+const OlympTradeInfo: React.FunctionComponent<OlympTradeInfoProps> = ({
+  setLeftSubDrawer,
+}) => {
   return (
     <div className="olymp-trade-info">
-      <Button className="btn">Back to User Guide</Button>
+      <Button className="btn" onClick={() => setLeftSubDrawer("help-center")}>
+        Back to User Guide
+      </Button>
       <MainItemCard className="olymp-trade-info-about">
         <h3>Why Should I Choose Olymp Trade?</h3>
         <p>
