@@ -516,32 +516,62 @@ export const SubtractIcon = () => {
 
 export const ArrowUpRightIcon = () => {
   return (
-    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M14 13V1M14 1H2M14 1L2 13" stroke="white" stroke-width="2" stroke-linecap="square"/>
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14 13V1M14 1H2M14 1L2 13"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="square"
+      />
     </svg>
   );
 };
 
 export const ArrowDownRightIcon = () => {
   return (
-    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M14 2V14M14 14H2M14 14L2 2" stroke="white" stroke-width="2" stroke-linecap="square"/>
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14 2V14M14 14H2M14 14L2 2"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="square"
+      />
     </svg>
   );
 };
 
-export const ArrowRightIcon = () => {
+export const ArrowRightIcon = ({
+  width,
+  height,
+  color,
+}: {
+  width: string;
+  height: string;
+  color: string;
+}) => {
   return (
     <svg
-      width="26"
-      height="23"
+      width={width ? width : "26"}
+      height={height ? height : "23"}
       viewBox="0 0 26 23"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M14.1234 1.18592C14.0246 1.2846 13.9463 1.40178 13.8928 1.53077C13.8393 1.65975 13.8118 1.79801 13.8118 1.93764C13.8118 2.07727 13.8393 2.21553 13.8928 2.34452C13.9463 2.4735 14.0246 2.59068 14.1234 2.68936L21.873 10.4376L1.06264 10.4376C0.780846 10.4376 0.510595 10.5496 0.311337 10.7488C0.11208 10.9481 0.000139367 11.2183 0.000139363 11.5001C0.00013936 11.7819 0.11208 12.0522 0.311337 12.2514C0.510595 12.4507 0.780846 12.5626 1.06264 12.5626L21.873 12.5626L14.1234 20.3109C13.9241 20.5103 13.812 20.7807 13.812 21.0626C13.812 21.3446 13.9241 21.615 14.1234 21.8144C14.3228 22.0137 14.5932 22.1257 14.8751 22.1257C15.1571 22.1257 15.4275 22.0137 15.6269 21.8144L25.1894 12.2519C25.2881 12.1532 25.3665 12.036 25.42 11.907C25.4735 11.778 25.501 11.6398 25.501 11.5001C25.501 11.3605 25.4735 11.2223 25.42 11.0933C25.3665 10.9643 25.2881 10.8471 25.1894 10.7484L15.6269 1.18592C15.5282 1.08713 15.411 1.00876 15.282 0.955295C15.153 0.901825 15.0148 0.874306 14.8751 0.874306C14.7355 0.874306 14.5973 0.901825 14.4683 0.955295C14.3393 1.00876 14.2221 1.08713 14.1234 1.18592Z"
-        fill="white"
+        fill={color ? color : "white"}
       />
     </svg>
   );
