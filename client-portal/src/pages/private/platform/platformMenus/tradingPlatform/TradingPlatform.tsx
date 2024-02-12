@@ -3,6 +3,10 @@ import "./TradingPlatform.scss";
 import { ArrowRightIcon } from "../../../../../assets/icons";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 
+interface TradingPlatformProps {
+  setLeftSubDrawer: (value: string | null) => void;
+}
+
 const TradingPlatformList = [
   {
     id: 1,
@@ -78,11 +82,15 @@ const TradingPlatformList = [
   },
 ];
 
-const TradingPlatform = () => {
+const TradingPlatform: React.FunctionComponent<TradingPlatformProps> = ({
+  setLeftSubDrawer,
+}) => {
   return (
     <div className="trading-platforms">
       <div className="buttons">
-        <Button className="btn">Back to User Guide</Button>
+        <Button className="btn" onClick={() => setLeftSubDrawer("help-center")}>
+          Back to User Guide
+        </Button>
         <Button className="link-button" type="link">
           Trading Platforms
         </Button>
@@ -105,6 +113,14 @@ const TradingPlatform = () => {
           </div>
         </MainItemCard>
       ))}
+
+      <div
+        className="olymp-trade"
+        onClick={() => setLeftSubDrawer("what-is-trading")}
+      >
+        <ArrowRightIcon width="" height="" color="#0094FF" />
+        <div>What is a Trading Platform?</div>
+      </div>
     </div>
   );
 };
