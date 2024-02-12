@@ -1,0 +1,58 @@
+.trading-platforms {
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        .btn {
+            width: 10.625rem;
+            height: 2.875rem;
+            border-radius: 0.5rem;
+            background-color: #393A3D;
+            border: none;
+            color: white;
+        }
+        .link-button {
+           text-align: left;
+           padding: 2rem 1rem 3rem 0rem;
+        }
+    }
+    .trading-platforms-about {
+        padding: 1.875rem 2.5rem 1.875rem 2.5rem;
+        margin-bottom: 2rem;
+        .about-info{
+            h3 {
+                color: white;
+                font-weight: 500;
+                font-size: 1.056rem;
+                line-height: 2.036rem;
+            }
+            .topics {
+                color: rgba(149, 149, 149, 1);
+                font-weight: 400;
+                font-size: 0.75rem;
+                line-height: 1.6rem;
+                padding: 0.3rem 0rem 1.5rem 0rem;
+            }
+            .about-info-content {
+                
+                .content {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.688rem;
+                    padding: 0.5rem 0rem 0rem 0rem;
+                    .content-icon {
+                        color: rgba(162, 162, 162, 1);
+                        padding: 0.2rem 0.5rem 0rem 0rem;
+                    }
+                    .text {
+                        color: #A2A2A2;
+                        font-weight: 400;
+                        font-size: 0.959rem;
+                        padding: 0rem;
+                        // line-height: 1.851rem;
+                    }
+                }
+            }
+        }
+    }
+}
