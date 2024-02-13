@@ -11,6 +11,7 @@ interface PaymentListItemCardProps {
   primary?: boolean;
   disabled?: boolean;
   customContent?: React.ReactNode;
+  border?: boolean;
 }
 
 const PaymentListItemCard: React.FC<PaymentListItemCardProps> = ({
@@ -22,12 +23,13 @@ const PaymentListItemCard: React.FC<PaymentListItemCardProps> = ({
   primary = false,
   disabled = false,
   customContent,
+  border,
 }) => {
   return (
     <PaymentsMainItemCard
       className={`paymentListItemCard ${danger ? "danger" : ""} ${
-        className ? className : ""
-      }`}
+        border ? "border" : ""
+      }${className ? className : ""}`}
       onClick={onClick}
       primary={primary}
       pointer={!disabled}
