@@ -1,10 +1,107 @@
-import { ArrowUpOS, PlayIcon } from "../../../../../assets/icons";
+import {
+  AdvancePlusIcon,
+  ArrowUpOS,
+  IndicatorIcon,
+  PercentageIcon,
+  PlayIcon,
+  StrategyIcon,
+  TradeStopIcon,
+} from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./tradersWay.scss";
 
 interface TradersWayMenuProps {}
 
 const TradersWayMenu: React.FunctionComponent<TradersWayMenuProps> = () => {
+  const CardSuffix = ({
+    icon,
+    text,
+  }: {
+    icon: React.ReactNode;
+    text: string;
+  }) => (
+    <div className="optionSuffix">
+      {icon}
+      <p>{text}</p>
+    </div>
+  );
+
+  const NumberIcon = ({ value }: { value: string }) => (
+    <div className="tradesWayOption">
+      <p className="optionText">{value}</p>
+    </div>
+  );
+
+  const traderOptions = [
+    {
+      title: "Barcode",
+      value: "1",
+      subtitle: "Trading Strategy",
+      icon: <StrategyIcon color="#0094FF" />,
+      active: true,
+    },
+    {
+      title: "Kind Martin",
+      value: "2",
+      subtitle: "Trading Strategy",
+      icon: <StrategyIcon />,
+    },
+    {
+      title: "StochRSI",
+      value: "3",
+      subtitle: "Indicator",
+      icon: <IndicatorIcon />,
+    },
+    {
+      title: "Friday",
+      value: "4",
+      subtitle: "Trading Strategy",
+      icon: <StrategyIcon />,
+    },
+    {
+      title: "Advanced for 24 hours",
+      value: "5",
+      subtitle: "Bonus",
+      icon: <AdvancePlusIcon />,
+    },
+    {
+      title: "Advanced for half price",
+      value: "6",
+      subtitle: "Bonus",
+      icon: <AdvancePlusIcon />,
+    },
+    {
+      title: "Millenium",
+      value: "7",
+      subtitle: "Trading Strategy",
+      icon: <StrategyIcon />,
+    },
+    {
+      title: "Trailing Stop Loss",
+      value: "8",
+      subtitle: "Improved Forex",
+      icon: <TradeStopIcon />,
+    },
+    {
+      title: "Risk Free Trades",
+      value: "9",
+      subtitle: "Bonus",
+      icon: <AdvancePlusIcon />,
+    },
+    {
+      title: "Up to 89% profitability",
+      value: "10",
+      subtitle: "Trading Terms",
+      icon: <PercentageIcon />,
+    },
+    {
+      title: "New Status: Advanced",
+      value: "11",
+      subtitle: "Bonus",
+      icon: <AdvancePlusIcon />,
+    },
+  ];
+
   return (
     <div className="tradersWay">
       <p className="menuText">
@@ -38,23 +135,15 @@ const TradersWayMenu: React.FunctionComponent<TradersWayMenuProps> = () => {
       </div>
 
       <div className="traderOptions">
-        <MenuListCard
-          textCenter
-          title="Barcode"
-          icon={<p className="tradesWayOption">1</p>}
-        />
-        <MenuListCard
-          disabled
-          textCenter
-          title="Kind Martin"
-          icon={<p className="tradesWayOption">2</p>}
-        />
-        <MenuListCard
-          disabled
-          textCenter
-          title="StochRSI"
-          icon={<p className="tradesWayOption">3</p>}
-        />
+        {traderOptions?.map((item) => (
+          <MenuListCard
+            disabled={!item?.active}
+            textCenter
+            title={item.title}
+            icon={<NumberIcon value={item.value} />}
+            suffix={<CardSuffix text={item.subtitle} icon={item.icon} />}
+          />
+        ))}
       </div>
     </div>
   );
