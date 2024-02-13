@@ -178,3 +178,65 @@
     }
   }
 }
+
+.tradersWayModal {
+  .ant-modal {
+    .ant-modal-content {
+      padding: 2rem;
+      padding-top: 5rem;
+
+      .ant-modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .modalBadge {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 2.25rem;
+          min-width: 8.625rem;
+          color: #d9d9d9;
+          font-size: 0.8862rem;
+          background-color: #424749;
+          border-radius: 1.125rem;
+          position: absolute;
+          left: 1.5625rem;
+          top: 1.5625rem;
+        }
+
+        .modalIcon {
+          margin-bottom: 1.25rem;
+          svg {
+            width: 84px;
+          }
+        }
+
+        .modalHeading {
+          font-size: 1.2094rem;
+          font-weight: 600;
+          margin-bottom: 1.25rem;
+        }
+
+        .modalText {
+          color: #70808c;
+          max-width: 15.3125rem;
+          text-align: center;
+          margin-bottom: 1.25rem;
+        }
+
+        .modalButton {
+          width: 6.625rem;
+          height: 4.25rem;
+          font-size: 1.125rem;
+          font-weight: 400;
+          background: #2e3439;
+          border-radius: 0.3125rem;
+          border: 2px solid #27a2ff;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
