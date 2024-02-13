@@ -27,7 +27,7 @@ const PaymentListItemCard: React.FC<PaymentListItemCardProps> = ({
        ${!disabled ? "" : "none-pointer"}`}
     >
       <div
-        className={`paymentListItemCard${border ? "border" : ""} ${
+        className={`paymentListItemCard ${border ? "border" : ""} ${
           className ? className : ""
         }`}
       >
