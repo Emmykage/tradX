@@ -1,14 +1,11 @@
 import React from "react";
-import PaymentsMainItemCard from "../patmentsMainItemCard/PaymentsMainItemCard";
 import "./PaymentListItemCard.scss";
 
 interface PaymentListItemCardProps {
   icon?: React.ReactNode;
   title?: string;
-  danger?: boolean;
   onClick?: () => void;
   className?: string;
-  primary?: boolean;
   disabled?: boolean;
   customContent?: React.ReactNode;
   border?: boolean;
@@ -17,36 +14,37 @@ interface PaymentListItemCardProps {
 const PaymentListItemCard: React.FC<PaymentListItemCardProps> = ({
   icon,
   title,
-  danger,
   onClick,
   className,
-  primary = false,
   disabled = false,
   customContent,
   border,
 }) => {
   return (
-    <PaymentsMainItemCard
-      className={`paymentListItemCard ${danger ? "danger" : ""} ${
-        border ? "border" : ""
-      }${className ? className : ""}`}
+    <div
       onClick={onClick}
-      primary={primary}
-      pointer={!disabled}
+      className={`PaymentsMainItemCard 
+       ${!disabled ? "" : "none-pointer"}`}
     >
-      {icon ? (
-        <div className={`cardLeftIcon  ${disabled ? "disabled" : ""}`}>
-          {icon}
-        </div>
-      ) : null}
-      {customContent ? (
-        customContent
-      ) : (
-        <div className="cardRightContent">
-          {title && <p className=" menuListCardTitle">{title}</p>}
-        </div>
-      )}
-    </PaymentsMainItemCard>
+      <div
+        className={`paymentListItemCard${border ? "border" : ""} ${
+          className ? className : ""
+        }`}
+      >
+        {icon ? (
+          <div className={`cardLeftIcon  ${disabled ? "disabled" : ""}`}>
+            {icon}
+          </div>
+        ) : null}
+        {customContent ? (
+          customContent
+        ) : (
+          <div className="cardRightContent">
+            {title && <p className=" menuListCardTitle">{title}</p>}
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

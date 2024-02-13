@@ -1,81 +1,59 @@
-.paymentListItemCard {
+.PaymentsMainItemCard {
+  cursor: pointer;
+  width: 100%;
   position: relative;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  border: none;
-  text-align: center;
-  box-shadow:rgba(0, 0, 0, 0.4) ; 
-  height: 4rem;
-
-  &.border {
-    border: 0.01rem solid #27A2FF;
+  background-color: #3d4046;
   border-radius: 1rem;
+  box-shadow: 0rem 0.4rem 1rem 0rem rgba(0, 0, 0, 0.4);
+
+  &.none-pointer {
+    cursor: default;
   }
 
-  &.danger {
-    box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
-      0 0.063rem 0 0.063rem inset #f15131;
-    border-radius: 0.313rem;
-  }
-
-  .cardLeftIcon {
+  .paymentListItemCard {
+    position: relative;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    color: #fff;
-    padding-left: 2rem;
+    border: none;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.4);
+    height: 4rem;
 
-    img,
-    svg {
-      width: 2rem;
+    &.border {
+      border: 0.01rem solid #27a2ff;
+      border-radius: 1rem;
     }
 
-    &.disabled {
-      color: #969798;
-    }
-
-    &.textCenter {
-      position: absolute;
-      left: 0.938rem;
-      top: 50%;
-      transform: translateY(-42%);
-    }
-  }
-
-  .cardRightContent {
-    width: 100%;
-    margin-right: 1rem;
-    .menuListCardTitle {
-      font-size: 1.125rem;
+    .cardLeftIcon {
+      display: flex;
+      align-items: center;
       color: #fff;
-      font-weight: 500;
-      margin-bottom: 0.313rem;
+      padding-left: 2rem;
 
-      &.noMargin {
-        margin-bottom: 0;
+      img,
+      svg {
+        width: 2rem;
       }
 
       &.disabled {
         color: #969798;
       }
-
-      &.danger {
-        color: #f15131;
-      }
-
-      &.textCenter {
-        text-align: center;
-        justify-content: center;
-      }
+      
     }
-    .menuListCardSubtitle {
-      font-size: 0.875rem;
-      color: #ffffff99;
-      font-weight: 400;
 
-      &.subTextCenter {
-        text-align: center;
-        justify-content: center;
+    .cardRightContent {
+      width: 100%;
+      margin-right: 1rem;
+      .menuListCardTitle {
+        font-size: 1.125rem;
+        color: #fff;
+        font-weight: 500;
+        margin-bottom: 0.313rem;
+
+        &.disabled {
+          color: #969798;
+        }
       }
     }
   }
