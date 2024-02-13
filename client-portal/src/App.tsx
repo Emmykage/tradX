@@ -3,6 +3,7 @@ import Platform from "./pages/private/platform/Platform";
 import Lender from "./pages/private/lender/Lender";
 import SignIn from "./pages/public/signIn/SignIn";
 import { useEffect } from "react";
+import Download from "./pages/public/downloads/Download";
 
 interface AppProps {}
 
@@ -27,6 +28,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/" element={<SignIn />} />
         <Route path="/platform" element={<Platform />} />
         <Route path="/lender" element={<Lender />} />
+        <Route path="/downloads" element={<Download />} />
       </Routes>
     </HashRouter>
   );

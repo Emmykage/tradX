@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ChatIcon, DownloadIcon } from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./supportMenu.scss";
@@ -16,12 +17,14 @@ const SupportMenu: React.FunctionComponent<SupportMenuProps> = () => {
         title="Chat"
         subtitle="Our chatbot and support team are here to hep"
       />
-      <MenuListCard
-        className="secondMenulistCard"
-        icon={<DownloadIcon />}
-        title="Download"
-        subtitle="Our chatbot and support team are here to hep"
-      />
+      <Link to="/downloads">
+        <MenuListCard
+          className="secondMenulistCard"
+          icon={<DownloadIcon />}
+          title="Download"
+          subtitle="Our chatbot and support team are here to hep"
+        />
+      </Link>
     </div>
   );
 };
