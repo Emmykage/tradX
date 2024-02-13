@@ -1,0 +1,78 @@
+.paymentListItemCard {
+  position: relative;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+
+  border: none;
+  text-align: center;
+  box-shadow:rgba(0, 0, 0, 0.4) ; 
+  height: 4rem;
+
+  &.danger {
+    box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+      0 0.063rem 0 0.063rem inset #f15131;
+    border-radius: 0.313rem;
+  }
+
+  .cardLeftIcon {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding-left: 2rem;
+
+    img,
+    svg {
+      width: 2rem;
+    }
+
+    &.disabled {
+      color: #969798;
+    }
+
+    &.textCenter {
+      position: absolute;
+      left: 0.938rem;
+      top: 50%;
+      transform: translateY(-42%);
+    }
+  }
+
+  .cardRightContent {
+    width: 100%;
+    margin-right: 1rem;
+    .menuListCardTitle {
+      font-size: 1.125rem;
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 0.313rem;
+
+      &.noMargin {
+        margin-bottom: 0;
+      }
+
+      &.disabled {
+        color: #969798;
+      }
+
+      &.danger {
+        color: #f15131;
+      }
+
+      &.textCenter {
+        text-align: center;
+        justify-content: center;
+      }
+    }
+    .menuListCardSubtitle {
+      font-size: 0.875rem;
+      color: #ffffff99;
+      font-weight: 400;
+
+      &.subTextCenter {
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  }
+}
