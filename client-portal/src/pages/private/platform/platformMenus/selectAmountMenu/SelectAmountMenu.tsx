@@ -1,8 +1,7 @@
-import { Col, Row, Typography } from "antd";
+import { Col, Row } from "antd";
 import "./SelectAmountMenu.scss";
 import DepositCard from "../../../../../components/depositCard/DepositCard";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
-import { PromoCodeIcon } from "../../../../../assets/icons";
 import AmountCard from "../../../../../components/amountCard/AmountCard";
 
 const SelectAmountMenu = () => {
