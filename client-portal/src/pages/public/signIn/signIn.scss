@@ -8,9 +8,34 @@
   justify-content: center;
   align-items: center;
   .centerWrapper {
-    width: 22.5rem;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 22.125rem;
+    height: calc(100vh - 5rem);
+    max-height: 52.375rem;
+    margin: 1.25rem;
+
     background: #0e0f12;
     padding: 0rem 1.5rem 2em 1.5rem;
+
+    .ant-tabs {
+      height: 100%;
+
+      .ant-tabs-content {
+        height: 100%;
+
+        .ant-tabs-tabpane {
+          height: 100%;
+
+          .contentContainer {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          }
+        }
+      }
+    }
+
     .ant-tabs-top > .ant-tabs-nav::before,
     .ant-tabs-bottom > .ant-tabs-nav::before,
     .ant-tabs-top > div > .ant-tabs-nav::before,
@@ -18,11 +43,14 @@
       border-bottom: 0.0625rem solid #2d3138;
     }
     .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+      font-size: 1rem;
       color: #ff0000;
+      font-weight: 500;
     }
     .ant-tabs .ant-tabs-tab {
-      color: #9fa0a2;
+      color: #70808c;
       font-size: 1rem;
+      font-weight: 500;
     }
     .ant-tabs .ant-tabs-tab:hover {
       color: #ff0000;
@@ -30,7 +58,7 @@
     .ant-tabs .ant-tabs-ink-bar {
       background: #ff0000;
     }
-    input#email,
+    input.loginInput,
     .ant-input-affix-wrapper {
       border-radius: 0.53894rem;
       border: 0.0539rem solid #272930;
@@ -39,9 +67,10 @@
       width: 100%;
       outline: 0;
       color: #fff;
-      margin: 0.94rem 0rem;
+      margin-bottom: 0.94rem;
       &::placeholder {
         color: #9cb0c2;
+        font-size: 1rem;
       }
     }
     .ant-input-affix-wrapper {
@@ -50,6 +79,7 @@
       margin: 0 0 0.94rem 0;
       svg {
         fill: #70808c;
+        width: 1.5rem;
       }
     }
     .ant-input {
@@ -57,11 +87,15 @@
       color: #fff;
       &::placeholder {
         color: #9cb0c2;
+        font-size: 1rem;
       }
     }
     .ant-checkbox-inner {
+      width: 1.5rem;
+      height: 1.5rem;
       background-color: #1a1d21;
-      border: 0.0625rem solid #70808c;
+      border: 0.125rem solid #70808c;
+      border-radius: 0.375rem;
     }
     .ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover
       .ant-checkbox-checked:not(.ant-checkbox-disabled)
@@ -71,20 +105,70 @@
     .ant-checkbox-wrapper {
       color: #fff;
       font-weight: 400;
+      font-size: 1rem;
     }
     p.forgotPass {
-      color: #f00;
+      color: #ff0000;
       font-weight: 400;
+      font-size: 1rem;
       margin: 1rem 0rem 1.8rem 0rem;
     }
     button.login,
     button.register {
       width: 100%;
       border-radius: 0.53894rem;
-      background: #f00;
+      background: #ff0000;
       color: #fff;
       padding: 0.8125rem 4.0625rem;
       font-weight: 500;
+    }
+
+    .continueWithText {
+      display: flex;
+      align-items: center;
+      margin-top: 1.25rem;
+
+      .liner {
+        width: 100%;
+        background-color: #272930;
+        height: 0.0625rem;
+      }
+
+      p {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #9cb0c2;
+        min-width: 7.5625rem;
+        margin: 0 0.625rem;
+      }
+    }
+
+    .socialIcons {
+      padding: 1.25rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      max-height: 26.875rem;
+
+      .topIcons {
+        img {
+          margin: 0 0.625rem;
+        }
+      }
+
+      .bottomIcon {
+        img {
+          margin-top: 2.5rem;
+        }
+      }
+
+      img {
+        width: 100%;
+        max-width: 3.4375rem;
+        height: auto;
+      }
     }
   }
 }
