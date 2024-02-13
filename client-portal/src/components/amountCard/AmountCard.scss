@@ -1,0 +1,19 @@
+.amount-card {
+  border: 2px solid #505050;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  .cardContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    border-radius: 1rem;
+    .amounText {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+  }
+}

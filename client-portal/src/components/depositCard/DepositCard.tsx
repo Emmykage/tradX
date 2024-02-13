@@ -1,6 +1,6 @@
 import { ArrowRightOS, CardsIcons } from "../../assets/icons";
 import MenuListCard from "../menuListCard/MenuListCard";
-
+import "./DepositCard.scss";
 interface ContentProps {
   account: string;
   amount: string;
