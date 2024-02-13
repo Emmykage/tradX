@@ -151,6 +151,48 @@ export const PlayIcon = () => (
   </svg>
 );
 
+export const GoldCoinIcon = () => {
+  return (
+    <svg
+      width="23"
+      height="22"
+      viewBox="0 0 23 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="11.5"
+        cy="11"
+        r="9.6087"
+        fill="#D8892F"
+        stroke="#FAC900"
+        stroke-width="2.21739"
+      />
+    </svg>
+  );
+};
+
+export const SilverCoinIcon = () => {
+  return (
+    <svg
+      width="23"
+      height="22"
+      viewBox="0 0 23 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="11.5"
+        cy="11"
+        r="9.6087"
+        fill="#9CB0C2"
+        stroke="#D2D2D2"
+        stroke-width="2.21739"
+      />
+    </svg>
+  );
+};
+
 export const TradesIcon = () => {
   return (
     <svg
