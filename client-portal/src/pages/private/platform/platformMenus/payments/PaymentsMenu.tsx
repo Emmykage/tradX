@@ -1,8 +1,4 @@
-import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import {
-  WalletIcon,
-  WithdrawIcon,
-  TransactionIcon,
   DepositsIcon2,
   WithdrawIcon2,
   TransactionIcon2,

@@ -2,7 +2,6 @@ import React from "react";
 import "./PaymentsMainItemCard.scss";
 
 interface PaymentsMainItemCardProps {
-  variant?: 1 | 2 | 3;
   className?: string;
   fullHeight?: boolean;
   onClick?: () => void;
@@ -13,7 +12,6 @@ interface PaymentsMainItemCardProps {
 const PaymentsMainItemCard: React.FC<
   React.PropsWithChildren<PaymentsMainItemCardProps>
 > = ({
-  variant = 1,
   children,
   className,
   fullHeight,
@@ -21,7 +19,7 @@ const PaymentsMainItemCard: React.FC<
   pointer = true,
   primary = false,
 }) => {
-  return variant === 1 ? (
+  return (
     <div
       onClick={onClick}
       className={`PaymentsMainItemCard ${primary ? "primary" : ""} ${
@@ -29,17 +27,6 @@ const PaymentsMainItemCard: React.FC<
       } ${pointer ? "" : "none-pointer"}`}
     >
       <div className={`mainItemCardContent ${className ? className : ""}`}>
-        {children}
-      </div>
-    </div>
-  ) : (
-    <div
-      onClick={onClick}
-      className={`PaymentsMainItemCardv2 ${primary ? "primary" : ""} ${
-        variant === 3 ? "cardv3" : ""
-      } ${fullHeight ? "fullHeight" : ""} ${pointer ? "" : "none-pointer"}`}
-    >
-      <div className={`mainItemCardv2Content ${className ? className : ""}`}>
         {children}
       </div>
     </div>

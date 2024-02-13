@@ -5,50 +5,35 @@ import "./PaymentListItemCard.scss";
 interface PaymentListItemCardProps {
   icon?: React.ReactNode;
   title?: string;
-  subtitle?: string;
   danger?: boolean;
-  textCenter?: boolean;
-  subTextCenter?: boolean;
   onClick?: () => void;
   className?: string;
   primary?: boolean;
   disabled?: boolean;
   customContent?: React.ReactNode;
-  variant?: 1 | 2 | 3;
-  suffix?: React.ReactNode;
 }
 
 const PaymentListItemCard: React.FC<PaymentListItemCardProps> = ({
   icon,
   title,
-  subtitle,
   danger,
-  textCenter,
-  subTextCenter,
   onClick,
   className,
   primary = false,
   disabled = false,
   customContent,
-  variant = 1,
-  suffix,
 }) => {
   return (
     <PaymentsMainItemCard
       className={`paymentListItemCard ${danger ? "danger" : ""} ${
         className ? className : ""
       }`}
-      variant={variant}
       onClick={onClick}
       primary={primary}
       pointer={!disabled}
     >
       {icon ? (
-        <div
-          className={`cardLeftIcon ${textCenter ? "textCenter" : ""} ${
-            disabled ? "disabled" : ""
-          }`}
-        >
+        <div className={`cardLeftIcon  ${disabled ? "disabled" : ""}`}>
           {icon}
         </div>
       ) : null}
@@ -56,34 +41,9 @@ const PaymentListItemCard: React.FC<PaymentListItemCardProps> = ({
         customContent
       ) : (
         <div className="cardRightContent">
-          {title && (
-            <p
-              className={`
-            menuListCardTitle
-            ${!subtitle && "noMargin"}
-            ${danger ? "danger" : ""}
-            ${disabled ? "disabled" : ""}
-            ${textCenter ? "textCenter" : ""}`}
-            >
-              {title}
-            </p>
-          )}
-          {subtitle && (
-            <p
-              className={`
-            menuListCardSubtitle
-            ${subTextCenter ? "subTextCenter" : ""}`}
-            >
-              {subtitle}
-            </p>
-          )}
+          {title && <p className=" menuListCardTitle">{title}</p>}
         </div>
       )}
-      {suffix ? (
-        <div className={`cardRightSuffix ${disabled ? "disabled" : ""}`}>
-          {suffix}
-        </div>
-      ) : null}
     </PaymentsMainItemCard>
   );
 };
