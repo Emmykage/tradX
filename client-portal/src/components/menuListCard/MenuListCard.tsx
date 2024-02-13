@@ -15,6 +15,7 @@ interface MenuListCardProps {
   disabled?: boolean;
   customContent?: React.ReactNode;
   variant?: 1 | 2 | 3;
+  suffix?: React.ReactNode;
 }
 
 const MenuListCard: React.FC<MenuListCardProps> = ({
@@ -30,8 +31,8 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
   disabled = false,
   customContent,
   variant = 2,
+  suffix,
 }) => {
-  console.log("subTextCenter", subTextCenter);
   return (
     <MainItemCard
       className={`menuListCard ${danger ? "danger" : ""} ${
@@ -78,6 +79,11 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
           )}
         </div>
       )}
+      {suffix ? (
+        <div className={`cardRightSuffix ${disabled ? "disabled" : ""}`}>
+          {suffix}
+        </div>
+      ) : null}
     </MainItemCard>
   );
 };
