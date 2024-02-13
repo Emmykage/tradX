@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   AdvancePlusIcon,
   ArrowUpOS,
@@ -8,11 +9,24 @@ import {
   TradeStopIcon,
 } from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
+import Modal from "../../../../../components/modal/Modal";
 import "./tradersWay.scss";
 
 interface TradersWayMenuProps {}
 
+type TraderOption = {
+  title: string;
+  value: string;
+  subtitle: string;
+  icon: React.ReactNode;
+  active?: boolean;
+  description?: string;
+};
+
 const TradersWayMenu: React.FunctionComponent<TradersWayMenuProps> = () => {
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<TraderOption | null>(null);
+
   const CardSuffix = ({
     icon,
     text,
@@ -32,13 +46,15 @@ const TradersWayMenu: React.FunctionComponent<TradersWayMenuProps> = () => {
     </div>
   );
 
-  const traderOptions = [
+  const traderOptions: TraderOption[] = [
     {
       title: "Barcode",
       value: "1",
       subtitle: "Trading Strategy",
       icon: <StrategyIcon color="#0094FF" />,
       active: true,
+      description:
+        "This strategy is based on the DeMarker oscillator and works best on volatile currency pairs.",
     },
     {
       title: "Kind Martin",
@@ -142,9 +158,27 @@ const TradersWayMenu: React.FunctionComponent<TradersWayMenuProps> = () => {
             title={item.title}
             icon={<NumberIcon value={item.value} />}
             suffix={<CardSuffix text={item.subtitle} icon={item.icon} />}
+            onClick={() => {
+              if (item.active) {
+                setModalOpen(true);
+                setSelectedItem(item);
+              }
+            }}
           />
         ))}
       </div>
+
+      <Modal
+        open={isModalOpen}
+        setOpen={setModalOpen}
+        rootClassName="tradersWayModal"
+      >
+        <div className="modalBadge">{selectedItem?.subtitle}</div>
+        {/* <div className="modalIcon">{selectedItem?.icon}</div> */}
+        <p className="modalHeading">{selectedItem?.title}</p>
+        <p className="modalText">{selectedItem?.description}</p>
+        <button className="modalButton">Use</button>
+      </Modal>
     </div>
   );
 };
