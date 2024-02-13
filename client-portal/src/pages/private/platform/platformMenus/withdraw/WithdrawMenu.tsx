@@ -30,7 +30,7 @@ const WithdrawMenu: React.FunctionComponent<WithdrawMenuProps> = () => {
         </div>
       </div>
       <div className="cardRight">
-        <ArrowRightOS />
+        <ArrowRightOS width={""} height={""} />
       </div>
     </div>
   );
