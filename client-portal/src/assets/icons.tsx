@@ -414,7 +414,7 @@ export const CaretDownIcon = () => {
   );
 };
 
-export const CloseIcon = () => (
+export const CloseIcon = ({ color = 'white' }) => (
   <svg
     width="18"
     height="18"
@@ -424,7 +424,7 @@ export const CloseIcon = () => (
   >
     <path
       d="M8.99998 7.11465L15.6 0.514648L17.4853 2.39998L10.8853 8.99998L17.4853 15.6L15.6 17.4853L8.99998 10.8853L2.39998 17.4853L0.514648 15.6L7.11465 8.99998L0.514648 2.39998L2.39998 0.514648L8.99998 7.11465Z"
-      fill="white"
+      fill={color}
     />
   </svg>
 );
