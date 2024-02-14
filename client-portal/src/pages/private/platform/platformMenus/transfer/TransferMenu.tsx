@@ -2,12 +2,10 @@ import { Col, Row } from "antd";
 import {
   DepositsIcon2,
   InfoCircleIcon,
-  InfoCircleIconWhite,
   UsdSquareIcon,
 } from "../../../../../assets/icons";
 import Input from "../../../../../components/input/Input";
 import "./transferMenu.scss";
-import PromoCodeInput from "../../../../../components/promoCodeInpute/PromoCodeInput";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import TransferInput from "../../../../../components/transferInput/TransferInput";
 
