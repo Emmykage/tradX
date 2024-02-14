@@ -6,6 +6,7 @@ interface ContentProps {
   amount: string;
   icon?: boolean;
   cardIcon?: boolean;
+  CountryIcon?: React.ReactNode;
 }
 
 const DepositCard: React.FC<ContentProps> = ({
@@ -13,6 +14,7 @@ const DepositCard: React.FC<ContentProps> = ({
   amount,
   icon,
   cardIcon,
+  CountryIcon,
 }) => {
   return (
     <MenuListCard
@@ -20,6 +22,7 @@ const DepositCard: React.FC<ContentProps> = ({
       className="deposit-card"
       customContent={
         <div className="cardContent">
+          <div>{CountryIcon && CountryIcon}</div>
           <div className="cardLeft">
             <div className="cardTop">
               <div className="cardSubtext">{account}</div>
