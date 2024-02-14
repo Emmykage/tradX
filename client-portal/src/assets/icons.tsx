@@ -144,6 +144,39 @@ export const Trusty4Icon = () => (
   </svg>
 );
 
+export const PakIconSquare = () => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clip-path="url(#clip0_1536_135111)">
+      <rect width="32" height="32" fill="url(#pattern0)" />
+    </g>
+    <defs>
+      <pattern
+        id="pattern0"
+        patternContentUnits="objectBoundingBox"
+        width="1"
+        height="1"
+      >
+        <use href="#image0_1536_135111" transform="scale(0.01)" />
+      </pattern>
+      <clipPath id="clip0_1536_135111">
+        <rect width="32" height="32" fill="white" />
+      </clipPath>
+      <image
+        id="image0_1536_135111"
+        width="100"
+        height="100"
+        href="data:image/png;base64,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"
+      />
+    </defs>
+  </svg>
+);
+
 export const EventIcon = () => {
   return (
     <svg
