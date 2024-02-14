@@ -125,6 +125,91 @@
       background-position: center center, center center;
     }
 
+    &.profitablityStep {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      background: #0b1118;
+      background-image: url("/walkthrough/graph-bg.png"),
+        url("/walkthrough/step-6.png");
+      background-repeat: no-repeat, no-repeat;
+      background-size: 100% 100%, 100% 100%;
+      background-position: center center, center center;
+    }
+
+    &.setInvestmentStep {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background: #0b1118;
+      padding: 0;
+
+      .setInvestmentStepLeft {
+        width: 100%;
+        height: 100%;
+        background-image: url("/walkthrough/graph-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+      }
+
+      .tradingForm {
+        width: 23.125rem;
+        .trade-form {
+          width: 100%;
+        }
+      }
+    }
+
+    &.setDurationStep {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background: #0b1118;
+      padding: 0;
+
+      .setDurationStepLeft {
+        width: 100%;
+        height: 100%;
+        background-image: url("/walkthrough/graph-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+      }
+
+      .tradingForm {
+        width: 23.125rem;
+        .trade-form {
+          width: 100%;
+        }
+      }
+    }
+
+    &.chooeseTradeStep {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background: #0b1118;
+      padding: 0;
+
+      .chooeseTradeStepLeft {
+        width: 100%;
+        height: 100%;
+        background-image: url("/walkthrough/graph-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+      }
+
+      .tradingForm {
+        width: 23.125rem;
+        .trade-form {
+          width: 100%;
+        }
+      }
+    }
+
     .walkthroughHeading {
       font-size: 2.5rem;
       font-weight: 700;
@@ -157,6 +242,37 @@
       top: 3.125rem;
       left: 3.125rem;
       width: 12.0625rem;
+
+      &.active {
+        width: 16.625rem;
+      }
+    }
+  }
+}
+
+.walkthroughTooltip {
+  z-index: 110000;
+
+  &.amountTooltip {
+    .ant-tooltip-inner {
+      width: auto !important;
+    }
+  }
+
+  .ant-tooltip-inner {
+    font-size: 1.625rem;
+    font-weight: 400;
+    width: 24.6875rem;
+    padding: 1.875rem;
+
+    button {
+      width: 100%;
+      height: 5.625rem;
+      font-size: 1.625rem;
+      color: #172331;
+      background-color: #fff;
+      margin-top: 1.25rem;
+      font-weight: 500;
     }
   }
 }
