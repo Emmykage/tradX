@@ -7,6 +7,7 @@ interface InputProps extends OriginalInputProps {
   className?: string;
   icon?: React.ReactNode;
   suffixIcon?: React.ReactNode;
+  variant?: 1 | 2 | 3;
 }
 
 const Input: React.FunctionComponent<InputProps> = ({
@@ -18,11 +19,12 @@ const Input: React.FunctionComponent<InputProps> = ({
   defaultValue,
   onChange,
   type,
+  variant = 2,
   ...rest
 }) => {
   return (
     <MainItemCard
-      variant={2}
+      variant={variant}
       pointer={false}
       className={`input_main ${className ? className : ""}`}
     >
