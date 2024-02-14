@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CloseIcon } from "../../../../assets/icons";
 import "./walkThrough.scss";
 import "./steps/steps.scss";
@@ -8,13 +8,25 @@ import TheCharts from "./steps/TheCharts";
 import ForeCast from "./steps/ForeCast";
 import FixedDuration from "./steps/FixedDuration";
 
-interface WalkThroughProps {}
+interface WalkThroughProps {
+  className?: string;
+  setShowWalkThrough: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const WalkThrough: React.FC<WalkThroughProps> = () => {
+const WalkThrough: React.FC<WalkThroughProps> = ({
+  className,
+  setShowWalkThrough,
+}) => {
   const [step, setStep] = useState<number>(1);
 
+  useEffect(() => {
+    if (step >= 6) {
+      setShowWalkThrough(false);
+    }
+  }, [step]);
+
   return (
-    <div className="walkthroughContainer">
+    <div className={`walkthroughContainer ${className}`}>
       <div className="stepsContainer">
         <div className="steps">
           <p>{step}/11</p>
