@@ -4,6 +4,74 @@
   width: 11.25rem;
   padding: 1rem 1rem 0rem 1rem;
 
+  &.disabled {
+    .amount {
+      background: #283645 !important;
+
+      &.duration {
+        background: #0b1118 !important;
+      }
+    }
+
+    .upNdown {
+      button {
+        background: #283645 !important;
+        cursor: default;
+
+        &.up {
+          &.hint {
+            cursor: pointer;
+            background-color: #00ab1b !important;
+
+            span {
+              color: #fff !important;
+
+              svg {
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+        &.down {
+          &.hint {
+            cursor: pointer;
+            background-color: #f15131 !important;
+
+            span {
+              color: #fff !important;
+
+              svg {
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+        span {
+          color: rgba(255, 255, 255, 0.3) !important;
+
+          svg {
+            opacity: 0.3;
+          }
+        }
+      }
+    }
+
+    .mathButtons {
+      button {
+        background: #283645 !important;
+        width: calc(50% - 5px) !important;
+        cursor: default;
+
+        &.hint {
+          background: #0094ff !important;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
   @media (max-width: 767px) {
     width: 100%;
     position: absolute;
