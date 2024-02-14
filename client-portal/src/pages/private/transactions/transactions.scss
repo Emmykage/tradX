@@ -1,0 +1,75 @@
+.container {
+    padding: 54px 68px 54px 52px;
+    background-color: #F3F6F9;
+    min-height: 100vh;
+}
+
+.tabs-headers {
+    display: flex;
+    margin-bottom: 40px;
+    li {
+        list-style: none;
+        cursor: pointer;
+        margin-right: 24px;
+        padding: 9px 0px;
+        color: #67696D;
+        font-weight: 500;
+        font-size: 14px;
+        &[isActive=true] {
+            color: #0094FF;
+            border-bottom: 2px solid #0094FF;
+        }
+    }
+}
+
+.user-options-bar { 
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #FFF;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    .user-option-control-item{
+        width: 200px;
+        height: 73px;
+        display: flex;
+        flex-direction: column;
+        label {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .ant-select {
+            text-align: center;
+            .ant-select-selector {
+                height: 42px;
+                border-radius: 12px;
+                padding: 8px 0;
+                border: 1px solid rgba(27, 82, 102, 0.5)
+            }
+        }
+    }
+}
+
+.ant-tabs-top >.ant-tabs-nav::before{
+    content: none
+}
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #26292F;
+}
+
+.ant-tabs .ant-tabs-tab-btn{
+    color: #67696D;
+}
+.ant-table-wrapper .ant-table-thead >tr>th{
+    color: #67696D;
+    font-size: 12px;
+    font-weight: 400;
+}
+ant-table-wrapper .ant-table-tbody >tr >td{
+    color: #26292F;
+    font-size: 12px;
+    font-weight: 400;
+}

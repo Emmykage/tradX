@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import {
   WalletIcon,
@@ -34,10 +35,12 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
           setIsRightSubDrawerContent("transfer");
         }}
       />
-      <MenuListCard
-        title="Transaction"
-        icon={<img src="/menu-images/history-icon.png" alt="Transaction" />}
-      />
+      <Link to="/transactions">
+        <MenuListCard
+          title="Transaction"
+          icon={<img src="/menu-images/history-icon.png" alt="Transaction" />}
+        />
+      </Link>
     </div>
   );
 };
