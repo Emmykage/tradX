@@ -2058,10 +2058,16 @@ export const DepositsIcon = () => {
   );
 };
 
-export const SuccessIcon = () => (
+export const SuccessIcon = ({
+  width,
+  height,
+}: {
+  width?: string;
+  height?: string;
+}) => (
   <svg
-    width="54"
-    height="54"
+    width={width ? width : "54"}
+    height={height ? height : "54"}
     viewBox="0 0 54 54"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
