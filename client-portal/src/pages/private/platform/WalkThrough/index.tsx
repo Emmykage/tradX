@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CloseIcon } from "../../../../assets/icons";
 import "./walkThrough.scss";
 import "./steps/steps.scss";
@@ -7,6 +7,10 @@ import Stocks from "./steps/Stocks";
 import TheCharts from "./steps/TheCharts";
 import ForeCast from "./steps/ForeCast";
 import FixedDuration from "./steps/FixedDuration";
+import Profitablity from "./steps/Profitablity";
+import SetInvestment from "./steps/SetInvestment";
+import SetDuration from "./steps/SetDuration";
+import ChooseTrade from "./steps/ChooseTrade";
 
 interface WalkThroughProps {
   className?: string;
@@ -19,23 +23,25 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
 }) => {
   const [step, setStep] = useState<number>(1);
 
-  useEffect(() => {
-    if (step >= 6) {
-      setShowWalkThrough(false);
-    }
-  }, [step]);
-
   return (
     <div className={`walkthroughContainer ${className}`}>
-      <div className="stepsContainer">
-        <div className="steps">
-          <p>{step}/11</p>
+      {step > 0 ? (
+        <div className="stepsContainer">
+          <div className="steps">
+            <p>{step}/11</p>
+          </div>
+          <div className="stepsSeparator"></div>
+          <div
+            className="closeIcon"
+            onClick={() => {
+              setShowWalkThrough(false);
+              setStep(0);
+            }}
+          >
+            <CloseIcon color="#ffffff80" />
+          </div>
         </div>
-        <div className="stepsSeparator"></div>
-        <div className="closeIcon">
-          <CloseIcon color="#ffffff80" />
-        </div>
-      </div>
+      ) : null}
 
       <Welcome className={`${step === 1 ? "active" : ""}`} setStep={setStep} />
       <Stocks className={`${step === 2 ? "active" : ""}`} setStep={setStep} />
@@ -47,6 +53,26 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
       <FixedDuration
         className={`${step === 5 ? "active" : ""}`}
         setStep={setStep}
+      />
+      <Profitablity
+        className={`${step === 6 ? "active" : ""}`}
+        setStep={setStep}
+        open={step === 6}
+      />
+      <SetInvestment
+        className={`${step === 7 ? "active" : ""}`}
+        setStep={setStep}
+        open={step === 7}
+      />
+      <SetDuration
+        className={`${step === 8 ? "active" : ""}`}
+        setStep={setStep}
+        open={step === 8}
+      />
+      <ChooseTrade
+        className={`${step === 9 ? "active" : ""}`}
+        setStep={setStep}
+        open={step === 9}
       />
     </div>
   );
