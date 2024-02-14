@@ -9,15 +9,13 @@ const WithdrawMenu: React.FunctionComponent<WithdrawMenuProps> = () => {
   return (
     <div>
       {/* <div className="withdrawTitle">Withdraw</div> */}
-      <div className="withdrawMenu">
-        <DepositCard
-          CountryIcon={<UsdIcon2 />}
-          account="From USD Account"
-          amount="USD 30"
-          icon
-        />
-        <WithdrawCard />T
-      </div>
+      <DepositCard
+        CountryIcon={<UsdIcon2 />}
+        account="From USD Account"
+        amount="USD 30"
+        icon
+      />
+      <WithdrawCard />
     </div>
   );
 };
