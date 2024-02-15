@@ -216,6 +216,7 @@
       position: absolute;
       left: 0;
       top: 0;
+      z-index: 1;
     }
 
     .walkthroughHeading {
@@ -226,6 +227,7 @@
     }
 
     .walkthroughSubtext {
+      z-index: 1;
       font-size: 1.75rem;
       font-weight: 400;
       color: #fff;
@@ -235,6 +237,7 @@
     }
 
     .walkthroughButton {
+      z-index: 1;
       min-width: 22.5rem;
       height: 4.625rem;
       background: #ff0000;
@@ -246,6 +249,7 @@
     }
 
     .euroUsdButton {
+      z-index: 2;
       position: absolute;
       top: 3.125rem;
       left: 3.125rem;
