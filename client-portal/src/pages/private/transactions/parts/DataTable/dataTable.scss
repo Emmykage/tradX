@@ -1,0 +1,93 @@
+.report-msg-text{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.get-report-btn{
+    padding: 8px 122px;
+    background-color: #0094FF;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    border-radius: 12px;
+    height: 42px;
+    @media screen and (max-width: 425px) {
+        padding: 8px 90px;
+    }
+}
+.report-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .report-msg-text{
+        margin-right: 40px;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        text-align: center;
+        height: 168px;
+        .report-msg-text{
+            margin-bottom: 40px;
+            margin-right: 0px;
+            text-align: center;
+        }
+    }
+}
+.tb-td-transaction-status{
+    background: #000;
+    color: #fff;
+    width: 80px;
+    padding: 8px 0;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-align: center;
+    &[status="pending"]{
+        background: #70808C
+    }
+    &[status="failed"]{
+         background: #ED5444
+    }
+}
+
+.no-data-available-section{
+    height: 146px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+        font-size: 15px;
+        font-weight: 600;
+        color: #67696D
+    }
+}
+
+.custom-table-pc-view{
+     @media screen and (max-width: 768px) {
+         display: none;
+     }
+}
+.custom-table-mobile-view{
+    @media screen and (min-width: 768px) {
+         display: none;
+     }
+}
+
+.custom-transactions-table-item-body{
+    height: 220px;
+    background-color: #fff;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.custom-transactions-table-child{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
