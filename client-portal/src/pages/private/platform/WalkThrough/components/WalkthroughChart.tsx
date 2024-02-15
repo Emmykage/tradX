@@ -14,7 +14,7 @@ interface ChartComponentProps {
     textColor?: string;
     areaTopColor?: string;
     areaBottomColor?: string;
-    gridLines?: string[];
+    gridLines?: string;
   };
 }
 
@@ -25,12 +25,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data, colors }) => {
     textColor = "rgba(255, 255, 255, 0.3)",
     areaTopColor = "rgba(11, 166, 238, 0.2)",
     areaBottomColor = "rgba(11, 166, 238, 0)",
-    gridLines = [
-      "rgba(255, 255, 255, 0)",
-      "rgba(255, 255, 255, 0.2)",
-      "rgba(255, 255, 255, 0.5)",
-      "rgba(255, 255, 255, 0)",
-    ],
+    gridLines = "#ffccff",
   } = colors || {};
 
   const chartContainerRef = useRef<HTMLDivElement>(null);
@@ -45,11 +40,11 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data, colors }) => {
       },
       grid: {
         vertLines: {
-          color: gridLines[1],
+          color: "#16171a",
           visible: true,
         },
         horzLines: {
-          color: gridLines[1],
+          color: "#16171a",
           visible: true,
         },
       },
