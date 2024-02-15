@@ -20,6 +20,7 @@ const TheCharts: React.FC<TheChartsProps> = ({ className, setStep }) => {
     <div className={`walkthroughStep theChartsStep ${className}`}>
       <div className="graphContainerWalkthrough">
         {graphData?.length && <ChartComponent data={graphData} />}
+        <div className="graphOverlay"></div>
       </div>
       <img className="euroUsdButton" src="/walkthrough/eur-usd-btn.png" />
       <p className="walkthroughSubtext">
