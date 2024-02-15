@@ -1,0 +1,252 @@
+.anydesk {
+  background-color: #010006;
+  nav {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+    padding: 4rem;
+    align-items: center;
+    .anydesk-logo {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .anydesk-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+  .rectangle-anydesk-bar {
+    width: 22.813rem;
+    height: 0.813rem;
+    background: linear-gradient(
+      to right,
+      rgba(239, 68, 59, 1),
+      rgba(249, 252, 255, 0)
+    );
+    border-radius: 0.625rem;
+    margin: 10rem 0rem 0rem 6rem;
+    @media (max-width: 768px) {
+      width: 18rem;
+      height: 0.7rem;
+      margin: 7rem 0rem 0rem 4rem;
+    }
+    @media (max-width: 576px) {
+      width: 15rem;
+      height: 0.6rem;
+      margin: 5rem 0rem 0rem 3rem;
+    }
+    @media (max-width: 320px) {
+      width: 10rem;
+      height: 0.4rem;
+      margin: 2rem 0rem 0rem 3rem;
+    }
+  }
+  .anydesk-title {
+    color: white;
+    text-align: center;
+    font-size: 2.813rem;
+    font-weight: 300;
+    line-height: 3.296rem;
+    margin-top: 1rem;
+    padding-bottom: 4rem;
+    @media (max-width: 768px) {
+      font-size: 2.4rem;
+      padding-bottom: 3.5rem;
+    }
+    @media (max-width: 576px) {
+      font-size: 2rem;
+      padding-bottom: 3rem;
+    }
+    @media (max-width: 320px) {
+      font-size: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+  }
+  .anydesk-devices {
+    padding: 3rem;
+    background-color: rgba(239, 68, 59, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .anydesk-devices-row {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      row-gap: 2rem;
+      justify-content: center;
+      .anydesk-devices-col {
+        border-radius: 1.875rem;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.border {
+        border: 1px solid white;
+        }
+      }
+      .anydesk-devices-col-title {
+        margin-top: 1rem;
+        font-size: 1.375rem;
+        font-weight: 400;
+        text-align: center;
+        color: white;
+      }
+    }
+  }
+  .anydesk-download {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8rem 1rem 8rem 8rem;
+    @media (max-width: 1200px) {
+      flex-direction: column-reverse;
+      row-gap: 3rem;
+      padding: 8rem 1rem 8rem 5rem;
+    }
+    @media (max-width: 768px) {
+      padding: 8rem 1rem 8rem 3rem;
+    }
+    @media (max-width: 576px) {
+      padding: 8rem 1rem 8rem 2rem;
+    }
+    @media (max-width: 320px) {
+      padding: 8rem 1rem 8rem 1rem;
+    }
+    .anydesk-download-title {
+      color: white;
+      font-weight: 400;
+      font-size: 2.875rem;
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+      @media (max-width: 576px) {
+        font-size: 2.25rem;
+      }
+      @media (max-width: 320px) {
+        font-size: 2rem;
+      }
+      .anydesk-download-title-span {
+        color: white;
+        font-weight: 700;
+        margin-right: 2rem;
+      }
+    }
+    .rectangle-anydesk-smallbar {
+      width: 28.813rem;
+      height: 0.813rem;
+      background: linear-gradient(
+        to right,
+        rgba(239, 68, 59, 1),
+        rgba(249, 252, 255, 0)
+      );
+      border-radius: 0.625rem;
+      margin: 1.5rem 0rem 1.3rem 0rem;
+      @media (max-width: 768px) {
+        width: 24rem;
+        height: 0.7rem;
+        margin: 1.3rem 0rem 0rem 0rem;
+      }
+      @media (max-width: 576px) {
+        width: 20rem;
+        height: 0.6rem;
+        margin: 1rem 0rem 0rem 0rem;
+      }
+      @media (max-width: 320px) {
+        width: 16rem;
+        height: 0.4rem;
+        margin: 0.7rem 0rem 0rem 0rem;
+      }
+    }
+    .anydesk-download-text {
+      color: white;
+      font-weight: 400;
+      font-size: 2.25rem;
+      @media (max-width: 768px) {
+        font-size: 2.125rem;
+      }
+      @media (max-width: 576px) {
+        font-size: 2rem;
+      }
+      @media (max-width: 320px) {
+        font-size: 1.875rem;
+      }
+    }
+    .anydesk-images {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      .anydesk-image-shadow {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+      }
+      .anydesk-image {
+        position: relative;
+        display: flex;
+        margin: 0 auto;
+        z-index: 20;
+        @media (max-width: 768px) {
+          margin-left: 30vw;
+        }
+        @media (max-width: 576px) {
+          margin-left: 20vw;
+        }
+      }
+    }
+    .anydesk-download-contents {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.5rem;
+      gap: 0.8rem;
+      .anydesk-download-content-tagline {
+        display: flex;
+        gap: 1rem;
+        color: white;
+        font-size: 2.125rem;
+        font-weight: 400;
+        align-items: center;
+      }
+    }
+    .playstore-image-shadow {
+      position: absolute;
+      right: 0;
+      z-index: 10;
+    }
+    .download-button {
+      margin-top: 8rem;
+      background-color: transparent;
+      color: white;
+      font-size: 1.25rem;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 3rem;
+      border: 3px solid;
+      border-color: rgba(239, 68, 59, 1);
+    }
+  }
+}
+
+
+.anydesk-playstore-icons {
+  position: relative;
+  .playstore-image-shadow {
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+  .playstore-image {
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    z-index: 20;
+  }
+}
