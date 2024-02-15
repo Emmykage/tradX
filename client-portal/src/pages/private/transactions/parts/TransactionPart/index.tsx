@@ -6,6 +6,7 @@ import { columns } from '../../dummy';
 import TransactionTable from '../DataTable';
 
 import "../../transactions.scss";
+import "./transaction.scss"
 
 interface TransactionPartProps {
   data: DataType[];
@@ -24,8 +25,8 @@ export const TransactionPart:FC<TransactionPartProps> = ({ data }) => {
     );
   return (
     <>
-      <div className="user-options-bar">
-        <div className="user-option-control-item">
+      <div className="user-options-bar user-options-transactions">
+        <div className="user-option-control-item transaction-part">
           <label>Accounts</label>
           <Select
             onClick={(e) => console.log(e)}
@@ -35,8 +36,8 @@ export const TransactionPart:FC<TransactionPartProps> = ({ data }) => {
           />
         </div>
 
-        <div style={{ display: "flex", alignItems: "end" }}>
-          <div className="user-option-control-item">
+        <div className="user-control-period">
+          <div className="user-option-control-item transaction-part">
             <label>Period</label>
             <Select
               onClick={(e) => console.log(e)}
@@ -55,7 +56,7 @@ export const TransactionPart:FC<TransactionPartProps> = ({ data }) => {
             -
           </span>
 
-          <div className="user-option-control-item">
+          <div className="user-option-control-item transaction-part">
             <label>
               <br />
             </label>
@@ -69,8 +70,8 @@ export const TransactionPart:FC<TransactionPartProps> = ({ data }) => {
           </div>
         </div>
 
-        <div className="user-option-control-item">
-          <label>Accounts</label>
+        <div className="user-option-control-item transaction-part">
+          <label>Transaction Type or Status</label>
           <Select
             onClick={(e) => console.log(e)}
             defaultValue="All Accounts"

@@ -28,8 +28,7 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
   );
 
   return (
-    <div className="container">
-      <div>
+    <div className="transactions-container">
         <ul className="tabs-headers">
           {headers.map((item, index) => (
             <li
@@ -43,7 +42,6 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
           ))}
         </ul>
         {tabsBodyHandler()}
-      </div>
     </div>
   );
 };

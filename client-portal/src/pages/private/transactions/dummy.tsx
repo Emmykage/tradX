@@ -1,5 +1,6 @@
 import { TableColumnsType } from "antd";
 import { DataType } from "./types";
+import { StatusHandler, methodIconHandler } from "./helpers";
 
 export const columns: TableColumnsType<DataType> = [
   {
@@ -43,18 +44,27 @@ export const columns: TableColumnsType<DataType> = [
 export const tableData: DataType[] | [] = [
   {
     dateAndTime: "30th Jan. 2024 07:31:24",
-    type: "Deposit Request no. 7767578987",
-    paymentSystem: "Bank Card",
-    status: "Pending",
+    type: "Deposit\n Request no. 7767578987",
+    paymentSystem: methodIconHandler("Bank Card"),
+    status: <StatusHandler status="pending" />,
     account: "USD Account",
     ammount: "+30.00",
   },
   {
     dateAndTime: "30th Jan. 2024 07:31:24",
     type: `Deposit \n Request no. 7767578987`,
-    paymentSystem: "Bank Card",
-    status: "Failed",
+    paymentSystem: methodIconHandler("Bank Card"),
+    status: <StatusHandler status="failed" />,
     account: "USD Account",
     ammount: "+30.00",
   },
+];
+
+export const accountsOptions = [
+  { value: "all", label: "All Accounts" },
+  { value: "usd", label: "USD Account" },
+  { value: "EUR", label: "EURO Account" },
+  { value: "BTC", label: "BITCOIN Account" },
+  { value: "ETH", label: "ETHIRIOM Account" },
+  { value: "$$", label: "Unknown Account" },
 ];
