@@ -91,12 +91,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      background: #0b1118;
-      background-image: url("/walkthrough/graph-bg.png"),
-        url("/walkthrough/step-3.png");
-      background-repeat: no-repeat, no-repeat;
-      background-size: 100% 100%, 100% 100%;
-      background-position: center center, center center;
+      // background: #0b1118;
+      // background-image: url("/walkthrough/graph-bg.png"),
+      //   url("/walkthrough/step-3.png");
+      // background-repeat: no-repeat, no-repeat;
+      // background-size: 100% 100%, 100% 100%;
+      // background-position: center center, center center;
     }
 
     &.forecastStep {
@@ -208,6 +208,14 @@
           width: 100%;
         }
       }
+    }
+
+    .graphContainerWalkthrough {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
     }
 
     .walkthroughHeading {
