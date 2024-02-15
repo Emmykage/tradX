@@ -3069,7 +3069,7 @@ export const TickMarkIcon = () => (
 
 export const AnydeskWindowsIcon = () => (
   <svg
-    width="620"
+    width="520"
     height="403"
     viewBox="0 0 620 403"
     fill="none"
@@ -3100,7 +3100,7 @@ export const AnydeskWindowsIcon = () => (
 
 export const AnydeskMacIcon = () => (
   <svg
-    width="538"
+    width="498"
     height="348"
     viewBox="0 0 538 348"
     fill="none"
@@ -3255,7 +3255,7 @@ export const AnydeskAndroidIcon = () => (
 
 export const AnydeskChromeIcon = () => (
   <svg
-    width="620"
+    width="580"
     height="403"
     viewBox="0 0 620 403"
     fill="none"

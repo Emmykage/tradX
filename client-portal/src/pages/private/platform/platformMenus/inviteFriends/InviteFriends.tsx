@@ -22,7 +22,7 @@ const InviteFriends: React.FunctionComponent<InviteFriendsProps> = ({
   const magicBoxAction = () => {
     setIsRightSubDrawerOpen(true);
     setIsRightSubDrawerContent("mega-box-rewards");
-  }
+  };
 
   return (
     <div>

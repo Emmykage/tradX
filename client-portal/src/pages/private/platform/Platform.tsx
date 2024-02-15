@@ -37,9 +37,9 @@ import TradersWayMenu from "./platformMenus/tradersWay/TradersWayMenu";
 import TradingPlatform from "./platformMenus/tradingPlatform/TradingPlatform";
 import TradingPlatformInfo from "./platformMenus/tradingPlatformInfo/TradingPlatformInfo";
 import OlympTradeInfo from "./platformMenus/olympTradeInfo/OlympTradeInfo";
-import InviteFriends from "./platformMenus/InviteFriends/InviteFriends";
 import VerifyPayment from "./platformMenus/VerifyPayment/VerifyPayment";
 import MagicBoxRewards from "./platformMenus/MagicBoxRewards/MagicBoxRewards";
+import InviteFriends from "./platformMenus/inviteFriends/InviteFriends";
 
 interface PlatformProps {}
 

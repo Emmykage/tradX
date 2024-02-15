@@ -31,8 +31,8 @@ const Download = () => {
         <Link to="/downloads/anydesk" className="download-anydesk">
           AnyDesk
         </Link>
-        <Link to="/downloads/teamviewer">
-          <div className="download-teamviewer">TeamViewerL</div>
+        <Link className="download-teamviewer" to="/downloads/teamviewer">
+          TeamViewer
         </Link>
       </div>
       <div className="rectangle-download-links"></div>
