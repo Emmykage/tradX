@@ -37,6 +37,9 @@ import TradersWayMenu from "./platformMenus/tradersWay/TradersWayMenu";
 import TradingPlatform from "./platformMenus/tradingPlatform/TradingPlatform";
 import TradingPlatformInfo from "./platformMenus/tradingPlatformInfo/TradingPlatformInfo";
 import OlympTradeInfo from "./platformMenus/olympTradeInfo/OlympTradeInfo";
+import InviteFriends from "./platformMenus/InviteFriends/InviteFriends";
+import VerifyPayment from "./platformMenus/VerifyPayment/VerifyPayment";
+import MagicBoxRewards from "./platformMenus/MagicBoxRewards/MagicBoxRewards";
 
 interface PlatformProps {}
 
@@ -245,6 +248,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Profile"
               : rightDrawerContent === "verification"
               ? "Verification"
+              : rightDrawerContent === "verify-payment"
+              ? "Confirm Payment"
               : ""
           }
           placement="right"
@@ -316,6 +321,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               ? "Add an account"
               : rightSubDrawerContent === "traders-way"
               ? "Trader`s Way"
+              : rightSubDrawerContent === "invite-friends"
+              ? "Invite Friends & Get Rewards"
               : ""
           }
           extra={
@@ -363,6 +370,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               </div>
             ) : rightSubDrawerContent === "select-account" ? (
               <div onClick={() => setIsRightSubDrawerContent("transfer")}>
+                <ArrowLeftOS />
+              </div>
+            ) : rightSubDrawerContent === "verify-payment" ||
+              rightSubDrawerContent === "mega-box-rewards" ? (
+              <div onClick={() => setIsRightSubDrawerContent("invite-friends")}>
                 <ArrowLeftOS />
               </div>
             ) : (
@@ -426,6 +438,15 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             <AddAccountMenu />
           ) : rightSubDrawerContent === "traders-way" ? (
             <TradersWayMenu />
+          ) : rightSubDrawerContent === "verify-payment" ? (
+            <VerifyPayment />
+          ) : rightSubDrawerContent === "mega-box-rewards" ? (
+            <MagicBoxRewards />
+          ) : rightSubDrawerContent === "invite-friends" ? (
+            <InviteFriends
+              setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+            />
           ) : (
             <></>
           )}
