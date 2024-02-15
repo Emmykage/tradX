@@ -1,0 +1,29 @@
+.card-container {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(126.82deg, #1A237B 8.58%, #040B21 62.18%);
+    height: 284px;
+    width: 100%;
+
+    .magic-card-text{
+        width: 50%;
+        text-align: center;
+        .referalRewardsText {
+        color: #0094FF;
+        font-size: 27.29px;
+        font-weight: 700;
+        margin-top: 11px;
+        }
+        .megabox-text {
+        color: #ffffff;
+        font-size: 27.29px;
+        font-weight: 500;
+        margin-bottom: 31px;
+        }
+        .ant-btn-default {
+            background-color: #2D2E31;
+            color: #fff;
+            border: none;
+         }
+    }
+  }

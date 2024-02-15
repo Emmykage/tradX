@@ -1,0 +1,67 @@
+.magic-box-image-box {
+    width: 100%;
+    height: 305.66px;
+    background: linear-gradient(126.82deg, #1A237B 8.58%, #040B21 62.18%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top:0px;
+    left: 0px;
+    z-index: -1;
+    span {
+        color: #fff;
+        font-size: 29.37px;
+        font-weight: 500;
+        margin-top: 22px;
+    }
+}
+.magic-box-text-box{
+    position:absolute;
+    top:305.66px;
+    left: 0px;
+    p {
+        color: #969798;
+        width: 100%;
+        line-height: 18.75px;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        padding: 0 5rem;
+        margin: 43px 0;
+    }
+}
+
+.magic-box-possible-rewards{
+    position:absolute;
+    top: 45%;
+    .rewards-title{
+        color: #fff;
+    }
+    span {
+        font-size: 23px;
+        font-weight: 500;
+        margin: 0 1rem;
+    }
+    .settingsButton{
+        width: 411px;
+        margin-bottom: 28px;
+        .settings{
+            justify-content: flex-start;
+            img {
+                margin-right: 1rem;
+            }
+            p {
+                text-align: left;
+            }
+            .reward-key{
+                color: #969798;
+                margin-bottom: 4px;
+            }
+            .reward-value{
+
+            }
+        }
+    }
+}
