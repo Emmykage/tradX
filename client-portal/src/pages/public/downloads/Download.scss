@@ -58,6 +58,8 @@
     }
 
     .download-anydesk {
+      text-decoration: none;
+      color: white;
       font-size: 1.875rem;
       font-weight: 700;
       margin-top: 1rem;
@@ -72,6 +74,8 @@
       }
     }
     .download-teamviewer {
+      text-decoration: none;
+      color: white;
       font-size: 1.875rem;
       font-weight: 700;
       margin-top: 1rem;
@@ -103,7 +107,7 @@
     }
     @media (max-width: 576px) {
       width: 15rem;
-        height: 0.6rem;
+      height: 0.6rem;
     }
     @media (max-width: 320px) {
       width: 10rem;

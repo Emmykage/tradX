@@ -5,6 +5,7 @@ import SignIn from "./pages/public/signIn/SignIn";
 import { useEffect } from "react";
 import Download from "./pages/public/downloads/Download";
 import Transactions from "./pages/private/transactions/Transactions";
+import Anydesk from "./pages/public/anydesk/Anydesk";
 
 interface AppProps {}
 
@@ -31,6 +32,8 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="transactions" element={<Transactions />} />
         <Route path="/lender" element={<Lender />} />
         <Route path="/downloads" element={<Download />} />
+        <Route path="/downloads/anydesk" element={<Anydesk />} />
+        <Route path="/downloads/teamviewer" element={<div>Team viewer</div>} />
       </Routes>
     </HashRouter>
   );
