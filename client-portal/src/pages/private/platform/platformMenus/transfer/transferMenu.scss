@@ -1,4 +1,17 @@
 .transferMenu {
+  padding: 1.5rem;
+  .withdrawTitle {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2.25rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.1rem;
+  }
+  .promoCodeInput {
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
   .currencyInput {
     margin-bottom: 0.9375rem;
   }

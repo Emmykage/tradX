@@ -1,16 +1,15 @@
 import { Input as InputOriginal, InputProps as OriginalInputProps } from "antd";
 import MainItemCard from "../mainItemCard/MainItemCard";
-import "./input.scss";
+import "./PromoCodeInput.scss";
 
 interface InputProps extends OriginalInputProps {
   title?: string;
   className?: string;
   icon?: React.ReactNode;
   suffixIcon?: React.ReactNode;
-  variant?: 1 | 2 | 3;
 }
 
-const Input: React.FunctionComponent<InputProps> = ({
+const PromoCodeInput: React.FunctionComponent<InputProps> = ({
   placeholder,
   title,
   className,
@@ -19,14 +18,13 @@ const Input: React.FunctionComponent<InputProps> = ({
   defaultValue,
   onChange,
   type,
-  variant = 2,
   ...rest
 }) => {
   return (
     <MainItemCard
-      variant={variant}
+      variant={2}
       pointer={false}
-      className={`input_main ${className ? className : ""}`}
+      className={`Promo-input ${className ? className : ""}`}
     >
       {icon ? <div className="inputIcon">{icon}</div> : null}
       <div className="inputContainer">
@@ -44,4 +42,4 @@ const Input: React.FunctionComponent<InputProps> = ({
   );
 };
 
-export default Input;
+export default PromoCodeInput;

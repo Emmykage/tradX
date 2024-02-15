@@ -1,0 +1,46 @@
+
+
+.deposit-card {
+  border: 0.01rem solid #27a2ff;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  .cardContent {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  column-gap: 0.75rem;
+  .cardLeft {
+    width: 100%;
+    .cardTop {
+      display: flex;
+
+      .cardSubtext {
+        font-size: 0.75rem;
+        font-weight: 400;
+        margin-bottom: 0.2rem;
+        color: white;
+      }
+    }
+    .cardBottom {
+      display: flex;
+      align-items: center;
+      .cardTitle {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: white;
+      }
+    }
+  }
+
+  .cardRight {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    svg {
+      width: 2.5rem;
+    }
+  }
+}
+}
