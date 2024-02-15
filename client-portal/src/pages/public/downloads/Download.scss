@@ -1,84 +1,133 @@
 .downloads {
-    background-color: #010006;
-    nav {
-        display: flex;
-        flex-direction: row;
-        color: white;
-        justify-content: center;
-        padding-top: 3.813rem;
-        align-items: center;
-        padding-right: 5%;
+  background-color: #010006;
+  nav {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    padding-top: 3.813rem;
+    align-items: center;
+    padding-right: 5%;
 
-        .nav-items-start {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            padding: 0 20px;
-            gap: 3.813rem;
-        }
+    .nav-items-start {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding: 0 20px;
+      gap: 3.813rem;
+    }
 
-        .nav-items-end {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            width: 100%;
-            padding: 0 20px;
-            gap: 20px;
-        }
+    .nav-items-end {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+      padding: 0 20px;
+      gap: 20px;
     }
-   
-    .downloads-links {
-        color: white;
-        display: flex;
-        padding-top: 10.813rem - 3.813rem;
-        gap: 2rem;
-        padding: 5rem 0rem 0rem 6.5rem;
+  }
 
-        .download-links-version {
-            font-weight: 500;
-            font-size: 2.125rem;
-            line-height: 2.49rem;
-        }
+  .downloads-links {
+    color: white;
+    display: flex;
+    padding-top: 10.813rem - 3.813rem;
+    gap: 2rem;
+    padding: 5rem 0rem 0rem 6.5rem;
 
-        .download-anydesk {
-            font-size: 1.875rem;
-            font-weight: 700;
-            line-height: 2.198rem;
-            margin-top: 1rem;
-        }
-        .download-teamviewer{
-            font-size: 1.875rem;
-            font-weight: 700;
-            line-height: 2.198rem;
-            margin-top: 1rem;
-        }
+    @media (max-width: 768px) {
+      flex-direction: row;
+      align-items: center;
+      padding: 5rem 0rem 0rem 1rem;
+      gap: 1rem;
     }
-    .rectangle-download-links{
-        width: 22.813rem;
-        height: 0.813rem;
-        background: linear-gradient(to right, rgba(39, 162, 255, 1), rgba(249, 252, 255, 0));
-        border-radius: 0.625rem;
-        margin: 1rem 0rem 0rem 6.5rem;
+
+    .download-links-version {
+      font-weight: 500;
+      font-size: 2.125rem;
+      color: white;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+      @media (max-width: 576px) {
+        font-size: 1.5rem;
+      }
+      @media (max-width: 320px) {
+        font-size: 1rem;
+      }
     }
-    .downloads-platforms {
-        margin: 1.5rem 0rem 0rem 6.5rem;
-        color: white;
-        font-weight: 400;
-        font-size: 1.375rem;
+
+    .download-anydesk {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      @media (max-width: 768px) {
+        font-size: 1.4rem;
+      }
+      @media (max-width: 576px) {
+        font-size: 1rem;
+      }
+      @media (max-width: 320px) {
+        font-size: 0.7rem;
+      }
     }
-    .row {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 8rem;
-        padding-bottom: 7rem;
-        align-items: center;
-        justify-content: center;
-        row-gap: 3rem;
-        flex-wrap: wrap;
-        img {
-            width: 95%;
-            height: auto;
-        }
+    .download-teamviewer {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      @media (max-width: 768px) {
+        font-size: 1.4rem;
+      }
+      @media (max-width: 576px) {
+        font-size: 1rem;
+      }
+      @media (max-width: 320px) {
+        font-size: 0.7rem;
+      }
     }
+  }
+  .rectangle-download-links {
+    width: 22.813rem;
+    height: 0.813rem;
+    background: linear-gradient(
+      to right,
+      rgba(39, 162, 255, 1),
+      rgba(249, 252, 255, 0)
+    );
+    border-radius: 0.625rem;
+    margin: 1rem 0rem 0rem 6.5rem;
+    @media (max-width: 768px) {
+      width: 18rem;
+      height: 0.7rem;
+      margin: 1rem 0rem 0rem 1rem;
+    }
+    @media (max-width: 576px) {
+      width: 15rem;
+        height: 0.6rem;
+    }
+    @media (max-width: 320px) {
+      width: 10rem;
+      height: 0.4rem;
+    }
+  }
+  .downloads-platforms {
+    margin: 1.5rem 0rem 0rem 6.5rem;
+    color: white;
+    font-weight: 400;
+    font-size: 1.375rem;
+  }
+  .row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 8rem;
+    padding-bottom: 7rem;
+    align-items: center;
+    justify-content: center;
+    row-gap: 3rem;
+    flex-wrap: wrap;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 }
-

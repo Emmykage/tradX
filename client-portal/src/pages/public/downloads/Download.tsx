@@ -1,6 +1,6 @@
 import "./Download.scss";
 import { EyeIcon, NotificationIcon, SearchIcon } from "../../../assets/icons";
-import { Col, Row } from "antd";
+import { Col, Row, Typography } from "antd";
 
 const Download = () => {
   return (
@@ -31,36 +31,36 @@ const Download = () => {
         </div>
       </nav>
       <div className="downloads-links">
-        <div className="download-links-version">
+        <Typography.Title className="download-links-version">
           Download the right version for you
-        </div>
+        </Typography.Title>
         <div className="download-anydesk">AnyDesk</div>
         <div className="download-teamviewer">TeamViewer</div>
       </div>
       <div className="rectangle-download-links"></div>
       <div className="downloads-platforms">All platforms .All devices</div>
       <Row className="row">
-        <Col span={6}>
+        <Col xs={24} sm={12} md={8} lg={6}>
           <img className="windows" src="/downloads/Windows.png" alt="windows" />
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={12} md={8} lg={6}>
           <img className="macos" src="/downloads/macOS.png" alt="windows" />
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={12} md={8} lg={6}>
           <img
             className="chrome"
             src="/downloads/Chrome OS.png"
             alt="windows"
           />
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={12} md={8} lg={6}>
           <img
             className="group89"
             src="/downloads/Group 89.png"
             alt="windows"
           />
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={12} md={8} lg={6}>
           <img className="android" src="/downloads/Android.png" alt="windows" />
         </Col>
       </Row>
