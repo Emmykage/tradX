@@ -1,12 +1,14 @@
 .anydesk {
   background-color: #010006;
+  padding: 4rem;
   nav {
     display: flex;
     flex-direction: row;
     color: white;
     justify-content: space-between;
-    padding: 4rem;
+
     align-items: center;
+
     .anydesk-logo {
       width: 100%;
       display: flex;
@@ -16,7 +18,14 @@
       display: flex;
       align-items: center;
       gap: 2rem;
+      @media (max-width: 992px) {
+        display: none;
+      }
     }
+  }
+  .nav-top {
+    margin-top: -8rem;
+    margin-bottom: 19rem;
   }
   .rectangle-anydesk-bar {
     width: 22.813rem;
@@ -84,7 +93,7 @@
         align-items: center;
         justify-content: center;
         &.border {
-        border: 1px solid white;
+          border: 1px solid white;
         }
       }
       .anydesk-devices-col-title {
@@ -219,7 +228,7 @@
       z-index: 10;
     }
     .download-button {
-      margin-top: 8rem;
+      margin-top: 6rem;
       background-color: transparent;
       color: white;
       font-size: 1.25rem;
@@ -231,11 +240,60 @@
       border-color: rgba(239, 68, 59, 1);
     }
   }
+  .hamburger-icon {
+    display: none;
+    @media (max-width: 992px) {
+      display: block;
+      padding: 4rem;
+      z-index: 100;
+    }
+    .ham-line-1,
+    .ham-line-2,
+    .ham-line-3 {
+      width: 2.5rem;
+      height: 0.25rem;
+      background-color: white;
+      margin: 0.5rem 0;
+    }
+  }
+  .hamburger-icon-cross {
+    display: none;
+    @media (max-width: 992px) {
+      display: block;
+      padding: 4rem;
+      z-index: 100;
+    }
+    .ham-cross-1 {
+      width: 2.5rem;
+      height: 0.25rem;
+      background-color: white;
+      margin: -0.7rem 0px;
+      rotate: 45deg;
+    }
+    .ham-cross-2 {
+      width: 2.5rem;
+      height: 0.25rem;
+      background-color: white;
+      margin: 0.5rem 0;
+      rotate: -45deg;
+    }
+  }
+  .mobile-anydesk-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 12rem;
+    right: 3rem;
+  }
 }
-
 
 .anydesk-playstore-icons {
   position: relative;
+  margin-top: 3rem;
   .playstore-image-shadow {
     position: absolute;
     left: 25%;

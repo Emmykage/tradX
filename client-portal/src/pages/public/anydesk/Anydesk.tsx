@@ -22,6 +22,7 @@ import {
   WindowsIcon,
 } from "../../../assets/icons";
 import "./Anydesk.scss";
+import { useState } from "react";
 
 const AnydeskContentList = [
   {
@@ -101,9 +102,15 @@ const icons = [
 ];
 
 const Anydesk = () => {
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const handleNavigationToggle = () => {
+    setToggleMenu(!toggleMenu);
+  };
+
   return (
     <div className="anydesk">
-      <nav>
+      <nav className={`${toggleMenu ? "nav-top" : ""}`}>
         <div className="anydesk-logo">
           <AnydeskLogo />
         </div>
@@ -117,7 +124,35 @@ const Anydesk = () => {
           <NotificationIcon3 />
           <ProfileIcon2 />
         </div>
+        {toggleMenu && (
+          <div className="mobile-anydesk-links">
+            <p>Download</p>
+            <p>Movement</p>
+            <p>Bills</p>
+            <p>Support</p>
+            <SearchIcon />
+            <EyeIcon />
+            <NotificationIcon3 />
+            <ProfileIcon2 />
+          </div>
+        )}
+        {!toggleMenu ? (
+          <div onClick={handleNavigationToggle} className="hamburger-icon">
+            <div className="ham-line-1"></div>
+            <div className="ham-line-2"></div>
+            <div className="ham-line-3"></div>
+          </div>
+        ) : (
+          <div
+            onClick={handleNavigationToggle}
+            className="hamburger-icon-cross"
+          >
+            <div className="ham-cross-1"></div>
+            <div className="ham-cross-2"></div>
+          </div>
+        )}
       </nav>
+
       <div className="rectangle-anydesk-bar"></div>
       <Typography.Title className="anydesk-title">
         All Platforms. All Devices.
