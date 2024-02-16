@@ -26,6 +26,7 @@ export type LeftSubDrawer =
     | "settings"
     | "twofactor"
     | "personalSettings"
+    | "verification"
     | "appearance"
     | "transfer"
     | "trading"

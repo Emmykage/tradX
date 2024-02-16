@@ -35,7 +35,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           title="Verification"
           subtitle="Full check and identity confirmation"
           icon={<CheckMark />}
-          // onClick={() => setIsRightSubDrawerContent("personalSettings")}
+          onClick={() => setIsRightSubDrawerContent("verification")}
         />
         <MenuListCard
           title="Two-factor authentication"

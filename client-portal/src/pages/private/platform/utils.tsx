@@ -33,11 +33,13 @@ import AddAccountMenu from "./platformMenus/add-account/AddAccount";
 import TradersWayMenu from "./platformMenus/tradersWay/TradersWayMenu";
 import VerifyPayment from "./platformMenus/VerifyPayment/VerifyPayment";
 import MagicBoxRewards from "./platformMenus/MagicBoxRewards/MagicBoxRewards";
-import InviteFriends from "./platformMenus/InviteFriends/InviteFriends";
+import InviteFriends from "./platformMenus/inviteFriends/InviteFriends";
 import { ArrowLeftOS } from "../../../assets/icons";
 
 // Left Drawer Handlers
-export function leftDarwerTitleHandler(currentDrawer: CurrentDrawerType): string {
+export function leftDarwerTitleHandler(
+  currentDrawer: CurrentDrawerType
+): string {
   switch (currentDrawer) {
     case "trades":
       return "Trades";
@@ -80,7 +82,9 @@ export function leftDrawerBodyHandler(
 }
 
 // Left Sub Drawer Handlers
-export function leftSubDrawerTitleHandler(leftSubDrawer: LeftSubDrawer): string {
+export function leftSubDrawerTitleHandler(
+  leftSubDrawer: LeftSubDrawer
+): string {
   switch (leftSubDrawer) {
     case "help-center":
       return "Help Center";
@@ -132,14 +136,12 @@ export function rightDrawerTitleHandler(
     default:
       return "";
   }
-};
+}
 
 export function rightDrawerBodyHandler(
   rightDrawerContent: RightDrawerContent,
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>,
-  setIsRightSubDrawerContent: Dispatch<
-    SetStateAction<RightSubDrawerContent>
-  >
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>
 ): JSX.Element | null {
   switch (rightDrawerContent) {
     case "payments":
@@ -168,7 +170,7 @@ export function rightDrawerBodyHandler(
     default:
       return null;
   }
-};
+}
 
 // Right Sub Drawer Handlers
 export function rightSubDrawerTitleHandler(
@@ -181,6 +183,8 @@ export function rightSubDrawerTitleHandler(
       return "Two-factor Authentication";
     case "personalSettings":
       return "Personal settings";
+    case "verification":
+      return "Verification";
     case "appearance":
       return "Appearance";
     case "transfer":
@@ -230,6 +234,8 @@ export function rightSubDrawerBodyHandler(
       );
     case "twofactor":
       return <TwoFactorMenu />;
+    case "verification":
+      return <VerificationMenu />;
     case "personalSettings":
       return (
         <PersonalSettingsMenu
@@ -282,7 +288,6 @@ export function rightSubDrawerBodyHandler(
   }
 }
 
-
 export function rightSubDrawerExtraHandler(
   rightSubDrawerContent: RightSubDrawerContent,
   setIsRightSubDrawerOpen: Dispatch<React.SetStateAction<boolean>>,
@@ -292,6 +297,7 @@ export function rightSubDrawerExtraHandler(
 ): JSX.Element | null {
   switch (rightSubDrawerContent) {
     case "twofactor":
+    case "verification":
     case "personalSettings":
     case "appearance":
     case "trading":
