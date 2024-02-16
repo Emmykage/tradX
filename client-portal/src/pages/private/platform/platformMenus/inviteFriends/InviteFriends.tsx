@@ -3,7 +3,7 @@ import { ArrowRightOS, InfoCircleIconWhite } from "../../../../../assets/icons";
 import MagicBoxCard from "../../../../../components/MagicBoxCard/MagicBoxCard";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 
-import "./InviteFriends.scss";
+import "./inviteFriends.scss";
 import { RightSubDrawerContent } from "../../types";
 
 interface InviteFriendsProps {

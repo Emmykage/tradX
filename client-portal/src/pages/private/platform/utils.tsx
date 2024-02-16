@@ -33,14 +33,13 @@ import AddAccountMenu from "./platformMenus/add-account/AddAccount";
 import TradersWayMenu from "./platformMenus/tradersWay/TradersWayMenu";
 import VerifyPayment from "./platformMenus/VerifyPayment/VerifyPayment";
 import MagicBoxRewards from "./platformMenus/MagicBoxRewards/MagicBoxRewards";
-import InviteFriends from "./platformMenus/InviteFriends/InviteFriends";
+import InviteFriends from "./platformMenus/inviteFriends/InviteFriends";
 import { ArrowLeftOS } from "../../../assets/icons";
 import Deposit from "./platformMenus/deposit/Deposit";
 import SelectAmountMenu from "./platformMenus/selectAmountMenu/SelectAmountMenu";
 import CardDetailsMenu from "./platformMenus/cardDetailsMenu/CardDetailsMenu";
 import PromoCodes from "./platformMenus/promoCodes/PromoCodes";
 import WithdrawAccount from "./platformMenus/withdrawAccount/WithdrawAccount";
-import TransferAccountSelectMenu from "./platformMenus/transferAccountSelectMenu/TransferAccountSelectMenu";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(currentDrawer: CurrentDrawerType): string {
