@@ -14,8 +14,6 @@ const TheCharts: React.FC<TheChartsProps> = ({ className, setStep }) => {
     setGraphData(staticData);
   }, []);
 
-  console.log("staticData", staticData);
-
   return (
     <div className={`walkthroughStep theChartsStep ${className}`}>
       <div className="graphContainerWalkthrough">
