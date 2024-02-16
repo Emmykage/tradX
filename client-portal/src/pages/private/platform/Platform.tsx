@@ -5,41 +5,26 @@ import TradeForm from "../../../components/tradeForm/TradeForm";
 import "./platform.scss";
 import { Drawer } from "antd";
 import { ArrowLeftOS, CloseIcon } from "../../../assets/icons";
-import TradesMenu from "./platformMenus/trades/TradesMenu";
-import MarketMenu from "./platformMenus/market/MarketMenu";
-import EventsMenu from "./platformMenus/events/EventsMenu";
-import HelpMenu from "./platformMenus/help/HelpMenu";
-import PaymentsMenu from "./platformMenus/payments/PaymentsMenu";
 import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
-import ProfileMenu from "./platformMenus/profile/ProfileMenu";
-import AccountMenu from "./platformMenus/account/AccountMenu";
-import TwoFactorMenu from "./platformMenus/twoFactor/TwoFactorMenu";
-import SettingsMenu from "./platformMenus/settings/SettingsMenu";
-import VerificationMenu from "./platformMenus/verification/VerificationMenu";
-import PersonalSettingsMenu from "./platformMenus/personalSettings/PersonalSettingsMenu";
-import AppearanceMenu from "./platformMenus/appearance/AppearanceMenu";
-import TransferMenu from "./platformMenus/transfer/TransferMenu";
-import TradingMenu from "./platformMenus/trading/TradingMenu";
-import NotificationsMenu from "./platformMenus/notifications/NotificationsMenu";
-import BarcodeMenu from "./platformMenus/barcode/BarcodeMenu";
-import AssetsMenu from "./platformMenus/assets/AssetsMenu";
-import HelpCenter from "./platformMenus/helpCenter/HelpCenter";
-import SupportMenu from "./platformMenus/support/SupportMenu";
-import UserNotificationsMenu from "./platformMenus/userNotifications/UserNotificationsMenu";
-import ChangePassword from "./platformMenus/changePassword/ChangePassword";
-import EditName from "./platformMenus/editName/EditName";
-import ConfirmMail from "./platformMenus/confirmMail/ConfirmMail";
-import ConfirmPhone from "./platformMenus/confirmPhone/ConfirmPhone";
-import SelectAccount from "./platformMenus/selectAccount/SelectAccount";
-import WithdrawMenu from "./platformMenus/withdraw/WithdrawMenu";
-import AddAccountMenu from "./platformMenus/add-account/AddAccount";
-import TradersWayMenu from "./platformMenus/tradersWay/TradersWayMenu";
-import TradingPlatform from "./platformMenus/tradingPlatform/TradingPlatform";
-import TradingPlatformInfo from "./platformMenus/tradingPlatformInfo/TradingPlatformInfo";
-import OlympTradeInfo from "./platformMenus/olympTradeInfo/OlympTradeInfo";
-import VerifyPayment from "./platformMenus/VerifyPayment/VerifyPayment";
-import MagicBoxRewards from "./platformMenus/MagicBoxRewards/MagicBoxRewards";
-import InviteFriends from "./platformMenus/inviteFriends/InviteFriends";
+
+import {
+  leftDarwerTitleHandler,
+  leftDrawerBodyHandler,
+  leftSubDrawerBodyHandler,
+  leftSubDrawerTitleHandler,
+  rightDrawerBodyHandler,
+  rightDrawerTitleHandler,
+  rightSubDrawerBodyHandler,
+  rightSubDrawerExtraHandler,
+  rightSubDrawerTitleHandler,
+} from "./utils";
+
+import {
+  CurrentDrawerType,
+  LeftSubDrawer,
+  RightDrawerContent,
+  RightSubDrawerContent,
+} from "./types";
 
 interface PlatformProps {}
 
@@ -48,18 +33,14 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [isLeftSubDrawerOpen, setIsLeftSubDrawerOpen] =
     useState<boolean>(false);
   const [isRightDrawerOpen, setIsRightDrawerOpen] = useState<boolean>(false);
-  const [rightDrawerContent, setIsRightDrawerContent] = useState<string | null>(
-    null
-  );
+  const [rightDrawerContent, setIsRightDrawerContent] =
+    useState<RightDrawerContent>(null);
   const [isRightSubDrawerOpen, setIsRightSubDrawerOpen] =
     useState<boolean>(false);
-  const [rightSubDrawerContent, setIsRightSubDrawerContent] = useState<
-    string | null
-  >(null);
-  const [currentDrawer, setCurrentDrawer] = useState<
-    "trades" | "market" | "events" | "help" | "assets" | null
-  >(null);
-  const [leftSubDrawer, setLeftSubDrawer] = useState<string | null>(null);
+  const [rightSubDrawerContent, setIsRightSubDrawerContent] =
+    useState<RightSubDrawerContent>(null);
+  const [currentDrawer, setCurrentDrawer] = useState<CurrentDrawerType>(null);
+  const [leftSubDrawer, setLeftSubDrawer] = useState<LeftSubDrawer>(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [topbarHeight, setTopbarHeight] = useState(0);
   const [tradeFormHeight, setTradeFormHeight] = useState(0);
@@ -112,11 +93,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const res = window.document;
-  //   console.log(res);
-  // });
-
   const MainSidebar = ({ id }: { id?: string }) => {
     return (
       <Sidebar
@@ -139,19 +115,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         <MainSidebar id="bottom_sidebar" />
       )}
       <Drawer
-        title={
-          currentDrawer === "trades"
-            ? "Trades"
-            : currentDrawer === "events"
-            ? "Events"
-            : currentDrawer === "market"
-            ? "Market"
-            : currentDrawer === "help"
-            ? "Help"
-            : currentDrawer === "assets"
-            ? "Assets"
-            : ""
-        }
+        title={leftDarwerTitleHandler(currentDrawer)}
         placement="left"
         onClose={() => {
           setIsDrawerOpen(false);
@@ -166,38 +130,15 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         }
       >
         <div>
-          {currentDrawer === "trades" ? (
-            <TradesMenu />
-          ) : currentDrawer === "market" ? (
-            <MarketMenu />
-          ) : currentDrawer === "events" ? (
-            <EventsMenu />
-          ) : currentDrawer === "help" ? (
-            <HelpMenu
-              setLeftSubDrawer={setLeftSubDrawer}
-              setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen}
-            />
-          ) : currentDrawer === "assets" ? (
-            <AssetsMenu />
-          ) : (
-            <></>
+          {leftDrawerBodyHandler(
+            currentDrawer,
+            setLeftSubDrawer,
+            setIsLeftSubDrawerOpen
           )}
         </div>
       </Drawer>
       <Drawer
-        title={
-          leftSubDrawer === "help-center"
-            ? "Help Center"
-            : leftSubDrawer === "support"
-            ? "Support"
-            : leftSubDrawer === "trading-platform"
-            ? "Help Center"
-            : leftSubDrawer === "what-is-trading"
-            ? "Help Center"
-            : leftSubDrawer === "why-coose-us"
-            ? "Help Center"
-            : ""
-        }
+        title={leftSubDrawerTitleHandler(leftSubDrawer)}
         extra={
           <div onClick={() => setIsLeftSubDrawerOpen(false)}>
             <ArrowLeftOS />
@@ -217,21 +158,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : `29.25rem`
         }
       >
-        <div>
-          {leftSubDrawer === "help-center" ? (
-            <HelpCenter setLeftSubDrawer={setLeftSubDrawer} />
-          ) : leftSubDrawer === "support" ? (
-            <SupportMenu />
-          ) : leftSubDrawer === "trading-platform" ? (
-            <TradingPlatform setLeftSubDrawer={setLeftSubDrawer} />
-          ) : leftSubDrawer === "what-is-trading" ? (
-            <TradingPlatformInfo setLeftSubDrawer={setLeftSubDrawer} />
-          ) : leftSubDrawer === "why-coose-us" ? (
-            <OlympTradeInfo setLeftSubDrawer={setLeftSubDrawer} />
-          ) : (
-            <></>
-          )}
-        </div>
+        <div>{leftSubDrawerBodyHandler(leftSubDrawer, setLeftSubDrawer)}</div>
       </Drawer>
 
       <div
@@ -239,19 +166,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         style={{ marginLeft: `${mainSidebarWidth}px` }}
       >
         <Drawer
-          title={
-            rightDrawerContent === "account"
-              ? "Accounts"
-              : rightDrawerContent === "payments"
-              ? "Payments"
-              : rightDrawerContent === "profile"
-              ? "Profile"
-              : rightDrawerContent === "verification"
-              ? "Verification"
-              : rightDrawerContent === "verify-payment"
-              ? "Confirm Payment"
-              : ""
-          }
+          title={rightDrawerTitleHandler(rightDrawerContent)}
           placement="right"
           onClose={() => setIsRightDrawerOpen(false)}
           open={isRightDrawerOpen}
@@ -263,126 +178,20 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               : `29.25rem`
           }
         >
-          {rightDrawerContent === "payments" ? (
-            <PaymentsMenu
-              setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-            />
-          ) : rightDrawerContent === "profile" ? (
-            <ProfileMenu
-              setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-            />
-          ) : rightDrawerContent === "account" ? (
-            <AccountMenu
-              setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-            />
-          ) : rightDrawerContent === "verification" ? (
-            <VerificationMenu />
-          ) : (
-            <></>
+          {rightDrawerBodyHandler(
+            rightDrawerContent,
+            setIsRightSubDrawerOpen,
+            setIsRightSubDrawerContent
           )}
         </Drawer>
 
         <Drawer
-          title={
-            rightSubDrawerContent === "settings"
-              ? "Settings"
-              : rightSubDrawerContent === "twofactor"
-              ? "Two-factor Authentication"
-              : rightSubDrawerContent === "personalSettings"
-              ? "Personal settings"
-              : rightSubDrawerContent === "appearance"
-              ? "Appearance"
-              : rightSubDrawerContent === "transfer"
-              ? "Transfer"
-              : rightSubDrawerContent === "trading"
-              ? "Trading"
-              : rightSubDrawerContent === "notifications"
-              ? "Notifications"
-              : rightSubDrawerContent === "barcode"
-              ? "Barcode"
-              : rightSubDrawerContent === "user-notifications"
-              ? "Notifications"
-              : rightSubDrawerContent === "change-password"
-              ? "Change Password"
-              : rightSubDrawerContent === "edit-name"
-              ? "Edit name"
-              : rightSubDrawerContent === "confirm-email"
-              ? "Confirm your email"
-              : rightSubDrawerContent === "confirm-phone"
-              ? "Confirm phone number"
-              : rightSubDrawerContent === "select-account"
-              ? "To:"
-              : rightSubDrawerContent === "withdraw"
-              ? "Withdraw"
-              : rightSubDrawerContent === "add-account"
-              ? "Add an account"
-              : rightSubDrawerContent === "traders-way"
-              ? "Trader`s Way"
-              : rightSubDrawerContent === "invite-friends"
-              ? "Invite Friends & Get Rewards"
-              : ""
-          }
-          extra={
-            rightSubDrawerContent === "twofactor" ? (
-              <div onClick={() => setIsRightSubDrawerContent("settings")}>
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "personalSettings" ? (
-              <div onClick={() => setIsRightSubDrawerContent("settings")}>
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "appearance" ? (
-              <div onClick={() => setIsRightSubDrawerContent("settings")}>
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "trading" ? (
-              <div onClick={() => setIsRightSubDrawerContent("settings")}>
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "notifications" ? (
-              <div onClick={() => setIsRightSubDrawerContent("settings")}>
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "change-password" ? (
-              <div onClick={() => setIsRightSubDrawerContent("settings")}>
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "edit-name" ? (
-              <div
-                onClick={() => setIsRightSubDrawerContent("personalSettings")}
-              >
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "confirm-email" ? (
-              <div
-                onClick={() => setIsRightSubDrawerContent("personalSettings")}
-              >
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "confirm-phone" ? (
-              <div
-                onClick={() => setIsRightSubDrawerContent("personalSettings")}
-              >
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "select-account" ? (
-              <div onClick={() => setIsRightSubDrawerContent("transfer")}>
-                <ArrowLeftOS />
-              </div>
-            ) : rightSubDrawerContent === "verify-payment" ||
-              rightSubDrawerContent === "mega-box-rewards" ? (
-              <div onClick={() => setIsRightSubDrawerContent("invite-friends")}>
-                <ArrowLeftOS />
-              </div>
-            ) : (
-              <div onClick={() => setIsRightSubDrawerOpen(false)}>
-                <ArrowLeftOS />
-              </div>
-            )
-          }
+          title={rightSubDrawerTitleHandler(rightSubDrawerContent)}
+          extra={rightSubDrawerExtraHandler(
+            rightSubDrawerContent,
+            setIsRightSubDrawerOpen,
+            setIsRightSubDrawerContent
+          )}
           placement="right"
           onClose={() => {
             setIsRightDrawerOpen(false);
@@ -398,57 +207,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
               : `29.25rem`
           }
         >
-          {rightSubDrawerContent === "settings" ? (
-            <SettingsMenu
-              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-            />
-          ) : rightSubDrawerContent === "twofactor" ? (
-            <TwoFactorMenu />
-          ) : rightSubDrawerContent === "personalSettings" ? (
-            <PersonalSettingsMenu
-              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-            />
-          ) : rightSubDrawerContent === "appearance" ? (
-            <AppearanceMenu />
-          ) : rightSubDrawerContent === "transfer" ? (
-            <TransferMenu
-              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-            />
-          ) : rightSubDrawerContent === "trading" ? (
-            <TradingMenu />
-          ) : rightSubDrawerContent === "notifications" ? (
-            <NotificationsMenu />
-          ) : rightSubDrawerContent === "barcode" ? (
-            <BarcodeMenu />
-          ) : rightSubDrawerContent === "user-notifications" ? (
-            <UserNotificationsMenu />
-          ) : rightSubDrawerContent === "change-password" ? (
-            <ChangePassword />
-          ) : rightSubDrawerContent === "edit-name" ? (
-            <EditName />
-          ) : rightSubDrawerContent === "confirm-email" ? (
-            <ConfirmMail />
-          ) : rightSubDrawerContent === "confirm-phone" ? (
-            <ConfirmPhone />
-          ) : rightSubDrawerContent === "select-account" ? (
-            <SelectAccount />
-          ) : rightSubDrawerContent === "withdraw" ? (
-            <WithdrawMenu />
-          ) : rightSubDrawerContent === "add-account" ? (
-            <AddAccountMenu />
-          ) : rightSubDrawerContent === "traders-way" ? (
-            <TradersWayMenu />
-          ) : rightSubDrawerContent === "verify-payment" ? (
-            <VerifyPayment />
-          ) : rightSubDrawerContent === "mega-box-rewards" ? (
-            <MagicBoxRewards />
-          ) : rightSubDrawerContent === "invite-friends" ? (
-            <InviteFriends
-              setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-              setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-            />
-          ) : (
-            <></>
+          {rightSubDrawerBodyHandler(
+            rightSubDrawerContent,
+            setIsRightSubDrawerOpen,
+            setIsRightSubDrawerContent
           )}
         </Drawer>
 

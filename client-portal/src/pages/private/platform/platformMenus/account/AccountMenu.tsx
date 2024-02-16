@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import {
   AddIcon,
   GlobeIcon,
@@ -7,10 +8,11 @@ import {
 } from "../../../../../assets/icons";
 import AccountCard from "./AccountCard";
 import "./account.scss";
+import { RightSubDrawerContent } from "../../types";
 
 interface AccountMenuProps {
-  setIsRightSubDrawerOpen: (value: boolean) => void;
-  setIsRightSubDrawerContent: (value: string | null) => void;
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({

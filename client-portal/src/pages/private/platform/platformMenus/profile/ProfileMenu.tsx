@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import {
   ArrowUpOS,
   BookmarkIcon,
@@ -9,10 +10,11 @@ import {
 } from "../../../../../assets/icons";
 import "./profileMenu.scss";
 import { Col, Row } from "antd";
+import { RightSubDrawerContent } from "../../types";
 
 interface ProfileMenuProps {
-  setIsRightSubDrawerOpen: (value: boolean) => void;
-  setIsRightSubDrawerContent: (value: string | null) => void;
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 // const ProfileLink = ({

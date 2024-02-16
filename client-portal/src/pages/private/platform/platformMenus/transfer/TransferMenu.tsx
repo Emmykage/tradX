@@ -8,9 +8,11 @@ import Input from "../../../../../components/input/Input";
 import "./transferMenu.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import TransferInput from "../../../../../components/transferInput/TransferInput";
+import { Dispatch, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
 interface TransferMenuProps {
-  setIsRightSubDrawerContent: (value: string | null) => void;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const TransferMenu: React.FunctionComponent<TransferMenuProps> = () => {

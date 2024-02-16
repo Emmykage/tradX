@@ -1,12 +1,14 @@
+import { Dispatch, SetStateAction } from "react";
 import { InfoCircleIcon } from "../../../../../assets/icons";
 import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import Input from "../../../../../components/input/Input";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import Upload from "../../../../../components/upload/Upload";
 import "./personalSettingsMenu.scss";
+import { RightSubDrawerContent } from "../../types";
 
 interface PersonalSettingsMenuProps {
-  setIsRightSubDrawerContent: (value: string | null) => void;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const PersonalSettingsMenu: React.FunctionComponent<
