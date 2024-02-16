@@ -11,6 +11,7 @@ interface ModalProps {
   onCancel?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   title?: string;
   footer?: React.ReactNode;
+  closeable?: boolean;
 }
 
 const Modal: React.FunctionComponent<ModalProps> = ({
@@ -22,6 +23,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({
   onCancel,
   title,
   footer,
+  closeable,
 }) => {
   return (
     <ModalOriginal
@@ -33,6 +35,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({
       onCancel={(e) => (onCancel ? onCancel(e) : setOpen(false))}
       footer={footer ? footer : null}
       closeIcon={<CloseIcon />}
+      closable={closeable}
     >
       {children}
     </ModalOriginal>
