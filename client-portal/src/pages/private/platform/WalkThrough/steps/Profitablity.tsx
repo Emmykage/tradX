@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { Button, Tooltip } from "antd";
+import ChartComponent from "../components/WalkthroughChart";
+import { staticData } from "../data/initialGraphData";
 
 interface ProfitablityProps {
   className: string;
@@ -11,6 +14,12 @@ const Profitablity: React.FC<ProfitablityProps> = ({
   setStep,
   open,
 }) => {
+  const [graphData, setGraphData] = useState<any>([]);
+
+  useEffect(() => {
+    setGraphData(staticData);
+  }, []);
+
   const TooltipContent = () => (
     <div>
       <p>
@@ -23,6 +32,10 @@ const Profitablity: React.FC<ProfitablityProps> = ({
   );
   return (
     <div className={`walkthroughStep profitablityStep ${className}`}>
+      <div className="graphContainerWalkthrough">
+        {graphData?.length && <ChartComponent data={graphData} />}
+        <div className="graphOverlay"></div>
+      </div>
       <Tooltip
         rootClassName="walkthroughTooltip"
         placement="bottom"

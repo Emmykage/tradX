@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import TradeForm from "../../../../../components/tradeForm/TradeForm";
+import ChartComponent from "../components/WalkthroughChart";
+import { staticData } from "../data/initialGraphData";
 
 interface SetInvestmentProps {
   className: string;
@@ -11,9 +14,19 @@ const SetInvestment: React.FC<SetInvestmentProps> = ({
   setStep,
   open,
 }) => {
+  const [graphData, setGraphData] = useState<any>([]);
+
+  useEffect(() => {
+    setGraphData(staticData);
+  }, []);
+
   return (
     <div className={`walkthroughStep setInvestmentStep ${className}`}>
       <div className="setInvestmentStepLeft">
+        <div className="graphContainerWalkthrough">
+          {graphData?.length && <ChartComponent data={graphData} />}
+          <div className="graphOverlay"></div>
+        </div>
         <img
           className="euroUsdButton active"
           src="/walkthrough/eur-usd-btn-2.png"
