@@ -1,4 +1,10 @@
-import { createChart, ColorType, IChartApi, Time } from "lightweight-charts";
+import {
+  createChart,
+  ColorType,
+  IChartApi,
+  Time,
+  LineStyle,
+} from "lightweight-charts";
 import React, { useEffect, useRef } from "react";
 
 export interface DataPoint {
@@ -22,7 +28,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data, colors }) => {
   const {
     backgroundColor = "transparent",
     lineColor = "#0094FF",
-    textColor = "rgba(255, 255, 255, 0.3)",
+    textColor = "#70808C",
     areaTopColor = "rgba(11, 166, 238, 0.2)",
     areaBottomColor = "rgba(11, 166, 238, 0)",
     gridLines = "#ffccff",
@@ -50,9 +56,12 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data, colors }) => {
       },
       rightPriceScale: {
         borderVisible: false,
+        textColor: "#70808C",
       },
       timeScale: {
         borderVisible: false,
+        timeVisible: true,
+        secondsVisible: true,
       },
       width: chartContainer.clientWidth,
       height: 300,
@@ -69,6 +78,9 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data, colors }) => {
       lineWidth: 1,
       topColor: areaTopColor,
       bottomColor: areaBottomColor,
+      priceLineColor: "#868788",
+      priceLineStyle: LineStyle.Solid,
+      priceLineWidth: 1,
     });
     newSeries.setData(data);
 
