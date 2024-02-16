@@ -1,18 +1,18 @@
 import { Button, Col, Row, Typography } from "antd";
 import {
   AndroidIcon,
-  AnydeskAndroidIcon,
-  AnydeskChromeIcon,
-  AnydeskIOSIcon,
+  // AnydeskAndroidIcon,
+  // AnydeskChromeIcon,
+  // AnydeskIOSIcon,
   AnydeskLogo,
-  AnydeskMacIcon,
-  AnydeskWindowsIcon,
-  AppStoreIcon,
+  // AnydeskMacIcon,
+  // AnydeskWindowsIcon,
+  // AppStoreIcon,
   ChromeIcon,
   ElipseShadow,
   ElipseShadow2,
   EyeIcon,
-  GooglePlayStoreIcon,
+  // GooglePlayStoreIcon,
   IOSIcon,
   MacOSIcon,
   NotificationIcon3,
@@ -35,7 +35,7 @@ const AnydeskContentList = [
       "Compatible with earlier Windows versions.",
       "Always free updates.",
     ],
-    icon: <AnydeskWindowsIcon />,
+    // icon: <AnydeskWindowsIcon />,
     icon2: "elipse",
   },
   {
@@ -48,7 +48,7 @@ const AnydeskContentList = [
       "Cross-compatibility between different OS and versions.",
       "Flexible license models.",
     ],
-    icon: <AnydeskMacIcon />,
+    // icon: <AnydeskMacIcon />,
     icon2: "elipse",
   },
   {
@@ -60,8 +60,8 @@ const AnydeskContentList = [
       "Remote Access and remote control from any location.",
       "Unparalleled performance and security.",
     ],
-    icon: <AnydeskIOSIcon />,
-    playStoreIcon: <AppStoreIcon />,
+    // icon: <AnydeskIOSIcon />,
+    // playStoreIcon: <AppStoreIcon />,
   },
   {
     title: " for Android",
@@ -73,8 +73,8 @@ const AnydeskContentList = [
       "Flexible license models.",
       "Easily customized.",
     ],
-    icon: <AnydeskAndroidIcon />,
-    playStoreIcon: <GooglePlayStoreIcon />,
+    // icon: <AnydeskAndroidIcon />,
+    // playStoreIcon: <GooglePlayStoreIcon />,
   },
   {
     title: " for Chrome OS",
@@ -87,9 +87,9 @@ const AnydeskContentList = [
       "Flexible license models.",
       "Easily customization.",
     ],
-    icon: <AnydeskChromeIcon />,
+    // icon: <AnydeskChromeIcon />,
     icon2: "elipse",
-    playStoreIcon: <GooglePlayStoreIcon />,
+    // playStoreIcon: <GooglePlayStoreIcon />,
   },
 ];
 
@@ -193,14 +193,14 @@ const Anydesk = () => {
                   </div>
                 ))}
               </div>
-              {item.playStoreIcon && (
+              {/* {item.playStoreIcon && (
                 <div className="anydesk-playstore-icons">
                   <div className="playstore-image-shadow">
                     <ElipseShadow2 />
                   </div>
                   <div className="playstore-image">{item.playStoreIcon}</div>
                 </div>
-              )}
+              )} */}
               <Button className="download-button">Download</Button>
             </Col>
             <Col xl={12} lg={24} className="anydesk-images">
@@ -209,7 +209,7 @@ const Anydesk = () => {
                   <ElipseShadow />
                 </div>
               )}
-              <div className="anydesk-image">{item.icon}</div>
+              {/* <div className="anydesk-image">{item.icon}</div> */}
             </Col>
           </Row>
         ))}
