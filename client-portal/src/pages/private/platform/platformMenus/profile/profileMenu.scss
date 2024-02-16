@@ -158,7 +158,6 @@
   margin-bottom: 3.125rem;
 
   .taskCard {
-    // background-color: blue;
     padding: 0.625rem 0;
 
     .taskCardIcon {
@@ -200,9 +199,14 @@
 // }
 
 .settingsButton {
-  margin-top: 10rem;
+  margin-top: 7rem;
   cursor: pointer;
+  position: relative;
 
+  .icon {
+    position: absolute;
+    left: 0%;
+  }
   button.settings {
     margin: 0.625rem 0;
     position: relative;

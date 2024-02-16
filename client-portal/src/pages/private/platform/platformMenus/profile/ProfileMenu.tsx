@@ -8,7 +8,7 @@ import {
   NotificationIcon2,
   ReferralLinkIcon2,
   ReloadIcon,
-  SettingsIcon,
+  SettingsIcon2,
   TooltipIcon,
 } from "../../../../../assets/icons";
 import "./profileMenu.scss";
@@ -79,8 +79,6 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
     slidesToShow: 3.4,
     slidesToScroll: 1,
     autoplay: false,
-    // speed: 2000,
-    // autoplaySpeed: 2000,
     cssEase: "linear",
     arrows: false,
   };
@@ -181,7 +179,7 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       >
         <button className="settings">
           <span className="icon">
-            <SettingsIcon />
+            <SettingsIcon2 />
           </span>
           <span className="txt">Settings</span>
         </button>
