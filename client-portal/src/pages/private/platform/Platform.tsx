@@ -6,8 +6,25 @@ import "./platform.scss";
 import { Drawer } from "antd";
 import { ArrowLeftOS, CloseIcon } from "../../../assets/icons";
 import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
-import { leftDarwerTitleHandler, leftDrawerBodyHandler, leftSubDrawerBodyHandler, leftSubDrawerTitleHandler, rightDrawerBodyHandler, rightDrawerTitleHandler, rightSubDrawerBodyHandler, rightSubDrawerExtraHandler, rightSubDrawerTitleHandler } from "./utils";
-import { CurrentDrawerType, LeftSubDrawer, RightDrawerContent, RightSubDrawerContent } from "./types";
+
+import {
+  leftDarwerTitleHandler,
+  leftDrawerBodyHandler,
+  leftSubDrawerBodyHandler,
+  leftSubDrawerTitleHandler,
+  rightDrawerBodyHandler,
+  rightDrawerTitleHandler,
+  rightSubDrawerBodyHandler,
+  rightSubDrawerExtraHandler,
+  rightSubDrawerTitleHandler,
+} from "./utils";
+
+import {
+  CurrentDrawerType,
+  LeftSubDrawer,
+  RightDrawerContent,
+  RightSubDrawerContent,
+} from "./types";
 
 interface PlatformProps {}
 
