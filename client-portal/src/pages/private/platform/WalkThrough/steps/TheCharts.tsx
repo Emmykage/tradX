@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ChartComponent from "../components/WalkthroughChart";
-import { initialData } from "../data/initialGraphData";
+import { staticData } from "../data/initialGraphData";
 
 interface TheChartsProps {
   className: string;
@@ -11,10 +11,10 @@ const TheCharts: React.FC<TheChartsProps> = ({ className, setStep }) => {
   const [graphData, setGraphData] = useState<any>([]);
 
   useEffect(() => {
-    setGraphData(initialData);
+    setGraphData(staticData);
   }, []);
 
-  console.log("graphData", graphData);
+  console.log("staticData", staticData);
 
   return (
     <div className={`walkthroughStep theChartsStep ${className}`}>
