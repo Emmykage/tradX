@@ -15,6 +15,12 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
   open,
 }) => {
   const [graphData, setGraphData] = useState<any>([]);
+  const [userInput, setUserInput] = useState<"up" | "down" | null>(null);
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  useEffect(() => {
+    setShowTooltip(open);
+  }, [open]);
 
   useEffect(() => {
     setGraphData(staticData);
@@ -23,7 +29,9 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
     <div className={`walkthroughStep chooeseTradeStep ${className}`}>
       <div className="chooeseTradeStepLeft">
         <div className="graphContainerWalkthrough">
-          {graphData?.length && <ChartComponent data={graphData} />}
+          {graphData?.length && (
+            <ChartComponent data={graphData} direction={userInput} />
+          )}
           <div className="graphOverlay"></div>
         </div>
         <img
@@ -38,10 +46,19 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
           coinInfo={false}
           showProfit={false}
           showSetupOrder={false}
-          hintTradesTooltip={open}
-          hintTrades
+          hintTradesTooltip={showTooltip}
+          hintTrades={showTooltip}
           disabled
-          //   onDecreaseDuration={() => setStep(9)}
+          handleUserInputUp={() => {
+            setStep(10);
+            setUserInput("up");
+            setShowTooltip(false);
+          }}
+          handleUserInputDown={() => {
+            setStep(10);
+            setUserInput("down");
+            setShowTooltip(false);
+          }}
         />
       </div>
     </div>
