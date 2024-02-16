@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import {
+  CheckMark,
   ExitIcon,
   LockIcon,
   NotificationIcon,
@@ -21,8 +22,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
 }) => {
   return (
     <div className="settingsMenu">
-      <EnhanceSecurityCard />
-
+      {/* <EnhanceSecurityCard /> */}
       <div className="settingsSection">
         <p className="settingsMenuTitle">Profile</p>
         <MenuListCard
@@ -30,6 +30,12 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           subtitle="Name and contacts"
           icon={<UserIcon />}
           onClick={() => setIsRightSubDrawerContent("personalSettings")}
+        />
+        <MenuListCard
+          title="Verification"
+          subtitle="Full check and identity confirmation"
+          icon={<CheckMark />}
+          // onClick={() => setIsRightSubDrawerContent("personalSettings")}
         />
         <MenuListCard
           title="Two-factor authentication"

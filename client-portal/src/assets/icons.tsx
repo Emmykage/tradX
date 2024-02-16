@@ -1333,6 +1333,26 @@ export const UserIcon = () => (
   </svg>
 );
 
+export const CheckMark = () => {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2 13L8.37635 19.5L20 2"
+        stroke="#969798"
+        stroke-width="3.66667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
 export const LockIcon = () => (
   <svg
     width="24"
