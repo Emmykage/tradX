@@ -21,7 +21,7 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
   className,
   setShowWalkThrough,
 }) => {
-  const [step, setStep] = useState<number>(9);
+  const [step, setStep] = useState<number>(1);
 
   return (
     <div className={`walkthroughContainer ${className}`}>
