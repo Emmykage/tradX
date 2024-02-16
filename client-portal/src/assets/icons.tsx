@@ -2939,6 +2939,71 @@ export const SecureIcon = () => (
   </svg>
 );
 
+export const BlueCardIcon = () => (
+  <svg
+    width="59"
+    height="41"
+    viewBox="0 0 59 41"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g filter="url(#filter0_d_37_2)">
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M6.21349 0H51.9892C53.2067 0 54.2027 1.00065 54.2027 2.21349V30.7865C54.2027 31.9994 53.2021 33 51.9892 33H6.21349C5.00065 33 4 32.004 4 30.7865V2.21349C4 0.995976 4.99598 0 6.21349 0Z"
+        fill="#4091F7"
+      />
+    </g>
+    <path
+      d="M8.94486 21.7506C8.68028 21.7506 8.42654 21.6455 8.23945 21.4584C8.05237 21.2713 7.94727 21.0176 7.94727 20.753C7.94727 20.4884 8.05237 20.2347 8.23945 20.0476C8.42654 19.8605 8.68028 19.7554 8.94486 19.7554H29.0356C29.3002 19.7554 29.5539 19.8605 29.741 20.0476C29.9281 20.2347 30.0332 20.4884 30.0332 20.753C30.0332 21.0176 29.9281 21.2713 29.741 21.4584C29.5539 21.6455 29.3002 21.7506 29.0356 21.7506H8.94486ZM37.9563 18.5898C39.4452 18.5898 40.7661 19.3078 41.5923 20.4165C42.4186 19.3078 43.7397 18.5898 45.2288 18.5898C47.7316 18.5898 49.7608 20.6189 49.7608 23.1217C49.7608 25.6248 47.7316 27.6539 45.2288 27.6539C43.7397 27.6539 42.4186 26.9357 41.5923 25.8269C40.7661 26.9357 39.4452 27.6539 37.9563 27.6539C35.4531 27.6539 33.4242 25.6248 33.4242 23.1217C33.4242 20.6189 35.4531 18.5898 37.9563 18.5898ZM8.94486 26.4886C8.68217 26.4857 8.43122 26.3793 8.24649 26.1925C8.06175 26.0058 7.95814 25.7537 7.95814 25.491C7.95814 25.2283 8.06175 24.9762 8.24649 24.7894C8.43122 24.6026 8.68217 24.4962 8.94486 24.4934H24.0945C24.3558 24.4983 24.6048 24.6056 24.7878 24.7922C24.9708 24.9787 25.0734 25.2296 25.0734 25.491C25.0734 25.7523 24.9708 26.0032 24.7878 26.1898C24.6048 26.3763 24.3558 26.4836 24.0945 26.4886H8.94486Z"
+      fill="#0E0F12"
+    />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M10.5256 6.16016H17.3411C18.2103 6.16016 18.9215 6.87136 18.9215 7.74052V8.08576H8.94531V7.74052C8.94531 6.87136 9.6564 6.16016 10.5256 6.16016ZM18.9215 8.62956V11.9987H15.8266V8.62956H18.9215ZM15.2829 11.9987H12.5804V8.62956H15.2829V11.9987ZM12.0366 11.9987H8.94531V8.62956H12.0366V11.9987ZM18.9215 12.5424V12.8931C18.9215 13.7621 18.2101 14.4733 17.3411 14.4733H10.5256C9.65652 14.4733 8.94531 13.7622 8.94531 12.8931V12.5424H18.9215Z"
+      fill="#0E0F12"
+    />
+    <defs>
+      <filter
+        id="filter0_d_37_2"
+        x="0"
+        y="0"
+        width="58.2031"
+        height="41"
+        filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB"
+      >
+        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
+        <feOffset dy="4" />
+        <feGaussianBlur stdDeviation="2" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow_37_2"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow_37_2"
+          result="shape"
+        />
+      </filter>
+    </defs>
+  </svg>
+);
 export const ElipseShadow = () => (
   <svg
     width="692"
@@ -3004,7 +3069,7 @@ export const TickMarkIcon = () => (
 
 export const AnydeskWindowsIcon = () => (
   <svg
-    width="620"
+    width="520"
     height="403"
     viewBox="0 0 620 403"
     fill="none"
@@ -3035,7 +3100,7 @@ export const AnydeskWindowsIcon = () => (
 
 export const AnydeskMacIcon = () => (
   <svg
-    width="538"
+    width="498"
     height="348"
     viewBox="0 0 538 348"
     fill="none"
@@ -3190,7 +3255,7 @@ export const AnydeskAndroidIcon = () => (
 
 export const AnydeskChromeIcon = () => (
   <svg
-    width="620"
+    width="580"
     height="403"
     viewBox="0 0 620 403"
     fill="none"
