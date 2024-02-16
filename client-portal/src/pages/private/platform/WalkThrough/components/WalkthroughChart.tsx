@@ -48,6 +48,12 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data, colors }) => {
           visible: true,
         },
       },
+      rightPriceScale: {
+        borderVisible: false,
+      },
+      timeScale: {
+        borderVisible: false,
+      },
       width: chartContainer.clientWidth,
       height: 300,
     });
