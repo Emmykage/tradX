@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import Download from "./pages/public/downloads/Download";
 import Transactions from "./pages/private/transactions/Transactions";
 import Anydesk from "./pages/public/anydesk/Anydesk";
+import GetLoan from "./pages/private/get-loan/GetLoan";
 
 interface AppProps {}
 
@@ -30,6 +31,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/" element={<SignIn />} />
         <Route path="/platform" element={<Platform />} />
         <Route path="transactions" element={<Transactions />} />
+        <Route path="get-loan" element={<GetLoan />} />
         <Route path="/lender" element={<Lender />} />
         <Route path="/downloads" element={<Download />} />
         <Route path="/downloads/anydesk" element={<Anydesk />} />

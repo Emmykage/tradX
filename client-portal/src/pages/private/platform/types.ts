@@ -43,4 +43,10 @@ export type LeftSubDrawer =
     | "invite-friends"
     | "verify-payment"
     | "mega-box-rewards"
+    | "payments-deposit"
+    | "select-deposit-amount"
+    | "payment-method"
+    | "card-details-menu"
+    | "payments-promo-code"
+    | "select-withdraw-account"
     | null;

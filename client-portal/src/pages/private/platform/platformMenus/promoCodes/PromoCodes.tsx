@@ -8,11 +8,11 @@ const PromoCodes = () => {
   return (
     <div className="promocodes">
       <Typography.Title className="promocode-title">
-        Promo Codes
+        Enter Promo Code
       </Typography.Title>
-      <Typography.Paragraph className="promocode-paragraph">
+      {/* <Typography.Paragraph className="promocode-paragraph">
         Use promo codes to unlock useful trading tools and features
-      </Typography.Paragraph>
+      </Typography.Paragraph> */}
       <PromoCodeInput
         className="promocode-input"
         title="Enter Your PromoCode"

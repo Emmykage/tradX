@@ -35,6 +35,12 @@ import VerifyPayment from "./platformMenus/VerifyPayment/VerifyPayment";
 import MagicBoxRewards from "./platformMenus/MagicBoxRewards/MagicBoxRewards";
 import InviteFriends from "./platformMenus/InviteFriends/InviteFriends";
 import { ArrowLeftOS } from "../../../assets/icons";
+import Deposit from "./platformMenus/deposit/Deposit";
+import SelectAmountMenu from "./platformMenus/selectAmountMenu/SelectAmountMenu";
+import CardDetailsMenu from "./platformMenus/cardDetailsMenu/CardDetailsMenu";
+import PromoCodes from "./platformMenus/promoCodes/PromoCodes";
+import WithdrawAccount from "./platformMenus/withdrawAccount/WithdrawAccount";
+import TransferAccountSelectMenu from "./platformMenus/transferAccountSelectMenu/TransferAccountSelectMenu";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(currentDrawer: CurrentDrawerType): string {
@@ -211,6 +217,16 @@ export function rightSubDrawerTitleHandler(
       return "Trader's Way";
     case "invite-friends":
       return "Invite Friends & Get Rewards";
+    case "payments-deposit":
+      return "Deposit";
+    case "select-deposit-amount":
+      return "Select Deposit Amount";
+    case "payment-method":
+      return "Payment Method";
+    case "card-details-menu":
+      return "Deposit";
+    case "select-withdraw-account":
+      return "Select Account";
     default:
       return "";
   }
@@ -240,7 +256,10 @@ export function rightSubDrawerBodyHandler(
       return <AppearanceMenu />;
     case "transfer":
       return (
-        <TransferMenu setIsRightSubDrawerContent={setIsRightSubDrawerContent} />
+        <TransferMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
       );
     case "trading":
       return <TradingMenu />;
@@ -259,9 +278,19 @@ export function rightSubDrawerBodyHandler(
     case "confirm-phone":
       return <ConfirmPhone />;
     case "select-account":
-      return <SelectAccount />;
+      return (
+        <SelectAccount
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
     case "withdraw":
-      return <WithdrawMenu />;
+      return (
+        <WithdrawMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
     case "add-account":
       return <AddAccountMenu />;
     case "traders-way":
@@ -277,6 +306,40 @@ export function rightSubDrawerBodyHandler(
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
       );
+    case "payments-deposit":
+      return (
+        <Deposit
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    case "select-deposit-amount":
+      return (
+        <SelectAmountMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    case "card-details-menu":
+      return <CardDetailsMenu />;
+    case "payment-method":
+      return <></>;
+    case "payments-promo-code":
+      return <PromoCodes />;
+    case "select-withdraw-account":
+      return (
+        <WithdrawAccount
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    // case "transfer-account-select-menu":
+    //   return (
+    //     <TransferAccountSelectMenu
+    //       setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+    //       setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+    //     />
+    //   );
     default:
       return null;
   }
@@ -323,6 +386,22 @@ export function rightSubDrawerExtraHandler(
           <ArrowLeftOS />
         </div>
       );
+    case "select-deposit-amount":
+    case "payment-method":
+    case "payments-promo-code":
+    case "card-details-menu":
+      return (
+        <div onClick={() => setIsRightSubDrawerContent("payments-deposit")}>
+          <ArrowLeftOS />
+        </div>
+      );
+    case "select-withdraw-account":
+      return (
+        <div onClick={() => setIsRightSubDrawerContent("withdraw")}>
+          <ArrowLeftOS />
+        </div>
+      );
+
     default:
       return (
         <div onClick={() => setIsRightSubDrawerOpen(false)}>
