@@ -104,12 +104,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      background: #0b1118;
-      background-image: url("/walkthrough/graph-bg.png"),
-        url("/walkthrough/step-4.png");
-      background-repeat: no-repeat, no-repeat;
-      background-size: 100% 100%, 100% 100%;
-      background-position: center center, center center;
+      background: #0e0f12;
+      // background-image: url("/walkthrough/graph-bg.png"),
+      //   url("/walkthrough/step-4.png");
+      // background-repeat: no-repeat, no-repeat;
+      // background-size: 100% 100%, 100% 100%;
+      // background-position: center center, center center;
     }
 
     &.fixedDurationStep {
@@ -117,12 +117,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      background: #0b1118;
-      background-image: url("/walkthrough/graph-bg.png"),
-        url("/walkthrough/step-5.png");
-      background-repeat: no-repeat, no-repeat;
-      background-size: 100% 100%, 100% 100%;
-      background-position: center center, center center;
+      background: #0e0f12;
+      // background-image: url("/walkthrough/graph-bg.png"),
+      //   url("/walkthrough/step-5.png");
+      // background-repeat: no-repeat, no-repeat;
+      // background-size: 100% 100%, 100% 100%;
+      // background-position: center center, center center;
     }
 
     &.profitablityStep {
@@ -130,28 +130,29 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      background: #0b1118;
-      background-image: url("/walkthrough/graph-bg.png"),
-        url("/walkthrough/step-6.png");
-      background-repeat: no-repeat, no-repeat;
-      background-size: 100% 100%, 100% 100%;
-      background-position: center center, center center;
+      background: #0e0f12;
+      // background-image: url("/walkthrough/graph-bg.png"),
+      //   url("/walkthrough/step-6.png");
+      // background-repeat: no-repeat, no-repeat;
+      // background-size: 100% 100%, 100% 100%;
+      // background-position: center center, center center;
     }
 
     &.setInvestmentStep {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      background: #0b1118;
+      background: #0e0f12;
       padding: 0;
 
       .setInvestmentStepLeft {
         width: 100%;
         height: 100%;
-        background-image: url("/walkthrough/graph-bg.png");
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        background-position: center center;
+        position: relative;
+        // background-image: url("/walkthrough/graph-bg.png");
+        // background-repeat: no-repeat;
+        // background-size: 100% 100%;
+        // background-position: center center;
       }
 
       .tradingForm {
@@ -166,16 +167,17 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      background: #0b1118;
+      background: #0e0f12;
       padding: 0;
 
       .setDurationStepLeft {
         width: 100%;
         height: 100%;
-        background-image: url("/walkthrough/graph-bg.png");
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        background-position: center center;
+        position: relative;
+        // background-image: url("/walkthrough/graph-bg.png");
+        // background-repeat: no-repeat;
+        // background-size: 100% 100%;
+        // background-position: center center;
       }
 
       .tradingForm {
@@ -190,16 +192,17 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      background: #0b1118;
+      background: #0e0f12;
       padding: 0;
 
       .chooeseTradeStepLeft {
         width: 100%;
         height: 100%;
-        background-image: url("/walkthrough/graph-bg.png");
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        background-position: center center;
+        position: relative;
+        // background-image: url("/walkthrough/graph-bg.png");
+        // background-repeat: no-repeat;
+        // background-size: 100% 100%;
+        // background-position: center center;
       }
 
       .tradingForm {
