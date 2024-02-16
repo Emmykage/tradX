@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import {
   ExitIcon,
   LockIcon,
@@ -9,9 +10,10 @@ import {
 import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./settingsMenu.scss";
+import { RightSubDrawerContent } from "../../types";
 
 interface SettingsMenuProps {
-  setIsRightSubDrawerContent: (value: string | null) => void;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({

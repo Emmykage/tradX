@@ -7,10 +7,12 @@ import {
 } from "../../../../../assets/icons";
 import "./paymentsMenu.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
+import { Dispatch, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
 interface PaymentsMenuProps {
-  setIsRightSubDrawerOpen: (value: boolean) => void;
-  setIsRightSubDrawerContent: (value: string | null) => void;
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
