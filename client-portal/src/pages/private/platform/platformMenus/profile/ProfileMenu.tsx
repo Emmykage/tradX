@@ -1,12 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import {
   ArrowUpOS,
-  BoostIcon,
-  CalendarIconImage,
-  FastLight,
-  ForexModeImage,
   NotificationIcon2,
-  ReferralLinkIcon2,
   ReloadIcon,
   SettingsIcon2,
   TooltipIcon,
@@ -50,25 +45,25 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       title: "Еconomic",
       p1: "calendar:",
       p2: "12/02-16/02",
-      image: <CalendarIconImage />,
+      image: "/menu-images/svgs/calender.svg",
       background: "backgroundPurple",
     },
     {
       title: "Discover",
       p1: "Forex Mode",
-      image: <ForexModeImage />,
+      image: "/menu-images/svgs/forex-mode.svg",
       background: "backgroundGreen",
     },
     {
       title: "Asset for Fast",
       p1: "Trading 24/7",
-      image: <FastLight />,
+      image: "/menu-images/svgs/fast-trade.svg",
       background: "backgroundBlack",
     },
     {
       title: "Join Our",
       p1: "Community",
-      image: <FastLight />,
+      image: "/menu-images/svgs/twitter.svg",
       background: "backgroundSky",
     },
   ];
@@ -110,7 +105,9 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
         <Slider {...settings}>
           {infos.map((item, index) => (
             <div className={`card ${item.background}`} key={item.title + index}>
-              <div className="image">{item.image}</div>
+              <div className="image">
+                <img src={item.image} />
+              </div>
               <div className="text">
                 <p>{item.title}</p>
                 <p>{item.p2}</p>
@@ -151,7 +148,7 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
             <div className="profileCard">
               <div className="taskCard">
                 <div className="taskCardIcon">
-                  <ReferralLinkIcon2 />
+                  <img src="/menu-images/svgs/referal-link.svg" />
                 </div>
                 <p className="taskCardTitle">Referral Program</p>
               </div>
@@ -161,7 +158,7 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
             <div className="profileCard">
               <div className="taskCard">
                 <div className="taskCardIcon">
-                  <BoostIcon />
+                  <img src="/menu-images/svgs/boost-cubes.svg" />
                 </div>
                 <p className="taskCardTitle">Boost Cubes</p>
               </div>
