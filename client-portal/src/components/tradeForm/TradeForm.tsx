@@ -25,6 +25,8 @@ interface TradeFormProps {
   hintTrades?: boolean;
   onIncreaseAmount?: () => void;
   onDecreaseDuration?: () => void;
+  handleUserInputUp?: () => void;
+  handleUserInputDown?: () => void;
 }
 
 const TradeForm: React.FunctionComponent<TradeFormProps> = ({
@@ -43,6 +45,8 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   hintTrades = false,
   onIncreaseAmount,
   onDecreaseDuration,
+  handleUserInputUp,
+  handleUserInputDown,
 }) => {
   return (
     <div
@@ -151,6 +155,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
               </button>
             ) : null}
             <button
+              onClick={handleUserInputUp}
               disabled={!hintTrades && disabled}
               className={`up ${hintTrades ? "hint" : ""}`}
             >
@@ -160,6 +165,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
               </span>
             </button>
             <button
+              onClick={handleUserInputDown}
               disabled={!hintTrades && disabled}
               className={`down ${hintTrades ? "hint" : ""}`}
             >
