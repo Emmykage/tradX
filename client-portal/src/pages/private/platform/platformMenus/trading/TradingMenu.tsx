@@ -47,6 +47,28 @@ const TradingMenu: React.FunctionComponent<TradingMenuProps> = () => {
           subtext="Close trades without confirmation"
           defaultChecked
         />
+        <Toggle
+          label="Orders"
+          subtext="Show the order editor on the trade panel"
+          defaultChecked
+        />
+        <Toggle
+          label="Trade Scaling"
+          subtext="This function will multiply or divide the trade amount by 2 in FTT mode"
+        />
+        <Toggle
+          label="Flat Market Protection"
+          subtext="Get the trade amount back with no loss or gain if opening and closing quotes differ by 1 tick"
+          defaultChecked
+        />
+      </div>
+      <div className="tradingMenuSection">
+        <p className="tradingSectionTitle">Trades</p>
+        <Toggle
+          label="Take profit and Stop Loss"
+          subtext="Show take profit and Stop Loss editor on the panel for making trades"
+          defaultChecked
+        />
       </div>
     </div>
   );
