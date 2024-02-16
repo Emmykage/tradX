@@ -1452,10 +1452,16 @@ export const NotificationIcon = () => (
   </svg>
 );
 
-export const ExitIcon = () => (
+export const ExitIcon = ({
+  width,
+  height,
+}: {
+  width?: string;
+  height?: string;
+}) => (
   <svg
-    width="26"
-    height="28"
+    width={width || "24"}
+    height={height || "28"}
     viewBox="0 0 26 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
