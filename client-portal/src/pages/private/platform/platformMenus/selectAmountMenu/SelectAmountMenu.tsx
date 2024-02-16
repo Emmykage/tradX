@@ -3,8 +3,18 @@ import "./SelectAmountMenu.scss";
 import DepositCard from "../../../../../components/depositCard/DepositCard";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import AmountCard from "../../../../../components/amountCard/AmountCard";
+import { Dispatch, FC, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
-const SelectAmountMenu = () => {
+interface SelectAmountMenuProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
+
+const SelectAmountMenu: FC<SelectAmountMenuProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="selectAmountMenuCon">
       <div className="selectedAmountdiv">
@@ -42,7 +52,10 @@ const SelectAmountMenu = () => {
           <AmountCard amount={"USD 10"} />
         </Col>
       </Row>
-      <div className="confrimBtn">
+      <div className="confrimBtn" onClick={() => {
+        setIsRightSubDrawerOpen(true);
+        setIsRightSubDrawerContent("payments-deposit")
+      }}>
         <PaymentListItemCard border title="Confirm" />
       </div>
     </div>
