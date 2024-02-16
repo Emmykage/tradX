@@ -121,6 +121,8 @@ export function rightDrawerTitleHandler(
   switch (rightDrawerContent) {
     case "account":
       return "Accounts";
+    case "profile":
+      return "Profile";
     case "payments":
       return "Payments";
     case "verification":
