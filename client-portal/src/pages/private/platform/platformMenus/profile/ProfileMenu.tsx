@@ -1,9 +1,12 @@
 import { Dispatch, SetStateAction } from "react";
 import {
   ArrowUpOS,
-  BookmarkIcon,
-  BoxedCheckedIcon,
+  BoostIcon,
+  CalendarIconImage,
+  FastLight,
+  ForexModeImage,
   NotificationIcon2,
+  ReferralLinkIcon2,
   ReloadIcon,
   SettingsIcon,
   TooltipIcon,
@@ -11,6 +14,9 @@ import {
 import "./profileMenu.scss";
 import { Col, Row } from "antd";
 import { RightSubDrawerContent } from "../../types";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 interface ProfileMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -41,18 +47,43 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
 }) => {
   const infos = [
     {
-      title: "Recieve a 50% Bonus",
-      image: "/profile/50-bonus.png",
+      title: "Еconomic",
+      p1: "calendar:",
+      p2: "12/02-16/02",
+      image: <CalendarIconImage />,
+      background: "backgroundPurple",
     },
     {
-      title: "How to analyze the chart",
-      image: "/profile/howto-analyze.png",
+      title: "Discover",
+      p1: "Forex Mode",
+      image: <ForexModeImage />,
+      background: "backgroundGreen",
     },
     {
-      title: "Number of the day",
-      image: "/profile/number-of-day.png",
+      title: "Asset for Fast",
+      p1: "Trading 24/7",
+      image: <FastLight />,
+      background: "backgroundBlack",
+    },
+    {
+      title: "Join Our",
+      p1: "Community",
+      image: <FastLight />,
+      background: "backgroundSky",
     },
   ];
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    slidesToShow: 3.4,
+    slidesToScroll: 1,
+    autoplay: false,
+    // speed: 2000,
+    // autoplaySpeed: 2000,
+    cssEase: "linear",
+    arrows: false,
+  };
 
   return (
     <div>
@@ -77,19 +108,23 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
           <ReloadIcon />
         </div>
       </div>
-
-      <div className="traderInfoImages">
-        <Row gutter={[16, 16]} justify="start">
+      <div className="traderInfoImages-new">
+        <Slider {...settings}>
           {infos.map((item, index) => (
-            <Col key={item.title + index} span={8} xs={7} sm={5} md={7}>
-              <img src={item.image} alt={item.title} key={index} />
-            </Col>
+            <div className={`card ${item.background}`} key={item.title + index}>
+              <div className="image">{item.image}</div>
+              <div className="text">
+                <p>{item.title}</p>
+                <p>{item.p2}</p>
+                <p>{item.p1}</p>
+              </div>
+            </div>
           ))}
-        </Row>
+        </Slider>
       </div>
 
       <div
-        className="profileCard"
+        className="profileCard-set"
         onClick={() => {
           setIsRightSubDrawerOpen(true);
           setIsRightSubDrawerContent("traders-way");
@@ -118,11 +153,9 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
             <div className="profileCard">
               <div className="taskCard">
                 <div className="taskCardIcon">
-                  <BoxedCheckedIcon />
+                  <ReferralLinkIcon2 />
                 </div>
-                <p className="taskCardSubtitle">21:42:37</p>
-                <p className="taskCardTitle">Daily Tasks</p>
-                <p className="taskCardSubtitle">0/3</p>
+                <p className="taskCardTitle">Referral Program</p>
               </div>
             </div>
           </Col>
@@ -130,11 +163,9 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
             <div className="profileCard">
               <div className="taskCard">
                 <div className="taskCardIcon">
-                  <BookmarkIcon />
+                  <BoostIcon />
                 </div>
-                <p className="taskCardSubtitle"></p>
-                <p className="taskCardTitle">Achievements</p>
-                <p className="taskCardSubtitle">0/10</p>
+                <p className="taskCardTitle">Boost Cubes</p>
               </div>
             </div>
           </Col>
@@ -142,7 +173,7 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       </div>
 
       <div
-        className="profileCard settingsButton"
+        className="profileCard-set settingsButton"
         onClick={() => {
           setIsRightSubDrawerOpen(true);
           setIsRightSubDrawerContent("settings");
