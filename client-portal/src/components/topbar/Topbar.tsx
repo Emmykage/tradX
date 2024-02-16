@@ -4,12 +4,15 @@ import {
   ProfileIcon,
   WalletIcon,
 } from "../../assets/icons";
+import { RightDrawerContent } from "../../pages/private/platform/types";
 import "./topbar.scss";
 
 interface TopbarProps {
   isDrawerOpen: boolean;
   setIsRightDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsRightDrawerContent: React.Dispatch<React.SetStateAction<string | null>>;
+  setIsRightDrawerContent: React.Dispatch<
+    React.SetStateAction<RightDrawerContent>
+  >;
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentDrawer: React.Dispatch<
     React.SetStateAction<
