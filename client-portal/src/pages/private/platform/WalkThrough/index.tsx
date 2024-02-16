@@ -21,7 +21,7 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
   className,
   setShowWalkThrough,
 }) => {
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(9);
 
   return (
     <div className={`walkthroughContainer ${className}`}>
@@ -70,7 +70,9 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
         open={step === 8}
       />
       <ChooseTrade
-        className={`${step === 9 ? "active" : ""}`}
+        className={`${
+          step === 9 || step === 10 || step === 11 ? "active" : ""
+        }`}
         setStep={setStep}
         open={step === 9}
       />
