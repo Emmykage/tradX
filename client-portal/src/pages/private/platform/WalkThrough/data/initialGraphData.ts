@@ -1,7 +1,6 @@
 function generateRandomDataWithWhitespace(
   count: number,
-  startTime: string,
-  startValue: number
+  startTime: string
 ): { time: number | string; value?: number }[] {
   const data = [];
   let currentTimestamp = new Date(startTime).getTime() / 1000; // Convert to seconds
@@ -51,7 +50,6 @@ function generateRandomDataWithWhitespace(
 export const initialData = generateRandomDataWithWhitespace(
   200,
   "2024-02-01T17:52:00.000Z",
-  1.164,
 );
 
 export const staticData = [
