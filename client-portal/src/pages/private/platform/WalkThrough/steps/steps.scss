@@ -300,14 +300,21 @@
 
     .walkthroughButton {
       z-index: 1;
-      min-width: 22.5rem;
-      height: 4.625rem;
+      width: 100%;
+      max-width: 22.5rem;
+      min-height: 4.625rem;
+      max-height: 4.625rem;
       background: #ff0000;
       color: #fff;
       border-radius: 0.625rem;
       font-size: 1.25rem;
       font-weight: 600;
       margin-top: 1.875rem;
+      transition: all 0.5s ease;
+
+      &:hover {
+        background: #ff3232;
+      }
     }
 
     .euroUsdButton {
