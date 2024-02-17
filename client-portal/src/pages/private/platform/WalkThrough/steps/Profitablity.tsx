@@ -27,7 +27,7 @@ const Profitablity: React.FC<ProfitablityProps> = ({
         profit if, when the trade expires, the chart will still be moving in the
         correct direction.
       </p>
-      <Button onClick={() => setStep(7)}>I understand</Button>
+      <Button onClick={() => setStep(7)}>I Understand</Button>
     </div>
   );
   return (
@@ -38,7 +38,7 @@ const Profitablity: React.FC<ProfitablityProps> = ({
       </div>
       <Tooltip
         rootClassName="walkthroughTooltip"
-        placement="bottom"
+        placement="bottomRight"
         title={<TooltipContent />}
         color="#1973FA"
         open={open}
