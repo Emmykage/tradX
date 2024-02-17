@@ -75,6 +75,7 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
         }`}
         setStep={setStep}
         open={step === 9}
+        setShowWalkThrough={setShowWalkThrough}
       />
     </div>
   );

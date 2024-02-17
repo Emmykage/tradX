@@ -7,18 +7,21 @@ interface ChooseTradeProps {
   className: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   open: boolean;
+  setShowWalkThrough: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ChooseTrade: React.FC<ChooseTradeProps> = ({
   className,
   setStep,
   open,
+  setShowWalkThrough,
 }) => {
   const [graphData, setGraphData] = useState<any>([]);
   const [userInput, setUserInput] = useState<"up" | "down" | null>(null);
   const [showTooltip, setShowTooltip] = useState(false);
   const [time, setTime] = useState(60);
   const [displayTimer, setDisplayTimer] = useState(false);
+  const [tradingCompleted, setTradingCompleted] = useState(false);
 
   useEffect(() => {
     setShowTooltip(open);
@@ -35,6 +38,7 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
       }, 230);
 
       if (time === 0) {
+        setTradingCompleted(true);
         setDisplayTimer(false);
       }
 
@@ -60,6 +64,20 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
           className={`timeCounter ${displayTimer && time > 0 ? "active" : ""}`}
         >
           <p>Wait for the result of the trade ({time}).</p>
+        </div>
+
+        <div className={`tradingCompleted ${tradingCompleted ? "active" : ""}`}>
+          <p className="walkthroughSubtext">
+            Congratulations! Your trade was successful. By Investing $100,
+            you’ve earned $85 - a 85% return in just 1 minute.
+          </p>
+
+          <button
+            className="walkthroughButton"
+            onClick={() => setShowWalkThrough(false)}
+          >
+            Finish training
+          </button>
         </div>
       </div>
       <div className="tradingForm">
@@ -91,4 +109,3 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
 };
 
 export default ChooseTrade;
-
