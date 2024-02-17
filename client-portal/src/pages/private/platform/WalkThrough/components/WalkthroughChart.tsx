@@ -22,9 +22,14 @@ interface ChartComponentProps {
     areaBottomColor?: string;
     gridLines?: string;
   };
+  direction?: "up" | "down" | null;
 }
 
-const ChartComponent: React.FC<ChartComponentProps> = ({ data, colors }) => {
+const ChartComponent: React.FC<ChartComponentProps> = ({
+  data,
+  colors,
+  direction,
+}) => {
   const {
     backgroundColor = "transparent",
     lineColor = "#0094FF",
@@ -104,6 +109,55 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data, colors }) => {
       clearTimeout(waitForChartInitialization);
     }, 100);
 
+    const numberOfUpdates = 30;
+    const updateChart = () => {
+      const lastDataPoint = data[data.length - 1];
+      const timeInterval = 500; // 0.5 seconds
+      const startValue = lastDataPoint.value;
+      const updateDirection =
+        direction === "up" ? 1 : direction === "down" ? -1 : 0;
+
+      const startTime = lastDataPoint.time + timeInterval; // Start from the next time point
+
+      let updateCount = 0; // Keep track of the number of updates
+
+      const updateIntervalId = setInterval(() => {
+        const newObject: DataPoint = {
+          time: startTime + updateCount * timeInterval,
+          value: startValue + updateDirection * Math.random() * 10,
+        };
+        newSeries.update(newObject);
+
+        updateCount++;
+
+        if (updateCount >= numberOfUpdates) {
+          clearInterval(updateIntervalId);
+        }
+      }, timeInterval);
+    };
+
+    const startUpdating = () => {
+      const updateDuration = 15000; // 15 seconds
+      const updateTimeout = setTimeout(() => {
+        clearInterval(updateIntervalId);
+      }, updateDuration);
+
+      updateChart(); // Update immediately
+
+      const updateIntervalId = setInterval(() => {
+        updateChart();
+      }, updateDuration / numberOfUpdates);
+
+      return () => {
+        clearTimeout(updateTimeout);
+        clearInterval(updateIntervalId);
+      };
+    };
+
+    if (direction === "up" || direction === "down") {
+      return startUpdating();
+    }
+
     return () => {
       window.removeEventListener(
         "resize",
@@ -120,6 +174,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data, colors }) => {
     areaTopColor,
     areaBottomColor,
     gridLines,
+    direction,
   ]);
 
   return <div ref={chartContainerRef} style={{ height: "100%" }} />;
