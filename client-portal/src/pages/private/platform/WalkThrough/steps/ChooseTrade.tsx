@@ -35,12 +35,13 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
     if (displayTimer && time > 0) {
       const timerInterval = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
-      }, 230);
 
-      if (time === 0) {
-        setTradingCompleted(true);
-        setDisplayTimer(false);
-      }
+        if (time <= 1) {
+          setTradingCompleted(true);
+          setDisplayTimer(false);
+          setStep(11);
+        }
+      }, 230);
 
       // Cleanup interval on component unmount or when time reaches 0
       return () => clearInterval(timerInterval);
@@ -60,9 +61,7 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
           className="euroUsdButton active"
           src="/walkthrough/eur-usd-btn-2.png"
         />
-        <div
-          className={`timeCounter ${displayTimer && time > 0 ? "active" : ""}`}
-        >
+        <div className={`timeCounter ${displayTimer ? "active" : ""}`}>
           <p>Wait for the result of the trade ({time}).</p>
         </div>
 
@@ -74,7 +73,10 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
 
           <button
             className="walkthroughButton"
-            onClick={() => setShowWalkThrough(false)}
+            onClick={() => {
+              setShowWalkThrough(false);
+              setStep(0);
+            }}
           >
             Finish training
           </button>
