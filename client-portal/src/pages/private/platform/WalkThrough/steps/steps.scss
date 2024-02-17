@@ -320,12 +320,12 @@
     .euroUsdButton {
       z-index: 2;
       position: absolute;
-      top: 3.125rem;
-      left: 3.125rem;
-      width: 12.0625rem;
+      top: 1.875rem;
+      left: 1.875rem;
+      width: 9.375rem;
 
       &.active {
-        width: 16.625rem;
+        width: 13.125rem;
       }
     }
   }
