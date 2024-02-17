@@ -15,7 +15,7 @@ interface UserToolsProps {
   }[];
 }
 
-const UserTools:FC<UserToolsProps> = ({ tabKey, setTabKey, tabs }) => {
+const UserTools:FC<UserToolsProps> = ({ setTabKey, tabs }) => {
   
   return (
     <div className="user-options-bar user-options-trades">

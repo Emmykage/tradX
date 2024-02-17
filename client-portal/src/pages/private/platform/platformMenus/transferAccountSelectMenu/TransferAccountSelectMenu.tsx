@@ -1,5 +1,5 @@
 import { Typography } from "antd";
-import { PakIconSquare, UsdSquareIcon } from "../../../../../assets/icons";
+import { UsdSquareIcon } from "../../../../../assets/icons";
 import "./TransferAccountSelectMenu.scss";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import { Dispatch, FC, SetStateAction } from "react";

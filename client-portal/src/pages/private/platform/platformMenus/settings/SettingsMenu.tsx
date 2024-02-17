@@ -8,7 +8,6 @@ import {
   TradingIcon,
   UserIcon,
 } from "../../../../../assets/icons";
-import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./settingsMenu.scss";
 import { RightSubDrawerContent } from "../../types";

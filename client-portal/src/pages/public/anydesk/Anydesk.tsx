@@ -10,7 +10,6 @@ import {
   // AppStoreIcon,
   ChromeIcon,
   ElipseShadow,
-  ElipseShadow2,
   EyeIcon,
   // GooglePlayStoreIcon,
   IOSIcon,

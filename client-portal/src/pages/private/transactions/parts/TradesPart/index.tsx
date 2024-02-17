@@ -1,10 +1,9 @@
 
-import { Button, Select, Tabs } from "antd";
-import { FC, useMemo, useState } from "react";
-import { FillCaretDownIcon } from "../../../../../assets/icons";
+import { Tabs } from "antd";
+import { FC, useState } from "react";
 import { DataType } from "../../types";
 import TransactionTable from "../DataTable";
-import { accountsOptions, columns } from "../../dummy";
+import { columns } from "../../dummy";
 
 import "../../transactions.scss";
 import "./trades.scss"
