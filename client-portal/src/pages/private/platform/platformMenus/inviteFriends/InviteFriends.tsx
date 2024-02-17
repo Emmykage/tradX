@@ -27,7 +27,10 @@ const InviteFriends: React.FunctionComponent<InviteFriendsProps> = ({
 
   return (
     <div>
-      <div className="headerExtraIcon">
+      <div
+        style={{ top: "2.8rem", right: "4.25rem" }}
+        className="headerExtraIcon"
+      >
         <InfoCircleIconWhite />
       </div>
       <div className="InviteFriendsCon">

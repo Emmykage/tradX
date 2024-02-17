@@ -1,10 +1,18 @@
 import { Col, Row } from "antd";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./boostCubes.scss";
+import { Dispatch, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
-interface BoostCubesProps {}
+interface BoostCubesProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
 
-const BoostCubes: React.FunctionComponent<BoostCubesProps> = () => {
+const BoostCubes: React.FunctionComponent<BoostCubesProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="boostCubes">
       <MainItemCard variant={3} className="boostCubes-Card">
@@ -13,7 +21,14 @@ const BoostCubes: React.FunctionComponent<BoostCubesProps> = () => {
             <p className="boostCubes-text">
               Invite your Friends to Trade and receive a Boost Cube
             </p>
-            <button className="boostCubes-button">Open Referral Program</button>
+            <button
+              onClick={() => {
+                setIsRightSubDrawerContent("referral-program");
+              }}
+              className="boostCubes-button"
+            >
+              Open Referral Program
+            </button>
           </Col>
           <Col className="img-col" span={11}>
             <img src="/menu-images/svgs/envelope.svg" alt="" />

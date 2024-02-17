@@ -50,4 +50,6 @@ export type LeftSubDrawer =
     | "card-details-menu"
     | "payments-promo-code"
     | "select-withdraw-account"
+    | "boost-cubes"
+    | "referral-program"
     | null;

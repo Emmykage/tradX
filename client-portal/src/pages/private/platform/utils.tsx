@@ -40,6 +40,7 @@ import SelectAmountMenu from "./platformMenus/selectAmountMenu/SelectAmountMenu"
 import CardDetailsMenu from "./platformMenus/cardDetailsMenu/CardDetailsMenu";
 import PromoCodes from "./platformMenus/promoCodes/PromoCodes";
 import WithdrawAccount from "./platformMenus/withdrawAccount/WithdrawAccount";
+import BoostCubes from "./platformMenus/boostClubes/BoostCubes";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -230,6 +231,11 @@ export function rightSubDrawerTitleHandler(
       return "Deposit";
     case "select-withdraw-account":
       return "Select Account";
+    case "boost-cubes":
+      return "Invite Friends & Get Rewards";
+    case "referral-program":
+      return "Invite Friends & Get Rewards";
+
     default:
       return "";
   }
@@ -304,7 +310,7 @@ export function rightSubDrawerBodyHandler(
       return <VerifyPayment />;
     case "mega-box-rewards":
       return <MagicBoxRewards />;
-    case "invite-friends":
+    case "referral-program":
       return (
         <InviteFriends
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
@@ -338,6 +344,14 @@ export function rightSubDrawerBodyHandler(
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
       );
+    case "boost-cubes":
+      return (
+        <BoostCubes
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+
     // case "transfer-account-select-menu":
     //   return (
     //     <TransferAccountSelectMenu
@@ -387,7 +401,7 @@ export function rightSubDrawerExtraHandler(
     case "verify-payment":
     case "mega-box-rewards":
       return (
-        <div onClick={() => setIsRightSubDrawerContent("invite-friends")}>
+        <div onClick={() => setIsRightSubDrawerContent("referral-program")}>
           <ArrowLeftOS />
         </div>
       );
