@@ -1,13 +1,10 @@
 function generateRandomDataWithWhitespace(
   count: number,
   startTime: string,
-  startValue: number,
-  volatility: number,
-  whitespaceProbability: number
+  startValue: number
 ): { time: number | string; value?: number }[] {
   const data = [];
   let currentTimestamp = new Date(startTime).getTime() / 1000; // Convert to seconds
-  let currentValue = startValue;
 
   for (let i = 0; i < count; i++) {
     let generatedValue;
@@ -55,8 +52,6 @@ export const initialData = generateRandomDataWithWhitespace(
   200,
   "2024-02-01T17:52:00.000Z",
   1.164,
-  0.01,
-  0.5
 );
 
 export const staticData = [

@@ -21,7 +21,7 @@ const InviteFriends: React.FunctionComponent<InviteFriendsProps> = ({}) => {
             <p className="subtext">Deposit money to a live account</p>
           </div>
           <div className="rightIconDiv">
-            <ArrowRightOS />
+            <ArrowRightOS width="22" height="22" />
           </div>
         </MainItemCard>
         <MainItemCard className="step1Card" variant={2}>
