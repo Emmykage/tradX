@@ -3,11 +3,14 @@ import MainItemCard from "../mainItemCard/MainItemCard";
 import { CheckIcon, PhoneIcon } from "../../assets/icons";
 import "./enhanceSecurityStyles.scss";
 
-interface EnhanceSecurityCardProps {}
+interface EnhanceSecurityCardProps {
+  variant1?: 1 | 2 | 3;
+  variant2?: 1 | 2 | 3;
+}
 
 const EnhanceSecurityCard: React.FunctionComponent<
   EnhanceSecurityCardProps
-> = () => {
+> = ({ variant1, variant2 }) => {
   return (
     <div className="enhanceSecurityContainer">
       <MainItemCard
@@ -21,7 +24,11 @@ const EnhanceSecurityCard: React.FunctionComponent<
         </p>
         <Row gutter={[16, 16]} justify="start">
           <Col span={12}>
-            <MainItemCard fullHeight className="securityItem">
+            <MainItemCard
+              variant={variant2 ? variant2 : 1}
+              fullHeight
+              className="securityItem"
+            >
               <div className="securityItemIcon">
                 <PhoneIcon />
               </div>
@@ -29,7 +36,11 @@ const EnhanceSecurityCard: React.FunctionComponent<
             </MainItemCard>
           </Col>
           <Col span={12}>
-            <MainItemCard fullHeight className="securityItem">
+            <MainItemCard
+              variant={variant1 ? variant1 : 1}
+              fullHeight
+              className="securityItem"
+            >
               <div className="securityItemIcon">
                 <CheckIcon />
               </div>
