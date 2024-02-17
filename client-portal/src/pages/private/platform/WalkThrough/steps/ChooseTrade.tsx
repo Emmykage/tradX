@@ -17,6 +17,8 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
   const [graphData, setGraphData] = useState<any>([]);
   const [userInput, setUserInput] = useState<"up" | "down" | null>(null);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [time, setTime] = useState(60);
+  const [displayTimer, setDisplayTimer] = useState(false);
 
   useEffect(() => {
     setShowTooltip(open);
@@ -25,6 +27,22 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
   useEffect(() => {
     setGraphData(staticData);
   }, []);
+
+  useEffect(() => {
+    if (displayTimer && time > 0) {
+      const timerInterval = setInterval(() => {
+        setTime((prevTime) => prevTime - 1);
+      }, 230);
+
+      if (time === 0) {
+        setDisplayTimer(false);
+      }
+
+      // Cleanup interval on component unmount or when time reaches 0
+      return () => clearInterval(timerInterval);
+    }
+  }, [displayTimer, time]);
+
   return (
     <div className={`walkthroughStep chooeseTradeStep ${className}`}>
       <div className="chooeseTradeStepLeft">
@@ -38,6 +56,11 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
           className="euroUsdButton active"
           src="/walkthrough/eur-usd-btn-2.png"
         />
+        <div
+          className={`timeCounter ${displayTimer && time > 0 ? "active" : ""}`}
+        >
+          <p>Wait for the result of the trade ({time}).</p>
+        </div>
       </div>
       <div className="tradingForm">
         <TradeForm
@@ -50,11 +73,13 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
           hintTrades={showTooltip}
           disabled
           handleUserInputUp={() => {
+            setDisplayTimer(true);
             setStep(10);
             setUserInput("up");
             setShowTooltip(false);
           }}
           handleUserInputDown={() => {
+            setDisplayTimer(true);
             setStep(10);
             setUserInput("down");
             setShowTooltip(false);
@@ -66,3 +91,4 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
 };
 
 export default ChooseTrade;
+
