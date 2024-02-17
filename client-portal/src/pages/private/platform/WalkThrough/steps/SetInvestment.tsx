@@ -40,6 +40,7 @@ const SetInvestment: React.FC<SetInvestmentProps> = ({
           showProfit={false}
           showSetupOrder={false}
           amountTooltip={open}
+          profitPercent="+85%"
           hintPlus
           disabled
           onIncreaseAmount={() => setStep(8)}

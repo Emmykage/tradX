@@ -27,6 +27,7 @@ interface TradeFormProps {
   onDecreaseDuration?: () => void;
   handleUserInputUp?: () => void;
   handleUserInputDown?: () => void;
+  profitPercent?: string;
 }
 
 const TradeForm: React.FunctionComponent<TradeFormProps> = ({
@@ -47,6 +48,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   onDecreaseDuration,
   handleUserInputUp,
   handleUserInputDown,
+  profitPercent,
 }) => {
   return (
     <div
@@ -159,7 +161,10 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
               disabled={!hintTrades && disabled}
               className={`up ${hintTrades ? "hint" : ""}`}
             >
-              <span>Up</span>
+              <div className="textContainerBtns">
+                <span>Up</span>
+                {profitPercent ? <span className="percentText">{profitPercent}</span> : null}
+              </div>
               <span>
                 <ArrowUpRightIcon />
               </span>
@@ -169,7 +174,10 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
               disabled={!hintTrades && disabled}
               className={`down ${hintTrades ? "hint" : ""}`}
             >
-              <span>Down</span>
+              <div className="textContainerBtns">
+                <span>Down</span>
+                {profitPercent ? <span className="percentText">{profitPercent}</span> : null}
+              </div>
               <span>
                 <ArrowDownRightIcon />
               </span>

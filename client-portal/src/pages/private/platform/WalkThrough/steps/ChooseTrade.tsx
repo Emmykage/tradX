@@ -91,6 +91,7 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
           showSetupOrder={false}
           hintTradesTooltip={showTooltip}
           hintTrades={showTooltip}
+          profitPercent="+85%"
           disabled
           handleUserInputUp={() => {
             setDisplayTimer(true);

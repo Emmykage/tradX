@@ -40,6 +40,7 @@ const SetDuration: React.FC<SetDurationProps> = ({
           showProfit={false}
           showSetupOrder={false}
           durationTooltip={open}
+          profitPercent="+85%"
           hintDuration
           disabled
           onDecreaseDuration={() => setStep(9)}
