@@ -40,6 +40,20 @@
       background-size: 65% auto;
       background-position: center top;
 
+      &.active {
+        .stocksContainer {
+          .stockItemList {
+            transform: translate(0);
+            transition: transform ease-in-out 2s;
+
+            &:first-child {
+              transform: translate(0);
+              transition: transform ease-in-out 2s;
+            }
+          }
+        }
+      }
+
       .stocksContainer {
         display: flex;
         flex-direction: column;
@@ -51,9 +65,12 @@
           display: flex;
           justify-content: center;
           gap: 1.75rem;
+          transform: translate(-500px);
+          transition: transform ease-in-out 1s;
 
           &:first-child {
             margin-bottom: 1.75rem;
+            transform: translate(500px);
           }
 
           .stockItem {
