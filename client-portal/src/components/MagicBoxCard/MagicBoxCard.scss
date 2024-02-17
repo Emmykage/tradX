@@ -1,29 +1,40 @@
 .card-container {
-    display: flex;
-    align-items: center;
-    background: linear-gradient(126.82deg, #1A237B 8.58%, #040B21 62.18%);
-    height: 284px;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    143.41deg,
+    rgba(23, 49, 113, 0.6) 6.26%,
+    rgba(20, 95, 239, 0.6) 45.35%,
+    rgba(88, 132, 241, 0.6) 78.69%
+  );
+  height: 284px;
+  width: 100%;
 
-    .magic-card-text{
-        width: 50%;
-        text-align: center;
-        .referalRewardsText {
-        color: #0094FF;
-        font-size: 27.29px;
-        font-weight: 700;
-        margin-top: 11px;
-        }
-        .megabox-text {
-        color: #ffffff;
-        font-size: 27.29px;
-        font-weight: 500;
-        margin-bottom: 31px;
-        }
-        .ant-btn-default {
-            background-color: #2D2E31;
-            color: #fff;
-            border: none;
-         }
+  .magic-card-text {
+    width: 50%;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    .referalRewardsText {
+      color: #ffffff;
+      font-size: 27.29px;
+      font-weight: 700;
+    }
+    .megabox-text {
+      color: #61c1e8;
+      font-size: 27.29px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .ant-btn-default {
+      background-color: #0e0f12;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      width: 10rem;
+      height: 3rem;
     }
   }
+}

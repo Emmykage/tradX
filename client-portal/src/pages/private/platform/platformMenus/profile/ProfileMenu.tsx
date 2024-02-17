@@ -145,7 +145,13 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       <div className="taskCards">
         <Row gutter={[16, 16]} justify="start">
           <Col span={12}>
-            <div className="profileCard">
+            <div
+              onClick={() => {
+                setIsRightSubDrawerOpen(true);
+                setIsRightSubDrawerContent("referral-program");
+              }}
+              className="profileCard"
+            >
               <div className="taskCard">
                 <div className="taskCardIcon">
                   <img src="/menu-images/svgs/referal-link.svg" />
@@ -155,7 +161,13 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
             </div>
           </Col>
           <Col span={12}>
-            <div className="profileCard">
+            <div
+              onClick={() => {
+                setIsRightSubDrawerOpen(true);
+                setIsRightSubDrawerContent("boost-cubes");
+              }}
+              className="profileCard"
+            >
               <div className="taskCard">
                 <div className="taskCardIcon">
                   <img src="/menu-images/svgs/boost-cubes.svg" />
