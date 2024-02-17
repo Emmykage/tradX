@@ -1,6 +1,8 @@
 .platformWrapper {
   display: flex;
   background: #0e0f12;
+  height: 100vh;
+  overflow: hidden;
   .trade-section {
     transition: margin-left 0.25s ease;
     background: #0e0f12;
