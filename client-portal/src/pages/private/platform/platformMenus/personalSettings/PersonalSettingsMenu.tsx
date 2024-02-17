@@ -16,7 +16,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
 > = ({ setIsRightSubDrawerContent }) => {
   return (
     <div className="personalSettingsMenu">
-      <EnhanceSecurityCard />
+      <EnhanceSecurityCard variant1={2} />
 
       <div>
         <p className="menuSectionTitle">Personal</p>
@@ -75,12 +75,14 @@ const PersonalSettingsMenu: React.FunctionComponent<
       <div className="socialButtons">
         <p className="menuSectionTitle">Social</p>
         <MenuListCard
+          className="socialButton apple"
           textCenter
           title="Connect Apple"
           icon={<img src="/social-icons/apple-icon.svg" />}
         />
         <MenuListCard
           textCenter
+          className="socialButton facebook"
           title="Connect Facebook"
           icon={<img src="/social-icons/facebook-icon.svg" />}
         />
