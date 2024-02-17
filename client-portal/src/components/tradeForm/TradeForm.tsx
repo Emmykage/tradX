@@ -71,7 +71,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
           <Tooltip
             rootClassName="walkthroughTooltip amountTooltip"
             placement="left"
-            title="Set the investment amount at $100. Don’t worry, this is training money."
+            title="Set the investment amount at $100. Don’t worry, this is test money."
             color="#1973FA"
             open={amountTooltip}
           >
