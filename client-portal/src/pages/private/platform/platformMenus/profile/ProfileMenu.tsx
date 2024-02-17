@@ -43,8 +43,8 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
   const infos = [
     {
       title: "Еconomic",
-      p1: "calendar:",
-      p2: "12/02-16/02",
+      p1: "12/02-16/02",
+      p2: "calendar:",
       image: "/menu-images/svgs/calender.svg",
       background: "backgroundPurple",
     },
@@ -109,9 +109,9 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
                 <img src={item.image} />
               </div>
               <div className="text">
-                <p>{item.title}</p>
-                <p>{item.p2}</p>
-                <p>{item.p1}</p>
+                <p className="textp">{item.title}</p>
+                <p className="textp">{item.p2}</p>
+                <p className="textp">{item.p1}</p>
               </div>
             </div>
           ))}
