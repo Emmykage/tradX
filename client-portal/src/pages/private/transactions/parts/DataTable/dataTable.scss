@@ -1,18 +1,18 @@
 .report-msg-text{
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
 }
 
 .get-report-btn{
-    padding: 8px 122px;
+    padding: 0.5rem 7.625rem;
     background-color: #0094FF;
-    font-size: 15px;
+    font-size: 0.9375rem;
     font-weight: 500;
     color: #fff;
-    border-radius: 12px;
-    height: 42px;
-    @media screen and (max-width: 425px) {
-        padding: 8px 90px;
+    border-radius: 0.75rem;
+    height: 2.625rem;
+    @media screen and (max-width: 26.5625rem) {
+        padding: 0.5rem 5.625rem;
     }
 }
 .report-section{
@@ -20,17 +20,17 @@
     align-items: center;
     justify-content: center;
     .report-msg-text{
-        margin-right: 40px;
+        margin-right: 2.5rem;
         text-align: center;
     }
 
     @media screen and (max-width: 768px) {
         flex-direction: column;
         text-align: center;
-        height: 168px;
+        height: 10.5rem;
         .report-msg-text{
-            margin-bottom: 40px;
-            margin-right: 0px;
+            margin-bottom: 2.5rem;
+            margin-right: 0;
             text-align: center;
         }
     }
@@ -38,11 +38,11 @@
 .tb-td-transaction-status{
     background: #000;
     color: #fff;
-    width: 80px;
-    padding: 8px 0;
-    font-size: 12px;
+    width: 5rem;
+    padding: 0.5rem 0;
+    font-size: 0.75rem;
     font-weight: 600;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     text-align: center;
     &[status="pending"]{
         background: #70808C
@@ -53,12 +53,12 @@
 }
 
 .no-data-available-section{
-    height: 146px;
+    height: 9.125rem;
     display: flex;
     align-items: center;
     justify-content: center;
     p {
-        font-size: 15px;
+        font-size: 0.9375rem;
         font-weight: 600;
         color: #67696D
     }
@@ -76,7 +76,7 @@
 }
 
 .custom-transactions-table-item-body{
-    height: 220px;
+    height: 13.75rem;
     background-color: #fff;
     padding: 1rem;
     display: flex;

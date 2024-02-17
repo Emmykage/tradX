@@ -22,12 +22,12 @@
 }
 
 .verify-payment-amount-title{
-  font-size: 24.42px;
+  font-size: 1.5263rem;
   color: #969798;
 }
 
 .verify-payment-amount-subtext{
-  font-size: 33px;
+  font-size: 2.0625rem;
   color: #fff;
   font-weight: 700;
 }
@@ -43,7 +43,7 @@
   width: 100%;
   
   .option-row {
-  padding: 25px 0;
+  padding: 1.5625rem 0;
   border-bottom: 1px solid #3D4046;
   display: flex;
   width: 100%;
@@ -53,7 +53,7 @@
     background-color: #3D4046;
     color: #fff;
     border: none;
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .option-subtext{
     color: #969798
@@ -61,15 +61,15 @@
 }
 }
 .verify-payment-redirect-msg{
-  width: 377px;
+  width: 23.5625rem;
   text-align: center;
   color: #969798;
-  margin-top: 82px;
+  margin-top: 5.125rem;
   .verify-payment-redirect-text{
     color: #969798;
   }
   .settingsButton{
-    margin-top: 24px;
+    margin-top: 1.5rem;
   width: 100%;
 }
 }

@@ -24,23 +24,26 @@ const MagicBoxRewards: FC<MagicBoxRewardsProps> = () => {
           Possible Rewards
         </Typography.Text>
         {/* XP Rewards */}
-        <div className="profileCard settingsButton" style={{ marginTop: 53 }}>
+        <div className="profileCard reward-btn" style={{marginTop: "1.75rem"}}>
           <button className="settings">
-            <span className="icon">
-              <img src="/menu-images/xpRewardIcon.png" />
-            </span>
+            <div>
+              <img
+                src="/menu-images/xpRewardIcon.png"
+              />
+            </div>
             <div>
               <p className="txt reward-key">XP</p>
               <p className="txt reward-value">Up to 200,00</p>
             </div>
           </button>
         </div>
+
         {/* Risk-free Trades Rewards */}
-        <div className="profileCard settingsButton">
+        <div className="profileCard reward-btn">
           <button className="settings">
-            <span className="icon">
+            <div>
               <img src="/menu-images/blue-3d-shield.png" />
-            </span>
+            </div>
             <div>
               <p className="txt reward-key">Risk-free Trades</p>
               <p className="txt reward-value">Up to $150</p>
@@ -48,11 +51,11 @@ const MagicBoxRewards: FC<MagicBoxRewardsProps> = () => {
           </button>
         </div>
         {/* Strategy Rewards */}
-        <div className="profileCard settingsButton">
+        <div className="profileCard reward-btn">
           <button className="settings">
-            <span className="icon">
+            <div>
               <img src="/menu-images/blue-3d-strategy-icon.png" />
-            </span>
+            </div>
             <div>
               <p className="txt reward-key">Strategy</p>
               <p className="txt reward-value">From Advanced or Expert Status</p>

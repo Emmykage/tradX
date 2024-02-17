@@ -1,17 +1,17 @@
 .user-options-transactions{
-    height: 113px;
+    height: 7.0625rem;
     flex-wrap: wrap;
     @media screen and (max-width: 769px) {
-        height: 269px;
+        height: 16.8125rem;
     }
 }
 
 .transaction-part{
     color: #67696D;
-    font-size: 14px;
+    font-size: 0.875rem;
     
 }
-// style={{ display: "flex", alignItems: "end" }}
+
 .user-control-period{
     display: flex;
     align-items: flex-end;
@@ -21,19 +21,19 @@
 }
 
 .transaction-part {
-        width: 200px;
-        height: 73px;
+        width: 12.5rem;
+        height: 4.5625rem;
         display: flex;
         flex-direction: column;
         label {
-            margin-bottom: 8px;
-            font-size: 14px;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
         }
         .ant-select {
             text-align: center;
             .ant-select-selector {
-                height: 42px;
-                border-radius: 12px;
+                height: 2.625rem;
+                border-radius: 0.75rem;
                 padding: 8px 0;
                 border: 1px solid rgba(27, 82, 102, 0.5)
             }

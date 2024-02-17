@@ -10,12 +10,14 @@
           width: 7px;
           height: 7px;
           margin-inline: 0.375rem;
-
           button {
             width: 7px;
             height: 7px;
             background-color: #0094ff;
             opacity: 1;
+            &::before {
+            display: none;
+          }
           }
 
           &.slick-active {
