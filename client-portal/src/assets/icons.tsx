@@ -3369,3 +3369,90 @@ export const ArchiveIcon = () => (
     <path d="M1 7.75H25" stroke="white" stroke-width="2" />
   </svg>
 );
+
+export const VolumeIcon = () => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2.66602 13.5466V18.8799C2.66602 21.5466 3.99935 22.8799 6.66602 22.8799H8.57268C9.06602 22.8799 9.55935 23.0266 9.98602 23.2799L13.8793 25.7199C17.2393 27.8266 19.9993 26.2933 19.9993 22.3333V10.0933C19.9993 6.11993 17.2393 4.59993 13.8793 6.70659L9.98602 9.14659C9.55935 9.39993 9.06602 9.54659 8.57268 9.54659H6.66602C3.99935 9.54659 2.66602 10.8799 2.66602 13.5466Z"
+      stroke="white"
+      stroke-width="2"
+    />
+    <path
+      d="M26.5996 9C26.5996 9 30.5996 11 30.5996 15.9333C30.5996 20.8667 26.5996 23 26.5996 23"
+      stroke="white"
+      stroke-width="1.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M24 11.3984C24 11.3984 26.6286 12.7127 26.6286 15.9546C26.6286 19.1965 24 20.5984 24 20.5984"
+      stroke="white"
+      stroke-width="1.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+export const LightIcon = () => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect y="0.5" width="28" height="27" rx="4" fill="white" />
+    <path
+      d="M1 17L4 14.5L9 17L11.5 13.5L18.5 14L24.5 8.5L27 11"
+      stroke="#4AA3EC"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+export const DarkIcon = () => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect y="0.5" width="28" height="27" rx="4" fill="#14161A" />
+    <path
+      d="M1 17L4 14.5L9 17L11.5 13.5L18.5 14L24.5 8.5L27 11"
+      stroke="#4AA3EC"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+export const ClassicIcon = () => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect y="0.5" width="28" height="27" rx="4" fill="#1F2A3A" />
+    <path
+      d="M1 17L4 14.5L9 17L11.5 13.5L18.5 14L24.5 8.5L27 11"
+      stroke="#4AA3EC"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
