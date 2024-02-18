@@ -52,4 +52,5 @@ export type LeftSubDrawer =
     | "select-withdraw-account"
     | "boost-cubes"
     | "referral-program"
+    | "verification-helpcenter-menu"
     | null;

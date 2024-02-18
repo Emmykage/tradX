@@ -41,6 +41,7 @@ import CardDetailsMenu from "./platformMenus/cardDetailsMenu/CardDetailsMenu";
 import PromoCodes from "./platformMenus/promoCodes/PromoCodes";
 import WithdrawAccount from "./platformMenus/withdrawAccount/WithdrawAccount";
 import BoostCubes from "./platformMenus/boostClubes/BoostCubes";
+import VerificationHelpCenterMenu from "./platformMenus/verificationHelpCenterMenu/VerificationHelpCenterMenu";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -172,7 +173,12 @@ export function rightDrawerBodyHandler(
         />
       );
     case "verification":
-      return <VerificationMenu />;
+      return (
+        <VerificationMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
     default:
       return null;
   }
@@ -235,7 +241,8 @@ export function rightSubDrawerTitleHandler(
       return "Invite Friends & Get Rewards";
     case "referral-program":
       return "Invite Friends & Get Rewards";
-
+    case "verification-helpcenter-menu":
+      return "Help Center";
     default:
       return "";
   }
@@ -256,7 +263,19 @@ export function rightSubDrawerBodyHandler(
     case "twofactor":
       return <TwoFactorMenu />;
     case "verification":
-      return <VerificationMenu />;
+      return (
+        <VerificationMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    case "verification-helpcenter-menu":
+      return (
+        <VerificationHelpCenterMenu
+        // setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+        // setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
     case "personalSettings":
       return (
         <PersonalSettingsMenu
@@ -417,6 +436,12 @@ export function rightSubDrawerExtraHandler(
     case "select-withdraw-account":
       return (
         <div onClick={() => setIsRightSubDrawerContent("withdraw")}>
+          <ArrowLeftOS />
+        </div>
+      );
+    case "verification-helpcenter-menu":
+      return (
+        <div onClick={() => setIsRightSubDrawerContent("verification")}>
           <ArrowLeftOS />
         </div>
       );
