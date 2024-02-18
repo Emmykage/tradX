@@ -50,6 +50,7 @@ import DepositSuccessful from "./platformMenus/depositSuccessful/DepositSuccessf
 import PaymentMethod from "./platformMenus/paymentMethod/PaymentMethod";
 import TransferSuccessMenu from "./platformMenus/transfersuccessful/TransferSuccessMenu";
 import VerificationHelpCenterMenu from "./platformMenus/verificationHelpCenterMenu/VerificationHelpCenterMenu";
+import VerificationHelpCenterSubMenu from "./platformMenus/verificationHelpCenterSubMenu/VerificationHelpCenterSubMenu";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -253,6 +254,8 @@ export function rightSubDrawerTitleHandler(
       return "Help Center";
     case "add-account-name":
       return "Account Name";
+    case "verification-helpcenter-sub-menu":
+      return "Help Center";
     default:
       return "";
   }
@@ -283,8 +286,15 @@ export function rightSubDrawerBodyHandler(
     case "verification-helpcenter-menu":
       return (
         <VerificationHelpCenterMenu
-        // setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-        // setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    case "verification-helpcenter-sub-menu":
+      return (
+        <VerificationHelpCenterSubMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
       );
     case "personalSettings":
@@ -500,7 +510,16 @@ export function rightSubDrawerExtraHandler(
           <ArrowLeftOS />
         </div>
       );
-
+    case "verification-helpcenter-sub-menu":
+      return (
+        <div
+          onClick={() =>
+            setIsRightSubDrawerContent("verification-helpcenter-menu")
+          }
+        >
+          <ArrowLeftOS />
+        </div>
+      );
     default:
       return (
         <div onClick={() => setIsRightSubDrawerOpen(false)}>

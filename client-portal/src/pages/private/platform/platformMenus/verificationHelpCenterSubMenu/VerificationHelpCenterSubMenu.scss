@@ -1,14 +1,19 @@
-.verification-mandatory {
-    .mainItemCard .trading-platforms-about {
-        background-color: rgba(57, 58, 61, 1);
-        border-radius: 0.5rem;
-        padding: 2.375rem 2.5rem 2.375rem 2.5rem;
+.verification-platforms-what {
+  .mainItemCard {
+     border-radius: 0.5rem;
+    .trading-platforms-about {
+      // background-color: rgba(57, 58, 61, 1);
+      border-radius: 0.5rem;
+      padding: 2.375rem 2.5rem 2.375rem 2.5rem;
     }
+  }
   .buttons {
     display: flex;
     flex-direction: column;
     align-items: left;
-      padding: 2rem 1rem 1.375rem 0rem;
+    margin-top: 0;
+    margin-bottom: 1.6rem;
+    // padding: 2rem 1rem 1.375rem 0rem;
     .btn {
       width: 7.063rem;
       height: 2.875rem;
@@ -27,19 +32,11 @@
   .trading-platforms-about {
     padding: 1.875rem 2.5rem 1.875rem 2.5rem;
     margin-bottom: 2rem;
-    
     .about-info {
       h3 {
-        color: white;
-        font-weight: 700;
-        font-size: 1rem;
-      }
-      .topics {
-        color: rgba(149, 149, 149, 1);
-        font-weight: 400;
-        font-size: 0.75rem;
-        line-height: 1.6rem;
-        padding: 0.3rem 0rem 1.5rem 0rem;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 1.25rem;
       }
       .about-info-content {
         .content {
@@ -48,7 +45,7 @@
           gap: 0.688rem;
           padding: 0.5rem 0rem 0rem 0rem;
           .text {
-            color: #a2a2a2;
+            color: #959595;
             font-weight: 400;
             font-size: 0.938rem;
             padding: 0rem;
@@ -63,9 +60,9 @@
     margin-top: 1.375rem;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
     background-color: #1a1d21;
-    padding: 2rem;
+    padding: 1.8rem;
     border-radius: 0.438rem;
     gap: 2.563rem;
     div {
