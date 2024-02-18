@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     width: 100%;
+      
 
     .iconContainer {
       width: 2rem;
@@ -31,7 +32,8 @@
     label {
       position: absolute;
       top: 0.7rem;
-      left: 0.7rem;
+      // left: 3.2rem;
+      left: 12.5%;
       color: #ffffff99;
       font-size: 0.875rem;
       font-weight: 400;
@@ -70,10 +72,20 @@
   }
 }
 
+.customSelectDropdown.ant-select-dropdown {
+  
+&.background {
+    background-color: #3D4046 !important;
+    box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+    0 0.063rem 0 0.063rem inset rgba(39, 162, 255, 0.26);
+  }
+}
+
 .customSelectDropdown {
+  
   &.ant-select-dropdown {
     background-color: transparent !important;
-    box-shadow: none !important;
+      
     .rc-virtual-list-holder {
       max-height: 28rem !important;
     }

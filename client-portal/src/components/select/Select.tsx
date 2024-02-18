@@ -6,22 +6,28 @@ import "./selectList.scss";
 interface SelectProps {
   handleChange?: (value: any) => void;
   onClick?: (value: any) => void;
-  options?: { value: string; label: string }[];
+  onBlur?: (value: any) => void;
+  options?: { value: string; label: string | ReactNode }[];
   defaultValue?: string;
   label: string;
   icon?: ReactNode;
+  background?: string;
+  height?: string;
 }
 
 const Select: React.FunctionComponent<SelectProps> = ({
   handleChange,
   onClick,
+  onBlur,
   options = [],
   defaultValue = "",
   label,
   icon,
+  background,
+  height,
 }) => {
   return (
-    <div className="selectContainer">
+    <div className={`selectContainer`}>
       <div className={`selectList ${icon ? "withIcon" : ""}`}>
         {icon ? <div className="iconContainer">{icon}</div> : null}
         {label && <label>{label}</label>}
@@ -31,8 +37,11 @@ const Select: React.FunctionComponent<SelectProps> = ({
           onChange={handleChange}
           options={options}
           suffixIcon={<DropdownIcon />}
-          rootClassName="customSelectDropdown"
+          rootClassName={`customSelectDropdown ${height ? height : ""} ${
+            background ? background : ""
+          }`}
           onClick={onClick}
+          onBlur={onBlur}
         />
       </div>
     </div>
