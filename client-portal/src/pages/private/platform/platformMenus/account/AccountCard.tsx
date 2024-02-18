@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import {
   ArchiveIcon,
   DepositsIcon2,
@@ -10,6 +10,8 @@ import {
 } from "../../../../../assets/icons";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./account.scss";
+import { RightSubDrawerContent } from "../../types";
+import { useNavigate } from "react-router-dom";
 
 interface AccountCardProps {
   icon: React.ReactNode;
@@ -21,6 +23,8 @@ interface AccountCardProps {
   tag?: string;
   onClick: () => void;
   selectedCard: boolean | null;
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const AccountCard: React.FunctionComponent<AccountCardProps> = ({
@@ -33,8 +37,12 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
   selectedCard,
   tag,
   onClick,
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
 }) => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSuffixIconClick = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -69,25 +77,54 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
                     <div className="dropdownMenuIcon">
                       <DepositsIcon2 />
                     </div>
-                    <div className="dropdownMenuItem">Deposit</div>
+                    <div
+                      className="dropdownMenuItem"
+                      onClick={() => {
+                        setIsRightSubDrawerOpen(true);
+                        setIsRightSubDrawerContent("payments-deposit");
+                      }}
+                    >
+                      Deposit
+                    </div>
                   </div>
                   <div className="dropdownMenuContent">
                     <div className="dropdownMenuIcon">
                       <WithdrawIcon2 />
                     </div>
-                    <div className="dropdownMenuItem">Withdraw</div>
+                    <div
+                      className="dropdownMenuItem"
+                      onClick={() => {
+                        setIsRightSubDrawerOpen(true);
+                        setIsRightSubDrawerContent("withdraw");
+                      }}
+                    >
+                      Withdraw
+                    </div>
                   </div>
                   <div className="dropdownMenuContent">
                     <div className="dropdownMenuIcon">
                       <TransactionIcon2 />
                     </div>
-                    <div className="dropdownMenuItem">Transfer</div>
+                    <div
+                      className="dropdownMenuItem"
+                      onClick={() => {
+                        setIsRightSubDrawerOpen(true);
+                        setIsRightSubDrawerContent("transfer");
+                      }}
+                    >
+                      Transfer
+                    </div>
                   </div>
                   <div className="dropdownMenuContent">
                     <div className="dropdownMenuIcon">
                       <HistoryIcon />
                     </div>
-                    <div className="dropdownMenuItem">Transactions</div>
+                    <div
+                      className="dropdownMenuItem"
+                      onClick={() => navigate("/transactions")}
+                    >
+                      Transactions
+                    </div>
                   </div>
                   <div className="dropdownMenuContent">
                     <div className="dropdownMenuIcon">
@@ -106,8 +143,24 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
             </div>
           </div>
           <div className="buttons">
-            <button className="buttons-1">Withdraw</button>
-            <button className="buttons-2">Deposit</button>
+            <button
+              className="buttons-1"
+              onClick={() => {
+                setIsRightSubDrawerOpen(true);
+                setIsRightSubDrawerContent("withdraw");
+              }}
+            >
+              Withdraw
+            </button>
+            <button
+              className="buttons-2"
+              onClick={() => {
+                setIsRightSubDrawerOpen(true);
+                setIsRightSubDrawerContent("payments-deposit");
+              }}
+            >
+              Deposit
+            </button>
           </div>
         </MainItemCard>
       ) : (
