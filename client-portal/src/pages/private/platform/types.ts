@@ -59,4 +59,5 @@ export type LeftSubDrawer =
     | "get-rewards-deposit"
     | "add-account-name"
     | "verification-helpcenter-sub-menu"
+    | "password-success"
     | null;
