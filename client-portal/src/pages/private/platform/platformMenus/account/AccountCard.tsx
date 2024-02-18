@@ -77,21 +77,25 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
               {suffixIcon}
               {isDropdownVisible && (
                 <div className="dropdownMenu">
-                  <div className="dropdownMenuContent">
+                  <div
+                    onClick={() => {
+                      setIsRightSubDrawerOpen(true);
+                      setIsRightSubDrawerContent("payments-deposit");
+                    }}
+                    className="dropdownMenuContent"
+                  >
                     <div className="dropdownMenuIcon">
                       <DepositsIcon2 />
                     </div>
-                    <div
-                      className="dropdownMenuItem"
-                      onClick={() => {
-                        setIsRightSubDrawerOpen(true);
-                        setIsRightSubDrawerContent("payments-deposit");
-                      }}
-                    >
-                      Deposit
-                    </div>
+                    <div className="dropdownMenuItem">Deposit</div>
                   </div>
-                  <div className="dropdownMenuContent">
+                  <div
+                    onClick={() => {
+                      setIsRightSubDrawerOpen(true);
+                      setIsRightSubDrawerContent("withdraw");
+                    }}
+                    className="dropdownMenuContent"
+                  >
                     <div className="dropdownMenuIcon">
                       <WithdrawIcon2 />
                     </div>
@@ -105,30 +109,26 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
                       Withdraw
                     </div>
                   </div>
-                  <div className="dropdownMenuContent">
+                  <div
+                    onClick={() => {
+                      setIsRightSubDrawerOpen(true);
+                      setIsRightSubDrawerContent("transfer");
+                    }}
+                    className="dropdownMenuContent"
+                  >
                     <div className="dropdownMenuIcon">
                       <TransactionIcon2 />
                     </div>
-                    <div
-                      className="dropdownMenuItem"
-                      onClick={() => {
-                        setIsRightSubDrawerOpen(true);
-                        setIsRightSubDrawerContent("transfer");
-                      }}
-                    >
-                      Transfer
-                    </div>
+                    <div className="dropdownMenuItem">Transfer</div>
                   </div>
-                  <div className="dropdownMenuContent">
+                  <div
+                    onClick={() => navigate("/transactions")}
+                    className="dropdownMenuContent"
+                  >
                     <div className="dropdownMenuIcon">
                       <HistoryIcon />
                     </div>
-                    <div
-                      className="dropdownMenuItem"
-                      onClick={() => navigate("/transactions")}
-                    >
-                      Transactions
-                    </div>
+                    <div className="dropdownMenuItem">Transactions</div>
                   </div>
                   <div className="dropdownMenuContent">
                     <div className="dropdownMenuIcon">
@@ -136,7 +136,13 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
                     </div>
                     <div className="dropdownMenuItem">Rename</div>
                   </div>
-                  <div className="dropdownMenuContent">
+                  <div
+                    onClick={() => {
+                      setIsRightSubDrawerOpen(true);
+                      setIsRightSubDrawerContent("account-archive-menu");
+                    }}
+                    className="dropdownMenuContent"
+                  >
                     <div className="dropdownMenuIcon">
                       <ArchiveIcon />
                     </div>

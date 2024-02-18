@@ -7,8 +7,16 @@ import {
   TradesIcon2,
 } from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
+import { Dispatch, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
+interface AccountArchiveMenuProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
 
-const AccountArchiveMenu = () => {
+const AccountArchiveMenu: React.FunctionComponent<AccountArchiveMenuProps> = ({
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="archiveMenu">
       <p className="archiveMenuText">
@@ -67,7 +75,13 @@ const AccountArchiveMenu = () => {
         For more information, please refer to the <br />
         <span>Help Center.</span>
       </p>
-      <MenuListCard textCenter title="Archive Account" />
+      <MenuListCard
+        onClick={() => {
+          setIsRightSubDrawerContent("account-archive-success-menu");
+        }}
+        textCenter
+        title="Archive Account"
+      />
     </div>
   );
 };

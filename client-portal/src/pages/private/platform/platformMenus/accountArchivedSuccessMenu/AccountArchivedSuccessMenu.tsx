@@ -2,8 +2,17 @@ import { Typography } from "antd";
 import { SuccessIcon } from "../../../../../assets/icons";
 import "./AccountArchivedSuccessMenu.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
+import { Dispatch, SetStateAction } from "react";
+import { RightDrawerContent } from "../../types";
 
-const AccountArchivedSuccessMenu = () => {
+interface AccountArchivedSuccessMenuProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightDrawerContent: Dispatch<SetStateAction<RightDrawerContent>>;
+}
+
+const AccountArchivedSuccessMenu: React.FunctionComponent<
+  AccountArchivedSuccessMenuProps
+> = ({ setIsRightDrawerContent, setIsRightSubDrawerOpen }) => {
   return (
     <div className="accountArchivedSuccessMenu">
       <div className="accountArchivedSuccessMenu-sub">
@@ -14,7 +23,15 @@ const AccountArchivedSuccessMenu = () => {
         <p>
           Your USDT Account 3 account 2859844963 has been successfully archived.
         </p>
-        <PaymentListItemCard className="button" border title="Done" />
+        <PaymentListItemCard
+          onClick={() => {
+            setIsRightSubDrawerOpen(false);
+            setIsRightDrawerContent("account");
+          }}
+          className="button"
+          border
+          title="Done"
+        />
       </div>
     </div>
   );

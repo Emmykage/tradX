@@ -60,4 +60,6 @@ export type LeftSubDrawer =
     | "add-account-name"
     | "verification-helpcenter-sub-menu"
     | "password-success"
+    | "account-archive-menu"
+    | "account-archive-success-menu"
     | null;

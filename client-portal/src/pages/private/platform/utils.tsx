@@ -52,6 +52,8 @@ import TransferSuccessMenu from "./platformMenus/transfersuccessful/TransferSucc
 import VerificationHelpCenterMenu from "./platformMenus/verificationHelpCenterMenu/VerificationHelpCenterMenu";
 import VerificationHelpCenterSubMenu from "./platformMenus/verificationHelpCenterSubMenu/VerificationHelpCenterSubMenu";
 import PasswordSuccess from "./platformMenus/passwordSuccess/PasswordSuccess";
+import AccountArchiveMenu from "./platformMenus/accountArchiveMenu/AccountArchiveMenu";
+import AccountArchivedSuccessMenu from "./platformMenus/accountArchivedSuccessMenu/AccountArchivedSuccessMenu";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -257,6 +259,8 @@ export function rightSubDrawerTitleHandler(
       return "Account Name";
     case "verification-helpcenter-sub-menu":
       return "Help Center";
+    case "account-archive-menu":
+      return "Confirmation";
     default:
       return "";
   }
@@ -296,6 +300,20 @@ export function rightSubDrawerBodyHandler(
         <VerificationHelpCenterSubMenu
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    case "account-archive-menu":
+      return (
+        <AccountArchiveMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    case "account-archive-success-menu":
+      return (
+        <AccountArchivedSuccessMenu
+          setIsRightDrawerContent={setIsRightDrawerContent}
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
         />
       );
     case "personalSettings":
