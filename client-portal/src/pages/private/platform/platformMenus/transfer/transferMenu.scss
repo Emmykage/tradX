@@ -1,4 +1,7 @@
 .transferMenu {
+  .mainItemCardv2 {
+    box-shadow: none;
+  }
   padding: 1.5rem;
   .withdrawTitle {
     font-weight: 600;
@@ -9,7 +12,7 @@
     letter-spacing: 0.1rem;
   }
   .promoCodeInput {
-    padding: 0.5rem;
+    padding: 1rem;
     margin-bottom: 1.5rem;
   }
   .currencyInput {
