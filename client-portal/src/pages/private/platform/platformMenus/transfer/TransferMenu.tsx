@@ -49,7 +49,10 @@ const TransferMenu: FC<TransferMenuProps> = ({
           </Col>
         </Row>
       </div>
-      <PaymentListItemCard title="Transfer" />
+      <PaymentListItemCard title="Transfer" onClick={() => {
+        setIsRightSubDrawerOpen(true);
+        setIsRightSubDrawerContent("transfer-successful");
+      }} />
     </div>
   );
 };

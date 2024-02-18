@@ -4,6 +4,7 @@ import {
   TransactionIcon2,
   HistoryIcon,
   LoanIcon,
+  BankBuildIcon,
 } from "../../../../../assets/icons";
 import "./paymentsMenu.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
@@ -55,7 +56,14 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
       <PaymentListItemCard
         title="Loan"
         icon={<LoanIcon />}
-        onClick={() => navigate("/get-loan")}
+        // onClick={() => navigate("/get-loan")}
+      />
+      <PaymentListItemCard
+        title="Connect Your Bank"
+        icon={<BankBuildIcon />}
+        onClick={() => {
+          // TODO - Action for connect to your bank
+        }}
       />
     </div>
   );

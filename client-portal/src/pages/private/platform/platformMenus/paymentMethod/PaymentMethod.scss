@@ -1,0 +1,35 @@
+.payment-methods-filter-btns{
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+   margin-bottom: 2.1875rem;
+    .payment-methods-filter-btn{
+        height: 2.5rem;
+        margin-right: 0.8125rem;
+        border: 1px solid #5D86A6;
+        padding: 0 1.5rem;
+        border-radius: 1.25rem;
+        background-color: transparent;
+        color: #FFF;
+        font-size: 0.875rem;
+    }
+    
+}
+
+.payment-method-list-title{
+    color: #fff;
+    font-weight: 600;
+}
+
+.payment-method-list-item{
+    display: flex;
+    align-items: center;
+    margin: 0.8125rem 0;
+    cursor: pointer;
+    span {
+        margin-left: 0.5rem;
+        color: #969798;
+        font-size: 1.125rem;
+        font-weight: 600;
+    }
+}
