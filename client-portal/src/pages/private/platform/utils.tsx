@@ -4,7 +4,12 @@ import EventsMenu from "./platformMenus/events/EventsMenu";
 import HelpMenu from "./platformMenus/help/HelpMenu";
 import MarketMenu from "./platformMenus/market/MarketMenu";
 import TradesMenu from "./platformMenus/trades/TradesMenu";
-import { CurrentDrawerType, LeftSubDrawer, RightDrawerContent, RightSubDrawerContent } from "./types";
+import {
+  CurrentDrawerType,
+  LeftSubDrawer,
+  RightDrawerContent,
+  RightSubDrawerContent,
+} from "./types";
 import HelpCenter from "./platformMenus/helpCenter/HelpCenter";
 import SupportMenu from "./platformMenus/support/SupportMenu";
 import TradingPlatform from "./platformMenus/tradingPlatform/TradingPlatform";
@@ -151,7 +156,7 @@ export function rightDrawerTitleHandler(
 export function rightDrawerBodyHandler(
   rightDrawerContent: RightDrawerContent,
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>,
-  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>,
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>
   // setIsRightDrawerContent: Dispatch<SetStateAction<RightDrawerContent>>
 ): JSX.Element | null {
   switch (rightDrawerContent) {
@@ -247,7 +252,7 @@ export function rightSubDrawerTitleHandler(
     case "verification-helpcenter-menu":
       return "Help Center";
     case "add-account-name":
-      return "Account Name"
+      return "Account Name";
     default:
       return "";
   }
@@ -308,7 +313,12 @@ export function rightSubDrawerBodyHandler(
     case "change-password":
       return <ChangePassword />;
     case "edit-name":
-      return <EditName />;
+      return (
+        <EditName
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightDrawerContent={setIsRightDrawerContent}
+        />
+      );
     case "confirm-email":
       return <ConfirmMail />;
     case "confirm-phone":

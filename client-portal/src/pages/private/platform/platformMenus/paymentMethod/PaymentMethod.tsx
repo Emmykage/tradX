@@ -5,6 +5,7 @@ import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
 
 import "./PaymentMethod.scss";
 import { RightSubDrawerContent } from "../../types";
+import { PaymentMethodDataType } from "./types";
 
 interface PaymentMethodProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -53,35 +54,39 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
       <div>
         {paymentType === "All" ? (
           <>
-            {Object.keys(paymentMethodData).map((method) => (
-              <div key={method} className="payment-method-list">
-                {paymentMethodData[method]?.length > 0 && (
-                  <Typography.Text className="payment-method-list-title">
-                    {titleHandler(method).toUpperCase()}
-                  </Typography.Text>
-                )}
-                {paymentMethodData[method]?.map((item, index: number) => (
-                  <div
-                    className="payment-method-list-item"
-                    key={`${index}-${item.name}`}
-                    onClick={() => {
-                      setIsRightSubDrawerOpen(true);
-                      setIsRightSubDrawerContent("payments-deposit");
-                    }}
-                  >
-                    {item.methodIcon}{" "}
-                    <Typography.Text>{item.name}</Typography.Text>
+            {Object.keys(paymentMethodData).map((method) => {
+              const paymentMethod =
+                paymentMethodData[method as keyof PaymentMethodDataType];
+              if (paymentMethod && paymentMethod.length > 0) {
+                return (
+                  <div key={method} className="payment-method-list">
+                    <Typography.Text className="payment-method-list-title">
+                      {titleHandler(method).toUpperCase()}
+                    </Typography.Text>
+                    {paymentMethod.map((item, index: number) => (
+                      <div
+                        className="payment-method-list-item"
+                        key={`${index}-${item.name}`}
+                        onClick={() => {
+                          setIsRightSubDrawerOpen(true);
+                          setIsRightSubDrawerContent("payments-deposit");
+                        }}
+                      >
+                        {item.methodIcon}{" "}
+                        <Typography.Text>{item.name}</Typography.Text>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            ))}
+                );
+              }
+            })}
           </>
         ) : (
           <div>
             <Typography.Text className="payment-method-list-title">
               {titleHandler(paymentType).toUpperCase()}
             </Typography.Text>
-            {paymentMethodData[paymentType]?.map((item, index: number) => (
+            {paymentMethodData[paymentType as keyof PaymentMethodDataType]?.map((item, index: number) => (
               <div
                 className="payment-method-list-item"
                 key={index}
