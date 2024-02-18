@@ -2,10 +2,18 @@ import { Typography } from "antd";
 import Input from "../../../../../components/input/Input";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./editName.scss";
+import { Dispatch, SetStateAction } from "react";
+import { RightDrawerContent } from "../../types";
 
-interface EditNameProps {}
+interface EditNameProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightDrawerContent: Dispatch<SetStateAction<RightDrawerContent>>;
+}
 
-const EditName: React.FunctionComponent<EditNameProps> = () => {
+const EditName: React.FunctionComponent<EditNameProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightDrawerContent,
+}) => {
   return (
     <div className="editNameMenu">
       <Typography.Text className="editNameMenu-text">
@@ -18,7 +26,14 @@ const EditName: React.FunctionComponent<EditNameProps> = () => {
         defaultValue="USDT 6"
         type="text"
       />
-      <MenuListCard textCenter title="Confirm" />
+      <MenuListCard
+        textCenter
+        title="Confirm"
+        onClick={() => {
+          setIsRightSubDrawerOpen(false);
+          setIsRightDrawerContent("account");
+        }}
+      />
     </div>
   );
 };

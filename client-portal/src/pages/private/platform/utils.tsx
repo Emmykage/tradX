@@ -151,7 +151,8 @@ export function rightDrawerTitleHandler(
 export function rightDrawerBodyHandler(
   rightDrawerContent: RightDrawerContent,
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>,
-  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>,
+  // setIsRightDrawerContent: Dispatch<SetStateAction<RightDrawerContent>>
 ): JSX.Element | null {
   switch (rightDrawerContent) {
     case "payments":
@@ -229,8 +230,11 @@ export function rightSubDrawerTitleHandler(
     case "traders-way":
       return "Trader's Way";
     case "invite-friends":
+    case "boost-cubes":
+    case "referral-program":
       return "Invite Friends & Get Rewards";
     case "payments-deposit":
+    case "get-rewards-deposit":
       return "Deposit";
     case "select-deposit-amount":
       return "Select Deposit Amount";
@@ -240,12 +244,10 @@ export function rightSubDrawerTitleHandler(
       return "Deposit";
     case "select-withdraw-account":
       return "Select Account";
-    case "boost-cubes":
-      return "Invite Friends & Get Rewards";
-    case "referral-program":
-      return "Invite Friends & Get Rewards";
     case "verification-helpcenter-menu":
       return "Help Center";
+    case "add-account-name":
+      return "Account Name"
     default:
       return "";
   }
@@ -256,7 +258,8 @@ export function rightSubDrawerBodyHandler(
   setIsRightSubDrawerOpen: Dispatch<React.SetStateAction<boolean>>,
   setIsRightSubDrawerContent: Dispatch<
     React.SetStateAction<RightSubDrawerContent>
-  >
+  >,
+  setIsRightDrawerContent: Dispatch<React.SetStateAction<RightDrawerContent>>
 ): JSX.Element | null {
   switch (rightSubDrawerContent) {
     case "settings":
@@ -325,7 +328,12 @@ export function rightSubDrawerBodyHandler(
         />
       );
     case "add-account":
-      return <AddAccountMenu />;
+      return (
+        <AddAccountMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
     case "traders-way":
       return <TradersWayMenu />;
     case "verify-payment":
@@ -340,6 +348,7 @@ export function rightSubDrawerBodyHandler(
         />
       );
     case "payments-deposit":
+    case "get-rewards-deposit":
       return (
         <Deposit
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
@@ -393,6 +402,7 @@ export function rightSubDrawerBodyHandler(
         <BoostCubes
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+          setIsRightDrawerContent={setIsRightDrawerContent}
         />
       );
 
@@ -404,6 +414,13 @@ export function rightSubDrawerBodyHandler(
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           title="Payment Successful"
           description="30 USD"
+        />
+      );
+    case "add-account-name":
+      return (
+        <EditName
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightDrawerContent={setIsRightDrawerContent}
         />
       );
     default:

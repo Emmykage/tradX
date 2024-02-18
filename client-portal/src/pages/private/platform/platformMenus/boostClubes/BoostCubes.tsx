@@ -2,16 +2,18 @@ import { Col, Row } from "antd";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./boostCubes.scss";
 import { Dispatch, SetStateAction } from "react";
-import { RightSubDrawerContent } from "../../types";
+import { RightDrawerContent, RightSubDrawerContent } from "../../types";
 
 interface BoostCubesProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+  setIsRightDrawerContent: Dispatch<SetStateAction<RightDrawerContent>>;
 }
 
 const BoostCubes: React.FunctionComponent<BoostCubesProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
+  setIsRightDrawerContent,
 }) => {
   return (
     <div className="boostCubes">
@@ -35,7 +37,14 @@ const BoostCubes: React.FunctionComponent<BoostCubesProps> = ({
           </Col>
         </Row>
       </MainItemCard>
-      <MainItemCard variant={3} className="boostCubes-Card">
+      <MainItemCard
+        variant={3}
+        className="boostCubes-Card"
+        onClick={() => {
+          setIsRightSubDrawerOpen(false);
+          setIsRightDrawerContent("account");
+        }}
+      >
         <Row>
           <Col span={13}>
             <p className="boostCubes-text">

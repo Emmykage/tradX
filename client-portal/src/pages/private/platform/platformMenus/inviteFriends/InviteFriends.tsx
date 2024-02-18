@@ -17,7 +17,7 @@ const InviteFriends: React.FunctionComponent<InviteFriendsProps> = ({
 }) => {
   const openDepositHandler = () => {
     setIsRightSubDrawerOpen(true);
-    setIsRightSubDrawerContent("verify-payment");
+    setIsRightSubDrawerContent("get-rewards-deposit");
   };
 
   const magicBoxAction = () => {

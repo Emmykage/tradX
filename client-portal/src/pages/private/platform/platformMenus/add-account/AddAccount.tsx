@@ -1,11 +1,18 @@
 import { Radio, RadioChangeEvent } from "antd";
 import "./addAccount.scss";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
+import { RightSubDrawerContent } from "../../types";
 
-interface AddAccountMenuProps {}
+interface AddAccountMenuProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
 
-const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = () => {
+const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   const [value, setValue] = useState(1);
 
   const onChange = (e: RadioChangeEvent) => {
@@ -27,7 +34,10 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = () => {
         </div>
       </Radio.Group>
 
-      <MenuListCard className="nextButton" title="Next" textCenter />
+      <MenuListCard className="nextButton" title="Next" textCenter onClick={() => {
+        setIsRightSubDrawerOpen(true);
+        setIsRightSubDrawerContent("add-account-name")
+      }} />
     </div>
   );
 };
