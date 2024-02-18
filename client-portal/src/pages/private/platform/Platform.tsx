@@ -37,7 +37,6 @@ import TradersWayMenu from "./platformMenus/tradersWay/TradersWayMenu";
 import TradingPlatform from "./platformMenus/tradingPlatform/TradingPlatform";
 import TradingPlatformInfo from "./platformMenus/tradingPlatformInfo/TradingPlatformInfo";
 import OlympTradeInfo from "./platformMenus/olympTradeInfo/OlympTradeInfo";
-import WalkThrough from "./WalkThrough";
 
 interface PlatformProps {}
 
@@ -64,7 +63,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [mainSidebarWidth, setMainSidebarWidth] = useState(0);
   const [bottomSidebarHeight, setBottomSidebarHeight] = useState(0);
   const storedScale = localStorage.getItem("scale");
-  const [showWalkThrough, setShowWalkThrough] = useState(true);
 
   useEffect(() => {
     const topbarElement = document.getElementById("topbarContainer");
@@ -462,11 +460,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           <TradeForm bottomSidebarHeight={bottomSidebarHeight} />
         </div>
       </div>
-
-      <WalkThrough
-        className={showWalkThrough ? "" : "hidden"}
-        setShowWalkThrough={setShowWalkThrough}
-      />
     </div>
   );
 };
