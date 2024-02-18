@@ -61,6 +61,8 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
           onClick={function (): void {}}
           selectedCard={null}
           selected={true}
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
         {accounts.map((account, index) => (
           <AccountCard
@@ -73,6 +75,8 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
             suffixIcon={account.suffixIcon}
             tag={account?.crypto ? "Crypto" : ""}
             selectedCard={selectedCard === index}
+            setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+            setIsRightSubDrawerContent={setIsRightSubDrawerContent}
           />
         ))}
       </div>

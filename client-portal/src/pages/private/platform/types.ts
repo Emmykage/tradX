@@ -56,4 +56,6 @@ export type LeftSubDrawer =
     | "transfer-successful"
     | "promo-code-applied"
     | "verification-helpcenter-menu"
+    | "get-rewards-deposit"
+    | "add-account-name"
     | null;

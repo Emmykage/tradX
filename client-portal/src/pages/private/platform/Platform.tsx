@@ -210,7 +210,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           {rightSubDrawerBodyHandler(
             rightSubDrawerContent,
             setIsRightSubDrawerOpen,
-            setIsRightSubDrawerContent
+            setIsRightSubDrawerContent,
+            setIsRightDrawerContent
           )}
         </Drawer>
 
