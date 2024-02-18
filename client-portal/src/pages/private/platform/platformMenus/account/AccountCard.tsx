@@ -67,10 +67,14 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
                 <div className="secAmount">{secAmount}</div>
               </div>
             </div>
-            <div className="suffixIcon" onClick={handleSuffixIconClick}>
+            <div
+              className="suffixIcon"
+              onBlur={() => setDropdownVisible(false)}
+              onClick={handleSuffixIconClick}
+            >
               {tag ? <div className="tag">{tag}</div> : null}
 
-              {selected ? <ReloadIcon /> : suffixIcon}
+              {suffixIcon}
               {isDropdownVisible && (
                 <div className="dropdownMenu">
                   <div className="dropdownMenuContent">

@@ -56,7 +56,8 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
         <AccountCard
           icon={<GlobeIcon />}
           accountType="Demo Account"
-          secAmount="D9,999.00"
+          secAmount=""
+          amount="D9,999.00"
           suffixIcon={<ReloadIcon />}
           onClick={function (): void {}}
           selectedCard={null}

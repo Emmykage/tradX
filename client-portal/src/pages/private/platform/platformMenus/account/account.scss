@@ -29,6 +29,8 @@
     }
   }
 }
+
+
 .accountCardWrapper {
   display: flex;
   justify-content: space-between;
@@ -37,9 +39,9 @@
   border-radius: 0.3125rem;
 
   &.selected {
+    padding: 0.8rem 1.1rem 0.8rem .8rem ;
     box-shadow: 0rem 0.125rem 0rem 0.125rem rgba(0, 0, 0, 0.05),
       0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.26);
-
     .accountType {
       color: #f9b42b !important;
     }
@@ -49,6 +51,7 @@
     .secAmount {
       color: #ffffff !important;
     }
+    
   }
   .leftSide {
     display: flex;
@@ -178,14 +181,15 @@
   top: 2.5rem;
   right: 0;
   border-radius: 0.313rem;
-  padding-top: 1.5rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
   z-index: 1000;
   .dropdownMenuContent {
     display: flex;
     align-items: center;
     justify-content: start;
     gap: 1rem;
-    padding: 0rem 5rem 1.4rem 2rem;
+    padding: 1rem 5rem 1rem 2rem;
     
     .dropdownMenuItem {
       font-size: 1.125rem;
