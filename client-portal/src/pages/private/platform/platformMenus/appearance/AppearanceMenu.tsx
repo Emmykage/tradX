@@ -35,8 +35,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
             label: (
               <div className="dropDownMenuItem">
                 <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/uk-flag.png" />{" "}
-                </div>{" "}
+                  <img src="/menu-images/uk-flag.png" />
+                </div>
                 English
               </div>
             ),
@@ -46,8 +46,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
             label: (
               <div className="dropDownMenuItem">
                 <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/IndonesiaFlag.svg" />{" "}
-                </div>{" "}
+                  <img src="/menu-images/svgs/IndonesiaFlag.svg" />
+                </div>
                 Bahasa Indonesia
               </div>
             ),
@@ -57,8 +57,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
             label: (
               <div className="dropDownMenuItem">
                 <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/VietnamFlag.svg" />{" "}
-                </div>{" "}
+                  <img src="/menu-images/svgs/VietnamFlag.svg" />
+                </div>
                 Việt Nam
               </div>
             ),
@@ -68,8 +68,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
             label: (
               <div className="dropDownMenuItem">
                 <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/IndiaFlag.svg" />{" "}
-                </div>{" "}
+                  <img src="/menu-images/svgs/IndiaFlag.svg" />
+                </div>
                 Hindhi
               </div>
             ),
@@ -79,8 +79,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
             label: (
               <div className="dropDownMenuItem">
                 <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/РусскийFlag.svg" />{" "}
-                </div>{" "}
+                  <img src="/menu-images/svgs/РусскийFlag.svg" />
+                </div>
                 Pyccкий
               </div>
             ),
@@ -90,8 +90,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
             label: (
               <div className="dropDownMenuItem">
                 <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/ภาษาไทยFlag.svg" />{" "}
-                </div>{" "}
+                  <img src="/menu-images/svgs/ภาษาไทยFlag.svg" />
+                </div>
                 ภาษาไทย
               </div>
             ),
@@ -101,8 +101,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
             label: (
               <div className="dropDownMenuItem">
                 <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/PortuguêsFlag.svg" />{" "}
-                </div>{" "}
+                  <img src="/menu-images/svgs/PortuguêsFlag.svg" />
+                </div>
                 Português
               </div>
             ),
@@ -112,8 +112,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
             label: (
               <div className="dropDownMenuItem">
                 <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/BahasaMelayuFlag.svg" />{" "}
-                </div>{" "}
+                  <img src="/menu-images/svgs/BahasaMelayuFlag.svg" />
+                </div>
                 Bahasa Melayu
               </div>
             ),
@@ -134,9 +134,9 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
                 label: (
                   <div className="dropDownMenuItem">
                     <div className="dropDownMenuItemIcon">
-                      <VolumeCrossIcon />{" "}
-                    </div>{" "}
-                    Slient{" "}
+                      <VolumeCrossIcon />
+                    </div>
+                    Slient
                   </div>
                 ),
               },
@@ -145,9 +145,9 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
                 label: (
                   <div className="dropDownMenuItem">
                     <div className="dropDownMenuItemIcon">
-                      <VolumeIcon />{" "}
-                    </div>{" "}
-                    Gambling{" "}
+                      <VolumeIcon />
+                    </div>
+                    Gambling
                   </div>
                 ),
               },
@@ -156,9 +156,9 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
                 label: (
                   <div className="dropDownMenuItem">
                     <div className="dropDownMenuItemIcon">
-                      <VolumeIcon />{" "}
-                    </div>{" "}
-                    Default Pack{" "}
+                      <VolumeIcon />
+                    </div>
+                    Default Pack
                   </div>
                 ),
               },
@@ -175,8 +175,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
                 label: (
                   <div className="dropDownMenuItem">
                     <div className="dropDownMenuItemIcon">
-                      <LightIcon />{" "}
-                    </div>{" "}
+                      <LightIcon />
+                    </div>
                     <div className="dropDownMenuItemText">Light </div>
                   </div>
                 ),
@@ -186,8 +186,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
                 label: (
                   <div className="dropDownMenuItem">
                     <div className="dropDownMenuItemIcon">
-                      <DarkIcon />{" "}
-                    </div>{" "}
+                      <DarkIcon />
+                    </div>
                     <div className="dropDownMenuItemText">Dark </div>
                   </div>
                 ),
@@ -197,8 +197,8 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
                 label: (
                   <div className="dropDownMenuItem">
                     <div className="dropDownMenuItemIcon">
-                      <ClassicIcon />{" "}
-                    </div>{" "}
+                      <ClassicIcon />
+                    </div>
                     <div className="dropDownMenuItemText">Classic </div>
                   </div>
                 ),
