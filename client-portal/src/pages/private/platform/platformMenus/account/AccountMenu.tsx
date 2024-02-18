@@ -5,7 +5,7 @@ import {
   ReloadIcon,
   TetherIcon,
   ThreeDotsMenu,
-  UsdIcon,
+  UsdIcon2,
 } from "../../../../../assets/icons";
 import AccountCard from "./AccountCard";
 import "./account.scss";
@@ -25,7 +25,7 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
   const accounts = [
     {
       id: 2,
-      icon: <UsdIcon />,
+      icon: <UsdIcon2 />,
       accountType: "USD Account",
       amount: "$20.00",
       secAmount: "D9,999.00",

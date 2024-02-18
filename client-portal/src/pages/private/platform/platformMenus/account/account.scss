@@ -88,6 +88,7 @@
   .suffixIcon {
     display: flex;
     align-items: center;
+    position: relative;
   }
   .tag {
     border: 0.0625rem solid #1fbf75;
@@ -101,7 +102,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-.leftSide {
+  .leftSide {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -134,38 +135,69 @@
       }
     }
   }
+}
 
-  }
-
-  .new-card {
+.new-card {
+  border-radius: 0.313rem;
+  box-shadow: 0rem 0.125rem 0rem 0.125rem rgba(0, 0, 0, 0.05),
+    0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.26);
+  &.backgroundColor {
     background-color: rgba(61, 64, 70, 1);
-    border-radius: 0.313rem;
-    box-shadow: 0rem 0.125rem 0rem 0.125rem rgba(0, 0, 0, 0.05),
-      0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.26);
   }
+}
 .buttons {
   display: flex;
   gap: 2rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
-  .buttons-1 {
-    padding: 1rem 2.5rem;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 0.8rem;
-    font-weight: 600;
-    font-size: 1.125rem;
-     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.4);
-    color: white;
+.buttons-1 {
+  padding: 1rem 2.5rem;
+  background-color: rgba(61, 64, 70, 1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.8rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.4);
+  color: white;
+}
+.buttons-2 {
+  padding: 1rem 2.5rem;
+  background-color: rgba(61, 64, 70, 1);
+  border: 1px solid rgba(39, 162, 255, 1);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.4);
+  border-radius: 0.8rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: white;
+}
+
+.dropdownMenu {
+  background: rgba(61, 64, 70, 1);
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  border-radius: 0.313rem;
+  padding-top: 1.5rem;
+  z-index: 1000;
+  .dropdownMenuContent {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    padding: 0rem 5rem 1.4rem 2rem;
+    
+    .dropdownMenuItem {
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.75rem;
+      color: #fff;
+    }
   }
-  .buttons-2 {
-    padding: 1rem 2.5rem;
-    background: transparent;
-    border: 1px solid rgba(39, 162, 255, 1);
-    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.4);
-    border-radius: 0.8rem;
-    font-weight: 600;
-    font-size: 1.125rem;
-    color: white;
-  }
+}
+
+.dropdownMenuContent:hover {
+      cursor: pointer;
+      border-radius: 0.313rem;
+      box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05), 0 0.063rem 0 0.063rem inset rgba(39, 162, 255, 0.26);
+    }

@@ -55,4 +55,5 @@ export type LeftSubDrawer =
     | "depoist-successful"
     | "transfer-successful"
     | "promo-code-applied"
+    | "verification-helpcenter-menu"
     | null;
