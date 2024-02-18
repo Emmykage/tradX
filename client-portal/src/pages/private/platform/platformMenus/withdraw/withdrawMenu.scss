@@ -6,3 +6,23 @@
   margin-bottom: 1.5rem;
   letter-spacing: 0.1rem;
 }
+
+.WithdrawMenu {
+  .mainItemCardv2 {
+    box-shadow: none ;
+    background: none ;
+    border-radius: none ;
+  }
+  .mainItemCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 1rem;
+    border: 0.125rem solid transparent;
+    border-bottom-width: 0;
+    z-index: -1;
+  }
+}

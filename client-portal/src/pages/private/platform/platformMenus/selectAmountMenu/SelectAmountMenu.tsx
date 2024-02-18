@@ -52,10 +52,13 @@ const SelectAmountMenu: FC<SelectAmountMenuProps> = ({
           <AmountCard amount={"USD 10"} />
         </Col>
       </Row>
-      <div className="confrimBtn" onClick={() => {
-        setIsRightSubDrawerOpen(true);
-        setIsRightSubDrawerContent("payments-deposit")
-      }}>
+      <div
+        className="confrimBtn"
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("payments-deposit");
+        }}
+      >
         <PaymentListItemCard border title="Confirm" />
       </div>
     </div>

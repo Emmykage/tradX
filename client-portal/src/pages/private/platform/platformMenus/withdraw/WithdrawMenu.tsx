@@ -16,9 +16,10 @@ const WithdrawMenu: FC<WithdrawMenuProps> = ({
   setIsRightSubDrawerContent,
 }) => {
   return (
-    <div>
+    <div className="WithdrawMenu">
       {/* <div className="withdrawTitle">Withdraw</div> */}
       <DepositCard
+        variant={2}
         CountryIcon={<UsdIcon2 />}
         account="From USD Account"
         amount="USD 30"
