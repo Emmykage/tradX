@@ -51,6 +51,7 @@ import PaymentMethod from "./platformMenus/paymentMethod/PaymentMethod";
 import TransferSuccessMenu from "./platformMenus/transfersuccessful/TransferSuccessMenu";
 import VerificationHelpCenterMenu from "./platformMenus/verificationHelpCenterMenu/VerificationHelpCenterMenu";
 import VerificationHelpCenterSubMenu from "./platformMenus/verificationHelpCenterSubMenu/VerificationHelpCenterSubMenu";
+import PasswordSuccess from "./platformMenus/passwordSuccess/PasswordSuccess";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -321,7 +322,12 @@ export function rightSubDrawerBodyHandler(
     case "user-notifications":
       return <UserNotificationsMenu />;
     case "change-password":
-      return <ChangePassword />;
+      return (
+        <ChangePassword
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
     case "edit-name":
       return (
         <EditName
@@ -443,6 +449,14 @@ export function rightSubDrawerBodyHandler(
           setIsRightDrawerContent={setIsRightDrawerContent}
         />
       );
+    case "password-success":
+      return (
+        <PasswordSuccess
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+
     default:
       return null;
   }
@@ -465,6 +479,12 @@ export function rightSubDrawerExtraHandler(
     case "change-password":
       return (
         <div onClick={() => setIsRightSubDrawerContent("settings")}>
+          <ArrowLeftOS />
+        </div>
+      );
+    case "password-success":
+      return (
+        <div onClick={() => setIsRightSubDrawerContent("change-password")}>
           <ArrowLeftOS />
         </div>
       );

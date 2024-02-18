@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Input from "../../../../../components/input/Input";
 import "./changePassword.scss";
 import StrengthMeter from "./StrengthMeter";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
+import { RightSubDrawerContent } from "../../types";
 
-interface ChangePasswordProps {}
+interface ChangePasswordProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
 
-const ChangePassword: React.FunctionComponent<ChangePasswordProps> = () => {
+const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
+  setIsRightSubDrawerContent,
+}) => {
   const [password, setPassword] = useState("");
 
   return (
@@ -37,6 +43,10 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = () => {
         className="changePwButton"
         title="Change Password"
         textCenter
+        onClick={() => {
+          setIsRightSubDrawerContent("password-success");
+          console.log("check");
+        }}
       />
     </div>
   );
