@@ -2,9 +2,11 @@ import { Button } from "antd";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./TradingPlatformInfo.scss";
 import { ArrowRightIcon } from "../../../../../assets/icons";
+import { Dispatch, SetStateAction } from "react";
+import { LeftSubDrawer } from "../../types";
 
 interface TradingPlatformInfoProps {
-  setLeftSubDrawer: (value: string | null) => void;
+  setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
 }
 
 const TradingPlatformInfo: React.FunctionComponent<

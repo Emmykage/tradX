@@ -10,10 +10,42 @@
   .input_main {
     margin-bottom: 0.75rem;
   }
-
   .socialButtons {
     .mainItemCardv2 .mainItemCardv2Content {
       padding: 1.5rem 0.9375rem;
+    }
+    .apple {
+      .cardLeftIcon {
+        position: absolute;
+        left: 30%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        @media (max-width: 400px){
+          left: 20%;
+        }
+      }
+    }
+    .mainItemCardv2 .mainItemCardv2Content {
+      padding: 1.125rem 0.9375rem;
+    }
+  }
+  .socialButtons {
+    .mainItemCardv2 .mainItemCardv2Content {
+      padding: 1.5rem 0.9375rem;
+    }
+    .facebook {
+      .cardLeftIcon {
+        position: absolute;
+        top: 50%;
+        left: 26%;
+        transform: translate(-50%, -50%);
+                @media (max-width: 400px){
+          left: 15%;
+        }
+      }
+    }
+    .mainItemCardv2 .mainItemCardv2Content {
+      padding: 1.125rem 0.9375rem;
     }
   }
 

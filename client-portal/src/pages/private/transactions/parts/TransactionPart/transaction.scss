@@ -1,0 +1,44 @@
+.user-options-transactions{
+    height: 7.0625rem;
+    flex-wrap: wrap;
+    @media screen and (max-width: 769px) {
+        height: 16.8125rem;
+    }
+}
+
+.transaction-part{
+    color: #67696D;
+    font-size: 0.875rem;
+    
+}
+
+.user-control-period{
+    display: flex;
+    align-items: flex-end;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.transaction-part {
+        width: 12.5rem;
+        height: 4.5625rem;
+        display: flex;
+        flex-direction: column;
+        label {
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+        .ant-select {
+            text-align: center;
+            .ant-select-selector {
+                height: 2.625rem;
+                border-radius: 0.75rem;
+                padding: 8px 0;
+                border: 1px solid rgba(27, 82, 102, 0.5)
+            }
+        }
+         @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+    }

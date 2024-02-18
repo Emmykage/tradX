@@ -1,38 +1,38 @@
+import { Dispatch, SetStateAction, useState } from "react";
 import {
   AddIcon,
   GlobeIcon,
+  ReloadIcon,
   TetherIcon,
   ThreeDotsMenu,
-  UsdIcon,
+  UsdIcon2,
 } from "../../../../../assets/icons";
 import AccountCard from "./AccountCard";
 import "./account.scss";
+import { RightSubDrawerContent } from "../../types";
 
 interface AccountMenuProps {
-  setIsRightSubDrawerOpen: (value: boolean) => void;
-  setIsRightSubDrawerContent: (value: string | null) => void;
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
+  const [selectedCard, setSelectedCard] = useState<number | null>(null);
+
   const accounts = [
     {
-      icon: <GlobeIcon />,
-      accountType: "Demo Account",
-      secAmount: "D9,999.00",
-      suffixIcon: <ThreeDotsMenu />,
-      selected: true,
-    },
-    {
-      icon: <UsdIcon />,
+      id: 2,
+      icon: <UsdIcon2 />,
       accountType: "USD Account",
       amount: "$20.00",
       secAmount: "D9,999.00",
       suffixIcon: <ThreeDotsMenu />,
     },
     {
+      id: 3,
       icon: <TetherIcon />,
       accountType: "USDT Account USDT",
       amount: "₮0.00",
@@ -53,15 +53,26 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
         <AddIcon />
       </div>
       <div className="accountsContainer">
-        {accounts.map((account) => (
+        <AccountCard
+          icon={<GlobeIcon />}
+          accountType="Demo Account"
+          secAmount="D9,999.00"
+          suffixIcon={<ReloadIcon />}
+          onClick={function (): void {}}
+          selectedCard={null}
+          selected={true}
+        />
+        {accounts.map((account, index) => (
           <AccountCard
+            key={account.id}
+            onClick={() => setSelectedCard(index)}
             icon={account.icon}
             accountType={account.accountType}
             secAmount={account.secAmount}
             amount={account.amount}
             suffixIcon={account.suffixIcon}
-            selected={account?.selected}
             tag={account?.crypto ? "Crypto" : ""}
+            selectedCard={selectedCard === index}
           />
         ))}
       </div>

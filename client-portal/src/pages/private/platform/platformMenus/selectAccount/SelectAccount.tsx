@@ -1,8 +1,13 @@
+import { Dispatch, SetStateAction } from "react";
 import { TetherIcon } from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./selectAccount.scss";
+import { RightSubDrawerContent } from "../../types";
 
-interface SelectAccountProps {}
+interface SelectAccountProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
 
 interface ContentProps {
   account: string;
@@ -22,10 +27,17 @@ const Content: React.FC<ContentProps> = ({ account, id, amount }) => (
   </div>
 );
 
-const SelectAccount: React.FC<SelectAccountProps> = () => {
+const SelectAccount: React.FC<SelectAccountProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="selectAccountMenu">
       <MenuListCard
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("transfer");
+        }}
         icon={<img src="/menu-images/us-flag.png" alt="USD" />}
         customContent={
           <Content account="USD Account" id="#2851948020" amount="USD 0.00" />
@@ -33,6 +45,10 @@ const SelectAccount: React.FC<SelectAccountProps> = () => {
       />
 
       <MenuListCard
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("transfer");
+        }}
         icon={<TetherIcon />}
         customContent={
           <Content account="USDT Account" id="#2851948020" amount="USDT 0.00" />

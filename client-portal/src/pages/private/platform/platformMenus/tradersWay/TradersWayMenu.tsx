@@ -1,12 +1,12 @@
 import { useState } from "react";
 import {
-  AdvancePlusIcon,
+  AdvancePlusIcon2,
   ArrowUpOS,
-  IndicatorIcon,
-  PercentageIcon,
+  IndicatorIcon2,
+  PercentageIcon2,
   PlayIcon,
-  StrategyIcon,
-  TradeStopIcon,
+  StrategyIcon2,
+  TradeStopIcon2,
 } from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import Modal from "../../../../../components/modal/Modal";
@@ -51,7 +51,7 @@ const TradersWayMenu: React.FunctionComponent<TradersWayMenuProps> = () => {
       title: "Barcode",
       value: "1",
       subtitle: "Trading Strategy",
-      icon: <StrategyIcon color="#0094FF" />,
+      icon: <StrategyIcon2 />,
       active: true,
       description:
         "This strategy is based on the DeMarker oscillator and works best on volatile currency pairs.",
@@ -60,61 +60,91 @@ const TradersWayMenu: React.FunctionComponent<TradersWayMenuProps> = () => {
       title: "Kind Martin",
       value: "2",
       subtitle: "Trading Strategy",
-      icon: <StrategyIcon />,
+      icon: <StrategyIcon2 />,
+      active: true,
+      description:
+        "The combination of the Parabolic SAR indicator and MACD oscillator in this strategy helps you determine the best time to open a trade.",
     },
     {
       title: "StochRSI",
       value: "3",
       subtitle: "Indicator",
-      icon: <IndicatorIcon />,
+      icon: <IndicatorIcon2 />,
+      active: true,
+      description:
+        "The combination of the Parabolic SAR indicator and MACD oscillator in this strategy helps you determine the best time to open a trade.",
     },
     {
       title: "Friday",
       value: "4",
       subtitle: "Trading Strategy",
-      icon: <StrategyIcon />,
+      icon: <StrategyIcon2 />,
+      active: true,
+      description:
+        "Based on the EMA indicator, this strategy can help you detect short-term volatility.",
     },
     {
       title: "Advanced for 24 hours",
       value: "5",
       subtitle: "Bonus",
-      icon: <AdvancePlusIcon />,
+      icon: <AdvancePlusIcon2 />,
+      active: true,
+      description:
+        "Access to all the benefits of Advanced status for 24 hours: Up to 89% profitability, unique strategies, and other privileges.",
     },
     {
       title: "Advanced for half price",
       value: "6",
       subtitle: "Bonus",
-      icon: <AdvancePlusIcon />,
+      icon: <AdvancePlusIcon2 />,
+      active: true,
+      description:
+        "50% discount on Advanced status with all of the privileges of the status. Get up to 89% profitability on successful trades now for only $250 instead of $500.",
     },
     {
       title: "Millenium",
       value: "7",
       subtitle: "Trading Strategy",
-      icon: <StrategyIcon />,
+      icon: <StrategyIcon2 />,
+      active: true,
+      description:
+        "Millennium features the Detrended Price Oscillator and Heikin Ashi candlesticks. This is one of our most popular strategies, with over 39,000 traders using it.",
     },
     {
       title: "Trailing Stop Loss",
       value: "8",
       subtitle: "Improved Forex",
-      icon: <TradeStopIcon />,
+      icon: <TradeStopIcon2 />,
+      active: true,
+      description:
+        "A tool that automatically adjusts the Stop Loss along with the price. It is enabled next to the Stop Loss setting.",
     },
     {
       title: "Risk Free Trades",
       value: "9",
       subtitle: "Bonus",
-      icon: <AdvancePlusIcon />,
+      icon: <AdvancePlusIcon2 />,
+      active: true,
+      description:
+        "With risk-free trades enabled, you don't have to worry if your forecast was right or wrong — you won't lose any money and only stand to profit.",
     },
     {
       title: "Up to 89% profitability",
       value: "10",
       subtitle: "Trading Terms",
-      icon: <PercentageIcon />,
+      icon: <PercentageIcon2 />,
+      active: true,
+      description:
+        "This award gives you up to 89% profitability on successful trades.",
     },
     {
       title: "New Status: Advanced",
       value: "11",
       subtitle: "Bonus",
-      icon: <AdvancePlusIcon />,
+      icon: <AdvancePlusIcon2 />,
+      active: true,
+      description:
+        "If you earn this award, you will get improved trading conditions: Up to 89% profitability, faster withdrawals, and much more.",
     },
   ];
 
@@ -174,7 +204,7 @@ const TradersWayMenu: React.FunctionComponent<TradersWayMenuProps> = () => {
         rootClassName="tradersWayModal"
       >
         <div className="modalBadge">{selectedItem?.subtitle}</div>
-        {/* <div className="modalIcon">{selectedItem?.icon}</div> */}
+        <div className="modalIcon">{selectedItem?.icon}</div>
         <p className="modalHeading">{selectedItem?.title}</p>
         <p className="modalText">{selectedItem?.description}</p>
         <button className="modalButton">Use</button>

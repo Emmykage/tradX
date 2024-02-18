@@ -1,56 +1,55 @@
 import { Col, Row } from "antd";
-import { InfoCircleIcon, WalletIcon } from "../../../../../assets/icons";
+import {
+  DepositsIcon2,
+  InfoCircleIcon,
+  UsdSquareIcon,
+} from "../../../../../assets/icons";
 import Input from "../../../../../components/input/Input";
-import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./transferMenu.scss";
+import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
+import TransferInput from "../../../../../components/transferInput/TransferInput";
+import { Dispatch, FC, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
 interface TransferMenuProps {
-  setIsRightSubDrawerContent: (value: string | null) => void;
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
-const TransferMenu: React.FunctionComponent<TransferMenuProps> = ({
+const TransferMenu: FC<TransferMenuProps> = ({
+  setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
-  const warning = true;
-
   return (
     <div className="transferMenu">
-      <Input
-        icon={<img src="/menu-images/uk-flag.png" />}
-        className="currencyInput"
+      {/* <div className="withdrawTitle">Withdraw</div> */}
+      <TransferInput
+        subtitle="From"
+        className="promoCodeInput"
+        icon={<UsdSquareIcon />}
+        title="USD Account"
         placeholder="USD 0.00"
-        title="From: USD Account"
-        suffixIcon={<InfoCircleIcon />}
+        suffixIcon={<InfoCircleIcon stroke="#F58615" />}
       />
-
-      <MenuListCard
-        className="walletSelect"
-        title="Select the account"
-        icon={<WalletIcon />}
-        onClick={() => setIsRightSubDrawerContent("select-account")}
+      <PaymentListItemCard
+        icon={<DepositsIcon2 />}
+        title="Select Account"
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("select-account");
+        }}
       />
-
       <div className="amountInputs">
         <Row gutter={[12, 12]} justify="start">
           <Col span={12}>
-            <Input title="Amount, USD" />
+            <Input variant={1} title="Amount, USD" />
           </Col>
           <Col span={12}>
-            <Input title="Amount" />
+            <Input variant={1} title="Amount, PKR" />
           </Col>
-          {warning ? (
-            <Col span={24}>
-              <p className="warningText">
-                Transfer between these accounts is not possible
-              </p>
-            </Col>
-          ) : null}
         </Row>
       </div>
-
-      <MenuListCard title="Transfer" textCenter />
-
-      <p className="infoText">Instant money transfer</p>
+      <PaymentListItemCard title="Transfer" />
     </div>
   );
 };

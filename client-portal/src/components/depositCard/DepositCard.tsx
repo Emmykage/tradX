@@ -1,11 +1,13 @@
 import { ArrowRightOS, CardsIcons } from "../../assets/icons";
 import MenuListCard from "../menuListCard/MenuListCard";
-
+import "./DepositCard.scss";
 interface ContentProps {
   account: string;
   amount: string;
   icon?: boolean;
   cardIcon?: boolean;
+  CountryIcon?: React.ReactNode;
+  onClick?: () => void;
 }
 
 const DepositCard: React.FC<ContentProps> = ({
@@ -13,13 +15,16 @@ const DepositCard: React.FC<ContentProps> = ({
   amount,
   icon,
   cardIcon,
+  CountryIcon,
+  onClick
 }) => {
   return (
     <MenuListCard
       variant={1}
       className="deposit-card"
       customContent={
-        <div className="cardContent">
+        <div className="cardContent" onClick={onClick}>
+          <div>{CountryIcon && CountryIcon}</div>
           <div className="cardLeft">
             <div className="cardTop">
               <div className="cardSubtext">{account}</div>

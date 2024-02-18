@@ -1,14 +1,15 @@
-import { ReactNode } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import "./helpMenu.scss";
 import {
   GraduateIcon,
   HelpIcon,
   SupportChartIcon,
 } from "../../../../../assets/icons";
+import { LeftSubDrawer } from "../../types";
 
 interface HelpMenuProps {
-  setLeftSubDrawer: (value: string | null) => void;
-  setIsLeftSubDrawerOpen: (value: boolean) => void;
+  setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
+  setIsLeftSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const HelpLink = ({

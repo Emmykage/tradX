@@ -1,4 +1,6 @@
+import { Dispatch, SetStateAction, useState } from "react";
 import {
+  CheckMark,
   ExitIcon,
   LockIcon,
   NotificationIcon,
@@ -6,21 +8,22 @@ import {
   TradingIcon,
   UserIcon,
 } from "../../../../../assets/icons";
-import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./settingsMenu.scss";
+import { RightSubDrawerContent } from "../../types";
+import Modal from "../../../../../components/modal/Modal";
 
 interface SettingsMenuProps {
-  setIsRightSubDrawerContent: (value: string | null) => void;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
   setIsRightSubDrawerContent,
 }) => {
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
   return (
     <div className="settingsMenu">
-      <EnhanceSecurityCard />
-
+      {/* <EnhanceSecurityCard /> */}
       <div className="settingsSection">
         <p className="settingsMenuTitle">Profile</p>
         <MenuListCard
@@ -28,6 +31,12 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           subtitle="Name and contacts"
           icon={<UserIcon />}
           onClick={() => setIsRightSubDrawerContent("personalSettings")}
+        />
+        <MenuListCard
+          title="Verification"
+          subtitle="Full check and identity confirmation"
+          icon={<CheckMark />}
+          onClick={() => setIsRightSubDrawerContent("verification")}
         />
         <MenuListCard
           title="Two-factor authentication"
@@ -66,8 +75,45 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
       </div>
 
       <div className="settingsLogoutButton">
-        <MenuListCard danger textCenter title="Log out" icon={<ExitIcon />} />
+        <MenuListCard
+          onClick={() => {
+            setModalOpen(true);
+          }}
+          danger
+          textCenter
+          title="Log out"
+          icon={<ExitIcon />}
+        />
       </div>
+      <Modal
+        closeable={false}
+        open={isModalOpen}
+        setOpen={setModalOpen}
+        rootClassName="logoutModal"
+      >
+        <p className="modalHeading">Are you sure you want to log out?</p>
+        <div className="logout-buttons">
+          <div className="settingsLogoutButton">
+            <MenuListCard
+              onClick={() => setModalOpen(false)}
+              variant={2}
+              primary
+              textCenter
+              title="Cancel"
+            />
+          </div>
+          <div className="settingsLogoutButton">
+            <MenuListCard
+              onClick={() => setModalOpen(false)}
+              variant={2}
+              danger
+              textCenter
+              title="Log out"
+              icon={<ExitIcon width="20" height="20" />}
+            />
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

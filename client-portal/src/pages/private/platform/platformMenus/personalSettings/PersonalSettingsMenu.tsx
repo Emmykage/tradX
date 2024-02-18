@@ -1,12 +1,14 @@
+import { Dispatch, SetStateAction } from "react";
 import { InfoCircleIcon } from "../../../../../assets/icons";
 import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import Input from "../../../../../components/input/Input";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import Upload from "../../../../../components/upload/Upload";
 import "./personalSettingsMenu.scss";
+import { RightSubDrawerContent } from "../../types";
 
 interface PersonalSettingsMenuProps {
-  setIsRightSubDrawerContent: (value: string | null) => void;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const PersonalSettingsMenu: React.FunctionComponent<
@@ -14,7 +16,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
 > = ({ setIsRightSubDrawerContent }) => {
   return (
     <div className="personalSettingsMenu">
-      <EnhanceSecurityCard />
+      <EnhanceSecurityCard variant1={2} />
 
       <div>
         <p className="menuSectionTitle">Personal</p>
@@ -73,12 +75,14 @@ const PersonalSettingsMenu: React.FunctionComponent<
       <div className="socialButtons">
         <p className="menuSectionTitle">Social</p>
         <MenuListCard
+          className="socialButton apple"
           textCenter
           title="Connect Apple"
           icon={<img src="/social-icons/apple-icon.svg" />}
         />
         <MenuListCard
           textCenter
+          className="socialButton facebook"
           title="Connect Facebook"
           icon={<img src="/social-icons/facebook-icon.svg" />}
         />

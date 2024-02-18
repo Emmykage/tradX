@@ -1,0 +1,78 @@
+.user-options-trades {
+     height: 7.25rem;
+    flex-wrap: wrap;
+    @media screen and (max-width: 1280px) {
+        height: 200px;
+    }
+    @media screen and (max-width: 768px) {
+        height: 380px;
+    }
+     @media screen and (max-width: 375px) {
+        height: 320px;
+    }
+}
+
+.trades-user-option-select-box{
+    background-color: #E8EDF3;
+    border-radius: 0.75rem;
+    padding: 0.5rem 2.375rem;
+    display: flex;
+    flex-direction: column;
+    label {
+        font-size: 0.5rem;
+    }
+    .ant-select {
+        .ant-select-selector {
+            background-color: transparent;
+            border: none;
+            text-align: left;
+            min-width: 7.375rem;
+        }
+    }
+    @media screen and (max-width: 768px) {
+       width: 100%;
+       margin-bottom: 1rem;
+    }
+}
+
+.transactions-trades-tabs{
+    @media screen and (max-width: 769px) {
+       display: none;
+    }
+}
+.trades-user-tools-date-picker{
+    background: none;
+    border: none;
+}
+.select-item-status{
+    width: "12.5rem";
+    
+    @media screen and (max-width: 375px) {
+        width: "100%";
+    }
+    
+    @media screen and (max-width: 768px) {
+        width: "260px";
+    }
+}
+
+.trades-select-date-pickers{
+    display: flex;
+    align-items: center;
+    width: 27.375rem;
+    p{
+        margin: 0 0.5rem;
+    }
+     @media screen and (max-width: 375px) {
+       width: 340px;
+     }
+     @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.tradex-select-tabkey{
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+}

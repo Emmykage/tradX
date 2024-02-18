@@ -1,10 +1,18 @@
+import { Dispatch, SetStateAction } from "react";
 import { InfoCircleIcon } from "../../../../../assets/icons";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./verificationMenu.scss";
+import { RightSubDrawerContent } from "../../types";
 
-interface VerificationMenuProps {}
+interface VerificationMenuProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
 
-const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = () => {
+const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="verificationsContainer">
       <div className="verificationBadge">
@@ -27,7 +35,14 @@ const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = () => {
         </p>
       </MainItemCard>
 
-      <MainItemCard className="verificationLearnMore" variant={2}>
+      <MainItemCard
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("verification-helpcenter-menu");
+        }}
+        className="verificationLearnMore"
+        variant={2}
+      >
         <p>Learn More</p>
       </MainItemCard>
     </div>

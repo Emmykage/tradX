@@ -9,9 +9,11 @@ import {
   WithdrawalsIcon,
 } from "../../../../../assets/icons";
 import "./helpCenter.scss";
+import { Dispatch, SetStateAction } from "react";
+import { LeftSubDrawer } from "../../types";
 
 interface HelpCenterProps {
-  setLeftSubDrawer: (value: string | null) => void;
+  setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
 }
 
 const HelpCenter: React.FunctionComponent<HelpCenterProps> = ({
