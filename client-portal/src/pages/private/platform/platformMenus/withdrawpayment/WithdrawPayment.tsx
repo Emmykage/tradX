@@ -8,14 +8,16 @@ const WithdrawPayment = () => {
   return (
     <div className="withdraw-payment">
       {/* <div className="withdrawTitle">Withdraw</div> */}
-      <div>
+      <div className="withdraw-payment-buttons">
         <DepositCard
+          variant={2}
           CountryIcon={<UsdIcon2 />}
           account="From USD Account"
           amount="USD 30"
           icon
         />
         <DepositCard
+          variant={2}
           CountryIcon={<CardsIcons />}
           account="To Bank Cards"
           amount="540691...4595"
