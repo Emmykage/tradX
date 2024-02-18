@@ -8,6 +8,7 @@ interface ContentProps {
   cardIcon?: boolean;
   CountryIcon?: React.ReactNode;
   onClick?: () => void;
+  variant?: 1 | 2 | 3;
 }
 
 const DepositCard: React.FC<ContentProps> = ({
@@ -16,11 +17,12 @@ const DepositCard: React.FC<ContentProps> = ({
   icon,
   cardIcon,
   CountryIcon,
-  onClick
+  onClick,
+  variant,
 }) => {
   return (
     <MenuListCard
-      variant={1}
+      variant={variant ? variant : 1}
       className="deposit-card"
       customContent={
         <div className="cardContent" onClick={onClick}>
