@@ -10,6 +10,8 @@ import {
 } from "../../../../../assets/icons";
 import DepositDarkInput from "../../../../../components/depositDarkInput/DepositDarkInput";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
+import { Dispatch, FC, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
 const CreditCardsList = [
   {
@@ -25,8 +27,14 @@ const CreditCardsList = [
     icon: <VisaCardIcon />,
   },
 ];
-
-const CardDetailsMenu = () => {
+interface CardDetailsMenuProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
+const CardDetailsMenu: FC<CardDetailsMenuProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="card-details">
       <Typography.Text className="deposit-subtext">
@@ -67,6 +75,10 @@ const CardDetailsMenu = () => {
         </Typography.Text>
       </div>
       <PaymentListItemCard
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("depoist-successful");
+        }}
         className="deposit-button"
         title="Pay USD 30"
         border

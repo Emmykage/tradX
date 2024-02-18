@@ -41,6 +41,9 @@ import CardDetailsMenu from "./platformMenus/cardDetailsMenu/CardDetailsMenu";
 import PromoCodes from "./platformMenus/promoCodes/PromoCodes";
 import WithdrawAccount from "./platformMenus/withdrawAccount/WithdrawAccount";
 import BoostCubes from "./platformMenus/boostClubes/BoostCubes";
+import DepositSuccessful from "./platformMenus/depositSuccessful/DepositSuccessful";
+import PaymentMethod from "./platformMenus/paymentMethod/PaymentMethod";
+import TransferSuccessMenu from "./platformMenus/transfersuccessful/TransferSuccessMenu";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -332,11 +335,33 @@ export function rightSubDrawerBodyHandler(
         />
       );
     case "card-details-menu":
-      return <CardDetailsMenu />;
+      return (
+        <CardDetailsMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
     case "payment-method":
-      return <></>;
+      return (
+        <PaymentMethod
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
     case "payments-promo-code":
-      return <PromoCodes />;
+      return (
+        <PromoCodes
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    case "promo-code-applied":
+      return (
+        <TransferSuccessMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          title="Your Promo Code has been applied"
+        />
+      );
     case "select-withdraw-account":
       return (
         <WithdrawAccount
@@ -352,13 +377,16 @@ export function rightSubDrawerBodyHandler(
         />
       );
 
-    // case "transfer-account-select-menu":
-    //   return (
-    //     <TransferAccountSelectMenu
-    //       setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-    //       setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-    //     />
-    //   );
+    case "depoist-successful":
+      return <DepositSuccessful />;
+    case "transfer-successful":
+      return (
+        <TransferSuccessMenu
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          title="Payment Successful"
+          description="30 USD"
+        />
+      );
     default:
       return null;
   }

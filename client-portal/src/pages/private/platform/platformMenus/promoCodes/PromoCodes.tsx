@@ -3,8 +3,17 @@ import "./PromoCodes.scss";
 import PromoCodeInput from "../../../../../components/promoCodeInpute/PromoCodeInput";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import { PromoCodeIcon } from "../../../../../assets/icons";
+import { Dispatch, FC, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
-const PromoCodes = () => {
+interface PromoCodesProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
+const PromoCodes: FC<PromoCodesProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="promocodes">
       <Typography.Title className="promocode-title">
@@ -17,7 +26,14 @@ const PromoCodes = () => {
         className="promocode-input"
         title="Enter Your PromoCode"
       />
-      <PaymentListItemCard icon={<PromoCodeIcon />} title="Check Promo Code" />
+      <PaymentListItemCard
+        icon={<PromoCodeIcon />}
+        title="Check Promo Code"
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("promo-code-applied")
+        }}
+      />
     </div>
   );
 };

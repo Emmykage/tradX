@@ -8,21 +8,40 @@ import {
 } from "../../../../../assets/icons";
 import "./TransferSuccessMenu.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
+import { FC, Dispatch, SetStateAction } from "react";
 
-const TransferSuccessMenu = () => {
+
+interface TransferSuccessMenuProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  title: string;
+  description?: string;
+}
+const TransferSuccessMenu: FC<TransferSuccessMenuProps> = ({
+  setIsRightSubDrawerOpen,
+  title,
+  description
+}) => {
   return (
     <div className="deposit-success">
       <div className="deposit-success-sub">
         <SuccessIcon width="40" height="40" />
-        <Typography.Text className="success-message">Transfer</Typography.Text>
+        <Typography.Text className="success-message">{title}</Typography.Text>
+        {description && (
         <div>
           <Typography.Title className="deposited-payment">
-            30 USD
+            {description}
           </Typography.Title>
         </div>
+        )}
       </div>
       <div className="button">
-        <PaymentListItemCard border title="Close" />
+        <PaymentListItemCard
+          border
+          title="Close"
+          onClick={() => {
+            setIsRightSubDrawerOpen(false);
+          }}
+        />
       </div>
       <div className="deposited-trust">
         <Typography.Text className="deposited-trust-text">

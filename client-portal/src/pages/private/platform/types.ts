@@ -52,4 +52,7 @@ export type LeftSubDrawer =
     | "select-withdraw-account"
     | "boost-cubes"
     | "referral-program"
+    | "depoist-successful"
+    | "transfer-successful"
+    | "promo-code-applied"
     | null;
