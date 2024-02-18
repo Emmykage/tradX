@@ -2,6 +2,8 @@ import { Typography } from "antd";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import { ArrowRightIcon } from "../../../../../assets/icons";
 import "./VerificationHelpCenterMenu.scss";
+import { Dispatch, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
 const TradingPlatformList = [
   {
@@ -75,7 +77,14 @@ const TradingPlatformList = [
   },
 ];
 
-const VerificationHelpCenterMenu = () => {
+interface VerificationHelpCenterMenuProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
+
+const VerificationHelpCenterMenu: React.FunctionComponent<
+  VerificationHelpCenterMenuProps
+> = ({ setIsRightSubDrawerOpen, setIsRightSubDrawerContent }) => {
   return (
     <div className="verification-platforms">
       {TradingPlatformList.map((item) => (
@@ -89,7 +98,16 @@ const VerificationHelpCenterMenu = () => {
                   <div className="content-icon">
                     <ArrowRightIcon color="#A2A2A2" width="14" height="14" />
                   </div>
-                  <p className="text">{contentItem.content}</p>
+                  <p
+                    onClick={() => {
+                      setIsRightSubDrawerContent(
+                        "verification-helpcenter-sub-menu"
+                      );
+                    }}
+                    className="text"
+                  >
+                    {contentItem.content}
+                  </p>
                 </div>
               ))}
             </div>

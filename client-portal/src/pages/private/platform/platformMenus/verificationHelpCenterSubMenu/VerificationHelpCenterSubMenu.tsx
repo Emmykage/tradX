@@ -1,13 +1,29 @@
 import { Button } from "antd";
 import { ArrowRightIcon } from "../../../../../assets/icons";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
-import ".//VerificationHelpCenterMenuWhat.scss";
+import "./VerificationHelpCenterSubMenu.scss";
+import { Dispatch, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
-const VerificationHelpCenterMenuWhat = () => {
+interface VerificationHelpCenterSubMenuProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
+
+const VerificationHelpCenterSubMenu: React.FunctionComponent<
+  VerificationHelpCenterSubMenuProps
+> = ({ setIsRightSubDrawerOpen, setIsRightSubDrawerContent }) => {
   return (
     <div className="verification-platforms-what">
       <div className="buttons">
-        <Button className="btn">Back</Button>
+        <Button
+          onClick={() => {
+            setIsRightSubDrawerContent("verification-helpcenter-menu");
+          }}
+          className="btn"
+        >
+          Back
+        </Button>
       </div>
       <MainItemCard className="trading-platforms-about">
         <div className="about-info">
@@ -42,4 +58,4 @@ const VerificationHelpCenterMenuWhat = () => {
   );
 };
 
-export default VerificationHelpCenterMenuWhat;
+export default VerificationHelpCenterSubMenu;
