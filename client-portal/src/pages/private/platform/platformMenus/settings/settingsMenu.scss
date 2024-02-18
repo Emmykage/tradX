@@ -80,7 +80,7 @@
   .logout-buttons {
     display: flex;
     justify-content: space-evenly;
-    width: 75%;
+    width: 90%;
     margin-bottom: 1rem;
     .settingsLogoutButton {
       width: 14.813rem;
@@ -99,8 +99,4 @@
 
 .mainItemCardv2 {
   height: auto !important;
-}
-
-.cardRightContent .settingsLogoutButton-exit  {
-  padding-left: 1.8rem;
 }
