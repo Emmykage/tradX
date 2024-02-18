@@ -1,17 +1,17 @@
 import { FC } from 'react'
-import { Typography } from 'antd';
+import { Typography } from "antd";
+import "./MagicBoxRewards.scss";
 
-import "./MagicBoxRewards.scss"
-
-interface MagicBoxRewardsProps {
-}
+interface MagicBoxRewardsProps {}
 
 const MagicBoxRewards: FC<MagicBoxRewardsProps> = () => {
   return (
     <div>
-      <div className="magic-box-image-box">
-        <img src="/menu-images/squared-3d-treasure-box.png" alt="Magic Box" />
-        <Typography.Text>MegaBox</Typography.Text>
+      <div className="magicBoxContainer">
+        <div className="magic-box-image-box">
+          <img src="/menu-images/squared-3d-treasure-box.png" alt="Magic Box" />
+          <Typography.Text>MegaBox</Typography.Text>
+        </div>
       </div>
       <div className="magic-box-text-box">
         <p>
@@ -24,12 +24,13 @@ const MagicBoxRewards: FC<MagicBoxRewardsProps> = () => {
           Possible Rewards
         </Typography.Text>
         {/* XP Rewards */}
-        <div className="profileCard reward-btn" style={{marginTop: "1.75rem"}}>
+        <div
+          className="profileCard reward-btn"
+          style={{ marginTop: "1.75rem" }}
+        >
           <button className="settings">
             <div>
-              <img
-                src="/menu-images/xpRewardIcon.png"
-              />
+              <img src="/menu-images/xpRewardIcon.png" />
             </div>
             <div>
               <p className="txt reward-key">XP</p>
@@ -37,7 +38,6 @@ const MagicBoxRewards: FC<MagicBoxRewardsProps> = () => {
             </div>
           </button>
         </div>
-
         {/* Risk-free Trades Rewards */}
         <div className="profileCard reward-btn">
           <button className="settings">
