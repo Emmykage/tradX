@@ -12,6 +12,7 @@ interface ModalProps {
   title?: string;
   footer?: React.ReactNode;
   closeable?: boolean;
+  maskClosable?: boolean;
 }
 
 const Modal: React.FunctionComponent<ModalProps> = ({
@@ -24,6 +25,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({
   title,
   footer,
   closeable,
+  maskClosable,
 }) => {
   return (
     <ModalOriginal
@@ -36,6 +38,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({
       footer={footer ? footer : null}
       closeIcon={<CloseIcon />}
       closable={closeable}
+      maskClosable={maskClosable}
     >
       {children}
     </ModalOriginal>

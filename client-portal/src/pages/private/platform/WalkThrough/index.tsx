@@ -11,6 +11,8 @@ import Profitablity from "./steps/Profitablity";
 import SetInvestment from "./steps/SetInvestment";
 import SetDuration from "./steps/SetDuration";
 import ChooseTrade from "./steps/ChooseTrade";
+import Modal from "../../../../components/modal/Modal";
+import { Button } from "antd";
 
 interface WalkThroughProps {
   className?: string;
@@ -22,6 +24,7 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
   setShowWalkThrough,
 }) => {
   const [step, setStep] = useState<number>(1);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
     <div className={`walkthroughContainer ${className}`}>
@@ -34,8 +37,7 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
           <div
             className="closeIcon"
             onClick={() => {
-              setShowWalkThrough(false);
-              setStep(0);
+              setModalOpen(true);
             }}
           >
             <CloseIcon color="#ffffff80" />
@@ -77,6 +79,33 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
         open={step === 9}
         setShowWalkThrough={setShowWalkThrough}
       />
+
+      <Modal
+        rootClassName="walkthroughCloseModal"
+        open={modalOpen}
+        setOpen={setModalOpen}
+        closeable={false}
+        maskClosable={false}
+      >
+        <p className="modalHeading">Do you want to finish training?</p>
+        <p className="modalText">
+          You can resume your training later in the Help section.
+        </p>
+
+        <div className="modalButtons">
+          <Button onClick={() => setModalOpen(false)}>Cancel</Button>
+          <Button
+            onClick={() => {
+              setShowWalkThrough(false);
+              setStep(0);
+              localStorage.setItem("walkthroughSkipped", "true");
+            }}
+            className="danger"
+          >
+            Finish
+          </Button>
+        </div>
+      </Modal>
     </div>
   );
 };

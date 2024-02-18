@@ -60,3 +60,50 @@
     }
   }
 }
+
+.walkthroughCloseModal {
+  .ant-modal-wrap {
+    z-index: 111001;
+    .ant-modal {
+      .ant-modal-content {
+        background: #0f151d;
+        text-align: center;
+        padding: 40px 20px;
+
+        .modalHeading {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .modalText {
+          font-size: 1rem;
+          font-weight: 400;
+          color: #b7b9bb;
+        }
+
+        .modalButtons {
+          margin-top: 1.25rem;
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+
+          button {
+            background-color: #283645;
+            color: #fff;
+            font-size: 1.125rem;
+            font-weight: 500;
+            border: none;
+            width: 100%;
+            max-width: 10.625rem;
+            height: 3.125rem;
+
+            &.danger {
+              background-color: #ff0000;
+            }
+          }
+        }
+      }
+    }
+  }
+}
