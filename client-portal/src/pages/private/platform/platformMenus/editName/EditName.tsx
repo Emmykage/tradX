@@ -1,9 +1,9 @@
-import { Typography } from "antd";
 import Input from "../../../../../components/input/Input";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./editName.scss";
 import { Dispatch, SetStateAction } from "react";
 import { RightDrawerContent } from "../../types";
+import { InfoCircleIcon } from "../../../../../assets/icons";
 
 interface EditNameProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -16,19 +16,17 @@ const EditName: React.FunctionComponent<EditNameProps> = ({
 }) => {
   return (
     <div className="editNameMenu">
-      <Typography.Text className="editNameMenu-text">
-        Edit the account name. This is how it will be displayed on the list of
-        your accounts.
-      </Typography.Text>
       <Input
-        placeholder="Account Name"
-        title="Account Name"
-        defaultValue="USDT 6"
+        placeholder="Name"
+        title="Name"
+        defaultValue="John Doe"
         type="text"
+        suffixIcon={<InfoCircleIcon />}
       />
       <MenuListCard
+        variant={2}
         textCenter
-        title="Confirm"
+        title="Save name"
         onClick={() => {
           setIsRightSubDrawerOpen(false);
           setIsRightDrawerContent("account");
