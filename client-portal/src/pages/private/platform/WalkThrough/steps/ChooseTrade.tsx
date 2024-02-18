@@ -76,6 +76,7 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
             onClick={() => {
               setShowWalkThrough(false);
               setStep(0);
+              localStorage.setItem("walkthroughSkipped", "true");
             }}
           >
             Finish training

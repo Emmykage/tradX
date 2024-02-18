@@ -5,6 +5,7 @@ import TradeForm from "../../../components/tradeForm/TradeForm";
 import "./platform.scss";
 import { Drawer } from "antd";
 import { ArrowLeftOS, CloseIcon } from "../../../assets/icons";
+import WalkThrough from "./WalkThrough";
 import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 
 import {
@@ -46,7 +47,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [tradeFormHeight, setTradeFormHeight] = useState(0);
   const [mainSidebarWidth, setMainSidebarWidth] = useState(0);
   const [bottomSidebarHeight, setBottomSidebarHeight] = useState(0);
+  const [showWalkThrough, setShowWalkThrough] = useState(true);
   const storedScale = localStorage.getItem("scale");
+  const isWalkthroughSkipped = localStorage.getItem("walkthroughSkipped");
 
   useEffect(() => {
     const topbarElement = document.getElementById("topbarContainer");
@@ -243,6 +246,13 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           <TradeForm bottomSidebarHeight={bottomSidebarHeight} />
         </div>
       </div>
+
+      {!isWalkthroughSkipped ? (
+        <WalkThrough
+          className={showWalkThrough ? "" : "hidden"}
+          setShowWalkThrough={setShowWalkThrough}
+        />
+      ) : null}
     </div>
   );
 };
