@@ -15,7 +15,7 @@ const MarketLink = ({ text, link }: { text: string; link?: string }) => {
       variant={2}
     >
       <p className="menufirstCardText">{text}</p>
-      <ArrowRightOS />
+      <ArrowRightOS width="22" height="22" />
     </MainItemCard>
   );
 };

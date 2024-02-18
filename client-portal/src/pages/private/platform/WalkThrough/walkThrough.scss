@@ -1,0 +1,62 @@
+.walkthroughContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 100000;
+  background: #0b1118;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease, visibility 1s ease;
+
+  &.hidden {
+    visibility: hidden;
+  }
+
+  .stepsContainer {
+    position: absolute;
+    top: 1.875rem;
+    right: 1.875rem;
+    background-color: #172331;
+    border-radius: 0.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.5rem;
+    height: 3.75rem;
+    z-index: 2;
+
+    .steps {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: #fff;
+      }
+    }
+
+    .stepsSeparator {
+      width: 0.0625rem;
+      height: 1.875rem;
+      background-color: #ffffff80;
+    }
+
+    .closeIcon {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      svg {
+        width: 1rem;
+      }
+    }
+  }
+}

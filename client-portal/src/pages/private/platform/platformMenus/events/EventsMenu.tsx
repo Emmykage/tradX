@@ -41,7 +41,7 @@ const EventsMenu: React.FunctionComponent<EventsMenuProps> = () => {
               </div>
             </div>
             <div className="rightIconDiv">
-              <ArrowRightOS />
+              <ArrowRightOS width="22" height="22" />
             </div>
           </div>
         </MainItemCard>
