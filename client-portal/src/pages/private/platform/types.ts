@@ -57,9 +57,9 @@ export type LeftSubDrawer =
     | "promo-code-applied"
     | "verification-helpcenter-menu"
     | "get-rewards-deposit"
-    | "add-account-name"
     | "verification-helpcenter-sub-menu"
     | "password-success"
     | "account-archive-menu"
     | "account-archive-success-menu"
+    | "account-rename"
     | null;

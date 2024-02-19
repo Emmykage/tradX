@@ -36,7 +36,7 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
 
       <MenuListCard className="nextButton" title="Next" textCenter onClick={() => {
         setIsRightSubDrawerOpen(true);
-        setIsRightSubDrawerContent("add-account-name")
+        setIsRightSubDrawerContent("account-rename");
       }} />
     </div>
   );

@@ -2,17 +2,15 @@ import Input from "../../../../../components/input/Input";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./editName.scss";
 import { Dispatch, SetStateAction } from "react";
-import { RightDrawerContent } from "../../types";
+import { RightSubDrawerContent } from "../../types";
 import { InfoCircleIcon } from "../../../../../assets/icons";
 
 interface EditNameProps {
-  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
-  setIsRightDrawerContent: Dispatch<SetStateAction<RightDrawerContent>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const EditName: React.FunctionComponent<EditNameProps> = ({
-  setIsRightSubDrawerOpen,
-  setIsRightDrawerContent,
+  setIsRightSubDrawerContent,
 }) => {
   return (
     <div className="editNameMenu">
@@ -28,8 +26,7 @@ const EditName: React.FunctionComponent<EditNameProps> = ({
         textCenter
         title="Save name"
         onClick={() => {
-          setIsRightSubDrawerOpen(false);
-          setIsRightDrawerContent("account");
+          setIsRightSubDrawerContent("settings");
         }}
       />
     </div>

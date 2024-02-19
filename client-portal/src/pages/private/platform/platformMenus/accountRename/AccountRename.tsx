@@ -5,12 +5,12 @@ import "./accountRename.scss";
 import { Dispatch, SetStateAction } from "react";
 import { RightDrawerContent } from "../../types";
 
-interface EditNameProps {
+interface AccountRenameProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
   setIsRightDrawerContent: Dispatch<SetStateAction<RightDrawerContent>>;
 }
 
-const AccountRename: React.FunctionComponent<EditNameProps> = ({
+const AccountRename: React.FunctionComponent<AccountRenameProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightDrawerContent,
 }) => {

@@ -130,7 +130,13 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
                     </div>
                     <div className="dropdownMenuItem">Transactions</div>
                   </div>
-                  <div className="dropdownMenuContent">
+                  <div
+                    onClick={() => {
+                      setIsRightSubDrawerOpen(true);
+                      setIsRightSubDrawerContent("account-rename");
+                    }}
+                    className="dropdownMenuContent"
+                  >
                     <div className="dropdownMenuIcon">
                       <RenameIcon />
                     </div>

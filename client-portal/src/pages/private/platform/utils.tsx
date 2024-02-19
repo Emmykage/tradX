@@ -54,6 +54,7 @@ import VerificationHelpCenterSubMenu from "./platformMenus/verificationHelpCente
 import PasswordSuccess from "./platformMenus/passwordSuccess/PasswordSuccess";
 import AccountArchiveMenu from "./platformMenus/accountArchiveMenu/AccountArchiveMenu";
 import AccountArchivedSuccessMenu from "./platformMenus/accountArchivedSuccessMenu/AccountArchivedSuccessMenu";
+import AccountRename from "./platformMenus/accountRename/AccountRename";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -255,7 +256,7 @@ export function rightSubDrawerTitleHandler(
       return "Select Account";
     case "verification-helpcenter-menu":
       return "Help Center";
-    case "add-account-name":
+    case "account-rename":
       return "Account Name";
     case "verification-helpcenter-sub-menu":
       return "Help Center";
@@ -349,8 +350,7 @@ export function rightSubDrawerBodyHandler(
     case "edit-name":
       return (
         <EditName
-          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-          setIsRightDrawerContent={setIsRightDrawerContent}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
       );
     case "confirm-email":
@@ -460,9 +460,9 @@ export function rightSubDrawerBodyHandler(
           description="30 USD"
         />
       );
-    case "add-account-name":
+    case "account-rename":
       return (
-        <EditName
+        <AccountRename
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           setIsRightDrawerContent={setIsRightDrawerContent}
         />
@@ -488,6 +488,8 @@ export function rightSubDrawerExtraHandler(
   >
 ): JSX.Element | null {
   switch (rightSubDrawerContent) {
+    case "account-archive-success-menu":
+      return null;
     case "twofactor":
     case "verification":
     case "personalSettings":
