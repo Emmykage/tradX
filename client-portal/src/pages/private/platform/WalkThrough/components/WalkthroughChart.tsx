@@ -6,7 +6,7 @@ import {
   LineStyle,
 } from "lightweight-charts";
 import React, { RefObject, useEffect, useRef } from "react";
-import { expiringPriceAlerts } from "../../../../lib/lightweight-charts/plugins/expiring-price-alerts";
+// import { expiringPriceAlerts } from "../../../../lib/lightweight-charts/plugins/expiring-price-alerts";
 
 export interface DataPoint {
   time: string;
@@ -134,14 +134,11 @@ const ChartComponent: React.FC<ChartComponentProps> = ({
         };
         newSeries.update(newObject);
 
-        const testArray: DataPoint[] = Array.from(
-          { length: numberOfUpdates },
-          (_, index) => ({
-            time: startTime + index * timeInterval,
-            value: lastDataPoint.value,
-          })
-        );
-        lineSeries.setData(testArray);
+        const testObject: DataPoint = {
+          time: startTime + updateCount * timeInterval,
+          value: lastDataPoint.value,
+        };
+        lineSeries.update(testObject);
 
         updateCount++;
 
@@ -159,9 +156,9 @@ const ChartComponent: React.FC<ChartComponentProps> = ({
 
       updateChart(); // Update immediately
 
-      if (chartContainerRef.current) {
-        expiringPriceAlerts(chart);
-      }
+      // if (chartContainerRef.current) {
+      //   expiringPriceAlerts(chart);
+      // }
 
       const updateIntervalId = setInterval(() => {
         updateChart();
