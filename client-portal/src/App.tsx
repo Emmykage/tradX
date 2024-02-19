@@ -7,6 +7,8 @@ import Download from "./pages/public/downloads/Download";
 import Transactions from "./pages/private/transactions/Transactions";
 import Anydesk from "./pages/public/anydesk/Anydesk";
 import GetLoan from "./pages/private/get-loan/GetLoan";
+import Loan from "./pages/private/loan/Loan";
+import LoanMicroLenders from "./pages/private/loanMicroLenders/LoanMicroLenders";
 
 interface AppProps {}
 
@@ -35,7 +37,8 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/lender" element={<Lender />} />
         <Route path="/downloads" element={<Download />} />
         <Route path="/downloads/anydesk" element={<Anydesk />} />
-        <Route path="/downloads/teamviewer" element={<div>Team viewer</div>} />
+        <Route path="/loan" element={<Loan />} />
+        <Route path="/loan/microlenders" element={<LoanMicroLenders />} />
       </Routes>
     </HashRouter>
   );
