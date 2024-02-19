@@ -78,13 +78,12 @@ const TradingPlatformList = [
 ];
 
 interface VerificationHelpCenterMenuProps {
-  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const VerificationHelpCenterMenu: React.FunctionComponent<
   VerificationHelpCenterMenuProps
-> = ({ setIsRightSubDrawerOpen, setIsRightSubDrawerContent }) => {
+> = ({ setIsRightSubDrawerContent }) => {
   return (
     <div className="verification-platforms">
       {TradingPlatformList.map((item) => (

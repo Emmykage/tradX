@@ -295,14 +295,12 @@ export function rightSubDrawerBodyHandler(
     case "verification-helpcenter-menu":
       return (
         <VerificationHelpCenterMenu
-          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
       );
     case "verification-helpcenter-sub-menu":
       return (
         <VerificationHelpCenterSubMenu
-          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
       );
@@ -352,9 +350,7 @@ export function rightSubDrawerBodyHandler(
       );
     case "edit-name":
       return (
-        <EditName
-          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-        />
+        <EditName setIsRightSubDrawerContent={setIsRightSubDrawerContent} />
       );
     case "confirm-email":
       return <ConfirmMail />;
@@ -445,16 +441,16 @@ export function rightSubDrawerBodyHandler(
         />
       );
     case "withdraw-payment":
-        return (
-          <WithdrawPayment
-            setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-            setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-          />
-        );
+      return (
+        <WithdrawPayment
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
     case "select-withdarw-request":
-      return <WithdrawRequest
-        setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-      />;
+      return (
+        <WithdrawRequest setIsRightSubDrawerOpen={setIsRightSubDrawerOpen} />
+      );
     case "boost-cubes":
       return (
         <BoostCubes

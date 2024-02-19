@@ -6,13 +6,12 @@ import { Dispatch, SetStateAction } from "react";
 import { RightSubDrawerContent } from "../../types";
 
 interface VerificationHelpCenterSubMenuProps {
-  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const VerificationHelpCenterSubMenu: React.FunctionComponent<
   VerificationHelpCenterSubMenuProps
-> = ({ setIsRightSubDrawerOpen, setIsRightSubDrawerContent }) => {
+> = ({ setIsRightSubDrawerContent }) => {
   return (
     <div className="verification-platforms-what">
       <div className="buttons">
