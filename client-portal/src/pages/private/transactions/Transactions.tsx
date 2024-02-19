@@ -29,19 +29,22 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
 
   return (
     <div className="transactions-container">
-        <ul className="tabs-headers">
-          {headers.map((item, index) => (
-            <li
-              key={`${item}-${index}`}
-              // @ts-expect-error
-              isActive={index === visiableIndex && "true"}
-              onClick={() => setVisiableIndex(index)}
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-        {tabsBodyHandler()}
+      <ul className="tabs-headers">
+        {headers.map((item, index) => (
+          <li
+            key={`${item}-${index}`}
+            style={{
+              color: index === visiableIndex ? "#0094FF" : "#67696D",
+              borderBottom:
+                index === visiableIndex ? "0.125rem solid #0094FF" : undefined,
+            }}
+            onClick={() => setVisiableIndex(index)}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+      {tabsBodyHandler()}
     </div>
   );
 };

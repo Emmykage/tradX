@@ -15,10 +15,6 @@
         color: #67696D;
         font-weight: 500;
         font-size: 0.875rem;
-        &[isActive=true] {
-            color: #0094FF;
-            border-bottom: 0.125rem solid #0094FF;
-        }
     }
 }
 

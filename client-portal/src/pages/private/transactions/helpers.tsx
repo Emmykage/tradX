@@ -23,4 +23,18 @@ export function methodIconHandler(method: MethodsType): ReactNode | null {
 
 export const StatusHandler: FC<{
   status: "success" | "failed" | "pending";
-}> = ({ status }) => <p className="tb-td-transaction-status">{status}</p>;
+}> = ({ status }) => (
+  <p
+    className="tb-td-transaction-status"
+    style={{
+      background:
+        status === "pending"
+          ? "#70808C"
+          : status === "failed"
+          ? "#ED5444"
+          : "#1D9747",
+    }}
+  >
+    {status}
+  </p>
+);

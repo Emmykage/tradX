@@ -44,12 +44,6 @@
     font-weight: 600;
     border-radius: 0.75rem;
     text-align: center;
-    &[status="pending"]{
-        background: #70808C
-    }
-    &[status="failed"]{
-         background: #ED5444
-    }
 }
 
 .no-data-available-section{
