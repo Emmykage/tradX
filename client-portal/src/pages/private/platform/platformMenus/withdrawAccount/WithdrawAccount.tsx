@@ -23,7 +23,7 @@ const WithdrawAccount: FC<WithdrawAccountProps> = ({
           className="main-card"
           onClick={() => {
             setIsRightSubDrawerOpen(true);
-            setIsRightSubDrawerContent("withdraw");
+            setIsRightSubDrawerContent("withdraw-payment");
           }}
         >
           <div className="first-account">
@@ -44,7 +44,7 @@ const WithdrawAccount: FC<WithdrawAccountProps> = ({
           className="main-card"
           onClick={() => {
             setIsRightSubDrawerOpen(true);
-            setIsRightSubDrawerContent("withdraw");
+            setIsRightSubDrawerContent("withdraw-payment");
           }}
         >
           <div className="first-account">
@@ -65,7 +65,7 @@ const WithdrawAccount: FC<WithdrawAccountProps> = ({
           className="main-card"
           onClick={() => {
             setIsRightSubDrawerOpen(true);
-            setIsRightSubDrawerContent("withdraw");
+            setIsRightSubDrawerContent("withdraw-payment");
           }}
         >
           <div className="first-account">

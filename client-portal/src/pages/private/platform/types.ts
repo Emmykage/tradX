@@ -62,4 +62,6 @@ export type LeftSubDrawer =
     | "account-archive-menu"
     | "account-archive-success-menu"
     | "account-rename"
+    | "select-withdarw-request"
+    | "withdraw-payment"
     | null;

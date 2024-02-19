@@ -3,8 +3,24 @@ import DepositCard from "../../../../../components/depositCard/DepositCard";
 import DepositInput from "../../../../../components/depositInput/DepositInput";
 import "./WithdrawPayment.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
+import { Dispatch, FC, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
-const WithdrawPayment = () => {
+interface WithdrawPaymentProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
+/**
+ * 
+ * @returns onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("");
+          }}
+ */
+const WithdrawPayment: FC<WithdrawPaymentProps> = ({
+  setIsRightSubDrawerContent,
+  setIsRightSubDrawerOpen
+}) => {
   return (
     <div className="withdraw-payment">
       {/* <div className="withdrawTitle">Withdraw</div> */}
@@ -48,7 +64,10 @@ const WithdrawPayment = () => {
         </div>
         <div className="hr" />
       </div>
-      <PaymentListItemCard title="Withdraw" />
+      <PaymentListItemCard title="Withdraw" onClick={() => {
+        setIsRightSubDrawerOpen(true);
+        setIsRightSubDrawerContent("select-withdarw-request");
+      }} />
     </div>
   );
 };

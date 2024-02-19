@@ -2,8 +2,16 @@ import { SuccessIcon } from "../../../../../assets/icons";
 import { Typography } from "antd";
 import "./WithdrawRequest.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
+import { Dispatch, FC, SetStateAction } from "react";
+import { RightSubDrawerContent } from "../../types";
 
-const WithdrawRequest = () => {
+interface WithdrawRequestProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const WithdrawRequest: FC<WithdrawRequestProps> = ({
+  setIsRightSubDrawerOpen,
+}) => {
   return (
     <div className="withdraw-success">
       <div className="withdraw-success-sub">
@@ -35,7 +43,9 @@ const WithdrawRequest = () => {
         </div>
       </div>
       <div className="button">
-        <PaymentListItemCard title="Done" />
+        <PaymentListItemCard title="Done" onClick={() => {
+          setIsRightSubDrawerOpen(false);
+        }} />
       </div>
 
       <div className="withdraw-trust">

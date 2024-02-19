@@ -55,6 +55,8 @@ import PasswordSuccess from "./platformMenus/passwordSuccess/PasswordSuccess";
 import AccountArchiveMenu from "./platformMenus/accountArchiveMenu/AccountArchiveMenu";
 import AccountArchivedSuccessMenu from "./platformMenus/accountArchivedSuccessMenu/AccountArchivedSuccessMenu";
 import AccountRename from "./platformMenus/accountRename/AccountRename";
+import WithdrawRequest from "./platformMenus/withdrawRequest/WithdrawRequest";
+import WithdrawPayment from "./platformMenus/withdrawpayment/WithdrawPayment";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -234,6 +236,7 @@ export function rightSubDrawerTitleHandler(
     case "select-account":
       return "To:";
     case "withdraw":
+    case "withdraw-payment":
       return "Withdraw";
     case "add-account":
       return "Add an account";
@@ -441,6 +444,17 @@ export function rightSubDrawerBodyHandler(
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
       );
+    case "withdraw-payment":
+        return (
+          <WithdrawPayment
+            setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+            setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+          />
+        );
+    case "select-withdarw-request":
+      return <WithdrawRequest
+        setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+      />;
     case "boost-cubes":
       return (
         <BoostCubes
