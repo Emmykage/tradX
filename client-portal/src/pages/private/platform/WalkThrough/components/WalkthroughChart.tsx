@@ -5,7 +5,8 @@ import {
   Time,
   LineStyle,
 } from "lightweight-charts";
-import React, { useEffect, useRef } from "react";
+import React, { RefObject, useEffect, useRef } from "react";
+import { expiringPriceAlerts } from "../../../../lib/lightweight-charts/plugins/expiring-price-alerts";
 
 export interface DataPoint {
   time: string;
@@ -39,12 +40,14 @@ const ChartComponent: React.FC<ChartComponentProps> = ({
     gridLines = "#ffccff",
   } = colors || {};
 
-  const chartContainerRef = useRef<HTMLDivElement>(null);
+  const chartContainerRef: RefObject<HTMLDivElement> =
+    useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi>();
 
   useEffect(() => {
     const chartContainer = chartContainerRef.current!;
     const chart = createChart(chartContainer, {
+      autoSize: true,
       layout: {
         background: { type: ColorType.Solid, color: backgroundColor },
         textColor,
@@ -64,9 +67,11 @@ const ChartComponent: React.FC<ChartComponentProps> = ({
         textColor: "#70808C",
       },
       timeScale: {
-        borderVisible: false,
-        timeVisible: true,
         secondsVisible: true,
+        timeVisible: true,
+        rightOffset: 20,
+        allowShiftVisibleRangeOnWhitespaceReplacement: true,
+        borderVisible: false,
       },
       width: chartContainer.clientWidth,
       height: 300,
@@ -88,6 +93,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({
       priceLineWidth: 1,
     });
     newSeries.setData(data);
+    const lineSeries = chart.addLineSeries();
 
     chartRef.current = chart;
 
@@ -128,6 +134,15 @@ const ChartComponent: React.FC<ChartComponentProps> = ({
         };
         newSeries.update(newObject);
 
+        const testArray: DataPoint[] = Array.from(
+          { length: numberOfUpdates },
+          (_, index) => ({
+            time: startTime + index * timeInterval,
+            value: lastDataPoint.value,
+          })
+        );
+        lineSeries.setData(testArray);
+
         updateCount++;
 
         if (updateCount >= numberOfUpdates) {
@@ -143,6 +158,10 @@ const ChartComponent: React.FC<ChartComponentProps> = ({
       }, updateDuration);
 
       updateChart(); // Update immediately
+
+      if (chartContainerRef.current) {
+        expiringPriceAlerts(chart);
+      }
 
       const updateIntervalId = setInterval(() => {
         updateChart();
