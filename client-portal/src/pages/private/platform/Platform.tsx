@@ -6,7 +6,6 @@ import "./platform.scss";
 import { Drawer } from "antd";
 import { ArrowLeftOS, CloseIcon } from "../../../assets/icons";
 import WalkThrough from "./WalkThrough";
-import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 
 import {
   leftDarwerTitleHandler,
@@ -26,6 +25,8 @@ import {
   RightDrawerContent,
   RightSubDrawerContent,
 } from "./types";
+import MainChart from "./MainChart";
+import { initialData } from "./MainChart/data";
 
 interface PlatformProps {}
 
@@ -47,9 +48,14 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [tradeFormHeight, setTradeFormHeight] = useState(0);
   const [mainSidebarWidth, setMainSidebarWidth] = useState(0);
   const [bottomSidebarHeight, setBottomSidebarHeight] = useState(0);
+  const [chartInitialData, setChartInitialData] = useState<any>([]);
   const [showWalkThrough, setShowWalkThrough] = useState(true);
   const storedScale = localStorage.getItem("scale");
   const isWalkthroughSkipped = localStorage.getItem("walkthroughSkipped");
+
+  useEffect(() => {
+    setChartInitialData(initialData);
+  }, []);
 
   useEffect(() => {
     const topbarElement = document.getElementById("topbarContainer");
@@ -233,16 +239,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           style={{ height: calculateTradeContentHeight() }}
         >
           <div className="trade-graph">
-            <AdvancedRealTimeChart
-              theme="dark"
-              autosize
-              hide_side_toolbar
-              save_image={false}
-              allow_symbol_change
-              style="3"
-              withdateranges={false}
-              symbol="EURUSD"
-            ></AdvancedRealTimeChart>
+            {chartInitialData?.length ? (
+              <MainChart data={chartInitialData} />
+            ) : null}
           </div>
           <TradeForm bottomSidebarHeight={bottomSidebarHeight} />
         </div>
