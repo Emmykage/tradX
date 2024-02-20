@@ -1,4 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { Col, Row } from "antd";
+import { Story } from "react-insta-stories/dist/interfaces";
+import Slider from "react-slick";
+
+import { RightSubDrawerContent } from "../../types";
 import {
   ArrowUpOS,
   NotificationIcon2,
@@ -6,40 +11,24 @@ import {
   SettingsIcon2,
   TooltipIcon,
 } from "../../../../../assets/icons";
+import StoriesModal from "./components/Stories";
+
 import "./profileMenu.scss";
-import { Col, Row } from "antd";
-import { RightSubDrawerContent } from "../../types";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 
 interface ProfileMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
-// const ProfileLink = ({
-//   icon,
-//   linkTitle,
-//   link,
-// }: {
-//   icon: ReactNode;
-//   linkTitle: string;
-//   link?: string;
-// }) => {
-//   const navigate = useNavigate();
-//   return (
-//     <div className="profileLinkContainer" onClick={() => navigate(link || "")}>
-//       <div className="icon">{icon}</div>
-//       <p className="linkName">{linkTitle}</p>
-//     </div>
-//   );
-// };
-
 const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [selectedStories, setSelectedStories] = useState<Story[]>([]);
+  const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
+  const [modalKey, setModalKey] = useState<number>(0);
+
   const infos = [
     {
       title: "Еconomic",
@@ -47,12 +36,44 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       p2: "calendar:",
       image: "/menu-images/svgs/calender.svg",
       background: "backgroundPurple",
+      storiesData: [
+        {
+          url: "/menu-images/stories/economins-1.jpg",
+          duration: 5000,
+        },
+        {
+          url: "/menu-images/stories/economins-2.jpg",
+          duration: 5000,
+        },
+        {
+          url: "/menu-images/stories/economins-3.jpg",
+          duration: 5000,
+        },
+        {
+          url: "/menu-images/stories/economins-4.jpg",
+          duration: 5000,
+        },
+      ],
     },
     {
       title: "Discover",
       p1: "Forex Mode",
       image: "/menu-images/svgs/forex-mode.svg",
       background: "backgroundGreen",
+      storiesData: [
+        {
+          url: "/menu-images/stories/foremode-1.jpg",
+          duration: 5000,
+        },
+        {
+          url: "/menu-images/stories/foremode-2.jpg",
+          duration: 5000,
+        },
+        {
+          url: "/menu-images/stories/foremode-3.jpg",
+          duration: 5000,
+        },
+      ],
     },
     {
       title: "Asset for Fast",
@@ -104,7 +125,18 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       <div className="traderInfoImages-new">
         <Slider {...settings}>
           {infos.map((item, index) => (
-            <div className={`card ${item.background}`} key={item.title + index}>
+            <div
+              className={`card ${item.background}`}
+              key={item.title + index}
+              onClick={() => {
+                if (item?.storiesData) {
+                  setModalKey((prevKey) => prevKey + 1);
+                  setCurrentStoryIndex(0);
+                  setSelectedStories(item?.storiesData as Story[]);
+                  setModalOpen(true);
+                }
+              }}
+            >
               <div className="image">
                 <img src={item.image} />
               </div>
@@ -193,6 +225,15 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
           <span className="txt">Settings</span>
         </button>
       </div>
+
+      <StoriesModal
+        open={modalOpen}
+        setOpen={setModalOpen}
+        closeable={false}
+        stories={selectedStories}
+        currentIndex={currentStoryIndex}
+        modalKey={modalKey}
+      />
     </div>
   );
 };

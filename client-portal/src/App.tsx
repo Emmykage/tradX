@@ -1,12 +1,16 @@
+import { useEffect } from "react";
 import { Route, Routes, HashRouter } from "react-router-dom";
+
 import Platform from "./pages/private/platform/Platform";
 import Lender from "./pages/private/lender/Lender";
 import SignIn from "./pages/public/signIn/SignIn";
-import { useEffect } from "react";
 import Download from "./pages/public/downloads/Download";
 import Transactions from "./pages/private/transactions/Transactions";
 import Anydesk from "./pages/public/anydesk/Anydesk";
 import GetLoan from "./pages/private/get-loan/GetLoan";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface AppProps {}
 

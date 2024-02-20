@@ -61,6 +61,7 @@
   margin-bottom: 1.25rem;
 
   .card {
+    cursor: pointer;
     border: 1px solid gray;
     border-radius: 0.5rem;
     padding: 0.8rem;
@@ -96,11 +97,11 @@
     .text {
       position: absolute;
       bottom: 0.5rem;
-      .textp{
+      .textp {
         font-weight: 600;
         font-size: 0.696rem;
         line-height: 1.12rem;
-        color: #FFFFFF;
+        color: #ffffff;
       }
     }
   }
