@@ -41,8 +41,11 @@
     gap: 4.6875rem;
     justify-content: center;
     align-items: center;
+    height: 100;
     margin-top: 10rem;
-    padding-bottom: 29rem;
+    @media (max-width: 768px) {
+      padding-bottom: 10rem;
+    }
     .rectangleBox {
       width: 22.8125rem;
       height: 12.3125rem;

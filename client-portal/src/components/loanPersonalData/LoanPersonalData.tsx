@@ -1,8 +1,7 @@
-import { Checkbox, Col, Row } from "antd";
+import { Col, Row } from "antd";
 import "./loanPersonalData.scss";
 import LoanInput from "../loanInput/LoanInput";
 import { AgreeIcon, PenIcon } from "../../assets/icons";
-import Loan from "../../pages/private/loan/Loan";
 
 const InputListLeft = [
   {
@@ -107,7 +106,7 @@ const LoanPersonalData = () => {
             )
           )}
         </Col>
-        <Col className="col" md={20} lg={12} xl={12}>
+        <Col className="col" md={20} lg={12} xl={10}>
           <div className="loanInformationWrapper">
             <div className="loanTransferWrapper">
               {InputListRight.map((input) => (

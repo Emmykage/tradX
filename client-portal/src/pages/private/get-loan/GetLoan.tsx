@@ -6,6 +6,8 @@ import "./getLoan.scss";
 const GetLoan = () => {
   return (
     <div>
+      {/* <LoanRegister /> */}
+      {/* <LoanPersonalData /> */}
       <LoanIdentification />
     </div>
   );
