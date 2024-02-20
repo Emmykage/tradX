@@ -29,7 +29,8 @@ const InputList = [
   },
   {
     id: 5,
-    dateOfBirth: true,
+    placeholder: "Date of Birth",
+    type: "text",
   },
   {
     id: 6,
@@ -62,13 +63,9 @@ const LoanRegister = () => {
             area, where you can enjoy exclusive offers and discounts.
           </p>
           {InputList.map((input) =>
-            input.dateOfBirth ? (
-              <LoanInput key={input.id} dateOfBirth>
-                <p></p>
-              </LoanInput>
-            ) : input.password ? (
+            input.password ? (
               <LoanInput key={input.id} password>
-                <p></p>
+                <p style={{ visibility: "hidden" }}>there is some dummy text</p>
               </LoanInput>
             ) : (
               <LoanInput
@@ -77,7 +74,11 @@ const LoanRegister = () => {
                 type={input.type}
               >
                 {input.error && <p>{input.error}</p>}
-                {!input.error && <p></p>}
+                {!input.error && (
+                  <p style={{ visibility: "hidden" }}>
+                    there is some dummy text{" "}
+                  </p>
+                )}
               </LoanInput>
             )
           )}
