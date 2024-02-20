@@ -6,6 +6,7 @@ import {
   LineStyle,
   UTCTimestamp,
   LastPriceAnimationMode,
+  CrosshairMode,
 } from "lightweight-charts";
 import React, { useEffect, useRef } from "react";
 
@@ -91,6 +92,24 @@ const MainChart: React.FC<MainChartProps> = ({ data, colors }) => {
 
     chartRef.current = chart;
 
+    chart.applyOptions({
+      crosshair: {
+        mode: CrosshairMode.Normal,
+        vertLine: {
+          width: 1,
+          color: "#48494b",
+          style: LineStyle.Dashed,
+          labelBackgroundColor: "#48494b",
+        },
+        horzLine: {
+          width: 1,
+          color: "#48494b",
+          style: LineStyle.Dashed,
+          labelBackgroundColor: "#48494b",
+        },
+      },
+    });
+
     const handleResize = (entries: ResizeObserverEntry[]) => {
       const newRect = entries[0].contentRect;
       chart.applyOptions({ height: newRect.height, width: newRect.width });
@@ -119,13 +138,13 @@ const MainChart: React.FC<MainChartProps> = ({ data, colors }) => {
 
       const newObject: DataPoint = {
         time: (lastDataPoint.time + updateCount + timeInterval) as UTCTimestamp,
-        value: startValue * Math.random() * 5,
+        value: startValue * Math.random() * 2,
       };
 
       updateCount++;
 
       newSeries.update(newObject);
-    }, 1000);
+    }, 5000);
 
     return () => {
       clearInterval(updateIntervalId);
