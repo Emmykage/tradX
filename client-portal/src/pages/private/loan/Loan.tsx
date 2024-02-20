@@ -7,7 +7,7 @@ const Loan = () => {
   return (
     <div className="loan">
       <LoanNavbar />
-      <div className="loanTitle">Get a LoanL</div>
+      <div className="loanTitle">Get a Loan</div>
       <div className="rectangle-loan-links"></div>
       <Row className="BoxesDiv">
         <Link to="/loan/microlenders">
