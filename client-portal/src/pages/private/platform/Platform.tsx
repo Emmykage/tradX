@@ -222,6 +222,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         </Drawer>
 
         <Topbar
+          style={{ marginLeft: `${mainSidebarWidth}px` }}
           isDrawerOpen={isDrawerOpen}
           setIsRightDrawerOpen={setIsRightDrawerOpen}
           setIsRightDrawerContent={setIsRightDrawerContent}

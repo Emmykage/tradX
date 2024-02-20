@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import {
   CaretDownIcon,
   DropUpIcon,
@@ -20,6 +21,7 @@ interface TopbarProps {
     >
   >;
   currentDrawer: "trades" | "market" | "events" | "help" | "assets" | null;
+  style?: CSSProperties;
 }
 
 const Topbar: React.FunctionComponent<TopbarProps> = ({
@@ -29,9 +31,10 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   setIsDrawerOpen,
   setCurrentDrawer,
   currentDrawer,
+  style,
 }) => {
   return (
-    <div className="topbarContainer" id="topbarContainer">
+    <div className="topbarContainer" id="topbarContainer" style={style}>
       <div
         className="conversionTab"
         onClick={() => {
