@@ -1,5 +1,6 @@
 .sidebar {
-  width: 5rem;
+  min-width: 5rem;
+  max-width: 5rem;
   position: fixed;
   height: 100vh;
   display: flex;
@@ -12,7 +13,8 @@
   transition: all 0.25s;
 
   @media (max-width: 991px) {
-    width: 4.063rem;
+    min-width: 4.063rem;
+    max-width: 4.063rem;
   }
 
   @media (max-width: 767px) {
@@ -21,6 +23,7 @@
     bottom: 0;
     height: auto;
     width: 100%;
+    max-width: 100%;
     padding: 0.5rem;
   }
   .top {

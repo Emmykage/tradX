@@ -2,7 +2,7 @@ import { Modal as ModalOriginal } from "antd";
 import "./modal.scss";
 import { CloseIcon } from "../../assets/icons";
 
-interface ModalProps {
+export interface ModalProps {
   children?: React.ReactNode;
   rootClassName?: string;
   open: boolean;
