@@ -1,7 +1,12 @@
+import LoanRegister from "../../../components/loanRegister/LoanRegister";
+import "./getLoan.scss";
+
 const GetLoan = () => {
   return (
-    <div>GetLoan</div>
-  )
-}
+    <div>
+      <LoanRegister />
+    </div>
+  );
+};
 
-export default GetLoan
+export default GetLoan;

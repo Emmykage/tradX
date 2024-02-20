@@ -1,0 +1,87 @@
+.LoanInput {
+    width: fit-content;
+  input {
+    background: rgba(48, 48, 51, 1);
+    padding: 1rem 1.5rem;
+    border-radius: 0.9375rem;
+    outline: none;
+    color: white;
+    font-size: 1.25rem;
+    width: 29.1875rem;
+    @media (max-width: 992px) {
+        width: 20rem;
+    }
+  }
+  ::placeholder {
+    color: white;
+    font-size: 1.25rem;
+  }
+  .ant-input-password {
+    background: rgba(48, 48, 51, 1);
+    padding: 0.8rem 1.5rem;
+    border-color: none !important;
+    border-radius: 0.9375rem;
+    outline: none;
+    color: white;
+    font-size: 1.25rem;
+    width: 29.1875rem;
+    border-color: rgba(48, 48, 51, 1);
+        @media (max-width: 992px) {
+        width: 20rem;
+    }
+    svg {
+        color: white;
+        width: 1.625rem;
+        height: 1.625rem;
+    }
+  }
+  p {
+    font-size: 0.75rem;
+    line-height: 0.8788rem;
+    color: rgba(126, 126, 126, 1);
+    padding: 1rem 1.5rem;
+  }
+  .LoanDateInput {
+    background: rgba(48, 48, 51, 1);
+    padding: 0rem 1.5rem;
+    border-radius: 0.9375rem;
+    outline: none;
+    color: white;
+    font-size: 1.25rem;
+    width: 29.1875rem;
+    display: flex;
+    align-items: center;
+        @media (max-width: 992px) {
+        width: 20rem;
+        padding: 0rem;
+    }
+    input {
+        width: fit-content;
+    }
+    input::placeholder {
+        font-size: 1rem;
+        color: white;
+    }
+    .dateInputText {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-left: -7.5rem;
+            @media (max-width: 992px) {
+        margin-left: -9.5rem;
+    }
+        .dateInputTextContent {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-right: 0.5rem;
+            .dateInputIcons {
+                display: flex;
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+        }
+    }
+
+  }
+}

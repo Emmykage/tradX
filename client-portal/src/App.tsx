@@ -33,7 +33,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/" element={<SignIn />} />
         <Route path="/platform" element={<Platform />} />
         <Route path="transactions" element={<Transactions />} />
-        <Route path="get-loan" element={<GetLoan />} />
+        <Route path="/loan/get-loan" element={<GetLoan />} />
         <Route path="/lender" element={<Lender />} />
         <Route path="/downloads" element={<Download />} />
         <Route path="/downloads/anydesk" element={<Anydesk />} />

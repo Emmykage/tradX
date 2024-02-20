@@ -3456,3 +3456,61 @@ export const ClassicIcon = () => (
     />
   </svg>
 );
+
+export const PoligonUpIcon = () => (
+  <svg
+    width="8"
+    height="6"
+    viewBox="0 0 8 6"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M3.22855 0.935338C3.62853 0.450385 4.37147 0.450385 4.77145 0.935338L6.98054 3.61371C7.5185 4.26595 7.05456 5.25 6.20909 5.25H1.79091C0.945445 5.25 0.481499 4.26596 1.01946 3.61372L3.22855 0.935338Z"
+      fill="#D9D9D9"
+    />
+  </svg>
+);
+
+export const PoligonDownIcon = () => (
+  <svg
+    width="8"
+    height="6"
+    viewBox="0 0 8 6"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4.77145 5.06466C4.37147 5.54962 3.62853 5.54962 3.22855 5.06466L1.01946 2.38629C0.481499 1.73405 0.945443 0.75 1.79091 0.75L6.20909 0.75C7.05455 0.75 7.5185 1.73404 6.98054 2.38628L4.77145 5.06466Z"
+      fill="#D9D9D9"
+    />
+  </svg>
+);
+
+export const AgreeIcon = () => (
+  <svg
+    width="28"
+    height="31"
+    viewBox="0 0 28 31"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect x="0.5" y="8.5" width="22" height="22" rx="4.5" stroke="white" />
+    <path d="M5 15L11 22L26 2" stroke="#0066B3" stroke-width="4" />
+  </svg>
+);
+
+export const PenIcon = () => (
+  <svg
+    width="20"
+    height="21"
+    viewBox="0 0 20 21"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0 16.2172V20.2358H4.16725L16.4634 8.37827L12.2962 4.35967L0 16.2172ZM19.675 5.28127C20.1084 4.86333 20.1084 4.18285 19.675 3.76492L17.0802 1.26267C16.6468 0.844735 15.9411 0.844735 15.5077 1.26267L13.4741 3.22375L17.6413 7.24234L19.675 5.28127Z"
+      fill="#2CA2FB"
+    />
+  </svg>
+);

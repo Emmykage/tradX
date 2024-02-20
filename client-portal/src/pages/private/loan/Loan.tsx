@@ -67,10 +67,12 @@ const Loan = () => {
             <p>Micro Lenders</p>
           </Col>
         </Link>
-        <Col className="rectangleBox">
-          <div className="Elipse2"></div>
-          <p>Loan</p>
-        </Col>
+        <Link to="/loan/get-loan">
+          <Col className="rectangleBox">
+            <div className="Elipse2"></div>
+            <p>Loan</p>
+          </Col>
+        </Link>
       </Row>
     </div>
   );
