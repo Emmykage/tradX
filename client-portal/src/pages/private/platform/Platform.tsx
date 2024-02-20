@@ -170,10 +170,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         <div>{leftSubDrawerBodyHandler(leftSubDrawer, setLeftSubDrawer)}</div>
       </Drawer>
 
-      <div
-        className={isDrawerOpen ? "trade-section ml-378" : "trade-section"}
-        style={{ marginLeft: `${mainSidebarWidth}px` }}
-      >
+      <div className={isDrawerOpen ? "trade-section ml-378" : "trade-section"}>
         <Drawer
           title={rightDrawerTitleHandler(rightDrawerContent)}
           placement="right"
