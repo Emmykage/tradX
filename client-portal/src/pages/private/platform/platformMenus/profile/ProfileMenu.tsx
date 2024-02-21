@@ -14,6 +14,7 @@ import {
 import StoriesModal from "./components/Stories";
 
 import "./profileMenu.scss";
+import { StorieList, storiesList } from "./data";
 
 interface ProfileMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -28,66 +29,7 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
   const [selectedStories, setSelectedStories] = useState<Story[]>([]);
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
   const [modalKey, setModalKey] = useState<number>(0);
-
-  const infos = [
-    {
-      title: "Еconomic",
-      p1: "12/02-16/02",
-      p2: "calendar:",
-      image: "/menu-images/svgs/calender.svg",
-      background: "backgroundPurple",
-      storiesData: [
-        {
-          url: "/menu-images/stories/economins-1.jpg",
-          duration: 5000,
-        },
-        {
-          url: "/menu-images/stories/economins-2.jpg",
-          duration: 5000,
-        },
-        {
-          url: "/menu-images/stories/economins-3.jpg",
-          duration: 5000,
-        },
-        {
-          url: "/menu-images/stories/economins-4.jpg",
-          duration: 5000,
-        },
-      ],
-    },
-    {
-      title: "Discover",
-      p1: "Forex Mode",
-      image: "/menu-images/svgs/forex-mode.svg",
-      background: "backgroundGreen",
-      storiesData: [
-        {
-          url: "/menu-images/stories/foremode-1.jpg",
-          duration: 5000,
-        },
-        {
-          url: "/menu-images/stories/foremode-2.jpg",
-          duration: 5000,
-        },
-        {
-          url: "/menu-images/stories/foremode-3.jpg",
-          duration: 5000,
-        },
-      ],
-    },
-    {
-      title: "Asset for Fast",
-      p1: "Trading 24/7",
-      image: "/menu-images/svgs/fast-trade.svg",
-      background: "backgroundBlack",
-    },
-    {
-      title: "Join Our",
-      p1: "Community",
-      image: "/menu-images/svgs/twitter.svg",
-      background: "backgroundSky",
-    },
-  ];
+  const [stories] = useState<StorieList[]>(storiesList);
 
   const settings = {
     dots: false,
@@ -124,7 +66,7 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       </div>
       <div className="traderInfoImages-new">
         <Slider {...settings}>
-          {infos.map((item, index) => (
+          {stories.map((item, index) => (
             <div
               className={`card ${item.background}`}
               key={item.title + index}

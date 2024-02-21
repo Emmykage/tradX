@@ -35,9 +35,6 @@ const LoginNode = () => {
           <img src="/social-icons/google-round.png" />
           <img src="/social-icons/facebook-round.png" />
         </div>
-        <div className="bottomIcon">
-          <img src="/social-icons/chat-round.png" />
-        </div>
       </div>
     </div>
   );
@@ -86,9 +83,6 @@ const RegistrationNode = () => {
         <div className="topIcons">
           <img src="/social-icons/google-round.png" />
           <img src="/social-icons/facebook-round.png" />
-        </div>
-        <div className="bottomIcon">
-          <img src="/social-icons/chat-round.png" />
         </div>
       </div>
     </div>

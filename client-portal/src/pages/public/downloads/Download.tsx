@@ -1,98 +1,143 @@
-import "./Download.scss";
-import {
-  EyeIcon,
-  NotificationIcon3,
-  ProfileIcon2,
-  SearchIcon,
-} from "../../../assets/icons";
-import { Col, Row, Typography } from "antd";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Col, Row, Typography } from "antd";
+import { useNavigate } from "react-router-dom";
+
+import "./Download.scss";
+import { ArrowLeftIcon } from "../../../assets/icons";
+
+type UrlMappings = {
+  [key: string]: {
+    [key: string]: string;
+  };
+};
+
+const urlsForDownload: UrlMappings = {
+  anydesk: {
+    Windows: "https://anydesk.com/en/downloads/thank-you?dv=win_exe",
+    macOS: "https://anydesk.com/en/downloads/thank-you?dv=mac_dmg",
+    "Chrome OS":
+      "https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid",
+    iOS: "https://itunes.apple.com/us/app/anydesk/id1176131273",
+    Android:
+      "https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid",
+  },
+  teamviewer: {
+    Windows: "https://download.teamviewer.com/download/TeamViewerQS_x64.exe",
+    macOS: "https://download.teamviewer.com/download/TeamViewerQS.dmg",
+    "Chrome OS":
+      "https://play.google.com/store/apps/details?id=com.teamviewer.quicksupport.market",
+    iOS: "https://apps.apple.com/us/app/teamviewer-quicksupport/id661649585",
+    Android:
+      "https://play.google.com/store/apps/details?id=com.teamviewer.quicksupport.market",
+  },
+};
 
 const Download = () => {
-  const [toggleMenu, setToggleMenu] = useState(false);
+  let navigation = useNavigate();
+  const [activeTab, setActiveTab] = useState("anydesk");
 
-  const handleNavigationToggle = () => {
-    setToggleMenu(!toggleMenu);
+  const handleClick = (value: string) => {
+    const url = urlsForDownload[activeTab]?.[value];
+    if (url) {
+      window.open(url, "_blank");
+    }
   };
 
   return (
     <div className="downloads">
-      <nav className={`${toggleMenu ? "nav-top" : ""}`}>
-        <div className="nav-items-start">
-          <p>Movement</p>
-          <p>Bills</p>
-        </div>
-
-        <div className="nav-items-end">
-          <p>Support</p>
-          <SearchIcon />
-          <EyeIcon />
-          <NotificationIcon3 />
-          <ProfileIcon2 />
-        </div>
-        {toggleMenu && (
-          <div className="mobile-nav-items">
-            <p>Support</p>
-            <SearchIcon />
-            <EyeIcon />
-            <NotificationIcon3 />
-            <ProfileIcon2 />
-          </div>
-        )}
-        {!toggleMenu ? (
-          <div onClick={handleNavigationToggle} className="hamburger-icon">
-            <div className="ham-line-1"></div>
-            <div className="ham-line-2"></div>
-            <div className="ham-line-3"></div>
-          </div>
-        ) : (
-          <div
-            onClick={handleNavigationToggle}
-            className="hamburger-icon-cross"
-          >
-            <div className="ham-cross-1"></div>
-            <div className="ham-cross-2"></div>
-          </div>
-        )}
-      </nav>
-
-      <div className="downloads-links">
-        <Typography.Title className="download-links-version">
+      <div onClick={() => navigation(-1)} className="go-back">
+        <ArrowLeftIcon />
+      </div>
+      <div className="downloads-header">
+        <Typography.Title className="downloads-header-title">
           Download the right version for you
         </Typography.Title>
-        <Link to="/downloads/anydesk" className="download-anydesk">
-          AnyDesk
-        </Link>
-        <Link className="download-teamviewer" to="/downloads/teamviewer">
-          TeamViewer
-        </Link>
+        <div onClick={() => navigation(-1)} className="buttonContent">
+          <button>Back</button>
+        </div>
       </div>
-      <div className="rectangle-download-links"></div>
-      <div className="downloads-platforms">All platforms .All devices</div>
-      <Row className="row">
-        <Col xs={24} sm={12} md={8} lg={6}>
-          <img className="windows" src="/downloads/Windows.png" alt="windows" />
-        </Col>
-        <Col xs={24} sm={12} md={8} lg={6}>
-          <img className="macos" src="/downloads/macOS.png" alt="windows" />
-        </Col>
-        <Col xs={24} sm={12} md={8} lg={6}>
+      <div className="line-bar">
+        <div className="rectangle-download-links"></div>
+      </div>
+      <div className="subTitle">
+        <div className="downloads-platforms">All platforms .All devices</div>
+      </div>
+      {/* AnyDesk and TeamViewer links */}
+      <div className="downloads-platforms-links">
+        <div className="platform">
           <img
-            className="chrome"
-            src="/downloads/Chrome OS.png"
-            alt="windows"
+            onClick={() => setActiveTab("anydesk")}
+            src="/downloads/AnydeskLogo.svg"
+            alt="anydeskLogo"
           />
-        </Col>
-        <Col xs={24} sm={12} md={8} lg={6}>
+        </div>
+        <div className="platform">
           <img
-            className="group89"
-            src="/downloads/Group 89.png"
-            alt="windows"
+            onClick={() => setActiveTab("teamviewer")}
+            src="/downloads/TeamViewerLogo.svg"
+            alt="teamviewerLogo"
           />
+        </div>
+      </div>
+      <div className="downloads-active-bar">
+        <div
+          className={`active-bar-line anydesk-line ${
+            activeTab === "anydesk" && "active-bar"
+          }`}
+        ></div>
+        <div
+          className={`active-bar-line teamviewer-line ${
+            activeTab === "teamviewer" && "active-bar"
+          }`}
+        ></div>
+      </div>
+      {/* Devices list boxes */}
+      <Row className="download-devices">
+        <Col
+          onClick={() => handleClick("Windows")}
+          className="device-container"
+        >
+          <div className="device-box">
+            <img src="/downloads/WindowsLogo.svg" alt="windowsLogo" />
+            <div className="elipse-windows"></div>
+          </div>
+          <p>Windows</p>
         </Col>
-        <Col xs={24} sm={12} md={8} lg={6}>
-          <img className="android" src="/downloads/Android.png" alt="windows" />
+        <Col onClick={() => handleClick("macOS")} className="device-container">
+          <div className="device-box">
+            <img src="/downloads/MacosLogo.svg" alt="windowsLogo" />
+            <div className="elipse-macos-1"></div>
+            <div className="elipse-macos-2"></div>
+          </div>
+          <p>macOS</p>
+        </Col>
+        <Col
+          onClick={() => handleClick("Chrome OS")}
+          className="device-container"
+        >
+          <div className="device-box">
+            <img src="/downloads/ChromeLogo.svg" alt="windowsLogo" />
+            <div className="elipse-chrome"></div>
+          </div>
+          <p>Chrome OS</p>
+        </Col>
+        <Col onClick={() => handleClick("iOS")} className="device-container">
+          <div className="device-box">
+            <img src="/downloads/IosLogo.svg" alt="windowsLogo" />
+            <div className="elipse-ios"></div>
+          </div>
+          <p>iOS</p>
+        </Col>
+        <Col
+          onClick={() => handleClick("Android")}
+          className="device-container"
+        >
+          <div className="device-box">
+            <img src="/downloads/AndroidLogo.svg" alt="windowsLogo" />
+            <div className="elipse-android-1"></div>
+            <div className="elipse-android-2"></div>
+          </div>
+          <p>Android</p>
         </Col>
       </Row>
     </div>

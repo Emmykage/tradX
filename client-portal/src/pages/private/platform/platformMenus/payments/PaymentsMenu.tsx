@@ -10,7 +10,7 @@ import "./paymentsMenu.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import { Dispatch, SetStateAction, useState } from "react";
 import { RightSubDrawerContent } from "../../types";
-import { useNavigate } from "react-router-dom";
+import {  Link, useNavigate } from "react-router-dom";
 import ConnectBanksModal from "./connect-banks/ConnectBanks";
 
 interface PaymentsMenuProps {
@@ -26,15 +26,19 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <>
+    <div>
       <div className="paymentsMenu">
-        <PaymentListItemCard
-          title="Deposit"
-          icon={<DepositsIcon2 />}
-          onClick={() => {
-            setIsRightSubDrawerOpen(true);
-            setIsRightSubDrawerContent("payments-deposit");
-          }}
+          <PaymentListItemCard
+            title="Deposit"
+            icon={<DepositsIcon2 />}
+            onClick={() => {
+              setIsRightSubDrawerOpen(true);
+              setIsRightSubDrawerContent("payments-deposit");
+            }}
+          />
+        <ConnectBanksModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
         />
         <PaymentListItemCard
           title="Withdraw"
@@ -57,21 +61,21 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
           icon={<HistoryIcon />}
           onClick={() => navigate("/transactions")}
         />
-        <PaymentListItemCard
-          title="Loan"
-          icon={<LoanIcon />}
-        />
+        <Link to="/loan">
+          <PaymentListItemCard
+            title="Loan"
+            icon={<LoanIcon />}
+            // onClick={() => navigate("/get-loan")}
+          />
+        </Link>
+
         <PaymentListItemCard
           title="Connect Your Bank"
           icon={<BankBuildIcon />}
           onClick={() => setIsModalOpen(true)}
         />
       </div>
-      <ConnectBanksModal
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-      />
-    </>
+    </div>
   );
 };
 

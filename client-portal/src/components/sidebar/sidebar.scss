@@ -7,7 +7,7 @@
   flex-direction: column;
   background: #08090a;
   justify-content: space-between;
-  padding: 2.5rem 0rem 6.25rem 0rem;
+  padding: 1.25rem 0rem;
   align-items: center;
   z-index: 1100;
   transition: all 0.25s;
@@ -39,12 +39,19 @@
     }
 
     .logo {
+      display: flex;
+      justify-content: center;
+      
+      svg {
+        width: 1.5rem;
+      }
+
       @media (max-width: 767px) {
         display: none;
       }
       svg {
         @media (max-width: 991px) {
-          width: 2.813rem;
+          width: 1.5rem;
         }
       }
     }
@@ -52,6 +59,10 @@
       color: #9cb0c2;
       background-color: transparent;
       cursor: pointer;
+
+      svg {
+        width: 1.625rem;
+      }
 
       @media (max-width: 991px) {
         p {
