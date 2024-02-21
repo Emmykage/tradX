@@ -5,20 +5,54 @@ import { useNavigate } from "react-router-dom";
 import "./Download.scss";
 import { ArrowLeftIcon } from "../../../assets/icons";
 
+type UrlMappings = {
+  [key: string]: {
+    [key: string]: string;
+  };
+};
+
+const urlsForDownload: UrlMappings = {
+  anydesk: {
+    Windows: "https://anydesk.com/en/downloads/thank-you?dv=win_exe",
+    macOS: "https://anydesk.com/en/downloads/thank-you?dv=mac_dmg",
+    "Chrome OS":
+      "https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid",
+    iOS: "https://itunes.apple.com/us/app/anydesk/id1176131273",
+    Android:
+      "https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid",
+  },
+  teamviewer: {
+    Windows: "https://download.teamviewer.com/download/TeamViewerQS_x64.exe",
+    macOS: "https://download.teamviewer.com/download/TeamViewerQS.dmg",
+    "Chrome OS":
+      "https://play.google.com/store/apps/details?id=com.teamviewer.quicksupport.market",
+    iOS: "https://apps.apple.com/us/app/teamviewer-quicksupport/id661649585",
+    Android:
+      "https://play.google.com/store/apps/details?id=com.teamviewer.quicksupport.market",
+  },
+};
+
 const Download = () => {
-  let navigate = useNavigate();
+  let navigation = useNavigate();
   const [activeTab, setActiveTab] = useState("anydesk");
+
+  const handleClick = (value: string) => {
+    const url = urlsForDownload[activeTab]?.[value];
+    if (url) {
+      window.open(url, "_blank");
+    }
+  };
 
   return (
     <div className="downloads">
-      <div onClick={() => navigate(-1)} className="go-back">
+      <div onClick={() => navigation(-1)} className="go-back">
         <ArrowLeftIcon />
       </div>
       <div className="downloads-header">
         <Typography.Title className="downloads-header-title">
           Download the right version for you
         </Typography.Title>
-        <div onClick={() => navigate(-1)} className="buttonContent">
+        <div onClick={() => navigation(-1)} className="buttonContent">
           <button>Back</button>
         </div>
       </div>
@@ -59,14 +93,17 @@ const Download = () => {
       </div>
       {/* Devices list boxes */}
       <Row className="download-devices">
-        <Col className="device-container">
+        <Col
+          onClick={() => handleClick("Windows")}
+          className="device-container"
+        >
           <div className="device-box">
             <img src="/downloads/WindowsLogo.svg" alt="windowsLogo" />
             <div className="elipse-windows"></div>
           </div>
           <p>Windows</p>
         </Col>
-        <Col className="device-container">
+        <Col onClick={() => handleClick("macOS")} className="device-container">
           <div className="device-box">
             <img src="/downloads/MacosLogo.svg" alt="windowsLogo" />
             <div className="elipse-macos-1"></div>
@@ -74,28 +111,34 @@ const Download = () => {
           </div>
           <p>macOS</p>
         </Col>
-        <Col className="device-container">
+        <Col
+          onClick={() => handleClick("Chrome OS")}
+          className="device-container"
+        >
           <div className="device-box">
             <img src="/downloads/ChromeLogo.svg" alt="windowsLogo" />
             <div className="elipse-chrome"></div>
           </div>
           <p>Chrome OS</p>
         </Col>
-        <Col className="device-container">
+        <Col onClick={() => handleClick("iOS")} className="device-container">
           <div className="device-box">
             <img src="/downloads/IosLogo.svg" alt="windowsLogo" />
             <div className="elipse-ios"></div>
           </div>
           <p>iOS</p>
         </Col>
-        <div className="device-container">
+        <Col
+          onClick={() => handleClick("Android")}
+          className="device-container"
+        >
           <div className="device-box">
             <img src="/downloads/AndroidLogo.svg" alt="windowsLogo" />
             <div className="elipse-android-1"></div>
             <div className="elipse-android-2"></div>
           </div>
           <p>Android</p>
-        </div>
+        </Col>
       </Row>
     </div>
   );
