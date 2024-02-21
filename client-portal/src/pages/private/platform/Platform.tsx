@@ -27,6 +27,7 @@ import {
 } from "./types";
 import MainChart from "./MainChart";
 import { initialData } from "./MainChart/data";
+import { setAppearanceBackground } from "../../lib/utils";
 
 interface PlatformProps {}
 
@@ -100,6 +101,13 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+  }, []);
+
+  useEffect(() => {
+    const storedImageId = localStorage.getItem("selectedBackgroundImage");
+    if (storedImageId) {
+      setAppearanceBackground(storedImageId);
+    }
   }, []);
 
   const MainSidebar = ({ id }: { id?: string }) => {
@@ -236,7 +244,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           id="tradeContent"
           style={{ height: calculateTradeContentHeight() }}
         >
-          <div className="trade-graph">
+          <div className="trade-graph" id="tradeGraph">
             {chartInitialData?.length ? (
               <MainChart data={chartInitialData} />
             ) : null}
