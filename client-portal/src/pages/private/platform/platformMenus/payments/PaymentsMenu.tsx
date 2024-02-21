@@ -8,9 +8,10 @@ import {
 } from "../../../../../assets/icons";
 import "./paymentsMenu.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { RightSubDrawerContent } from "../../types";
 import { useNavigate } from "react-router-dom";
+import ConnectBanksModal from "./connect-banks/ConnectBanks";
 
 interface PaymentsMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -22,50 +23,55 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
   setIsRightSubDrawerContent,
 }) => {
   const navigate = useNavigate();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <div className="paymentsMenu">
-      <PaymentListItemCard
-        title="Deposit"
-        icon={<DepositsIcon2 />}
-        onClick={() => {
-          setIsRightSubDrawerOpen(true);
-          setIsRightSubDrawerContent("payments-deposit");
-        }}
+    <>
+      <div className="paymentsMenu">
+        <PaymentListItemCard
+          title="Deposit"
+          icon={<DepositsIcon2 />}
+          onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("payments-deposit");
+          }}
+        />
+        <PaymentListItemCard
+          title="Withdraw"
+          icon={<WithdrawIcon2 />}
+          onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("withdraw");
+          }}
+        />
+        <PaymentListItemCard
+          title="Transfer"
+          icon={<TransactionIcon2 />}
+          onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("transfer");
+          }}
+        />
+        <PaymentListItemCard
+          title="Transaction"
+          icon={<HistoryIcon />}
+          onClick={() => navigate("/transactions")}
+        />
+        <PaymentListItemCard
+          title="Loan"
+          icon={<LoanIcon />}
+        />
+        <PaymentListItemCard
+          title="Connect Your Bank"
+          icon={<BankBuildIcon />}
+          onClick={() => setIsModalOpen(true)}
+        />
+      </div>
+      <ConnectBanksModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
       />
-      <PaymentListItemCard
-        title="Withdraw"
-        icon={<WithdrawIcon2 />}
-        onClick={() => {
-          setIsRightSubDrawerOpen(true);
-          setIsRightSubDrawerContent("withdraw");
-        }}
-      />
-      <PaymentListItemCard
-        title="Transfer"
-        icon={<TransactionIcon2 />}
-        onClick={() => {
-          setIsRightSubDrawerOpen(true);
-          setIsRightSubDrawerContent("transfer");
-        }}
-      />
-      <PaymentListItemCard
-        title="Transaction"
-        icon={<HistoryIcon />}
-        onClick={() => navigate("/transactions")}
-      />
-      <PaymentListItemCard
-        title="Loan"
-        icon={<LoanIcon />}
-        // onClick={() => navigate("/get-loan")}
-      />
-      <PaymentListItemCard
-        title="Connect Your Bank"
-        icon={<BankBuildIcon />}
-        onClick={() => {
-          // TODO - Action for connect to your bank
-        }}
-      />
-    </div>
+    </>
   );
 };
 
