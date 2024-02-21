@@ -39,12 +39,15 @@
     }
 
     .logo {
+      display: flex;
+      justify-content: center;
+
       @media (max-width: 767px) {
         display: none;
       }
       svg {
         @media (max-width: 991px) {
-          width: 2.813rem;
+          width: 1.4375rem;
         }
       }
     }
@@ -52,6 +55,10 @@
       color: #9cb0c2;
       background-color: transparent;
       cursor: pointer;
+
+      svg {
+        width: 1.625rem;
+      }
 
       @media (max-width: 991px) {
         p {
