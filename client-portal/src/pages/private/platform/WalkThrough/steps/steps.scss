@@ -23,7 +23,8 @@
       justify-content: flex-end;
 
       .welcomeImg {
-        width: 22.625rem;
+        width: 100%;
+        max-width: 15.9375rem;
         height: auto;
         margin-bottom: 2.5rem;
       }
