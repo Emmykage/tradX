@@ -28,17 +28,13 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
   return (
     <div>
       <div className="paymentsMenu">
-          <PaymentListItemCard
-            title="Deposit"
-            icon={<DepositsIcon2 />}
-            onClick={() => {
-              setIsRightSubDrawerOpen(true);
-              setIsRightSubDrawerContent("payments-deposit");
-            }}
-          />
-        <ConnectBanksModal
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
+        <PaymentListItemCard
+          title="Deposit"
+          icon={<DepositsIcon2 />}
+          onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("payments-deposit");
+          }}
         />
         <PaymentListItemCard
           title="Withdraw"
@@ -75,6 +71,10 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
           onClick={() => setIsModalOpen(true)}
         />
       </div>
+      <ConnectBanksModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
     </div>
   );
 };

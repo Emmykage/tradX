@@ -3,7 +3,6 @@ import { Button, Modal as AntModal, Typography } from "antd";
 
 import LongArrowLeft from "../../../../../../assets/icons/LongArrowLeftIcon";
 import Input from "../../../../../../components/input/Input";
-import { SearchIcon } from "../../../../../../assets/icons";
 import BoldSearchIcon from "../../../../../../assets/icons/BoldSearchIcon";
 import FillDownArrow from "../../../../../../assets/icons/FillDownArrow";
 import Modal from "../../../../../../components/modal/Modal";
@@ -11,9 +10,9 @@ import FillLockIcon from "../../../../../../assets/icons/FillLock";
 
 import { banks, companyDescriptionList } from "./constants";
 
-import "./ConnectBanks.scss";
 import { reigionDetector } from "./helpers";
 import { CountryCode } from "./types";
+import "./ConnectBanks.scss";
 
 interface ConnectBanksModalProps {
   isModalOpen: boolean; 
