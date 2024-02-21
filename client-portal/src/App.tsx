@@ -1,12 +1,10 @@
 import { useEffect } from "react";
 import { Route, Routes, HashRouter } from "react-router-dom";
-
 import Platform from "./pages/private/platform/Platform";
 import Lender from "./pages/private/lender/Lender";
 import SignIn from "./pages/public/signIn/SignIn";
 import Download from "./pages/public/downloads/Download";
 import Transactions from "./pages/private/transactions/Transactions";
-import Anydesk from "./pages/public/anydesk/Anydesk";
 import GetLoan from "./pages/private/get-loan/GetLoan";
 import Loan from "./pages/private/loan/Loan";
 import LoanMicroLenders from "./pages/private/loanMicroLenders/LoanMicroLenders";
@@ -40,7 +38,6 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/loan/get-loan" element={<GetLoan />} />
         <Route path="/lender" element={<Lender />} />
         <Route path="/downloads" element={<Download />} />
-        <Route path="/downloads/anydesk" element={<Anydesk />} />
         <Route path="/loan" element={<Loan />} />
         <Route path="/loan/microlenders" element={<LoanMicroLenders />} />
       </Routes>
