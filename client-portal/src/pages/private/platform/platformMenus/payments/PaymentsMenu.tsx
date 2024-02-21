@@ -10,7 +10,7 @@ import "./paymentsMenu.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import { Dispatch, SetStateAction } from "react";
 import { RightSubDrawerContent } from "../../types";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface PaymentsMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -53,11 +53,14 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
         icon={<HistoryIcon />}
         onClick={() => navigate("/transactions")}
       />
-      <PaymentListItemCard
-        title="Loan"
-        icon={<LoanIcon />}
-        // onClick={() => navigate("/get-loan")}
-      />
+      <Link to="/loan">
+        <PaymentListItemCard
+          title="Loan"
+          icon={<LoanIcon />}
+          // onClick={() => navigate("/get-loan")}
+        />
+      </Link>
+
       <PaymentListItemCard
         title="Connect Your Bank"
         icon={<BankBuildIcon />}
