@@ -1,21 +1,24 @@
-import "./Download.scss";
-import { Col, Row, Typography } from "antd";
 import { useState } from "react";
+import { Col, Row, Typography } from "antd";
+import { useNavigate } from "react-router-dom";
+
+import "./Download.scss";
 import { ArrowLeftIcon } from "../../../assets/icons";
 
 const Download = () => {
+  let navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("anydesk");
 
   return (
     <div className="downloads">
-      <div className="go-back">
+      <div onClick={() => navigate(-1)} className="go-back">
         <ArrowLeftIcon />
       </div>
       <div className="downloads-header">
         <Typography.Title className="downloads-header-title">
           Download the right version for you
         </Typography.Title>
-        <div className="buttonContent">
+        <div onClick={() => navigate(-1)} className="buttonContent">
           <button>Back</button>
         </div>
       </div>

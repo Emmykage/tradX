@@ -25,6 +25,7 @@
     align-items: start;
     justify-content: start;
     margin-bottom: 2rem;
+    cursor: pointer;
     @media (max-width: 992px) {
       display: flex;
     }
@@ -109,7 +110,7 @@
     }
   }
   .subTitle {
-        display: flex;
+    display: flex;
     align-items: start;
     justify-content: start;
     @media (max-width: 992px) {
@@ -133,11 +134,12 @@
     justify-content: center;
     align-items: center;
     margin-top: 5rem;
+    cursor: pointer;
     img {
-    width: 100%;
-    @media (max-width: 320px) {
-      width: 110%;
-    }
+      width: 100%;
+      @media (max-width: 320px) {
+        width: 110%;
+      }
     }
   }
   .downloads-active-bar {
