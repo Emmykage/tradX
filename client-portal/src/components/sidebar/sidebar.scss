@@ -41,13 +41,17 @@
     .logo {
       display: flex;
       justify-content: center;
+      
+      svg {
+        width: 1.5rem;
+      }
 
       @media (max-width: 767px) {
         display: none;
       }
       svg {
         @media (max-width: 991px) {
-          width: 1.4375rem;
+          width: 1.5rem;
         }
       }
     }
