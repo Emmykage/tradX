@@ -1,51 +1,51 @@
 .transactions-container {
-    padding: 3.375rem 4.25rem 3.375rem 3.25rem;
-    background-color: #F3F6F9;
-    min-height: 100vh;
-}
+  padding: 3.375rem 4.25rem 3.375rem 3.25rem;
+  background-color: #f3f6f9;
+  min-height: 100vh;
 
-.tabs-headers {
+  .tabs-headers {
     display: flex;
     margin-bottom: 2.5rem;
     li {
-        list-style: none;
-        cursor: pointer;
-        margin-right: 1.5rem;
-        padding: 0.5625rem 0;
-        color: #67696D;
-        font-weight: 500;
-        font-size: 0.875rem;
+      list-style: none;
+      cursor: pointer;
+      margin-right: 1.5rem;
+      padding: 0.5625rem 0;
+      color: #67696d;
+      font-weight: 500;
+      font-size: 0.875rem;
     }
-}
+  }
 
-.user-options-bar { 
+  .user-options-bar {
     width: 100%;
     border-radius: 1.25rem;
-    background-color: #FFF;
+    background-color: #fff;
     padding: 1.25rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 3rem;
-}
+  }
 
-.ant-tabs-top >.ant-tabs-nav::before{
-    content: none
-}
-.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color: #26292F;
-}
+  .ant-tabs-top > .ant-tabs-nav::before {
+    content: none;
+  }
+  .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #26292f;
+  }
 
-.ant-tabs .ant-tabs-tab-btn{
-    color: #67696D;
-}
-.ant-table-wrapper .ant-table-thead >tr>th{
-    color: #67696D;
+  .ant-tabs .ant-tabs-tab-btn {
+    color: #67696d;
+  }
+  .ant-table-wrapper .ant-table-thead > tr > th {
+    color: #67696d;
     font-size: 0.75rem;
     font-weight: 400;
-}
-ant-table-wrapper .ant-table-tbody >tr >td{
-    color: #26292F;
+  }
+  ant-table-wrapper .ant-table-tbody > tr > td {
+    color: #26292f;
     font-size: 0.75rem;
     font-weight: 400;
+  }
 }

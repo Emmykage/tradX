@@ -8,7 +8,7 @@ const Welcome: React.FC<WelcomeProps> = ({ className, setStep }) => {
     <div className={`walkthroughStep welcomeStep ${className}`}>
       <img
         className="welcomeImg"
-        src="/walkthrough/book-illustration.png"
+        src="/walkthrough/welcome.png"
         alt="Welcome Illustration"
       />
 
