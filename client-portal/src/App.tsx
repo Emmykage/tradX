@@ -5,9 +5,9 @@ import Lender from "./pages/private/lender/Lender";
 import SignIn from "./pages/public/signIn/SignIn";
 import Download from "./pages/public/downloads/Download";
 import Transactions from "./pages/private/transactions/Transactions";
-import GetLoan from "./pages/private/get-loan/GetLoan";
-import Loan from "./pages/private/loan/Loan";
-import LoanMicroLenders from "./pages/private/loanMicroLenders/LoanMicroLenders";
+// import GetLoan from "./pages/private/get-loan/GetLoan";
+// import Loan from "./pages/private/loan/Loan";
+// import LoanMicroLenders from "./pages/private/loanMicroLenders/LoanMicroLenders";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -35,11 +35,11 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/" element={<SignIn />} />
         <Route path="/platform" element={<Platform />} />
         <Route path="transactions" element={<Transactions />} />
-        <Route path="/loan/get-loan" element={<GetLoan />} />
+        {/* <Route path="/loan/get-loan" element={<GetLoan />} /> */}
         <Route path="/lender" element={<Lender />} />
         <Route path="/downloads" element={<Download />} />
-        <Route path="/loan" element={<Loan />} />
-        <Route path="/loan/microlenders" element={<LoanMicroLenders />} />
+        {/* <Route path="/loan" element={<Loan />} /> */}
+        {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
       </Routes>
     </HashRouter>
   );

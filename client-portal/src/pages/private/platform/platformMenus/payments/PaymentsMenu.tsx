@@ -3,14 +3,12 @@ import {
   WithdrawIcon2,
   TransactionIcon2,
   HistoryIcon,
-  LoanIcon,
-  BankBuildIcon,
 } from "../../../../../assets/icons";
 import "./paymentsMenu.scss";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import { Dispatch, SetStateAction, useState } from "react";
 import { RightSubDrawerContent } from "../../types";
-import {  Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ConnectBanksModal from "./connect-banks/ConnectBanks";
 
 interface PaymentsMenuProps {
@@ -57,7 +55,7 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
           icon={<HistoryIcon />}
           onClick={() => navigate("/transactions")}
         />
-        <Link to="/loan">
+        {/* <Link to="/loan">
           <PaymentListItemCard
             title="Loan"
             icon={<LoanIcon />}
@@ -69,7 +67,7 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
           title="Connect Your Bank"
           icon={<BankBuildIcon />}
           onClick={() => setIsModalOpen(true)}
-        />
+        /> */}
       </div>
       <ConnectBanksModal
         isModalOpen={isModalOpen}
