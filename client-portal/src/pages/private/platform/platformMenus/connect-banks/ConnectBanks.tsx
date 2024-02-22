@@ -27,7 +27,6 @@ interface ConnectBanksModalProps {
 
 const ConnectBanksModal: React.FC<ConnectBanksModalProps> = ({
   isModalOpen,
-  setIsModalOpen,
 }) => {
   // const { styles } = useStyle();
 
@@ -43,7 +42,7 @@ const ConnectBanksModal: React.FC<ConnectBanksModalProps> = ({
   //   body: {
   //     boxShadow: "inset 0 0 5px #999",
   //     borderRadius: 5,
-      
+
   //   },
   //   mask: {
   //     backdropFilter: "blur(10px)",
@@ -51,9 +50,7 @@ const ConnectBanksModal: React.FC<ConnectBanksModalProps> = ({
   // };
 
   return (
-    <>
-      {isModalOpen && <div className="connect-banks-container">ddd11</div>}
-    </>
+    <>{isModalOpen && <div className="connect-banks-container">ddd11</div>}</>
   );
 };
 

@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
 import "./loanPersonalData.scss";
 import LoanInput from "../loanInput/LoanInput";
-import { AgreeIcon, PenIcon } from "../../assets/icons";
+import { AgreeIcon } from "../../assets/icons";
 
 const InputListLeft = [
   {
