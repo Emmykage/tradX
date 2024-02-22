@@ -9,12 +9,19 @@ import Transactions from "./pages/private/transactions/Transactions";
 // import Loan from "./pages/private/loan/Loan";
 // import LoanMicroLenders from "./pages/private/loanMicroLenders/LoanMicroLenders";
 
+import getEnv from "./utils/env";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 interface AppProps {}
 
 const App: React.FunctionComponent<AppProps> = () => {
+  console.log(
+    "Envrionment Variable: VITE_API_BASE_URL => ",
+    getEnv("VITE_API_BASE_URL")
+  );
+
   useEffect(() => {
     const storedScale = localStorage.getItem("scale");
 
