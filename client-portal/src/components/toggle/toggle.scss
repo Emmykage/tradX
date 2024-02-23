@@ -1,5 +1,5 @@
 .customToggle {
-  padding: 0.7rem 0.938rem !important;
+  padding: 0.5rem 0.938rem !important;
 
   .toggleContainer {
     display: flex;
@@ -8,14 +8,14 @@
       width: 100%;
 
       .toggleLabel {
-        font-size: 1.125rem;
+        font-size: 1rem;
         font-weight: 500;
         color: #fff;
-        margin-bottom: 0.625rem;
+        margin-bottom: 0.325rem;
       }
 
       .toggleSubtext {
-        font-size: 0.875rem;
+        font-size: 0.775rem;
         font-weight: 400;
         color: #ababad;
       }
@@ -24,7 +24,7 @@
     .ant-switch {
       background: transparent;
       border: 0.125rem solid #969798;
-      height: 1.5625rem;
+      height: 1.2625rem;
       &:hover {
         background: transparent;
       }
@@ -32,8 +32,8 @@
       .ant-switch-handle {
         border: 0.125rem solid #969798;
         border-radius: 0.5rem;
-        width: 1rem;
-        height: 1rem;
+        width: 0.8rem;
+        height: 0.8rem;
 
         &::before {
           background: transparent;

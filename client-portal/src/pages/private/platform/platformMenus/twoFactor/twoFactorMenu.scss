@@ -15,7 +15,7 @@ $background: linear-gradient(to bottom, #3c3d40, #2d2e32);
   }
 
   .twofactorCardWrapper {
-    padding: 1rem 1rem 2rem 1rem;
+    padding: 0.8rem 0.8rem 1rem 0.8rem;
     width: 100%;
     position: relative;
     background: $gradientBorderColor;
@@ -30,7 +30,6 @@ $background: linear-gradient(to bottom, #3c3d40, #2d2e32);
     .twofactorCardTitle {
       margin-top: 0.7rem;
       color: rgba(255, 255, 255, 0.6);
-      
       font-size: 1rem;
     }
 

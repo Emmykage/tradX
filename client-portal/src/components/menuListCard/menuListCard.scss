@@ -1,6 +1,6 @@
 .menuListCard {
   position: relative;
-  margin-bottom: 0.938rem;
+  margin-bottom: 0.738rem;
   display: flex;
   align-items: center;
 
@@ -18,7 +18,7 @@
 
     img,
     svg {
-      width: 2rem;
+      width: 1rem;
     }
 
     &.disabled {
@@ -36,7 +36,7 @@
   .cardRightContent {
     width: 100%;
     .menuListCardTitle {
-      font-size: 1.125rem;
+      font-size: 1rem;
       color: #fff;
       font-weight: 500;
       margin-bottom: 0.313rem;
@@ -59,7 +59,7 @@
       }
     }
     .menuListCardSubtitle {
-      font-size: 0.875rem;
+      font-size: 0.675rem;
       color: #ffffff99;
       font-weight: 400;
 

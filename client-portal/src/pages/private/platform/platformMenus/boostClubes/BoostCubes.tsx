@@ -19,7 +19,7 @@ const BoostCubes: React.FunctionComponent<BoostCubesProps> = ({
     <div className="boostCubes">
       <MainItemCard variant={3} className="boostCubes-Card">
         <Row>
-          <Col span={13}>
+          <Col span={14}>
             <p className="boostCubes-text">
               Invite your Friends to Trade and receive a Boost Cube
             </p>
@@ -32,7 +32,7 @@ const BoostCubes: React.FunctionComponent<BoostCubesProps> = ({
               Open Referral Program
             </button>
           </Col>
-          <Col className="img-col" span={11}>
+          <Col className="img-col" span={6}>
             <img src="/menu-images/svgs/envelope.svg" alt="" />
           </Col>
         </Row>

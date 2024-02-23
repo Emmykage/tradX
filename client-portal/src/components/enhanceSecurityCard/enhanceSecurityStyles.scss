@@ -1,16 +1,16 @@
 .enhanceSecurityContainer {
   .securityEnhancements {
     .securityTitle {
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: #fff;
-      margin-bottom: 0.625rem;
-    }
-    .securitySubtitle {
       font-size: 1rem;
       font-weight: 500;
+      color: #fff;
+      margin-bottom: 0.425rem;
+    }
+    .securitySubtitle {
+      font-size: 0.8rem;
+      font-weight: 500;
       color: #969698;
-      margin-bottom: 0.938rem;
+      margin-bottom: 0.738rem;
     }
     .securityItem {
       display: flex;
@@ -19,7 +19,7 @@
       align-items: center;
 
       .securityItemIcon {
-        min-height: 2rem;
+        min-height: 1.7rem;
         display: flex;
         justify-content: center;
         align-items: center;

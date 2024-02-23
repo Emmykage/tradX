@@ -172,7 +172,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         closeIcon={<CloseIcon />}
         mask={false}
         width={
-          windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : `29.25rem`
+          windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : `20.25rem`
         }
       >
         <div>{leftSubDrawerBodyHandler(leftSubDrawer, setLeftSubDrawer)}</div>
@@ -189,7 +189,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           width={
             windowWidth <= 768
               ? `calc(100% - ${mainSidebarWidth}px)`
-              : `29.25rem`
+              : `20.25rem`
           }
         >
           {rightDrawerBodyHandler(
@@ -218,7 +218,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           width={
             windowWidth <= 768
               ? `calc(100% - ${mainSidebarWidth}px)`
-              : `29.25rem`
+              : `20.25rem`
           }
         >
           {rightSubDrawerBodyHandler(

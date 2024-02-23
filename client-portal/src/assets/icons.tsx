@@ -1242,8 +1242,8 @@ export const BookmarkIcon = () => (
 
 export const UserIcon = () => (
   <svg
-    width="22"
-    height="29"
+    width="18"
+    height="25"
     viewBox="0 0 22 29"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -1729,9 +1729,9 @@ export const LargeProfileIcon = () => {
 
 export const ReloadIcon = () => (
   <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
+    width="20"
+    height="20"
+    viewBox="0 0 22 22"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
