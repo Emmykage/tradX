@@ -32,7 +32,7 @@ const WithdrawCard: FC<WithdrawCardProps> = ({
           <Typography.Link className="withdraw-link-text">
             Make Deposit
           </Typography.Link>
-          <ArrowRightOS stroke="#27A2FF" />
+          <ArrowRightOS width="" height="" stroke="#27A2FF" />
         </div>
       </div>
     </div>

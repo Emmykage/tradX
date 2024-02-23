@@ -415,8 +415,8 @@ export const InfoCircleIcon = ({ stroke }: { stroke?: string }) => (
 export const InfoCircleIconSmall = () => {
   return (
     <svg
-      width="20"
-      height="20"
+      width="18"
+      height="18"
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -823,7 +823,7 @@ export const CaretDownIcon = () => {
   );
 };
 
-export const CloseIcon = ({ color = 'white' }) => (
+export const CloseIcon = ({ color = "white" }) => (
   <svg
     width="18"
     height="18"
@@ -2050,8 +2050,8 @@ export const TetherIcon = () => (
 
 export const UsdtIcon = () => (
   <svg
-    width="32"
-    height="33"
+    width="28"
+    height="29"
     viewBox="0 0 32 33"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -2089,8 +2089,8 @@ export const UsdtIcon = () => (
 
 export const UsdIcon2 = () => (
   <svg
-    width="32"
-    height="32"
+    width="28"
+    height="28"
     viewBox="0 0 32 32"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

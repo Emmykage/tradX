@@ -1,7 +1,7 @@
 .amount-card {
   border: 2px solid #505050;
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 0.8rem;
   display: flex;
   .cardContent {
     display: flex;
@@ -11,8 +11,8 @@
     width: 100%;
     border-radius: 1rem;
     .amounText {
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 500;
       color: #ffffff;
     }
   }
