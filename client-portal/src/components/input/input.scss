@@ -1,17 +1,24 @@
-.input_main {
-  padding: 0.625rem 0.938rem !important;
+.inputContainer {
+  .mainItemCardv2 {
+      box-shadow: none !important;
+  }
+  .input_main {
+  padding: 0.325rem 0.638rem !important;
   display: flex;
   align-items: center;
+  border: 0.125rem solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.625rem;
+
 
   .inputIcon {
     display: flex;
     align-items: center;
-    width: 2rem;
+    width: 1rem;
     margin-right: 0.625rem;
 
     img,
     svg {
-      width: 2rem;
+      width: 1rem;
     }
   }
 
@@ -33,7 +40,7 @@
 
   label {
     color: #ffffff99;
-    font-size: 0.875rem;
+    font-size: 0.575rem;
     font-weight: 400;
   }
 
@@ -41,11 +48,11 @@
     background-color: transparent;
     border: none;
     padding: 0.25rem 0;
-    font-size: 1.125rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: #fff;
     padding: 0;
-    margin-top: 0.313rem;
+    margin-top: 0.013rem;
     width: 100%;
 
     &:focus {
@@ -63,3 +70,5 @@
     }
   }
 }
+}
+

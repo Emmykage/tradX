@@ -20,7 +20,7 @@ const SelectAmountMenu: FC<SelectAmountMenuProps> = ({
       <div className="selectedAmountdiv">
         <DepositCard account="Deposit Amount" amount="USD 30" icon />
       </div>
-      <Row gutter={[28, 16]}>
+      <Row gutter={[10, 10]}>
         <Col lg={12} md={24} sm={24}>
           <AmountCard iconGold amount={"USD 5,000"} />
         </Col>
@@ -28,7 +28,7 @@ const SelectAmountMenu: FC<SelectAmountMenuProps> = ({
           <AmountCard iconGold amount={"USD 5,000"} />
         </Col>
       </Row>
-      <Row style={{ marginTop: "20px" }} gutter={[28, 16]}>
+      <Row style={{ marginTop: "10px" }} gutter={[10, 10]}>
         <Col lg={12} md={24} sm={24}>
           <AmountCard iconSilver amount={"USD 300"} />
         </Col>
@@ -36,7 +36,7 @@ const SelectAmountMenu: FC<SelectAmountMenuProps> = ({
           <AmountCard iconSilver amount={"USD 200"} />
         </Col>
       </Row>
-      <Row style={{ marginTop: "20px" }} gutter={[28, 16]}>
+      <Row style={{ marginTop: "10px" }} gutter={[10, 10]}>
         <Col lg={12} md={24} sm={24}>
           <AmountCard amount={"USD 100"} />
         </Col>
@@ -44,7 +44,7 @@ const SelectAmountMenu: FC<SelectAmountMenuProps> = ({
           <AmountCard amount={"USD 30"} />
         </Col>
       </Row>
-      <Row style={{ marginTop: "20px" }} gutter={[28, 16]}>
+      <Row style={{ marginTop: "10px" }} gutter={[10, 10]}>
         <Col lg={12} md={24} sm={24}>
           <AmountCard amount={"USD 20"} />
         </Col>

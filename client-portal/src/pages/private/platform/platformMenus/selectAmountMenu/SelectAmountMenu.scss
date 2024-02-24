@@ -1,7 +1,16 @@
 .selectAmountMenuCon {
   display: flex;
   flex-direction: column;
-  .selectAmountDiv {
+  .selectedAmountdiv {
+    .mainItemCard {
+      background: none !important;
+      box-shadow: none !important;
+      ::before {
+      border-radius: 1rem !important;
+    }
+    
+    
+    }
     .mainItemCard {
     box-shadow: none;
     background: none;
@@ -22,6 +31,6 @@
   }
   }
   .confrimBtn {
-    margin-top: 3.5rem;
+    margin-top: 1.5rem;
   }
 }

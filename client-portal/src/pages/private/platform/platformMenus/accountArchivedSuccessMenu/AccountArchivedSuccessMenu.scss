@@ -10,24 +10,33 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding: 0rem 3rem;
+    padding: 0rem 1rem;
     .success-message {
       color: rgba(255, 255, 255, 1);
       font-weight: 600;
       font-size: 1.25rem;
     }
     p {
-      font-size: 1.25rem;
+      font-size: 1rem;
       font-weight: 400;
-      line-height: 1.75rem;
       text-align: center;
       margin-bottom: 7rem;
       color: rgba(177, 180, 183, 1);
     }
   }
-  .button {
-    margin-bottom: 0rem;
-    text-align: center;
-    padding: 0.3rem 0rem;
+  .buttonContainer {
+    width: 70%;
+    .button {
+      width: 100%;
+      margin-bottom: 0rem;
+      text-align: center;
+      padding: 0.3rem 0rem;
+      background: rgba(22, 23, 26, 1);
+      border-radius: 1rem;
+      .menuListCardTitle {
+        margin: 0rem;
+        margin-left: 1rem;
+      }
+    }
   }
 }

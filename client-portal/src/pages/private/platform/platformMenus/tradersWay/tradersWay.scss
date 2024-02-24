@@ -1,8 +1,8 @@
 .tradersWay {
   .menuText {
     color: #ffffff;
-    font-size: 0.875rem;
-    font-weight: 400;
+    font-size: 0.775rem;
+    font-weight: 300;
     margin-bottom: 1.25rem;
   }
 
@@ -10,10 +10,10 @@
     margin: 1.25rem 0;
 
     .timeCountdown {
-      font-size: 1.25rem;
-      font-weight: 500;
+      font-size: 1rem;
+      font-weight: 400;
       color: #fff;
-      margin-bottom: 0.9375rem;
+      margin-bottom: 0.6375rem;
     }
 
     .timeLeftContainer {
@@ -22,7 +22,7 @@
       justify-content: space-between;
 
       .timeLeftText {
-        font-size: 1rem;
+        font-size: 0.8rem;
         font-weight: 400;
         color: #969798;
       }
@@ -40,7 +40,7 @@
 
   .traderOptions {
     .menuListCard {
-      padding: 1.25rem;
+      padding: 1rem;
       justify-content: space-between;
 
       @media (max-width: 767px) {
@@ -57,7 +57,7 @@
 
       .cardRightContent {
         width: auto;
-        margin-left: 3.5rem;
+        margin-left: 2rem;
 
         @media (max-width: 767px) {
           margin-left: 2.5rem;
@@ -82,8 +82,8 @@
       }
 
       .tradesWayOption {
-        width: 2.0625rem;
-        height: 2.0625rem;
+        width: 1.5625rem;
+        height: 1.5625rem;
         background-color: #586162;
         display: flex;
         align-items: center;
@@ -101,7 +101,7 @@
         }
 
         .optionText {
-          font-size: 1.25rem;
+          font-size: 1rem;
           font-weight: 500;
 
           @media (max-width: 767px) {
@@ -118,13 +118,13 @@
 
       .cardRightSuffix {
         .optionSuffix {
-          min-width: 10.375rem;
+          min-width: 7.375rem;
           background-color: #272930;
-          height: 2.25rem;
+          height: 1.5rem;
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 0 0.625rem;
+          padding: 0 0.125rem;
           border-radius: 1.125rem;
 
           @media (max-width: 767px) {
@@ -138,8 +138,8 @@
           }
 
           svg {
-            width: 1.1875rem;
-            margin-right: 0.625rem;
+            width: 1rem;
+            margin-right: 0.425rem;
 
             @media (max-width: 767px) {
               width: 0.95rem;
@@ -153,7 +153,7 @@
           }
 
           p {
-            font-size: 0.8862rem;
+            font-size: 0.6862rem;
             font-weight: 400;
             color: #fff;
 

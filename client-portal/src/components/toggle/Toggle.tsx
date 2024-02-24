@@ -1,5 +1,4 @@
 import { Switch } from "antd";
-import MainItemCard from "../mainItemCard/MainItemCard";
 import "./toggle.scss";
 
 interface ToggleProps {
@@ -20,7 +19,7 @@ const Toggle: React.FunctionComponent<ToggleProps> = ({
   onClickInfo,
 }) => {
   return (
-    <MainItemCard className="customToggle" variant={2} pointer={false}>
+    <div className="customToggle">
       <div className="toggleContainer">
         <div className="toggleTextContainer">
           {label ? <p className="toggleLabel">{label}</p> : null}
@@ -33,7 +32,7 @@ const Toggle: React.FunctionComponent<ToggleProps> = ({
           {infoText}
         </p>
       ) : null}
-    </MainItemCard>
+    </div>
   );
 };
 

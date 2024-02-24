@@ -38,7 +38,6 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
       />
 
       <StrengthMeter password={password} />
-
       <MenuListCard
         className="changePwButton"
         title="Change Password"
