@@ -1,13 +1,21 @@
 import { Provider as ReduxProvider } from "react-redux";
-import store from "./store";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { CookiesProvider } from "react-cookie";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const queryClient = new QueryClient();
+import store from "./store";
+import { ToastContainer } from "react-toastify";
+
+export const queryClient = new QueryClient();
 
 const Providers = ({ children }: { children: JSX.Element }) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReduxProvider store={store}>{children}</ReduxProvider>
+      <ReduxProvider store={store}>
+        <CookiesProvider defaultSetOptions={{ path: "/" }}>
+          <ToastContainer theme="dark" />
+          {children}
+        </CookiesProvider>
+      </ReduxProvider>
     </QueryClientProvider>
   );
 };
