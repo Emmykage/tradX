@@ -1,7 +1,12 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Col, Row } from "antd";
+import { useCookies } from "react-cookie";
 import { Story } from "react-insta-stories/dist/interfaces";
 import Slider from "react-slick";
+
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { UserSliceState, setUser } from "@store/slices/user";
+import useProfile from "api/user/useProfile";
 
 import { RightSubDrawerContent } from "../../types";
 import {
@@ -12,9 +17,10 @@ import {
   TooltipIcon,
 } from "../../../../../assets/icons";
 import StoriesModal from "./components/Stories";
+import Loading from "components/loading";
+import { StorieList, storiesList } from "./data";
 
 import "./profileMenu.scss";
-import { StorieList, storiesList } from "./data";
 
 interface ProfileMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -25,11 +31,33 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
+  const dispatch = useAppDispatch();
+  const [cookies] = useCookies(["access_token"]);
+
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedStories, setSelectedStories] = useState<Story[]>([]);
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
   const [modalKey, setModalKey] = useState<number>(0);
   const [stories] = useState<StorieList[]>(storiesList);
+
+  const userRedux = useAppSelector(
+    (state: { user: UserSliceState }) => state.user.user
+  );
+  const userData =
+    userRedux && Object.keys(userRedux).length ? userRedux : null;
+
+  const { mutate, isPending } = useProfile({
+    onSuccess: (data) => {
+      dispatch(setUser(data));
+    },
+    onError: () => {},
+  });
+
+  useEffect(() => {
+    if (!userData) {
+      mutate(cookies.access_token);
+    }
+  }, [userData, mutate, cookies.access_token]);
 
   const settings = {
     dots: false,
@@ -40,6 +68,10 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
     cssEase: "linear",
     arrows: false,
   };
+
+  if (isPending) {
+    return <Loading size="large" tip="loading..." />;
+  }
 
   return (
     <div>
@@ -54,10 +86,12 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       </div>
       <div className="flexTraderProfile">
         <div className="trader">
-          <p className="traderHead">Trader</p>
+          <p className="traderHead">
+            {userData?.first_name} {userData?.last_name}
+          </p>
           <p className="traderBottom">
             <span className="id">ID</span>
-            <span className="id-number">12345645</span>
+            <span className="id-number">{userData?.trader_id}</span>
           </p>
         </div>
         <div className="reloadIcon">

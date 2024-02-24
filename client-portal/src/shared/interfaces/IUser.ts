@@ -1,5 +1,9 @@
 export default interface IUser {
-  name?: string;
   id?: string;
+  first_name?: string;
+  last_name?: string;
   email?: string;
+  email_verified?: boolean;
+  trader_id?: string;
+  username?: string;
 }

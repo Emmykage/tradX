@@ -5,7 +5,7 @@ import { fetctUser, handlers } from "./thunk";
 
 // Define a type for the slice state
 export interface UserSliceState {
-  user: IUser;
+  user: IUser | null;
   loading: boolean;
 }
 
@@ -19,9 +19,10 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<IUser>) => {
-      state.loading = false;
+    setUser: (state, action: PayloadAction<IUser | null>) => {
       state.user = action.payload;
+      state.loading = false;
+      return state;
     },
   },
   extraReducers: (builder) => {
