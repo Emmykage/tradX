@@ -23,15 +23,16 @@ const AccountArchivedSuccessMenu: React.FunctionComponent<
         <p>
           Your USDT Account 3 account 2859844963 has been successfully archived.
         </p>
-        <PaymentListItemCard
-          onClick={() => {
-            setIsRightSubDrawerOpen(false);
-            setIsRightDrawerContent("account");
-          }}
-          className="button"
-          border
-          title="Done"
-        />
+        <div className="buttonContainer">
+          <PaymentListItemCard
+            onClick={() => {
+              setIsRightSubDrawerOpen(false);
+              setIsRightDrawerContent("account");
+            }}
+            className="button"
+            title="Done"
+          />
+        </div>
       </div>
     </div>
   );

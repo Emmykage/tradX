@@ -116,9 +116,13 @@
   padding: 0.125rem 0.9375rem;
   position: relative;
   border-radius: 0.3125rem;
-  background: linear-gradient(to bottom, #3c3d40, #2d2e32);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.12),
+    rgba(0, 0, 0, 0)
+  );
   box-shadow: 0rem 0.125rem 0rem 0.125rem rgba(0, 0, 0, 0.05),
-    0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.26);
+    0rem 0.0625rem 0rem 0.0625rem inset rgba(255, 255, 255, 0.26);
 }
 
 .profileCard-set {
@@ -129,13 +133,15 @@
   border-radius: 0.3125rem;
   box-shadow: 0rem 0.125rem 0rem 0.125rem rgba(0, 0, 0, 0.05),
     0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.26);
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .levelCard {
+  display: flex;
   padding-top: 0.425rem;
   padding-bottom: 0.4125rem;
+  align-items: center;
 
   .levelCardTitleContainer {
     display: flex;
@@ -146,7 +152,29 @@
       color: #ffffff;
       font-size: 1rem;
       font-weight: 600;
-      margin-left: 0.9375rem;
+      margin-left: 0.3375rem;
+      margin-right: 0.5rem;
+    }
+  }
+  .levelBar {
+    width: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(39, 162, 255, 1),
+      rgba(0, 148, 255, 0)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    border-radius: 0.625rem;
+    padding: 0.125rem 0.5rem;
+    height: 1rem;
+    font-size: 0.7rem;
+
+    .levelText {
+      font-size: 0.7rem;
+      margin-left: 2rem;
     }
   }
 }
@@ -166,7 +194,6 @@
 }
 
 .taskCards {
-
   .taskCard {
     padding: 0.325rem 0;
 

@@ -23,24 +23,26 @@ const Input: React.FunctionComponent<InputProps> = ({
   ...rest
 }) => {
   return (
-    <MainItemCard
-      variant={variant}
-      pointer={false}
-      className={`input_main ${className ? className : ""}`}
-    >
-      {icon ? <div className="inputIcon">{icon}</div> : null}
-      <div className="inputContainer">
-        {title ? <label>{title}</label> : null}
-        <InputOriginal
-          placeholder={placeholder}
-          defaultValue={defaultValue}
-          onChange={onChange}
-          type={type}
-          {...rest}
-        />
-      </div>
-      {suffixIcon ? <div className="suffixIcon">{suffixIcon}</div> : null}
-    </MainItemCard>
+    <div className="inputContainer">
+      <MainItemCard
+        variant={variant}
+        pointer={false}
+        className={`input_main ${className ? className : ""}`}
+      >
+        {icon ? <div className="inputIcon">{icon}</div> : null}
+        <div className="inputContainer">
+          {title ? <label>{title}</label> : null}
+          <InputOriginal
+            placeholder={placeholder}
+            defaultValue={defaultValue}
+            onChange={onChange}
+            type={type}
+            {...rest}
+          />
+        </div>
+        {suffixIcon ? <div className="suffixIcon">{suffixIcon}</div> : null}
+      </MainItemCard>
+    </div>
   );
 };
 

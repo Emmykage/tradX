@@ -34,17 +34,18 @@ const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = ({
           you can be sure that your funds are secure.
         </p>
       </MainItemCard>
-
-      <MainItemCard
-        onClick={() => {
-          setIsRightSubDrawerOpen(true);
-          setIsRightSubDrawerContent("verification-helpcenter-menu");
-        }}
-        className="verificationLearnMore"
-        variant={2}
-      >
-        <p>Learn More</p>
-      </MainItemCard>
+      <div className="learnMoreButton">
+        <MainItemCard
+          onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("verification-helpcenter-menu");
+          }}
+          className="verificationLearnMore"
+          variant={2}
+        >
+          <p>Learn More</p>
+        </MainItemCard>
+      </div>
     </div>
   );
 };

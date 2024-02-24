@@ -15,7 +15,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
 > = ({ setIsRightSubDrawerContent }) => {
   return (
     <div className="personalSettingsMenu">
-      <EnhanceSecurityCard variant1={2} />
+      <EnhanceSecurityCard variant1={3} variant2={3} />
 
       <div>
         <p className="menuSectionTitle">Personal</p>
