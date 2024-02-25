@@ -16,7 +16,7 @@ const SignInForm = () => {
     onSuccess: (data) => {
       const expirationInSeconds = 270;
       setCookie("access_token", data.access, { maxAge: expirationInSeconds });
-      setCookie("refresh_token", data.refresh, { maxAge: expirationInSeconds });
+      setCookie("refresh_token", data.refresh);
       navigate("/platform");
     },
     onError: () => {},
