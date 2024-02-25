@@ -1,14 +1,14 @@
-import { ArrowRightOS, CardsIcons } from "../../assets/icons";
-import MenuListCard from "../menuListCard/MenuListCard";
+import { ArrowRightOS } from "../../assets/icons";
 import "./DepositCard.scss";
 interface ContentProps {
   account: string;
   amount: string;
   icon?: boolean;
-  cardIcon?: boolean;
+  cardIcon?: React.ReactNode;
   CountryIcon?: React.ReactNode;
-  onClick?: () => void;
-  variant?: 1 | 2 | 3;
+  onClick?: any;
+  disabled?: boolean;
+  input?: boolean;
 }
 
 const DepositCard: React.FC<ContentProps> = ({
@@ -18,30 +18,35 @@ const DepositCard: React.FC<ContentProps> = ({
   cardIcon,
   CountryIcon,
   onClick,
-  variant,
+  disabled,
+  input,
 }) => {
   return (
-    <MenuListCard
-      variant={variant ? variant : 1}
-      className="deposit-card"
-      customContent={
-        <div className="cardContent" onClick={onClick}>
-          <div>{CountryIcon && CountryIcon}</div>
-          <div className="cardLeft">
-            <div className="cardTop">
-              <div className="cardSubtext">{account}</div>
-            </div>
-            <div className="cardBottom">
-              <div className="cardTitle">{amount}</div>
-            </div>
+    <div
+      className={`depositCard ${disabled ? "disable" : ""} ${
+        input !== true ? "" : "cursor"
+      }`}
+    >
+      <div className="cardContent" onClick={input !== true && onClick}>
+        <div>{CountryIcon}</div>
+        <div className="cardLeft">
+          <div className="cardTop">
+            <div className="cardSubtext">{account}</div>
           </div>
-          <div className="cardRight">
-            {cardIcon && <CardsIcons />}
-            {icon && <ArrowRightOS width="36" height="36" />}
+          <div className="cardBottom">
+            {input ? (
+              <input className="cardInput" placeholder={amount} />
+            ) : (
+              <div className="cardTitle">{amount}</div>
+            )}
           </div>
         </div>
-      }
-    />
+        <div className="cardRight">
+          {cardIcon}
+          {icon && <ArrowRightOS width="36" height="36" />}
+        </div>
+      </div>
+    </div>
   );
 };
 

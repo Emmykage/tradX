@@ -4,7 +4,7 @@
   justify-content: space-between;
   width: 100%;
   padding: 0.7rem;
-  border: 2px solid ;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.6);
   border-radius: 0.313rem;
 
   &.marginTop {
@@ -12,15 +12,7 @@
   }
 
   &.marginTop2 {
-    margin-top: 1.5rem;
-  }
-
-  &.border2{
-    border-color: #27a2ff;
-  }
-
-  &.border{
-    border-color: rgba(255, 255, 255, 0.5);
+    margin-top: 1rem;
   }
 
   .deposit-input {
@@ -58,6 +50,7 @@
 
   &.placeholderColor::placeholder {
     color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
   }
 }
 
