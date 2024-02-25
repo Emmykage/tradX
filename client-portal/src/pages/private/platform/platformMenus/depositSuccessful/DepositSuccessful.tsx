@@ -4,9 +4,9 @@ import {
   Trusty1Icon,
   Trusty2Icon,
   Trusty3Icon,
-  Trusty4Icon,
 } from "../../../../../assets/icons";
 import "./DepositSuccessful.scss";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 const DepositSuccessful = () => {
   return (
@@ -18,10 +18,17 @@ const DepositSuccessful = () => {
         </Typography.Text>
         <div>
           <Typography.Title className="deposited-payment">
-            30 USD
+            250 EUR
           </Typography.Title>
         </div>
       </div>
+      <PrimaryButton
+        className="button"
+        Title="Close"
+        onClick={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
       <div className="deposited-trust">
         <Typography.Text className="deposited-trust-text">
           Trusted by more than 500,000 users globally
@@ -30,7 +37,7 @@ const DepositSuccessful = () => {
           <Trusty1Icon />
           <Trusty2Icon />
           <Trusty3Icon />
-          <Trusty4Icon />
+          <img src="/menu-images/svgs/NortanSecured.svg" alt="svg" />
         </div>
         <Typography.Text className="deposited-trust-subtext">
           Your funds are safely stored in a trusted bank. All payments are

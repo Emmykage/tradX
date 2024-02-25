@@ -1,9 +1,11 @@
 .Promo-input {
   display: flex;
   align-items: center;
-  border: 2px solid #1297FCA6;
-  border-radius: 1rem;
-  padding: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.625rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0rem !important;
 
   .inputIcon {
     display: flex;
@@ -34,8 +36,8 @@
   }
 
   label {
-    color: #ffffff;
-    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.675rem;
     font-weight: 400;
   }
 
@@ -47,7 +49,7 @@
     font-weight: 500;
     color: #fff;
     padding: 0;
-    margin-top: 0.313rem;
+    // margin-top: 0.313rem;
     width: 100%;
 
     &:focus {

@@ -4,45 +4,43 @@ import {
   Trusty1Icon,
   Trusty2Icon,
   Trusty3Icon,
-  Trusty4Icon,
 } from "../../../../../assets/icons";
 import "./TransferSuccessMenu.scss";
-import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import { FC, Dispatch, SetStateAction } from "react";
-
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 interface TransferSuccessMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
   title: string;
   description?: string;
+  button: string;
 }
 const TransferSuccessMenu: FC<TransferSuccessMenuProps> = ({
   setIsRightSubDrawerOpen,
   title,
-  description
+  description,
+  button,
 }) => {
   return (
-    <div className="deposit-success">
+    <div className="Transfer-success">
       <div className="deposit-success-sub">
         <SuccessIcon width="40" height="40" />
         <Typography.Text className="success-message">{title}</Typography.Text>
         {description && (
-        <div>
-          <Typography.Title className="deposited-payment">
-            {description}
-          </Typography.Title>
-        </div>
+          <div>
+            <Typography.Title className="deposited-payment">
+              {description}
+            </Typography.Title>
+          </div>
         )}
       </div>
-      <div className="button">
-        <PaymentListItemCard
-          border
-          title="Close"
-          onClick={() => {
-            setIsRightSubDrawerOpen(false);
-          }}
-        />
-      </div>
+      <PrimaryButton
+        className="button"
+        Title={button}
+        onClick={() => {
+          setIsRightSubDrawerOpen(false);
+        }}
+      />
       <div className="deposited-trust">
         <Typography.Text className="deposited-trust-text">
           Trusted by more than 500,000 users globally
@@ -51,7 +49,7 @@ const TransferSuccessMenu: FC<TransferSuccessMenuProps> = ({
           <Trusty1Icon />
           <Trusty2Icon />
           <Trusty3Icon />
-          <Trusty4Icon />
+          <img src="/menu-images/svgs/NortanSecured.svg" alt="svg" />
         </div>
         <Typography.Text className="deposited-trust-subtext">
           Your funds are safely stored in a trusted bank. All payments are

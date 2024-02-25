@@ -8,6 +8,7 @@
       align-items: center;
       gap: 1rem;
       margin-bottom: 1rem;
+      margin-left: 1rem;
       h2 {
         color: rgba(255, 255, 255, 0.75);
         font-weight: 600;
@@ -20,15 +21,24 @@
         font-size: 0.675rem;
       }
     }
+    .settingsMenuItem:hover {
+      padding: 0.8rem 1.1rem 0.8rem 1rem;
+      margin-left: 0rem;
+      box-shadow: 0rem 0rem 0rem 0rem rgba(0, 0, 0, 0.05),
+        0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.26);
+      transition: all 0.5s ease-in-out;
+    }
   }
   .settingsMenuTitle {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    margin-left: 1rem;
   }
   .settingsMenuTitle2 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     margin-top: 2rem;
+    margin-left: 1rem;
   }
 
   .settingsLogoutButton {

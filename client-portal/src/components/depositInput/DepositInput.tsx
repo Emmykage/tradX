@@ -4,7 +4,6 @@ const DepositInput = ({
   CardsIconList,
   placeholder,
   classname,
-  border,
   placeholderColor,
   marginTop,
 }: any) => {
@@ -12,7 +11,7 @@ const DepositInput = ({
     <div
       className={`deposit-Input-Wrapper ${
         marginTop ? "marginTop" : "marginTop2"
-      } ${border ? "border" : "border2"} ${classname}`}
+      } ${classname}`}
     >
       <input
         className={`deposit-input ${

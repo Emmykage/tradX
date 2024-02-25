@@ -36,7 +36,7 @@ const InviteFriends: React.FunctionComponent<InviteFriendsProps> = ({
         </p>
         <MainItemCard
           className="step1Card"
-          variant={2}
+          variant={1}
           onClick={openDepositHandler}
         >
           <div className="textRow">
@@ -47,16 +47,18 @@ const InviteFriends: React.FunctionComponent<InviteFriendsProps> = ({
             <ArrowRightOS width="22" height="22" />
           </div>
         </MainItemCard>
-        <MainItemCard className="step1Card" variant={2}>
-          <div className="textRow">
-            <p className="titletext" style={{ color: "#969798" }}>
-              Step 2 – Trade
-            </p>
-            <p className="subtext">
-              Make a fixed time trade using a live account
-            </p>
-          </div>
-        </MainItemCard>
+        <div className="card">
+          <MainItemCard className="step2Card" variant={1}>
+            <div className="textRow">
+              <p className="titletext" style={{ color: "#969798" }}>
+                Step 2 – Trade
+              </p>
+              <p className="subtext">
+                Make a fixed time trade using a live account
+              </p>
+            </div>
+          </MainItemCard>
+        </div>
         <MagicBoxCard
           boxImage="/menu-images/squared-3d-treasure-box.png"
           btnAction={magicBoxAction}

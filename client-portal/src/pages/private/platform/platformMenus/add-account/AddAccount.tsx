@@ -1,5 +1,5 @@
 import "./addAccount.scss";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { RightSubDrawerContent } from "../../types";
 import {
   ApeXProtocolFlag,
@@ -70,13 +70,14 @@ import {
   XRPFlag,
 } from "../../../../../assets/icons";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
+import { debounce } from "lodash";
 
 interface AddAccountMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
-const AccountsList = [
+const InitialAccountsList = [
   {
     icon: <UsdIcon2 />,
     title: "USD Account",
@@ -404,19 +405,48 @@ const AccountsList = [
   },
 ];
 
-const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = (
-  {
-    // setIsRightSubDrawerOpen,
-    // setIsRightSubDrawerContent,
-  }
-) => {
+const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [items, setItems] = useState(InitialAccountsList);
+
+  const handleSearch = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    const debouncedSearch = debounce(() => {
+      if (searchTerm === "") {
+        setItems(InitialAccountsList);
+      } else {
+        const filteredItems = InitialAccountsList.filter((item) =>
+          item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setItems(filteredItems);
+      }
+    }, 300);
+    debouncedSearch();
+    return debouncedSearch.cancel;
+  }, [searchTerm]);
+
   return (
     <div className="addAccount">
       <div className="searchAccount">
         <SearchIcon />
-        <input type="text" />
+        <input type="text" value={searchTerm} onChange={handleSearch} />
       </div>
-      <MainItemCard className="AccountPinned" variant={2}>
+      <MainItemCard
+        className="AccountPinned"
+        variant={2}
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("account-rename");
+        }}
+      >
         <div className="PinnedValue">
           <UsdIcon2 />
           <div>
@@ -426,8 +456,15 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = (
         </div>
         <PinnedIcon />
       </MainItemCard>
-      {AccountsList.map((item, index) => (
-        <div key={index} className="AccountsData">
+      {items.map((item, index) => (
+        <div
+          key={index}
+          className="AccountsData"
+          onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("account-rename");
+          }}
+        >
           {item.icon}
           <div>
             <h2>{item.title}</h2>

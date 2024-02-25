@@ -3,15 +3,17 @@
   border-radius: 1rem;
   padding: 0.8rem;
   display: flex;
+  background: linear-gradient( rgba(154, 154, 154, 0.4), rgba(0, 0, 0, 0));
+  height: 3.5rem;
   .cardContent {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.4rem;
     width: 100%;
     border-radius: 1rem;
     .amounText {
-      font-size: 1rem;
+      font-size: 0.8rem;
       font-weight: 500;
       color: #ffffff;
     }

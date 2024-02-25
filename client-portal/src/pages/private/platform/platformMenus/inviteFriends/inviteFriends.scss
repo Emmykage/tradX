@@ -21,6 +21,7 @@
   .step1Card {
     display: flex;
     align-items: center;
+    padding: 1rem;
     .textRow {
       display: flex;
       flex-direction: column;
@@ -29,6 +30,7 @@
         font-size: 1rem;
         font-weight: 500;
         color: #ffffff;
+        line-height: 1.5rem;
       }
       .subtext {
         font-size: 0.75rem;
@@ -47,6 +49,47 @@
       }
     }
   }
+  .card {
+    .mainItemCard {
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.26),
+        rgba(0, 0, 0, 0)
+      );
+    }
+    .step2Card {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      .textRow {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        .titletext {
+          font-size: 1rem;
+          font-weight: 500;
+          color: #ffffff;
+          line-height: 1.5rem;
+        }
+        .subtext {
+          font-size: 0.75rem;
+          font-weight: 400;
+          color: #969798;
+        }
+      }
+      .rightIconDiv {
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+          stroke-width: 0.01rem;
+        }
+      }
+    }
+  }
+
   .textdiv {
     display: flex;
     align-items: center;
@@ -65,7 +108,7 @@
       font-weight: 500;
     }
   }
-  .listCard{
+  .listCard {
     margin: 0.7rem;
   }
 }
