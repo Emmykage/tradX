@@ -56,7 +56,10 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
     >
       {selectedCard ? (
         <MainItemCard
-          className={`new-card ${isDropdownVisible ? "" : "backgroundColor"}`}
+          variant={2}
+          className={`new-card ${
+            isDropdownVisible ? "backgroundNone" : "backgroundColor"
+          }`}
         >
           <div className="leftSide-card">
             <div className="leftSide">

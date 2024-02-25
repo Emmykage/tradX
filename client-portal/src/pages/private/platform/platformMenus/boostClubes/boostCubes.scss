@@ -1,7 +1,22 @@
 .boostCubes {
+  .infoIcon {
+    position: absolute;
+    top: 2.1125rem;
+    right: 2.8rem;
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      circle {
+        stroke: #fff;
+      }
+      path {
+        fill: #fff;
+      }
+    }
+  }
   .boostCubes-Card {
     box-shadow: 0 0.225rem 0 0.125rem rgba(0, 0, 0, 0.25),
-      0 0.063rem 0 0.063rem inset rgba(255, 255, 255, 0.351);
+      0 0.063rem 0 0.023rem inset rgba(255, 255, 255, 0.351);
     padding: 1rem;
     display: flex;
     flex-direction: column;

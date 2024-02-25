@@ -1,9 +1,9 @@
 import { Typography } from "antd";
 import Input from "../../../../../components/input/Input";
-import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./accountRename.scss";
 import { Dispatch, SetStateAction } from "react";
 import { RightDrawerContent } from "../../types";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 interface AccountRenameProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -26,9 +26,8 @@ const AccountRename: React.FunctionComponent<AccountRenameProps> = ({
         defaultValue="USDT 6"
         type="text"
       />
-      <MenuListCard
-        textCenter
-        title="Confirm"
+      <PrimaryButton
+        Title="Confirm"
         onClick={() => {
           setIsRightSubDrawerOpen(false);
           setIsRightDrawerContent("account");

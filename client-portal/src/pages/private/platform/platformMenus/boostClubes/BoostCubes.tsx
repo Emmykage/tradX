@@ -3,6 +3,7 @@ import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./boostCubes.scss";
 import { Dispatch, SetStateAction } from "react";
 import { RightDrawerContent, RightSubDrawerContent } from "../../types";
+import { InfoCircleIconSmall } from "../../../../../assets/icons";
 
 interface BoostCubesProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -17,6 +18,9 @@ const BoostCubes: React.FunctionComponent<BoostCubesProps> = ({
 }) => {
   return (
     <div className="boostCubes">
+      <div className="infoIcon">
+        <InfoCircleIconSmall />
+      </div>
       <MainItemCard variant={3} className="boostCubes-Card">
         <Row>
           <Col span={14}>

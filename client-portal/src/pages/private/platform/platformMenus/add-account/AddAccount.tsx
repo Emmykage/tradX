@@ -404,19 +404,24 @@ const AccountsList = [
   },
 ];
 
-const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = (
-  {
-    // setIsRightSubDrawerOpen,
-    // setIsRightSubDrawerContent,
-  }
-) => {
+const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="addAccount">
       <div className="searchAccount">
         <SearchIcon />
         <input type="text" />
       </div>
-      <MainItemCard className="AccountPinned" variant={2}>
+      <MainItemCard
+        className="AccountPinned"
+        variant={2}
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("account-rename");
+        }}
+      >
         <div className="PinnedValue">
           <UsdIcon2 />
           <div>
@@ -427,7 +432,14 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = (
         <PinnedIcon />
       </MainItemCard>
       {AccountsList.map((item, index) => (
-        <div key={index} className="AccountsData">
+        <div
+          key={index}
+          className="AccountsData"
+          onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("account-rename");
+          }}
+        >
           {item.icon}
           <div>
             <h2>{item.title}</h2>

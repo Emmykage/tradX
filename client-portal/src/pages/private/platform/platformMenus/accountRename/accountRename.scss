@@ -1,7 +1,4 @@
 .editNameMenu {
-  .mainItemCardv2 {
-    box-shadow: none;
-  }
   .editNameMenu-text {
     font-weight: 500;
     font-size: 0.8rem;
@@ -15,14 +12,6 @@
     box-shadow: none;
     background: none;
     border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 0.313rem;
-  }
-
-  .menuListCard {
-    padding: 1rem 1rem;
-    background-color: rgba(22, 23, 26, 1);
-    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.3),
-      0 0.063rem 0 0.063rem inset rgba(0, 0, 0, 0.26);
     border-radius: 0.313rem;
   }
 }

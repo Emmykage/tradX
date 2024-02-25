@@ -3,6 +3,7 @@ import { InfoCircleIcon } from "../../../../../assets/icons";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./verificationMenu.scss";
 import { RightSubDrawerContent } from "../../types";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 interface VerificationMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -35,16 +36,14 @@ const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = ({
         </p>
       </MainItemCard>
       <div className="learnMoreButton">
-        <MainItemCard
+        <PrimaryButton
           onClick={() => {
             setIsRightSubDrawerOpen(true);
             setIsRightSubDrawerContent("verification-helpcenter-menu");
           }}
           className="verificationLearnMore"
-          variant={2}
-        >
-          <p>Learn More</p>
-        </MainItemCard>
+          Title="Learn More"
+        />
       </div>
     </div>
   );

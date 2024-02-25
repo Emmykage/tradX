@@ -4,6 +4,7 @@ import PaymentListItemCard from "../../../../../components/paymentListItemCard/P
 import "./PasswordSuccess.scss";
 import { Dispatch, SetStateAction } from "react";
 import { RightSubDrawerContent } from "../../types";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 interface PasswordSuccessProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -23,12 +24,13 @@ const PasswordSuccess: React.FunctionComponent<PasswordSuccessProps> = ({
         Your Password has been modified!
       </Typography.Title>
       <div className="button">
-        <PaymentListItemCard
+        <PrimaryButton
+          className="changePwButton"
           onClick={() => {
             console.log("settings");
             setIsRightSubDrawerContent("settings");
           }}
-          title="Done"
+          Title="Done"
         />
       </div>
     </div>
