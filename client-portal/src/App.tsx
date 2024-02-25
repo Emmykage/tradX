@@ -14,6 +14,7 @@ import getEnv from "./utils/env";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import useMouseIdle from "./hooks/useMouseIdle";
+import RequireAuth from "components/requireAuth";
 
 interface AppProps {}
 
@@ -46,14 +47,16 @@ const App: React.FunctionComponent<AppProps> = () => {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={<SignIn />} />
-        <Route path="/platform" element={<Platform />} />
-        <Route path="transactions" element={<Transactions />} />
-        {/* <Route path="/loan/get-loan" element={<GetLoan />} /> */}
-        <Route path="/lender" element={<Lender />} />
+        <Route element={<RequireAuth />}>
+          <Route path="/platform" element={<Platform />} />
+          <Route path="transactions" element={<Transactions />} />
+          {/* <Route path="/loan/get-loan" element={<GetLoan />} /> */}
+          <Route path="/lender" element={<Lender />} />
+          {/* <Route path="/loan" element={<Loan />} /> */}
+          {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
+        </Route>
         <Route path="/downloads" element={<Download />} />
-        {/* <Route path="/loan" element={<Loan />} /> */}
-        {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
+        <Route path="/" element={<SignIn />} />
       </Routes>
     </HashRouter>
   );
