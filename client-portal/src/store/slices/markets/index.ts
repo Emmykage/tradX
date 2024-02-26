@@ -1,33 +1,18 @@
-// TODO - Build an initial data thunks
 import { createSlice } from "@reduxjs/toolkit";
-import { UTCTimestamp } from "lightweight-charts";
+import { CryptoSliceState } from "./types";
+import { dateFormter } from "helpers/dateFormter";
 
-type CryptoItem = {
-  symbol: string;
-  timestamp: number;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
-  volume: number;
-  trade_count: number;
-  vwap: number;
-  time: UTCTimestamp;
-  value: number;
-};
-
-// Define a type for the slice state
-export interface UserSliceState {
-  crypto: Record<string, CryptoItem[]> ;
-}
-
-// Define the initial state using that type
-const initialState: UserSliceState = {
+const initialState: CryptoSliceState = {
   crypto: {
-    "BTC/USD": []
+    "BTC/USD": [],
   },
+  status: "idle",
+  start: dateFormter(new Date()),
+  timeFrame: "minute",
+  sympol: "BTC/USD",
+  error: null,
 };
-
+  
 export const cryptoSlice = createSlice({
   name: "crypto",
   initialState,

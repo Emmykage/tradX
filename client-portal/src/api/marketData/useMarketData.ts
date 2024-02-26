@@ -1,21 +1,25 @@
 import { useMutation } from "@tanstack/react-query";
 import getEnv from "utils/env";
 
-export async function marketDataFetcher(token: string) {
+type FetcherDataOptions = {
+  start?: string;
+  symbols?: string;
+  timeFrame?: string;
+  end?: string
+}
+
+export async function marketDataFetcher(
+  token: string,
+  options?: FetcherDataOptions
+) {
   try {
-    const API_BASE_URL = getEnv("VITE_API_BASE_URL");
-
-    const date = new Date();
-
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0" );
-
-    // Construct the formatted date string
-    const formattedDate = `${year}-${month}-01`;
-
+    const start = options?.start ?? "2024-02-20";
+    const symbols = options?.symbols ?? "BTC%2FUSD";
+    const timeFrame = options?.timeFrame ?? "minute";
     const response = await fetch(
-      `${API_BASE_URL}/market-data/alpaca/?start=${formattedDate}&symbol_or_symbols=BTC%2FUSD&timeframe=minute`,
+      `${getEnv(
+        "VITE_API_BASE_URL"
+      )}/market-data/alpaca/?start=${start}&symbol_or_symbols=${symbols}&timeframe=${timeFrame}`,
       {
         method: "GET",
         headers: {
