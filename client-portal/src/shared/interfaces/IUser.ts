@@ -6,4 +6,5 @@ export default interface IUser {
   email_verified?: boolean;
   trader_id?: string;
   username?: string;
+  profile_picture?: string;
 }

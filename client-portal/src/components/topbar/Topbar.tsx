@@ -1,4 +1,8 @@
 import { CSSProperties } from "react";
+
+import { useAppSelector } from "@store/hooks";
+import { UserSliceState } from "@store/slices/user";
+
 import {
   CaretDownIcon,
   DropUpIcon,
@@ -33,6 +37,10 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   currentDrawer,
   style,
 }) => {
+  const { user } = useAppSelector(
+    (state: { user: UserSliceState }) => state.user
+  );
+
   return (
     <div className="topbarContainer" id="topbarContainer" style={style}>
       <div
@@ -98,7 +106,15 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
               setIsRightDrawerContent("profile");
             }}
           >
-            <ProfileIcon />
+            {user?.profile_picture ? (
+              <img
+                src={user.profile_picture}
+                alt="profile-img"
+                className="profile-img"
+              />
+            ) : (
+              <ProfileIcon />
+            )}
           </button>
         </div>
       </div>
@@ -112,7 +128,15 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
               setIsRightDrawerContent("profile");
             }}
           >
-            <ProfileIcon />
+            {user?.profile_picture ? (
+              <img
+                src={user.profile_picture}
+                alt="profile-img"
+                className="profile-img"
+              />
+            ) : (
+              <ProfileIcon />
+            )}
           </button>
         </div>
         <div
