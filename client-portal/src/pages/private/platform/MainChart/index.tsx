@@ -2,32 +2,56 @@ import {
   createChart,
   ColorType,
   IChartApi,
-  Time,
   LineStyle,
-  UTCTimestamp,
   LastPriceAnimationMode,
   CrosshairMode,
 } from "lightweight-charts";
 import React, { useEffect, useRef } from "react";
+import { useCookies } from "react-cookie";
 
-export interface DataPoint {
-  time: UTCTimestamp;
-  value: number;
-}
+import useSocketConnect from "../../../../hooks/useSocketConnect";
+import useMarketData from "api/marketData/useMarketData";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { setCrypto, setInitialCrypto } from "@store/slices/markets";
+import { MainChartProps, MarketData, TransformedMarket } from "./types";
 
-interface MainChartProps {
-  data: DataPoint[];
-  colors?: {
-    backgroundColor?: string;
-    lineColor?: string;
-    textColor?: string;
-    areaTopColor?: string;
-    areaBottomColor?: string;
-    gridLines?: string;
-  };
-}
 
-const MainChart: React.FC<MainChartProps> = ({ data, colors }) => {
+const MainChart: React.FC<MainChartProps> = ({ colors }) => {
+  const [cookies] = useCookies(["access_token"]);
+  const { mutate: marketDataMutation, data: market } = useMarketData({});
+  const markets = useAppSelector((state) => state.markets);
+  const dispatch = useAppDispatch();
+
+  const { data: socketData } = useSocketConnect(
+    "wss://tradx.io/ws/external-api/"
+  );
+
+  const data: MarketData[] = markets.crypto[markets.sympol];
+  useEffect(() => {
+    marketDataMutation(cookies.access_token);
+  }, []);
+
+  useEffect(() => {
+    if (market && typeof market === "object") {
+      const transformedMarket: TransformedMarket = {};
+      Object.keys(market).forEach((key) => {
+        transformedMarket[key] = market[key].map((item: MarketData) => ({
+          ...item,
+          time: item.timestamp,
+          value: item.open,
+        }));
+      });
+      
+      dispatch(setInitialCrypto(transformedMarket));
+    }
+  }, [market]);
+
+  useEffect(() => {
+    if (markets.crypto[markets.sympol].length > 0) {
+      dispatch(setCrypto(socketData));
+    }
+  }, [socketData, crypto]);
+
   const {
     backgroundColor = "transparent",
     lineColor = "#0094FF",
@@ -38,6 +62,7 @@ const MainChart: React.FC<MainChartProps> = ({ data, colors }) => {
   } = colors || {};
 
   const chartContainerRef = useRef<HTMLDivElement>(null);
+  
   const chartRef = useRef<IChartApi>();
 
   useEffect(() => {
@@ -71,12 +96,6 @@ const MainChart: React.FC<MainChartProps> = ({ data, colors }) => {
       width: chartContainer.clientWidth,
       height: 300,
     });
-
-    const timeRangeInSeconds = 180; // 3 minutes
-    const endTime = data[data.length - 1].time;
-    const startTime = new Date(
-      new Date(endTime).getTime() - timeRangeInSeconds * 1000
-    );
 
     const newSeries = chart.addAreaSeries({
       lineColor,
@@ -118,36 +137,7 @@ const MainChart: React.FC<MainChartProps> = ({ data, colors }) => {
     const resizeObserver = new ResizeObserver(handleResize);
     resizeObserver.observe(chartContainer);
 
-    const waitForChartInitialization = setTimeout(() => {
-      chart.timeScale().setVisibleRange({
-        from: startTime as unknown as Time,
-        to: endTime as Time,
-      });
-      chart.timeScale().fitContent();
-      // chart.timeScale().scrollToPosition(1, true);
-
-      clearTimeout(waitForChartInitialization);
-    }, 100);
-
-    let updateCount = 0;
-
-    const updateIntervalId = setInterval(() => {
-      const lastDataPoint = data[data.length - 1];
-      const timeInterval = 1000; // 1 second
-      const startValue = lastDataPoint.value;
-
-      const newObject: DataPoint = {
-        time: (lastDataPoint.time + updateCount + timeInterval) as UTCTimestamp,
-        value: startValue * Math.random() * 2,
-      };
-
-      updateCount++;
-
-      newSeries.update(newObject);
-    }, 5000);
-
     return () => {
-      clearInterval(updateIntervalId);
       window.removeEventListener(
         "resize",
         handleResize as unknown as EventListener
@@ -165,6 +155,7 @@ const MainChart: React.FC<MainChartProps> = ({ data, colors }) => {
     gridLines,
   ]);
 
+  // TODO - Lazy loading the charts
   return <div ref={chartContainerRef} style={{ height: "100%" }} />;
 };
 
