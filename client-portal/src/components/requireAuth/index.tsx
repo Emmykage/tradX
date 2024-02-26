@@ -42,6 +42,7 @@ const RequireAuth = () => {
         onSuccess: (data) => {
           setCookie("access_token", data.access, { maxAge: 270 });
           dispatch(setIsIdle(false));
+          window.location.reload();
         },
       }
     );
