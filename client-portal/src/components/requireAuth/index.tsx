@@ -2,12 +2,19 @@ import useRefreshToken from "api/user/useRefreshToken";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Button } from "antd";
 
-import { useAppSelector } from "@store/hooks";
-import { GlobalStates } from "@store/slices/global";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { GlobalStates, setIsIdle } from "@store/slices/global";
+
+import Modal from "components/modal/Modal";
+import WarningIcon from "assets/icons/WarningIcon";
+
+import "./styles.scss";
 
 const RequireAuth = () => {
   let location = useLocation();
+  const dispatch = useAppDispatch();
   const [cookies, setCookie, removeCookie] = useCookies([
     "access_token",
     "refresh_token",
@@ -16,12 +23,9 @@ const RequireAuth = () => {
   const { isIdle } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
-  console.log("isIdle", isIdle);
 
   const { mutate } = useRefreshToken({
-    onSuccess: (data) => {
-      setCookie("access_token", data.access, { maxAge: 270 });
-    },
+    onSuccess: () => {},
     onError: (error: any) => {
       console.error("error refreshing the token", error?.refresh);
       removeCookie("access_token");
@@ -31,12 +35,38 @@ const RequireAuth = () => {
     },
   });
 
+  const handleKeepLogin = () => {
+    mutate(
+      { refresh: cookies.refresh_token },
+      {
+        onSuccess: (data) => {
+          setCookie("access_token", data.access, { maxAge: 270 });
+          dispatch(setIsIdle(false));
+        },
+      }
+    );
+  };
+
+  const handleLogout = () => {
+    removeCookie("access_token");
+    removeCookie("refresh_token");
+    setIsIdle(false);
+    window.location.reload();
+  };
+
   useEffect(() => {
     if (cookies?.access_token && !isIdle) {
       const refreshInterval = 4 * 60 * 1000;
 
       const refresh = () => {
-        mutate({ refresh: cookies.refresh_token });
+        mutate(
+          { refresh: cookies.refresh_token },
+          {
+            onSuccess: (data) => {
+              setCookie("access_token", data.access, { maxAge: 270 });
+            },
+          }
+        );
       };
 
       const tokenPayload = JSON.parse(
@@ -63,7 +93,21 @@ const RequireAuth = () => {
     return <Navigate to="/" state={{ from: location }} />;
   }
 
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <Modal rootClassName="idle_warn_modal" open={isIdle} setOpen={() => {}}>
+        <div className="idle_warn_modal_content">
+          <WarningIcon />
+          <p className="info_text">Your account is idle</p>
+          <div className="buttons_container">
+            <Button onClick={handleKeepLogin}>Reactivate</Button>
+            <Button onClick={handleLogout}>Log out</Button>
+          </div>
+        </div>
+      </Modal>
+    </>
+  );
 };
 
 export default RequireAuth;
