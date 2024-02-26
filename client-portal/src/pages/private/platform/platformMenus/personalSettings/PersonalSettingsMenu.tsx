@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import { useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
@@ -7,7 +7,7 @@ import { InfoCircleIcon } from "../../../../../assets/icons";
 import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import Input from "../../../../../components/input/Input";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
-import Upload from "../../../../../components/upload/Upload";
+import UploadProfile from "./UploadProfile";
 import "./personalSettingsMenu.scss";
 import { RightSubDrawerContent } from "../../types";
 
@@ -18,7 +18,9 @@ interface PersonalSettingsMenuProps {
 const PersonalSettingsMenu: React.FunctionComponent<
   PersonalSettingsMenuProps
 > = ({ setIsRightSubDrawerContent }) => {
-  const { user } = useAppSelector((state: { user: UserSliceState }) => state.user);
+  const { user } = useAppSelector(
+    (state: { user: UserSliceState }) => state.user
+  );
 
   return (
     <div className="personalSettingsMenu">
@@ -27,7 +29,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
       <div>
         <p className="menuSectionTitle">Personal</p>
         <Input
-          placeholder="Eneter your name"
+          placeholder="Enter your name"
           title="Name"
           defaultValue={user?.first_name}
           type="text"
@@ -41,7 +43,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
             </div>
           }
         />
-        <Upload placeholder="Upload Profile Picture" />
+        <UploadProfile />
       </div>
 
       <div>

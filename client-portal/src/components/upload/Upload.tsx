@@ -15,7 +15,11 @@ const Upload: React.FunctionComponent<UploadProps> = ({
   ...props
 }) => {
   return (
-    <UploadOriginal className="upload_main" {...props}>
+    <UploadOriginal
+      className="upload_main"
+      beforeUpload={() => false}
+      {...props}
+    >
       <MainItemCard variant={2} className="uploadContainer">
         {icon ? icon : <UserIcon />}
         <span className="uploadPlaceholder">
