@@ -5,23 +5,19 @@ import useRegister from "api/user/useRegister";
 import { toast } from "react-toastify";
 
 interface SignUpFormData {
-  trader_id: string;
   email: string;
+  phone_number: string;
   first_name: string;
   last_name: string;
-  username: string;
   password: string;
 }
 
 const SignUpForm = () => {
-  const { handleSubmit, register } = useForm<SignUpFormData>();
+  const { handleSubmit, register, reset } = useForm<SignUpFormData>();
   const { mutate, isPending } = useRegister({
     onSuccess: () => {
-      toast.success("You have successfully registered your accoung.");
-    },
-    onError: (error) => {
-      console.error(error);
-      toast.error("Oops, something went wrong!");
+      reset();
+      toast.success("You have successfully registered your account, Login Now!");
     },
   });
 
@@ -32,19 +28,6 @@ const SignUpForm = () => {
   return (
     <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
       <Form.Item
-        name="trader_id"
-        rules={[{ required: true, message: "Trader ID is required" }]}
-      >
-        <input
-          className="loginInput"
-          type="text"
-          id="trader_id"
-          placeholder="Trader ID"
-          {...register("trader_id")}
-        />
-      </Form.Item>
-
-      <Form.Item
         name="email"
         rules={[{ required: true, message: "Email is required" }]}
       >
@@ -54,6 +37,19 @@ const SignUpForm = () => {
           id="email"
           placeholder="Email"
           {...register("email")}
+        />
+      </Form.Item>
+
+      <Form.Item
+        name="phone_number"
+        rules={[{ required: true, message: "Phone number is required" }]}
+      >
+        <input
+          className="loginInput"
+          type="tel"
+          id="phone_number"
+          placeholder="Phone number"
+          {...register("phone_number")}
         />
       </Form.Item>
 
@@ -80,19 +76,6 @@ const SignUpForm = () => {
           id="last_name"
           placeholder="Last Name"
           {...register("last_name")}
-        />
-      </Form.Item>
-
-      <Form.Item
-        name="username"
-        rules={[{ required: true, message: "Username is required" }]}
-      >
-        <input
-          className="loginInput"
-          type="text"
-          id="username"
-          placeholder="User Name"
-          {...register("username")}
         />
       </Form.Item>
 
