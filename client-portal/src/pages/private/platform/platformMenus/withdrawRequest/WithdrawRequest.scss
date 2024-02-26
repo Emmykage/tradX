@@ -17,7 +17,7 @@
     }
   }
   .withdraw-trust {
-    padding-top: 1rem;
+    padding-top: 6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,10 +25,10 @@
     gap: 1.5rem;
     .withdraw-trust-subtext {
       font-weight: 400;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: rgba(255, 255, 255, 0.5);
       text-align: center;
-      padding: 0 2.5rem;
+      padding: 0 0.5rem;
     }
   }
   .main-line {
@@ -39,9 +39,12 @@
   }
   .button {
     width: 90%;
+    .btn {
+      padding: 0.7rem;
+    }
   }
   .withdraw-transfer-amount {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     width: 90%;
     .withdraw-content {
       background-color: rgba(61, 64, 70, 1);
@@ -49,22 +52,22 @@
       margin-top: -0.3rem;
       position: relative;
       z-index: -1;
-      padding: 1rem;
+    padding: 1rem 2rem;
       .withdraw-details {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
         .hr {
           width: 100%;
           height: 0.0625rem;
           background-color: rgba(255, 255, 255, 0.2);
-          margin-bottom: 1rem;
+          margin-bottom: 0.5rem;
         }
         .withdraw-transfer {
           display: flex;
           justify-content: space-between;
           p {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
           }
         }
       }

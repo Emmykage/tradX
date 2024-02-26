@@ -1,10 +1,10 @@
-import { CardsIcons, UsdIcon2 } from "../../../../../assets/icons";
+import { EuroFlag, PaymentIcon } from "../../../../../assets/icons";
 import DepositCard from "../../../../../components/depositCard/DepositCard";
 import DepositInput from "../../../../../components/depositInput/DepositInput";
 import "./WithdrawPayment.scss";
-import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import { Dispatch, FC, SetStateAction } from "react";
 import { RightSubDrawerContent } from "../../types";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 interface WithdrawPaymentProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -19,22 +19,20 @@ interface WithdrawPaymentProps {
  */
 const WithdrawPayment: FC<WithdrawPaymentProps> = ({
   setIsRightSubDrawerContent,
-  setIsRightSubDrawerOpen
+  setIsRightSubDrawerOpen,
 }) => {
   return (
     <div className="withdraw-payment">
       {/* <div className="withdrawTitle">Withdraw</div> */}
       <div className="withdraw-payment-buttons">
         <DepositCard
-          variant={2}
-          CountryIcon={<UsdIcon2 />}
+          CountryIcon={<EuroFlag />}
           account="From USD Account"
           amount="USD 30"
           icon
         />
         <DepositCard
-          variant={2}
-          CountryIcon={<CardsIcons />}
+          CountryIcon={<PaymentIcon />}
           account="To Bank Cards"
           amount="540691...4595"
           icon
@@ -64,10 +62,13 @@ const WithdrawPayment: FC<WithdrawPaymentProps> = ({
         </div>
         <div className="hr" />
       </div>
-      <PaymentListItemCard title="Withdraw" onClick={() => {
-        setIsRightSubDrawerOpen(true);
-        setIsRightSubDrawerContent("select-withdarw-request");
-      }} />
+      <PrimaryButton
+        Title="Withdraw"
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("select-withdarw-request");
+        }}
+      />
     </div>
   );
 };
