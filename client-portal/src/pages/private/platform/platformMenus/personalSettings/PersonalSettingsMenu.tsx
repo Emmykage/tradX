@@ -1,4 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
+
+import { useAppSelector } from "@store/hooks";
+import { UserSliceState } from "@store/slices/user";
+
 import { InfoCircleIcon } from "../../../../../assets/icons";
 import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import Input from "../../../../../components/input/Input";
@@ -14,6 +18,8 @@ interface PersonalSettingsMenuProps {
 const PersonalSettingsMenu: React.FunctionComponent<
   PersonalSettingsMenuProps
 > = ({ setIsRightSubDrawerContent }) => {
+  const { user } = useAppSelector((state: { user: UserSliceState }) => state.user);
+
   return (
     <div className="personalSettingsMenu">
       <EnhanceSecurityCard variant1={2} />
@@ -23,7 +29,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
         <Input
           placeholder="Eneter your name"
           title="Name"
-          defaultValue="Support"
+          defaultValue={user?.first_name}
           type="text"
           disabled
           suffixIcon={
@@ -43,7 +49,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
         <Input
           placeholder="Enter your email"
           title="Email"
-          defaultValue="support@moneybee.loan"
+          defaultValue={user?.email}
           type="email"
           disabled
           suffixIcon={
