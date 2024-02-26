@@ -3,12 +3,20 @@ import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
+import { useAppSelector } from "@store/hooks";
+import { GlobalStates } from "@store/slices/global";
+
 const RequireAuth = () => {
   let location = useLocation();
   const [cookies, setCookie, removeCookie] = useCookies([
     "access_token",
     "refresh_token",
   ]);
+
+  const { isIdle } = useAppSelector(
+    (state: { global: GlobalStates }) => state.global
+  );
+  console.log("isIdle", isIdle);
 
   const { mutate } = useRefreshToken({
     onSuccess: (data) => {
@@ -24,7 +32,7 @@ const RequireAuth = () => {
   });
 
   useEffect(() => {
-    if (cookies?.access_token) {
+    if (cookies?.access_token && !isIdle) {
       const refreshInterval = 4 * 60 * 1000;
 
       const refresh = () => {
@@ -51,7 +59,7 @@ const RequireAuth = () => {
     }
   }, [cookies.access_token]);
 
-  if (!cookies.access_token) {
+  if (!cookies.access_token && !isIdle) {
     return <Navigate to="/" state={{ from: location }} />;
   }
 

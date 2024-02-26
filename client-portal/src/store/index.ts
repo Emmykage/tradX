@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { userReducer } from "@slices";
+import { globalReducer, userReducer } from "@slices";
 
 export const store = configureStore({
   reducer: {
+    global: globalReducer,
     user: userReducer,
   },
 });

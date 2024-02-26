@@ -12,18 +12,18 @@ function useMouseIdle(
   callback: () => void,
   delay = 300000 /* 5 minutes in milliseconds */
 ) {
-  const timerRef = useRef<number | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     function handleMouseMove() {
-        clearTimeout(timerRef?.current as number);
-        timerRef.current = setTimeout(() => {
-          callback();
-        }, delay);
+      clearTimeout(timerRef.current!);
+      timerRef.current = setTimeout(() => {
+        callback();
+      }, delay);
     }
 
     function clearTimer() {
-      if (timerRef.current) clearTimeout(timerRef.current);
+      clearTimeout(timerRef.current!);
     }
 
     window.addEventListener("mousemove", handleMouseMove);

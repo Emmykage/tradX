@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Route, Routes, HashRouter } from "react-router-dom";
 import Platform from "./pages/private/platform/Platform";
 import Lender from "./pages/private/lender/Lender";
@@ -13,12 +13,16 @@ import getEnv from "./utils/env";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import useMouseIdle from "./hooks/useMouseIdle";
+import useMouseIdle from "hooks/useMouseIdle";
 import RequireAuth from "components/requireAuth";
+import { useAppDispatch } from "@store/hooks";
+import { setIsIdle } from "@store/slices/global";
 
 interface AppProps {}
 
 const App: React.FunctionComponent<AppProps> = () => {
+  const dispatch = useAppDispatch();
+
   console.log(
     "Envrionment Variable: VITE_API_BASE_URL => ",
     getEnv("VITE_API_BASE_URL")
@@ -38,11 +42,10 @@ const App: React.FunctionComponent<AppProps> = () => {
     localStorage.setItem("scale", scale.toString());
   };
 
-  // hook that triggers a callback function when the mouse moves after a five-minute stop
-  useMouseIdle(
-    () => console.log("mouse stopped move for 5 minutes"),
-    5000
-  );
+  // hook that triggers a callback function when the user is inactuve for 5 minutes
+  useMouseIdle(() => {
+    dispatch(setIsIdle(true));
+  });
 
   return (
     <HashRouter>
