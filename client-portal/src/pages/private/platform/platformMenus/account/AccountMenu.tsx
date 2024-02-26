@@ -1,4 +1,7 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+
+import useWallet from "api/wallet/useWallet";
 import {
   AddIcon,
   GlobeIcon,
@@ -21,12 +24,26 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
   setIsRightSubDrawerContent,
 }) => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const [cookies] = useCookies(["access_token"]);
+
+  const { mutate } = useWallet({
+    onSuccess: (data) => {
+      console.log("wallets", data);
+    },
+    onError: (error) => {
+      console.log("wallets error", error);
+    },
+  });
+
+  useEffect(() => {
+    mutate(cookies.access_token);
+  }, []);
 
   const accounts = [
     {
       id: 2,
       icon: <UsdIcon2 />,
-      accountType: "USD Account",
+      accountType: "OK",
       amount: "$20.00",
       secAmount: "D9,999.00",
       suffixIcon: <ThreeDotsMenu />,
