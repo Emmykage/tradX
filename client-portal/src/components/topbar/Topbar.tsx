@@ -1,8 +1,11 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect } from "react";
+import { useCookies } from "react-cookie";
 
-import { useAppSelector } from "@store/hooks";
-import { UserSliceState } from "@store/slices/user";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { UserSliceState, setUser } from "@store/slices/user";
 
+import Loading from "components/loading";
+import useProfile from "api/user/useProfile";
 import {
   CaretDownIcon,
   DropUpIcon,
@@ -37,9 +40,47 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   currentDrawer,
   style,
 }) => {
+  const dispatch = useAppDispatch();
+  const [cookies] = useCookies(["access_token"]);
+
   const { user } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
+
+  const userRedux = useAppSelector(
+    (state: { user: UserSliceState }) => state.user.user
+  );
+  const userData =
+    userRedux && Object.keys(userRedux).length ? userRedux : null;
+
+  const { mutate, isPending: isProfileLoading } = useProfile({
+    onSuccess: (data) => {
+      dispatch(setUser(data));
+    },
+    onError: () => {},
+  });
+
+  useEffect(() => {
+    if (!userData) {
+      mutate(cookies.access_token);
+    }
+  }, [userData, mutate, cookies.access_token]);
+
+  const ProfileImage = () => {
+    if (isProfileLoading) {
+      return <Loading size="small" />;
+    }
+
+    return user?.profile_picture ? (
+      <img
+        src={user.profile_picture}
+        alt="profile-img"
+        className="profile-img"
+      />
+    ) : (
+      <ProfileIcon />
+    );
+  };
 
   return (
     <div className="topbarContainer" id="topbarContainer" style={style}>
@@ -106,15 +147,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
               setIsRightDrawerContent("profile");
             }}
           >
-            {user?.profile_picture ? (
-              <img
-                src={user.profile_picture}
-                alt="profile-img"
-                className="profile-img"
-              />
-            ) : (
-              <ProfileIcon />
-            )}
+            <ProfileImage />
           </button>
         </div>
       </div>
@@ -128,15 +161,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
               setIsRightDrawerContent("profile");
             }}
           >
-            {user?.profile_picture ? (
-              <img
-                src={user.profile_picture}
-                alt="profile-img"
-                className="profile-img"
-              />
-            ) : (
-              <ProfileIcon />
-            )}
+            <ProfileImage />
           </button>
         </div>
         <div

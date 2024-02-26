@@ -1,12 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Col, Row } from "antd";
-import { useCookies } from "react-cookie";
 import { Story } from "react-insta-stories/dist/interfaces";
 import Slider from "react-slick";
 
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { UserSliceState, setUser } from "@store/slices/user";
-import useProfile from "api/user/useProfile";
+import { useAppSelector } from "@store/hooks";
+import { UserSliceState } from "@store/slices/user";
 
 import { RightSubDrawerContent } from "../../types";
 import {
@@ -17,7 +15,6 @@ import {
   TooltipIcon,
 } from "../../../../../assets/icons";
 import StoriesModal from "./components/Stories";
-import Loading from "components/loading";
 import { StorieList, storiesList } from "./data";
 
 import "./profileMenu.scss";
@@ -31,9 +28,6 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
-  const dispatch = useAppDispatch();
-  const [cookies] = useCookies(["access_token"]);
-
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedStories, setSelectedStories] = useState<Story[]>([]);
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
@@ -46,19 +40,6 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
   const userData =
     userRedux && Object.keys(userRedux).length ? userRedux : null;
 
-  const { mutate, isPending } = useProfile({
-    onSuccess: (data) => {
-      dispatch(setUser(data));
-    },
-    onError: () => {},
-  });
-
-  useEffect(() => {
-    if (!userData) {
-      mutate(cookies.access_token);
-    }
-  }, [userData, mutate, cookies.access_token]);
-
   const settings = {
     dots: false,
     infinite: false,
@@ -68,10 +49,6 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
     cssEase: "linear",
     arrows: false,
   };
-
-  if (isPending) {
-    return <Loading size="large" tip="loading..." />;
-  }
 
   return (
     <div>
