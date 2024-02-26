@@ -1,74 +1,75 @@
 .inputContainer {
   .mainItemCardv2 {
-      box-shadow: none !important;
+    box-shadow: none !important;
   }
   .input_main {
-  padding: 0.325rem 0.638rem !important;
-  display: flex;
-  align-items: center;
-  border: 0.125rem solid rgba(255, 255, 255, 0.3);
-  border-radius: 0.625rem;
-
-
-  .inputIcon {
+    padding: 0.525rem 0.638rem !important;
     display: flex;
     align-items: center;
-    width: 1rem;
-    margin-right: 0.625rem;
+    border: 0.125rem solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.625rem;
 
-    img,
-    svg {
+    .inputIcon {
+      display: flex;
+      align-items: center;
       width: 1rem;
+      margin-right: 0.625rem;
+
+      img,
+      svg {
+        width: 1rem;
+      }
     }
-  }
 
-  .suffixIcon {
-    display: flex;
-    align-items: center;
-    width: 1.5rem;
-    margin-left: 0.625rem;
-
-    img,
-    svg {
+    .suffixIcon {
+      display: flex;
+      align-items: center;
       width: 1.5rem;
-    }
-  }
+      margin-left: 0.625rem;
 
-  .inputContainer {
-    width: 100%;
-  }
-
-  label {
-    color: #ffffff99;
-    font-size: 0.575rem;
-    font-weight: 400;
-  }
-
-  input {
-    background-color: transparent;
-    border: none;
-    padding: 0.25rem 0;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #fff;
-    padding: 0;
-    margin-top: 0.013rem;
-    width: 100%;
-
-    &:focus {
-      box-shadow: none;
+      img,
+      svg {
+        width: 1.5rem;
+      }
     }
 
-    &::placeholder {
-      color: #ffffff99;
+    .inputContainer {
+      width: 100%;
+    }
+
+    label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.575rem;
       font-weight: 400;
+      span {
+        font-weight: 700;
+      }
     }
 
-    &.ant-input-disabled {
+    input {
       background-color: transparent;
+      border: none;
+      padding: 0.25rem 0;
+      font-size: 0.9rem;
+      font-weight: 500;
       color: #fff;
+      padding: 0;
+      margin-top: 0.013rem;
+      width: 100%;
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &::placeholder {
+        color: #ffffff99;
+        font-weight: 400;
+      }
+
+      &.ant-input-disabled {
+        background-color: transparent;
+        color: #fff;
+      }
     }
   }
 }
-}
-

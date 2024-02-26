@@ -7,6 +7,7 @@ interface InputProps extends OriginalInputProps {
   className?: string;
   icon?: React.ReactNode;
   suffixIcon?: React.ReactNode;
+  subTitle?: string;
   variant?: 1 | 2 | 3;
 }
 
@@ -20,6 +21,7 @@ const Input: React.FunctionComponent<InputProps> = ({
   onChange,
   type,
   variant = 2,
+  subTitle,
   ...rest
 }) => {
   return (
@@ -31,7 +33,11 @@ const Input: React.FunctionComponent<InputProps> = ({
       >
         {icon ? <div className="inputIcon">{icon}</div> : null}
         <div className="inputContainer">
-          {title ? <label>{title}</label> : null}
+          {title ? (
+            <label>
+              {title} <span> {subTitle}</span>
+            </label>
+          ) : null}
           <InputOriginal
             placeholder={placeholder}
             defaultValue={defaultValue}

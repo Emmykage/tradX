@@ -14,7 +14,7 @@ const VerificationHelpCenterSubMenu: React.FunctionComponent<
 > = ({ setIsRightSubDrawerContent }) => {
   return (
     <div className="verification-platforms-what">
-      <div className="buttons">
+      <div className="buttonCont">
         <Button
           onClick={() => {
             setIsRightSubDrawerContent("verification-helpcenter-menu");

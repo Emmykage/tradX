@@ -23,33 +23,35 @@ const TransferInput: React.FunctionComponent<TransferInputProps> = ({
   ...rest
 }) => {
   return (
-    <MainItemCard
-      variant={2}
-      pointer={false}
-      className={`transfer-input ${className ? className : ""}`}
-    >
-      {icon ? <div className="inputIcon">{icon}</div> : null}
-      <div className="inputContainer">
-        {title ? (
-          <label className="title">
-            {" "}
-            {subtitle ? (
-              <span className="subtitle">{subtitle}</span>
-            ) : null}{" "}
-            {title}
-          </label>
-        ) : null}
-        <InputOriginal
-          className="inputField"
-          placeholder={placeholder}
-          defaultValue={defaultValue}
-          onChange={onChange}
-          type={type}
-          {...rest}
-        />
-      </div>
-      {suffixIcon ? <div className="suffixIcon">{suffixIcon}</div> : null}
-    </MainItemCard>
+    <div className="transferInputContainer">
+      <MainItemCard
+        variant={2}
+        pointer={false}
+        className={`transfer-input ${className ? className : ""}`}
+      >
+        {icon ? <div className="inputIcon">{icon}</div> : null}
+        <div className="inputContainer">
+          {title ? (
+            <label className="title">
+              {" "}
+              {subtitle ? (
+                <span className="subtitle">{subtitle}</span>
+              ) : null}{" "}
+              {title}
+            </label>
+          ) : null}
+          <InputOriginal
+            className="inputField"
+            placeholder={placeholder}
+            defaultValue={defaultValue}
+            onChange={onChange}
+            type={type}
+            {...rest}
+          />
+        </div>
+        {suffixIcon ? <div className="suffixIcon">{suffixIcon}</div> : null}
+      </MainItemCard>
+    </div>
   );
 };
 
