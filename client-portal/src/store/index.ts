@@ -1,11 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { userReducer, marketsReducer, globalReducer } from "@slices";
+import {
+  userReducer,
+  marketsReducer,
+  globalReducer,
+  walletReducer,
+} from "@slices";
 
 export const store = configureStore({
   reducer: {
     global: globalReducer,
     user: userReducer,
-    markets: marketsReducer
+    markets: marketsReducer,
+    wallet: walletReducer,
   },
 });
 

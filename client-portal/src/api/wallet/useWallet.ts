@@ -3,7 +3,7 @@ import { IWallet } from "@interfaces";
 import getEnv from "utils/env";
 
 type useWalletProps = {
-  onSuccess?: (data: IWallet, variables: unknown, context: unknown) => void;
+  onSuccess?: (data: IWallet[], variables: unknown, context: unknown) => void;
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };
