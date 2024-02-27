@@ -3,6 +3,9 @@ import { Col, Row } from "antd";
 import { Story } from "react-insta-stories/dist/interfaces";
 import Slider from "react-slick";
 
+import { useAppSelector } from "@store/hooks";
+import { UserSliceState } from "@store/slices/user";
+
 import { RightSubDrawerContent } from "../../types";
 import {
   NotificationIcon2,
@@ -12,9 +15,9 @@ import {
   TooltipIcon,
 } from "../../../../../assets/icons";
 import StoriesModal from "./components/Stories";
+import { StorieList, storiesList } from "./data";
 
 import "./profileMenu.scss";
-import { StorieList, storiesList } from "./data";
 
 interface ProfileMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -30,6 +33,12 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
   const [modalKey, setModalKey] = useState<number>(0);
   const [stories] = useState<StorieList[]>(storiesList);
+
+  const userRedux = useAppSelector(
+    (state: { user: UserSliceState }) => state.user.user
+  );
+  const userData =
+    userRedux && Object.keys(userRedux).length ? userRedux : null;
 
   const settings = {
     dots: false,
@@ -54,10 +63,12 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       </div>
       <div className="flexTraderProfile">
         <div className="trader">
-          <p className="traderHead">Trader</p>
+          <p className="traderHead">
+            {userData?.first_name} {userData?.last_name}
+          </p>
           <p className="traderBottom">
             <span className="id">ID</span>
-            <span className="id-number">12345645</span>
+            <span className="id-number">{userData?.trader_id}</span>
           </p>
         </div>
         <div className="reloadIcon">

@@ -58,6 +58,17 @@
     .ant-tabs .ant-tabs-ink-bar {
       background: #ff0000;
     }
+
+    .ant-form {
+      width: 100% !important;
+    }
+    .ant-form-item {
+      margin-bottom: 0;
+
+      .ant-form-item-control {
+        margin-bottom: 0.94rem;
+      }
+    }
     input.loginInput,
     .ant-input-affix-wrapper {
       border-radius: 0.53894rem;
@@ -67,7 +78,6 @@
       width: 100%;
       outline: 0;
       color: #fff;
-      margin-bottom: 0.94rem;
       &::placeholder {
         color: #9cb0c2;
         font-size: 1rem;
@@ -117,10 +127,11 @@
     button.register {
       width: 100%;
       border-radius: 0.53894rem;
-      background: #ff0000;
+      background: #ff0000 !important;
       color: #fff;
       padding: 0.8125rem 4.0625rem;
       font-weight: 500;
+      height: 3.125rem;
     }
 
     .continueWithText {

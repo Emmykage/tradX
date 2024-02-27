@@ -5,6 +5,9 @@ import { Dispatch, SetStateAction } from "react";
 import { RightSubDrawerContent } from "../../types";
 import { InfoCircleIcon } from "../../../../../assets/icons";
 
+import { useAppSelector } from "@store/hooks";
+import { UserSliceState } from "@store/slices/user";
+
 interface EditNameProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
@@ -12,12 +15,14 @@ interface EditNameProps {
 const EditName: React.FunctionComponent<EditNameProps> = ({
   setIsRightSubDrawerContent,
 }) => {
+  const { user } = useAppSelector((state: { user: UserSliceState }) => state.user);
+
   return (
     <div className="editNameMenu">
       <Input
         placeholder="Name"
         title="Name"
-        defaultValue="John Doe"
+        defaultValue={user?.first_name}
         type="text"
         suffixIcon={<InfoCircleIcon />}
       />
