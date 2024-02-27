@@ -11,10 +11,14 @@ import LoanMicroLenders from "./pages/private/loanMicroLenders/LoanMicroLenders"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useTranslation } from "react-i18next";
 
 interface AppProps {}
 
 const App: React.FunctionComponent<AppProps> = () => {
+  const { i18n } = useTranslation();
+  document.body.dir = i18n.dir();
+  
   useEffect(() => {
     const storedScale = localStorage.getItem("scale");
 

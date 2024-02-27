@@ -3,44 +3,15 @@ import { Checkbox, Input, Tabs } from "antd";
 import type { TabsProps } from "antd";
 import "./signIn.scss";
 import { useNavigate } from "react-router-dom";
+import { useTranslation, withTranslation } from "react-i18next";
+import LoginNode from "./nodes/LoginNode";
 
 interface SignInProps {}
 
-const LoginNode = () => {
-  const navigate = useNavigate();
-  return (
-    <div className="contentContainer">
-      <input
-        className="loginInput"
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Email"
-      />
-      <Input.Password placeholder="Password" />
-      <Checkbox>Do not remember me</Checkbox>
-      <p className="forgotPass">Forgot your password?</p>
 
-      <button onClick={() => navigate("/platform")} className="login">
-        Log In
-      </button>
-
-      <div className="continueWithText">
-        <div className="liner"></div>
-        <p>Or Continue With</p>
-        <div className="liner"></div>
-      </div>
-      <div className="socialIcons">
-        <div className="topIcons">
-          <img src="/social-icons/google-round.png" />
-          <img src="/social-icons/facebook-round.png" />
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const RegistrationNode = () => {
+  const { t } = useTranslation();
   return (
     <div className="contentContainer">
       <input
@@ -117,4 +88,4 @@ const SignIn: React.FunctionComponent<SignInProps> = () => {
   );
 };
 
-export default SignIn;
+export default withTranslation()(SignIn);
