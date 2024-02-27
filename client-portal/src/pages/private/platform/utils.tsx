@@ -431,6 +431,7 @@ export function rightSubDrawerBodyHandler(
         <TransferSuccessMenu
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           title="Your Promo Code has been applied"
+          button="Done"
         />
       );
     case "select-withdraw-account":
@@ -468,6 +469,7 @@ export function rightSubDrawerBodyHandler(
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           title="Payment Successful"
           description="30 USD"
+          button="Close"
         />
       );
     case "account-rename":

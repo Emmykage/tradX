@@ -1,8 +1,11 @@
-import { Radio, RadioChangeEvent } from "antd";
 import "./addAccount.scss";
-import { Dispatch, SetStateAction, useState } from "react";
-import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { RightSubDrawerContent } from "../../types";
+
+import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
+import { debounce } from "lodash";
+import { PinnedIcon, SearchIcon } from "../../../../../assets/icons";
+import { InitialAccountsList } from "./constants";
 
 interface AddAccountMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -13,31 +16,75 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
-  const [value, setValue] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [items, setItems] = useState(InitialAccountsList);
+  const [pinnedAccount, setPinnedAccount] = useState(InitialAccountsList[0]);
 
-  const onChange = (e: RadioChangeEvent) => {
-    console.log("radio checked", e.target.value);
-    setValue(e.target.value);
+  const handleSearch = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setSearchTerm(event.target.value);
   };
+
+  useEffect(() => {
+    const debouncedSearch = debounce(() => {
+      if (searchTerm === "") {
+        setItems(
+          InitialAccountsList.filter((item) => item.id !== pinnedAccount.id)
+        );
+      } else {
+        const filteredItems = InitialAccountsList.filter((item) =>
+          item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        ).filter((item) => item.id !== pinnedAccount.id);
+        setItems(filteredItems);
+      }
+    }, 300);
+    debouncedSearch();
+    return debouncedSearch.cancel;
+  }, [searchTerm, pinnedAccount]);
 
   return (
     <div className="addAccount">
-      <p className="menuText">
-        Select the type of currency of the account you plan to trade with.
-      </p>
-
-      <Radio.Group onChange={onChange} value={value}>
-        <div className="radioGroupVerticle">
-          <Radio value={1}>USD - U.S.dollar</Radio>
-          <Radio value={2}>USDT - USDT</Radio>
-          <Radio value={3}>EUR - Euro</Radio>
+      <div className="searchAccount">
+        <SearchIcon />
+        <input type="text" value={searchTerm} onChange={handleSearch} />
+      </div>
+      <MainItemCard className="AccountPinned" variant={2}>
+        <div
+          className="PinnedValue"
+          onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("withdraw-payment");
+          }}
+        >
+          {pinnedAccount.icon}
+          <div>
+            <h2>{pinnedAccount.title}</h2>
+            <p>{pinnedAccount.amount}</p>
+          </div>
         </div>
-      </Radio.Group>
-
-      <MenuListCard className="nextButton" title="Next" textCenter onClick={() => {
-        setIsRightSubDrawerOpen(true);
-        setIsRightSubDrawerContent("account-rename");
-      }} />
+        <PinnedIcon />
+      </MainItemCard>
+      {items.map((item) => (
+        <div key={item.id} className="AccountPinnedData">
+          <div
+            className="AccountsData"
+            onClick={() => {
+              setIsRightSubDrawerOpen(true);
+              setIsRightSubDrawerContent("withdraw-payment");
+            }}
+          >
+            {item.icon}
+            <div>
+              <h2>{item.title}</h2>
+              <p>{item.amount}</p>
+            </div>
+          </div>
+          <div className="hoverPinned" onClick={() => setPinnedAccount(item)}>
+            <PinnedIcon />
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

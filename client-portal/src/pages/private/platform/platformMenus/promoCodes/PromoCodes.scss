@@ -1,11 +1,14 @@
 .promocodes {
+    .mainItemCardv2 {
+        box-shadow: none !important;
+    }
     .promocode-title{
-        font-size: 2rem;
+        font-size: 1.3rem;
         font-weight: 600;
         color: white;
     }
     .promocode-paragraph {
-        font-size: 1.25rem;
+        font-size: 1rem;
         font-weight: 400;
         color: rgba(172, 173, 174, 1);
         text-align: left;
@@ -14,6 +17,6 @@
         }
     }
     .promocode-input {
-        margin-bottom: 3.125rem;
+        margin-bottom: 1.5rem;
     }
 }

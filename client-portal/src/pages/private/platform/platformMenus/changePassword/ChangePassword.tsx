@@ -4,6 +4,7 @@ import "./changePassword.scss";
 import StrengthMeter from "./StrengthMeter";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import { RightSubDrawerContent } from "../../types";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 interface ChangePasswordProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -38,11 +39,9 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
       />
 
       <StrengthMeter password={password} />
-
-      <MenuListCard
+      <PrimaryButton
         className="changePwButton"
-        title="Change Password"
-        textCenter
+        Title="Change Password"
         onClick={() => {
           setIsRightSubDrawerContent("password-success");
           console.log("check");

@@ -1,7 +1,6 @@
 import { Upload as UploadOriginal, UploadProps as AntUploadProps } from "antd";
 import type { ReactNode } from "react";
 import "./upload.scss";
-import MainItemCard from "../mainItemCard/MainItemCard";
 import { UserIcon } from "../../assets/icons";
 
 interface UploadProps extends AntUploadProps {
@@ -16,16 +15,16 @@ const Upload: React.FunctionComponent<UploadProps> = ({
 }) => {
   return (
     <UploadOriginal
-      className="upload_main"
       beforeUpload={() => false}
+      className="upload_main"
       {...props}
     >
-      <MainItemCard variant={2} className="uploadContainer">
-        {icon ? icon : <UserIcon />}
+      <div className="uploadContainer">
+        {icon ? icon : <UserIcon opacity="0.5" />}
         <span className="uploadPlaceholder">
           {placeholder ? placeholder : "Upload"}
         </span>
-      </MainItemCard>
+      </div>
     </UploadOriginal>
   );
 };

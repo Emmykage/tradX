@@ -24,10 +24,7 @@ const MagicBoxRewards: FC<MagicBoxRewardsProps> = () => {
           Possible Rewards
         </Typography.Text>
         {/* XP Rewards */}
-        <div
-          className="profileCard reward-btn"
-          style={{ marginTop: "1.75rem" }}
-        >
+        <div className="profileCard reward-btn" style={{ marginTop: "1rem" }}>
           <button className="settings">
             <div>
               <img src="/menu-images/xpRewardIcon.png" />

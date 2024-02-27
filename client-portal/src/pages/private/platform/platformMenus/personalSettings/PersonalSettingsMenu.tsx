@@ -6,7 +6,6 @@ import { UserSliceState } from "@store/slices/user";
 import { InfoCircleIcon } from "../../../../../assets/icons";
 import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import Input from "../../../../../components/input/Input";
-import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import UploadProfile from "./UploadProfile";
 import "./personalSettingsMenu.scss";
 import { RightSubDrawerContent } from "../../types";
@@ -24,7 +23,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
 
   return (
     <div className="personalSettingsMenu">
-      <EnhanceSecurityCard variant1={2} />
+      <EnhanceSecurityCard variant1={3} variant2={3} />
 
       <div>
         <p className="menuSectionTitle">Personal</p>
@@ -77,22 +76,6 @@ const PersonalSettingsMenu: React.FunctionComponent<
               <InfoCircleIcon />
             </div>
           }
-        />
-      </div>
-
-      <div className="socialButtons">
-        <p className="menuSectionTitle">Social</p>
-        <MenuListCard
-          className="socialButton apple"
-          textCenter
-          title="Connect Apple"
-          icon={<img src="/social-icons/apple-icon.svg" />}
-        />
-        <MenuListCard
-          textCenter
-          className="socialButton facebook"
-          title="Connect Facebook"
-          icon={<img src="/social-icons/facebook-icon.svg" />}
         />
       </div>
     </div>

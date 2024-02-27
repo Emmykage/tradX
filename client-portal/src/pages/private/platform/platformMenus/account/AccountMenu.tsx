@@ -58,6 +58,7 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
       crypto: true,
     },
   ];
+
   return (
     <div>
       <div
@@ -78,7 +79,7 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
           suffixIcon={<ReloadIcon />}
           onClick={function (): void {}}
           selectedCard={null}
-          selected={true}
+          selected={selectedCard !== null ? false : true}
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />

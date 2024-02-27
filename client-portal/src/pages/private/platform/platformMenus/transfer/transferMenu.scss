@@ -1,8 +1,18 @@
 .transferMenu {
   .mainItemCardv2 {
-    box-shadow: none;
+    .cardLeftIcon {
+      margin-left: 0.5rem;
+      svg {
+        width: 1.5rem;
+      }
+    }
+    .cardRightContent {
+      text-align: center;
+      p {
+        font-size: 0.9rem;
+      }
+    }
   }
-  padding: 1.5rem;
   .withdrawTitle {
     font-weight: 600;
     font-size: 2rem;
@@ -12,15 +22,17 @@
     letter-spacing: 0.1rem;
   }
   .promoCodeInput {
+    cursor: pointer;
     padding: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   .currencyInput {
     margin-bottom: 0.9375rem;
   }
 
   .amountInputs {
-    margin-bottom: 1.875rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 
     .warningText {
       font-size: 0.875rem;

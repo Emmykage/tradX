@@ -1,28 +1,49 @@
 .tradersWay {
   .menuText {
-    color: #ffffff;
-    font-size: 0.875rem;
-    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.775rem;
+    font-weight: 300;
     margin-bottom: 1.25rem;
+    line-height: 1.15rem;
   }
-
+  .mainItemCardv2.cardv3 {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05), 0 0.063rem 0 0.063rem inset rgba(255, 255, 255, 0.26);
+    border-radius: 0.625rem;
+  }
+  .tradersWayCard {
+    margin-bottom: 0rem;
+    .cardLeftIcon {
+      margin-right: 0.5rem;
+      svg {
+        width: 1.7rem;
+        height: 1.7rem;
+      }
+    }
+  }
   .timeContainer {
     margin: 1.25rem 0;
 
     .timeCountdown {
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: #fff;
-      margin-bottom: 0.9375rem;
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(0, 148, 255, 1);
+      margin-bottom: 0.6375rem;
     }
 
     .timeLeftContainer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
+      gap: 1rem;
+      span {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: #fff;
+        margin-left: -0.7rem;
+      }
       .timeLeftText {
-        font-size: 1rem;
+        font-size: 0.7rem;
         font-weight: 400;
         color: #969798;
       }
@@ -34,13 +55,29 @@
     }
   }
 
-  .levelBar {
+    .levelBar {
+    width: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(39, 162, 255, 1),
+      rgba(0, 148, 255, 0)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    border-radius: 0.625rem;
+    padding: 0.125rem 0.5rem;
+    height: 1.3rem;
+    font-size: 0.7rem;
     margin-bottom: 1.5625rem;
-  }
-
+    .levelText {
+      margin-right: 5rem;
+    }
+    }
   .traderOptions {
     .menuListCard {
-      padding: 1.25rem;
+      padding: 1rem;
       justify-content: space-between;
 
       @media (max-width: 767px) {
@@ -57,7 +94,7 @@
 
       .cardRightContent {
         width: auto;
-        margin-left: 3.5rem;
+        margin-left: 2rem;
 
         @media (max-width: 767px) {
           margin-left: 2.5rem;
@@ -82,8 +119,8 @@
       }
 
       .tradesWayOption {
-        width: 2.0625rem;
-        height: 2.0625rem;
+        width: 1.5625rem;
+        height: 1.5625rem;
         background-color: #586162;
         display: flex;
         align-items: center;
@@ -101,7 +138,7 @@
         }
 
         .optionText {
-          font-size: 1.25rem;
+          font-size: 1rem;
           font-weight: 500;
 
           @media (max-width: 767px) {
@@ -118,13 +155,13 @@
 
       .cardRightSuffix {
         .optionSuffix {
-          min-width: 10.375rem;
+          min-width: 7.375rem;
           background-color: #272930;
-          height: 2.25rem;
+          height: 1.5rem;
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 0 0.625rem;
+          padding: 0 0.125rem;
           border-radius: 1.125rem;
 
           @media (max-width: 767px) {
@@ -138,8 +175,8 @@
           }
 
           svg {
-            width: 1.1875rem;
-            margin-right: 0.625rem;
+            width: 1rem;
+            margin-right: 0.425rem;
 
             @media (max-width: 767px) {
               width: 0.95rem;
@@ -153,7 +190,7 @@
           }
 
           p {
-            font-size: 0.8862rem;
+            font-size: 0.6862rem;
             font-weight: 400;
             color: #fff;
 

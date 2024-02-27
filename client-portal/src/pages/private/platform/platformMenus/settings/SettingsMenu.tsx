@@ -26,52 +26,77 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
       {/* <EnhanceSecurityCard /> */}
       <div className="settingsSection">
         <p className="settingsMenuTitle">Profile</p>
-        <MenuListCard
-          title="Personal"
-          subtitle="Name and contacts"
-          icon={<UserIcon />}
+        <div
+          className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("personalSettings")}
-        />
-        <MenuListCard
-          title="Verification"
-          subtitle="Full check and identity confirmation"
-          icon={<CheckMark />}
+        >
+          <UserIcon />
+          <div>
+            <h2>Personal</h2>
+            <p>Name and contacts</p>
+          </div>
+        </div>
+        <div
+          className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("verification")}
-        />
-        <MenuListCard
-          title="Two-factor authentication"
-          subtitle="Set it up to enhance your security"
-          icon={<PhoneIcon />}
+        >
+          <CheckMark />
+          <div>
+            <h2>Verification</h2>
+            <p>Full check and identity confirmation</p>
+          </div>
+        </div>
+        <div
+          className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("twofactor")}
-        />
-        <MenuListCard
-          title="Password"
-          subtitle="Keep your account secure"
-          icon={<LockIcon />}
+        >
+          <PhoneIcon />
+          <div>
+            <h2>Two-factor authentication</h2>
+            <p>Set it up to enhance your security</p>
+          </div>
+        </div>
+        <div
+          className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("change-password")}
-        />
-      </div>
-
-      <div className="settingsSection">
-        <p className="settingsMenuTitle">Setup</p>
-        <MenuListCard
-          title="Appearance"
-          subtitle="Language, themes, and sounds"
-          icon={<UserIcon />}
+        >
+          <LockIcon />
+          <div>
+            <h2>Password</h2>
+            <p>Keep your account secure</p>
+          </div>
+        </div>
+        <p className="settingsMenuTitle2">Setup</p>
+        <div
+          className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("appearance")}
-        />
-        <MenuListCard
-          title="Trading"
-          subtitle="Trades, Forex, charts"
-          icon={<TradingIcon />}
+        >
+          <UserIcon />
+          <div>
+            <h2>Appearance</h2>
+            <p>Language, themes, and sounds</p>
+          </div>
+        </div>
+        <div
+          className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("trading")}
-        />
-        <MenuListCard
-          title="Notifications"
-          subtitle="Promos, trading, pushes"
-          icon={<NotificationIcon />}
+        >
+          <TradingIcon />
+          <div>
+            <h2>Trading</h2>
+            <p>Trades, Forex, charts</p>
+          </div>
+        </div>
+        <div
+          className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("notifications")}
-        />
+        >
+          <NotificationIcon />
+          <div>
+            <h2>Notifications</h2>
+            <p>Promos, trading, pushes</p>
+          </div>
+        </div>
       </div>
 
       <div className="settingsLogoutButton">

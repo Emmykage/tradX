@@ -8,10 +8,10 @@ import { UserSliceState } from "@store/slices/user";
 
 import { RightSubDrawerContent } from "../../types";
 import {
-  ArrowUpOS,
   NotificationIcon2,
   ReloadIcon,
   SettingsIcon2,
+  SignalsIcon,
   TooltipIcon,
 } from "../../../../../assets/icons";
 import StoriesModal from "./components/Stories";
@@ -112,8 +112,8 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       >
         <div className="levelCard">
           <div className="levelCardTitleContainer">
-            <ArrowUpOS />
-            <p className="levelCardTitle">Starter</p>
+            <SignalsIcon />
+            <p className="levelCardTitle">Beginner</p>
           </div>
           <div className="levelBar">
             <p>LEVEL 1</p>

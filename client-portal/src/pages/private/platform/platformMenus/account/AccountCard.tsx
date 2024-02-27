@@ -12,6 +12,9 @@ import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./account.scss";
 import { RightSubDrawerContent } from "../../types";
 import { useNavigate } from "react-router-dom";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
+import { Col, Row } from "antd";
+import SecondaryButton from "../../../../../components/secondaryButton/SecondaryButton";
 
 interface AccountCardProps {
   icon: React.ReactNode;
@@ -56,7 +59,10 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
     >
       {selectedCard ? (
         <MainItemCard
-          className={`new-card ${isDropdownVisible ? "" : "backgroundColor"}`}
+          variant={2}
+          className={`new-card ${
+            isDropdownVisible ? "backgroundNone" : "backgroundColor"
+          }`}
         >
           <div className="leftSide-card">
             <div className="leftSide">
@@ -158,26 +164,28 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
               )}
             </div>
           </div>
-          <div className="buttons">
-            <button
-              className="buttons-1"
-              onClick={() => {
-                setIsRightSubDrawerOpen(true);
-                setIsRightSubDrawerContent("withdraw");
-              }}
-            >
-              Withdraw
-            </button>
-            <button
-              className="buttons-2"
-              onClick={() => {
-                setIsRightSubDrawerOpen(true);
-                setIsRightSubDrawerContent("payments-deposit");
-              }}
-            >
-              Deposit
-            </button>
-          </div>
+          <Row gutter={10} className="buttons">
+            <Col span={11}>
+              <SecondaryButton
+                className="buttons-1"
+                Title="Withdraw"
+                onClick={() => {
+                  setIsRightSubDrawerOpen(true);
+                  setIsRightSubDrawerContent("withdraw");
+                }}
+              />
+            </Col>
+            <Col span={11}>
+              <PrimaryButton
+                className="buttons-2"
+                Title="Deposit"
+                onClick={() => {
+                  setIsRightSubDrawerOpen(true);
+                  setIsRightSubDrawerContent("payments-deposit");
+                }}
+              />
+            </Col>
+          </Row>
         </MainItemCard>
       ) : (
         <>

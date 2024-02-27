@@ -1,27 +1,10 @@
 .selectAmountMenuCon {
   display: flex;
   flex-direction: column;
-  .selectAmountDiv {
-    .mainItemCard {
-    box-shadow: none;
-    background: none;
-    border-radius: none;
-  }
-  .mainItemCard::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: 1rem;
-    border: 0.125rem solid transparent;
-    border-bottom-width: 0;
-    background-image: linear-gradient(to bottom, #3c3d40, #2d2e32);
-    z-index: -1;
-  }
-  }
-  .confrimBtn {
-    margin-top: 3.5rem;
+  .selectedAmountdiv{
+    margin-bottom: 2rem;
+  }  
+  .confirmButton {
+    margin-top: 2.5rem;
   }
 }

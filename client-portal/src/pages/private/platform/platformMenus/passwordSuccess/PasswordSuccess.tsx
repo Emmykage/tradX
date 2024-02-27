@@ -1,9 +1,10 @@
-import { SuccessIcon } from "../../../../../assets/icons";
+import { CloseIcon, SuccessIcon } from "../../../../../assets/icons";
 import { Typography } from "antd";
 import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import "./PasswordSuccess.scss";
 import { Dispatch, SetStateAction } from "react";
 import { RightSubDrawerContent } from "../../types";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 interface PasswordSuccessProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -15,18 +16,21 @@ const PasswordSuccess: React.FunctionComponent<PasswordSuccessProps> = ({
 }) => {
   return (
     <div className="password-success">
+      <div className="closeIcon">
+        <CloseIcon />
+      </div>
       <SuccessIcon width="40" height="40" />
       <Typography.Title className="success-message">
         Your Password has been modified!
       </Typography.Title>
       <div className="button">
-        <PaymentListItemCard
+        <PrimaryButton
+          className="changePwButton"
           onClick={() => {
             console.log("settings");
             setIsRightSubDrawerContent("settings");
           }}
-          border
-          title="Done"
+          Title="Done"
         />
       </div>
     </div>

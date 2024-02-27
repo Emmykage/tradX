@@ -5,6 +5,9 @@ import { Dispatch, FC, SetStateAction } from "react";
 
 import "./withdrawMenu.scss";
 import { RightSubDrawerContent } from "../../types";
+import { Col, Row } from "antd";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
+import SecondaryButton from "../../../../../components/secondaryButton/SecondaryButton";
 
 interface WithdrawMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -19,10 +22,9 @@ const WithdrawMenu: FC<WithdrawMenuProps> = ({
     <div className="WithdrawMenu">
       {/* <div className="withdrawTitle">Withdraw</div> */}
       <DepositCard
-        variant={2}
         CountryIcon={<UsdIcon2 />}
-        account="From USD Account"
-        amount="USD 30"
+        account="From EUR Account"
+        amount="EUR 250"
         icon
         onClick={() => {
           setIsRightSubDrawerOpen(true);
@@ -33,6 +35,14 @@ const WithdrawMenu: FC<WithdrawMenuProps> = ({
         setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
         setIsRightSubDrawerContent={setIsRightSubDrawerContent}
       />
+      <Row gutter={15} className="buttonsRow">
+        <Col span={12}>
+          <PrimaryButton Title="Select Account" onClick={() => null} />
+        </Col>
+        <Col span={12}>
+          <SecondaryButton Title="Wire Transfer" onClick={() => null} />
+        </Col>
+      </Row>
     </div>
   );
 };
