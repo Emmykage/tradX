@@ -1,15 +1,16 @@
 import { Col, Row } from "antd";
 import {
   DepositsIcon2,
+  EuroFlag,
   InfoCircleIcon,
-  UsdSquareIcon,
 } from "../../../../../assets/icons";
 import Input from "../../../../../components/input/Input";
 import "./transferMenu.scss";
-import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import TransferInput from "../../../../../components/transferInput/TransferInput";
 import { Dispatch, FC, SetStateAction } from "react";
 import { RightSubDrawerContent } from "../../types";
+import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 interface TransferMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -26,12 +27,17 @@ const TransferMenu: FC<TransferMenuProps> = ({
       <TransferInput
         subtitle="From"
         className="promoCodeInput"
-        icon={<UsdSquareIcon />}
-        title="USD Account"
-        placeholder="USD 0.00"
+        icon={<EuroFlag />}
+        title="EUR Account"
+        placeholder="EUR 0.00"
         suffixIcon={<InfoCircleIcon stroke="#F58615" />}
+        onClick={() => {
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("select-account");
+        }}
       />
-      <PaymentListItemCard
+      <MenuListCard
+        variant={2}
         icon={<DepositsIcon2 />}
         title="Select Account"
         onClick={() => {
@@ -40,18 +46,17 @@ const TransferMenu: FC<TransferMenuProps> = ({
         }}
       />
       <div className="amountInputs">
-        <Row gutter={[12, 12]} justify="start">
+        <Row gutter={[20, 12]} justify="start">
           <Col span={12}>
-            <Input variant={1} title="Amount, USD" />
+            <Input variant={2} title="Amount, " subTitle=" EUR" />
           </Col>
           <Col span={12}>
-            <Input variant={1} title="Amount, PKR" />
+            <Input variant={2} title="-" />
           </Col>
         </Row>
       </div>
-      <PaymentListItemCard
-        border
-        title="Transfer"
+      <PrimaryButton
+        Title="Transfer"
         onClick={() => {
           setIsRightSubDrawerOpen(true);
           setIsRightSubDrawerContent("transfer-successful");

@@ -1,3 +1,8 @@
+import {
+  ChartIcon,
+  ProfileIcon,
+  TradingIcon2,
+} from "../../../../../assets/icons";
 import Toggle from "../../../../../components/toggle/Toggle";
 import "./tradingMenu.scss";
 
@@ -6,8 +11,10 @@ interface TradingMenuProps {}
 const TradingMenu: React.FunctionComponent<TradingMenuProps> = () => {
   return (
     <div className="tradingMenu">
-      <div className="tradingMenuSection">
-        <p className="tradingSectionTitle">Chart</p>
+      <div className="tradingMenuSection firstOrder">
+        <p className="tradingSectionTitle">
+          <ChartIcon /> Chart
+        </p>
         <Toggle
           label="Strike prices"
           subtext="Show strike prices on the chart"
@@ -26,7 +33,9 @@ const TradingMenu: React.FunctionComponent<TradingMenuProps> = () => {
       </div>
 
       <div className="tradingMenuSection">
-        <p className="tradingSectionTitle">Accounts</p>
+        <p className="tradingSectionTitle">
+          <ProfileIcon /> Accounts
+        </p>
         <Toggle
           label="Hidden balances"
           subtext="Hide your live account balances"
@@ -37,7 +46,9 @@ const TradingMenu: React.FunctionComponent<TradingMenuProps> = () => {
       </div>
 
       <div className="tradingMenuSection">
-        <p className="tradingSectionTitle">Trades</p>
+        <p className="tradingSectionTitle">
+          <TradingIcon2 /> Trades
+        </p>
         <Toggle
           label="1-click trade"
           subtext="Open trades without confirmation"
@@ -63,7 +74,7 @@ const TradingMenu: React.FunctionComponent<TradingMenuProps> = () => {
         />
       </div>
       <div className="tradingMenuSection">
-        <p className="tradingSectionTitle">Trades</p>
+        <p className="tradingSectionTitle">Forex</p>
         <Toggle
           label="Take profit and Stop Loss"
           subtext="Show take profit and Stop Loss editor on the panel for making trades"

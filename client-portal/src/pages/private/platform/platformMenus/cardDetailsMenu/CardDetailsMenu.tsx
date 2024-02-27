@@ -1,27 +1,25 @@
 import { Col, Row, Typography } from "antd";
 import "./CardDetailsMenu.scss";
-import { CardsIcons, SecureIcon } from "../../../../../assets/icons";
+import { PaymentIcon, SecureIcon } from "../../../../../assets/icons";
 import DepositInput from "../../../../../components/depositInput/DepositInput";
 import {
   AmericanCreditCardIcon,
   JcbCreditCardIcon,
-  LibreCreditCardIcon,
   VisaCardIcon,
 } from "../../../../../assets/icons";
-import DepositDarkInput from "../../../../../components/depositDarkInput/DepositDarkInput";
-import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import { Dispatch, FC, SetStateAction } from "react";
 import { RightSubDrawerContent } from "../../types";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 const CreditCardsList = [
   {
     icon: <AmericanCreditCardIcon />,
   },
   {
-    icon: <LibreCreditCardIcon />,
+    icon: <JcbCreditCardIcon />,
   },
   {
-    icon: <JcbCreditCardIcon />,
+    // icon: <LibreCreditCardIcon />,
   },
   {
     icon: <VisaCardIcon />,
@@ -42,7 +40,7 @@ const CardDetailsMenu: FC<CardDetailsMenuProps> = ({
       </Typography.Text>
       <div className="hr" />
       <div className="payment-amount-info">
-        <CardsIcons />
+        <PaymentIcon />
         <div className="payment-text">
           <Typography.Text className="payment-subtext">
             Payment Amount
@@ -53,13 +51,17 @@ const CardDetailsMenu: FC<CardDetailsMenuProps> = ({
       <DepositInput CardsIconList={CreditCardsList} placeholder="Card Number" />
       <Row gutter={16}>
         <Col span={12}>
-          <DepositDarkInput type="text" placeholder="MM/YY" />
+          <DepositInput placeholderColor type="text" placeholder="MM/YY" />
         </Col>
         <Col span={12}>
-          <DepositDarkInput type="text" placeholder="CVV/CVC" />
+          <DepositInput placeholderColor type="text" placeholder="CVV/CVC" />
         </Col>
         <Col span={24}>
-          <DepositDarkInput type="text" placeholder="Cardholder Name" />
+          <DepositInput
+            placeholderColor
+            type="text"
+            placeholder="Cardholder Name"
+          />
         </Col>
       </Row>
       <div className="card-details-description-main">
@@ -74,14 +76,13 @@ const CardDetailsMenu: FC<CardDetailsMenuProps> = ({
           This is a secure 128-bit encrypted payment.
         </Typography.Text>
       </div>
-      <PaymentListItemCard
+      <PrimaryButton
         onClick={() => {
           setIsRightSubDrawerOpen(true);
           setIsRightSubDrawerContent("depoist-successful");
         }}
         className="deposit-button"
-        title="Pay USD 30"
-        border
+        Title="Pay USD 30"
       />
     </div>
   );

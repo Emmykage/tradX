@@ -1,8 +1,8 @@
 import { SuccessIcon } from "../../../../../assets/icons";
 import { Typography } from "antd";
 import "./WithdrawRequest.scss";
-import PaymentListItemCard from "../../../../../components/paymentListItemCard/PaymentListItemCard";
 import { Dispatch, FC, SetStateAction } from "react";
+import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 interface WithdrawRequestProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -25,25 +25,26 @@ const WithdrawRequest: FC<WithdrawRequestProps> = ({
           <div className="withdraw-details">
             <div className="withdraw-transfer">
               <p>Transfer Amount - USD</p>
-              <p>10.0</p>
+              <p style={{ color: "white" }}>10.0</p>
             </div>
             <div className="hr" />
             <div className="withdraw-transfer">
               <p>Comission - USD</p>
-              <p>0.00</p>
+              <p style={{ color: "white" }}>0.00</p>
             </div>
             <div className="hr" />
             <div className="withdraw-transfer">
               <p>Total - USD</p>
-              <p>10.0</p>
+              <p style={{ color: "white" }}>10.0</p>
             </div>
             <div className="hr" />
           </div>
         </div>
       </div>
       <div className="button">
-        <PaymentListItemCard
-          title="Done"
+        <PrimaryButton
+          className="btn"
+          Title="Done"
           onClick={() => {
             setIsRightSubDrawerOpen(false);
           }}

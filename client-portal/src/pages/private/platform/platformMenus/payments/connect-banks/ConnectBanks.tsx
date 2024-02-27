@@ -15,8 +15,8 @@ import { CountryCode } from "./types";
 import "./ConnectBanks.scss";
 
 interface ConnectBanksModalProps {
-  isModalOpen: boolean; 
-  setIsModalOpen: Dispatch<SetStateAction<boolean>>
+  isModalOpen: boolean;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const ConnectBanksModal: React.FC<ConnectBanksModalProps> = ({
@@ -24,10 +24,12 @@ const ConnectBanksModal: React.FC<ConnectBanksModalProps> = ({
   setIsModalOpen,
 }) => {
   const [isSubModalShow, setIsSubModalShow] = useState(false);
-  const [currentReigion, setCurrentReigion] = useState<CountryCode | undefined>(undefined);
+  const [currentReigion, setCurrentReigion] = useState<CountryCode | undefined>(
+    undefined
+  );
 
   useEffect(() => {
-    async function reigionHandler (){
+    async function reigionHandler() {
       const reigionData = await reigionDetector();
       if (reigionData && Object.keys(banks).includes(reigionData.countryCode))
         return setCurrentReigion(reigionData?.countryCode as CountryCode);
@@ -36,7 +38,6 @@ const ConnectBanksModal: React.FC<ConnectBanksModalProps> = ({
     reigionHandler();
   }, []);
 
-  
   return (
     <>
       <AntModal
@@ -76,7 +77,7 @@ const ConnectBanksModal: React.FC<ConnectBanksModalProps> = ({
             <div className="banks-cards-list">
               {currentReigion &&
                 banks?.[currentReigion].length > 0 &&
-                banks[currentReigion].map(({ href, logo }) => (
+                banks[currentReigion].map(({ logo }) => (
                   <div
                     className="banks-card-item"
                     onClick={() => {

@@ -1,17 +1,21 @@
 .selectContainer {
   display: flex;
   align-items: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   border-radius: 0.3125rem;
   box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
     0 0.063rem 0 0.063rem inset rgba(39, 162, 255, 0.26);
+    height: 3.5rem;
 
   .selectList {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-      
+    height: 3.5rem;
+    .ant-select {
+      height: 3.5rem !important;
+    }
 
     .iconContainer {
       width: 2rem;
@@ -32,10 +36,9 @@
     label {
       position: absolute;
       top: 0.7rem;
-      // left: 3.2rem;
-      left: 12.5%;
+      left: 15.5%;
       color: #ffffff99;
-      font-size: 0.875rem;
+      font-size: 0.775rem;
       font-weight: 400;
     }
 
@@ -44,7 +47,7 @@
       height: 4.25rem;
 
       .ant-select-arrow {
-        width: 2rem;
+        width: 1.5rem;
       }
 
       .ant-select-selector {
@@ -96,7 +99,7 @@
       background-color: transparent !important;
       color: #ffffff;
       border-radius: 0.3rem;
-      padding: 0.6rem 1.5rem;
+      padding: 0.6rem 1rem;
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
       font-weight: 600;

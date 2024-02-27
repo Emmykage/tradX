@@ -5,6 +5,7 @@ import {
   IndicatorIcon2,
   PercentageIcon2,
   PlayIcon,
+  SignalsIcon,
   StrategyIcon2,
   TradeStopIcon2,
 } from "../../../../../assets/icons";
@@ -159,6 +160,7 @@ const TradersWayMenu: React.FunctionComponent<TradersWayMenuProps> = () => {
       </p>
 
       <MenuListCard
+        className="tradersWayCard"
         variant={3}
         title="From Starter to Advanced"
         subtitle="Trading Guide"
@@ -171,7 +173,7 @@ const TradersWayMenu: React.FunctionComponent<TradersWayMenuProps> = () => {
           <p className="timeLeftText">
             Time Left until the Current Trader`s Way Stage Ends
           </p>
-          <ArrowUpOS />
+          <SignalsIcon /> <span>Beginer</span>
         </div>
       </div>
 

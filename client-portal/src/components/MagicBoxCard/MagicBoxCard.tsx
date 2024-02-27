@@ -18,7 +18,7 @@ const MagicBoxCard: FC<MagicBoxCardProps> = ({ boxImage, btnAction }) => {
           <p className="megabox-text">MegaBox</p>
           <Button onClick={btnAction}>What’s Inside?</Button>
         </div>
-        <div>
+        <div className="magicBoxImage">
           <img src={boxImage} alt="Box Image" />
         </div>
       </div>

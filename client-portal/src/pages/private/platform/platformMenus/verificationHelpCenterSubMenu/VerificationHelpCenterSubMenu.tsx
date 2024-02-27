@@ -14,7 +14,7 @@ const VerificationHelpCenterSubMenu: React.FunctionComponent<
 > = ({ setIsRightSubDrawerContent }) => {
   return (
     <div className="verification-platforms-what">
-      <div className="buttons">
+      <div className="buttonCont">
         <Button
           onClick={() => {
             setIsRightSubDrawerContent("verification-helpcenter-menu");
@@ -32,8 +32,8 @@ const VerificationHelpCenterSubMenu: React.FunctionComponent<
               <p className="text">
                 Financial services regulators require brokers to verify their
                 clients. Verification helps to ensure that the trader is of
-                legal age, acts as an owner of the Tradx account and that
-                the funds in the account are legal.
+                legal age, acts as an owner of the Tradx account and that the
+                funds in the account are legal.
                 <br />
                 <br />
                 Traders provide personal information for verification including
@@ -50,7 +50,7 @@ const VerificationHelpCenterSubMenu: React.FunctionComponent<
       </MainItemCard>
 
       <div className="olymp-trade">
-        <ArrowRightIcon width="" height="" color="#0094FF" />
+        <ArrowRightIcon width="20" height="20" color="#0094FF" />
         <div>Voluntary and Mandatory Verification</div>
       </div>
     </div>
