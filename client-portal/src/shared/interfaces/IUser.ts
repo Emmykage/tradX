@@ -7,4 +7,5 @@ export default interface IUser {
   trader_id?: string;
   username?: string;
   profile_picture?: string;
+  phone_number?: string;
 }

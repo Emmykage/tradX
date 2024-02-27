@@ -66,7 +66,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
         <Input
           placeholder="Enter your phonenumber"
           title="Phone number"
-          defaultValue="(555) 555-1234"
+          defaultValue={user?.phone_number}
           type="phone"
           disabled
           suffixIcon={
