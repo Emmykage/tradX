@@ -1,10 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
+import { IUser } from "@interfaces";
 import getEnv from "utils/env";
 
 type useUpdateUserProps = {
-  onSuccess?: (data: unknown, variables: unknown, context: unknown) => void;
+  onSuccess?: (data: IUser, variables: unknown, context: unknown) => void;
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };

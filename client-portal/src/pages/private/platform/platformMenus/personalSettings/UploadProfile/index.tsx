@@ -5,8 +5,11 @@ import { type UploadChangeParam } from "antd/es/upload";
 
 import useUpdateUser from "api/user/useUpdateUser";
 import Upload from "components/upload/Upload";
+import { useAppDispatch } from "@store/hooks";
+import { setUser } from "@store/slices/user";
 
 const UploadProfile: React.FC = () => {
+  const dispatch = useAppDispatch();
   const [cookies] = useCookies(["access_token"]);
 
   const [uploadProfileImage, setUploadProfileImage] = useState<File | null>(
@@ -14,7 +17,8 @@ const UploadProfile: React.FC = () => {
   );
 
   const { mutate, isPending } = useUpdateUser({
-    onSuccess: () => {
+    onSuccess: (data) => {
+      dispatch(setUser(data));
       toast.success("Profile picture updated.");
       setUploadProfileImage(null);
     },
