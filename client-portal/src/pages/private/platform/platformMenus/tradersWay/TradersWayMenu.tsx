@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   AdvancePlusIcon2,
-  ArrowUpOS,
   IndicatorIcon2,
   PercentageIcon2,
   PlayIcon,
