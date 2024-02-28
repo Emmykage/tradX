@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { IWallet } from "@interfaces";
+import { IWallet, IWalletType } from "@interfaces";
 
 export interface WalletSliceState {
-  wallets: IWallet[] | [];
+  wallets: IWallet[];
+  walletTypes: IWalletType[];
 }
 
 const initialState: WalletSliceState = {
   wallets: [],
+  walletTypes: [],
 };
 
 export const walletSlice = createSlice({
@@ -18,9 +20,13 @@ export const walletSlice = createSlice({
       state.wallets = [...action.payload];
       return state;
     },
+    setWalletTypes: (state, action: PayloadAction<IWalletType[]>) => {
+      state.walletTypes = [...action.payload];
+      return state;
+    },
   },
 });
 
-export const { setWallets } = walletSlice.actions;
+export const { setWallets, setWalletTypes } = walletSlice.actions;
 
 export default walletSlice.reducer;
