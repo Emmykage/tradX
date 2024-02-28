@@ -79,7 +79,7 @@ const CardDetailsMenu: FC<CardDetailsMenuProps> = ({
       <PrimaryButton
         onClick={() => {
           setIsRightSubDrawerOpen(true);
-          setIsRightSubDrawerContent("depoist-successful");
+          setIsRightSubDrawerContent("deposit-confirm-payment");
         }}
         className="deposit-button"
         Title="Pay USD 30"

@@ -68,8 +68,13 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
                         className="payment-method-list-item"
                         key={`${index}-${item.name}`}
                         onClick={() => {
-                          setIsRightSubDrawerOpen(true);
-                          setIsRightSubDrawerContent("payments-deposit");
+                         if (method === "crypto") {
+                           setIsRightSubDrawerOpen(true);
+                           setIsRightSubDrawerContent("crypto-payment");
+                         } else {
+                           setIsRightSubDrawerOpen(true);
+                           setIsRightSubDrawerContent("payments-deposit");
+                         }
                         }}
                       >
                         {item.methodIcon}{" "}
@@ -91,8 +96,15 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
                 className="payment-method-list-item"
                 key={index}
                 onClick={() => {
-                  setIsRightSubDrawerOpen(true);
-                  setIsRightSubDrawerContent("payments-deposit");
+                  
+                  if (paymentType === "crypto") {
+                    setIsRightSubDrawerOpen(true);
+                    setIsRightSubDrawerContent("crypto-payment");
+                  } else {
+                    setIsRightSubDrawerOpen(true);
+                    setIsRightSubDrawerContent("payments-deposit");
+                  }
+                  
                 }}
               >
                 {item.methodIcon} <Typography.Text>{item.name}</Typography.Text>
