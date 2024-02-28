@@ -5,6 +5,7 @@ import { IWallet, IWalletType } from "@interfaces";
 export interface WalletSliceState {
   wallets: IWallet[];
   walletTypes: IWalletType[];
+  createWalletData?: { account_type: number };
 }
 
 const initialState: WalletSliceState = {
@@ -24,9 +25,17 @@ export const walletSlice = createSlice({
       state.walletTypes = [...action.payload];
       return state;
     },
+    setCreateWalletData: (
+      state,
+      action: PayloadAction<{ account_type: number }>
+    ) => {
+      state.createWalletData = { ...state.createWalletData, ...action.payload };
+      return state;
+    },
   },
 });
 
-export const { setWallets, setWalletTypes } = walletSlice.actions;
+export const { setWallets, setWalletTypes, setCreateWalletData } =
+  walletSlice.actions;
 
 export default walletSlice.reducer;

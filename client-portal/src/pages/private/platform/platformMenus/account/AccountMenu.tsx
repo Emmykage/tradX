@@ -6,12 +6,12 @@ import { WalletSliceState, setWallets } from "@store/slices/wallet";
 
 import Loading from "components/loading";
 import useWallet from "api/wallet/useWallet";
+import IocnPlaceholder from "assets/icons/IocnPlaceholder";
 import {
   AddIcon,
   GlobeIcon,
   ReloadIcon,
   ThreeDotsMenu,
-  UsdIcon2,
 } from "../../../../../assets/icons";
 import AccountCard from "./AccountCard";
 import "./account.scss";
@@ -81,7 +81,7 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
           <AccountCard
             key={account.id}
             onClick={() => setSelectedCard(index)}
-            icon={<UsdIcon2 />} // To be replaced when backend add images to wallets
+            icon={<IocnPlaceholder />} // To be replaced when backend add images to wallets
             accountType={account.account_type.toString()}
             amount={account.available_balance.toString()}
             secAmount={account.balance.toString()}

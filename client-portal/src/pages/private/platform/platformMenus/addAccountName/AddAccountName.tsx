@@ -4,6 +4,10 @@ import { Typography } from "antd";
 import Input from "../../../../../components/input/Input";
 import { RightDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { useCookies } from "react-cookie";
+import { WalletSliceState, setWallets } from "@store/slices/wallet";
+import useCreateWallet from "api/wallet/useCreateWallet";
 
 interface AddAccountNameProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -14,6 +18,32 @@ const AddAccountName: React.FunctionComponent<AddAccountNameProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightDrawerContent,
 }) => {
+  const dispatch = useAppDispatch();
+  const [cookies] = useCookies(["access_token"]);
+
+  const { wallets, createWalletData } = useAppSelector(
+    (state: { wallet: WalletSliceState }) => state.wallet
+  );
+
+  const { mutate, isPending } = useCreateWallet({
+    onSuccess: (data) => {
+      console.log("data", data);
+      setIsRightSubDrawerOpen(false);
+      setIsRightDrawerContent("account");
+      dispatch(setWallets([...wallets, data]));
+    },
+    onError: (error) => {
+      console.log("fetching wallets error", error);
+    },
+  });
+
+  const onCreateWallet = () => {
+    mutate({
+      data: createWalletData,
+      token: cookies.access_token,
+    });
+  };
+
   return (
     <div className="editNameMenu">
       <Typography.Text className="editNameMenu-text">
@@ -28,10 +58,8 @@ const AddAccountName: React.FunctionComponent<AddAccountNameProps> = ({
       />
       <PrimaryButton
         Title="Confirm"
-        onClick={() => {
-          setIsRightSubDrawerOpen(false);
-          setIsRightDrawerContent("account");
-        }}
+        onClick={onCreateWallet}
+        disabled={isPending}
       />
     </div>
   );

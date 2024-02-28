@@ -5,7 +5,11 @@ import { RightSubDrawerContent } from "../../types";
 
 import { IWalletType } from "@interfaces";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { WalletSliceState, setWalletTypes } from "@store/slices/wallet";
+import {
+  WalletSliceState,
+  setCreateWalletData,
+  setWalletTypes,
+} from "@store/slices/wallet";
 
 import Loading from "components/loading";
 import useWalletTypes from "api/wallet/useWalletTypes";
@@ -49,6 +53,12 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
     setSearchTerm(event.target.value);
   };
 
+  const onSelectAccountType = (type: number) => {
+    setIsRightSubDrawerOpen(true);
+    setIsRightSubDrawerContent("add-account-name");
+    dispatch(setCreateWalletData({ account_type: type }));
+  };
+
   useEffect(() => {
     if (walletTypes.length <= 0) {
       mutate(cookies.access_token);
@@ -87,10 +97,7 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
         <MainItemCard className="AccountPinned" variant={2}>
           <div
             className="PinnedValue"
-            onClick={() => {
-              setIsRightSubDrawerOpen(true);
-              setIsRightSubDrawerContent("add-account-name");
-            }}
+            onClick={() => onSelectAccountType(pinnedAccount.id)}
           >
             {/* TODO: Replace once backend sends images */}
             <IocnPlaceholder />
@@ -106,10 +113,7 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
         <div key={item.id} className="AccountPinnedData">
           <div
             className="AccountsData"
-            onClick={() => {
-              setIsRightSubDrawerOpen(true);
-              setIsRightSubDrawerContent("add-account-name");
-            }}
+            onClick={() => onSelectAccountType(item.id)}
           >
             {/* TODO: Replace once backend sends images */}
             <IocnPlaceholder />
