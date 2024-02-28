@@ -22,7 +22,8 @@
     .vertical-timeline-element-content {
       background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
       box-shadow: none;
-      border: 0.0625rem solid rgba(255, 255, 255, 0.3);
+      border: 0.0938rem solid ;
+      border-color: rgba(255, 255, 255, 0.16);
       border-radius: 0.625rem;
       padding-bottom: 0rem;
       margin-left: 2.8125rem;
@@ -34,6 +35,12 @@
       background-color: rgb(64, 63, 63);
       width: 1.875rem;
       height: 1.875rem;
+    }
+    &.active {
+      .vertical-timeline-element-content {
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+    
     }
   }
   .box1 {
