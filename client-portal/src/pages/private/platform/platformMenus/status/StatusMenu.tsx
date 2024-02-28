@@ -15,6 +15,7 @@ import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton
 import { Dispatch, SetStateAction, useState } from "react";
 import { Typography } from "antd";
 import { RightSubDrawerContent } from "../../types";
+import { Link } from "react-router-dom";
 
 interface StatusMenuProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
@@ -34,7 +35,7 @@ const StatusMenu: React.FunctionComponent<StatusMenuProps> = ({
           iconClassName="timeLineElipseIcon1"
           icon={active === 0 ? <TimeLineElipse /> : <TimeLineElipse2 />}
           contentArrowStyle={{ border: "none" }}
-          className="elementBox box1"
+          className={`elementBox box1 ${active === 0 ? "active" : ""}`}
         >
           <div className="boxMainDiv">
             <div className="BoxSubDiv">
@@ -51,7 +52,7 @@ const StatusMenu: React.FunctionComponent<StatusMenuProps> = ({
           iconClassName="timeLineElipseIcon1"
           icon={active === 1 ? <TimeLineElipse /> : <TimeLineElipse2 />}
           contentArrowStyle={{ border: "none" }}
-          className="elementBox box2"
+          className={`elementBox box2 ${active === 1 ? "active" : ""}`}
         >
           <div className="boxMainDiv">
             <div className="BoxSubDiv">
@@ -77,7 +78,7 @@ const StatusMenu: React.FunctionComponent<StatusMenuProps> = ({
           iconClassName="timeLineElipseIcon1"
           icon={active === 2 ? <TimeLineElipse /> : <TimeLineElipse2 />}
           contentArrowStyle={{ border: "none" }}
-          className="elementBox box3"
+          className={`elementBox box3 ${active === 2 ? "active" : ""}`}
         >
           <div className="boxMainDiv">
             <div className="BoxSubDiv">
@@ -98,9 +99,11 @@ const StatusMenu: React.FunctionComponent<StatusMenuProps> = ({
           </div>
         </VerticalTimelineElement>
       </VerticalTimeline>
-      <Typography.Link className="knowmoore">
-        Know more about Statuses
-      </Typography.Link>
+      <Link to="/statusDetails">
+        <Typography.Link className="knowmoore">
+          Know more about Statuses
+        </Typography.Link>
+      </Link>
     </div>
   );
 };

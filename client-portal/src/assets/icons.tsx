@@ -912,6 +912,26 @@ export const ArrowUpOS = () => {
   );
 };
 
+export const ArrowDownOS = () => {
+  return (
+    <svg
+      width="32"
+      height="19"
+      viewBox="0 0 32 19"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3.63867 3L15.8609 15.5L28.3609 3"
+        stroke="white"
+        stroke-width="5.55556"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
 export const DropdownIcon = () => {
   return (
     <svg
@@ -1493,6 +1513,23 @@ export const PlusIcon = () => {
     >
       <path
         d="M9.45703 4.13574V5.66504H0.685547V4.13574H9.45703ZM5.88867 0.400391V9.7168H4.2627V0.400391H5.88867Z"
+        fill="white"
+      />
+    </svg>
+  );
+};
+
+export const PlusIcon2 = () => {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9 0C9.5523 0 10 0.44772 10 1V8H17C17.5523 8 18 8.4477 18 9C18 9.5523 17.5523 10 17 10H10V17C10 17.5523 9.5523 18 9 18C8.4477 18 8 17.5523 8 17V10H1C0.44772 10 0 9.5523 0 9C0 8.4477 0.44772 8 1 8H8V1C8 0.44772 8.4477 0 9 0Z"
         fill="white"
       />
     </svg>
@@ -10174,5 +10211,52 @@ export const TimeLineElipse2 = () => (
         />
       </filter>
     </defs>
+  </svg>
+);
+
+export const BigXMarkIcon = () => (
+  <svg
+    width="56"
+    height="56"
+    viewBox="0 0 56 56"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M26.1217 18.404L12.2378 1.03253L1 1L20.3068 25.5608L26.1217 18.404Z"
+      fill="#FF1802"
+      stroke="white"
+      stroke-width="0.217786"
+      stroke-miterlimit="10"
+    />
+    <path
+      d="M43.4675 0.999512H53.2679L7.63086 46.3825L43.4675 0.999512Z"
+      fill="#FF1802"
+      stroke="white"
+      stroke-width="0.217786"
+      stroke-miterlimit="10"
+    />
+    <path
+      d="M43.5333 54.9676L54.9998 55.0002L33.4716 27.9996L47.7475 10.498L2.63283 54.6751H14.1974L31.0215 31.3178L29.9108 37.5962L43.5333 54.9676Z"
+      fill="#FF1802"
+      stroke="white"
+      stroke-width="0.217786"
+      stroke-miterlimit="10"
+    />
+  </svg>
+);
+
+export const StatusExpertIcon = () => (
+  <svg
+    width="19"
+    height="29"
+    viewBox="0 0 19 29"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M-0.00976562 21.8002L9.32357 19.0002L18.6569 21.8002V28.3335L9.32357 25.5335L-0.00976562 28.3335V21.8002ZM-0.00976562 12.4668L9.32357 9.66683L18.6569 12.4668V19.0002L9.32357 16.2002L-0.00976562 19.0002V12.4668ZM-0.00976562 3.1335L9.32357 0.333496L18.6569 3.1335V9.66683L9.32357 6.86683L-0.00976562 9.66683V3.1335Z"
+      fill="#F9B42E"
+    />
   </svg>
 );
