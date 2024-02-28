@@ -21,6 +21,7 @@ interface AddAccountMenuProps {
 
 const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
   setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [items, setItems] = useState<IWalletType[]>([]);
@@ -87,8 +88,8 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
           <div
             className="PinnedValue"
             onClick={() => {
-              setIsRightSubDrawerOpen(false);
-              // setIsRightSubDrawerContent("withdraw-payment");
+              setIsRightSubDrawerOpen(true);
+              setIsRightSubDrawerContent("add-account-name");
             }}
           >
             {/* TODO: Replace once backend sends images */}
@@ -106,8 +107,8 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
           <div
             className="AccountsData"
             onClick={() => {
-              setIsRightSubDrawerOpen(false);
-              // setIsRightSubDrawerContent("withdraw-payment");
+              setIsRightSubDrawerOpen(true);
+              setIsRightSubDrawerContent("add-account-name");
             }}
           >
             {/* TODO: Replace once backend sends images */}
