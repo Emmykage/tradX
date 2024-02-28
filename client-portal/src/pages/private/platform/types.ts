@@ -62,6 +62,7 @@ export type LeftSubDrawer =
     | "password-success"
     | "account-archive-menu"
     | "account-archive-success-menu"
+    | "add-account-name"
     | "account-rename"
     | "select-withdarw-request"
     | "withdraw-payment"

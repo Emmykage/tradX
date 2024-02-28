@@ -61,6 +61,7 @@ import StatusMenu from "./platformMenus/status/StatusMenu";
 import CryptoPayments from "./platformMenus/cryptoPayments/CryptoPayments";
 import PaymentProcessing from "./platformMenus/paymentProcessing/PaymentProcessing";
 import ConfirmPayment from "./platformMenus/confirmPayment/ConfirmPayment";
+import AddAccountName from "./platformMenus/addAccountName/AddAccountName";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -263,6 +264,8 @@ export function rightSubDrawerTitleHandler(
       return "Select Account";
     case "verification-helpcenter-menu":
       return "Help Center";
+    case "add-account-name":
+      return "Account Name";
     case "account-rename":
       return "Account Name";
     case "verification-helpcenter-sub-menu":
@@ -505,6 +508,13 @@ export function rightSubDrawerBodyHandler(
           title="Payment Successful"
           description="30 USD"
           button="Close"
+        />
+      );
+    case "add-account-name":
+      return (
+        <AddAccountName
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightDrawerContent={setIsRightDrawerContent}
         />
       );
     case "account-rename":

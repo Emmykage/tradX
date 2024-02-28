@@ -53,8 +53,8 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
         <div
           className="PinnedValue"
           onClick={() => {
-            setIsRightSubDrawerOpen(false);
-            // setIsRightSubDrawerContent("withdraw-payment");
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("add-account-name");
           }}
         >
           {pinnedAccount.icon}
@@ -71,8 +71,8 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
           <div
             className="AccountsData"
             onClick={() => {
-              setIsRightSubDrawerOpen(false);
-              // setIsRightSubDrawerContent("withdraw-payment");
+              setIsRightSubDrawerOpen(true);
+              setIsRightSubDrawerContent("add-account-name");
             }}
           >
             {item.icon}
