@@ -9993,3 +9993,186 @@ export const NumberInputIcon = () => (
     />
   </svg>
 );
+
+export const GreenSignalsIcon = () => (
+  <svg
+    width="20"
+    height="15"
+    viewBox="0 0 20 15"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect y="8" width="4" height="7" rx="2" fill="#1FBF75" />
+    <rect x="8" y="4" width="4" height="11" rx="2" fill="#1FBF75" />
+    <rect
+      x="16"
+      width="4"
+      height="15"
+      rx="2"
+      fill="#D9D9D9"
+      fill-opacity="0.2"
+    />
+  </svg>
+);
+
+export const YellowSignlasIcon = () => (
+  <svg
+    width="20"
+    height="15"
+    viewBox="0 0 20 15"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect y="8" width="4" height="7" rx="2" fill="#FFCB25" />
+    <rect x="8" y="4" width="4" height="11" rx="2" fill="#FFCB25" />
+    <rect x="16" width="4" height="15" rx="2" fill="#FFCB25" />
+  </svg>
+);
+
+export const OpenLockIcon = () => (
+  <svg
+    width="14"
+    height="20"
+    viewBox="0 0 14 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g opacity="0.3">
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M1.69167 9.26953C0.757385 9.26953 0 10.0269 0 10.9612V17.4945C0 18.4288 0.757385 19.1862 1.69167 19.1862H12.3083C13.2426 19.1862 14 18.4288 14 17.4945V10.9612C14 10.0269 13.2426 9.26953 12.3083 9.26953H1.69167ZM7.99171 13.3533C7.99171 13.741 7.76926 14.0767 7.44503 14.2398L7.99176 16.1533H5.95009L6.5046 14.2125C6.20798 14.0411 6.00838 13.7205 6.00838 13.3533C6.00838 12.8056 6.45236 12.3616 7.00004 12.3616C7.54773 12.3616 7.99171 12.8056 7.99171 13.3533Z"
+        fill="white"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M11.0671 6.17273V10.9307H7.42179V11.6573L12.4072 11.129L12.4072 6.17273C12.4072 3.21236 9.98053 0.8125 7.02016 0.8125C4.43272 0.8125 2.25299 2.6458 1.74487 5.08429H3.12456C3.60464 3.39732 5.17096 2.15256 7.02016 2.15256C9.24915 2.15256 11.0671 3.96113 11.0671 6.17273Z"
+        fill="white"
+      />
+    </g>
+  </svg>
+);
+
+export const TimeLineElipse = () => (
+  <svg
+    width="60"
+    height="60"
+    viewBox="0 0 60 60"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g filter="url(#filter0_d_2951_158774)">
+      <circle cx="29.9756" cy="25.9283" r="10.4634" fill="#0094FF" />
+      <circle
+        cx="29.9756"
+        cy="25.9283"
+        r="9.9878"
+        stroke="url(#paint0_linear_2951_158774)"
+        stroke-width="0.951219"
+      />
+    </g>
+    <defs>
+      <filter
+        id="filter0_d_2951_158774"
+        x="0.487818"
+        y="0.245332"
+        width="58.9755"
+        height="58.9746"
+        filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB"
+      >
+        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
+        <feOffset dy="3.80488" />
+        <feGaussianBlur stdDeviation="9.51219" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow_2951_158774"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow_2951_158774"
+          result="shape"
+        />
+      </filter>
+      <linearGradient
+        id="paint0_linear_2951_158774"
+        x1="29.9756"
+        y1="15.4648"
+        x2="29.9756"
+        y2="36.3917"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="white" />
+        <stop offset="1" stop-color="white" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+export const TimeLineElipse2 = () => (
+  <svg
+    width="60"
+    height="60"
+    viewBox="0 0 60 60"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g filter="url(#filter0_d_2951_158798)">
+      <path
+        d="M40.9268 25.979C40.9268 31.7578 36.2422 36.4425 30.4634 36.4425C24.6846 36.4425 20 31.7578 20 25.979C20 20.2003 24.6846 15.5156 30.4634 15.5156C36.2422 15.5156 40.9268 20.2003 40.9268 25.979Z"
+        fill="#65656A"
+      />
+    </g>
+    <defs>
+      <filter
+        id="filter0_d_2951_158798"
+        x="0.975611"
+        y="0.296114"
+        width="58.9755"
+        height="58.9746"
+        filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB"
+      >
+        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
+        <feOffset dy="3.80488" />
+        <feGaussianBlur stdDeviation="9.51219" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow_2951_158798"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow_2951_158798"
+          result="shape"
+        />
+      </filter>
+    </defs>
+  </svg>
+);
