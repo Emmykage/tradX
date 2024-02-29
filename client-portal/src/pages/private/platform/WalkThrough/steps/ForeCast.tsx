@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { staticData } from "../data/initialGraphData";
 import ChartComponent from "../components/WalkthroughChart";
+import { useTranslation } from "react-i18next";
 
 interface ForeCastProps {
   className: string;
@@ -9,6 +10,7 @@ interface ForeCastProps {
 
 const ForeCast: React.FC<ForeCastProps> = ({ className, setStep }) => {
   const [graphData, setGraphData] = useState<any>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setGraphData(staticData);
@@ -21,13 +23,10 @@ const ForeCast: React.FC<ForeCastProps> = ({ className, setStep }) => {
         <div className="graphOverlay"></div>
       </div>
       <img className="euroUsdButton" src="/walkthrough/eur-usd-btn.png" />
-      <p className="walkthroughSubtext">
-        Traders make forecasts on the price will change in the near future. such
-        a forecast is called a “trade”.
-      </p>
+      <p className="walkthroughSubtext">{t("walkthroughForeCastSubText")}</p>
 
       <button className="walkthroughButton" onClick={() => setStep(5)}>
-        Next
+        {t("next")}
       </button>
     </div>
   );

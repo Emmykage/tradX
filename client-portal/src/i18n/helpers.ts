@@ -1,6 +1,8 @@
 export function localFlagHandler (countryCode: string){
     switch(countryCode) {
         case "en-US":
+        case "en":
+        case "en-UK":
             return "/menu-images/uk-flag.png";
         case "id":
             return "/public/menu-images/svgs/IndonesiaFlag.svg";

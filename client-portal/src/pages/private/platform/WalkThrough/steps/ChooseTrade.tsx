@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import TradeForm from "../../../../../components/tradeForm/TradeForm";
 import ChartComponent from "../components/WalkthroughChart";
 import { staticData } from "../data/initialGraphData";
+import { useTranslation, withTranslation } from "react-i18next";
 
 interface ChooseTradeProps {
   className: string;
@@ -22,6 +23,8 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
   const [time, setTime] = useState(60);
   const [displayTimer, setDisplayTimer] = useState(false);
   const [tradingCompleted, setTradingCompleted] = useState(false);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     setShowTooltip(open);
@@ -62,13 +65,12 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
           src="/walkthrough/eur-usd-btn-2.png"
         />
         <div className={`timeCounter ${displayTimer ? "active" : ""}`}>
-          <p>Wait for the result of the trade ({time}).</p>
+          <p>{t("walkthroughChooseTrade", { time })}</p>
         </div>
 
         <div className={`tradingCompleted ${tradingCompleted ? "active" : ""}`}>
           <p className="walkthroughSubtext">
-            Congratulations! Your trade was successful. By Investing $100,
-            you’ve earned $85 - a 85% return in just 1 minute.
+            {t("walkthroughChooseTradeSubText")}
           </p>
 
           <button
@@ -79,7 +81,7 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
               localStorage.setItem("walkthroughSkipped", "true");
             }}
           >
-            Finish training
+            {t("finishTrading")}
           </button>
         </div>
       </div>
@@ -112,4 +114,4 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
   );
 };
 
-export default ChooseTrade;
+export default withTranslation()(ChooseTrade);

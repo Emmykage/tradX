@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Col, Row, Typography } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import "./Download.scss";
 import { ArrowLeftIcon } from "../../../assets/icons";
@@ -33,6 +34,7 @@ const urlsForDownload: UrlMappings = {
 };
 
 const Download = () => {
+  const { t } = useTranslation();
   let navigation = useNavigate();
   const [activeTab, setActiveTab] = useState("anydesk");
 
@@ -50,17 +52,17 @@ const Download = () => {
       </div>
       <div className="downloads-header">
         <Typography.Title className="downloads-header-title">
-          Download the right version for you
+          {t("downloadRightVersion")}
         </Typography.Title>
         <div onClick={() => navigation(-1)} className="buttonContent">
-          <button>Back</button>
+          <button>{t("back")}</button>
         </div>
       </div>
       <div className="line-bar">
         <div className="rectangle-download-links"></div>
       </div>
       <div className="subTitle">
-        <div className="downloads-platforms">All platforms .All devices</div>
+        <div className="downloads-platforms">{t("allPlatformsDevices")}</div>
       </div>
       {/* AnyDesk and TeamViewer links */}
       <div className="downloads-platforms-links">
@@ -101,43 +103,43 @@ const Download = () => {
             <img src="/downloads/WindowsLogo.svg" alt="windowsLogo" />
             <div className="elipse-windows"></div>
           </div>
-          <p>Windows</p>
+          <p>{t("windows")}</p>
         </Col>
         <Col onClick={() => handleClick("macOS")} className="device-container">
           <div className="device-box">
-            <img src="/downloads/MacosLogo.svg" alt="windowsLogo" />
+            <img src="/downloads/MacosLogo.svg" alt="macOSLogo" />
             <div className="elipse-macos-1"></div>
             <div className="elipse-macos-2"></div>
           </div>
-          <p>macOS</p>
+          <p>{t("macOS")}</p>
         </Col>
         <Col
           onClick={() => handleClick("Chrome OS")}
           className="device-container"
         >
           <div className="device-box">
-            <img src="/downloads/ChromeLogo.svg" alt="windowsLogo" />
+            <img src="/downloads/ChromeLogo.svg" alt="chromeOSLogo" />
             <div className="elipse-chrome"></div>
           </div>
-          <p>Chrome OS</p>
+          <p>{t("chromeOS")}</p>
         </Col>
         <Col onClick={() => handleClick("iOS")} className="device-container">
           <div className="device-box">
-            <img src="/downloads/IosLogo.svg" alt="windowsLogo" />
+            <img src="/downloads/IosLogo.svg" alt="iOSLogo" />
             <div className="elipse-ios"></div>
           </div>
-          <p>iOS</p>
+          <p>{t("iOS")}</p>
         </Col>
         <Col
           onClick={() => handleClick("Android")}
           className="device-container"
         >
           <div className="device-box">
-            <img src="/downloads/AndroidLogo.svg" alt="windowsLogo" />
+            <img src="/downloads/AndroidLogo.svg" alt="androidLogo" />
             <div className="elipse-android-1"></div>
             <div className="elipse-android-2"></div>
           </div>
-          <p>Android</p>
+          <p>{t("android")}</p>
         </Col>
       </Row>
     </div>

@@ -1,9 +1,13 @@
+import { useTranslation } from "react-i18next";
+
 interface StocksProps {
   className: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const Stocks: React.FC<StocksProps> = ({ className, setStep }) => {
+  const { t } = useTranslation();
+
   const stockListOne = [
     { name: "Caterpillar", img: "/walkthrough/stocks/stock-cat.png" },
     { name: "GBP/CAD", img: "/walkthrough/stocks/sock-uk-can.png" },
@@ -43,13 +47,10 @@ const Stocks: React.FC<StocksProps> = ({ className, setStep }) => {
           ))}
         </div>
       </div>
-      <p className="walkthroughSubtext">
-        Trading is an activity that lets you earn money on price fluctuations of
-        different assets such as currency pairs, commodities and stocks.
-      </p>
+      <p className="walkthroughSubtext">{t("walkthroughStocksSubText")}</p>
 
       <button className="walkthroughButton" onClick={() => setStep(3)}>
-        Next
+        {t("next")}
       </button>
     </div>
   );

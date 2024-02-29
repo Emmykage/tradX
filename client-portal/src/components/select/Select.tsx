@@ -13,6 +13,7 @@ interface SelectProps {
   icon?: ReactNode;
   background?: string;
   height?: string;
+  customRootClass?: string;
 }
 
 const Select: React.FunctionComponent<SelectProps> = ({
@@ -25,6 +26,7 @@ const Select: React.FunctionComponent<SelectProps> = ({
   icon,
   background,
   height,
+  customRootClass,
 }) => {
   return (
     <div className={`selectContainer`}>
@@ -39,7 +41,7 @@ const Select: React.FunctionComponent<SelectProps> = ({
           suffixIcon={<DropdownIcon />}
           rootClassName={`customSelectDropdown ${height ? height : ""} ${
             background ? background : ""
-          }`}
+          } ${customRootClass}`}
           onClick={onClick}
           onBlur={onBlur}
         />
