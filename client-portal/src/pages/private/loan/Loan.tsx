@@ -1,14 +1,21 @@
 import "./loan.scss";
 import { Col, Row } from "antd";
 import { Link } from "react-router-dom";
-import LoanNavbar from "../../../components/loanNavbar/LoanNavbar";
+// import LoanNavbar from "../../../components/loanNavbar/LoanNavbar";
 
 const Loan = () => {
   return (
     <div className="loan">
-      <LoanNavbar />
-      <div className="loanTitle">Get a Loan</div>
-      <div className="rectangle-loan-links"></div>
+      {/* <LoanNavbar /> */}
+      <div className="loanHeader">
+        <div>
+          <div className="loanTitle">Get a Loan</div>
+          <div className="rectangle-loan-links"></div>
+        </div>
+        <div className="btnBox">
+          Back
+        </div>
+      </div>
       <Row className="BoxesDiv">
         <Link to="/loan/microlenders">
           <Col className="rectangleBox">
