@@ -1,25 +1,42 @@
+import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
+
 import { IWallet } from "@interfaces";
 import getEnv from "utils/env";
 
-type useWalletProps = {
-  onSuccess?: (data: IWallet[], variables: unknown, context: unknown) => void;
+type useCreateWalletProps = {
+  onSuccess?: (data: IWallet, variables: unknown, context: unknown) => void;
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };
 
-export async function fethWallet(token: string): Promise<any> {
+type WalletData = {
+  account_type: number;
+};
+
+export async function fetchCreateWallet(
+  data: WalletData,
+  token: string
+): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
     const response = await fetch(`${BASE_URL}/wallet/wallets/`, {
-      method: "GET",
+      method: "POST",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify(data),
     });
     const result = await response.json();
 
     if (!response.ok) {
+      Object.keys(result).forEach((field) => {
+        const errors = result[field];
+        errors.forEach((errorMessage: string) => {
+          toast.error(`${field}: ${errorMessage}`);
+        });
+      });
       throw new Error(`${result}`);
     }
     return result;
@@ -28,8 +45,8 @@ export async function fethWallet(token: string): Promise<any> {
   }
 }
 
-export const useWallet = (props: useWalletProps) => {
-  const receivedProps = props || ({} as useWalletProps);
+export const useCreateWallet = (props: useCreateWalletProps) => {
+  const receivedProps = props || ({} as useCreateWalletProps);
 
   const {
     onSuccess: onSuccessOverride,
@@ -38,7 +55,8 @@ export const useWallet = (props: useWalletProps) => {
   } = receivedProps;
 
   return useMutation<any, unknown, any>({
-    mutationFn: (token: string) => fethWallet(token),
+    mutationFn: (variables) =>
+      fetchCreateWallet(variables.data, variables.token),
     onSuccess: (data, variables, context) => {
       if (onSuccessOverride) {
         onSuccessOverride(data, variables, context);
@@ -53,4 +71,4 @@ export const useWallet = (props: useWalletProps) => {
   });
 };
 
-export default useWallet;
+export default useCreateWallet;

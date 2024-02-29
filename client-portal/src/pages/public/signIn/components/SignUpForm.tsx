@@ -17,7 +17,9 @@ const SignUpForm = () => {
   const { mutate, isPending } = useRegister({
     onSuccess: () => {
       reset();
-      toast.success("You have successfully registered your account, Login Now!");
+      toast.success(
+        "You have successfully registered your account, Login Now!"
+      );
     },
   });
 
@@ -27,32 +29,6 @@ const SignUpForm = () => {
 
   return (
     <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
-      <Form.Item
-        name="email"
-        rules={[{ required: true, message: "Email is required" }]}
-      >
-        <input
-          className="loginInput"
-          type="email"
-          id="email"
-          placeholder="Email"
-          {...register("email")}
-        />
-      </Form.Item>
-
-      <Form.Item
-        name="phone_number"
-        rules={[{ required: true, message: "Phone number is required" }]}
-      >
-        <input
-          className="loginInput"
-          type="tel"
-          id="phone_number"
-          placeholder="Phone number"
-          {...register("phone_number")}
-        />
-      </Form.Item>
-
       <Form.Item
         name="first_name"
         rules={[{ required: true, message: "First Name is required" }]}
@@ -76,6 +52,32 @@ const SignUpForm = () => {
           id="last_name"
           placeholder="Last Name"
           {...register("last_name")}
+        />
+      </Form.Item>
+
+      <Form.Item
+        name="email"
+        rules={[{ required: true, message: "Email is required" }]}
+      >
+        <input
+          className="loginInput"
+          type="email"
+          id="email"
+          placeholder="Email"
+          {...register("email")}
+        />
+      </Form.Item>
+
+      <Form.Item
+        name="phone_number"
+        rules={[{ required: true, message: "Phone number is required" }]}
+      >
+        <input
+          className="loginInput"
+          type="tel"
+          id="phone_number"
+          placeholder="Phone number"
+          {...register("phone_number")}
         />
       </Form.Item>
 

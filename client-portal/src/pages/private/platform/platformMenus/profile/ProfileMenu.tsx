@@ -123,8 +123,16 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
       </div>
 
       <div className="statusTooltip">
-        <p>What are Statuses?</p>
-        <TooltipIcon />
+        <div
+          className="statusTooltipInner"
+          onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("status");
+          }}
+        >
+          <p>What are Statuses?</p>
+          <TooltipIcon />
+        </div>
       </div>
 
       <div className="taskCards">

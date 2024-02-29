@@ -1,17 +1,21 @@
 import { useMutation } from "@tanstack/react-query";
-import { IWallet } from "@interfaces";
+import { ITransaction } from "@interfaces";
 import getEnv from "utils/env";
 
-type useWalletProps = {
-  onSuccess?: (data: IWallet[], variables: unknown, context: unknown) => void;
+type useTransactionsProps = {
+  onSuccess?: (
+    data: ITransaction[],
+    variables: unknown,
+    context: unknown
+  ) => void;
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };
 
-export async function fethWallet(token: string): Promise<any> {
+export async function fetchTransactions(token: string): Promise<any> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
-    const response = await fetch(`${BASE_URL}/wallet/wallets/`, {
+    const response = await fetch(`${BASE_URL}/wallet/transactions/`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -28,8 +32,8 @@ export async function fethWallet(token: string): Promise<any> {
   }
 }
 
-export const useWallet = (props: useWalletProps) => {
-  const receivedProps = props || ({} as useWalletProps);
+export const useTransactions = (props: useTransactionsProps) => {
+  const receivedProps = props || ({} as useTransactionsProps);
 
   const {
     onSuccess: onSuccessOverride,
@@ -38,7 +42,7 @@ export const useWallet = (props: useWalletProps) => {
   } = receivedProps;
 
   return useMutation<any, unknown, any>({
-    mutationFn: (token: string) => fethWallet(token),
+    mutationFn: (token: string) => fetchTransactions(token),
     onSuccess: (data, variables, context) => {
       if (onSuccessOverride) {
         onSuccessOverride(data, variables, context);
@@ -53,4 +57,4 @@ export const useWallet = (props: useWalletProps) => {
   });
 };
 
-export default useWallet;
+export default useTransactions;

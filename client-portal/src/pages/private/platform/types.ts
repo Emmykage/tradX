@@ -24,6 +24,7 @@ export type LeftSubDrawer =
 
   export type RightSubDrawerContent =
     | "settings"
+    | "status"
     | "twofactor"
     | "personalSettings"
     | "verification"
@@ -61,7 +62,11 @@ export type LeftSubDrawer =
     | "password-success"
     | "account-archive-menu"
     | "account-archive-success-menu"
+    | "add-account-name"
     | "account-rename"
     | "select-withdarw-request"
     | "withdraw-payment"
+    | "crypto-payment"
+    | "crypto-payment-processing"
+    | "deposit-confirm-payment"
     | null;

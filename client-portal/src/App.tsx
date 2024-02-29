@@ -14,9 +14,11 @@ import getEnv from "./utils/env";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import useMouseIdle from "hooks/useMouseIdle";
+import StatusDetails from "./pages/public/statusDetails/StatusDetails";
 import RequireAuth from "components/requireAuth";
 import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
+// import EmailVerification from "pages/public/emailVerification/EmailVerification";
 
 interface AppProps {}
 
@@ -58,9 +60,11 @@ const App: React.FunctionComponent<AppProps> = () => {
           <Route path="/lender" element={<Lender />} />
           {/* <Route path="/loan" element={<Loan />} /> */}
           {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
+          <Route path="/statusDetails" element={<StatusDetails />} />
         </Route>
         <Route path="/downloads" element={<Download />} />
         <Route path="/" element={<SignIn />} />
+        {/* <Route path="/verify-email" element={<EmailVerification />} /> */}
       </Routes>
     </HashRouter>
   );

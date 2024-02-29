@@ -1,14 +1,17 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { WalletSliceState, setWallets } from "@store/slices/wallet";
+
+import Loading from "components/loading";
 import useWallet from "api/wallet/useWallet";
+import IocnPlaceholder from "assets/icons/IocnPlaceholder";
 import {
   AddIcon,
   GlobeIcon,
   ReloadIcon,
-  TetherIcon,
   ThreeDotsMenu,
-  UsdIcon2,
 } from "../../../../../assets/icons";
 import AccountCard from "./AccountCard";
 import "./account.scss";
@@ -24,40 +27,31 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
   setIsRightSubDrawerContent,
 }) => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
-  const [cookies] = useCookies(["access_token"]);
 
-  const { mutate } = useWallet({
+  const dispatch = useAppDispatch();
+  const [cookies] = useCookies(["access_token"]);
+  const { wallets } = useAppSelector(
+    (state: { wallet: WalletSliceState }) => state.wallet
+  );
+
+  const { mutate, isPending } = useWallet({
     onSuccess: (data) => {
-      console.log("wallets", data);
+      dispatch(setWallets(data));
     },
     onError: (error) => {
-      console.log("wallets error", error);
+      console.log("fetching wallets error", error);
     },
   });
 
   useEffect(() => {
-    mutate(cookies.access_token);
+    if (wallets.length <= 0) {
+      mutate(cookies.access_token);
+    }
   }, []);
 
-  const accounts = [
-    {
-      id: 2,
-      icon: <UsdIcon2 />,
-      accountType: "OK",
-      amount: "$20.00",
-      secAmount: "D9,999.00",
-      suffixIcon: <ThreeDotsMenu />,
-    },
-    {
-      id: 3,
-      icon: <TetherIcon />,
-      accountType: "USDT Account USDT",
-      amount: "₮0.00",
-      secAmount: "₮0.00 Bonus",
-      suffixIcon: <ThreeDotsMenu />,
-      crypto: true,
-    },
-  ];
+  if (isPending) {
+    return <Loading size="large" />;
+  }
 
   return (
     <div>
@@ -83,16 +77,16 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
-        {accounts.map((account, index) => (
+        {wallets.map((account, index) => (
           <AccountCard
             key={account.id}
             onClick={() => setSelectedCard(index)}
-            icon={account.icon}
-            accountType={account.accountType}
-            secAmount={account.secAmount}
-            amount={account.amount}
-            suffixIcon={account.suffixIcon}
-            tag={account?.crypto ? "Crypto" : ""}
+            icon={<IocnPlaceholder />} // To be replaced when backend add images to wallets
+            accountType={account.name}
+            amount={account.available_balance.toString()}
+            secAmount={account.account_type__symbol}
+            suffixIcon={<ThreeDotsMenu />}
+            tag="" // To be added when backend updates response
             selectedCard={selectedCard === index}
             setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
             setIsRightSubDrawerContent={setIsRightSubDrawerContent}

@@ -15,8 +15,8 @@ const Upload: React.FunctionComponent<UploadProps> = ({
 }) => {
   return (
     <UploadOriginal
-      className="upload_main"
       beforeUpload={() => false}
+      className="upload_main"
       {...props}
     >
       <div className="uploadContainer">

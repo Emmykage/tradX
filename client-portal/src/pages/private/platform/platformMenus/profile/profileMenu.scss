@@ -171,7 +171,6 @@
     padding: 0.125rem 0.5rem;
     height: 1rem;
     font-size: 0.7rem;
-
     .levelText {
       font-size: 0.7rem;
       margin-left: 2rem;
@@ -182,14 +181,18 @@
 .statusTooltip {
   margin-top: 0.9375rem;
   display: flex;
-  align-items: center;
   justify-content: end;
   color: #ffffff80;
   font-size: 0.75rem;
   margin-bottom: 1.25rem;
-
-  p {
-    margin-right: 0.3125rem;
+  .statusTooltipInner {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    cursor: pointer;
+    p {
+      margin-right: 0.3125rem;
+    }
   }
 }
 

@@ -57,6 +57,11 @@ import AccountArchivedSuccessMenu from "./platformMenus/accountArchivedSuccessMe
 import AccountRename from "./platformMenus/accountRename/AccountRename";
 import WithdrawRequest from "./platformMenus/withdrawRequest/WithdrawRequest";
 import WithdrawPayment from "./platformMenus/withdrawpayment/WithdrawPayment";
+import StatusMenu from "./platformMenus/status/StatusMenu";
+import CryptoPayments from "./platformMenus/cryptoPayments/CryptoPayments";
+import PaymentProcessing from "./platformMenus/paymentProcessing/PaymentProcessing";
+import ConfirmPayment from "./platformMenus/confirmPayment/ConfirmPayment";
+import AddAccountName from "./platformMenus/addAccountName/AddAccountName";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -259,12 +264,22 @@ export function rightSubDrawerTitleHandler(
       return "Select Account";
     case "verification-helpcenter-menu":
       return "Help Center";
+    case "add-account-name":
+      return "Account Name";
     case "account-rename":
       return "Account Name";
     case "verification-helpcenter-sub-menu":
       return "Help Center";
     case "account-archive-menu":
       return "Confirmation";
+    case "status":
+      return "Statuses";
+    case "crypto-payment":
+      return "Crypto Payment";
+    case "crypto-payment-processing":
+      return "Crypto Payment";
+    case "deposit-confirm-payment":
+      return "Confirm Payment";
     default:
       return "";
   }
@@ -282,6 +297,10 @@ export function rightSubDrawerBodyHandler(
     case "settings":
       return (
         <SettingsMenu setIsRightSubDrawerContent={setIsRightSubDrawerContent} />
+      );
+    case "status":
+      return (
+        <StatusMenu setIsRightSubDrawerContent={setIsRightSubDrawerContent} />
       );
     case "twofactor":
       return <TwoFactorMenu />;
@@ -405,6 +424,7 @@ export function rightSubDrawerBodyHandler(
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
       );
+
     case "card-details-menu":
       return (
         <CardDetailsMenu
@@ -417,6 +437,24 @@ export function rightSubDrawerBodyHandler(
         <PaymentMethod
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    case "crypto-payment":
+      return (
+        <CryptoPayments
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    case "crypto-payment-processing":
+      return (
+        <PaymentProcessing
+        // setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+        />
+      );
+    case "deposit-confirm-payment":
+      return (
+        <ConfirmPayment
+        // setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
       );
     case "payments-promo-code":
@@ -472,6 +510,13 @@ export function rightSubDrawerBodyHandler(
           button="Close"
         />
       );
+    case "add-account-name":
+      return (
+        <AddAccountName
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightDrawerContent={setIsRightDrawerContent}
+        />
+      );
     case "account-rename":
       return (
         <AccountRename
@@ -501,6 +546,7 @@ export function rightSubDrawerExtraHandler(
 ): JSX.Element | null {
   switch (rightSubDrawerContent) {
     case "account-archive-success-menu":
+    case "crypto-payment-processing":
       return null;
     case "twofactor":
     case "verification":
@@ -547,6 +593,12 @@ export function rightSubDrawerExtraHandler(
     case "card-details-menu":
       return (
         <div onClick={() => setIsRightSubDrawerContent("payments-deposit")}>
+          <ArrowLeftOS />
+        </div>
+      );
+    case "crypto-payment":
+      return (
+        <div onClick={() => setIsRightSubDrawerContent("payment-method")}>
           <ArrowLeftOS />
         </div>
       );
