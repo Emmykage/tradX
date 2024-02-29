@@ -16,7 +16,16 @@
   }
 
   .status {
+    color: #fff;
     font-size: 1.25rem;
     font-weight: 400;
+
+    &.success {
+      color: #1fbf75;
+    }
+
+    &.error {
+      color: #f15131;
+    }
   }
 }

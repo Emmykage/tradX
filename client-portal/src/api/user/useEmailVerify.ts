@@ -1,5 +1,4 @@
 import { useMutation } from "@tanstack/react-query";
-import { toast } from "react-toastify";
 
 import getEnv from "utils/env";
 
@@ -8,45 +7,34 @@ type EmailVerificationVariables = {
   token?: string;
 };
 
+type VerificationReponse = { detail: string };
+
 type useEmailVerifyProps = {
   onSuccess?: (
-    data: { detail: string },
+    data: VerificationReponse,
     variables: EmailVerificationVariables,
     context: unknown
   ) => void;
   onError?: (
-    error: unknown,
+    error: VerificationReponse,
     variables: EmailVerificationVariables,
     context: unknown
   ) => void;
   [index: string]: any;
 };
 
-export async function fetchEmailVerify(
-  data: EmailVerificationVariables
-): Promise<boolean> {
+export async function fetchEmailVerify(data: EmailVerificationVariables) {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
     const response = await fetch(
-      `${BASE_URL}/user/verify_email/${data.uidb64}/${data.token}`,
+      `${BASE_URL}/user/verify_email/${data.uidb64}/${data.token}/`,
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        referrerPolicy: "no-referrer",
-        body: JSON.stringify(data),
       }
     );
     const result = await response.json();
 
     if (!response.ok) {
-      Object.keys(result).forEach((field) => {
-        const errors = result[field];
-        errors.forEach((errorMessage: string) => {
-          toast.error(`${field}: ${errorMessage}`);
-        });
-      });
       throw new Error(`${result}`);
     }
     return result;
@@ -64,7 +52,7 @@ export const useEmailVerify = (props: useEmailVerifyProps) => {
     ...rest
   } = receivedProps;
 
-  return useMutation<any, unknown, EmailVerificationVariables>({
+  return useMutation<any, VerificationReponse, EmailVerificationVariables>({
     mutationFn: fetchEmailVerify,
     onSuccess: (data, variables, context) => {
       if (onSuccessOverride) {
