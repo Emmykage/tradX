@@ -4,6 +4,7 @@ import { ArrowRightOS } from "../../../../../assets/icons";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import CarouselSlider from "../../../../../components/carouselSlider/CarouselSlider";
 import { Col, Row } from "antd";
+import MarketSubMenuSlider from "../../../../../components/marketSubMenuSlider/MarketSubMenuSlider";
 
 interface MarketMenuProps {}
 
@@ -72,66 +73,29 @@ const MarketMenu: React.FunctionComponent<MarketMenuProps> = () => {
       <MarketLink text="My Purchases & Rewards" />
       <MarketLink text="My Published Strategies" />
       <CarouselSlider>
-        <Row className="menuSecondCardCon slider1">
-          <Col span={12} className="menuSecondCard">
-            <p className="menuSecondCardText1">Astro</p>
-            <p className="menuSecondCardText2">
-              Astrology-based tools to help align your trades with the stars
-            </p>
-          </Col>
-          <Col span={10} className="menuSecondCardImage ">
-            <div className="imgDiv">
-              <img className="img" src="/market-menu-images/Astro.png" alt="" />
-            </div>
-            <img
-              className="backgroundImage"
-              src="/market-menu-images/astro.svg"
-              alt=""
-            />
-          </Col>
-        </Row>
-        <Row className="menuSecondCardCon slider2">
-          <Col span={12} className="menuSecondCard">
-            <p className="menuSecondCardText1">Forex</p>
-            <p className="menuSecondCardText2">
-              Strategies, signals, and themes designed for trading on crypto
-              assets
-            </p>
-          </Col>
-          <Col span={10} className="menuSecondCardImage">
-            <div className="imgDiv">
-              <img className="img" src="/market-menu-images/Forex.png" alt="" />
-            </div>
-            <img
-              className="backgroundImage"
-              src="/market-menu-images/forex.svg"
-              alt=""
-            />
-          </Col>
-        </Row>
-        <Row className="menuSecondCardCon slider3">
-          <Col span={12} className="menuSecondCard">
-            <p className="menuSecondCardText1">Crypto</p>
-            <p className="menuSecondCardText2">
-              Strategies, signals, and themes designed for trading on crypto
-              assets
-            </p>
-          </Col>
-          <Col span={10} className="menuSecondCardImage">
-            <div className="imgDiv">
-              <img
-                className="img"
-                src="/market-menu-images/Crypto.png"
-                alt=""
-              />
-            </div>
-            <img
-              className="backgroundImage"
-              src="/market-menu-images/crypto.svg"
-              alt=""
-            />
-          </Col>
-        </Row>
+        <MarketSubMenuSlider
+          title="Astro"
+          desc="Astrology-based tools to help align your trades with the stars"
+          img="/market-menu-images/Astro.png"
+          bgImg="/market-menu-images/astro.svg"
+          bgCol="purple"
+        />
+        <MarketSubMenuSlider
+          title="Forex"
+          desc="Strategies, signals, and themes designed for trading on crypto
+              assets"
+          img="/market-menu-images/Forex.png"
+          bgImg="/market-menu-images/forex.svg"
+          bgCol="red"
+        />
+        <MarketSubMenuSlider
+          title="Crypto"
+          desc="Strategies, signals, and themes designed for trading on crypto
+              assets"
+          img="/market-menu-images/Crypto.png"
+          bgImg="/market-menu-images/crypto.svg"
+          bgCol="green"
+        />
       </CarouselSlider>
       {MarketMenuList.map((item) => (
         <div key={item.id} className="menuthirdCardCon">
