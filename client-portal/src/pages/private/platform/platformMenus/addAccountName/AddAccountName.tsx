@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Typography } from "antd";
 
 import Input from "../../../../../components/input/Input";
@@ -20,6 +20,7 @@ const AddAccountName: React.FunctionComponent<AddAccountNameProps> = ({
 }) => {
   const dispatch = useAppDispatch();
   const [cookies] = useCookies(["access_token"]);
+  const [name, setName] = useState("");
 
   const { wallets, createWalletData } = useAppSelector(
     (state: { wallet: WalletSliceState }) => state.wallet
@@ -27,7 +28,6 @@ const AddAccountName: React.FunctionComponent<AddAccountNameProps> = ({
 
   const { mutate, isPending } = useCreateWallet({
     onSuccess: (data) => {
-      console.log("data", data);
       setIsRightSubDrawerOpen(false);
       setIsRightDrawerContent("account");
       dispatch(setWallets([...wallets, data]));
@@ -39,7 +39,7 @@ const AddAccountName: React.FunctionComponent<AddAccountNameProps> = ({
 
   const onCreateWallet = () => {
     mutate({
-      data: createWalletData,
+      data: { ...createWalletData, name },
       token: cookies.access_token,
     });
   };
@@ -53,7 +53,8 @@ const AddAccountName: React.FunctionComponent<AddAccountNameProps> = ({
       <Input
         placeholder="Account Name"
         title="Account Name"
-        defaultValue="USDT 6"
+        defaultValue={name}
+        onChange={(e) => setName(e.target.value)}
         type="text"
       />
       <PrimaryButton

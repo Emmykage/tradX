@@ -82,9 +82,9 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
             key={account.id}
             onClick={() => setSelectedCard(index)}
             icon={<IocnPlaceholder />} // To be replaced when backend add images to wallets
-            accountType={account.account_type.toString()}
+            accountType={account.name}
             amount={account.available_balance.toString()}
-            secAmount={account.balance.toString()}
+            secAmount={account.account_type__symbol}
             suffixIcon={<ThreeDotsMenu />}
             tag="" // To be added when backend updates response
             selectedCard={selectedCard === index}

@@ -2,10 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { IWallet, IWalletType } from "@interfaces";
 
+interface WalletData {
+  account_type?: number;
+  name?: string;
+}
+
 export interface WalletSliceState {
   wallets: IWallet[];
   walletTypes: IWalletType[];
-  createWalletData?: { account_type: number };
+  createWalletData?: WalletData;
 }
 
 const initialState: WalletSliceState = {
@@ -25,10 +30,7 @@ export const walletSlice = createSlice({
       state.walletTypes = [...action.payload];
       return state;
     },
-    setCreateWalletData: (
-      state,
-      action: PayloadAction<{ account_type: number }>
-    ) => {
+    setCreateWalletData: (state, action: PayloadAction<WalletData>) => {
       state.createWalletData = { ...state.createWalletData, ...action.payload };
       return state;
     },
