@@ -30,13 +30,14 @@ const ConfirmMail: React.FunctionComponent<ConfirmMailProps> = () => {
 
   const [email, setEmail] = useState(user?.email);
 
-  const onUpdateEmail = () => {
+  const onSendVerification = () => {
     mutate(cookies.access_token);
   };
 
   return (
     <div className="confirmMailMenu">
       <Input
+        disabled
         placeholder="Enter your email"
         title="Email"
         defaultValue={email}
@@ -48,8 +49,8 @@ const ConfirmMail: React.FunctionComponent<ConfirmMailProps> = () => {
       <MenuListCard
         disabled={user?.email_verified || isPending || emailSent}
         textCenter
-        title="Continue"
-        onClick={onUpdateEmail}
+        title="Confirm"
+        onClick={onSendVerification}
       />
     </div>
   );
