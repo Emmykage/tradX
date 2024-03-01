@@ -9,12 +9,16 @@ const MarketSubMenuCard = ({
   rating,
   price,
   total,
+  month,
+  white,
 }: {
   img: string;
   title: string;
   rating: string;
-  price: string;
+  price?: string;
   total: string;
+  month?: boolean;
+  white?: boolean;
 }) => {
   return (
     <div className="marketSubMenuCard">
@@ -31,10 +35,14 @@ const MarketSubMenuCard = ({
                 <p>{rating}</p> <StarRatingBlueIcon />
               </div>
             </div>
-            <h3>
-              ${price} <span>/ Month</span>
-            </h3>
-            <h4>{total} traders purchased</h4>
+            {price ? (
+              <h3>
+                ${price} {month ? "" : <span>/ Month</span>}
+              </h3>
+            ) : (
+              <h3 className={`${white ? "white" : ""}`}>Free</h3>
+            )}
+            <h4>{total}</h4>
           </Col>
         </Row>
       </MainItemCard>
