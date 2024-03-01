@@ -62,12 +62,6 @@ import CryptoPayments from "./platformMenus/cryptoPayments/CryptoPayments";
 import PaymentProcessing from "./platformMenus/paymentProcessing/PaymentProcessing";
 import ConfirmPayment from "./platformMenus/confirmPayment/ConfirmPayment";
 import AddAccountName from "./platformMenus/addAccountName/AddAccountName";
-import SignalsMarketSubMenu from "./platformMenus/marketSubMenu/SignalsMarketSubMenu";
-import StrategiesMarketSubMenu from "./platformMenus/marketSubMenu/StrategiesMarketSubMenu";
-import IndicatorsMarketSubMenu from "./platformMenus/marketSubMenu/IndicatorsMarketSubMenu";
-import AdvisersMarketSubMenu from "./platformMenus/marketSubMenu/AdvisersMarketSubMenu";
-import ThemesMarketSubMenu from "./platformMenus/marketSubMenu/ThemesMarketSubMenu";
-import CustomStrategiesMarketSubMenu from "./platformMenus/marketSubMenu/CustomStrategiesMarketSubMenu";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -97,7 +91,7 @@ export function leftDrawerBodyHandler(
     case "trades":
       return <TradesMenu />;
     case "market":
-      return <CustomStrategiesMarketSubMenu />;
+      return <MarketMenu />;
     case "events":
       return <EventsMenu />;
     case "help":
