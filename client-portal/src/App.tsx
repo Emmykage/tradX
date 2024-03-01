@@ -18,7 +18,7 @@ import StatusDetails from "./pages/public/statusDetails/StatusDetails";
 import RequireAuth from "components/requireAuth";
 import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
-// import EmailVerification from "pages/public/emailVerification/EmailVerification";
+import EmailVerification from "pages/public/emailVerification/EmailVerification";
 
 interface AppProps {}
 
@@ -64,7 +64,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         </Route>
         <Route path="/downloads" element={<Download />} />
         <Route path="/" element={<SignIn />} />
-        {/* <Route path="/verify-email" element={<EmailVerification />} /> */}
+        <Route path="/verify-email" element={<EmailVerification />} />
       </Routes>
     </HashRouter>
   );

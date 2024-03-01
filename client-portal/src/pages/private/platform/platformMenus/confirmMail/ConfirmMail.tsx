@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { UserSliceState, setUser } from "@store/slices/user";
-import useUpdateUser from "api/user/useUpdateUser";
+import { useAppSelector } from "@store/hooks";
+import { UserSliceState } from "@store/slices/user";
+import useSendEmailVerification from "api/user/useSendEmailVerification";
 
 import { InfoCircleIcon } from "../../../../../assets/icons";
 import Input from "../../../../../components/input/Input";
@@ -14,29 +14,24 @@ import "./confirmMail.scss";
 interface ConfirmMailProps {}
 
 const ConfirmMail: React.FunctionComponent<ConfirmMailProps> = () => {
-  const dispatch = useAppDispatch();
   const [cookies] = useCookies(["access_token"]);
+  const [emailSent, setEmailSent] = useState(false);
 
   const { user } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
 
-  const { mutate, isPending } = useUpdateUser({
+  const { mutate, isPending } = useSendEmailVerification({
     onSuccess: (data) => {
-      dispatch(setUser(data));
-      toast.success("You email has been updated.");
+      toast.success(data.detail);
+      setEmailSent(true);
     },
   });
 
   const [email, setEmail] = useState(user?.email);
 
   const onUpdateEmail = () => {
-    mutate({
-      data: {
-        email,
-      },
-      token: cookies.access_token,
-    });
+    mutate(cookies.access_token);
   };
 
   return (
@@ -51,7 +46,7 @@ const ConfirmMail: React.FunctionComponent<ConfirmMailProps> = () => {
       />
 
       <MenuListCard
-        disabled={!!(user?.email == email) || isPending}
+        disabled={user?.email_verified || isPending || emailSent}
         textCenter
         title="Continue"
         onClick={onUpdateEmail}

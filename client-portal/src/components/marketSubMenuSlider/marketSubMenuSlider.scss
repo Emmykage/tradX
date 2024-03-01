@@ -1,0 +1,85 @@
+  .marketSubMenuSlider {
+    margin-bottom: 2.5rem;
+    padding: 1rem 0.5rem;
+    overflow: hidden;
+    display: flex !important;
+    border-radius: 0.625rem;
+
+    .menuSecondCard {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      .menuSecondCardText1 {
+        margin-top: 0.7rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #ffffff;
+      }
+      .menuSecondCardText2 {
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+    .menuSecondCardImage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      .imgDiv {
+        margin-left: -0.5rem;
+        .img {
+          width: 7.5rem;
+          height: 7.5rem;
+        }
+      }
+      .backgroundImage {
+        position: absolute;
+        right: -13px;
+        top: -16px;
+        height: 128%;
+        bottom: 0;
+        z-index: -1;
+      }
+    }
+  }
+.red {
+     background: linear-gradient(
+      to left,
+      rgba(189, 0, 52, 0.25),
+      rgba(0, 0, 0, 0.4)
+    );
+}
+
+.purple {
+    background: linear-gradient(
+      to left,
+      rgba(140, 12, 240, 0.25),
+      rgba(0, 0, 0, 0.4)
+    );
+}
+
+.green {
+    background: linear-gradient(
+      to left,
+      rgba(107, 255, 91, 0.25),
+      rgba(0, 0, 0, 0.4)
+    );
+    .menuSecondCardImage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      .imgDiv {
+        margin-left: -0.5rem;
+        .img {
+          width: 8.5rem !important;
+          height: 7.5rem !important;
+        }
+      }
+    }
+}

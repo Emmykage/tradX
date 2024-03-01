@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./emailVerification.scss";
 import { Spin } from "antd";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useEmailVerify from "api/user/useEmailVerify";
 
 interface EmailVerificationProps {}
@@ -9,6 +9,7 @@ interface EmailVerificationProps {}
 const EmailVerification: React.FunctionComponent<
   EmailVerificationProps
 > = () => {
+  const navigate = useNavigate();
   const location = useLocation();
 
   const [loading, setLoading] = useState(true);
@@ -20,6 +21,9 @@ const EmailVerification: React.FunctionComponent<
       setStatus("success");
       setStatusMsg(data.detail);
       setLoading(false);
+      setTimeout(() => {
+        navigate("/platform");
+      }, 2000);
     },
     onError: () => {
       setStatus("error");
@@ -33,8 +37,6 @@ const EmailVerification: React.FunctionComponent<
     const uidb64 = queryParams.get("uidb64") || undefined;
     const token = queryParams.get("token") || undefined;
 
-    console.log("uidb64", uidb64);
-    console.log("token", token);
     mutate({ uidb64, token });
   }, [mutate]);
 

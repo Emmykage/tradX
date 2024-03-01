@@ -8,4 +8,5 @@ export default interface IUser {
   username?: string;
   profile_picture?: string;
   phone_number?: string;
+  phone_verified?: boolean;
 }
