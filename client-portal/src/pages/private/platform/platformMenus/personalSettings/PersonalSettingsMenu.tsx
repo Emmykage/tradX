@@ -3,7 +3,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import { useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
 
-import { InfoCircleIcon } from "../../../../../assets/icons";
+import { CheckIcon, InfoCircleIcon } from "../../../../../assets/icons";
 import EnhanceSecurityCard from "../../../../../components/enhanceSecurityCard/EnhanceSecurityCard";
 import Input from "../../../../../components/input/Input";
 import UploadProfile from "./UploadProfile";
@@ -44,6 +44,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
       <div>
         <p className="menuSectionTitle">Contacts</p>
         <InputOverlay
+          disabled={user?.email_verified}
           onClick={() => setIsRightSubDrawerContent("confirm-email")}
         >
           <Input
@@ -54,12 +55,13 @@ const PersonalSettingsMenu: React.FunctionComponent<
             disabled
             suffixIcon={
               <div className="infoIcon">
-                <InfoCircleIcon />
+                {user?.email_verified ? <CheckIcon /> : <InfoCircleIcon />}
               </div>
             }
           />
         </InputOverlay>
         <InputOverlay
+          disabled={user?.phone_verified}
           onClick={() => setIsRightSubDrawerContent("confirm-phone")}
         >
           <Input
@@ -70,7 +72,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
             disabled
             suffixIcon={
               <div className="infoIcon">
-                <InfoCircleIcon />
+                {user?.phone_verified ? <CheckIcon /> : <InfoCircleIcon />}
               </div>
             }
           />
