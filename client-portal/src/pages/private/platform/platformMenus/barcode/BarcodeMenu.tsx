@@ -1,4 +1,4 @@
-import { BarcodeIcon, StarRatingIcon } from "../../../../../assets/icons";
+import { StarRatingIcon } from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./barcode.scss";
 
@@ -7,6 +7,7 @@ interface BarcodeMenuProps {}
 const BarcodeMenu: React.FunctionComponent<BarcodeMenuProps> = () => {
   const BarcodeCardContent = () => (
     <div className="barcodeCardContent">
+      <h2>Barcode</h2>
       <div className="cardTop">
         <p className="cardTitle">Active</p>
         <p className="cardTime">until 02/16/2024</p>
@@ -23,7 +24,7 @@ const BarcodeMenu: React.FunctionComponent<BarcodeMenuProps> = () => {
   return (
     <div className="barcodeMenu">
       <MenuListCard
-        icon={<BarcodeIcon />}
+        icon={<img src="/market-menu-images/BarCode.svg" alt="barcode" />}
         customContent={<BarcodeCardContent />}
       />
     </div>

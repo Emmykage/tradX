@@ -9,6 +9,7 @@ import Input from "../../../../../components/input/Input";
 import UploadProfile from "./UploadProfile";
 import "./personalSettingsMenu.scss";
 import { RightSubDrawerContent } from "../../types";
+import InputOverlay from "./InputOverlay";
 
 interface PersonalSettingsMenuProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
@@ -27,56 +28,53 @@ const PersonalSettingsMenu: React.FunctionComponent<
 
       <div>
         <p className="menuSectionTitle">Personal</p>
-        <Input
-          placeholder="Enter your name"
-          title="Name"
-          defaultValue={user?.first_name}
-          type="text"
-          disabled
-          suffixIcon={
-            <div
-              className="infoIcon"
-              onClick={() => setIsRightSubDrawerContent("edit-name")}
-            >
-              <InfoCircleIcon />
-            </div>
-          }
-        />
+        <InputOverlay onClick={() => setIsRightSubDrawerContent("edit-name")}>
+          <Input
+            placeholder="Eneter your name"
+            title="Name"
+            defaultValue={user?.first_name}
+            type="text"
+            disabled
+          />
+        </InputOverlay>
+
         <UploadProfile />
       </div>
 
       <div>
         <p className="menuSectionTitle">Contacts</p>
-        <Input
-          placeholder="Enter your email"
-          title="Email"
-          defaultValue={user?.email}
-          type="email"
-          disabled
-          suffixIcon={
-            <div
-              className="infoIcon"
-              onClick={() => setIsRightSubDrawerContent("confirm-email")}
-            >
-              <InfoCircleIcon />
-            </div>
-          }
-        />
-        <Input
-          placeholder="Enter your phonenumber"
-          title="Phone number"
-          defaultValue={user?.phone_number}
-          type="phone"
-          disabled
-          suffixIcon={
-            <div
-              className="infoIcon"
-              onClick={() => setIsRightSubDrawerContent("confirm-phone")}
-            >
-              <InfoCircleIcon />
-            </div>
-          }
-        />
+        <InputOverlay
+          onClick={() => setIsRightSubDrawerContent("confirm-email")}
+        >
+          <Input
+            placeholder="Enter your email"
+            title="Email"
+            defaultValue={user?.email}
+            type="email"
+            disabled
+            suffixIcon={
+              <div className="infoIcon">
+                <InfoCircleIcon />
+              </div>
+            }
+          />
+        </InputOverlay>
+        <InputOverlay
+          onClick={() => setIsRightSubDrawerContent("confirm-phone")}
+        >
+          <Input
+            placeholder="Enter your phonenumber"
+            title="Phone number"
+            defaultValue={user?.phone_number}
+            type="phone"
+            disabled
+            suffixIcon={
+              <div className="infoIcon">
+                <InfoCircleIcon />
+              </div>
+            }
+          />
+        </InputOverlay>
       </div>
     </div>
   );
