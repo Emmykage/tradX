@@ -5,17 +5,24 @@ import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import CarouselSlider from "../../../../../components/carouselSlider/CarouselSlider";
 import { Col, Row } from "antd";
 import MarketSubMenuSlider from "../../../../../components/marketSubMenuSlider/MarketSubMenuSlider";
+import { Dispatch, SetStateAction } from "react";
+import { LeftSubDrawer } from "../../types";
 
-interface MarketMenuProps {}
+interface MarketMenuProps {
+  setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
+  setIsLeftSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+}
 
-const MarketLink = ({ text, link }: { text: string; link?: string }) => {
-  const navigate = useNavigate();
+const MarketLink = ({
+  text,
+  onClick,
+}: {
+  text: string;
+  onClick?: () => void;
+}) => {
+  // const navigate = useNavigate();
   return (
-    <MainItemCard
-      onClick={() => navigate(link || "")}
-      className="menufirstCard"
-      variant={2}
-    >
+    <MainItemCard onClick={onClick} className="menufirstCard" variant={2}>
       <p className="menufirstCardText">{text}</p>
       <ArrowRightOS width="22" height="22" />
     </MainItemCard>
@@ -67,11 +74,26 @@ const MarketMenuList = [
   },
 ];
 
-const MarketMenu: React.FunctionComponent<MarketMenuProps> = () => {
+const MarketMenu: React.FunctionComponent<MarketMenuProps> = ({
+  setLeftSubDrawer,
+  setIsLeftSubDrawerOpen,
+}) => {
   return (
     <div className="market-menu">
-      <MarketLink text="My Purchases & Rewards" />
-      <MarketLink text="My Published Strategies" />
+      <MarketLink
+        onClick={() => {
+          setLeftSubDrawer("barcode");
+          setIsLeftSubDrawerOpen(true);
+        }}
+        text="My Purchases & Rewards"
+      />
+      <MarketLink
+        onClick={() => {
+          setLeftSubDrawer("published-strategies");
+          setIsLeftSubDrawerOpen(true);
+        }}
+        text="My Published Strategies"
+      />
       <CarouselSlider>
         <MarketSubMenuSlider
           title="Astro"

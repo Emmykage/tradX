@@ -142,7 +142,7 @@
   padding-top: 1rem;
   padding-bottom: 0.4125rem;
   align-items: center;
-
+  gap: 1rem;
   .levelCardTitleContainer {
     display: flex;
     align-items: center;
@@ -150,10 +150,13 @@
 
     .levelCardTitle {
       color: #ffffff;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
       margin-left: 0.3375rem;
       margin-right: 0.5rem;
+      @media (max-width: 576px) {
+        font-size: 0.8rem;
+      }
     }
   }
   .levelBar {
@@ -170,10 +173,22 @@
     border-radius: 0.625rem;
     padding: 0.125rem 0.5rem;
     height: 1rem;
-    font-size: 0.7rem;
+    @media (max-width: 307px) {
+      justify-content: start;
+      width: 80%;
+    }
+    p {
+      font-size: 0.6rem;
+      @media (max-width: 307px) {
+        font-size: 0.4rem;
+      }
+    }
     .levelText {
       font-size: 0.7rem;
       margin-left: 2rem;
+      @media (max-width: 307px) {
+        font-size: 0.4rem;
+      }
     }
   }
 }
