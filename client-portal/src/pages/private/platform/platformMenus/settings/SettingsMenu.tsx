@@ -2,6 +2,9 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
+import { setUser } from "@store/slices/user";
+import { useAppDispatch } from "@store/hooks";
+
 import {
   CheckMark,
   ExitIcon,
@@ -23,11 +26,13 @@ interface SettingsMenuProps {
 const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
   setIsRightSubDrawerContent,
 }) => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [, , removeCookie] = useCookies(["access_token", "refresh_token"]);
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
 
   const handleLogout = () => {
+    dispatch(setUser(null));
     removeCookie("access_token");
     removeCookie("refresh_token");
     navigate("/");

@@ -5,6 +5,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { Button } from "antd";
 
 import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { setUser } from "@store/slices/user";
 import { GlobalStates, setIsIdle } from "@store/slices/global";
 
 import Modal from "components/modal/Modal";
@@ -49,6 +50,7 @@ const RequireAuth = () => {
   };
 
   const handleLogout = () => {
+    dispatch(setUser(null));
     removeCookie("access_token");
     removeCookie("refresh_token");
     setIsIdle(false);
