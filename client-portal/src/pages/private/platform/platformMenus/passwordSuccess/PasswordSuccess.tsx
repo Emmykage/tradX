@@ -1,5 +1,6 @@
 import { CloseIcon, SuccessIcon } from "../../../../../assets/icons";
 import { Typography } from "antd";
+
 import "./PasswordSuccess.scss";
 import { Dispatch, SetStateAction } from "react";
 import { RightSubDrawerContent } from "../../types";
