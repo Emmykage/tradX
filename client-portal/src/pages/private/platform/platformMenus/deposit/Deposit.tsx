@@ -6,10 +6,14 @@ import {
   PaymentIcon,
   PromoCodeIcon,
 } from "../../../../../assets/icons";
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction, useCallback, useMemo } from "react";
 import { RightSubDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import SecondaryButton from "../../../../../components/secondaryButton/SecondaryButton";
+import useStripeCheckout from "api/srtipe/useStripeCheckout";
+import { useAppSelector } from "@store/hooks";
+import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 
 interface DepositProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -20,6 +24,43 @@ const Deposit: FC<DepositProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
+  
+  const { mutate: checkoutMutate } = useStripeCheckout({});
+
+  const { amount } = useAppSelector((state) => state.payment)
+  const { wallets } = useAppSelector((state) => state.wallet);
+
+  const [cookies] = useCookies(["access_token"]);
+
+  const walletId = useMemo(() => {
+    if(wallets.length > 0) return wallets[0]?.id;
+    return undefined;
+  },[])
+  
+
+  const checkoutHandler = useCallback(() => {
+    if (amount && walletId) {
+      return checkoutMutate(
+        {
+          amount,
+          walletId,
+          token: cookies.access_token,
+        },
+        {
+          onSuccess: (data) => {
+            console.log({data});
+            return window.location.replace(data?.checkout_url);
+          },
+          // @ts-expect-error
+          // TODO - Fix error message type error
+          onError: (error) => toast.error(error?.message),
+        }
+      );
+    } else {
+      toast.error("Amount or Walled invalid");
+    }
+  }, [amount, walletId, cookies]);
+
   return (
     <div className="deposit">
       <Typography.Text className="deposit-subtext">
@@ -32,7 +73,8 @@ const Deposit: FC<DepositProps> = ({
       </div>
       <DepositCard
         account="Deposit Amount"
-        amount="EUR 250"
+        amount={amount}
+        currency="EUR"
         CountryIcon={<EuroFlag />}
         icon
         onClick={() => {
@@ -40,24 +82,27 @@ const Deposit: FC<DepositProps> = ({
           setIsRightSubDrawerContent("select-deposit-amount");
         }}
       />
-      <DepositCard
+      {/* <DepositCard
         account="Payment Method"
         amount="Card"
         CountryIcon={<PaymentIcon />}
         disabled
         icon
         onClick={() => {
-          setIsRightSubDrawerOpen(true);
-          setIsRightSubDrawerContent("payment-method");
+          // setIsRightSubDrawerOpen(true);
+          // setIsRightSubDrawerContent("payment-method");
         }}
-      />
+      /> */}
       <Row gutter={16} className="buttonsContainer">
         <Col span={12}>
           <PrimaryButton
-            disabled
+            disabled={!amount}
             onClick={() => {
-              setIsRightSubDrawerOpen(true);
-              setIsRightSubDrawerContent("card-details-menu");
+              // todo - This flow is commented current time, until the back-end methods will be ready
+              // setIsRightSubDrawerOpen(true);
+              // setIsRightSubDrawerContent("card-details-menu");
+              // ** Calling the checkout end-point when the user click's on next
+              checkoutHandler();
             }}
             className="payment-card-next-button"
             Title="Next"
