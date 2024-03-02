@@ -62,6 +62,7 @@ import CryptoPayments from "./platformMenus/cryptoPayments/CryptoPayments";
 import PaymentProcessing from "./platformMenus/paymentProcessing/PaymentProcessing";
 import ConfirmPayment from "./platformMenus/confirmPayment/ConfirmPayment";
 import AddAccountName from "./platformMenus/addAccountName/AddAccountName";
+import PublishedStrategiesMenu from "./platformMenus/publishedStrategiesMenu/PublishedStrategiesMenu";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -91,7 +92,12 @@ export function leftDrawerBodyHandler(
     case "trades":
       return <TradesMenu />;
     case "market":
-      return <MarketMenu />;
+      return (
+        <MarketMenu
+          setLeftSubDrawer={setLeftSubDrawer}
+          setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen}
+        />
+      );
     case "events":
       return <EventsMenu />;
     case "help":
@@ -117,6 +123,10 @@ export function leftSubDrawerTitleHandler(
       return "Help Center";
     case "support":
       return "Support";
+    case "barcode":
+      return "Barcode";
+    case "published-strategies":
+      return "My Published Strategies";
     case "trading-platform":
       return "Help Center";
     case "why-coose-us":
@@ -134,6 +144,10 @@ export function leftSubDrawerBodyHandler(
       return <HelpCenter setLeftSubDrawer={setLeftSubDrawer} />;
     case "support":
       return <SupportMenu />;
+    case "barcode":
+      return <BarcodeMenu />;
+    case "published-strategies":
+      return <PublishedStrategiesMenu />;
     case "trading-platform":
       return <TradingPlatform setLeftSubDrawer={setLeftSubDrawer} />;
     case "what-is-trading":
