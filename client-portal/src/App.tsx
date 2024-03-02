@@ -8,6 +8,8 @@ import Transactions from "./pages/private/transactions/Transactions";
 // import GetLoan from "./pages/private/get-loan/GetLoan";
 // import Loan from "./pages/private/loan/Loan";
 // import LoanMicroLenders from "./pages/private/loanMicroLenders/LoanMicroLenders";
+import EmailVerification from "pages/public/emailVerification/EmailVerification";
+import ResetPassword from "pages/public/resetPassword/ResetPassword";
 
 import getEnv from "./utils/env";
 
@@ -18,7 +20,6 @@ import StatusDetails from "./pages/public/statusDetails/StatusDetails";
 import RequireAuth from "components/requireAuth";
 import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
-import EmailVerification from "pages/public/emailVerification/EmailVerification";
 
 interface AppProps {}
 
@@ -65,6 +66,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/downloads" element={<Download />} />
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
+        <Route path="/password-reset" element={<ResetPassword />} />
       </Routes>
     </HashRouter>
   );
