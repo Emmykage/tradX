@@ -12,6 +12,8 @@ export type LeftSubDrawer =
   | "trading-platform"
   | "what-is-trading"
   | "why-coose-us"
+  | "barcode"
+  | "published-strategies"
   | null;
 
   export type RightDrawerContent =
