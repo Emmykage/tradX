@@ -50,7 +50,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
           <Input
             placeholder="Enter your email"
             title="Email"
-            defaultValue={user?.email}
+            defaultValue={user?.blured_email}
             type="email"
             disabled
             suffixIcon={
@@ -67,7 +67,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
           <Input
             placeholder="Enter your phonenumber"
             title="Phone number"
-            defaultValue={user?.phone_number}
+            defaultValue={user?.blured_phone_number}
             type="phone"
             disabled
             suffixIcon={
