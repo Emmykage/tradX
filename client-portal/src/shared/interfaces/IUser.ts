@@ -9,4 +9,5 @@ export default interface IUser {
   profile_picture?: string;
   phone_number?: string;
   phone_verified?: boolean;
+  is_walkthrough_completed?: boolean;
 }

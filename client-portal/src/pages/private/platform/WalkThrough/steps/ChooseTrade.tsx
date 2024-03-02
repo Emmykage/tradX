@@ -7,14 +7,14 @@ interface ChooseTradeProps {
   className: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   open: boolean;
-  setShowWalkThrough: React.Dispatch<React.SetStateAction<boolean>>;
+  onSkipWalkthrough: () => void;
 }
 
 const ChooseTrade: React.FC<ChooseTradeProps> = ({
   className,
   setStep,
   open,
-  setShowWalkThrough,
+  onSkipWalkthrough,
 }) => {
   const [graphData, setGraphData] = useState<any>([]);
   const [userInput, setUserInput] = useState<"up" | "down" | null>(null);
@@ -71,14 +71,7 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
             you’ve earned $85 - a 85% return in just 1 minute.
           </p>
 
-          <button
-            className="walkthroughButton"
-            onClick={() => {
-              setShowWalkThrough(false);
-              setStep(0);
-              localStorage.setItem("walkthroughSkipped", "true");
-            }}
-          >
+          <button className="walkthroughButton" onClick={onSkipWalkthrough}>
             Finish training
           </button>
         </div>
