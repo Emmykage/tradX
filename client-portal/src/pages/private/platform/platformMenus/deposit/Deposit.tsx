@@ -1,4 +1,4 @@
-import { Col, Row, Typography } from "antd";
+import { Col, Row, Spin, Typography } from "antd";
 import "./Deposit.scss";
 import DepositCard from "../../../../../components/depositCard/DepositCard";
 import {
@@ -25,7 +25,7 @@ const Deposit: FC<DepositProps> = ({
   setIsRightSubDrawerContent,
 }) => {
   
-  const { mutate: checkoutMutate } = useStripeCheckout({});
+  const { mutate: checkoutMutate, isIdle, isPending } = useStripeCheckout({});
 
   const { amount } = useAppSelector((state) => state.payment)
   const { wallets } = useAppSelector((state) => state.wallet);
@@ -61,6 +61,8 @@ const Deposit: FC<DepositProps> = ({
     }
   }, [amount, walletId, cookies]);
 
+  console.log({ isIdle, isPending });
+
   return (
     <div className="deposit">
       <Typography.Text className="deposit-subtext">
@@ -93,33 +95,37 @@ const Deposit: FC<DepositProps> = ({
           // setIsRightSubDrawerContent("payment-method");
         }}
       /> */}
-      <Row gutter={16} className="buttonsContainer">
-        <Col span={12}>
-          <PrimaryButton
-            disabled={!amount}
-            onClick={() => {
-              // todo - This flow is commented current time, until the back-end methods will be ready
-              // setIsRightSubDrawerOpen(true);
-              // setIsRightSubDrawerContent("card-details-menu");
-              // ** Calling the checkout end-point when the user click's on next
-              checkoutHandler();
-            }}
-            className="payment-card-next-button"
-            Title="Next"
-          />
-        </Col>
-        <Col span={12}>
-          <SecondaryButton
-            Title="Promo Code"
-            className="PromoCode"
-            icon={<PromoCodeIcon />}
-            onClick={() => {
-              setIsRightSubDrawerOpen(true);
-              setIsRightSubDrawerContent("payments-promo-code");
-            }}
-          />
-        </Col>
-      </Row>
+      {isPending ? (
+          <Spin className="pending-spinner" size="large" />
+      ) : (
+        <Row gutter={16} className="buttonsContainer">
+          <Col span={12}>
+            <PrimaryButton
+              disabled={!amount}
+              onClick={() => {
+                // todo - This flow is commented current time, until the back-end methods will be ready
+                // setIsRightSubDrawerOpen(true);
+                // setIsRightSubDrawerContent("card-details-menu");
+                // ** Calling the checkout end-point when the user click's on next
+                checkoutHandler();
+              }}
+              className="payment-card-next-button"
+              Title="Next"
+            />
+          </Col>
+          <Col span={12}>
+            <SecondaryButton
+              Title="Promo Code"
+              className="PromoCode"
+              icon={<PromoCodeIcon />}
+              onClick={() => {
+                setIsRightSubDrawerOpen(true);
+                setIsRightSubDrawerContent("payments-promo-code");
+              }}
+            />
+          </Col>
+        </Row>
+      )}
     </div>
   );
 };
