@@ -28,6 +28,8 @@ import {
 import MainChart from "./MainChart";
 import { initialData } from "./MainChart/data";
 import { setAppearanceBackground } from "../../lib/utils";
+import { useAppSelector } from "@store/hooks";
+import { UserSliceState } from "@store/slices/user";
 
 interface PlatformProps {}
 
@@ -50,9 +52,13 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [mainSidebarWidth, setMainSidebarWidth] = useState(0);
   const [bottomSidebarHeight, setBottomSidebarHeight] = useState(0);
   const [chartInitialData, setChartInitialData] = useState<any>([]);
-  const [showWalkThrough, setShowWalkThrough] = useState(true);
   const storedScale = localStorage.getItem("scale");
-  const isWalkthroughSkipped = localStorage.getItem("walkthroughSkipped");
+
+  const { user, loading } = useAppSelector(
+    (state: { user: UserSliceState }) => state.user
+  );
+
+  const isWalkthroughSkipped = user?.is_walkthrough_completed ?? true;
 
   useEffect(() => {
     setChartInitialData(initialData);
@@ -253,12 +259,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         </div>
       </div>
 
-      {!isWalkthroughSkipped ? (
+      {!isWalkthroughSkipped && !loading && (
         <WalkThrough
-          className={showWalkThrough ? "" : "hidden"}
-          setShowWalkThrough={setShowWalkThrough}
+          className={!isWalkthroughSkipped && !loading ? "" : "hidden"}
         />
-      ) : null}
+      )}
     </div>
   );
 };

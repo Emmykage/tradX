@@ -1,42 +1,54 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { UserSliceState, setUser } from "@store/slices/user";
-import useUpdateUser from "api/user/useUpdateUser";
+import { useAppSelector } from "@store/hooks";
+import { UserSliceState } from "@store/slices/user";
+import useSendPhoneVerification from "api/user/useSendPhoneVerification";
+import usePhoneVerify from "api/user/usePhoneVerify";
 
+import { RightSubDrawerContent } from "../../types";
 import { InfoCircleIcon } from "../../../../../assets/icons";
 import Input from "../../../../../components/input/Input";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./confirmPhone.scss";
 
-interface ConfirmPhoneProps {}
+interface ConfirmPhoneProps {
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
 
-const ConfirmPhone: React.FunctionComponent<ConfirmPhoneProps> = () => {
-  const dispatch = useAppDispatch();
+const ConfirmPhone: React.FunctionComponent<ConfirmPhoneProps> = ({
+  setIsRightSubDrawerContent,
+}) => {
   const [cookies] = useCookies(["access_token"]);
+
+  const [codeSent, setCodeSent] = useState(false);
+  const [code, setCode] = useState("");
 
   const { user } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
 
-  const { mutate, isPending } = useUpdateUser({
+  const { mutate, isPending } = useSendPhoneVerification({
     onSuccess: (data) => {
-      dispatch(setUser(data));
-      toast.success("You Phone number has been updated.");
+      toast.success(data.detail);
+      setCodeSent(true);
     },
   });
 
-  const [phoneNumber, setPhoneNumber] = useState(user?.phone_number);
+  const { mutate: verifyCode, isPending: isVerifying } = usePhoneVerify({
+    onSuccess: (data) => {
+      toast.success(data.detail);
+      setIsRightSubDrawerContent("personalSettings");
+    },
+  });
 
-  const onUpdatePhone = () => {
-    mutate({
-      data: {
-        phone_number: phoneNumber,
-      },
-      token: cookies.access_token,
-    });
+  const onSendCode = () => {
+    mutate(cookies.access_token);
+  };
+
+  const onVerifyCode = () => {
+    verifyCode({ data: { code }, token: cookies.access_token });
   };
 
   return (
@@ -47,20 +59,44 @@ const ConfirmPhone: React.FunctionComponent<ConfirmPhoneProps> = () => {
       </p>
 
       <Input
+        disabled
         placeholder="Enter your phonenumber"
         title="Mobile phone number"
-        defaultValue={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        defaultValue={user?.phone_number}
         type="tel"
         suffixIcon={<InfoCircleIcon />}
       />
 
-      <MenuListCard
-        onClick={onUpdatePhone}
-        disabled={!!(user?.phone_number == phoneNumber) || isPending}
-        textCenter
-        title="Confirm"
-      />
+      {codeSent && (
+        <>
+          <p className="sectionTitle">
+            We do not spam call and do not impose hidden charges. A telephone
+            number is only a necessary for the security of your account.
+          </p>
+          <Input
+            placeholder="Enter SMS code"
+            title="SMS Code"
+            defaultValue={code}
+            onChange={(e) => setCode(e.target.value)}
+            type="text"
+          />
+          <MenuListCard
+            onClick={onVerifyCode}
+            disabled={!code || isVerifying}
+            textCenter
+            title="Confirm"
+          />
+        </>
+      )}
+
+      {!codeSent && (
+        <MenuListCard
+          onClick={onSendCode}
+          disabled={isPending || codeSent}
+          textCenter
+          title="Get the code"
+        />
+      )}
     </div>
   );
 };

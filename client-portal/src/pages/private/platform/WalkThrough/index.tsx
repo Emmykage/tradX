@@ -13,18 +13,37 @@ import SetDuration from "./steps/SetDuration";
 import ChooseTrade from "./steps/ChooseTrade";
 import Modal from "../../../../components/modal/Modal";
 import { Button } from "antd";
+import useUpdateUser from "api/user/useUpdateUser";
+import { setUser } from "@store/slices/user";
+import { useAppDispatch } from "@store/hooks";
+import { useCookies } from "react-cookie";
 
 interface WalkThroughProps {
   className?: string;
-  setShowWalkThrough: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const WalkThrough: React.FC<WalkThroughProps> = ({
-  className,
-  setShowWalkThrough,
-}) => {
+const WalkThrough: React.FC<WalkThroughProps> = ({ className }) => {
   const [step, setStep] = useState<number>(1);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+  const [cookies] = useCookies(["access_token"]);
+  const dispatch = useAppDispatch();
+
+  const { mutate } = useUpdateUser({
+    onSuccess: (data) => {
+      dispatch(setUser(data));
+    },
+  });
+
+  const onSkipWalkthrough = () => {
+    mutate({
+      data: {
+        is_walkthrough_completed: true,
+      },
+      token: cookies.access_token,
+    });
+    setStep(0);
+  };
 
   return (
     <div className={`walkthroughContainer ${className}`}>
@@ -77,7 +96,7 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
         }`}
         setStep={setStep}
         open={step === 9}
-        setShowWalkThrough={setShowWalkThrough}
+        onSkipWalkthrough={onSkipWalkthrough}
       />
 
       <Modal
@@ -94,14 +113,7 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
 
         <div className="modalButtons">
           <Button onClick={() => setModalOpen(false)}>Cancel</Button>
-          <Button
-            onClick={() => {
-              setShowWalkThrough(false);
-              setStep(0);
-              localStorage.setItem("walkthroughSkipped", "true");
-            }}
-            className="danger"
-          >
+          <Button onClick={onSkipWalkthrough} className="danger">
             Finish
           </Button>
         </div>

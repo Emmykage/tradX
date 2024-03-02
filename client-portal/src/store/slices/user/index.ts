@@ -12,7 +12,7 @@ export interface UserSliceState {
 // Define the initial state using that type
 const initialState: UserSliceState = {
   user: {},
-  loading: false,
+  loading: true,
 };
 
 export const userSlice = createSlice({
@@ -24,6 +24,10 @@ export const userSlice = createSlice({
       state.loading = false;
       return state;
     },
+    setUserLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+      return state;
+    },
   },
   extraReducers: (builder) => {
     //GET USER EXAMPLE
@@ -33,6 +37,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, setUserLoading } = userSlice.actions;
 
 export default userSlice.reducer;

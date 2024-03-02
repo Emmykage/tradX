@@ -8,6 +8,8 @@ import Transactions from "./pages/private/transactions/Transactions";
 // import GetLoan from "./pages/private/get-loan/GetLoan";
 // import Loan from "./pages/private/loan/Loan";
 // import LoanMicroLenders from "./pages/private/loanMicroLenders/LoanMicroLenders";
+import EmailVerification from "pages/public/emailVerification/EmailVerification";
+import ResetPassword from "pages/public/resetPassword/ResetPassword";
 
 import getEnv from "./utils/env";
 
@@ -16,14 +18,37 @@ import "slick-carousel/slick/slick-theme.css";
 import useMouseIdle from "hooks/useMouseIdle";
 import StatusDetails from "./pages/public/statusDetails/StatusDetails";
 import RequireAuth from "components/requireAuth";
-import { useAppDispatch } from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
-import EmailVerification from "pages/public/emailVerification/EmailVerification";
+import useProfile from "api/user/useProfile";
+import { UserSliceState, setUser, setUserLoading } from "@store/slices/user";
+import { useCookies } from "react-cookie";
 
 interface AppProps {}
 
 const App: React.FunctionComponent<AppProps> = () => {
   const dispatch = useAppDispatch();
+  const [cookies] = useCookies(["access_token"]);
+
+  const userRedux = useAppSelector(
+    (state: { user: UserSliceState }) => state.user.user
+  );
+  const userData =
+    userRedux && Object.keys(userRedux).length ? userRedux : null;
+
+  const { mutate } = useProfile({
+    onSuccess: (data) => {
+      dispatch(setUser(data));
+    },
+    onError: () => {},
+  });
+
+  useEffect(() => {
+    if (cookies.access_token && !userData) {
+      setUserLoading(true);
+      mutate(cookies.access_token);
+    }
+  }, [userData, mutate, cookies.access_token]);
 
   console.log(
     "Envrionment Variable: VITE_API_BASE_URL => ",
@@ -65,6 +90,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/downloads" element={<Download />} />
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
+        <Route path="/password-reset" element={<ResetPassword />} />
       </Routes>
     </HashRouter>
   );

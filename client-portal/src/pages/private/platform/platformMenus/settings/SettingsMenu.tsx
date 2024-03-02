@@ -1,4 +1,10 @@
 import { Dispatch, SetStateAction, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+
+import { setUser } from "@store/slices/user";
+import { useAppDispatch } from "@store/hooks";
+
 import {
   CheckMark,
   ExitIcon,
@@ -20,7 +26,18 @@ interface SettingsMenuProps {
 const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
   setIsRightSubDrawerContent,
 }) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [, , removeCookie] = useCookies(["access_token", "refresh_token"]);
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
+
+  const handleLogout = () => {
+    dispatch(setUser(null));
+    removeCookie("access_token");
+    removeCookie("refresh_token");
+    navigate("/");
+  };
+
   return (
     <div className="settingsMenu">
       {/* <EnhanceSecurityCard /> */}
@@ -129,7 +146,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           </div>
           <div className="settingsLogoutButton">
             <MenuListCard
-              onClick={() => setModalOpen(false)}
+              onClick={handleLogout}
               variant={2}
               danger
               textCenter
