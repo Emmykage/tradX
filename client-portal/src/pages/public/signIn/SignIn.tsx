@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
 
@@ -6,15 +6,18 @@ import SignUpForm from "./components/SignUpForm";
 import SignInForm from "./components/SignInForm";
 
 import "./signIn.scss";
+import ForgotPasswordForm from "./components/ForgotPasswordForm";
 
 interface SignInProps {}
 
 const SignIn: React.FunctionComponent<SignInProps> = () => {
+  const [forgotPasswordView, setForgotPasswordView] = useState(false);
+
   const items: TabsProps["items"] = [
     {
       key: "1",
       label: "Login",
-      children: <SignInForm />,
+      children: <SignInForm setForgotPasswordView={setForgotPasswordView} />,
     },
     {
       key: "2",
@@ -25,13 +28,17 @@ const SignIn: React.FunctionComponent<SignInProps> = () => {
   return (
     <div className="loginContainer">
       <div className="centerWrapper">
-        <Tabs
-          centered
-          defaultActiveKey="1"
-          items={items}
-          indicatorSize={150}
-          tabBarGutter={100}
-        />
+        {forgotPasswordView ? (
+          <ForgotPasswordForm />
+        ) : (
+          <Tabs
+            centered
+            defaultActiveKey="1"
+            items={items}
+            indicatorSize={150}
+            tabBarGutter={100}
+          />
+        )}
       </div>
     </div>
   );

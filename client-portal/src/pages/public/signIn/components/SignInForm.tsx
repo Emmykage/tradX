@@ -6,7 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { ISignInForm } from "@interfaces";
 import { useLogin } from "api/user/useLogin";
 
-const SignInForm = () => {
+interface SignInFormProps {
+  setForgotPasswordView: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SignInForm: React.FunctionComponent<SignInFormProps> = ({
+  setForgotPasswordView,
+}) => {
   const navigate = useNavigate();
   const [, setCookie] = useCookies(["access_token", "refresh_token"]);
 
@@ -54,7 +60,9 @@ const SignInForm = () => {
 
       <Checkbox>Do not remember me</Checkbox>
 
-      <p className="forgotPass">Forgot your password?</p>
+      <p className="forgotPass" onClick={() => setForgotPasswordView(true)}>
+        Forgot your password?
+      </p>
 
       <Button
         className="login"

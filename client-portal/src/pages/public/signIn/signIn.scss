@@ -18,6 +18,33 @@
     background: #0e0f12;
     padding: 0rem 1.5rem 2em 1.5rem;
 
+    .emailSentContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+
+      p {
+        font-size: 1.25rem;
+        color: #fff;
+        margin-top: 1.875rem;
+      }
+
+      svg {
+        width: 3.125rem;
+      }
+    }
+
+    .forgotPassContainer {
+      padding-top: 1.875rem;
+
+      .info-text {
+        color: #70808c;
+        margin-bottom: 1.25rem;
+      }
+    }
+
     .ant-tabs {
       height: 100%;
 
@@ -118,6 +145,7 @@
       font-size: 1rem;
     }
     p.forgotPass {
+      cursor: pointer;
       color: #ff0000;
       font-weight: 400;
       font-size: 1rem;
