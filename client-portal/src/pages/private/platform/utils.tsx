@@ -374,7 +374,7 @@ export function rightSubDrawerBodyHandler(
     case "confirm-email":
       return <ConfirmMail />;
     case "confirm-phone":
-      return <ConfirmPhone />;
+      return <ConfirmPhone setIsRightSubDrawerContent={setIsRightSubDrawerContent} />;
     case "select-account":
       return (
         <SelectAccount
