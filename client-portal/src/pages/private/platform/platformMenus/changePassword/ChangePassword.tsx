@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import Input from "../../../../../components/input/Input";
 import "./changePassword.scss";
 import StrengthMeter from "./StrengthMeter";
-import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
+
 import { RightSubDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 

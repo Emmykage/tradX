@@ -21,9 +21,7 @@ interface StatusMenuProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
-const StatusMenu: React.FunctionComponent<StatusMenuProps> = ({
-  setIsRightSubDrawerContent,
-}) => {
+const StatusMenu: React.FunctionComponent<StatusMenuProps> = () => {
   const [active, setActive] = useState(0);
 
   return (
