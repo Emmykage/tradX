@@ -7,15 +7,17 @@ const MarketSubMenuSlider = ({
   img,
   bgImg,
   bgCol,
+  onClick,
 }: {
   title: string;
   desc: string;
   img: string;
   bgImg: string;
   bgCol: string;
+  onClick?: () => void;
 }) => {
   return (
-    <Row className={`marketSubMenuSlider ${bgCol}`}>
+    <Row onClick={onClick} className={`marketSubMenuSlider ${bgCol}`}>
       <Col span={12} className="menuSecondCard">
         <p className="menuSecondCardText1">{title}</p>
         <p className="menuSecondCardText2">{desc}</p>

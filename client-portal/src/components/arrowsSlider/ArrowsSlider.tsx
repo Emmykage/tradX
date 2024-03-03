@@ -1,13 +1,15 @@
 import { FC, ReactNode, createRef, useEffect, useState } from "react";
-import { ArrowLeftOS, RightArrowIcon } from "../../assets/icons";
+import { ArrowLeftOS, ArrowRightOS } from "../../assets/icons";
 
 import "./ArrowsSlider.scss";
 
 interface ArrowsSliderProps {
   children: ReactNode;
+  LeftArrow?: boolean;
+  Arrows?: boolean;
 }
 
-const ArrowsSlider: FC<ArrowsSliderProps> = ({ children }) => {
+const ArrowsSlider: FC<ArrowsSliderProps> = ({ children, Arrows = false }) => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
   const scrollbarContainerRef = createRef<HTMLDivElement>();
@@ -17,7 +19,8 @@ const ArrowsSlider: FC<ArrowsSliderProps> = ({ children }) => {
     if (container) {
       setShowLeftArrow(container.scrollLeft > 0);
       setShowRightArrow(
-        container.scrollLeft + container.clientWidth < container.scrollWidth
+        !Arrows &&
+          container.scrollLeft + container.clientWidth < container.scrollWidth
       );
     }
 
@@ -25,7 +28,8 @@ const ArrowsSlider: FC<ArrowsSliderProps> = ({ children }) => {
       if (container) {
         setShowLeftArrow(container.scrollLeft > 0);
         setShowRightArrow(
-          container.scrollLeft + container.clientWidth < container.scrollWidth
+          !Arrows &&
+            container.scrollLeft + container.clientWidth < container.scrollWidth
         );
       }
     };
@@ -35,7 +39,7 @@ const ArrowsSlider: FC<ArrowsSliderProps> = ({ children }) => {
     return () => {
       container?.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [Arrows]);
 
   const handleChevronLeftClick = () => {
     if (scrollbarContainerRef.current) {
@@ -75,7 +79,7 @@ const ArrowsSlider: FC<ArrowsSliderProps> = ({ children }) => {
           className="arrows-slider-right-icon"
           onClick={handleChevronRightClick}
         >
-          <RightArrowIcon />
+          <ArrowRightOS />
         </div>
       )}
     </div>

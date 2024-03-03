@@ -29,7 +29,7 @@
   .top {
     display: flex;
     flex-direction: column;
-    gap: 3.25rem;
+    gap: 1.2rem;
 
     @media (max-width: 767px) {
       width: 100%;
@@ -41,7 +41,7 @@
     .logo {
       display: flex;
       justify-content: center;
-      
+
       svg {
         width: 1.5rem;
       }
@@ -61,7 +61,10 @@
       cursor: pointer;
 
       svg {
-        width: 1.625rem;
+        width: 1.425rem;
+      }
+      p {
+        font-size: 0.75rem;
       }
 
       @media (max-width: 991px) {
@@ -70,28 +73,32 @@
         }
 
         svg {
-          width: 1.75rem;
+          width: 1.55rem;
         }
       }
 
       @media (max-width: 767px) {
         svg {
-          width: 1.5rem;
+          width: 1.3rem;
         }
       }
     }
     button:hover {
       color: #fff;
       transition: 0.3s ease-in;
-      svg {
-        path {
-          fill: #fff;
-          transition: 0.3s ease-in;
-        }
-      }
       svg.trades {
         path {
           stroke: #fff;
+          transition: 0.3s ease-in;
+        }
+        rect {
+          stroke: #fff;
+          transition: 0.3s ease-in;
+        }
+      }
+      svg {
+        path {
+          fill: #fff;
           transition: 0.3s ease-in;
         }
       }
@@ -105,6 +112,9 @@
       }
       svg.trades {
         path {
+          stroke: #0094ff;
+        }
+        rect {
           stroke: #0094ff;
         }
       }
