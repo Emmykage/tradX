@@ -1,28 +1,28 @@
-import { FC, useMemo } from 'react'
+import { FC, useMemo } from "react";
 import { Select } from "antd";
-import { FillCaretDownIcon } from '../../../../../assets/icons';
-import { DataType } from '../../types';
-import { columns } from '../../dummy';
-import TransactionTable from '../DataTable';
+import { FillCaretDownIcon } from "../../../../../assets/icons";
+import { ITransaction } from "@interfaces";
+import { columns } from "../../dummy";
+import TransactionTable from "../DataTable";
 
 import "../../transactions.scss";
-import "./transaction.scss"
+import "./transaction.scss";
 
 interface TransactionPartProps {
-  data: DataType[];
+  data: ITransaction[];
 }
-export const TransactionPart:FC<TransactionPartProps> = ({ data }) => {
-    const accountsOptions = useMemo(
-      () => [
-        { value: "all", label: "All Accounts" },
-        { value: "usd", label: "USD Account" },
-        { value: "EUR", label: "EURO Account" },
-        { value: "BTC", label: "BITCOIN Account" },
-        { value: "ETH", label: "ETHIRIOM Account" },
-        { value: "$$", label: "Unknown Account" },
-      ],
-      []
-    );
+export const TransactionPart: FC<TransactionPartProps> = ({ data }) => {
+  const accountsOptions = useMemo(
+    () => [
+      { value: "all", label: "All Accounts" },
+      { value: "usd", label: "USD Account" },
+      { value: "EUR", label: "EURO Account" },
+      { value: "BTC", label: "BITCOIN Account" },
+      { value: "ETH", label: "ETHIRIOM Account" },
+      { value: "$$", label: "Unknown Account" },
+    ],
+    []
+  );
   return (
     <>
       <div className="user-options-bar user-options-transactions">
@@ -80,9 +80,8 @@ export const TransactionPart:FC<TransactionPartProps> = ({ data }) => {
           />
         </div>
       </div>
-      <TransactionTable columns={columns} data={data} />
+      {data ? <TransactionTable columns={columns} data={data} /> : null}
     </>
   );
-}
-
-export default TransactionPart
+};
+export default TransactionPart;

@@ -22,19 +22,27 @@ export function methodIconHandler(method: MethodsType): ReactNode | null {
 }
 
 export const StatusHandler: FC<{
-  status: "success" | "failed" | "pending";
+  status: "S" | "F" | "P";
 }> = ({ status }) => (
   <p
     className="tb-td-transaction-status"
     style={{
       background:
-        status === "pending"
-          ? "#70808C"
-          : status === "failed"
-          ? "#ED5444"
-          : "#1D9747",
+        status === "P" ? "#70808C" : status === "F" ? "#ED5444" : "#1D9747",
     }}
   >
-    {status}
+    {status === "P"
+      ? "Pending"
+      : status === "F"
+      ? "Failed"
+      : status === "S"
+      ? "Success"
+      : ""}
   </p>
+);
+
+export const TransferTypeHandler: FC<{
+  type: "D" | "W";
+}> = ({ type }) => (
+  <p>{type === "D" ? "Deposit" : type === "W" ? "Withdraw" : ""}</p>
 );

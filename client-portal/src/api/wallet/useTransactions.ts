@@ -12,7 +12,9 @@ type useTransactionsProps = {
   [index: string]: any;
 };
 
-export async function fetchTransactions(token: string): Promise<any> {
+export async function fetchTransactions(
+  token: string
+): Promise<ITransaction[]> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
     const response = await fetch(`${BASE_URL}/wallet/transactions/`, {
