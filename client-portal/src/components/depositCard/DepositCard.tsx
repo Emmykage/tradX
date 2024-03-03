@@ -48,7 +48,8 @@ const DepositCard: React.FC<ContentProps> = ({
             {input ? (
               <input
                 className="cardInput"
-                placeholder={amount ? `${amount}` : "30"}
+                placeholder={"Enter deposit amount"}
+                value={amount}
                 type="number"
                 onChange={onChangeHandler}
               />

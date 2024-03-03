@@ -1,11 +1,8 @@
 import { Col, Row, Spin, Typography } from "antd";
 import "./Deposit.scss";
 import DepositCard from "../../../../../components/depositCard/DepositCard";
-import {
-  EuroFlag,
-  PromoCodeIcon,
-} from "../../../../../assets/icons";
-import { Dispatch, FC, SetStateAction, useCallback, useMemo } from "react";
+import { PromoCodeIcon } from "../../../../../assets/icons";
+import { Dispatch, FC, SetStateAction, useCallback } from "react";
 import { RightSubDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import SecondaryButton from "../../../../../components/secondaryButton/SecondaryButton";
@@ -13,6 +10,7 @@ import useStripeCheckout from "api/srtipe/useStripeCheckout";
 import { useAppSelector } from "@store/hooks";
 import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
+import IocnPlaceholder from "assets/icons/IocnPlaceholder";
 
 interface DepositProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -23,31 +21,24 @@ const Deposit: FC<DepositProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
-  
-  const { mutate: checkoutMutate, isIdle, isPending } = useStripeCheckout({});
+  const { mutate: checkoutMutate, isPending } = useStripeCheckout({});
 
-  const { amount } = useAppSelector((state) => state.payment)
-  const { wallets } = useAppSelector((state) => state.wallet);
+  const { amount } = useAppSelector((state) => state.payment);
+  const { selectedWallet } = useAppSelector((state) => state.wallet);
 
   const [cookies] = useCookies(["access_token"]);
 
-  const walletId = useMemo(() => {
-    if(wallets.length > 0) return wallets[0]?.id;
-    return undefined;
-  },[])
-  
-
   const checkoutHandler = useCallback(() => {
-    if (amount && walletId) {
+    if (amount && selectedWallet?.id) {
       return checkoutMutate(
         {
           amount,
-          walletId,
+          walletId: selectedWallet.id,
           token: cookies.access_token,
         },
         {
           onSuccess: (data) => {
-            console.log({data});
+            console.log({ data });
             return window.location.replace(data?.checkout_url);
           },
           // @ts-expect-error
@@ -58,25 +49,26 @@ const Deposit: FC<DepositProps> = ({
     } else {
       toast.error("Amount or Walled invalid");
     }
-  }, [amount, walletId, cookies]);
-
-  console.log({ isIdle, isPending });
+  }, [amount, selectedWallet?.id, cookies]);
 
   return (
     <div className="deposit">
       <Typography.Text className="deposit-subtext">
-        USD Account #65715654
+        {selectedWallet?.name}
       </Typography.Text>
       <div className="hr" />
       <div className="CurrentBalance">
         <p>Current Balance</p>
-        <h3>EUR 00.0</h3>
+        <h3>
+          {selectedWallet?.account_type__symbol}{" "}
+          {selectedWallet?.available_balance}
+        </h3>
       </div>
       <DepositCard
         account="Deposit Amount"
         amount={amount}
-        currency="EUR"
-        CountryIcon={<EuroFlag />}
+        currency={selectedWallet?.account_type__symbol || ""}
+        CountryIcon={selectedWallet?.account_type__image || <IocnPlaceholder />}
         icon
         onClick={() => {
           setIsRightSubDrawerOpen(true);
@@ -95,7 +87,7 @@ const Deposit: FC<DepositProps> = ({
         }}
       /> */}
       {isPending ? (
-          <Spin className="pending-spinner" size="large" />
+        <Spin className="pending-spinner" size="large" />
       ) : (
         <Row gutter={16} className="buttonsContainer">
           <Col span={12}>

@@ -2,6 +2,7 @@ import { CSSProperties } from "react";
 
 import { useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
+import { WalletSliceState } from "@store/slices/wallet";
 
 import Loading from "components/loading";
 import {
@@ -40,6 +41,10 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
     (state: { user: UserSliceState }) => state.user
   );
 
+  const { selectedWallet } = useAppSelector(
+    (state: { wallet: WalletSliceState }) => state.wallet
+  );
+
   const ProfileImage = () => {
     if (loading) {
       return <Loading size="small" />;
@@ -55,6 +60,25 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
       <ProfileIcon />
     );
   };
+
+  const WalletsButton = () => (
+    <div
+      className="demo"
+      onClick={() => {
+        setIsRightDrawerOpen(true);
+        setIsRightDrawerContent("account");
+      }}
+    >
+      <span className="dem">{selectedWallet?.name}</span>
+      <div className="amount">
+        <p className="value">
+          {selectedWallet?.account_type__symbol}{" "}
+          {selectedWallet?.available_balance}
+        </p>
+        <CaretDownIcon />
+      </div>
+    </div>
+  );
 
   return (
     <div className="topbarContainer" id="topbarContainer" style={style}>
@@ -82,19 +106,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
         </div>
       </div>
       <div className="payProfileTab">
-        <div
-          className="demo"
-          onClick={() => {
-            setIsRightDrawerOpen(true);
-            setIsRightDrawerContent("account");
-          }}
-        >
-          <span className="dem">Demo Account</span>
-          <div className="amount">
-            <p className="value">Đ9.996.90</p>
-            <CaretDownIcon />
-          </div>
-        </div>
+        <WalletsButton />
         <button
           onClick={() => {
             setIsRightDrawerOpen(true);
@@ -138,19 +150,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
             <ProfileImage />
           </button>
         </div>
-        <div
-          className="demo"
-          onClick={() => {
-            setIsRightDrawerOpen(true);
-            setIsRightDrawerContent("account");
-          }}
-        >
-          <span className="dem">Demo Account</span>
-          <div className="amount">
-            <p className="value">Đ9.996.90</p>
-            <CaretDownIcon />
-          </div>
-        </div>
+        <WalletsButton />
         <button
           onClick={() => {
             setIsRightDrawerOpen(true);
