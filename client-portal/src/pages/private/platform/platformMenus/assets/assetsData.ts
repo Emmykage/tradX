@@ -4,7 +4,7 @@ export const times = [
     name: "Quickler",
     profit: "85",
     image: "/menu-images/timezones/timezone-1.png",
-    quickTrading: true,
+    quickTrading: false,
     inProfit: true,
   },
   {

@@ -4,6 +4,8 @@ export type CurrentDrawerType =
   | "events"
   | "help"
   | "assets"
+  | "ai"
+  | "news"
   | null;
 
 export type LeftSubDrawer =
@@ -12,6 +14,19 @@ export type LeftSubDrawer =
   | "trading-platform"
   | "what-is-trading"
   | "why-coose-us"
+  | "barcode"
+  | "published-strategies"
+  | "ai-asset-summary"
+  | "forex-market-sub"
+  | "astro-market-submenu"
+  | "crypto-market-submenu"
+  | "trading-conditions-market-submenu"
+  | "signals-market-submenu"
+  | "custom-strategies-market-submenu"
+  | "strategies-market-submenu"
+  | "indicators-market-submenu"
+  | "themes-market-submenu"
+  | "advisers-market-submenu"
   | null;
 
   export type RightDrawerContent =
