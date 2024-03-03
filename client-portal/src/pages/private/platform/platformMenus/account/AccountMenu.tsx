@@ -1,11 +1,9 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
+import { Dispatch, SetStateAction, useState } from "react";
 
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { WalletSliceState, setWallets } from "@store/slices/wallet";
+import { useAppSelector } from "@store/hooks";
+import { WalletSliceState } from "@store/slices/wallet";
 
 import Loading from "components/loading";
-import useWallet from "api/wallet/useWallet";
 import IocnPlaceholder from "assets/icons/IocnPlaceholder";
 import {
   AddIcon,
@@ -28,28 +26,11 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
 }) => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
 
-  const dispatch = useAppDispatch();
-  const [cookies] = useCookies(["access_token"]);
-  const { wallets } = useAppSelector(
+  const { wallets, walletsLoading } = useAppSelector(
     (state: { wallet: WalletSliceState }) => state.wallet
   );
 
-  const { mutate, isPending } = useWallet({
-    onSuccess: (data) => {
-      dispatch(setWallets(data));
-    },
-    onError: (error) => {
-      console.log("fetching wallets error", error);
-    },
-  });
-
-  useEffect(() => {
-    if (wallets.length <= 0) {
-      mutate(cookies.access_token);
-    }
-  }, []);
-
-  if (isPending) {
+  if (walletsLoading) {
     return <Loading size="large" />;
   }
 
