@@ -4,6 +4,7 @@ import {
   marketsReducer,
   globalReducer,
   walletReducer,
+  paymentReducer,
 } from "@slices";
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
     user: userReducer,
     markets: marketsReducer,
     wallet: walletReducer,
+    payment: paymentReducer,
   },
 });
 

@@ -1,62 +1,50 @@
 import { TableColumnsType } from "antd";
-import { DataType } from "./types";
-import { StatusHandler, methodIconHandler } from "./helpers";
+import {
+  StatusHandler,
+  TransferTypeHandler,
+  methodIconHandler,
+} from "./helpers";
+import { ITransaction } from "@interfaces";
+import moment from "moment";
 
-export const columns: TableColumnsType<DataType> = [
+export const columns: TableColumnsType<ITransaction> = [
   {
     title: "Date and Time",
-    dataIndex: "dateAndTime",
-    key: "dateAndTime",
-    render: (value) => <span>{value}</span>,
+    dataIndex: "created_at",
+    key: "created_at",
+    render: (value) => (
+      <span>{moment(value).format("Do MMM. YYYY hh:mm:ss")}</span>
+    ),
   },
   {
     title: "Type",
     dataIndex: "type",
     key: "type",
-    render: (value) => <span>{value}</span>,
+    render: (value) => <TransferTypeHandler type={value} />,
   },
   {
     title: "Payment System",
-    dataIndex: "paymentSystem",
-    key: "paymentSystem",
-    render: (value) => <span>{value}</span>,
+    dataIndex: "payment_system",
+    key: "payment_system",
+    render: () => methodIconHandler("Bank Card"),
   },
   {
     title: "Status",
     dataIndex: "status",
     key: "status",
-    render: (value) => <span>{value}</span>,
+    render: (value) => <StatusHandler status={value} />,
   },
   {
     title: "Account",
-    dataIndex: "account",
-    key: "account",
+    dataIndex: "currency",
+    key: "currency",
     render: (value) => <span>{value}</span>,
   },
   {
-    title: "Ammount",
-    dataIndex: "ammount",
-    key: "ammount",
+    title: "Amount",
+    dataIndex: "amount",
+    key: "amount",
     render: (value) => <span>{value}</span>,
-  },
-];
-
-export const tableData: DataType[] | [] = [
-  {
-    dateAndTime: "30th Jan. 2024 07:31:24",
-    type: "Deposit\n Request no. 7767578987",
-    paymentSystem: methodIconHandler("Bank Card"),
-    status: <StatusHandler status="pending" />,
-    account: "USD Account",
-    ammount: "+30.00",
-  },
-  {
-    dateAndTime: "30th Jan. 2024 07:31:24",
-    type: `Deposit \n Request no. 7767578987`,
-    paymentSystem: methodIconHandler("Bank Card"),
-    status: <StatusHandler status="failed" />,
-    account: "USD Account",
-    ammount: "+30.00",
   },
 ];
 

@@ -28,7 +28,7 @@ const ConfirmMail: React.FunctionComponent<ConfirmMailProps> = () => {
     },
   });
 
-  const [email, setEmail] = useState(user?.email);
+  const [email, setEmail] = useState(user?.blured_email);
 
   const onSendVerification = () => {
     mutate(cookies.access_token);

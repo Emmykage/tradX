@@ -62,7 +62,7 @@ const ConfirmPhone: React.FunctionComponent<ConfirmPhoneProps> = ({
         disabled
         placeholder="Enter your phonenumber"
         title="Mobile phone number"
-        defaultValue={user?.phone_number}
+        defaultValue={user?.blured_phone_number}
         type="tel"
         suffixIcon={<InfoCircleIcon />}
       />

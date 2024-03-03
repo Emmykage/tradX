@@ -43,4 +43,14 @@
       margin-top: 1.5rem;
     }
   }
+  .pending-spinner{
+    margin-top: 2rem;
+    width: 100%;
+    color: white;
+    .ant-spin-dot-spin {
+      .ant-spin-dot-item{
+        background-color: white;
+      }
+    }
+  }
 }

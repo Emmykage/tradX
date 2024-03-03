@@ -62,6 +62,20 @@ import CryptoPayments from "./platformMenus/cryptoPayments/CryptoPayments";
 import PaymentProcessing from "./platformMenus/paymentProcessing/PaymentProcessing";
 import ConfirmPayment from "./platformMenus/confirmPayment/ConfirmPayment";
 import AddAccountName from "./platformMenus/addAccountName/AddAccountName";
+import PublishedStrategiesMenu from "./platformMenus/publishedStrategiesMenu/PublishedStrategiesMenu";
+import AiMenu from "./platformMenus/aiMenu/AiMenu";
+import NewsMenu from "./platformMenus/newsMenu/NewsMenu";
+import AiAssetSummaryMenu from "./platformMenus/aiAssetSummaryMenu/AiAssetSummaryMenu";
+import ForexMarketSubMenu from "./platformMenus/marketSubMenu/ForexMarketSubMenu";
+import AstroMarketSubMenu from "./platformMenus/marketSubMenu/AstroMarketSubMenu";
+import CryptoMarketSubMenu from "./platformMenus/marketSubMenu/CryptoMarketSubMenu";
+import TradingConditionsMarketSubMenu from "./platformMenus/marketSubMenu/TradingConditionsMarketSubMenu";
+import SignalsMarketSubMenu from "./platformMenus/marketSubMenu/SignalsMarketSubMenu";
+import CustomStrategiesMarketSubMenu from "./platformMenus/marketSubMenu/CustomStrategiesMarketSubMenu";
+import StrategiesMarketSubMenu from "./platformMenus/marketSubMenu/StrategiesMarketSubMenu";
+import IndicatorsMarketSubMenu from "./platformMenus/marketSubMenu/IndicatorsMarketSubMenu";
+import ThemesMarketSubMenu from "./platformMenus/marketSubMenu/ThemesMarketSubMenu";
+import AdvisersMarketSubMenu from "./platformMenus/marketSubMenu/AdvisersMarketSubMenu";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -78,6 +92,10 @@ export function leftDarwerTitleHandler(
       return "Help";
     case "assets":
       return "Assets";
+    case "ai":
+      return "AI";
+    case "news":
+      return "News";
     default:
       return "";
   }
@@ -91,7 +109,12 @@ export function leftDrawerBodyHandler(
     case "trades":
       return <TradesMenu />;
     case "market":
-      return <MarketMenu />;
+      return (
+        <MarketMenu
+          setLeftSubDrawer={setLeftSubDrawer}
+          setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen}
+        />
+      );
     case "events":
       return <EventsMenu />;
     case "help":
@@ -103,6 +126,15 @@ export function leftDrawerBodyHandler(
       );
     case "assets":
       return <AssetsMenu />;
+    case "ai":
+      return (
+        <AiMenu
+          setLeftSubDrawer={setLeftSubDrawer}
+          setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen}
+        />
+      );
+    case "news":
+      return <NewsMenu />;
     default:
       return null;
   }
@@ -117,10 +149,27 @@ export function leftSubDrawerTitleHandler(
       return "Help Center";
     case "support":
       return "Support";
+    case "barcode":
+      return "Barcode";
+    case "published-strategies":
+      return "My Published Strategies";
+    case "forex-market-sub":
+    case "astro-market-submenu":
+    case "crypto-market-submenu":
+    case "trading-conditions-market-submenu":
+    case "signals-market-submenu":
+    case "custom-strategies-market-submenu":
+    case "strategies-market-submenu":
+    case "indicators-market-submenu":
+    case "themes-market-submenu":
+    case "advisers-market-submenu":
+      return "Market";
     case "trading-platform":
       return "Help Center";
     case "why-coose-us":
       return "Help Center";
+    case "ai-asset-summary":
+      return "AI";
     default:
       return "";
   }
@@ -134,12 +183,38 @@ export function leftSubDrawerBodyHandler(
       return <HelpCenter setLeftSubDrawer={setLeftSubDrawer} />;
     case "support":
       return <SupportMenu />;
+    case "barcode":
+      return <BarcodeMenu />;
+    case "published-strategies":
+      return <PublishedStrategiesMenu />;
+    case "forex-market-sub":
+      return <ForexMarketSubMenu />;
+    case "crypto-market-submenu":
+      return <CryptoMarketSubMenu />;
+    case "astro-market-submenu":
+      return <AstroMarketSubMenu />;
+    case "trading-conditions-market-submenu":
+      return <TradingConditionsMarketSubMenu />;
+    case "signals-market-submenu":
+      return <SignalsMarketSubMenu />;
+    case "custom-strategies-market-submenu":
+      return <CustomStrategiesMarketSubMenu />;
+    case "strategies-market-submenu":
+      return <StrategiesMarketSubMenu />;
+    case "indicators-market-submenu":
+      return <IndicatorsMarketSubMenu />;
+    case "themes-market-submenu":
+      return <ThemesMarketSubMenu />;
+    case "advisers-market-submenu":
+      return <AdvisersMarketSubMenu />;
     case "trading-platform":
       return <TradingPlatform setLeftSubDrawer={setLeftSubDrawer} />;
     case "what-is-trading":
       return <TradingPlatformInfo setLeftSubDrawer={setLeftSubDrawer} />;
     case "why-coose-us":
       return <OlympTradeInfo setLeftSubDrawer={setLeftSubDrawer} />;
+    case "ai-asset-summary":
+      return <AiAssetSummaryMenu />;
     default:
       return null;
   }

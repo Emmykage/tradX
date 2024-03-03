@@ -2,19 +2,27 @@ import { useEffect, useState } from "react";
 import TradeForm from "../../../../../components/tradeForm/TradeForm";
 import ChartComponent from "../components/WalkthroughChart";
 import { staticData } from "../data/initialGraphData";
+import useWindowWidth from "hooks/useWindowWidth";
 
 interface SetDurationProps {
   className: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   open: boolean;
+  tradeFormHeight: number;
 }
 
 const SetDuration: React.FC<SetDurationProps> = ({
   className,
   setStep,
   open,
+  tradeFormHeight,
 }) => {
   const [graphData, setGraphData] = useState<any>([]);
+  const windowWidth = useWindowWidth();
+
+  const calculateChartHeight = () => {
+    return `calc(100% - ${tradeFormHeight}px)`;
+  };
 
   useEffect(() => {
     setGraphData(staticData);
@@ -22,7 +30,10 @@ const SetDuration: React.FC<SetDurationProps> = ({
 
   return (
     <div className={`walkthroughStep setDurationStep ${className}`}>
-      <div className="setDurationStepLeft">
+      <div
+        className="setDurationStepLeft"
+        style={{ height: calculateChartHeight() }}
+      >
         <div className="graphContainerWalkthrough">
           {graphData?.length && <ChartComponent data={graphData} />}
           <div className="graphOverlay"></div>
@@ -40,6 +51,7 @@ const SetDuration: React.FC<SetDurationProps> = ({
           showProfit={false}
           showSetupOrder={false}
           durationTooltip={open}
+          durationTooltipPlacement={windowWidth >= 768 ? "left" : "topLeft"}
           profitPercent="+85%"
           hintDuration
           disabled

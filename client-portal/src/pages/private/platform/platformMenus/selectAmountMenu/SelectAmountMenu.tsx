@@ -6,6 +6,7 @@ import { Dispatch, FC, SetStateAction } from "react";
 import { RightSubDrawerContent } from "../../types";
 import { EuroFlag, NumberInputIcon } from "../../../../../assets/icons";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
+import { useAppSelector } from "@store/hooks";
 
 interface SelectAmountMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -16,6 +17,7 @@ const SelectAmountMenu: FC<SelectAmountMenuProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
+  const { amount } = useAppSelector((state) => state.payment)
   return (
     <div className="selectAmountMenuCon">
       <div className="selectedAmountdiv">
@@ -23,32 +25,33 @@ const SelectAmountMenu: FC<SelectAmountMenuProps> = ({
           CountryIcon={<EuroFlag />}
           input
           account="Deposit Amount"
-          amount="USD 30"
+          amount={amount}
+          currency="EUR"
           cardIcon={<NumberInputIcon />}
         />
       </div>
       <Row gutter={[25, 10]}>
         <Col lg={12} md={24} sm={24}>
-          <AmountCard iconGold amount={"EUR 10,000"} />
+          <AmountCard iconGold amount={10000} currency="EUR" />
         </Col>
         <Col lg={12} md={24} sm={24}>
-          <AmountCard iconGold amount={"EUR 5,000"} />
-        </Col>
-      </Row>
-      <Row style={{ marginTop: "1.25rem" }} gutter={[25, 10]}>
-        <Col lg={12} md={24} sm={24}>
-          <AmountCard iconSilver amount={"EUR 2,500"} />
-        </Col>
-        <Col lg={12} md={24} sm={24}>
-          <AmountCard iconSilver amount={"EUR 2,000"} />
+          <AmountCard iconGold amount={5000} currency="EUR" />
         </Col>
       </Row>
       <Row style={{ marginTop: "1.25rem" }} gutter={[25, 10]}>
         <Col lg={12} md={24} sm={24}>
-          <AmountCard amount={"EUR 1,500"} />
+          <AmountCard iconSilver amount={2500} currency="EUR" />
         </Col>
         <Col lg={12} md={24} sm={24}>
-          <AmountCard amount={"EUR 1,000"} />
+          <AmountCard iconSilver amount={2000} currency="EUR" />
+        </Col>
+      </Row>
+      <Row style={{ marginTop: "1.25rem" }} gutter={[25, 10]}>
+        <Col lg={12} md={24} sm={24}>
+          <AmountCard amount={1500} currency="EUR" />
+        </Col>
+        <Col lg={12} md={24} sm={24}>
+          <AmountCard amount={1000} currency="EUR" />
         </Col>
       </Row>
       <Row
@@ -56,10 +59,10 @@ const SelectAmountMenu: FC<SelectAmountMenuProps> = ({
         gutter={[25, 10]}
       >
         <Col lg={12} md={24} sm={24}>
-          <AmountCard amount={"EUR $500"} />
+          <AmountCard amount={500} currency="EUR" />
         </Col>
         <Col lg={12} md={24} sm={24}>
-          <AmountCard amount={"EUR $250"} />
+          <AmountCard amount={250} currency="EUR" />
         </Col>
       </Row>
       <PrimaryButton

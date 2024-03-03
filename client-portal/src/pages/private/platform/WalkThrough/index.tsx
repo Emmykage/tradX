@@ -20,9 +20,10 @@ import { useCookies } from "react-cookie";
 
 interface WalkThroughProps {
   className?: string;
+  tradeFormHeight: number;
 }
 
-const WalkThrough: React.FC<WalkThroughProps> = ({ className }) => {
+const WalkThrough: React.FC<WalkThroughProps> = ({ className, tradeFormHeight }) => {
   const [step, setStep] = useState<number>(1);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
@@ -84,11 +85,13 @@ const WalkThrough: React.FC<WalkThroughProps> = ({ className }) => {
         className={`${step === 7 ? "active" : ""}`}
         setStep={setStep}
         open={step === 7}
+        tradeFormHeight={tradeFormHeight}
       />
       <SetDuration
         className={`${step === 8 ? "active" : ""}`}
         setStep={setStep}
         open={step === 8}
+        tradeFormHeight={tradeFormHeight}
       />
       <ChooseTrade
         className={`${
@@ -96,6 +99,7 @@ const WalkThrough: React.FC<WalkThroughProps> = ({ className }) => {
         }`}
         setStep={setStep}
         open={step === 9}
+        tradeFormHeight={tradeFormHeight}
         onSkipWalkthrough={onSkipWalkthrough}
       />
 

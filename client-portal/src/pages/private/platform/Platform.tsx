@@ -262,6 +262,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       {!isWalkthroughSkipped && !loading && (
         <WalkThrough
           className={!isWalkthroughSkipped && !loading ? "" : "hidden"}
+          tradeFormHeight={tradeFormHeight}
         />
       )}
     </div>

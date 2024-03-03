@@ -2,18 +2,21 @@ import { useEffect, useState } from "react";
 import TradeForm from "../../../../../components/tradeForm/TradeForm";
 import ChartComponent from "../components/WalkthroughChart";
 import { staticData } from "../data/initialGraphData";
+import useWindowWidth from "hooks/useWindowWidth";
 
 interface ChooseTradeProps {
   className: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   open: boolean;
   onSkipWalkthrough: () => void;
+  tradeFormHeight: number;
 }
 
 const ChooseTrade: React.FC<ChooseTradeProps> = ({
   className,
   setStep,
   open,
+  tradeFormHeight,
   onSkipWalkthrough,
 }) => {
   const [graphData, setGraphData] = useState<any>([]);
@@ -22,6 +25,12 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
   const [time, setTime] = useState(60);
   const [displayTimer, setDisplayTimer] = useState(false);
   const [tradingCompleted, setTradingCompleted] = useState(false);
+
+  const windowWidth = useWindowWidth();
+
+  const calculateChartHeight = () => {
+    return `calc(100% - ${tradeFormHeight}px)`;
+  };
 
   useEffect(() => {
     setShowTooltip(open);
@@ -50,7 +59,10 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
 
   return (
     <div className={`walkthroughStep chooeseTradeStep ${className}`}>
-      <div className="chooeseTradeStepLeft">
+      <div
+        className="chooeseTradeStepLeft"
+        style={{ height: calculateChartHeight() }}
+      >
         <div className="graphContainerWalkthrough">
           {graphData?.length && (
             <ChartComponent data={graphData} direction={userInput} />
@@ -84,6 +96,7 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
           showProfit={false}
           showSetupOrder={false}
           hintTradesTooltip={showTooltip}
+          hintTradesTooltipPlacement={windowWidth >= 768 ? "left" : "top"}
           hintTrades={showTooltip}
           profitPercent="+85%"
           disabled

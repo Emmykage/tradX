@@ -1,4 +1,6 @@
 import { Tooltip } from "antd";
+import { TooltipPlacement } from "antd/es/tooltip";
+
 import {
   ArrowDownRightIcon,
   ArrowUpRightIcon,
@@ -28,6 +30,9 @@ interface TradeFormProps {
   handleUserInputUp?: () => void;
   handleUserInputDown?: () => void;
   profitPercent?: string;
+  amountTooltipPlacement?: TooltipPlacement;
+  durationTooltipPlacement?: TooltipPlacement;
+  hintTradesTooltipPlacement?: TooltipPlacement;
 }
 
 const TradeForm: React.FunctionComponent<TradeFormProps> = ({
@@ -49,6 +54,9 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   handleUserInputUp,
   handleUserInputDown,
   profitPercent,
+  amountTooltipPlacement = "left",
+  durationTooltipPlacement = "left",
+  hintTradesTooltipPlacement = "left",
 }) => {
   return (
     <div
@@ -72,7 +80,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
         <div className="amountContainer">
           <Tooltip
             rootClassName="walkthroughTooltip amountTooltip"
-            placement="left"
+            placement={amountTooltipPlacement}
             title="Set the investment amount at $100. Don’t worry, this is test money."
             color="#1973FA"
             open={amountTooltip}
@@ -106,7 +114,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
         <div className="amountContainer">
           <Tooltip
             rootClassName="walkthroughTooltip amountTooltip"
-            placement="left"
+            placement={durationTooltipPlacement}
             title="Select 1 minute as the duration of the trade."
             color="#1973FA"
             open={durationTooltip}
@@ -141,7 +149,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
       <div className="buttonsWrapper">
         <Tooltip
           rootClassName="walkthroughTooltip amountTooltip"
-          placement="left"
+          placement={hintTradesTooltipPlacement}
           title="Look at the chart and decide where it will go next: Up or Down"
           color="#1973FA"
           open={hintTradesTooltip}
@@ -163,7 +171,9 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             >
               <div className="textContainerBtns">
                 <span>Up</span>
-                {profitPercent ? <span className="percentText">{profitPercent}</span> : null}
+                {profitPercent ? (
+                  <span className="percentText">{profitPercent}</span>
+                ) : null}
               </div>
               <span>
                 <ArrowUpRightIcon />
@@ -176,7 +186,9 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             >
               <div className="textContainerBtns">
                 <span>Down</span>
-                {profitPercent ? <span className="percentText">{profitPercent}</span> : null}
+                {profitPercent ? (
+                  <span className="percentText">{profitPercent}</span>
+                ) : null}
               </div>
               <span>
                 <ArrowDownRightIcon />

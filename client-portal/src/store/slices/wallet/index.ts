@@ -9,12 +9,14 @@ interface WalletData {
 
 export interface WalletSliceState {
   wallets: IWallet[];
+  walletsLoading: boolean;
   walletTypes: IWalletType[];
   createWalletData?: WalletData;
 }
 
 const initialState: WalletSliceState = {
   wallets: [],
+  walletsLoading: false,
   walletTypes: [],
 };
 
@@ -24,6 +26,11 @@ export const walletSlice = createSlice({
   reducers: {
     setWallets: (state, action: PayloadAction<IWallet[]>) => {
       state.wallets = [...action.payload];
+      state.walletsLoading = false;
+      return state;
+    },
+    setWalletsLoading: (state, action: PayloadAction<boolean>) => {
+      state.walletsLoading = action.payload;
       return state;
     },
     setWalletTypes: (state, action: PayloadAction<IWalletType[]>) => {
@@ -37,7 +44,11 @@ export const walletSlice = createSlice({
   },
 });
 
-export const { setWallets, setWalletTypes, setCreateWalletData } =
-  walletSlice.actions;
+export const {
+  setWallets,
+  setWalletsLoading,
+  setWalletTypes,
+  setCreateWalletData,
+} = walletSlice.actions;
 
 export default walletSlice.reducer;

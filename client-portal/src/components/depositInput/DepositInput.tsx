@@ -6,7 +6,13 @@ const DepositInput = ({
   classname,
   placeholderColor,
   marginTop,
-}: any) => {
+}: {
+  CardsIconList?: React.ReactNode[] | any;
+  placeholder: string;
+  classname?: string;
+  placeholderColor?: boolean;
+  marginTop?: boolean;
+}) => {
   return (
     <div
       className={`deposit-Input-Wrapper ${
