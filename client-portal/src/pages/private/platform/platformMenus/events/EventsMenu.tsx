@@ -3,8 +3,6 @@ import {
   EventIcon,
   HistoryIcon,
 } from "../../../../../assets/icons";
-import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
-import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./eventsMenu.scss";
 
 interface EventsMenuProps {}
@@ -21,13 +19,16 @@ const EventsMenu: React.FunctionComponent<EventsMenuProps> = () => {
             Get your referal link in just a few steps
           </p>
         </div>
-        <MenuListCard
-          title="Leagues"
-          subtitle="Join now"
-          textCenter
-          subTextCenter
-        />
-        <MainItemCard className="eventMainItemCard" variant={2}>
+        <div className="leaguesContainer">
+          <div className="Leagues">
+            <h2>Leagues</h2>
+            <p>Join now</p>
+          </div>
+          <div className="coinsContainer">
+            <img src="/menu-images/svgs/ThreeCoins.svg" alt="" />
+          </div>
+        </div>
+        <div className="eventMainItemCard">
           <div className="eventMainItemRow">
             <div>
               <EventIcon />
@@ -44,7 +45,19 @@ const EventsMenu: React.FunctionComponent<EventsMenuProps> = () => {
               <ArrowRightOS width="22" height="22" />
             </div>
           </div>
-        </MainItemCard>
+          <div className="imagesDiv">
+            <img
+              className="lines"
+              src="/menu-images/svgs/EventsLines.svg"
+              alt=""
+            />
+            <img
+              className="teamImage"
+              src="/menu-images/svgs/EventsMenuImage.svg"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
