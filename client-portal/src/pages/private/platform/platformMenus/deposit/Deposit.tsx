@@ -3,7 +3,6 @@ import "./Deposit.scss";
 import DepositCard from "../../../../../components/depositCard/DepositCard";
 import {
   EuroFlag,
-  PaymentIcon,
   PromoCodeIcon,
 } from "../../../../../assets/icons";
 import { Dispatch, FC, SetStateAction, useCallback, useMemo } from "react";

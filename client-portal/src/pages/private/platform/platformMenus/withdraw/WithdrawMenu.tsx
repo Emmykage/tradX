@@ -24,12 +24,13 @@ const WithdrawMenu: FC<WithdrawMenuProps> = ({
       <DepositCard
         CountryIcon={<UsdIcon2 />}
         account="From EUR Account"
-        amount="EUR 250"
+        amount={0}
         icon
         onClick={() => {
           setIsRightSubDrawerOpen(true);
           setIsRightSubDrawerContent("select-withdraw-account");
         }}
+        currency={""}
       />
       <WithdrawCard
         setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}

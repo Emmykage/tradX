@@ -33,9 +33,10 @@ const DepositSelectCurrency = () => {
       <DepositCard
         input
         account="Deposit Amount"
-        amount="EUR 30"
+        amount={0}
         CountryIcon={<EuroFlag />}
         cardIcon={<NumberInputIcon />}
+        currency={""}
       />
       <div className="searchAccount">
         <SearchIcon />

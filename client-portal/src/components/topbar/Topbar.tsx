@@ -10,7 +10,7 @@ import {
   ProfileIcon,
   WalletIcon,
 } from "../../assets/icons";
-import { RightDrawerContent } from "../../pages/private/platform/types";
+import { CurrentDrawerType, RightDrawerContent } from "../../pages/private/platform/types";
 import "./topbar.scss";
 
 interface TopbarProps {
@@ -21,11 +21,9 @@ interface TopbarProps {
   >;
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentDrawer: React.Dispatch<
-    React.SetStateAction<
-      "trades" | "market" | "events" | "help" | "assets" | null
-    >
+    React.SetStateAction<CurrentDrawerType>
   >;
-  currentDrawer: "trades" | "market" | "events" | "help" | "assets" | null;
+  currentDrawer: CurrentDrawerType;
   style?: CSSProperties;
 }
 

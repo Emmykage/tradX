@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import "./marketMenu.scss";
 import { ArrowRightOS } from "../../../../../assets/icons";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
@@ -12,6 +11,14 @@ interface MarketMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
   setIsLeftSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
+
+type MarketMenuType = {
+  id: number;
+  title: string;
+  desc: string;
+  img: string;
+  path: LeftSubDrawer;
+};
 
 const MarketLink = ({
   text,
@@ -29,7 +36,7 @@ const MarketLink = ({
   );
 };
 
-const MarketMenuList = [
+const MarketMenuList: MarketMenuType[] = [
   {
     id: 1,
     title: "Trading Conditions",

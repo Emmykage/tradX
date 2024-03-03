@@ -1,3 +1,4 @@
+import { HTMLInputTypeAttribute } from "react";
 import "./DepositInput.scss";
 
 const DepositInput = ({
@@ -6,12 +7,14 @@ const DepositInput = ({
   classname,
   placeholderColor,
   marginTop,
+  type = "text",
 }: {
   CardsIconList?: React.ReactNode[] | any;
   placeholder: string;
   classname?: string;
   placeholderColor?: boolean;
   marginTop?: boolean;
+  type?: HTMLInputTypeAttribute;
 }) => {
   return (
     <div
@@ -23,7 +26,7 @@ const DepositInput = ({
         className={`deposit-input ${
           placeholderColor ? "placeholderColor" : "placeholderColor2"
         }`}
-        type="text"
+        type={type}
         placeholder={placeholder}
       />
       {CardsIconList &&

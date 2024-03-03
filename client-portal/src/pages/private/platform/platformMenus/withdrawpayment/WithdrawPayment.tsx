@@ -28,17 +28,18 @@ const WithdrawPayment: FC<WithdrawPaymentProps> = ({
         <DepositCard
           CountryIcon={<EuroFlag />}
           account="From USD Account"
-          amount="USD 30"
+          amount={0}
           icon
+          currency={""}
         />
         <DepositCard
           CountryIcon={<PaymentIcon />}
           account="To Bank Cards"
-          amount="540691...4595"
+          amount={540691}
           icon
+          currency={""}
         />
         <DepositInput
-          border
           placeholderColor
           marginTop
           classname="bordercolor"
