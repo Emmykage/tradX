@@ -64,6 +64,10 @@
         width: calc(50% - 5px) !important;
         cursor: default;
 
+        @media (max-width: 767px) {
+          width: 2.375rem !important;
+        }
+
         &.hint {
           background: #0094ff !important;
           cursor: pointer;

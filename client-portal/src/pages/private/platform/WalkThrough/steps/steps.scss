@@ -11,6 +11,18 @@
     visibility: hidden;
     transition: opacity 1s ease, visibility 1s;
 
+    @media (max-width: 991px) {
+      padding: 2.5rem;
+    }
+
+    @media (max-width: 767px) {
+      padding: 1.875rem;
+    }
+
+    @media (max-width: 575px) {
+      padding: 1.25rem;
+    }
+
     &.active {
       opacity: 1;
       visibility: visible;
@@ -69,6 +81,18 @@
           transform: translate(-500px);
           transition: transform ease-in-out 1s;
 
+          @media (max-width: 991px) {
+            gap: 1.375rem;
+          }
+
+          @media (max-width: 767px) {
+            gap: 1rem;
+          }
+
+          @media (max-width: 575px) {
+            gap: 0.625rem;
+          }
+
           &:first-child {
             margin-bottom: 1.75rem;
             transform: translate(500px);
@@ -87,17 +111,62 @@
             padding: 0.9375rem 1.875rem;
             border-radius: 0.9363rem;
 
+            @media (max-width: 991px) {
+              height: 5rem;
+              border-radius: 0.75rem;
+              padding: 0.9375rem 1.875rem;
+            }
+
+            @media (max-width: 767px) {
+              height: 3.75rem;
+              border-radius: 0.5625rem;
+              padding: 0.625rem 1.25rem;
+            }
+
+            @media (max-width: 575px) {
+              height: 2.5rem;
+              border-radius: 0.375rem;
+              padding: 0.25rem 0.5rem;
+            }
+
             img {
               width: 100%;
               max-width: 3.8844rem;
               height: auto;
               margin-right: 1.25rem;
+
+              @media (max-width: 991px) {
+                max-width: 2.8125rem;
+                margin-right: 1rem;
+              }
+
+              @media (max-width: 767px) {
+                max-width: 2.1875rem;
+                margin-right: 0.75rem;
+              }
+
+              @media (max-width: 575px) {
+                max-width: 1.5625rem;
+                margin-right: 0.5rem;
+              }
             }
 
             p {
               color: #fff;
               font-size: 1.875rem;
               font-weight: 500;
+
+              @media (max-width: 991px) {
+                font-size: 1.5rem;
+              }
+
+              @media (max-width: 767px) {
+                font-size: 1.125rem;
+              }
+
+              @media (max-width: 575px) {
+                font-size: 0.75rem;
+              }
             }
           }
         }
@@ -163,6 +232,10 @@
       background: #0e0f12;
       padding: 0;
 
+      @media (max-width: 767px) {
+        align-items: flex-start;
+      }
+
       .setInvestmentStepLeft {
         width: 100%;
         height: 100%;
@@ -175,6 +248,10 @@
 
       .tradingForm {
         width: 23.125rem;
+
+        @media (max-width: 767px) {
+          width: 0;
+        }
         .trade-form {
           width: 100%;
         }
@@ -188,6 +265,10 @@
       background: #0e0f12;
       padding: 0;
 
+      @media (max-width: 767px) {
+        align-items: flex-start;
+      }
+
       .setDurationStepLeft {
         width: 100%;
         height: 100%;
@@ -200,6 +281,11 @@
 
       .tradingForm {
         width: 23.125rem;
+
+        @media (max-width: 767px) {
+          width: 0;
+        }
+
         .trade-form {
           width: 100%;
         }
@@ -212,6 +298,10 @@
       justify-content: flex-end;
       background: #0e0f12;
       padding: 0;
+
+      @media (max-width: 767px) {
+        align-items: flex-start;
+      }
 
       .chooeseTradeStepLeft {
         width: 100%;
@@ -274,6 +364,11 @@
 
       .tradingForm {
         width: 23.125rem;
+
+        @media (max-width: 767px) {
+          width: 0;
+        }
+
         .trade-form {
           width: 100%;
         }
@@ -304,6 +399,18 @@
       font-weight: 700;
       color: #fff;
       margin-top: 2.5rem;
+
+      @media (max-width: 991px) {
+        font-size: 1.75rem;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 1.5625rem;
+      }
+
+      @media (max-width: 575px) {
+        font-size: 1.375rem;
+      }
     }
 
     .walkthroughSubtext {
@@ -314,6 +421,18 @@
       margin-top: 1.25rem;
       max-width: 46.875rem;
       text-align: center;
+
+      @media (max-width: 991px) {
+        font-size: 1.125rem;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 1rem;
+      }
+
+      @media (max-width: 575px) {
+        font-size: 0.9375rem;
+      }
     }
 
     .walkthroughButton {
@@ -330,6 +449,22 @@
       margin-top: 1.875rem;
       transition: all 0.5s ease;
 
+      @media (max-width: 991px) {
+        font-size: 1.0625rem;
+        max-width: 17.5rem;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 1rem;
+        max-width: 16.25rem;
+        font-weight: 500;
+      }
+
+      @media (max-width: 575px) {
+        font-size: 0.9375rem;
+        max-width: 15rem;
+      }
+
       &:hover {
         background: #ff3232;
       }
@@ -342,8 +477,32 @@
       left: 1.875rem;
       width: 9.375rem;
 
+      @media (max-width: 991px) {
+        width: 8.4375rem;
+      }
+
+      @media (max-width: 767px) {
+        width: 7.5rem;
+      }
+
+      @media (max-width: 575px) {
+        width: 6.5625rem;
+      }
+
       &.active {
         width: 13.125rem;
+
+        @media (max-width: 991px) {
+          width: 11.875rem;
+        }
+
+        @media (max-width: 767px) {
+          width: 10.3125rem;
+        }
+
+        @media (max-width: 575px) {
+          width: 8.75rem;
+        }
       }
     }
   }
@@ -365,6 +524,21 @@
     padding: 1.25rem;
     line-height: 1.6875rem;
 
+    @media (max-width: 991px) {
+      font-size: 1.125rem;
+      width: 18.125rem;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 1rem;
+      width: 16.5625rem;
+    }
+
+    @media (max-width: 575px) {
+      font-size: 0.875rem;
+      width: 15rem;
+    }
+
     button {
       width: 100%;
       height: 3.125rem;
@@ -373,6 +547,21 @@
       background-color: #fff;
       margin-top: 1.25rem;
       font-weight: 500;
+
+      @media (max-width: 991px) {
+        font-size: 0.9375rem;
+        height: 2.8125rem;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 0.8125rem;
+        height: 2.5rem;
+      }
+
+      @media (max-width: 575px) {
+        font-size: 0.6875rem;
+        height: 2.1875rem;
+      }
     }
   }
 }
