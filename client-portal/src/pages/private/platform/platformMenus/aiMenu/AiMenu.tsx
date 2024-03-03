@@ -2,11 +2,20 @@ import { Select } from "antd";
 import { StarIcon } from "../../../../../assets/icons";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import "./aiMenu.scss";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Slider from "react-slick";
 import TextArea from "antd/es/input/TextArea";
+import { LeftSubDrawer } from "../../types";
 
-const AiMenu = () => {
+interface AiMenuProps {
+  setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
+  setIsLeftSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const AiMenu: React.FunctionComponent<AiMenuProps> = ({
+  setLeftSubDrawer,
+  setIsLeftSubDrawerOpen,
+}) => {
   const [activeButton, setActiveButton] = useState("summary");
 
   const handleButtonClick = (buttonName: string) => {
@@ -59,7 +68,13 @@ const AiMenu = () => {
                 placeholder="Select Asset"
               />
             </div>
-            <PrimaryButton Title="Get Summary" onClick={() => null} />
+            <PrimaryButton
+              Title="Get Summary"
+              onClick={() => {
+                setLeftSubDrawer("ai-asset-summary");
+                setIsLeftSubDrawerOpen(true);
+              }}
+            />
           </div>
         ) : (
           <div className="RespondBody">

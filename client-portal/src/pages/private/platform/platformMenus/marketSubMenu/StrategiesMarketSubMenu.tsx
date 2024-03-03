@@ -7,8 +7,8 @@ const StrategiesMarketSubMenu = () => {
   return (
     <div className="marketSubMenu">
       <MarketSubMenuSlider
-        title="Signals"
-        desc="Algorithm-based recommendations on when to open trades"
+        title="Strategies"
+        desc="Ready-to-use sets of tools that make it easier to spot entry and exit points"
         img="/market-menu-images/ChessKing.svg"
         bgImg=""
         bgCol="sky"
