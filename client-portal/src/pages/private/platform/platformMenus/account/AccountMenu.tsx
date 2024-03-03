@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-import { useAppSelector } from "@store/hooks";
-import { WalletSliceState } from "@store/slices/wallet";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { WalletSliceState, setSelectedWallet } from "@store/slices/wallet";
 
 import Loading from "components/loading";
 import IocnPlaceholder from "assets/icons/IocnPlaceholder";
@@ -24,9 +24,9 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const dispatch = useAppDispatch();
 
-  const { wallets, walletsLoading } = useAppSelector(
+  const { wallets, walletsLoading, selectedWallet } = useAppSelector(
     (state: { wallet: WalletSliceState }) => state.wallet
   );
 
@@ -52,23 +52,23 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
           secAmount=""
           amount="D9,999.00"
           suffixIcon={<ReloadIcon />}
-          onClick={function (): void {}}
+          onClick={() => dispatch(setSelectedWallet(undefined))}
           selectedCard={null}
-          selected={selectedCard !== null ? false : true}
+          selected={selectedWallet?.id ? false : true}
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
-        {wallets.map((account, index) => (
+        {wallets.map((account) => (
           <AccountCard
             key={account.id}
-            onClick={() => setSelectedCard(index)}
+            onClick={() => dispatch(setSelectedWallet(account))}
             icon={<IocnPlaceholder />} // To be replaced when backend add images to wallets
             accountType={account.name}
             amount={account.available_balance.toString()}
             secAmount={account.account_type__symbol}
             suffixIcon={<ThreeDotsMenu />}
             tag="" // To be added when backend updates response
-            selectedCard={selectedCard === index}
+            selectedCard={selectedWallet?.id === account.id}
             setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
             setIsRightSubDrawerContent={setIsRightSubDrawerContent}
           />

@@ -10,6 +10,7 @@ interface WalletData {
 export interface WalletSliceState {
   wallets: IWallet[];
   walletsLoading: boolean;
+  selectedWallet?: IWallet;
   walletTypes: IWalletType[];
   createWalletData?: WalletData;
 }
@@ -33,6 +34,10 @@ export const walletSlice = createSlice({
       state.walletsLoading = action.payload;
       return state;
     },
+    setSelectedWallet: (state, action: PayloadAction<IWallet | undefined>) => {
+      state.selectedWallet = action.payload;
+      return state;
+    },
     setWalletTypes: (state, action: PayloadAction<IWalletType[]>) => {
       state.walletTypes = [...action.payload];
       return state;
@@ -47,6 +52,7 @@ export const walletSlice = createSlice({
 export const {
   setWallets,
   setWalletsLoading,
+  setSelectedWallet,
   setWalletTypes,
   setCreateWalletData,
 } = walletSlice.actions;

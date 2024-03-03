@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { UserSliceState, setUser, setUserLoading } from "@store/slices/user";
 import {
   WalletSliceState,
+  setSelectedWallet,
   setWallets,
   setWalletsLoading,
 } from "@store/slices/wallet";
@@ -41,6 +42,7 @@ const useInitializeData = () => {
   const { mutate: walletMutate } = useWallet({
     onSuccess: (data) => {
       dispatch(setWallets(data));
+      dispatch(setSelectedWallet(data[0]));
     },
     onError: (error) => {
       console.log("fetching wallets error", error);
