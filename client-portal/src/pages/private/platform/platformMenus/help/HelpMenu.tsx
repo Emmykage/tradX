@@ -88,7 +88,7 @@ const HelpMenu: React.FunctionComponent<HelpMenuProps> = ({
           heading="Education"
           text="Expand your knowledge"
           onClick={() => {
-            setLeftSubDrawer("support");
+            setLeftSubDrawer("education-menu");
             setIsLeftSubDrawerOpen(true);
           }}
         />
@@ -97,7 +97,7 @@ const HelpMenu: React.FunctionComponent<HelpMenuProps> = ({
           heading="Trading Tutorials"
           text="Learn how to open a trade"
           onClick={() => {
-            setLeftSubDrawer("help-center");
+            setLeftSubDrawer("trading-tutorials");
             setIsLeftSubDrawerOpen(true);
           }}
         />

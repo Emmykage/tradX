@@ -1,13 +1,21 @@
+import { Dispatch, SetStateAction } from "react";
 import {
   ArrowRightOS,
   EventIcon,
   HistoryIcon,
 } from "../../../../../assets/icons";
 import "./eventsMenu.scss";
+import { LeftSubDrawer } from "../../types";
 
-interface EventsMenuProps {}
+interface EventsMenuProps {
+  setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
+  setIsLeftSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+}
 
-const EventsMenu: React.FunctionComponent<EventsMenuProps> = () => {
+const EventsMenu: React.FunctionComponent<EventsMenuProps> = ({
+  setLeftSubDrawer,
+  setIsLeftSubDrawerOpen,
+}) => {
   return (
     <div>
       <div className="eventHistoryIcon" onClick={() => {}}>
@@ -19,7 +27,13 @@ const EventsMenu: React.FunctionComponent<EventsMenuProps> = () => {
             Get your referal link in just a few steps
           </p>
         </div>
-        <div className="leaguesContainer">
+        <div
+          onClick={() => {
+            setLeftSubDrawer("event-join-leagues");
+            setIsLeftSubDrawerOpen(true);
+          }}
+          className="leaguesContainer"
+        >
           <div className="Leagues">
             <h2>Leagues</h2>
             <p>Join now</p>
