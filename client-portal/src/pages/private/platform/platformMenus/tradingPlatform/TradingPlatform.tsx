@@ -89,7 +89,7 @@ const TradingPlatform: React.FunctionComponent<TradingPlatformProps> = ({
 }) => {
   return (
     <div className="trading-platforms">
-      <div className="buttons">
+      <div className="buttonsContain">
         <Button className="btn" onClick={() => setLeftSubDrawer("help-center")}>
           Back to User Guide
         </Button>
