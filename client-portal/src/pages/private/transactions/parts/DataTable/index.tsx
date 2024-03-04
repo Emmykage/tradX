@@ -1,8 +1,14 @@
 import { FC } from "react";
 import { Button, Table, TableColumnsType } from "antd";
+import moment from "moment";
 
 import { ITransaction } from "@interfaces";
 
+import {
+  StatusHandler,
+  TransferTypeHandler,
+  methodIconHandler,
+} from "../../helpers";
 import "../../transactions.scss";
 import "./dataTable.scss";
 
@@ -39,19 +45,25 @@ const TransactionTable: FC<TransactionTableProps> = ({ data, columns }) => {
             {data?.map((elm) => (
               <div className="custom-transactions-table-item-body">
                 <div className="custom-transactions-table-child">
-                  <p>{elm.created_at}</p>
+                  <p>
+                    {moment(elm.created_at).format("Do MMM YYYY")}
+                    <br />
+                    {moment(elm.created_at).format("hh:mm:ss")}
+                  </p>
                   <p
                     style={{
                       whiteSpace: "pre-line",
                     }}
                   >
-                    {elm.type}
+                    <TransferTypeHandler type={elm.type} />
+                    <p>{elm.id}</p>
                   </p>
-                  <p>{elm.gateway_ref}</p>
+
+                  <div>{methodIconHandler("Bank Card")}</div>
                 </div>
                 <div className="custom-transactions-table-child">
-                  <p>{elm.status}</p>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
+                  <StatusHandler status={elm.status} />
+                  <div className="amount-container">
                     <Button>Copy</Button>
                     <div style={{ marginTop: "14px" }}>
                       <p>{elm.currency}</p>

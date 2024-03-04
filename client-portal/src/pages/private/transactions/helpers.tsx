@@ -1,4 +1,10 @@
 import { FC, ReactNode } from "react";
+
+import {
+  TransactionStatusType,
+  TransactionType,
+} from "@interfaces/ITransaction";
+
 import { BankCardIcon } from "../../../assets/icons";
 import { MethodsType } from "./types";
 
@@ -22,7 +28,7 @@ export function methodIconHandler(method: MethodsType): ReactNode | null {
 }
 
 export const StatusHandler: FC<{
-  status: "S" | "F" | "P";
+  status: TransactionStatusType;
 }> = ({ status }) => (
   <p
     className="tb-td-transaction-status"
@@ -42,7 +48,7 @@ export const StatusHandler: FC<{
 );
 
 export const TransferTypeHandler: FC<{
-  type: "D" | "W";
+  type: TransactionType;
 }> = ({ type }) => (
   <p>{type === "D" ? "Deposit" : type === "W" ? "Withdraw" : ""}</p>
 );

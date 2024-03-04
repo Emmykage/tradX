@@ -13,7 +13,11 @@ export const columns: TableColumnsType<ITransaction> = [
     dataIndex: "created_at",
     key: "created_at",
     render: (value) => (
-      <span>{moment(value).format("Do MMM. YYYY hh:mm:ss")}</span>
+      <>
+        {moment(value).format("Do MMM YYYY")}
+        <br />
+        {moment(value).format("hh:mm:ss")}
+      </>
     ),
   },
   {
