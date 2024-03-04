@@ -1,15 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-
 export interface WalletSliceState {
-  amount: number,
-  walletId: string | null,
+  amount: number;
+  walletId: string | null;
+  selectedTransactionId: string | null;
 }
 
 const initialState: WalletSliceState = {
   amount: 0,
-  walletId: null
+  walletId: null,
+  selectedTransactionId: null,
 };
 
 export const paymentSlice = createSlice({
@@ -24,9 +25,14 @@ export const paymentSlice = createSlice({
       state.walletId = action.payload;
       return state;
     },
+    setTransactionId: (state, action: PayloadAction<string | null>) => {
+      state.selectedTransactionId = action.payload;
+      return state;
+    },
   },
 });
 
-export const { setPaymentAmount, setWalletId } = paymentSlice.actions;
+export const { setPaymentAmount, setWalletId, setTransactionId } =
+  paymentSlice.actions;
 
 export default paymentSlice.reducer;

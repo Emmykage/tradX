@@ -7,6 +7,7 @@ import { Drawer } from "antd";
 import { ArrowLeftOS, CloseIcon } from "../../../assets/icons";
 import WalkThrough from "./WalkThrough";
 
+import useQueryParamHandler from "./hooks/useQueryParamHandler";
 import {
   leftDarwerTitleHandler,
   leftDrawerBodyHandler,
@@ -53,6 +54,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [bottomSidebarHeight, setBottomSidebarHeight] = useState(0);
   const [chartInitialData, setChartInitialData] = useState<any>([]);
   const storedScale = localStorage.getItem("scale");
+
+  useQueryParamHandler({ setIsRightSubDrawerOpen, setIsRightSubDrawerContent });
 
   const { user, loading } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
