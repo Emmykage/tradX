@@ -1,72 +1,114 @@
-import { Tabs } from "antd";
-import type { TabsProps } from "antd";
-import { TradesIcon } from "../../../../../assets/icons";
+import { TradesIcon3 } from "../../../../../assets/icons";
 import "./tradesMenu.scss";
+import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
+import { useState } from "react";
 
 interface TradesMenuProps {}
 
-const RenderFixedTime = () => {
+const RenderTab = ({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) => {
+  const [part1, part2] = description.split(" on ");
+
   return (
     <div className="tradesMenuWrapper">
-      <p className="tradeHeading">Active Trades</p>
+      <p className="tradeHeading">{title}</p>
       <div className="tradeIconWrapper">
-        <div className="tradeIconContainer">
-          <TradesIcon />
-        </div>
+        <TradesIcon3 />
       </div>
-      <p className="noTrade">You have no open trades on this account</p>
+      <p className="noTrade">{part1} on</p>
+      <p className="noTrade">{part2}</p>
     </div>
   );
 };
 
-const RenderForexTab = () => {
-  return (
-    <div className="tradesMenuWrapper">
-      <p className="tradeHeading">Forex Trades</p>
-      <div className="tradeIconWrapper">
-        <div className="tradeIconContainer">
-          <TradesIcon />
-        </div>
-      </div>
-      <p className="noTrade">You have no open forex trades on this account</p>
-    </div>
-  );
-};
-
-const RenderStocksTab = () => {
-  return (
-    <div className="tradesMenuWrapper">
-      <p className="tradeHeading">Stock Trades</p>
-      <div className="tradeIconWrapper">
-        <div className="tradeIconContainer">
-          <TradesIcon />
-        </div>
-      </div>
-      <p className="noTrade">You have no open stock trades on this account</p>
-    </div>
-  );
-};
-
-const items: TabsProps["items"] = [
+const items = [
   {
     key: "1",
-    label: "Fixed Time",
-    children: <RenderFixedTime />,
+    tab: "Fixed Time",
+    label: "fixed",
+    title: "Active Trades",
+    des: "You have no open trades on this account",
   },
   {
     key: "2",
-    label: "Forex",
-    children: <RenderForexTab />,
+    tab: "Forex",
+    label: "forex",
+    title: "Forex",
+    des: "You have no open Forex Trades on this account",
   },
   {
     key: "3",
-    label: "Stocks",
-    children: <RenderStocksTab />,
+    tab: "Stocks",
+    label: "stocks",
+    title: "Stocks",
+    des: "You have no open Stock Trades on this account",
+  },
+  {
+    key: "4",
+    tab: "Commodities",
+    label: "commodities",
+    title: "Commodities",
+    des: "You have no open Commodities Trades on this account",
+  },
+  {
+    key: "5",
+    tab: "Crypto",
+    label: "crypto",
+    title: "Crypto",
+    des: "You have no open Crypto Trades on this account",
+  },
+  {
+    key: "6",
+    tab: "Bonds",
+    label: "bonds",
+    title: "Bonds",
+    des: "You have no open Bonds Trades on this account",
+  },
+  {
+    key: "7",
+    tab: "IPOs",
+    label: "ipos",
+    title: "IPOs",
+    des: "You have no open IPOs Trades on this account",
   },
 ];
 
 const TradesMenu: React.FunctionComponent<TradesMenuProps> = () => {
-  return <Tabs defaultActiveKey="1" items={items} />;
+  const [selectedTab, setSelectedTab] = useState("fixed");
+
+  const handleButtonClick = (buttonName: string) => {
+    setSelectedTab(buttonName);
+  };
+
+  return (
+    <div className="tradesMenu">
+      <ArrowsSlider>
+        <div className="slider">
+          {items.map((item) => (
+            <button
+              className={selectedTab === item.label ? "active" : ""}
+              onClick={() => handleButtonClick(item.label)}
+            >
+              {item.tab}
+            </button>
+          ))}
+        </div>
+      </ArrowsSlider>
+      <div className="tradesMenuContent">
+        {items.map((item) => {
+          if (item.label === selectedTab) {
+            return <RenderTab title={item.title} description={item.des} />;
+          }
+          return null;
+        })}
+      </div>
+    </div>
+  );
 };
 
 export default TradesMenu;
