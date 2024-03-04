@@ -15,6 +15,7 @@ export type LeftSubDrawer =
   | "education-menu"
   | "trading-tutorials"
   | "event-join-leagues"
+  | "events-signals-club"
   | "what-is-trading"
   | "why-coose-us"
   | "barcode"

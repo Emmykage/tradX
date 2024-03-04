@@ -42,7 +42,13 @@ const EventsMenu: React.FunctionComponent<EventsMenuProps> = ({
             <img src="/menu-images/svgs/ThreeCoins.svg" alt="" />
           </div>
         </div>
-        <div className="eventMainItemCard">
+        <div
+          onClick={() => {
+            setLeftSubDrawer("events-signals-club");
+            setIsLeftSubDrawerOpen(true);
+          }}
+          className="eventMainItemCard"
+        >
           <div className="eventMainItemRow">
             <div>
               <EventIcon />
