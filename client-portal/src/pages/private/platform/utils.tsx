@@ -233,6 +233,8 @@ export function leftSubDrawerBodyHandler(
     case "ai-asset-summary":
       return <AiAssetSummaryMenu />;
     case "event-join-leagues":
+      return <JoinLeagues />;
+    case "events-signals-club":
       return <EventsSignalsClub />;
     default:
       return null;
