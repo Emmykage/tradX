@@ -79,6 +79,7 @@ import AdvisersMarketSubMenu from "./platformMenus/marketSubMenu/AdvisersMarketS
 import EducationMenu from "./platformMenus/educationMenu/EducationMenu";
 import JoinLeagues from "./platformMenus/joinLeagues/JoinLeagues";
 import TradingTutorials from "./platformMenus/tradingTutorials/TradingTutorials";
+import EventsSignalsClub from "./platformMenus/eventsSignalsClub/EventsSignalsClub";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -232,7 +233,7 @@ export function leftSubDrawerBodyHandler(
     case "ai-asset-summary":
       return <AiAssetSummaryMenu />;
     case "event-join-leagues":
-      return <JoinLeagues />;
+      return <EventsSignalsClub />;
     default:
       return null;
   }

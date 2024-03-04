@@ -11196,3 +11196,22 @@ export const TradingAdviceIcon = () => (
     <circle cx="17.5" cy="17.5" r="8.25" stroke="white" stroke-width="1.5" />
   </svg>
 );
+
+export const TimerIcon4 = () => (
+  <svg
+    width="26"
+    height="26"
+    viewBox="0 0 26 26"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="13" cy="13" r="12" stroke="white" stroke-width="2" />
+    <path
+      d="M12 10V15.5H17.5"
+      stroke="white"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
