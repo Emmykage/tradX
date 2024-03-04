@@ -1,4 +1,11 @@
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
 import { Typography } from "antd";
+
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { setTransactionId } from "@store/slices/payment";
+import useSingleTransaction from "api/wallet/useSingleTransaction";
+
 import {
   SuccessIcon,
   Trusty1Icon,
@@ -9,6 +16,27 @@ import "./DepositSuccessful.scss";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 const DepositSuccessful = () => {
+  const dispatch = useAppDispatch();
+  const [cookies] = useCookies(["access_token"]);
+
+  const { selectedTransactionId } = useAppSelector((state) => state.payment);
+
+  const { mutate, data } = useSingleTransaction({
+    onSuccess: () => {
+      dispatch(setTransactionId(null));
+    },
+    onError: () => {},
+  });
+
+  useEffect(() => {
+    if (selectedTransactionId) {
+      mutate({
+        transactionId: selectedTransactionId,
+        token: cookies.access_token,
+      });
+    }
+  }, [mutate]);
+
   return (
     <div className="deposit-success">
       <div className="deposit-success-sub">
@@ -18,7 +46,7 @@ const DepositSuccessful = () => {
         </Typography.Text>
         <div>
           <Typography.Title className="deposited-payment">
-            250 EUR
+            {data?.currency} {data?.amount}
           </Typography.Title>
         </div>
       </div>
