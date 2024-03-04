@@ -3,6 +3,18 @@
   background-color: #f3f6f9;
   min-height: 100vh;
 
+  @media (max-width: 991px) {
+    padding: 2.5rem;
+  }
+
+  @media (max-width: 767px) {
+    padding: 1.5625rem;
+  }
+
+  @media (max-width: 575px) {
+    padding: 0.625rem;
+  }
+
   .tabs-headers {
     display: flex;
     margin-bottom: 2.5rem;
