@@ -78,6 +78,7 @@ import ThemesMarketSubMenu from "./platformMenus/marketSubMenu/ThemesMarketSubMe
 import AdvisersMarketSubMenu from "./platformMenus/marketSubMenu/AdvisersMarketSubMenu";
 import EducationMenu from "./platformMenus/educationMenu/EducationMenu";
 import JoinLeagues from "./platformMenus/joinLeagues/JoinLeagues";
+import TradingTutorials from "./platformMenus/tradingTutorials/TradingTutorials";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -221,7 +222,7 @@ export function leftSubDrawerBodyHandler(
     case "trading-platform":
       return <TradingPlatform setLeftSubDrawer={setLeftSubDrawer} />;
     case "trading-tutorials":
-      return <></>;
+      return <TradingTutorials />;
     case "education-menu":
       return <EducationMenu />;
     case "what-is-trading":
