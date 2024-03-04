@@ -1,43 +1,53 @@
 .trading-platforms-info {
-    .btn {
-            width: 10.625rem;
-            height: 2.875rem;
-            border-radius: 0.5rem;
-            background-color: #393A3D;
-            border: none;
-            color: white;
-            margin-bottom: 1.575rem;
-        }
-    .trading-platforms-info-about {
-        padding: 2.5rem;
-        
-            h3 {
-                color: white;
-                font-weight: 500;
-                font-size: 1.25rem;
-                line-height: 2.036rem;
-            }
-            p{
-                color: rgba(149, 149, 149, 1);
-                font-weight: 400;
-                font-size: 0.938rem;
-                line-height: 1.063rem;
-            }
+  @media (max-width: 768px) {
+    padding: 0 5rem;
+  }
+  @media (max-width: 576px) {
+    padding: 0 2rem;
+  }
+  .btn {
+    width: fit-content;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: #393a3d;
+    border: none;
+    color: white;
+    margin-bottom: 1.575rem;
+    font-size: 0.8rem;
+  }
+  .trading-platforms-info-about {
+    padding: 1.5rem;
+    h3 {
+      color: white;
+      font-weight: 500;
+      font-size: 0.9rem;
+      line-height: 2.036rem;
     }
-    .olymp-trade {
-        cursor: pointer;
-        margin-top: 1.575rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #1A1D21;
-        padding: 2rem;
-        border-radius: 0.438rem;
-        gap: 2.563rem;
-        div {
-            font-weight: 700;
-            font-size: 1rem;
-            color: white;
-        }
+    p {
+      color: rgba(149, 149, 149, 1);
+      font-weight: 400;
+      font-size: 0.759rem;
+      line-height: 1.063rem;
     }
+  }
+  .olymp-trade {
+    cursor: pointer;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1d21;
+    padding: 1rem;
+    border-radius: 0.438rem;
+    gap: 1.5rem;
+    svg {
+      width: 1.3rem;
+      height: 1.3rem;
+    }
+    div {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: white;
+    }
+  }
 }

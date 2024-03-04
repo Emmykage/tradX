@@ -76,6 +76,8 @@ import StrategiesMarketSubMenu from "./platformMenus/marketSubMenu/StrategiesMar
 import IndicatorsMarketSubMenu from "./platformMenus/marketSubMenu/IndicatorsMarketSubMenu";
 import ThemesMarketSubMenu from "./platformMenus/marketSubMenu/ThemesMarketSubMenu";
 import AdvisersMarketSubMenu from "./platformMenus/marketSubMenu/AdvisersMarketSubMenu";
+import EducationMenu from "./platformMenus/educationMenu/EducationMenu";
+import JoinLeagues from "./platformMenus/joinLeagues/JoinLeagues";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -116,7 +118,12 @@ export function leftDrawerBodyHandler(
         />
       );
     case "events":
-      return <EventsMenu />;
+      return (
+        <EventsMenu
+          setLeftSubDrawer={setLeftSubDrawer}
+          setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen}
+        />
+      );
     case "help":
       return (
         <HelpMenu
@@ -166,6 +173,10 @@ export function leftSubDrawerTitleHandler(
       return "Market";
     case "trading-platform":
       return "Help Center";
+    case "education-menu":
+      return "Education";
+    case "trading-tutorials":
+      return "Trading Tutorials";
     case "why-coose-us":
       return "Help Center";
     case "ai-asset-summary":
@@ -209,12 +220,18 @@ export function leftSubDrawerBodyHandler(
       return <AdvisersMarketSubMenu />;
     case "trading-platform":
       return <TradingPlatform setLeftSubDrawer={setLeftSubDrawer} />;
+    case "trading-tutorials":
+      return <></>;
+    case "education-menu":
+      return <EducationMenu />;
     case "what-is-trading":
       return <TradingPlatformInfo setLeftSubDrawer={setLeftSubDrawer} />;
     case "why-coose-us":
       return <OlympTradeInfo setLeftSubDrawer={setLeftSubDrawer} />;
     case "ai-asset-summary":
       return <AiAssetSummaryMenu />;
+    case "event-join-leagues":
+      return <JoinLeagues />;
     default:
       return null;
   }
