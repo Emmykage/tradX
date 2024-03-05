@@ -6,7 +6,7 @@ import {
   LastPriceAnimationMode,
   CrosshairMode,
 } from "lightweight-charts";
-import React, { useEffect, useRef, useMemo, useState } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import { useCookies } from "react-cookie";
 
 import useSocketConnect from "../../../../hooks/useSocketConnect";
@@ -29,18 +29,16 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
   const todayFormated = useMemo(() => {
     const date = new Date();
     return dateFormter(date);
-  },[])
-  
+  }, []);
+
   const { mutate: marketDataMutation, data: market } = useMarketData({});
   const { mutate: assetsListMutate } = useMarketAssets({});
-  
+
   const markets = useAppSelector((state) => state.markets);
   const { wsTicket } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
-  
-  const { data: socketData, socket } = useSocketConnect(
-    wsTicket as string
-  );
+
+  const { data: socketData, socket } = useSocketConnect(wsTicket as string);
 
   const data: MarketData[] = markets.crypto[markets.currentSymbol];
 
@@ -75,28 +73,51 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
     if (market && typeof market === "object") {
       const transformedMarket: TransformedMarket = {};
       Object.keys(market).forEach((key) => {
-        transformedMarket[key] = market[key].map((item: MarketData) => ({
-          ...item,
-          time: item.timestamp,
-          value: item.open,
-        }));
+        transformedMarket[key] = [];
+
+        market[key].forEach((item: any) => {
+          // Check if the timestamp exists in the initial data
+          const initialDataTimestampExists = market[key].some(
+            (initialItem: { time: any }) => initialItem.time === item.timestamp
+          );
+
+          const existingIndex = transformedMarket[key].findIndex(
+            (existingItem) => existingItem?.time === item?.timestamp
+          );
+
+          if (existingIndex === -1 && !initialDataTimestampExists) {
+            // Add new data point only if the timestamp doesn't exist
+            transformedMarket[key].push({
+              ...item,
+              time: item.timestamp,
+              value: item.open,
+            });
+          } else if (existingIndex !== -1) {
+            // Update existing data point if the timestamp exists
+            transformedMarket[key][existingIndex] = {
+              ...item,
+              time: item.timestamp,
+              value: item.open,
+            };
+          }
+        });
       });
 
       dispatch(setInitialCrypto(transformedMarket));
 
       dispatch(setCurrentSymbol(markets.symbol));
 
-        socket?.send(
-          JSON.stringify({
-            type: "join_room",
-            room_name: markets.wsRoom,
-          })
-        );
+      socket?.send(
+        JSON.stringify({
+          type: "join_room",
+          room_name: markets.wsRoom,
+        })
+      );
     }
   }, [market, socket]);
 
   useEffect(() => {
-    if (markets.crypto[markets.symbol].length > 0) {
+    if (markets.crypto[markets.symbol]?.length > 0) {
       dispatch(setCrypto(socketData));
     }
   }, [socketData, crypto]);

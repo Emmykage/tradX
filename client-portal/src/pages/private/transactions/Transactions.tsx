@@ -28,13 +28,13 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
   const tabsBodyHandler = useCallback(() => {
     switch (visiableIndex) {
       case 0:
-        return data ? <TransactionPart data={data} /> : "Loading...";
+        return data ? <TransactionPart data={data.results} /> : "Loading...";
       case 1:
         return <TradesPart data={[]} />;
       case 2:
         return <ProfilePart />;
       default:
-        return data ? <TransactionPart data={data} /> : "Loading...";
+        return data ? <TransactionPart data={data.results} /> : "Loading...";
     }
   }, [visiableIndex, data]);
 
