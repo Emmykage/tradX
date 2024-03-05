@@ -105,7 +105,7 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
 
       dispatch(setInitialCrypto(transformedMarket));
 
-      dispatch(setCurrentSymbol(markets.symbol));
+      dispatch(setCurrentSymbol(markets?.symbol));
 
       socket?.send(
         JSON.stringify({
@@ -117,7 +117,7 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
   }, [market, socket]);
 
   useEffect(() => {
-    if (markets.crypto[markets.symbol]?.length > 0) {
+    if (markets?.crypto[markets?.symbol]?.length > 0) {
       dispatch(setCrypto(socketData));
     }
   }, [socketData, crypto]);

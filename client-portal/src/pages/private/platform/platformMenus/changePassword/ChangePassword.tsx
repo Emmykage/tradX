@@ -22,7 +22,8 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
   setIsRightSubDrawerContent,
 }) => {
   const [cookies] = useCookies(["access_token"]);
-  const { handleSubmit, register } = useForm<ChangePasswordForm>();
+  const { handleSubmit, register, watch } = useForm<ChangePasswordForm>();
+  const newPass = watch("new_password");
 
   const { mutate, isPending } = useChangePassowrd({
     onSuccess: () => {
@@ -56,7 +57,7 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
 
         <Form.Item
           name="new_password"
-          rules={[{ required: true, message: "Old password is required" }]}
+          rules={[{ required: true, message: "New password is required" }]}
         >
           <input
             id="new_password"
@@ -69,7 +70,7 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
 
         <Form.Item
           name="new_password_confirm"
-          rules={[{ required: true, message: "Old password is required" }]}
+          rules={[{ required: true, message: "Confirm password is required" }]}
         >
           <input
             id="new_password_confirm"
@@ -80,7 +81,7 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
           />
         </Form.Item>
 
-        <StrengthMeter password={"123"} />
+        <StrengthMeter password={newPass} />
         <PrimaryButton
           className="changePwButton"
           Title="Change Password"
