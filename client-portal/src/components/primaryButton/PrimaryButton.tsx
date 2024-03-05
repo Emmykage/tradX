@@ -1,3 +1,4 @@
+import { Spin } from "antd";
 import "./primaryButton.scss";
 
 const PrimaryButton = ({
@@ -6,21 +7,29 @@ const PrimaryButton = ({
   className,
   disabled,
   icon,
+  htmlType,
+  loading,
 }: {
   Title: string;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
   disabled?: boolean;
   icon?: React.ReactNode;
+  htmlType?: "button" | "submit" | "reset";
+  loading?: boolean;
 }) => {
+  const buttonType = htmlType || "button";
+
   return (
-    <div
+    <button
+      type={buttonType}
       className={`ButtonContainer ${disabled ? "disable" : ""} ${className}`}
       onClick={onClick}
     >
       {icon}
       {Title}
-    </div>
+      {loading ? <Spin size="small" /> : null}
+    </button>
   );
 };
 
