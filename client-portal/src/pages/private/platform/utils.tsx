@@ -78,6 +78,8 @@ import ThemesMarketSubMenu from "./platformMenus/marketSubMenu/ThemesMarketSubMe
 import AdvisersMarketSubMenu from "./platformMenus/marketSubMenu/AdvisersMarketSubMenu";
 import EducationMenu from "./platformMenus/educationMenu/EducationMenu";
 import JoinLeagues from "./platformMenus/joinLeagues/JoinLeagues";
+import TradingTutorials from "./platformMenus/tradingTutorials/TradingTutorials";
+import EventsSignalsClub from "./platformMenus/eventsSignalsClub/EventsSignalsClub";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -221,7 +223,7 @@ export function leftSubDrawerBodyHandler(
     case "trading-platform":
       return <TradingPlatform setLeftSubDrawer={setLeftSubDrawer} />;
     case "trading-tutorials":
-      return <></>;
+      return <TradingTutorials />;
     case "education-menu":
       return <EducationMenu />;
     case "what-is-trading":
@@ -232,6 +234,8 @@ export function leftSubDrawerBodyHandler(
       return <AiAssetSummaryMenu />;
     case "event-join-leagues":
       return <JoinLeagues />;
+    case "events-signals-club":
+      return <EventsSignalsClub />;
     default:
       return null;
   }
