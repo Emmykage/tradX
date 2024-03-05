@@ -1,9 +1,17 @@
+import { Dispatch, SetStateAction } from "react";
 import { TimerIcon2, UsdtIcon } from "../../../../../assets/icons";
 import SecondaryButton from "../../../../../components/secondaryButton/SecondaryButton";
 import "./cryptoPayments.scss";
 import QRCode from "react-qr-code";
+import { RightSubDrawerContent } from "../../types";
 
-const CryptoPayments = () => {
+interface CryptoPaymentsProps {
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
+
+const CryptoPayments: React.FunctionComponent<CryptoPaymentsProps> = ({
+  setIsRightSubDrawerContent,
+}) => {
   return (
     <div className="cryptoPayments">
       <div className="header">
@@ -44,7 +52,9 @@ const CryptoPayments = () => {
           <SecondaryButton
             className="button"
             Title="I have paid"
-            onClick={() => null}
+            onClick={() => {
+              setIsRightSubDrawerContent("crypto-payment-processing");
+            }}
           />
         </div>
       </div>

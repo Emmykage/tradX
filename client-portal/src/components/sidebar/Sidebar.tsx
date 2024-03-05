@@ -1,13 +1,23 @@
 import {
+  AiIcon,
   EventsIcon,
   HelpIcon,
   LogoIcon,
   MarketIcon,
+  NewsIcon,
   TradesIcon,
 } from "../../assets/icons";
 import "./sidebar.scss";
 
-type DrawerType = "trades" | "market" | "events" | "help" | "assets" | null;
+type DrawerType =
+  | "trades"
+  | "market"
+  | "events"
+  | "help"
+  | "news"
+  | "ai"
+  | "assets"
+  | null;
 
 interface SidebarProps {
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -80,6 +90,24 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
             <HelpIcon />
           </div>
           <p className="text">Help</p>
+        </button>
+        <button
+          onClick={() => onSelect("news")}
+          className={isDrawerOpen && currentDrawer === "news" ? "active" : ""}
+        >
+          <div className="icon">
+            <NewsIcon />
+          </div>
+          <p className="text">News</p>
+        </button>
+        <button
+          onClick={() => onSelect("ai")}
+          className={isDrawerOpen && currentDrawer === "ai" ? "active" : ""}
+        >
+          <div className="icon">
+            <AiIcon />
+          </div>
+          <p className="text">AI</p>
         </button>
       </div>
       <div className="bottom">

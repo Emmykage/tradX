@@ -4,14 +4,33 @@ export type CurrentDrawerType =
   | "events"
   | "help"
   | "assets"
+  | "ai"
+  | "news"
   | null;
 
 export type LeftSubDrawer =
   | "help-center"
   | "support"
   | "trading-platform"
+  | "education-menu"
+  | "trading-tutorials"
+  | "event-join-leagues"
+  | "events-signals-club"
   | "what-is-trading"
   | "why-coose-us"
+  | "barcode"
+  | "published-strategies"
+  | "ai-asset-summary"
+  | "forex-market-sub"
+  | "astro-market-submenu"
+  | "crypto-market-submenu"
+  | "trading-conditions-market-submenu"
+  | "signals-market-submenu"
+  | "custom-strategies-market-submenu"
+  | "strategies-market-submenu"
+  | "indicators-market-submenu"
+  | "themes-market-submenu"
+  | "advisers-market-submenu"
   | null;
 
   export type RightDrawerContent =
@@ -24,6 +43,7 @@ export type LeftSubDrawer =
 
   export type RightSubDrawerContent =
     | "settings"
+    | "status"
     | "twofactor"
     | "personalSettings"
     | "verification"
@@ -61,7 +81,11 @@ export type LeftSubDrawer =
     | "password-success"
     | "account-archive-menu"
     | "account-archive-success-menu"
+    | "add-account-name"
     | "account-rename"
     | "select-withdarw-request"
     | "withdraw-payment"
+    | "crypto-payment"
+    | "crypto-payment-processing"
+    | "deposit-confirm-payment"
     | null;

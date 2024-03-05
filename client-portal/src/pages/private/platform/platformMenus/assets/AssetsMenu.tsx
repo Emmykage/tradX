@@ -1,6 +1,5 @@
 import { Col, Row, Select } from "antd";
 import SearchBar from "../../../../../components/searchBar/SearchBar";
-import Tabs from "./Tabs";
 import "./assetsMenu.scss";
 import {
   DropdownIcon,
@@ -10,6 +9,7 @@ import {
 } from "../../../../../assets/icons";
 import { useState } from "react";
 import { forex, stocks, times } from "./assetsData";
+import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
 
 interface AssetsMenuProps {}
 
@@ -26,17 +26,46 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
     console.log(`selected ${value}`);
   };
 
+  const handleButtonClick = (buttonName: string) => {
+    setSelectedTab(buttonName);
+  };
+
   return (
     <div className="assetsMenu">
-      <Tabs
-        data={[
-          { value: "fixed", title: "Fixed Time" },
-          { value: "forex", title: "Forex" },
-          { value: "stocks", title: "Stocks" },
-        ]}
-        defaultSelected={selectedTab}
-        onClick={(value) => setSelectedTab(value)}
-      />
+      <ArrowsSlider>
+        <div className="slider">
+          <button
+            className={`fixedTime ${selectedTab === "fixed" ? "active" : ""}`}
+            onClick={() => handleButtonClick("fixed")}
+          >
+            Fixed Time
+          </button>
+          <button
+            className={selectedTab === "forex" ? "active" : ""}
+            onClick={() => handleButtonClick("forex")}
+          >
+            Forex
+          </button>
+          <button
+            className={selectedTab === "stocks" ? "active" : ""}
+            onClick={() => handleButtonClick("stocks")}
+          >
+            Stocks
+          </button>
+          <button
+            className={selectedTab === "commodities" ? "active" : ""}
+            onClick={() => handleButtonClick("commodities")}
+          >
+            Commodities
+          </button>
+          <button
+            className={selectedTab === "crypto" ? "active" : ""}
+            onClick={() => handleButtonClick("crypto")}
+          >
+            Crypto
+          </button>
+        </div>
+      </ArrowsSlider>
 
       <SearchBar className="assetsSearchbar" />
 
@@ -65,14 +94,11 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
             <div className="assetsColIcon barsIcon">
               <FilterBarsIcon />
             </div>
-            <p className="assetsListColTitle">Name</p>
+            <p className="assetsListColTitle">Name, Mid Price</p>
           </Col>
 
           <Col span={12} className="assetsListCol alignEnd">
-            <p className="assetsListColTitle">Profitability</p>
-            <div className="assetsColIcon questionIcon">
-              <QuestionMarkIcon />
-            </div>
+            <p className="assetsListColTitle">24-hr changes</p>
           </Col>
 
           {timesData.map((item, index) => (

@@ -2,46 +2,38 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  .mainItemCardv2 {
+    box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+      0 0.063rem 0 0.063rem inset rgba(255, 255, 255, 0.3);
+  }
   .menufirstCard {
     display: flex;
     align-items: center;
     .menufirstCardText {
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 500;
       flex: 1;
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
     }
     svg {
-      width: 2rem;
-      height: 2rem;
-    }
-  }
-  .menuSecondCardCon {
-    margin-bottom: 2.5rem;
-    .menuSecondCard {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-      // margin-bottom: 2.5rem;
-      .menuSecondCardText1 {
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: #5d86a6;
-      }
-      .menuSecondCardText2 {
-        font-size: 1rem;
-        font-weight: 400;
-        color: #ffffff;
-      }
+      width: 1.3rem;
+      height: 1.3rem;
     }
   }
   .menuthirdCardCon {
-    margin-top: -0.4rem;
+    margin-top: -1rem;
+    margin-bottom: 0.5rem;
+    .mainItemCard {
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.3),
+        rgba(0, 0, 0, 0)
+      );
+    }
+    .mainItemCard::before {
+      background-image: linear-gradient(to right, #3c3d40, #2d2e32);
+    }
     .menuthirdCard {
       display: flex;
       flex-direction: column;
@@ -50,15 +42,29 @@
       padding-bottom: 0.5rem;
       margin-left: 0.5rem;
       margin-right: 0.5rem;
-      .menuthirdCardText1 {
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: #5d86a6;
-      }
-      .menuthirdCardText2 {
-        font-size: 1rem;
-        font-weight: 400;
-        color: #ffffff;
+      .menuThirdCardRow {
+        display: flex;
+        align-items: center;
+        .menuthirdCardText1 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: #fff;
+          line-height: 2rem;
+        }
+        .menuthirdCardText2 {
+          font-size: 0.7rem;
+          font-weight: 400;
+          color: rgba(150, 151, 152, 1);
+        }
+        .svgs {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          img {
+            width: 4rem;
+            height: 4rem;
+          }
+        }
       }
     }
   }

@@ -1,10 +1,11 @@
 import { FC, ReactNode, createRef, useEffect, useState } from "react";
-import { ArrowLeftOS, RightArrowIcon } from "../../assets/icons";
+import { ArrowLeftOS, ArrowRightOS } from "../../assets/icons";
 
 import "./ArrowsSlider.scss";
 
 interface ArrowsSliderProps {
   children: ReactNode;
+  LeftArrow?: boolean;
 }
 
 const ArrowsSlider: FC<ArrowsSliderProps> = ({ children }) => {
@@ -75,7 +76,7 @@ const ArrowsSlider: FC<ArrowsSliderProps> = ({ children }) => {
           className="arrows-slider-right-icon"
           onClick={handleChevronRightClick}
         >
-          <RightArrowIcon />
+          <ArrowRightOS />
         </div>
       )}
     </div>

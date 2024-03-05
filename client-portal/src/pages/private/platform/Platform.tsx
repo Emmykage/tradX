@@ -143,7 +143,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         closeIcon={<CloseIcon />}
         mask={false}
         width={
-          windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : `29.25rem`
+          windowWidth <= 768 ? `calc(100% - ${mainSidebarWidth}px)` : `20.25rem`
         }
       >
         <div>
