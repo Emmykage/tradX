@@ -1,11 +1,15 @@
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
 import { Button } from "antd";
+import moment from "moment";
+
+import { useNews } from "api/news/useNews";
+import Loading from "components/loading";
+
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
 import "./newsMenu.scss";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import { SearchIcon2, TimerIcon } from "../../../../../assets/icons";
-import { useEffect } from "react";
-import { useCookies } from "react-cookie";
-import { useNews } from "api/news/useNews";
 
 const filterListButtons = ["Forex", "Stocks", "Commodities", "Crypto"];
 
@@ -27,10 +31,12 @@ interface NewsMenuProps {}
 const NewsMenu: React.FunctionComponent<NewsMenuProps> = () => {
   const [cookies] = useCookies(["access_token"]);
 
-  const { mutate: mutateNews } = useNews({
-    onSuccess: (data: any) => {
-      console.log("data", data);
-    },
+  const {
+    mutate: mutateNews,
+    data,
+    isPending,
+  } = useNews({
+    onSuccess: () => {},
     onError: () => {},
   });
 
@@ -48,6 +54,10 @@ const NewsMenu: React.FunctionComponent<NewsMenuProps> = () => {
       },
     });
   }, []);
+
+  if (isPending) {
+    return <Loading />;
+  }
 
   return (
     <div className="newsMenu">
@@ -70,32 +80,21 @@ const NewsMenu: React.FunctionComponent<NewsMenuProps> = () => {
           </div>
         </MainItemCard>
       </div>
-      <div className="textContainer">
-        <h2>Shrinkflation 101: The Economics of Smaller Groceries</h2>
-        <p>
-          Have you noticed your grocery products shrinking? Here’s how that gets
-          counted — and what gets missed — in inflation data.
-        </p>
-        <div className="textFooter">
-          <TimerIcon />
-          <h3>15 Min Read</h3>
-          <li>New York Times</li>
-          <div className="time">03.01.24</div>
-        </div>
-      </div>
-      <div className="textContainer">
-        <h2>Auto Insurance Spike Hampers the Inflation Fight</h2>
-        <p>
-          Costlier vehicles and repairs are pushing premiums higher even as the
-          increase in U.S. consumer prices is tapering overall.
-        </p>
-        <div className="textFooter">
-          <TimerIcon />
-          <h3>15 Min Read</h3>
-          <li>Financial Times</li>
-          <div className="time">03.01.24</div>
-        </div>
-      </div>
+      {data?.news?.length &&
+        data.news.map((item, index) => (
+          <div className="textContainer" key={index}>
+            <h2>{item.headline}</h2>
+            <p>{item?.summary}</p>
+            <div className="textFooter">
+              <TimerIcon />
+              <h3>15 Min Read</h3>
+              <li>{item.author}</li>
+              <div className="time">
+                {moment(item.created_at).format("dd.mm.yy")}
+              </div>
+            </div>
+          </div>
+        ))}
     </div>
   );
 };

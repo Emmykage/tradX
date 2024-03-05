@@ -6,8 +6,8 @@ export default interface INews {
   id: number;
   images: { size: string; url: string }[];
   source: string;
-  summary: string;
-  symbols: string[];
+  summary?: string;
+  symbols: string[] | [];
   updated_at: number;
   url: string;
 }

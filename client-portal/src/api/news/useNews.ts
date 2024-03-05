@@ -2,6 +2,8 @@ import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { INews } from "@interfaces";
 import getEnv from "utils/env";
 
+type NewsResponse = { news: INews[]; next_page_token: string };
+
 type NewsQueryParams = {
   symbol?: string;
   start?: string;
@@ -14,7 +16,7 @@ type NewsQueryParams = {
 
 type useNewsProps = {
   onSuccess?: (
-    data: INews[],
+    data: NewsResponse,
     variables: { token: string; queryParams?: NewsQueryParams },
     context: unknown
   ) => void;
@@ -28,7 +30,7 @@ type useNewsProps = {
 export async function fetchNews(data: {
   token: string;
   queryParams?: NewsQueryParams;
-}): Promise<INews[]> {
+}): Promise<NewsResponse> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
     const queryParams = data.queryParams
@@ -62,7 +64,7 @@ export async function fetchNews(data: {
 export const useNews = (
   props: useNewsProps
 ): UseMutationResult<
-  INews[],
+  NewsResponse,
   unknown,
   { token: string; queryParams?: NewsQueryParams }
 > => {
@@ -73,7 +75,7 @@ export const useNews = (
   } = props || ({} as useNewsProps);
 
   return useMutation<
-    INews[],
+    NewsResponse,
     unknown,
     { token: string; queryParams?: NewsQueryParams }
   >({
