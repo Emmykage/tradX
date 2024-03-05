@@ -1,5 +1,12 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import Input from "../../../../../components/input/Input";
+import { Dispatch, SetStateAction } from "react";
+import { useCookies } from "react-cookie";
+import { useForm } from "react-hook-form";
+import { Form } from "antd";
+
+import useChangePassowrd, {
+  ChangePasswordForm,
+} from "api/user/useChangePassword";
+// import Input from "../../../../../components/input/Input";
 import "./changePassword.scss";
 import StrengthMeter from "./StrengthMeter";
 
@@ -14,39 +21,73 @@ interface ChangePasswordProps {
 const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
   setIsRightSubDrawerContent,
 }) => {
-  const [password, setPassword] = useState("");
+  const [cookies] = useCookies(["access_token"]);
+  const { handleSubmit, register } = useForm<ChangePasswordForm>();
+
+  const { mutate, isPending } = useChangePassowrd({
+    onSuccess: () => {
+      setIsRightSubDrawerContent("password-success");
+    },
+  });
+
+  const onSubmit = handleSubmit((data) =>
+    mutate({ token: cookies.access_token, formData: data })
+  );
 
   return (
     <div className="changePassword">
-      <Input
-        title="Old Password"
-        type="password"
-        placeholder="Enter old password"
-      />
+      <Form
+        className="forgotPassContainer w-100"
+        layout="vertical"
+        onFinish={onSubmit}
+      >
+        <Form.Item
+          name="old_password"
+          rules={[{ required: true, message: "Old password is required" }]}
+        >
+          <input
+            id="old_password"
+            title="Old Password"
+            type="password"
+            placeholder="Enter old password"
+            {...register("old_password")}
+          />
+        </Form.Item>
 
-      <Input
-        title="New Password"
-        type="password"
-        defaultValue={password}
-        onChange={(e: any) => setPassword(e.target.value)}
-        placeholder="Enter new password"
-      />
+        <Form.Item
+          name="new_password"
+          rules={[{ required: true, message: "Old password is required" }]}
+        >
+          <input
+            id="new_password"
+            title="New Password"
+            type="password"
+            placeholder="Enter new password"
+            {...register("new_password")}
+          />
+        </Form.Item>
 
-      <Input
-        title="Confirm New Password"
-        type="password"
-        placeholder="Confirm password"
-      />
+        <Form.Item
+          name="new_password_confirm"
+          rules={[{ required: true, message: "Old password is required" }]}
+        >
+          <input
+            id="new_password_confirm"
+            title="Confirm New Password"
+            type="password"
+            placeholder="Confirm password"
+            {...register("new_password_confirm")}
+          />
+        </Form.Item>
 
-      <StrengthMeter password={password} />
-      <PrimaryButton
-        className="changePwButton"
-        Title="Change Password"
-        onClick={() => {
-          setIsRightSubDrawerContent("password-success");
-          console.log("check");
-        }}
-      />
+        <StrengthMeter password={"123"} />
+        <PrimaryButton
+          className="changePwButton"
+          Title="Change Password"
+          htmlType="submit"
+          loading={isPending}
+        />
+      </Form>
     </div>
   );
 };
