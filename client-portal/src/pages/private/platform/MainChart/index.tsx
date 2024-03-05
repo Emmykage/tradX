@@ -6,30 +6,70 @@ import {
   LastPriceAnimationMode,
   CrosshairMode,
 } from "lightweight-charts";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo, useState } from "react";
 import { useCookies } from "react-cookie";
 
 import useSocketConnect from "../../../../hooks/useSocketConnect";
 import useMarketData from "api/marketData/useMarketData";
+import useMarketAssets from "api/marketData/useMarketAssets";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { setCrypto, setInitialCrypto } from "@store/slices/markets";
+import {
+  setAssets,
+  setCrypto,
+  setInitialCrypto,
+  setCurrentSymbol,
+} from "@store/slices/markets";
 import { MainChartProps, MarketData, TransformedMarket } from "./types";
+import { dateFormter } from "helpers/dateFormter";
 
 
 const MainChart: React.FC<MainChartProps> = ({ colors }) => {
   const [cookies] = useCookies(["access_token"]);
-  const { mutate: marketDataMutation, data: market } = useMarketData({});
-  const markets = useAppSelector((state) => state.markets);
-  const dispatch = useAppDispatch();
 
-  const { data: socketData } = useSocketConnect(
-    "wss://tradx.io/ws/external-api/"
+  const todayFormated = useMemo(() => {
+    const date = new Date();
+    return dateFormter(date);
+  },[])
+  
+  const { mutate: marketDataMutation, data: market } = useMarketData({});
+  const { mutate: assetsListMutate } = useMarketAssets({});
+  
+  const markets = useAppSelector((state) => state.markets);
+  const { wsTicket } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+  
+  const { data: socketData, socket } = useSocketConnect(
+    wsTicket as string
   );
 
-  const data: MarketData[] = markets.crypto[markets.sympol];
+  const data: MarketData[] = markets.crypto[markets.currentSymbol];
+
   useEffect(() => {
-    marketDataMutation(cookies.access_token);
-  }, []);
+    marketDataMutation({
+      token: cookies.access_token,
+      options: {
+        symbols: markets.symbol,
+        start: todayFormated,
+      },
+    });
+  }, [markets.symbol]);
+
+  useEffect(() => {
+    // Load the list of assets
+    assetsListMutate(
+      {
+        token: cookies.access_token,
+        data: {
+          asset_class: "crypto",
+        },
+      },
+      {
+        onSuccess: (data) => {
+          dispatch(setAssets(data));
+        },
+      }
+    );
+  }, [cookies.access_token]);
 
   useEffect(() => {
     if (market && typeof market === "object") {
@@ -41,13 +81,22 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
           value: item.open,
         }));
       });
-      
+
       dispatch(setInitialCrypto(transformedMarket));
+
+      dispatch(setCurrentSymbol(markets.symbol));
+
+        socket?.send(
+          JSON.stringify({
+            type: "join_room",
+            room_name: markets.wsRoom,
+          })
+        );
     }
-  }, [market]);
+  }, [market, socket]);
 
   useEffect(() => {
-    if (markets.crypto[markets.sympol].length > 0) {
+    if (markets.crypto[markets.symbol].length > 0) {
       dispatch(setCrypto(socketData));
     }
   }, [socketData, crypto]);
@@ -62,7 +111,7 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
   } = colors || {};
 
   const chartContainerRef = useRef<HTMLDivElement>(null);
-  
+
   const chartRef = useRef<IChartApi>();
 
   useEffect(() => {

@@ -7,12 +7,14 @@ import { fetctUser, handlers } from "./thunk";
 export interface UserSliceState {
   user: IUser | null;
   loading: boolean;
+  wsTicket: string | null;
 }
 
 // Define the initial state using that type
 const initialState: UserSliceState = {
   user: {},
   loading: true,
+  wsTicket: null,
 };
 
 export const userSlice = createSlice({
@@ -28,6 +30,9 @@ export const userSlice = createSlice({
       state.loading = action.payload;
       return state;
     },
+    setWSTicket: (state, action:PayloadAction<string>) => {
+      state.wsTicket = action.payload;
+    }
   },
   extraReducers: (builder) => {
     //GET USER EXAMPLE
@@ -37,6 +42,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser, setUserLoading } = userSlice.actions;
+export const { setUser, setUserLoading, setWSTicket } = userSlice.actions;
 
 export default userSlice.reducer;

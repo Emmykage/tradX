@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { CryptoSliceState } from "./types";
 import { dateFormter } from "helpers/dateFormter";
 
@@ -6,10 +6,13 @@ const initialState: CryptoSliceState = {
   crypto: {
     "BTC/USD": [],
   },
+  assets: [],
   status: "idle",
   start: dateFormter(new Date()),
   timeFrame: "minute",
-  sympol: "BTC/USD",
+  currentSymbol: "BTC/USD",
+  symbol: "BTC/USD",
+  wsRoom: "BTC_USD",
   error: null,
 };
   
@@ -18,7 +21,7 @@ export const cryptoSlice = createSlice({
   initialState,
   reducers: {
     setInitialCrypto: (state, action) => {
-      state.crypto = action.payload;
+      state.crypto = { ...state.crypto, ...action.payload };
       return state;
     },
     setCrypto: (state, action) => {
@@ -31,9 +34,23 @@ export const cryptoSlice = createSlice({
       }
       return state;
     },
+    setSymbol: (state, action: PayloadAction<string>) => {
+      state.symbol = action.payload;
+      state.wsRoom = action.payload.split("/").join("_");
+      return state;
+    },
+    setAssets: (state, {payload}) => {
+      state.assets = [...state.assets, ...payload];
+      return state
+    },
+    setCurrentSymbol: (state, action: PayloadAction<string>) => {
+      state.currentSymbol = action.payload;
+      return state;
+    }
   },
 });
 
-export const { setInitialCrypto, setCrypto } = cryptoSlice.actions;
+export const { setInitialCrypto, setCrypto, setAssets, setSymbol, setCurrentSymbol } =
+  cryptoSlice.actions;
 
 export default cryptoSlice.reducer;
