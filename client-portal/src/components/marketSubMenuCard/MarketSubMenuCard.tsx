@@ -24,11 +24,11 @@ const MarketSubMenuCard = ({
     <div className="marketSubMenuCard">
       <MainItemCard variant={3} className="marketSubCard">
         <Row className="marketSubRow">
-          <Col span={6} className="marketSubCol1">
+          <Col sm={2} md={6} className="marketSubCol1">
             <img src={img} alt="" />
           </Col>
           <Col span={1}></Col>
-          <Col span={16} className="marketSubCol2">
+          <Col sm={21} md={16} className="marketSubCol2">
             <div className="starRating">
               <h2>{title}</h2>
               <div className="starRatingNumber">
