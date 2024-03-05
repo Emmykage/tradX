@@ -1,19 +1,20 @@
 import { Tabs } from "antd";
 import { FC, useState } from "react";
-import { DataType } from "../../types";
 import TransactionTable from "../DataTable";
 import { columns } from "../../dummy";
 
 import "../../transactions.scss";
 import "./trades.scss";
 import UserTools from "./sections/UserTools";
+import { ITransaction } from "@interfaces";
 
 interface TradesPartProps {
-  data: DataType[];
+  data: ITransaction[];
 }
-export const TradesPart: FC<TradesPartProps> = () => {
+export const TradesPart: FC<TradesPartProps> = ({data}) => {
   const [tabKey, setTabKey] = useState<string>("fixedTime");
-
+  const [tableData, setTableData] = useState(data);
+  
   const items = [
     {
       label: "Fixed Time",
@@ -35,8 +36,13 @@ export const TradesPart: FC<TradesPartProps> = () => {
         onChange={setTabKey}
         className="transactions-trades-tabs"
       />
-      <UserTools tabs={items} tabKey={tabKey} setTabKey={setTabKey} />
-      <TransactionTable columns={columns} data={[]} />
+      <UserTools
+        tabs={items}
+        tabKey={tabKey}
+        setTabKey={setTabKey}
+        setTableData={setTableData}
+      />
+      <TransactionTable columns={columns} data={tableData} />
     </>
   );
 };

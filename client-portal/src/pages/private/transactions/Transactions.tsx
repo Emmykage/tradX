@@ -22,7 +22,7 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
   });
 
   useEffect(() => {
-    mutate(cookies.access_token);
+    mutate({token: cookies.access_token});
   }, [cookies.access_token, mutate]);
 
   const tabsBodyHandler = useCallback(() => {
@@ -30,7 +30,7 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
       case 0:
         return data ? <TransactionPart data={data.results} /> : "Loading...";
       case 1:
-        return <TradesPart data={[]} />;
+        return <TradesPart data={data.results} />;
       case 2:
         return <ProfilePart />;
       default:

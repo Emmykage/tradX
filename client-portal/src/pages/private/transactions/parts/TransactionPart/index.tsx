@@ -1,5 +1,5 @@
-import { FC, useMemo } from "react";
-import { Select } from "antd";
+import { FC, useEffect, useMemo, useState } from "react";
+import { Select, DatePicker, Form } from "antd";
 import { FillCaretDownIcon } from "../../../../../assets/icons";
 import { ITransaction } from "@interfaces";
 import { columns } from "../../dummy";
@@ -7,30 +7,80 @@ import TransactionTable from "../DataTable";
 
 import "../../transactions.scss";
 import "./transaction.scss";
+import { dateFormter } from "helpers/dateFormter";
+import useTransactions from "api/wallet/useTransactions";
+import { useCookies } from "react-cookie";
+import { useAppSelector } from "@store/hooks";
+import { statusAndTypesList } from "../../constants";
+
 
 interface TransactionPartProps {
   data: ITransaction[];
 }
+
 export const TransactionPart: FC<TransactionPartProps> = ({ data }) => {
+  const [cookies] = useCookies(["access_token"]);
+
+  const { wallets } = useAppSelector((state) => state.wallet);
+
+  const [tableData, setTableData] = useState(data);
+
+  const [currency, setCurrency] = useState<string>();
+  const [startDate, setStartDate] = useState<string>();
+  const [endDate, setEndDate] = useState<string>();
+  const [status, setStatus] = useState<string>();
+  const [type, setType] = useState<string>();
+
+  const { mutate: transactionsMutate } = useTransactions({});
+
   const accountsOptions = useMemo(
-    () => [
-      { value: "all", label: "All Accounts" },
-      { value: "usd", label: "USD Account" },
-      { value: "EUR", label: "EURO Account" },
-      { value: "BTC", label: "BITCOIN Account" },
-      { value: "ETH", label: "ETHIRIOM Account" },
-      { value: "$$", label: "Unknown Account" },
-    ],
-    []
+    () =>
+      wallets.map(({ account_type__symbol, name }) => ({
+        value: account_type__symbol,
+        label: name,
+      })),
+    [wallets]
   );
+
+  const typeOrStatusHandler = (value: string) => {
+    const findItem = statusAndTypesList.filter((item) => item.value === value)[0];
+    
+    if (findItem) {
+      setStatus(undefined);
+      setType(undefined);
+      
+      if (findItem.type === "status") return setStatus(findItem?.value);
+      return setType(findItem?.value);
+    }
+  };
+
+  useEffect(() => {
+    if (currency || startDate || endDate || status || type) {
+      transactionsMutate(
+        {
+          token: cookies.access_token,
+          options: {
+            currency,
+            date_from: startDate,
+            date_to: endDate,
+            status,
+            type,
+          },
+        },
+        {
+          onSuccess: (data) => setTableData(data.results),
+        }
+      );
+    }
+  }, [currency, startDate, endDate, status, type]);
+
   return (
     <>
       <div className="user-options-bar user-options-transactions">
         <div className="user-option-control-item transaction-part">
           <label>Accounts</label>
           <Select
-            onClick={(e) => console.log(e)}
-            defaultValue="All Accounts"
+            onChange={setCurrency}
             options={accountsOptions}
             suffixIcon={<FillCaretDownIcon />}
           />
@@ -39,11 +89,13 @@ export const TransactionPart: FC<TransactionPartProps> = ({ data }) => {
         <div className="user-control-period">
           <div className="user-option-control-item transaction-part">
             <label>Period</label>
-            <Select
-              onClick={(e) => console.log(e)}
-              defaultValue="All Accounts"
-              options={accountsOptions}
-              suffixIcon={<FillCaretDownIcon />}
+            <DatePicker
+              size="large"
+              placeholder="Start Date"
+              format="YYYY-MM-DD"
+              onChange={(event) => {
+                if (event) setStartDate(dateFormter(event.toDate()));
+              }}
             />
           </div>
 
@@ -61,11 +113,13 @@ export const TransactionPart: FC<TransactionPartProps> = ({ data }) => {
               <br />
             </label>
 
-            <Select
-              onClick={(e) => console.log(e)}
-              defaultValue="All Accounts"
-              options={accountsOptions}
-              suffixIcon={<FillCaretDownIcon />}
+            <DatePicker
+              size="large"
+              onChange={(event) => {
+                if (event) setEndDate(dateFormter(event.toDate()));
+              }}
+              placeholder="End Date"
+              format="YYYY-MM-DD"
             />
           </div>
         </div>
@@ -73,14 +127,13 @@ export const TransactionPart: FC<TransactionPartProps> = ({ data }) => {
         <div className="user-option-control-item transaction-part">
           <label>Transaction Type or Status</label>
           <Select
-            onClick={(e) => console.log(e)}
-            defaultValue="All Accounts"
-            options={accountsOptions}
+            onChange={typeOrStatusHandler}
+            options={statusAndTypesList}
             suffixIcon={<FillCaretDownIcon />}
           />
         </div>
       </div>
-      {data ? <TransactionTable columns={columns} data={data} /> : null}
+      {data ? <TransactionTable columns={columns} data={tableData} /> : null}
     </>
   );
 };
