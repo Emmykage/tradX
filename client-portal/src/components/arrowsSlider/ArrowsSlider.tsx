@@ -6,10 +6,9 @@ import "./ArrowsSlider.scss";
 interface ArrowsSliderProps {
   children: ReactNode;
   LeftArrow?: boolean;
-  Arrows?: boolean;
 }
 
-const ArrowsSlider: FC<ArrowsSliderProps> = ({ children, Arrows = false }) => {
+const ArrowsSlider: FC<ArrowsSliderProps> = ({ children }) => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
   const scrollbarContainerRef = createRef<HTMLDivElement>();
@@ -19,8 +18,7 @@ const ArrowsSlider: FC<ArrowsSliderProps> = ({ children, Arrows = false }) => {
     if (container) {
       setShowLeftArrow(container.scrollLeft > 0);
       setShowRightArrow(
-        !Arrows &&
-          container.scrollLeft + container.clientWidth < container.scrollWidth
+        container.scrollLeft + container.clientWidth < container.scrollWidth
       );
     }
 
@@ -28,8 +26,7 @@ const ArrowsSlider: FC<ArrowsSliderProps> = ({ children, Arrows = false }) => {
       if (container) {
         setShowLeftArrow(container.scrollLeft > 0);
         setShowRightArrow(
-          !Arrows &&
-            container.scrollLeft + container.clientWidth < container.scrollWidth
+          container.scrollLeft + container.clientWidth < container.scrollWidth
         );
       }
     };
@@ -39,7 +36,7 @@ const ArrowsSlider: FC<ArrowsSliderProps> = ({ children, Arrows = false }) => {
     return () => {
       container?.removeEventListener("scroll", handleScroll);
     };
-  }, [Arrows]);
+  }, []);
 
   const handleChevronLeftClick = () => {
     if (scrollbarContainerRef.current) {
