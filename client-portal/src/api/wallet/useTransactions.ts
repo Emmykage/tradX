@@ -19,10 +19,36 @@ type UseTransactionsProps = {
   [index: string]: any;
 };
 
-export async function fetchTransactions(token: string): Promise<TransactionResult> {
+type FetchTransactionsArgs = {
+  token: string;
+  options?: {
+    currency: string;
+    date_from?: string;
+    date_to?: string;
+    page?: number;
+    page_size?: number;
+    sort_by?: string;
+    sort_desc?: string;
+    status?: "PENDING" | "SUCCESSFUL" | "FAILED" | "REFUNDED";
+    type?: "DEPOSIT" | "WITHDRAWAL" | "TRADE" | "TRANSFER";
+  };
+};
+
+export async function fetchTransactions({token, options}: FetchTransactionsArgs): Promise<TransactionResult> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
+
+  const searchParams = new URLSearchParams();
+
+   if (options){
+    Object.keys(options).forEach((key) => {
+      if (options[key as keyof FetchTransactionsArgs['options']]) {
+        return searchParams.set(key, options[key as keyof FetchTransactionsArgs['options']]!);
+      }
+    });
+  }
+
   try {
-    const response = await fetch(`${BASE_URL}/wallet/transactions/`, {
+    const response = await fetch(`${BASE_URL}/wallet/transactions/?${searchParams}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -48,8 +74,8 @@ export const useTransactions = (props: UseTransactionsProps) => {
     ...rest
   } = receivedProps;
 
-  return useMutation<TransactionResult, unknown, any>({
-    mutationFn: (token: string) => fetchTransactions(token),
+  return useMutation<any, unknown, any>({
+    mutationFn: fetchTransactions,
     onSuccess: (data: TransactionResult, variables, context) => {
       if (onSuccessOverride) {
         onSuccessOverride(data, variables, context);
