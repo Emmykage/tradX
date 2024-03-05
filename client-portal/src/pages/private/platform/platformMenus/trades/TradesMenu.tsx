@@ -37,7 +37,7 @@ const RenderTab = ({
 
 const RenderData = () => {
   const [forexData] = useState(forex);
-  const [selectedForex, setSelectedForex] = useState(4);
+  const [selectedForex, setSelectedForex] = useState("");
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
