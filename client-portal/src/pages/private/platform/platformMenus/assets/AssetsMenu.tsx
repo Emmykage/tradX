@@ -10,18 +10,21 @@ import {
 import { useState } from "react";
 import { forex, stocks, times } from "./assetsData";
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
+import { useAppDispatch } from "@store/hooks";
+import { setSymbol } from "@store/slices/markets";
 
 interface AssetsMenuProps {}
 
 const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
+  const dispatch = useAppDispatch();
   const [timesData] = useState(times);
   const [forexData] = useState(forex);
   const [stocksData] = useState(stocks);
 
   const [selectedTab, setSelectedTab] = useState("fixed");
-  const [timezone, setTimezone] = useState(4);
-  const [selectedForex, setSelectedForex] = useState(4);
-  const [selectedStock, setSelectedStock] = useState(0);
+  const [timezone, setTimezone] = useState<string>("");
+  const [selectedForex, setSelectedForex] = useState("");
+  const [selectedStock, setSelectedStock] = useState("");
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
@@ -107,7 +110,10 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
                 className={`assetsListItem ${
                   timezone === item.value ? "active" : ""
                 }`}
-                onClick={() => setTimezone(item.value)}
+                onClick={() => {
+                  dispatch(setSymbol(item.value));
+                  setTimezone(item.value);
+                }}
               >
                 <div className="contentLeft">
                   <img src={item.image} />
@@ -147,7 +153,10 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
                 className={`assetsListItem ${
                   selectedForex === item.value ? "active" : ""
                 }`}
-                onClick={() => setSelectedForex(item.value)}
+                onClick={() => {
+                  dispatch(setSymbol(item.value));
+                  setSelectedForex(item.value);
+                }}
               >
                 <div className="contentLeft">
                   <img src={item.image} />
@@ -192,9 +201,10 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
                   className={`assetsListItem ${
                     selectedStock === item.value ? "active" : ""
                   } ${disabled ? "disabled" : ""}`}
-                  onClick={() =>
-                    setSelectedStock(!disabled ? item.value : selectedStock)
-                  }
+                  onClick={() => {
+                    dispatch(setSymbol(item.value));
+                    setSelectedStock(!disabled ? item.value : selectedStock);
+                  }}
                 >
                   <div className="contentLeft">
                     <img src={item.image} />

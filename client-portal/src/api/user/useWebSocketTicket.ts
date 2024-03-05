@@ -1,28 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
 import getEnv from "utils/env";
 
-type FetcherDataOptions = {
-  token: string;
-  options?: {
-    start?: string;
-    symbols?: string;
-    timeFrame?: string;
-    end?: string
-  }
-}
-
-export async function marketDataFetcher({
-  token,
-  options
-}: FetcherDataOptions) {
+export async function webSocketTicketFetcher(
+  token: string,
+) {
   try {
-    const start = options?.start ?? "2024-02-20";
-    const symbols = options?.symbols ?? "BTC%2FUSD";
-    const timeFrame = options?.timeFrame ?? "minute";
     const response = await fetch(
-      `${getEnv(
-        "VITE_API_BASE_URL"
-      )}/market-data/alpaca/?start=${start}&symbol_or_symbols=${symbols}&timeframe=${timeFrame}`,
+      `${getEnv("VITE_API_BASE_URL")}/user/websocket_ticket`,
       {
         method: "GET",
         headers: {
@@ -42,13 +26,17 @@ export async function marketDataFetcher({
   }
 }
 
-type useMarketDataProps = {
-  onSuccess?: (data: unknown, variables: unknown, context: unknown) => void;
+type UseWebSocketTicketProps = {
+  onSuccess?: (
+    data: { ws_ticket: string},
+    variables: unknown,
+    context: unknown
+  ) => void;
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };
-export const useMarketData = (props: useMarketDataProps) => {
-  const receivedProps = props || ({} as useMarketDataProps);
+export const useWebSocketTicket = (props: UseWebSocketTicketProps) => {
+  const receivedProps = props || ({} as UseWebSocketTicketProps);
 
   const {
     onSuccess: onSuccessOverride,
@@ -57,7 +45,7 @@ export const useMarketData = (props: useMarketDataProps) => {
   } = receivedProps;
 
   return useMutation({
-    mutationFn: marketDataFetcher,
+    mutationFn: webSocketTicketFetcher,
     onSuccess: (data, variables, context) => {
       /* Add On success actions here if needed */
       if (onSuccessOverride) {
@@ -73,4 +61,4 @@ export const useMarketData = (props: useMarketDataProps) => {
   });
 };
 
-export default useMarketData;
+export default useWebSocketTicket;

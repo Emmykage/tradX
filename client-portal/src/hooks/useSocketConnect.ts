@@ -16,66 +16,68 @@ interface Data {
 interface SocketConnectReturn {
   data: Data | null;
   setData: React.Dispatch<React.SetStateAction<Data | null>>;
-  connectedSocket: WebSocket | null;
+  socket: WebSocket | null;
   extraAction: (
     callback: (data: Data | null, socket: WebSocket | null) => void
   ) => void;
 }
 
-const useSocketConnect = (
-  uri: string = "wss://tradx.io/ws/external-api/",
-  authenticate?: Record<string, unknown>
-): SocketConnectReturn => {
+const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
   const [data, setData] = useState<Data | null>(null);
-  const [connectedSocket, setConnectedSocket] = useState<WebSocket | null>(
-    null
-    );
-    
-    useEffect(() => {
-    const socket = new WebSocket(uri);
-    socket.onerror = function (event) {
-      console.log(event);
-      throw Error("Websocket connection error");
-    };
+  const [socket, setSocket] = useState<WebSocket | null>(null);
 
-    socket.onopen = () => {
-      console.log("authenticate");
-      if (authenticate) {
-        socket.send(JSON.stringify(authenticate));
-      }
-      return setConnectedSocket(socket);
-    };
-
-    socket.onmessage = (event) => {
-      const receivedData = JSON.parse(event.data);
+  useEffect(() => {
+    if (wsTicket){
+      const webSocket = new WebSocket(
+        `wss://tradx.io/ws/external-api/?ws_ticket=${wsTicket}`
+      );
       
+    webSocket.onerror = function (event) {
+      console.error(event);
+      throw Error("Websocket connection error");
+    }
+
+    webSocket.onopen = () => {
+      webSocket.send(
+        JSON.stringify({ type: "join_room", room_name: "BTC_USD" })
+      );
+      return setSocket(webSocket);
+    };
+
+    webSocket.onmessage = (event) => {
+      const receivedData = JSON.parse(event.data);
       if (
         receivedData?.type === "quote_data" &&
         receivedData?.data?.bid_price &&
         receivedData?.data?.timestamp
-      ) {
-        const value = {
-          time: receivedData?.data?.timestamp,
-          value: receivedData?.data?.bid_price,
-          symbol: receivedData?.data?.symbol,
-          timestamp: receivedData?.data?.timestamp,
-        };
+        ) {
+          const value = {
+            time: receivedData?.data?.timestamp,
+            value: receivedData?.data?.bid_price,
+            symbol: receivedData?.data?.symbol,
+            timestamp: receivedData?.data?.timestamp,
+          };
+
         setData(value);
       }
     };
 
+  }
+  
     return () => {
-      socket.close();
+      if(socket){
+        socket.close();
+      }
     };
-  }, [uri]);
+  }, [wsTicket]);
 
   const extraAction = (
     callback: (data: Data | null, socket: WebSocket | null) => void
   ) => {
-    callback(data, connectedSocket);
+    callback(data, socket);
   };
 
-  return { data, setData, connectedSocket, extraAction };
+  return { data, setData, socket, extraAction };
 };
 
 export default useSocketConnect;
