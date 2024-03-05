@@ -3,6 +3,9 @@ import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
 import "./newsMenu.scss";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import { SearchIcon2, TimerIcon } from "../../../../../assets/icons";
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
+import { useNews } from "api/news/useNews";
 
 const filterListButtons = ["Forex", "Stocks", "Commodities", "Crypto"];
 
@@ -22,6 +25,30 @@ const titleHandler = (titleKey: string) => {
 interface NewsMenuProps {}
 
 const NewsMenu: React.FunctionComponent<NewsMenuProps> = () => {
+  const [cookies] = useCookies(["access_token"]);
+
+  const { mutate: mutateNews } = useNews({
+    onSuccess: (data: any) => {
+      console.log("data", data);
+    },
+    onError: () => {},
+  });
+
+  useEffect(() => {
+    mutateNews({
+      token: cookies.access_token,
+      queryParams: {
+        symbol: "btc/usd",
+        start: "2024-03-05",
+        end: "2024-03-05",
+        sort: "desc",
+        include_content: "true",
+        exclude_contentless: "true",
+        limit: "10",
+      },
+    });
+  }, []);
+
   return (
     <div className="newsMenu">
       <div className="payment-methods-filter-btns">
