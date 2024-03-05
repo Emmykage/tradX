@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { UserSliceState, setUser, setUserLoading } from "@store/slices/user";
+import { UserSliceState, setUser, setUserLoading, setWSTicket } from "@store/slices/user";
 import {
   WalletSliceState,
   setSelectedWallet,
@@ -12,6 +12,7 @@ import {
 
 import useProfile from "api/user/useProfile";
 import useWallet from "api/wallet/useWallet";
+import useWebSocketTicket from "api/user/useWebSocketTicket";
 
 /**
  * Custom hook to initialize user and wallet data upon login.
@@ -64,6 +65,22 @@ const useInitializeData = () => {
       walletMutate(cookies.access_token);
     }
   }, [cookies.access_token, walletMutate, wallets]);
+
+  // GET the web-socket ticket for validation after the app running
+  const { mutate: webSocketTicketMutate } = useWebSocketTicket({
+    onSuccess: (data) => {
+      if (data?.ws_ticket) {
+        dispatch(setWSTicket(data?.ws_ticket));
+      }
+    },
+  });
+
+  useEffect(() => {
+    // Get the Web Socket Ticket Key
+    if (cookies.access_token) {
+      webSocketTicketMutate(cookies.access_token);
+    }
+  }, [cookies.access_token]);
 
   return { user, wallets };
 };

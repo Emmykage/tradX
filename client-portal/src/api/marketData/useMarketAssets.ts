@@ -3,26 +3,33 @@ import getEnv from "utils/env";
 
 type FetcherDataOptions = {
   token: string;
-  options?: {
-    start?: string;
-    symbols?: string;
-    timeFrame?: string;
-    end?: string
-  }
-}
+  data?: {
+    asset_class: "crypto" | "us_equity" | "us_option";
+    exchange?: string;
+    page?: string;
+    page_size?: string;
+    status?: "active" | "inactive";
+    // Index signature to allow other string keys
+    [key: string]: string | undefined;
+  };
+};
 
-export async function marketDataFetcher({
+export async function assetsListFetcher({
   token,
-  options
+  data = {
+    asset_class: "crypto",
+  },
 }: FetcherDataOptions) {
+  const searchParams = new URLSearchParams();
+  Object.keys(data).forEach((key) => {
+    if (data[key]) {
+      return searchParams.set(key, data[key]!);
+    }
+  });
+
   try {
-    const start = options?.start ?? "2024-02-20";
-    const symbols = options?.symbols ?? "BTC%2FUSD";
-    const timeFrame = options?.timeFrame ?? "minute";
     const response = await fetch(
-      `${getEnv(
-        "VITE_API_BASE_URL"
-      )}/market-data/alpaca/?start=${start}&symbol_or_symbols=${symbols}&timeframe=${timeFrame}`,
+      `${getEnv("VITE_API_BASE_URL")}/assets/?${searchParams}`,
       {
         method: "GET",
         headers: {
@@ -42,13 +49,13 @@ export async function marketDataFetcher({
   }
 }
 
-type useMarketDataProps = {
+type UseMarketAssetsProps = {
   onSuccess?: (data: unknown, variables: unknown, context: unknown) => void;
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };
-export const useMarketData = (props: useMarketDataProps) => {
-  const receivedProps = props || ({} as useMarketDataProps);
+export const useMarketAssets = (props: UseMarketAssetsProps) => {
+  const receivedProps = props || ({} as UseMarketAssetsProps);
 
   const {
     onSuccess: onSuccessOverride,
@@ -57,7 +64,7 @@ export const useMarketData = (props: useMarketDataProps) => {
   } = receivedProps;
 
   return useMutation({
-    mutationFn: marketDataFetcher,
+    mutationFn: assetsListFetcher,
     onSuccess: (data, variables, context) => {
       /* Add On success actions here if needed */
       if (onSuccessOverride) {
@@ -73,4 +80,4 @@ export const useMarketData = (props: useMarketDataProps) => {
   });
 };
 
-export default useMarketData;
+export default useMarketAssets;
