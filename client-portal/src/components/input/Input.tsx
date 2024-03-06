@@ -12,6 +12,8 @@ interface InputProps {
   suffixIcon?: React.ReactNode;
   subTitle?: string;
   variant?: 1 | 2 | 3;
+  disabled?: boolean;
+  value?: string;
 }
 
 const Input: React.FunctionComponent<InputProps> = ({
@@ -25,6 +27,8 @@ const Input: React.FunctionComponent<InputProps> = ({
   type,
   variant = 2,
   subTitle,
+  disabled,
+  value,
   ...rest
 }) => {
   return (
@@ -42,10 +46,12 @@ const Input: React.FunctionComponent<InputProps> = ({
             </label>
           ) : null}
           <input
+            disabled={disabled}
             type={type}
             onChange={onChange}
             defaultValue={defaultValue}
             placeholder={placeholder}
+            value={value}
             {...rest}
           />
         </div>
