@@ -7,6 +7,7 @@ import { Button } from "antd";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { setUser } from "@store/slices/user";
 import { GlobalStates, setIsIdle } from "@store/slices/global";
+import { setWallets } from "@store/slices/wallet";
 
 import Modal from "components/modal/Modal";
 import WarningIcon from "assets/icons/WarningIcon";
@@ -51,6 +52,7 @@ const RequireAuth = () => {
 
   const handleLogout = () => {
     dispatch(setUser(null));
+    dispatch(setWallets([]));
     removeCookie("access_token");
     removeCookie("refresh_token");
     setIsIdle(false);

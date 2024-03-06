@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 
 import { setUser } from "@store/slices/user";
 import { useAppDispatch } from "@store/hooks";
+import { setWallets } from "@store/slices/wallet";
 
 import {
   CheckMark,
@@ -33,6 +34,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
 
   const handleLogout = () => {
     dispatch(setUser(null));
+    dispatch(setWallets([]));
     removeCookie("access_token");
     removeCookie("refresh_token");
     navigate("/");
