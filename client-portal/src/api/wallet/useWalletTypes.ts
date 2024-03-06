@@ -2,9 +2,16 @@ import { useMutation } from "@tanstack/react-query";
 import { IWalletType } from "@interfaces";
 import getEnv from "utils/env";
 
+type WalletTypeResponse = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: IWalletType[];
+};
+
 type useWalletTypesProps = {
   onSuccess?: (
-    data: IWalletType[],
+    data: WalletTypeResponse,
     variables: unknown,
     context: unknown
   ) => void;
@@ -12,7 +19,7 @@ type useWalletTypesProps = {
   [index: string]: any;
 };
 
-export async function fetchWalletTypes(token: string): Promise<any> {
+export async function fetchWalletTypes(token: string): Promise<WalletTypeResponse> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
     const response = await fetch(`${BASE_URL}/wallet/account_types/`, {

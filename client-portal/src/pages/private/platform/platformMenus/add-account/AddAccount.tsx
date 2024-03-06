@@ -39,8 +39,8 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
 
   const { mutate, isPending } = useWalletTypes({
     onSuccess: (data) => {
-      dispatch(setWalletTypes(data));
-      setItems(data);
+      dispatch(setWalletTypes(data.results));
+      setItems(data.results);
     },
     onError: (error) => {
       console.log("fetching wallet-types error", error);
