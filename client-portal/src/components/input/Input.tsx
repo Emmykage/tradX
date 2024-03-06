@@ -1,7 +1,9 @@
+import { InputHTMLAttributes } from "react";
 import MainItemCard from "../mainItemCard/MainItemCard";
 import "./input.scss";
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  id?: string;
   placeholder?: string;
   defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -17,6 +19,7 @@ interface InputProps {
 }
 
 const Input: React.FunctionComponent<InputProps> = ({
+  id,
   placeholder,
   title,
   className,
@@ -46,6 +49,7 @@ const Input: React.FunctionComponent<InputProps> = ({
             </label>
           ) : null}
           <input
+            id={id}
             disabled={disabled}
             type={type}
             onChange={onChange}
