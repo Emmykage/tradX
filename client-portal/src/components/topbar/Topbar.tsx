@@ -11,7 +11,10 @@ import {
   ProfileIcon,
   WalletIcon,
 } from "../../assets/icons";
-import { CurrentDrawerType, RightDrawerContent } from "../../pages/private/platform/types";
+import {
+  CurrentDrawerType,
+  RightDrawerContent,
+} from "../../pages/private/platform/types";
 import "./topbar.scss";
 
 interface TopbarProps {
@@ -21,9 +24,7 @@ interface TopbarProps {
     React.SetStateAction<RightDrawerContent>
   >;
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setCurrentDrawer: React.Dispatch<
-    React.SetStateAction<CurrentDrawerType>
-  >;
+  setCurrentDrawer: React.Dispatch<React.SetStateAction<CurrentDrawerType>>;
   currentDrawer: CurrentDrawerType;
   style?: CSSProperties;
 }
@@ -44,6 +45,8 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   const { selectedWallet } = useAppSelector(
     (state: { wallet: WalletSliceState }) => state.wallet
   );
+
+  const { symbol } = useAppSelector((state) => state.markets);
 
   const ProfileImage = () => {
     if (loading) {
@@ -99,9 +102,9 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
         </div>
         <div className="convDetails">
           <div className="topConv">
-            <span className="currency">EUR/USD</span>
+            <span className="currency">{symbol}</span>
             <span>OTC</span>
-            <span className="percent">82%</span>
+            <span className="percent">85%</span>
           </div>
         </div>
       </div>
