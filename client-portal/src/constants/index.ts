@@ -4,31 +4,23 @@ export const languages = [
     label: "English (United States)",
   },
   {
-    value: "id",
-    label: "Indonesian",
+    value: "ar",
+    label: "Arabic",
   },
   {
-    value: "vi",
-    label: "Vietnamese",
+    value: "fr",
+    label: "French",
   },
   {
-    value: "hi",
-    label: "Hindi",
+    value: "de",
+    label: "German",
   },
   {
-    value: "ru",
-    label: "Russian",
+    value: "ja",
+    label: "Japanese",
   },
   {
-    value: "th",
-    label: "Thai",
-  },
-  {
-    value: "pt",
-    label: "Portuguese",
-  },
-  {
-    value: "ms",
-    label: "Malay",
-  },
+    value: "es",
+    label: "Spanish",
+  }
 ];
