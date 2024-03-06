@@ -64,7 +64,7 @@ const useInitializeData = () => {
       setWalletsLoading(true);
       walletMutate(cookies.access_token);
     }
-  }, [cookies.access_token, walletMutate, wallets]);
+  }, [cookies.access_token, walletMutate]);
 
   // GET the web-socket ticket for validation after the app running
   const { mutate: webSocketTicketMutate } = useWebSocketTicket({
