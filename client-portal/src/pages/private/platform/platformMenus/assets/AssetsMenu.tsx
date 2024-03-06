@@ -35,7 +35,7 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
 
   return (
     <div className="assetsMenu">
-      <ArrowsSlider Arrows={false}>
+      <ArrowsSlider>
         <div className="slider">
           <button
             className={`fixedTime ${selectedTab === "fixed" ? "active" : ""}`}

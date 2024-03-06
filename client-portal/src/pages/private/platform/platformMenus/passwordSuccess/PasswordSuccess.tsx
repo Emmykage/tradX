@@ -1,4 +1,4 @@
-import { CloseIcon, SuccessIcon } from "../../../../../assets/icons";
+import { SuccessIcon } from "../../../../../assets/icons";
 import { Typography } from "antd";
 
 import "./PasswordSuccess.scss";
@@ -16,9 +16,6 @@ const PasswordSuccess: React.FunctionComponent<PasswordSuccessProps> = ({
 }) => {
   return (
     <div className="password-success">
-      <div className="closeIcon">
-        <CloseIcon />
-      </div>
       <SuccessIcon width="40" height="40" />
       <Typography.Title className="success-message">
         Your Password has been modified!

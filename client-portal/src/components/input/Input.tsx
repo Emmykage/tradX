@@ -1,8 +1,11 @@
-import { Input as InputOriginal, InputProps as OriginalInputProps } from "antd";
 import MainItemCard from "../mainItemCard/MainItemCard";
 import "./input.scss";
 
-interface InputProps extends OriginalInputProps {
+interface InputProps {
+  placeholder?: string;
+  defaultValue?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
   title?: string;
   className?: string;
   icon?: React.ReactNode;
@@ -38,11 +41,11 @@ const Input: React.FunctionComponent<InputProps> = ({
               {title} <span> {subTitle}</span>
             </label>
           ) : null}
-          <InputOriginal
-            placeholder={placeholder}
-            defaultValue={defaultValue}
-            onChange={onChange}
+          <input
             type={type}
+            onChange={onChange}
+            defaultValue={defaultValue}
+            placeholder={placeholder}
             {...rest}
           />
         </div>

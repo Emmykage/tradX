@@ -20,6 +20,9 @@
         width: 1rem;
       }
     }
+    input {
+      outline: none;
+    }
 
     .suffixIcon {
       display: flex;
@@ -35,12 +38,16 @@
 
     .inputContainer {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
     label {
       color: rgba(255, 255, 255, 0.6);
       font-size: 0.575rem;
       font-weight: 400;
+      // margin-bottom: 1.313rem;
       span {
         font-weight: 700;
       }

@@ -23,11 +23,29 @@
         }
       }
       .marketSubCol2 {
+        // width: 30%;
+        @media (max-width: 576px) {
+          width: 80%;
+        }
+        @media (max-width: 468px){
+          width: 75%;
+        }
+        @media (max-width: 372px) {
+          width: 70%;
+        }
+        @media (max-width: 313px) {
+          width: 65%;
+        }
+        @media  (max-width: 272px) {
+          width: 60%;
+        }
         .starRating {
           display: flex;
           align-items: center;
           justify-content: space-between;
           color: white;
+          @media (max-width: 576px) {
+          }
           h2 {
             font-size: 1rem;
             font-weight: 500;

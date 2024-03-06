@@ -1,9 +1,63 @@
+import { useState } from "react";
 import { TimerIcon4 } from "../../../../../assets/icons";
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import "./eventsSignalsClub.scss";
+import { Story } from "react-insta-stories/dist/interfaces";
+import StoriesModal from "../profile/components/Stories";
+
+const ReportsList = {
+  storiesData: [
+    {
+      url: "/menu-images/stories/reports-1.png",
+      duration: 5000,
+    },
+    {
+      url: "/menu-images/stories/reports-2.png",
+      duration: 5000,
+    },
+    {
+      url: "/menu-images/stories/reports-3.png",
+      duration: 5000,
+    },
+    {
+      url: "/menu-images/stories/reports-4.png",
+      duration: 5000,
+    },
+    {
+      url: "/menu-images/stories/reports-5.png",
+      duration: 5000,
+    },
+  ],
+};
+
+const FeatureList = {
+  storiesData: [
+    {
+      url: "/menu-images/stories/feature-1.png",
+      duration: 5000,
+    },
+    {
+      url: "/menu-images/stories/feature-2.png",
+      duration: 5000,
+    },
+    {
+      url: "/menu-images/stories/feature-3.png",
+      duration: 5000,
+    },
+    {
+      url: "/menu-images/stories/feature-4.png",
+      duration: 5000,
+    },
+  ],
+};
 
 const EventsSignalsClub = () => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
+  const [selectedStories, setSelectedStories] = useState<Story[]>([]);
+  const [modalKey, setModalKey] = useState<number>(0);
+
   return (
     <div className="eventsSignalsClub">
       <div className="leaguesHeader">
@@ -32,11 +86,27 @@ const EventsSignalsClub = () => {
       </div>
       <ArrowsSlider>
         <div className="mainSlider">
-          <div className="sliderDiv">
+          <div
+            className="sliderDiv"
+            onClick={() => {
+              setModalKey((prevKey) => prevKey + 1);
+              setCurrentStoryIndex(0);
+              setSelectedStories(ReportsList.storiesData as unknown as Story[]);
+              setModalOpen(true);
+            }}
+          >
             <img src="/menu-images/svgs/NewReports.svg" alt="" />
             <h2>New reports: Week #5 12/02 - 28/02</h2>
           </div>
-          <div className="sliderDiv">
+          <div
+            className="sliderDiv"
+            onClick={() => {
+              setModalKey((prevKey) => prevKey + 1);
+              setCurrentStoryIndex(0);
+              setSelectedStories(FeatureList.storiesData as unknown as Story[]);
+              setModalOpen(true);
+            }}
+          >
             <img src="/menu-images/svgs/ClubCircle.svg" alt="" />
             <h2>Get the most out of the club</h2>
           </div>
@@ -54,6 +124,14 @@ const EventsSignalsClub = () => {
         className="btnPrime"
         Title="Join for Free"
         onClick={() => {}}
+      />
+      <StoriesModal
+        open={modalOpen}
+        setOpen={setModalOpen}
+        modalKey={modalKey}
+        closeable={true}
+        stories={selectedStories}
+        currentIndex={currentStoryIndex}
       />
     </div>
   );

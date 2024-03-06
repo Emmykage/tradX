@@ -220,7 +220,7 @@ const TradesMenu: React.FunctionComponent<TradesMenuProps> = () => {
 
   return (
     <div className="tradesMenu">
-      <ArrowsSlider Arrows={false}>
+      <ArrowsSlider>
         <div className="slider">
           {items.map((item) => (
             <button
