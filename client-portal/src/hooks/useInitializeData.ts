@@ -42,8 +42,8 @@ const useInitializeData = () => {
   );
   const { mutate: walletMutate } = useWallet({
     onSuccess: (data) => {
-      dispatch(setWallets(data));
-      dispatch(setSelectedWallet(data[0]));
+      dispatch(setWallets(data.results));
+      dispatch(setSelectedWallet(data.results[0] || undefined));
     },
     onError: (error) => {
       console.log("fetching wallets error", error);

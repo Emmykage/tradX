@@ -2,13 +2,20 @@ import { useMutation } from "@tanstack/react-query";
 import { IWallet } from "@interfaces";
 import getEnv from "utils/env";
 
+type WalletsResponse = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: IWallet[];
+};
+
 type useWalletProps = {
-  onSuccess?: (data: IWallet[], variables: unknown, context: unknown) => void;
+  onSuccess?: (data: WalletsResponse, variables: unknown, context: unknown) => void;
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };
 
-export async function fethWallet(token: string): Promise<any> {
+export async function fethWallet(token: string): Promise<WalletsResponse> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
     const response = await fetch(`${BASE_URL}/wallet/wallets/`, {
