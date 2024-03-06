@@ -55,7 +55,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [chartInitialData, setChartInitialData] = useState<any>([]);
   const storedScale = localStorage.getItem("scale");
 
-  useQueryParamHandler({ setIsRightSubDrawerOpen, setIsRightSubDrawerContent });
+  useQueryParamHandler({
+    setIsRightDrawerOpen,
+    setIsRightDrawerContent,
+    setIsRightSubDrawerOpen,
+    setIsRightSubDrawerContent,
+  });
 
   const { user, loading } = useAppSelector(
     (state: { user: UserSliceState }) => state.user

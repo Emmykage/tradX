@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import { RightSubDrawerContent } from "../types";
+import { RightDrawerContent, RightSubDrawerContent } from "../types";
 import { setTransactionId } from "@store/slices/payment";
 import { useAppDispatch } from "@store/hooks";
 
@@ -10,9 +10,15 @@ interface UseQueryParamHandlerProps {
   setIsRightSubDrawerContent: React.Dispatch<
     React.SetStateAction<RightSubDrawerContent>
   >;
+  setIsRightDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsRightDrawerContent: React.Dispatch<
+    React.SetStateAction<RightDrawerContent>
+  >;
 }
 
 const useQueryParamHandler = ({
+  setIsRightDrawerOpen,
+  setIsRightDrawerContent,
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }: UseQueryParamHandlerProps) => {
@@ -27,6 +33,8 @@ const useQueryParamHandler = ({
     if (transactionId && status) {
       if (status === "success") {
         dispatch(setTransactionId(transactionId));
+        setIsRightDrawerOpen(true);
+        setIsRightDrawerContent("account");
         setIsRightSubDrawerOpen(true);
         setIsRightSubDrawerContent("depoist-successful");
       } else if (status === "failure") {
