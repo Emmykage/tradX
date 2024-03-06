@@ -69,11 +69,11 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
         setIsRightDrawerContent("account");
       }}
     >
-      <span className="dem">{selectedWallet?.name}</span>
+      <span className="dem">{selectedWallet?.name || "Demo Account"}</span>
       <div className="amount">
         <p className="value">
-          {selectedWallet?.account_type__symbol}{" "}
-          {selectedWallet?.available_balance}
+          {selectedWallet?.account_type__symbol || "D"}{" "}
+          {selectedWallet?.available_balance || "9,999.00"}
         </p>
         <CaretDownIcon />
       </div>
