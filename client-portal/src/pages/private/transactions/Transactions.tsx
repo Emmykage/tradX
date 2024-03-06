@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation, withTranslation } from "react-i18next";
 
 import { TransactionPart, TradesPart, ProfilePart } from "./parts";
 
@@ -24,6 +25,8 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
   useEffect(() => {
     mutate({token: cookies.access_token});
   }, [cookies.access_token, mutate]);
+
+  const { t } = useTranslation();
 
   const tabsBodyHandler = useCallback(() => {
     switch (visiableIndex) {
@@ -51,7 +54,7 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
             }}
             onClick={() => setVisiableIndex(index)}
           >
-            {item}
+            {t(item)}
           </li>
         ))}
       </ul>
@@ -60,4 +63,4 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
   );
 };
 
-export default Transactions;
+export default withTranslation()(Transactions);

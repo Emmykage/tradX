@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Tooltip } from "antd";
 import ChartComponent from "../components/WalkthroughChart";
 import { staticData } from "../data/initialGraphData";
+import { useTranslation, withTranslation } from "react-i18next";
 
 interface ProfitablityProps {
   className: string;
@@ -15,6 +16,7 @@ const Profitablity: React.FC<ProfitablityProps> = ({
   open,
 }) => {
   const [graphData, setGraphData] = useState<any>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setGraphData(staticData);
@@ -22,12 +24,8 @@ const Profitablity: React.FC<ProfitablityProps> = ({
 
   const TooltipContent = () => (
     <div>
-      <p>
-        FTT assets vary in profitability. In this case, you will receive 82% of
-        profit if, when the trade expires, the chart will still be moving in the
-        correct direction.
-      </p>
-      <Button onClick={() => setStep(7)}>I Understand</Button>
+      <p>{t("toolTipContent")}</p>
+      <Button onClick={() => setStep(7)}>{t("understand")}</Button>
     </div>
   );
   return (
@@ -52,4 +50,4 @@ const Profitablity: React.FC<ProfitablityProps> = ({
   );
 };
 
-export default Profitablity;
+export default withTranslation()(Profitablity);

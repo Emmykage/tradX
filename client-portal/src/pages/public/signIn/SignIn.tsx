@@ -7,6 +7,7 @@ import SignInForm from "./components/SignInForm";
 
 import "./signIn.scss";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
+import { withTranslation } from "react-i18next";
 
 interface SignInProps {}
 
@@ -44,4 +45,4 @@ const SignIn: React.FunctionComponent<SignInProps> = () => {
   );
 };
 
-export default SignIn;
+export default withTranslation()(SignIn);

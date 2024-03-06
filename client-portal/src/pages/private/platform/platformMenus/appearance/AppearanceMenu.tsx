@@ -9,11 +9,16 @@ import {
 import BackgroundImageSelector from "../../../../../components/backgroundImageSelector/BackgroundImageSelector";
 import InterfaceScale from "../../../../../components/interfaceScale/InterfaceScale";
 import Select from "../../../../../components/select/Select";
+import { useTranslation } from "react-i18next";
+
 import "./appearanceMenu.scss";
+import { languages } from "../../../../../constants";
+import { localFlagHandler } from "../../../../../i18n/helpers";
 
 interface AppearanceMenuProps {}
 
 const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
+  const { i18n } = useTranslation();
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] =
     useState<boolean>(false);
   const [isSoundDropdownOpen, setIsSoundDropdownOpen] =
@@ -27,100 +32,21 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
       <Select
         onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
         onBlur={() => setIsLanguageDropdownOpen(false)}
+        handleChange={(value) => i18n.changeLanguage(value)}
         label="Language"
-        defaultValue="english"
-        options={[
-          {
-            value: "english",
-            label: (
-              <div className="dropDownMenuItem">
-                <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/uk-flag.png" />
-                </div>
-                English
+        defaultValue={i18n.language ?? "English"}
+        options={languages.map(({ value, label }) => ({
+          value,
+          label: (
+            <div className="dropDownMenuItem">
+              <div className="dropDownMenuItemIcon">
+                <img src={localFlagHandler(value)} />
               </div>
-            ),
-          },
-          {
-            value: "bahasa-indonesia",
-            label: (
-              <div className="dropDownMenuItem">
-                <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/IndonesiaFlag.svg" />
-                </div>
-                Bahasa Indonesia
-              </div>
-            ),
-          },
-          {
-            value: "Việt Nam",
-            label: (
-              <div className="dropDownMenuItem">
-                <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/VietnamFlag.svg" />
-                </div>
-                Việt Nam
-              </div>
-            ),
-          },
-          {
-            value: "hindhi",
-            label: (
-              <div className="dropDownMenuItem">
-                <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/IndiaFlag.svg" />
-                </div>
-                Hindhi
-              </div>
-            ),
-          },
-          {
-            value: "pyccкий",
-            label: (
-              <div className="dropDownMenuItem">
-                <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/РусскийFlag.svg" />
-                </div>
-                Pyccкий
-              </div>
-            ),
-          },
-          {
-            value: "ภาษาไทย",
-            label: (
-              <div className="dropDownMenuItem">
-                <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/ภาษาไทยFlag.svg" />
-                </div>
-                ภาษาไทย
-              </div>
-            ),
-          },
-          {
-            value: "português ",
-            label: (
-              <div className="dropDownMenuItem">
-                <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/PortuguêsFlag.svg" />
-                </div>
-                Português
-              </div>
-            ),
-          },
-          {
-            value: "bahasa-melayu",
-            label: (
-              <div className="dropDownMenuItem">
-                <div className="dropDownMenuItemIcon">
-                  <img src="/menu-images/svgs/BahasaMelayuFlag.svg" />
-                </div>
-                Bahasa Melayu
-              </div>
-            ),
-          },
-        ]}
+              {label}
+            </div>
+          ),
+        }))}
         height="height"
-        // icon={<img src="/menu-images/uk-flag.png" />}
       />
       {!isLanguageDropdownOpen && (
         <>

@@ -3,6 +3,7 @@ import TradeForm from "../../../../../components/tradeForm/TradeForm";
 import ChartComponent from "../components/WalkthroughChart";
 import { staticData } from "../data/initialGraphData";
 import useWindowWidth from "hooks/useWindowWidth";
+import { useTranslation, withTranslation } from "react-i18next";
 
 interface ChooseTradeProps {
   className: string;
@@ -31,6 +32,7 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
   const calculateChartHeight = () => {
     return `calc(100% - ${tradeFormHeight}px)`;
   };
+  const { t } = useTranslation();
 
   useEffect(() => {
     setShowTooltip(open);
@@ -74,17 +76,16 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
           src="/walkthrough/eur-usd-btn-2.png"
         />
         <div className={`timeCounter ${displayTimer ? "active" : ""}`}>
-          <p>Wait for the result of the trade ({time}).</p>
+          <p>{t("walkthroughChooseTrade", { time })}</p>
         </div>
 
         <div className={`tradingCompleted ${tradingCompleted ? "active" : ""}`}>
           <p className="walkthroughSubtext">
-            Congratulations! Your trade was successful. By Investing $100,
-            you’ve earned $85 - a 85% return in just 1 minute.
+            {t("walkthroughChooseTradeSubText")}
           </p>
 
           <button className="walkthroughButton" onClick={onSkipWalkthrough}>
-            Finish training
+           {t("finishTrading")}
           </button>
         </div>
       </div>
@@ -118,4 +119,4 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
   );
 };
 
-export default ChooseTrade;
+export default withTranslation()(ChooseTrade);

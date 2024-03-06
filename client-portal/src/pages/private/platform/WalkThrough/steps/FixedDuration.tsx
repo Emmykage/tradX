@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { staticData } from "../data/initialGraphData";
 import ChartComponent from "../components/WalkthroughChart";
+import { useTranslation, withTranslation } from "react-i18next";
 
 interface FixedDurationProps {
   className: string;
@@ -12,6 +13,8 @@ const FixedDuration: React.FC<FixedDurationProps> = ({
   setStep,
 }) => {
   const [graphData, setGraphData] = useState<any>([]);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     setGraphData(staticData);
@@ -25,15 +28,14 @@ const FixedDuration: React.FC<FixedDurationProps> = ({
       </div>
       <img className="euroUsdButton" src="/walkthrough/eur-usd-btn.png" />
       <p className="walkthroughSubtext">
-        Trades of fixed duration that offer a fixed profit are know as Fixed
-        Time Trades or FTT.
+        {t("walkthroughFixedDurationSubText")}
       </p>
 
       <button className="walkthroughButton" onClick={() => setStep(6)}>
-        Next
+        {t("next")}
       </button>
     </div>
   );
 };
 
-export default FixedDuration;
+export default withTranslation()(FixedDuration);
