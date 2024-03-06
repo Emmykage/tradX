@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ChartComponent from "../components/WalkthroughChart";
 import { staticData } from "../data/initialGraphData";
+import { useTranslation, withTranslation } from "react-i18next";
 
 interface TheChartsProps {
   className: string;
@@ -9,6 +10,7 @@ interface TheChartsProps {
 
 const TheCharts: React.FC<TheChartsProps> = ({ className, setStep }) => {
   const [graphData, setGraphData] = useState<any>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setGraphData(staticData);
@@ -21,17 +23,13 @@ const TheCharts: React.FC<TheChartsProps> = ({ className, setStep }) => {
         <div className="graphOverlay"></div>
       </div>
       <img className="euroUsdButton" src="/walkthrough/eur-usd-btn.png" />
-      <p className="walkthroughSubtext">
-        The charts shows how the price of an assets changes. If the line on the
-        chart is going down, it means the price is falling. If it’s going up,
-        the price is rising
-      </p>
+      <p className="walkthroughSubtext">{t("walkthroughChartsSubText")}</p>
 
       <button className="walkthroughButton" onClick={() => setStep(4)}>
-        Next
+        {t("next")}
       </button>
     </div>
   );
 };
 
-export default TheCharts;
+export default withTranslation()(TheCharts);

@@ -13,6 +13,10 @@ import SetDuration from "./steps/SetDuration";
 import ChooseTrade from "./steps/ChooseTrade";
 import Modal from "../../../../components/modal/Modal";
 import { Button } from "antd";
+import Select from "../../../../components/select/Select";
+import i18n from "../../../../i18n";
+import { languages } from "../../../../constants";
+import { localFlagHandler } from "../../../../i18n/helpers";
 
 interface WalkThroughProps {
   className?: string;
@@ -25,9 +29,33 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
 }) => {
   const [step, setStep] = useState<number>(1);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
 
   return (
     <div className={`walkthroughContainer ${className}`}>
+      <div className="walkthrough-language">
+        <Select
+          customRootClass="walkthrough-language-select"
+          onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
+          onBlur={() => setIsLanguageDropdownOpen(false)}
+          handleChange={(value) => i18n.changeLanguage(value)}
+          label="Language"
+          defaultValue={i18n.language ?? "English"}
+          options={languages.map(({ value, label }) => ({
+            value,
+            label: (
+              <div className="dropDownMenuItem">
+                <div className="dropDownMenuItemIcon">
+                  <img src={localFlagHandler(value)} />
+                </div>
+                {label}
+              </div>
+            ),
+          }))}
+          height="height"
+        />
+      </div>
+
       {step > 0 ? (
         <div className="stepsContainer">
           <div className="steps">

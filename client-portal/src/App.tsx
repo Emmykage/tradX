@@ -13,12 +13,16 @@ import getEnv from "./utils/env";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useTranslation } from "react-i18next";
 import useMouseIdle from "./hooks/useMouseIdle";
 import StatusDetails from "./pages/public/statusDetails/StatusDetails";
 
 interface AppProps {}
 
 const App: React.FunctionComponent<AppProps> = () => {
+  const { i18n } = useTranslation();
+  document.body.dir = i18n.dir();
+  
   console.log(
     "Envrionment Variable: VITE_API_BASE_URL => ",
     getEnv("VITE_API_BASE_URL")

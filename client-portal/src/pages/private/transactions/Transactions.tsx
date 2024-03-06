@@ -1,31 +1,31 @@
 import { useCallback, useMemo, useState } from "react";
+import { useTranslation, withTranslation } from "react-i18next";
 
 import { TransactionPart, TradesPart, ProfilePart } from "./parts";
 import { tableData } from "./dummy";
 
 import "./transactions.scss";
 
-interface TransactionsProps {};
+interface TransactionsProps {}
 
 const Transactions: React.FunctionComponent<TransactionsProps> = () => {
   const [visiableIndex, setVisiableIndex] = useState(0);
   const headers = useMemo(() => ["Transactions", "Trades", "Profile"], []);
 
-  const tabsBodyHandler = useCallback(
-    () => {
-      switch (visiableIndex) {
-        case 0:
-          return <TransactionPart data={tableData} />;
-        case 1:
-          return <TradesPart data={[]} />;
-        case 2:
-          return <ProfilePart />;
-        default:
-          return <TransactionPart data={tableData} />;
-      }
-    },
-    [visiableIndex]
-  );
+  const { t } = useTranslation();
+
+  const tabsBodyHandler = useCallback(() => {
+    switch (visiableIndex) {
+      case 0:
+        return <TransactionPart data={tableData} />;
+      case 1:
+        return <TradesPart data={[]} />;
+      case 2:
+        return <ProfilePart />;
+      default:
+        return <TransactionPart data={tableData} />;
+    }
+  }, [visiableIndex]);
 
   return (
     <div className="transactions-container">
@@ -40,7 +40,7 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
             }}
             onClick={() => setVisiableIndex(index)}
           >
-            {item}
+            {t(item)}
           </li>
         ))}
       </ul>
@@ -49,4 +49,4 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
   );
 };
 
-export default Transactions;
+export default withTranslation()(Transactions);

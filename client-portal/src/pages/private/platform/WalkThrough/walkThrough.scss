@@ -11,6 +11,15 @@
   visibility: visible;
   transition: opacity 1s ease, visibility 1s ease;
 
+  .walkthrough-language {
+    width: 15.625rem;
+    position: absolute;
+    top: 1.875rem;
+    left: 1.875rem;
+    z-index: 2;
+    
+  }
+
   &.hidden {
     visibility: hidden;
   }
@@ -107,3 +116,7 @@
     }
   }
 }
+
+.walkthrough-language-select{
+      z-index: 100000;
+    }
