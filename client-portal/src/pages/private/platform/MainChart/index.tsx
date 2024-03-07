@@ -6,7 +6,7 @@ import {
   LastPriceAnimationMode,
   CrosshairMode,
 } from "lightweight-charts";
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useEffect, useRef } from "react";
 import { useCookies } from "react-cookie";
 
 import useSocketConnect from "../../../../hooks/useSocketConnect";
@@ -20,19 +20,16 @@ import {
   setCurrentSymbol,
 } from "@store/slices/markets";
 import { MainChartProps, MarketData, TransformedMarket } from "./types";
-import { dateFormter } from "helpers/dateFormter";
+import { convertTimestampToDateString, getPreviousDayFromTimestamp } from "helpers/dateFormter";
+import useGetClock from "api/marketData/useGetClock";
 
 
 const MainChart: React.FC<MainChartProps> = ({ colors }) => {
   const [cookies] = useCookies(["access_token"]);
 
-  const todayFormated = useMemo(() => {
-    const date = new Date();
-    return dateFormter(date);
-  }, []);
-
   const { mutate: marketDataMutation, data: market } = useMarketData({});
   const { mutate: assetsListMutate } = useMarketAssets({});
+  const { mutate: getClockMutate, data: clockData } = useGetClock({});
 
   const markets = useAppSelector((state) => state.markets);
   const { wsTicket } = useAppSelector((state) => state.user);
@@ -43,14 +40,23 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
   const data: MarketData[] = markets.crypto[markets.currentSymbol];
 
   useEffect(() => {
-    marketDataMutation({
-      token: cookies.access_token,
-      options: {
-        symbols: markets.symbol,
-        start: todayFormated,
-      },
-    });
-  }, [markets.symbol]);
+    getClockMutate(cookies.access_token);
+  }, []);
+
+  useEffect(() => {
+    if (clockData) {
+      const startTimeFormatted = getPreviousDayFromTimestamp(clockData.timestamp)
+      const endTimeFormatted = convertTimestampToDateString(clockData.timestamp)
+      marketDataMutation({
+        token: cookies.access_token,
+        options: {
+          symbols: markets.symbol,
+          start: startTimeFormatted,
+          end: endTimeFormatted,
+        },
+      });
+    }
+  }, [markets.symbol, clockData]);
 
   useEffect(() => {
     // Load the list of assets

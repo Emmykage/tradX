@@ -17,12 +17,13 @@ export async function marketDataFetcher({
 }: FetcherDataOptions) {
   try {
     const start = options?.start ?? "2024-02-20";
+    const end = options?.end ?? "2024-03-20";
     const symbols = options?.symbols ?? "BTC%2FUSD";
     const timeFrame = options?.timeFrame ?? "minute";
     const response = await fetch(
       `${getEnv(
         "VITE_API_BASE_URL"
-      )}/market-data/alpaca/?start=${start}&symbol_or_symbols=${symbols}&timeframe=${timeFrame}`,
+      )}/market-data/alpaca/?start=${start}&end=${end}&symbol_or_symbols=${symbols}&timeframe=${timeFrame}`,
       {
         method: "GET",
         headers: {
