@@ -107,6 +107,8 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
             };
           }
         });
+
+        transformedMarket[key].sort((a, b) => a.time - b.time);
       });
 
       dispatch(setInitialCrypto(transformedMarket));
