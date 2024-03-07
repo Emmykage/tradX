@@ -24,7 +24,7 @@ export function dateFormter(date: Date) {
  * @returns {string} - The formatted date string of the previous day.
  */
 export const getPreviousDayFromTimestamp = (timestamp: UTCTimestamp) => {
-  const previousDate = new Date((timestamp - 86400) * 1000); // Subtract 86400 seconds (1 day) from the timestamp
+  const previousDate = new Date((timestamp - 1209600) * 1000); // Subtract 86400 seconds (1 day) from the timestamp
   const year = previousDate.getFullYear();
   const month = String(previousDate.getMonth() + 1).padStart(2, "0");
   const day = String(previousDate.getDate()).padStart(2, "0");
