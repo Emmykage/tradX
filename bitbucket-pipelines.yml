@@ -15,6 +15,7 @@ pipelines:
                 SERVER: $SERVER_IP
                 COMMAND: |
                   cd /root/client-portal-fe
+                  pwd
                   cd client-portal
                   docker-compose -f "docker-compose.yml" up -d --build
 
