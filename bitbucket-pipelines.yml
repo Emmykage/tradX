@@ -2,7 +2,7 @@ image: atlassian/default-image:latest
 
 pipelines:
   branches:
-    main:
+    development:
       - step:
           name: Deploy to Server
           caches:
