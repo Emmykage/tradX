@@ -14,10 +14,8 @@ pipelines:
                 SSH_USER: $SERVER_USER
                 SERVER: $SERVER_IP
                 COMMAND: |
-                  cd /root/client-portal-fe
-                  pwd
-                  cd client-portal
-                  docker-compose -f "docker-compose.yml" up -d --build
+                  cd /root/client-portal-fe/client-portal/
+                  docker compose up --build -d
 
 definitions:
   caches:
