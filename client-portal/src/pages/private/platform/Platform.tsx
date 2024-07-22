@@ -28,6 +28,7 @@ import {
 } from "./types";
 import MainChart from "./MainChart";
 import { initialData } from "./MainChart/data";
+import { initialCandleData } from "./MainChart/candleData";
 import { setAppearanceBackground } from "../../lib/utils";
 import { useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
@@ -65,6 +66,13 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const { user, loading } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
+  
+  // candle series chart data formatting 
+
+  const newCandleData = initialCandleData.map((d)=>{
+    return {time: d[0]/1000, open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
+  })
+  // console.log(newCandleData);
 
   const isWalkthroughSkipped = user?.is_walkthrough_completed ?? true;
 
@@ -259,8 +267,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           style={{ height: calculateTradeContentHeight() }}
         >
           <div className="trade-graph" id="tradeGraph">
-            {chartInitialData?.length ? (
-              <MainChart data={chartInitialData} />
+            {chartInitialData ? (
+             <div style={{ height: "100%", marginLeft: "100px", color:"white" }}>
+               {/* pass dummy data initialData */}
+              <MainChart data={initialData} />
+             </div>
             ) : null}
           </div>
           <TradeForm bottomSidebarHeight={bottomSidebarHeight} />

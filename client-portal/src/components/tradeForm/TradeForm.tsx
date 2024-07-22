@@ -10,6 +10,7 @@ import {
   TimerIcon,
 } from "../../assets/icons";
 import "./tradeform.scss";
+import { useState } from "react";
 
 interface TradeFormProps {
   bottomSidebarHeight?: number;
@@ -58,6 +59,27 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   durationTooltipPlacement = "left",
   hintTradesTooltipPlacement = "left",
 }) => {
+  const [duration,SetDuration]= useState(1)
+  const [amount,SetAmount]= useState(100)
+
+  const handleIncreaseDuration = ()=>{
+   SetDuration( duration + 1)
+  }
+  const handleDecreaseDuration = ()=>{
+    if(duration > 1){
+  
+      SetDuration( duration - 1)
+    }
+  }
+  const handleIncreaseAmount = ()=>{
+   SetAmount( amount + 1)
+  }
+  const handleDecreaseAmount = ()=>{
+    if(amount > 0){
+  
+      SetAmount( amount - 1)
+    }
+  }
   return (
     <div
       className={`trade-form ${disabled ? "disabled" : ""}`}
@@ -90,7 +112,9 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
               <input
                 type="number"
                 name="amount"
+                value={amount}
                 id="amounts"
+                onChange={(e)=>SetAmount(e.target.value)}
                 disabled={disabled}
                 defaultValue={defaultAmount}
               />
@@ -98,13 +122,13 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
           </Tooltip>
 
           <div className="mathButtons">
-            <button disabled={disabled}>
+            <button disabled={disabled} onClick={handleDecreaseAmount}>
               <SubtractIcon />
             </button>
             <button
               disabled={hintPlus ? false : disabled}
               className={`${hintPlus ? "hint" : ""}`}
-              onClick={onIncreaseAmount}
+              onClick={handleIncreaseAmount}
             >
               <PlusIcon />
             </button>
@@ -122,9 +146,11 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             <div className="amount duration">
               <label htmlFor="duration">Duration</label>
               <input
-                type={disabled ? "text" : "number"}
+                type={disabled ? "text" : "text"}
                 name="duration"
                 id="duration"
+                value={`${duration} min`}
+                // onChange={(e)=>SetDuration(e.target.value)}
                 disabled={disabled}
                 defaultValue={defaultDuration}
               />
@@ -135,11 +161,11 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             <button
               disabled={hintDuration ? false : disabled}
               className={`${hintDuration ? "hint" : ""}`}
-              onClick={onDecreaseDuration}
+              onClick={handleDecreaseDuration}
             >
               <SubtractIcon />
             </button>
-            <button disabled={disabled}>
+            <button disabled={disabled} onClick={handleIncreaseDuration}>
               <PlusIcon />
             </button>
           </div>

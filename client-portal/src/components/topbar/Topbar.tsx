@@ -96,7 +96,8 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
       >
         <div className="convImg">
           <img
-            src="https://res.cloudinary.com/dt9pwfpi5/image/upload/v1703146258/conv_e2znxe.png"
+            // src="https://res.cloudinary.com/dt9pwfpi5/image/upload/v1703146258/conv_e2znxe.png"
+            src="https://cfcdn.olymptrade.com/assets1/instrument/vector/EURUSD.2d7d9de55f45290ec68a8cce3745ad1c.svg"
             alt="conv"
           />
         </div>

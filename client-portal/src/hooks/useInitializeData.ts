@@ -29,6 +29,7 @@ const useInitializeData = () => {
   const { user } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
+  console.log(user);
   const { mutate: profileMutate } = useProfile({
     onSuccess: (data) => {
       dispatch(setUser(data));

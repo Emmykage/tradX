@@ -37,7 +37,8 @@ const RenderTab = ({
 
 const RenderData = () => {
   const [forexData] = useState(forex);
-  const [selectedForex, setSelectedForex] = useState("");
+  const [selectedForex, setSelectedForex] = useState();
+  console.log('here');
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
@@ -98,7 +99,7 @@ const RenderData = () => {
               className={`assetsListItem ${
                 selectedForex === item.value ? "active" : ""
               }`}
-              onClick={() => setSelectedForex(item.value)}
+              onClick={() => setSelectedForex(item)}
             >
               <div className="contentLeft">
                 <img src={item.image} />
@@ -213,6 +214,7 @@ const items = [
 
 const TradesMenu: React.FunctionComponent<TradesMenuProps> = () => {
   const [selectedTab, setSelectedTab] = useState("fixed");
+ 
 
   const handleButtonClick = (buttonName: string) => {
     setSelectedTab(buttonName);
