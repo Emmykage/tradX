@@ -5,6 +5,7 @@ import {
   LineStyle,
   LastPriceAnimationMode,
   CrosshairMode,
+  UTCTimestamp,
 } from "lightweight-charts";
 import React, { useEffect, useRef } from "react";
 import { useCookies } from "react-cookie";
@@ -20,11 +21,15 @@ import {
   setCurrentSymbol,
 } from "@store/slices/markets";
 import { MainChartProps, MarketData, TransformedMarket } from "./types";
-import { convertTimestampToDateString, getPreviousDayFromTimestamp } from "helpers/dateFormter";
+import { convertTimestampToDateString, dateFormter, getPreviousDayFromTimestamp } from "helpers/dateFormter";
 import useGetClock from "api/marketData/useGetClock";
+import { createCustomMarker1, createCustomMarker2 } from "./Markers";
 
 
-const MainChart: React.FC<MainChartProps> = ({ colors }) => {
+
+const MainChart: React.FunctionComponent<MainChartProps>  = ({ data: newData,colors }) => {
+  // rename data being passed down to new data so it wont confilict real data thats coming from the socket 
+  
   const [cookies] = useCookies(["access_token"]);
 
   const { mutate: marketDataMutation, data: market } = useMarketData({});
@@ -33,8 +38,10 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
 
   const markets = useAppSelector((state) => state.markets);
   const { wsTicket } = useAppSelector((state) => state.user);
+  const userState = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
 
+  console.log(userState);
   const { data: socketData, socket } = useSocketConnect(wsTicket as string);
 
   const data: MarketData[] = markets.crypto[markets.currentSymbol];
@@ -185,9 +192,86 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
       priceLineWidth: 1,
       lastPriceAnimation: LastPriceAnimationMode.OnDataUpdate,
     });
-    newSeries.setData(data);
 
+    // simple marker lightchart marker 
+    const priceLine = newSeries.createPriceLine({
+      price: 1.82,
+      color: 'rgba(0, 0, 0, 0)',
+      lineWidth: undefined,
+      axisLabelVisible: false,
+    });
+
+    
+    // Custom markers with inline css append to chartContainer 
+    // Pass parameters down or up and value 
+    const textElement1 = createCustomMarker1('1.21')
+    chartContainer.appendChild(textElement1);
+
+     // pass parameters down or up and value
+    const textElement2 = createCustomMarker2()
+    chartContainer.appendChild(textElement2);
+
+    // Position text element
+    const updatePosition1 = () => {
+      const priceCoordinate = newSeries.priceToCoordinate(6.577625846137605);
+      let timeCoordinate = chart.timeScale().timeToCoordinate(1706816460 as UTCTimestamp);
+
+      console.log('Price coordinate:', priceCoordinate);
+      console.log('Time coordinate:', timeCoordinate);
+      if (timeCoordinate === null) {
+
+        // If the specified time is not found use the first visible time
+        const visibleRange = chart.timeScale().getVisibleRange();
+        if (visibleRange) {
+          timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+        }
+      }
+
+      if (priceCoordinate && timeCoordinate) {
+        textElement1.style.top = `${priceCoordinate - textElement1.offsetHeight / 2}px`;
+        textElement1.style.left = `${timeCoordinate + 50}px`;
+        console.log('Text position updated');
+      }else{
+        console.log('failed to get coordinates');
+      }
+    };
+
+
+    const updatePosition2 = () => {
+      const priceCoordinate = newSeries.priceToCoordinate(33.40366718759486);
+
+     
+
+      let timeCoordinate = chart.timeScale().timeToCoordinate(1706813400 as UTCTimestamp);
+
+      console.log('Price coordinate:', priceCoordinate);
+      console.log('Time coordinate:', timeCoordinate);
+      if (timeCoordinate === null) {
+        // If the specified time is not found use the first visible time
+        const visibleRange = chart.timeScale().getVisibleRange();
+        if (visibleRange) {
+          timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+        }
+      }
+
+      if (priceCoordinate && timeCoordinate) {
+        textElement2.style.top = `${priceCoordinate - textElement2.offsetHeight / 2}px`;
+        textElement2.style.left = `${timeCoordinate + 0}px`;
+        console.log('Text position updated');
+      }else{
+        console.log('failed to get coordinates');
+      }
+    };
+
+    chart.subscribeCrosshairMove(updatePosition1);
+    updatePosition1();
+    chart.subscribeCrosshairMove(updatePosition2);
+    updatePosition2();
+    newSeries.setData(newData);
+    
     chartRef.current = chart;
+
+    console.log(data);
 
     chart.applyOptions({
       crosshair: {
@@ -232,6 +316,9 @@ const MainChart: React.FC<MainChartProps> = ({ colors }) => {
     areaBottomColor,
     gridLines,
   ]);
+
+ 
+
 
   // TODO - Lazy loading the charts
   return <div ref={chartContainerRef} style={{ height: "100%" }} />;

@@ -61,6 +61,7 @@ const App: React.FunctionComponent<AppProps> = () => {
   return (
     <HashRouter>
       <Routes>
+        {/* turned of the auth require */}
         <Route element={<RequireAuth />}>
           <Route path="/platform" element={<Platform />} />
           <Route path="transactions" element={<Transactions />} />
