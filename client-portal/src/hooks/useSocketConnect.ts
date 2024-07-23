@@ -26,11 +26,10 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
   const [data, setData] = useState<Data | null>(null);
   const [socket, setSocket] = useState<WebSocket | null>(null);
 
-  const wsTickets = 'BTdC_USD'
   useEffect(() => {
-    if (wsTickets){
+    if (wsTicket){
       const webSocket = new WebSocket(
-        `wss://tradx.io/ws/external-api/?ws_ticket=${wsTickets}`
+        `wss://tradx.io/ws/external-api/?ws_ticket=${wsTicket}`
       );
       
     webSocket.onerror = function (event) {
@@ -72,7 +71,7 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
         socket.close();
       }
     };
-  }, [wsTickets]);
+  }, [wsTicket]);
 
   const extraAction = (
     callback: (data: Data | null, socket: WebSocket | null) => void
