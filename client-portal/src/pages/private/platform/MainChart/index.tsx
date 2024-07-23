@@ -182,24 +182,39 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
       height: 300,
     });
 
-    const newSeries = chart.addAreaSeries({
-      lineColor,
-      lineWidth: 1,
-      topColor: areaTopColor,
-      bottomColor: areaBottomColor,
-      priceLineColor: "#868788",
-      priceLineStyle: LineStyle.Solid,
-      priceLineWidth: 1,
-      lastPriceAnimation: LastPriceAnimationMode.OnDataUpdate,
-    });
 
-    // simple marker lightchart marker 
-    const priceLine = newSeries.createPriceLine({
-      price: 1.82,
-      color: 'rgba(0, 0, 0, 0)',
-      lineWidth: undefined,
-      axisLabelVisible: false,
-    });
+    //  candle series 
+
+    const candlestickSeries = chart.addCandlestickSeries({
+      upColor: 'green',
+      downColor: 'red',
+      borderDownColor: 'red',
+      borderUpColor: 'green',
+      wickDownColor: 'red',
+      wickUpColor: 'green',
+  });
+
+
+  candlestickSeries.setData(newData);
+
+    // const newSeries = chart.addAreaSeries({
+    //   lineColor,
+    //   lineWidth: 1,
+    //   topColor: areaTopColor,
+    //   bottomColor: areaBottomColor,
+    //   priceLineColor: "#868788",
+    //   priceLineStyle: LineStyle.Solid,
+    //   priceLineWidth: 1,
+    //   lastPriceAnimation: LastPriceAnimationMode.OnDataUpdate,
+    // });
+
+    // // simple marker lightchart marker 
+    // const priceLine = newSeries.createPriceLine({
+    //   price: 1.82,
+    //   color: 'rgba(0, 0, 0, 0)',
+    //   lineWidth: undefined,
+    //   axisLabelVisible: false,
+    // });
 
     
     // Custom markers with inline css append to chartContainer 
@@ -217,7 +232,7 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
 
     // Position text element
     const updatePosition1 = () => {
-      const priceCoordinate = newSeries.priceToCoordinate(6.577625846137605);
+      const priceCoordinate = candlestickSeries.priceToCoordinate(6.577625846137605);
       let timeCoordinate = chart.timeScale().timeToCoordinate(1706816460 as UTCTimestamp);
 
       console.log('Price coordinate:', priceCoordinate);
@@ -242,7 +257,7 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
 
 
     const updatePosition2 = () => {
-      const priceCoordinate = newSeries.priceToCoordinate(-16.964833295409413);
+      const priceCoordinate = candlestickSeries.priceToCoordinate(-16.964833295409413);
 
      
 
@@ -268,7 +283,7 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     };
 
     const updatePosition3 = () => {
-      const priceCoordinate = newSeries.priceToCoordinate(-16.964833295409413);
+      const priceCoordinate = candlestickSeries.priceToCoordinate(-16.964833295409413);
 
 
       let timeCoordinate = chart.timeScale().timeToCoordinate(1706814120 as UTCTimestamp);
@@ -302,7 +317,7 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     updatePosition3();
 
 
-    newSeries.setData(newData);
+    candlestickSeries.setData(newData);
     
     chartRef.current = chart;
 

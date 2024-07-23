@@ -66,10 +66,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const { user, loading } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
+
   
   // candle series chart data formatting 
 
-  const newCandleData = initialCandleData.map((d)=>{
+  const newCandleData= initialCandleData.map((d:any)=>{
     return {time: d[0]/1000, open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
   })
   // console.log(newCandleData);
@@ -269,8 +270,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           <div className="trade-graph" id="tradeGraph">
             {chartInitialData ? (
              <div style={{ height: "100%", marginLeft: "100px", color:"white" }}>
-               {/* pass dummy data initialData */}
-              <MainChart data={initialData} />
+               {/* pass dummy data newCandleData */}
+              <MainChart data={newCandleData} />
              </div>
             ) : null}
           </div>
