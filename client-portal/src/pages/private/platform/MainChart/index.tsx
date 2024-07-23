@@ -23,11 +23,11 @@ import {
 import { MainChartProps, MarketData, TransformedMarket } from "./types";
 import { convertTimestampToDateString, dateFormter, getPreviousDayFromTimestamp } from "helpers/dateFormter";
 import useGetClock from "api/marketData/useGetClock";
-import { createCustomMarker1, createCustomMarker2 } from "./Markers";
+import { createCustomMarker1, createCustomMarker2, createCustomMarker3 } from "./Markers";
 
 
 
-const MainChart: React.FunctionComponent<MainChartProps>  = ({ data: newData,colors }) => {
+const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
   // rename data being passed down to new data so it wont confilict real data thats coming from the socket 
   
   const [cookies] = useCookies(["access_token"]);
@@ -169,7 +169,7 @@ const MainChart: React.FunctionComponent<MainChartProps>  = ({ data: newData,col
       },
       rightPriceScale: {
         borderVisible: false,
-        textColor: "#70808C",
+        textColor: "#868788",
       },
       timeScale: {
         borderVisible: false,
@@ -208,8 +208,12 @@ const MainChart: React.FunctionComponent<MainChartProps>  = ({ data: newData,col
     chartContainer.appendChild(textElement1);
 
      // pass parameters down or up and value
-    const textElement2 = createCustomMarker2()
+    const textElement2 = createCustomMarker2("100",'up')
     chartContainer.appendChild(textElement2);
+
+     // pass parameters down or up and value
+    const textElement3 = createCustomMarker3('85','up')
+    chartContainer.appendChild(textElement3);
 
     // Position text element
     const updatePosition1 = () => {
@@ -228,8 +232,8 @@ const MainChart: React.FunctionComponent<MainChartProps>  = ({ data: newData,col
       }
 
       if (priceCoordinate && timeCoordinate) {
-        textElement1.style.top = `${priceCoordinate - textElement1.offsetHeight / 2}px`;
-        textElement1.style.left = `${timeCoordinate + 50}px`;
+        textElement1.style.top = `${(priceCoordinate - textElement1.offsetHeight  / 2) + 60}px`;
+        textElement1.style.left = `${timeCoordinate + 95}px`;
         console.log('Text position updated');
       }else{
         console.log('failed to get coordinates');
@@ -238,11 +242,11 @@ const MainChart: React.FunctionComponent<MainChartProps>  = ({ data: newData,col
 
 
     const updatePosition2 = () => {
-      const priceCoordinate = newSeries.priceToCoordinate(33.40366718759486);
+      const priceCoordinate = newSeries.priceToCoordinate(-16.964833295409413);
 
      
 
-      let timeCoordinate = chart.timeScale().timeToCoordinate(1706813400 as UTCTimestamp);
+      let timeCoordinate = chart.timeScale().timeToCoordinate(1706814120 as UTCTimestamp);
 
       console.log('Price coordinate:', priceCoordinate);
       console.log('Time coordinate:', timeCoordinate);
@@ -255,8 +259,33 @@ const MainChart: React.FunctionComponent<MainChartProps>  = ({ data: newData,col
       }
 
       if (priceCoordinate && timeCoordinate) {
-        textElement2.style.top = `${priceCoordinate - textElement2.offsetHeight / 2}px`;
-        textElement2.style.left = `${timeCoordinate + 0}px`;
+        textElement2.style.top = `${(priceCoordinate - textElement2.offsetHeight / 2) + 60 }px`;
+        textElement2.style.left = `${timeCoordinate + 98}px`;
+        console.log('Text position updated');
+      }else{
+        console.log('failed to get coordinates');
+      }
+    };
+
+    const updatePosition3 = () => {
+      const priceCoordinate = newSeries.priceToCoordinate(-16.964833295409413);
+
+
+      let timeCoordinate = chart.timeScale().timeToCoordinate(1706814120 as UTCTimestamp);
+
+      console.log('Price coordinate:', priceCoordinate);
+      console.log('Time coordinate:', timeCoordinate);
+      if (timeCoordinate === null) {
+        // If the specified time is not found use the first visible time
+        const visibleRange = chart.timeScale().getVisibleRange();
+        if (visibleRange) {
+          timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+        }
+      }
+
+      if (priceCoordinate && timeCoordinate) {
+        textElement3.style.top = `${(priceCoordinate - textElement3.offsetHeight / 2) +30 }px`;
+        textElement3.style.left = `${timeCoordinate + 110}px`;
         console.log('Text position updated');
       }else{
         console.log('failed to get coordinates');
@@ -265,8 +294,14 @@ const MainChart: React.FunctionComponent<MainChartProps>  = ({ data: newData,col
 
     chart.subscribeCrosshairMove(updatePosition1);
     updatePosition1();
+
     chart.subscribeCrosshairMove(updatePosition2);
     updatePosition2();
+
+    chart.subscribeCrosshairMove(updatePosition3);
+    updatePosition3();
+
+
     newSeries.setData(newData);
     
     chartRef.current = chart;
@@ -288,6 +323,7 @@ const MainChart: React.FunctionComponent<MainChartProps>  = ({ data: newData,col
           style: LineStyle.Dashed,
           labelBackgroundColor: "#48494b",
         },
+        
       },
     });
 

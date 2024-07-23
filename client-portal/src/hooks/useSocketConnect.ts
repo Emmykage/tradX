@@ -34,10 +34,12 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
       
     webSocket.onerror = function (event) {
       console.error(event);
+      console.log('error');
       throw Error("Websocket connection error");
     }
 
     webSocket.onopen = () => {
+      console.log('opened');
       webSocket.send(
         JSON.stringify({ type: "join_room", room_name: "BTC_USD" })
       );
