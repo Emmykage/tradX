@@ -26,18 +26,21 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
   const [data, setData] = useState<Data | null>(null);
   const [socket, setSocket] = useState<WebSocket | null>(null);
 
+  const wsTickets = 'BTdC_USD'
   useEffect(() => {
-    if (wsTicket){
+    if (wsTickets){
       const webSocket = new WebSocket(
-        `wss://tradx.io/ws/external-api/?ws_ticket=${wsTicket}`
+        `wss://tradx.io/ws/external-api/?ws_ticket=${wsTickets}`
       );
       
     webSocket.onerror = function (event) {
       console.error(event);
+      console.log('error');
       throw Error("Websocket connection error");
     }
 
     webSocket.onopen = () => {
+      console.log('opened');
       webSocket.send(
         JSON.stringify({ type: "join_room", room_name: "BTC_USD" })
       );
@@ -69,7 +72,7 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
         socket.close();
       }
     };
-  }, [wsTicket]);
+  }, [wsTickets]);
 
   const extraAction = (
     callback: (data: Data | null, socket: WebSocket | null) => void

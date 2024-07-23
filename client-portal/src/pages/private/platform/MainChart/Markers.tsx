@@ -2,7 +2,7 @@
     const marker = document.createElement('div');
     marker.style.display = 'flex';
     marker.style.position = 'absolute';
-    marker.style.zIndex = '1000';
+    marker.style.zIndex = '10';
   
     const diamondContainer = document.createElement('div');
     diamondContainer.style.display = 'flex';
@@ -48,7 +48,7 @@
     const text = document.createElement('h1');
     text.style.backgroundColor = 'white';
     text.style.color = "black"
-    text.style.fontSize = "15px"
+    text.style.fontSize = "13px"
     text.style.borderRadius = '9999px'; 
     text.style.padding = '3px 10px'; 
     text.style.fontWeight = '600';
@@ -65,11 +65,11 @@
 
 
 
-export const createCustomMarker2 = () => {
+export const createCustomMarker2 = ( price:string,trend:string) => {
     const marker = document.createElement('div');
     marker.style.display = 'flex';
     marker.style.position = 'absolute';
-    marker.style.zIndex = '1000';
+    marker.style.zIndex = '10';
   
     const circle = document.createElement('div');
     circle.style.backgroundColor = 'white';
@@ -80,20 +80,20 @@ export const createCustomMarker2 = () => {
 
     const labelInner = document.createElement('div');
     labelInner.style.display = 'flex';
-    labelInner.style.backgroundColor = '#1FBF75';
-    labelInner.style.height = '20px';
+    labelInner.style.backgroundColor = `${trend === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`;
+    labelInner.style.height = '20.5px';
     labelInner.style.width = '62px';
     labelInner.style.borderRadius = '6px';
-    labelInner.style.padding = '0 3px';
+    labelInner.style.padding = '1.5px 3.5px 0px 0px';
     labelInner.style.position = 'absolute';
-    labelInner.style.left = '-258px';
-    labelInner.style.top = '-6px';
+    labelInner.style.left = '-248px';
+    labelInner.style.top = '-7px';
 
     
 
 
     const span = document.createElement('span');
-    span.textContent = '$100';
+    span.textContent = `$${price}`;
     span.style.color = 'white';
     span.style.paddingLeft = '8px';
     span.style.paddingRight = '4px';
@@ -102,7 +102,7 @@ export const createCustomMarker2 = () => {
     span.style.paddingBottom = '0';
 
     const svgContainer = document.createElement('div');
-    svgContainer.style.marginTop = '-5.3px';
+    svgContainer.style.marginTop = `${trend === 'down' ? '-2.1px' : '-5.3px'}`;
     svgContainer.style.marginLeft = '-4px';
 
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -110,6 +110,7 @@ export const createCustomMarker2 = () => {
     svg.setAttribute('height', '29px');
     svg.setAttribute('viewBox', '0 0 190.00 190.00');
     svg.setAttribute('fill', 'none');
+    svg.setAttribute('transform', `${trend === 'down' ? 'rotate(90, 0, 0)' : 'rotate(0, 0, 0)'}`);
     svg.setAttribute('stroke', '#ffffff');
 
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -123,21 +124,21 @@ export const createCustomMarker2 = () => {
   
     const solidLine = document.createElement('div');
     solidLine.style.width = '228px'; 
-    solidLine.style.backgroundColor = 'rgb(34, 197, 94)'; 
+    solidLine.style.backgroundColor = `${trend === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`; 
     solidLine.style.height = '0.1px';
     solidLine.style.borderWidth = '0.1px';
     solidLine.style.borderStyle = 'solid';
-    solidLine.style.borderColor = 'rgb(22, 163, 74)'; 
+    solidLine.style.borderColor = `${trend === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`;
     solidLine.style.position = 'absolute';
     solidLine.style.top = '3.1px';
     solidLine.style.left = '8px';
   
     const dashedLine = document.createElement('div');
-    dashedLine.style.width = '195px'; 
+    dashedLine.style.width = '185px'; 
     dashedLine.style.height = '0.1px';
     dashedLine.style.borderWidth = '0.1px';
     dashedLine.style.borderStyle = 'dashed';
-    dashedLine.style.borderColor = 'rgb(22, 163, 74)'; 
+    dashedLine.style.borderColor = `${trend === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`; 
     dashedLine.style.position = 'absolute';
     dashedLine.style.top = '3.1px';
     dashedLine.style.right = '8px';
@@ -151,3 +152,24 @@ export const createCustomMarker2 = () => {
   
     return marker;
   };
+
+  export const createCustomMarker3 = ( price:string,trend:string) => {
+    const marker = document.createElement('div');
+    marker.style.display = 'flex';
+    marker.style.position = 'absolute';
+    marker.style.zIndex = '10';
+
+    const span = document.createElement('span');
+    span.textContent = `+$${price}`;
+    span.style.color = `${trend === 'down' ? "#FF0000" : "rgb(22, 163, 74)"} `;
+    span.style.fontWeight = '600'
+    span.style.paddingLeft = '8px';
+    span.style.paddingRight = '4px';
+    span.style.fontSize = '13px';
+    span.style.paddingTop = '2px';
+    span.style.paddingBottom = '0';
+
+    marker.appendChild(span)
+
+    return marker
+  }
