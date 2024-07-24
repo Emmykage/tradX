@@ -10,7 +10,9 @@ import {
   TimerIcon,
 } from "../../assets/icons";
 import "./tradeform.scss";
-import { useState } from "react";
+import { useAppSelector } from "@store/hooks";
+import { changeAmount, changeDuration, setAmount, SetDuration, TradeStates } from "@store/slices/trade";
+import { useDispatch } from "react-redux";
 
 interface TradeFormProps {
   bottomSidebarHeight?: number;
@@ -26,8 +28,6 @@ interface TradeFormProps {
   hintPlus?: boolean;
   hintDuration?: boolean;
   hintTrades?: boolean;
-  onIncreaseAmount?: () => void;
-  onDecreaseDuration?: () => void;
   handleUserInputUp?: () => void;
   handleUserInputDown?: () => void;
   profitPercent?: string;
@@ -50,8 +50,6 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   hintPlus = false,
   hintDuration = false,
   hintTrades = false,
-  onIncreaseAmount,
-  onDecreaseDuration,
   handleUserInputUp,
   handleUserInputDown,
   profitPercent,
@@ -59,25 +57,43 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   durationTooltipPlacement = "left",
   hintTradesTooltipPlacement = "left",
 }) => {
-  const [duration,SetDuration]= useState(1)
-  const [amount,SetAmount]= useState(100)
+
+  const { duration,finished,amount,trade } = useAppSelector(
+    (state: { trades: TradeStates }) => state.trades
+  );
+  const dispatch = useDispatch();
+
+
+
+  const handleInputUp = ()=>{
+    console.log('up');
+    console.log(amount);
+    console.log(duration);
+  }
+  const handleInputDown = ()=>{
+    console.log('Down');
+    console.log(amount);
+    console.log(duration);
+  }
 
   const handleIncreaseDuration = ()=>{
-   SetDuration( duration + 1)
+    console.log('increase duration');
+    dispatch(changeDuration('increase'))
   }
   const handleDecreaseDuration = ()=>{
+    console.log('decrease duration');
     if(duration > 1){
   
-      SetDuration( duration - 1)
+      dispatch(changeDuration('decrease'))
     }
   }
   const handleIncreaseAmount = ()=>{
-   SetAmount( amount + 1)
+   dispatch(changeAmount('increase'))
   }
   const handleDecreaseAmount = ()=>{
     if(amount > 0){
   
-      SetAmount( amount - 1)
+      dispatch(changeAmount('decrease'))
     }
   }
   return (
@@ -114,7 +130,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
                 name="amount"
                 value={amount}
                 id="amounts"
-                onChange={(e)=>SetAmount(e.target.value)}
+                onChange={(e)=>dispatch(setAmount(parseInt(e.target.value)))}
                 disabled={disabled}
                 defaultValue={defaultAmount}
               />
@@ -191,7 +207,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
               </button>
             ) : null}
             <button
-              onClick={handleUserInputUp}
+              onClick={handleInputUp}
               disabled={!hintTrades && disabled}
               className={`up ${hintTrades ? "hint" : ""}`}
             >
@@ -206,7 +222,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
               </span>
             </button>
             <button
-              onClick={handleUserInputDown}
+              onClick={handleInputDown}
               disabled={!hintTrades && disabled}
               className={`down ${hintTrades ? "hint" : ""}`}
             >
