@@ -232,8 +232,8 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
 
     // Position text element
     const updatePosition1 = () => {
-      const priceCoordinate = candlestickSeries.priceToCoordinate(6.577625846137605);
-      let timeCoordinate = chart.timeScale().timeToCoordinate(1706816460 as UTCTimestamp);
+      const priceCoordinate = candlestickSeries.priceToCoordinate(64863.81000000);
+      let timeCoordinate = chart.timeScale().timeToCoordinate(1721284620000 / 1000 as UTCTimestamp);
 
       console.log('Price coordinate:', priceCoordinate);
       console.log('Time coordinate:', timeCoordinate);
@@ -257,11 +257,11 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
 
 
     const updatePosition2 = () => {
-      const priceCoordinate = candlestickSeries.priceToCoordinate(-16.964833295409413);
+      const priceCoordinate = candlestickSeries.priceToCoordinate(64446.00000000);
 
      
 
-      let timeCoordinate = chart.timeScale().timeToCoordinate(1706814120 as UTCTimestamp);
+      let timeCoordinate = chart.timeScale().timeToCoordinate(1721280300000 / 1000 as UTCTimestamp);
 
       console.log('Price coordinate:', priceCoordinate);
       console.log('Time coordinate:', timeCoordinate);
@@ -283,10 +283,10 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     };
 
     const updatePosition3 = () => {
-      const priceCoordinate = candlestickSeries.priceToCoordinate(-16.964833295409413);
+      const priceCoordinate = candlestickSeries.priceToCoordinate(64446.00000000);
 
 
-      let timeCoordinate = chart.timeScale().timeToCoordinate(1706814120 as UTCTimestamp);
+      let timeCoordinate = chart.timeScale().timeToCoordinate(1721280300000 / 1000 as UTCTimestamp);
 
       console.log('Price coordinate:', priceCoordinate);
       console.log('Time coordinate:', timeCoordinate);
@@ -300,7 +300,7 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
 
       if (priceCoordinate && timeCoordinate) {
         textElement3.style.top = `${(priceCoordinate - textElement3.offsetHeight / 2) +30 }px`;
-        textElement3.style.left = `${timeCoordinate + 110}px`;
+        textElement3.style.left = `${timeCoordinate + 130}px`;
         console.log('Text position updated');
       }else{
         console.log('failed to get coordinates');

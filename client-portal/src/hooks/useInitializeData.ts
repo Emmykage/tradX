@@ -32,9 +32,12 @@ const useInitializeData = () => {
   console.log(user);
   const { mutate: profileMutate } = useProfile({
     onSuccess: (data) => {
+      console.log(data);
       dispatch(setUser(data));
     },
-    onError: () => {},
+    onError: () => {
+      console.log('error');
+    },
   });
 
   // Fetch wallet data
@@ -43,6 +46,7 @@ const useInitializeData = () => {
   );
   const { mutate: walletMutate } = useWallet({
     onSuccess: (data) => {
+      console.log(data);
       dispatch(setWallets(data.results));
       dispatch(setSelectedWallet(data.results[0] || undefined));
     },
