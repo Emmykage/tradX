@@ -47,7 +47,7 @@ export const tradeStateSlice = createSlice({
       state.duration = action.payload;
       return state;
     },
-    setTrade: (state, action: PayloadAction<string>) => {
+    setTrade: (state, action: PayloadAction<string | null>) => {
       state.trade = action.payload;
       return state;
     },

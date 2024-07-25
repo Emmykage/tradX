@@ -7,7 +7,7 @@ import {
   CrosshairMode,
   UTCTimestamp,
 } from "lightweight-charts";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useCookies } from "react-cookie";
 
 import useSocketConnect from "../../../../hooks/useSocketConnect";
@@ -24,6 +24,8 @@ import { MainChartProps, MarketData, TransformedMarket } from "./types";
 import { convertTimestampToDateString, dateFormter, getPreviousDayFromTimestamp } from "helpers/dateFormter";
 import useGetClock from "api/marketData/useGetClock";
 import { createCustomMarker1, createCustomMarker2, createCustomMarker3 } from "./Markers";
+import CountDown from "components/countDown/CountDown";
+import { setFinished, setTrade } from "@store/slices/trade";
 
 
 
@@ -32,15 +34,18 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
   
   const [cookies] = useCookies(["access_token"]);
 
+
   const { mutate: marketDataMutation, data: market } = useMarketData({});
   const { mutate: assetsListMutate } = useMarketAssets({});
   const { mutate: getClockMutate, data: clockData } = useGetClock({});
 
   const markets = useAppSelector((state) => state.markets);
   const { wsTicket } = useAppSelector((state) => state.user);
+  const { trade, finished, duration, amount } = useAppSelector((state) => state.trades);
   const userState = useAppSelector((state) => state);
-  const dispatch = useAppDispatch();
 
+  const dispatch = useAppDispatch();
+  console.log(duration);
   console.log(userState);
   const { data: socketData, socket } = useSocketConnect(wsTicket as string);
 
@@ -49,6 +54,8 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
   useEffect(() => {
     getClockMutate(cookies.access_token);
   }, []);
+
+ 
 
   useEffect(() => {
     if (clockData) {
@@ -148,6 +155,19 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
 
   const chartRef = useRef<IChartApi>();
 
+  useEffect(()=>{
+    console.log('object');
+    console.log(trade);
+    console.log(finished);
+    if(finished){
+
+      console.log(trade);
+      console.log('here');
+
+    
+    }
+    
+  },[finished])
   useEffect(() => {
     const chartContainer = chartContainerRef.current!;
     const chart = createChart(chartContainer, {
@@ -214,105 +234,137 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     //   axisLabelVisible: false,
     // });
 
+  
+
+   
+
+
+    console.log(finished,trade,duration,amount);
     
-    // Custom markers with inline css append to chartContainer 
-    // Pass parameters down or up and value 
-    const textElement1 = createCustomMarker1('1.21')
-    chartContainer.appendChild(textElement1);
+      console.log(finished,trade,duration,amount);
+    // Custom markers with inline css append to chartContainer
+   
+      
 
-     // pass parameters down or up and value
-    const textElement2 = createCustomMarker2("100",'up')
-    chartContainer.appendChild(textElement2);
-
-     // pass parameters down or up and value
-    const textElement3 = createCustomMarker3('85','up')
-    chartContainer.appendChild(textElement3);
-
-    // Position text element
-    const updatePosition1 = () => {
-      const priceCoordinate = candlestickSeries.priceToCoordinate(64863.81000000);
-      let timeCoordinate = chart.timeScale().timeToCoordinate(1721284620000 / 1000 as UTCTimestamp);
-
-      console.log('Price coordinate:', priceCoordinate);
-      console.log('Time coordinate:', timeCoordinate);
-      if (timeCoordinate === null) {
-
-        // If the specified time is not found use the first visible time
-        const visibleRange = chart.timeScale().getVisibleRange();
-        if (visibleRange) {
-          timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
-        }
-      }
-
-      if (priceCoordinate && timeCoordinate) {
-        textElement1.style.top = `${(priceCoordinate - textElement1.offsetHeight  / 2) + 60}px`;
-        textElement1.style.left = `${timeCoordinate + 95}px`;
-        console.log('Text position updated');
-      }else{
-        console.log('failed to get coordinates');
-      }
-    };
-
-
-    const updatePosition2 = () => {
-      const priceCoordinate = candlestickSeries.priceToCoordinate(64446.00000000);
-
+         // Pass parameters down or up and value 
+        const textElement1 = createCustomMarker1('1.21')
+        chartContainer.appendChild(textElement1);
+  
      
+        // pass parameters down or up and value
+        const textElement2 = createCustomMarker2('100', "up")
+        chartContainer.appendChild(textElement2);
+        
+        // pass parameters down or up and value
+        const textElement3 = createCustomMarker3(100, 'up')
+        chartContainer.appendChild(textElement3);
 
-      let timeCoordinate = chart.timeScale().timeToCoordinate(1721280300000 / 1000 as UTCTimestamp);
-
-      console.log('Price coordinate:', priceCoordinate);
-      console.log('Time coordinate:', timeCoordinate);
-      if (timeCoordinate === null) {
-        // If the specified time is not found use the first visible time
-        const visibleRange = chart.timeScale().getVisibleRange();
-        if (visibleRange) {
-          timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+          // Position text element
+       const updatePosition1 = () => {
+        const priceCoordinate = candlestickSeries.priceToCoordinate(64863.81000000);
+        let timeCoordinate = chart.timeScale().timeToCoordinate(1721284620000 / 1000 as UTCTimestamp);
+  
+        // console.log('Price coordinate:', priceCoordinate);
+        // console.log('Time coordinate:', timeCoordinate);
+        if (timeCoordinate === null) {
+  
+          // If the specified time is not found use the first visible time
+          const visibleRange = chart.timeScale().getVisibleRange();
+          if (visibleRange) {
+            timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+          }
         }
-      }
-
-      if (priceCoordinate && timeCoordinate) {
-        textElement2.style.top = `${(priceCoordinate - textElement2.offsetHeight / 2) + 60 }px`;
-        textElement2.style.left = `${timeCoordinate + 98}px`;
-        console.log('Text position updated');
-      }else{
-        console.log('failed to get coordinates');
-      }
-    };
-
-    const updatePosition3 = () => {
-      const priceCoordinate = candlestickSeries.priceToCoordinate(64446.00000000);
-
-
-      let timeCoordinate = chart.timeScale().timeToCoordinate(1721280300000 / 1000 as UTCTimestamp);
-
-      console.log('Price coordinate:', priceCoordinate);
-      console.log('Time coordinate:', timeCoordinate);
-      if (timeCoordinate === null) {
-        // If the specified time is not found use the first visible time
-        const visibleRange = chart.timeScale().getVisibleRange();
-        if (visibleRange) {
-          timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+  
+        if (priceCoordinate && timeCoordinate) {
+          textElement1.style.top = `${(priceCoordinate - textElement1.offsetHeight  / 2) + 0}px`;
+          textElement1.style.left = `${timeCoordinate + 0}px`;
+          // console.log('Text position updated');
+        }else{
+          // console.log('failed to get coordinates');
         }
-      }
+      };
 
-      if (priceCoordinate && timeCoordinate) {
-        textElement3.style.top = `${(priceCoordinate - textElement3.offsetHeight / 2) +30 }px`;
-        textElement3.style.left = `${timeCoordinate + 130}px`;
-        console.log('Text position updated');
-      }else{
-        console.log('failed to get coordinates');
-      }
-    };
+        const updatePosition2 = () => {
+          const priceCoordinate = candlestickSeries.priceToCoordinate(64446.00000000);
+    
+         
+    
+          let timeCoordinate = chart.timeScale().timeToCoordinate(1721280300000 / 1000 as UTCTimestamp);
+    
+          console.log('Price coordinate:', priceCoordinate);
+          console.log('Time coordinate:', timeCoordinate);
+          if (timeCoordinate === null) {
+            // If the specified time is not found use the first visible time
+            const visibleRange = chart.timeScale().getVisibleRange();
+            if (visibleRange) {
+              timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+            }
+          }
+    
+          if (priceCoordinate && timeCoordinate) {
+            textElement2.style.top = `${(priceCoordinate - textElement2.offsetHeight / 2) + 0 }px`;
+            textElement2.style.left = `${timeCoordinate + 0}px`;
+            console.log('Text position updated');
+          }else{
+            console.log('failed to get coordinates');
+          }
+        };
+    
+        const updatePosition3 = () => {
+          const priceCoordinate = candlestickSeries.priceToCoordinate(64446.00000000);
+    
+    
+          let timeCoordinate = chart.timeScale().timeToCoordinate(1721280300000 / 1000 as UTCTimestamp);
+    
+          console.log('Price coordinate:', priceCoordinate);
+          console.log('Time coordinate:', timeCoordinate);
+          if (timeCoordinate === null) {
+            // If the specified time is not found use the first visible time
+            const visibleRange = chart.timeScale().getVisibleRange();
+            if (visibleRange) {
+              timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+            }
+          }
+    
+          if (priceCoordinate && timeCoordinate) {
+            textElement3.style.top = `${(priceCoordinate - textElement3.offsetHeight / 2) - 30 }px`;
+            textElement3.style.left = `${timeCoordinate + 45}px`;
+            console.log('Text position updated');
+          }else{
+            console.log('failed to get coordinates');
+          }
+        };
+   
 
-    chart.subscribeCrosshairMove(updatePosition1);
-    updatePosition1();
+        const ensureChartReady = () => {
+          setTimeout(() => {
+           
+          
+            chart.subscribeCrosshairMove(updatePosition1);
+            updatePosition1();
+         
 
-    chart.subscribeCrosshairMove(updatePosition2);
-    updatePosition2();
+              chart.subscribeCrosshairMove(updatePosition2);
+              updatePosition2();
+              
+              updatePosition3();
+              chart.subscribeCrosshairMove(updatePosition3);
+            
+ 
 
-    chart.subscribeCrosshairMove(updatePosition3);
-    updatePosition3();
+          }, 100);  // Short delay to ensure chart is rendered
+        };
+        console.log(trade);
+        console.log('here');
+  
+  
+        // Initial call to ensure chart is ready
+        ensureChartReady();
+    
+
+   
+   
+    
 
 
     candlestickSeries.setData(newData);
@@ -347,6 +399,14 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
 
     const resizeObserver = new ResizeObserver(handleResize);
     resizeObserver.observe(chartContainer);
+    setTimeout(() => {
+      if(finished){
+
+        dispatch(setTrade(null))
+      }
+      // dispatch(setFinished(false))
+      
+    }, 3000);
 
     return () => {
       window.removeEventListener(
@@ -356,8 +416,11 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
       resizeObserver.disconnect();
       chartRef.current?.remove();
     };
+ 
   }, [
     data,
+    finished,
+    trade,
     backgroundColor,
     lineColor,
     textColor,
@@ -366,11 +429,32 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     gridLines,
   ]);
 
- 
 
 
   // TODO - Lazy loading the charts
-  return <div ref={chartContainerRef} style={{ height: "100%" }} />;
+  return  <div style={{ position: 'relative', height: '100%' }}>
+      <div ref={chartContainerRef} style={{ height: '100%' }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '60px',
+        left: '49%',
+        transform: 'translateX(-50%)',
+        zIndex: 2,
+        padding: '5px 10px',
+        borderRadius: '5px',
+        fontSize: '14px',
+        pointerEvents: 'none' // This ensures the text doesn't interfere with chart interaction
+      }}>
+      {
+        trade !== null  && 
+        <CountDown time={duration}/>
+      }
+      </div>
+    </div>
+  
+  
+    
+    
 };
 
 export default MainChart;
