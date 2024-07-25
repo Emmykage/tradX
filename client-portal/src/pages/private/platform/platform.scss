@@ -84,6 +84,7 @@
     color: #fff;
   }
 }
+// #0e0f12
 .rightDrawer {
   &.rightSubDrawer {
     .ant-drawer-wrapper-body {
@@ -153,7 +154,8 @@
   background: #b2b4b8;
 }
 .ant-drawer .ant-drawer-content {
-  background-color: transparent;
+  // background-color: transparent;
+  background-color: #0e0f12;
 }
 
 .radioGroupVerticle {

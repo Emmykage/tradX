@@ -19,6 +19,8 @@ import {
   TronIcon,
   USDcoinIcon,
   XrpIcon,
+  PayPalIcon,
+  StripeIcon,
 } from "../../../../../assets/payment-methods-icons";
 
 export const paymentMethodData: PaymentMethodDataType = {
@@ -36,6 +38,14 @@ export const paymentMethodData: PaymentMethodDataType = {
     {
       name: "Perfect Money",
       methodIcon: <PerfectMoneyIcon />,
+    },
+    {
+      name: "PayPal",
+      methodIcon: <PayPalIcon />,
+    },
+    {
+      name: "Stripe",
+      methodIcon: <StripeIcon />,
     },
   ],
   crypto: [

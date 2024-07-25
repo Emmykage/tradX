@@ -2,10 +2,12 @@ import { Button, Typography } from "antd";
 import { FC, Dispatch, SetStateAction, useEffect, useState } from "react";
 import { paymentMethodData, filterListButtons } from "./constants";
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
-
 import "./PaymentMethod.scss";
 import { RightSubDrawerContent } from "../../types";
 import { PaymentMethodDataType } from "./types";
+import { useDispatch } from "react-redux";
+import { setPaymentMethod } from "@store/slices/payment";
+import { useAppSelector } from "@store/hooks";
 
 interface PaymentMethodProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -16,6 +18,8 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
+  const dispatch = useDispatch();
+  const { selectedPaymentMethod } = useAppSelector((state) => state.payment);
   const [paymentType, setPaymentType] = useState<string>("All");
 
   const titleHandler = (titleKey: string) => {
@@ -31,9 +35,9 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
     }
   };
 
-  useEffect(() => {
-    console.log(Object.keys(paymentMethodData));
-  }, []);
+  // useEffect(() => {
+  //   console.log(Object.keys(paymentMethodData));
+  // }, []);
 
   return (
     <div>
@@ -65,7 +69,7 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
                     </Typography.Text>
                     {paymentMethod.map((item, index: number) => (
                       <div
-                        className="payment-method-list-item"
+                        className={`payment-method-list-item ${selectedPaymentMethod?.name === item?.name ? 'active-payment-method-list-item' : ''}`}
                         key={`${index}-${item.name}`}
                         onClick={() => {
                          if (method === "crypto") {
@@ -74,6 +78,7 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
                          } else {
                            setIsRightSubDrawerOpen(true);
                            setIsRightSubDrawerContent("payments-deposit");
+                           dispatch(setPaymentMethod(item));
                          }
                         }}
                       >
@@ -103,6 +108,7 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
                   } else {
                     setIsRightSubDrawerOpen(true);
                     setIsRightSubDrawerContent("payments-deposit");
+                    dispatch(setPaymentMethod(item));
                   }
                   
                 }}
