@@ -305,6 +305,7 @@ export function rightDrawerBodyHandler(
 export function rightSubDrawerTitleHandler(
   rightSubDrawerContent: RightSubDrawerContent
 ): RightSubDrawerContent | string {
+  console.log(rightSubDrawerContent, 'here boss');
   switch (rightSubDrawerContent) {
     case "settings":
       return "Settings";
@@ -348,6 +349,7 @@ export function rightSubDrawerTitleHandler(
     case "referral-program":
       return "Invite Friends & Get Rewards";
     case "payments-deposit":
+      // return "Confirm Payment";
     case "get-rewards-deposit":
       return "Deposit";
     case "select-deposit-amount":
@@ -506,6 +508,7 @@ export function rightSubDrawerBodyHandler(
         />
       );
     case "payments-deposit":
+      
     case "get-rewards-deposit":
       return (
         <Deposit
@@ -550,6 +553,8 @@ export function rightSubDrawerBodyHandler(
     case "deposit-confirm-payment":
       return (
         <ConfirmPayment
+          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         // setIsRightSubDrawerContent={setIsRightSubDrawerContent}
         />
       );

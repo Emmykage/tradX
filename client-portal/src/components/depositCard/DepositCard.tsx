@@ -5,8 +5,8 @@ import { setPaymentAmount } from "@store/slices/payment";
 import { ChangeEvent } from "react";
 interface ContentProps {
   account: string;
-  amount: number;
-  currency: string;
+  amount?: number | string;
+  currency?: string;
   icon?: boolean;
   cardIcon?: React.ReactNode;
   CountryIcon?: React.ReactNode;

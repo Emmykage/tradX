@@ -1,19 +1,44 @@
+import { Dispatch, FC, SetStateAction, useCallback } from "react";
+import { useAppSelector } from "@store/hooks";
 import { BlueCardIcon } from "../../../../../assets/icons";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import "./confirmPayment.scss";
+import { RightSubDrawerContent } from "../../types";
 
-const ConfirmPayment = () => {
+interface ConfirmPaymentProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+}
+
+const ConfirmPayment: FC<ConfirmPaymentProps> = (
+  {
+    setIsRightSubDrawerOpen,
+    setIsRightSubDrawerContent,
+  }
+) => {
+  const { amount, selectedPaymentMethod } = useAppSelector((state) => state.payment);
+
+  const handleConfirmationClick = () => {
+      if(selectedPaymentMethod?.name ==="Bank Cards"){
+          setIsRightSubDrawerContent("card-details-menu");
+        
+        }else{
+        setIsRightSubDrawerContent("card-details-menu");
+        setIsRightSubDrawerContent("deposit-confirm-payment");
+      }
+  };
   return (
     <div className="confirmPayment">
       <div className="header">
-        <BlueCardIcon />
+        {/* <BlueCardIcon /> */}
+        {selectedPaymentMethod?.methodIcon}
         <p>Payment Amount</p>
-        <h2>EUR 250</h2>
+        <h2>EUR {amount}</h2>
       </div>
       <div className="body">
         <div className="bodyItem">
           <p>Payment Method</p>
-          <div className="bodyItemCard">Bank Card</div>
+          <div className="bodyItemCard">{selectedPaymentMethod?.name}</div>
         </div>
         <hr />
         <div className="bodyItem">
@@ -30,7 +55,7 @@ const ConfirmPayment = () => {
       <p className="footerText">
         You will be redirected to the payment system page afterwards
       </p>
-      <PrimaryButton Title="Confirm" onClick={() => null} />
+      <PrimaryButton Title="Confirm" onClick={() => handleConfirmationClick()} />
     </div>
   );
 };
