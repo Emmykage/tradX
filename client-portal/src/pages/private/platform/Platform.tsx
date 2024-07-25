@@ -268,6 +268,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           style={{ height: calculateTradeContentHeight() }}
         >
           <div className="trade-graph" id="tradeGraph">
+            
             {chartInitialData ? (
              <div style={{ height: "100%", marginLeft: "100px", color:"white" }}>
                {/* pass dummy data newCandleData */}

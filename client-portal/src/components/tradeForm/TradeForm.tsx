@@ -11,7 +11,7 @@ import {
 } from "../../assets/icons";
 import "./tradeform.scss";
 import { useAppSelector } from "@store/hooks";
-import { changeAmount, changeDuration, setAmount, SetDuration, TradeStates } from "@store/slices/trade";
+import { changeAmount, changeDuration, setAmount, SetDuration, setTrade, TradeStates } from "@store/slices/trade";
 import { useDispatch } from "react-redux";
 
 interface TradeFormProps {
@@ -69,11 +69,16 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
     console.log('up');
     console.log(amount);
     console.log(duration);
+    
+    // dispatch(setTrade('up'))
+
   }
   const handleInputDown = ()=>{
     console.log('Down');
     console.log(amount);
     console.log(duration);
+
+    // dispatch(setTrade('up'))
   }
 
   const handleIncreaseDuration = ()=>{

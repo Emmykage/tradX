@@ -65,7 +65,7 @@
 
 
 
-export const createCustomMarker2 = ( price:string,trend:string) => {
+export const createCustomMarker2 = ( price:string,trade:string) => {
     const marker = document.createElement('div');
     marker.style.display = 'flex';
     marker.style.position = 'absolute';
@@ -80,7 +80,7 @@ export const createCustomMarker2 = ( price:string,trend:string) => {
 
     const labelInner = document.createElement('div');
     labelInner.style.display = 'flex';
-    labelInner.style.backgroundColor = `${trend === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`;
+    labelInner.style.backgroundColor = `${trade === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`;
     labelInner.style.height = '20.5px';
     labelInner.style.width = '62px';
     labelInner.style.borderRadius = '6px';
@@ -102,7 +102,7 @@ export const createCustomMarker2 = ( price:string,trend:string) => {
     span.style.paddingBottom = '0';
 
     const svgContainer = document.createElement('div');
-    svgContainer.style.marginTop = `${trend === 'down' ? '-2.1px' : '-5.3px'}`;
+    svgContainer.style.marginTop = `${trade === 'down' ? '-2.1px' : '-5.3px'}`;
     svgContainer.style.marginLeft = '-4px';
 
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -110,7 +110,7 @@ export const createCustomMarker2 = ( price:string,trend:string) => {
     svg.setAttribute('height', '29px');
     svg.setAttribute('viewBox', '0 0 190.00 190.00');
     svg.setAttribute('fill', 'none');
-    svg.setAttribute('transform', `${trend === 'down' ? 'rotate(90, 0, 0)' : 'rotate(0, 0, 0)'}`);
+    svg.setAttribute('transform', `${trade === 'down' ? 'rotate(90, 0, 0)' : 'rotate(0, 0, 0)'}`);
     svg.setAttribute('stroke', '#ffffff');
 
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -124,11 +124,11 @@ export const createCustomMarker2 = ( price:string,trend:string) => {
   
     const solidLine = document.createElement('div');
     solidLine.style.width = '228px'; 
-    solidLine.style.backgroundColor = `${trend === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`; 
+    solidLine.style.backgroundColor = `${trade === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`; 
     solidLine.style.height = '0.1px';
     solidLine.style.borderWidth = '0.1px';
     solidLine.style.borderStyle = 'solid';
-    solidLine.style.borderColor = `${trend === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`;
+    solidLine.style.borderColor = `${trade === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`;
     solidLine.style.position = 'absolute';
     solidLine.style.top = '3.1px';
     solidLine.style.left = '8px';
@@ -138,7 +138,7 @@ export const createCustomMarker2 = ( price:string,trend:string) => {
     dashedLine.style.height = '0.1px';
     dashedLine.style.borderWidth = '0.1px';
     dashedLine.style.borderStyle = 'dashed';
-    dashedLine.style.borderColor = `${trend === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`; 
+    dashedLine.style.borderColor = `${trade === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`; 
     dashedLine.style.position = 'absolute';
     dashedLine.style.top = '3.1px';
     dashedLine.style.right = '8px';
@@ -153,15 +153,16 @@ export const createCustomMarker2 = ( price:string,trend:string) => {
     return marker;
   };
 
-  export const createCustomMarker3 = ( price:string,trend:string) => {
+  export const createCustomMarker3 = ( price:number,trade:string) => {
+    console.log(trade);
     const marker = document.createElement('div');
     marker.style.display = 'flex';
     marker.style.position = 'absolute';
     marker.style.zIndex = '10';
 
     const span = document.createElement('span');
-    span.textContent = `+$${price}`;
-    span.style.color = `${trend === 'down' ? "#FF0000" : "rgb(22, 163, 74)"} `;
+    span.textContent = `+$${price * 0.85}`;
+    span.style.color = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `;
     span.style.fontWeight = '600'
     span.style.paddingLeft = '8px';
     span.style.paddingRight = '4px';
