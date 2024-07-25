@@ -105,7 +105,6 @@ const Deposit: FC<DepositProps> = ({
         account="Payment Method"
         amount={selectedPaymentMethod?.name}
         CountryIcon={selectedPaymentMethod?.methodIcon}
-        // disabled
         // currency={selectedWallet?.account_type__symbol || ""}
         icon
         onClick={() => {
