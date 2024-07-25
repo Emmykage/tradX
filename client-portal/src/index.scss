@@ -40,6 +40,12 @@
 button {
   cursor: pointer;
 }
+button{
+  &.disabled{
+    background-color: black;
+    cursor: not-allowed;
+  }
+}
 .chart-toolbar,
 .chart-controls-bar,
 html.theme-dark .chart-controls-bar {

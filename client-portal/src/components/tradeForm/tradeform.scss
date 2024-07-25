@@ -231,7 +231,11 @@
         color: #fff;
         font-size: 1rem;
         font-weight: 500;
-
+         &:disabled{
+          background-color: #283645 !important;
+          cursor: not-allowed;
+         }
+         
         .textContainerBtns {
           display: flex;
           flex-direction: column;

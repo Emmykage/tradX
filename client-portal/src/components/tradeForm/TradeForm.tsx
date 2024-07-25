@@ -64,21 +64,21 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   const dispatch = useDispatch();
 
 
-
+  console.log(finished, trade);
   const handleInputUp = ()=>{
     console.log('up');
     console.log(amount);
     console.log(duration);
     
-    // dispatch(setTrade('up'))
+    dispatch(setTrade('up'))
 
   }
   const handleInputDown = ()=>{
-    console.log('Down');
+    console.log('down');
     console.log(amount);
     console.log(duration);
 
-    // dispatch(setTrade('up'))
+    dispatch(setTrade('down'))
   }
 
   const handleIncreaseDuration = ()=>{
@@ -213,7 +213,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             ) : null}
             <button
               onClick={handleInputUp}
-              disabled={!hintTrades && disabled}
+              disabled={trade !==null && !finished }
               className={`up ${hintTrades ? "hint" : ""}`}
             >
               <div className="textContainerBtns">
@@ -228,7 +228,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             </button>
             <button
               onClick={handleInputDown}
-              disabled={!hintTrades && disabled}
+              disabled={trade !==null && !finished }
               className={`down ${hintTrades ? "hint" : ""}`}
             >
               <div className="textContainerBtns">

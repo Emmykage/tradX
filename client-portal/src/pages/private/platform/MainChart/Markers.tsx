@@ -1,5 +1,6 @@
   export const createCustomMarker1 = (price:string) => {
     const marker = document.createElement('div');
+    marker.id= 'textElement1'
     marker.style.display = 'flex';
     marker.style.position = 'absolute';
     marker.style.zIndex = '10';
@@ -68,6 +69,8 @@
 export const createCustomMarker2 = ( price:string,trade:string) => {
     const marker = document.createElement('div');
     marker.style.display = 'flex';
+    marker.id= 'textElement2'
+
     marker.style.position = 'absolute';
     marker.style.zIndex = '10';
   
@@ -80,7 +83,7 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
 
     const labelInner = document.createElement('div');
     labelInner.style.display = 'flex';
-    labelInner.style.backgroundColor = `${trade === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`;
+    labelInner.style.backgroundColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `;
     labelInner.style.height = '20.5px';
     labelInner.style.width = '62px';
     labelInner.style.borderRadius = '6px';
@@ -124,11 +127,11 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
   
     const solidLine = document.createElement('div');
     solidLine.style.width = '228px'; 
-    solidLine.style.backgroundColor = `${trade === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`; 
+    solidLine.style.backgroundColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `; 
     solidLine.style.height = '0.1px';
     solidLine.style.borderWidth = '0.1px';
     solidLine.style.borderStyle = 'solid';
-    solidLine.style.borderColor = `${trade === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`;
+    solidLine.style.borderColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `;
     solidLine.style.position = 'absolute';
     solidLine.style.top = '3.1px';
     solidLine.style.left = '8px';
@@ -138,7 +141,7 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     dashedLine.style.height = '0.1px';
     dashedLine.style.borderWidth = '0.1px';
     dashedLine.style.borderStyle = 'dashed';
-    dashedLine.style.borderColor = `${trade === 'down' ? '#B0452D' : 'rgb(22, 163, 74)'}`; 
+    dashedLine.style.borderColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `; 
     dashedLine.style.position = 'absolute';
     dashedLine.style.top = '3.1px';
     dashedLine.style.right = '8px';
@@ -157,6 +160,7 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     console.log(trade);
     const marker = document.createElement('div');
     marker.style.display = 'flex';
+    marker.id= 'textElement3'
     marker.style.position = 'absolute';
     marker.style.zIndex = '10';
 
