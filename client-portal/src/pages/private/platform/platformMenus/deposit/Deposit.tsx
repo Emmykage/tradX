@@ -1,7 +1,7 @@
 import { Col, Row, Spin, Typography } from "antd";
 import "./Deposit.scss";
 import DepositCard from "../../../../../components/depositCard/DepositCard";
-import { PromoCodeIcon } from "../../../../../assets/icons";
+import { PaymentIcon, PromoCodeIcon } from "../../../../../assets/icons";
 import { Dispatch, FC, SetStateAction, useCallback } from "react";
 import { RightSubDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
@@ -23,12 +23,13 @@ const Deposit: FC<DepositProps> = ({
 }) => {
   const { mutate: checkoutMutate, isPending } = useStripeCheckout({});
 
-  const { amount } = useAppSelector((state) => state.payment);
+  const { amount, selectedPaymentMethod } = useAppSelector((state) => state.payment);
   const { selectedWallet } = useAppSelector((state) => state.wallet);
 
   const [cookies] = useCookies(["access_token"]);
 
   const checkoutHandler = useCallback(() => {
+    // console.log(amount, 'here');
     if (amount && selectedWallet?.id) {
       return checkoutMutate(
         {
@@ -50,6 +51,31 @@ const Deposit: FC<DepositProps> = ({
       toast.error("Amount or Walled invalid");
     }
   }, [amount, selectedWallet?.id, cookies]);
+
+  const paymentCheckoutHandler = useCallback(() => {
+  
+    if (amount && selectedPaymentMethod?.name) {
+      setIsRightSubDrawerContent("deposit-confirm-payment");
+      // return checkoutMutate(
+      //   {
+      //     amount,
+      //     walletId: selectedWallet.id,
+      //     token: cookies.access_token,
+      //   },
+      //   {
+      //     onSuccess: (data) => {
+      //       console.log({ data });
+      //       return window.location.replace(data?.checkout_url);
+      //     },
+      //     // @ts-expect-error
+      //     // TODO - Fix error message type error
+      //     onError: (error) => toast.error(error?.message),
+      //   }
+      // );
+    } else {
+      toast.error("Amount or Payment method invalid");
+    }
+  }, [amount, selectedPaymentMethod?.name, cookies]);
 
   return (
     <div className="deposit">
@@ -75,17 +101,18 @@ const Deposit: FC<DepositProps> = ({
           setIsRightSubDrawerContent("select-deposit-amount");
         }}
       />
-      {/* <DepositCard
+      <DepositCard
         account="Payment Method"
-        amount="Card"
-        CountryIcon={<PaymentIcon />}
-        disabled
+        amount={selectedPaymentMethod?.name}
+        CountryIcon={selectedPaymentMethod?.methodIcon}
+        // disabled
+        // currency={selectedWallet?.account_type__symbol || ""}
         icon
         onClick={() => {
-          // setIsRightSubDrawerOpen(true);
-          // setIsRightSubDrawerContent("payment-method");
+          setIsRightSubDrawerOpen(true);
+          setIsRightSubDrawerContent("payment-method");
         }}
-      /> */}
+      />
       {isPending ? (
         <Spin className="pending-spinner" size="large" />
       ) : (
@@ -95,10 +122,8 @@ const Deposit: FC<DepositProps> = ({
               disabled={!amount}
               onClick={() => {
                 // todo - This flow is commented current time, until the back-end methods will be ready
-                // setIsRightSubDrawerOpen(true);
-                // setIsRightSubDrawerContent("card-details-menu");
-                // ** Calling the checkout end-point when the user click's on next
-                checkoutHandler();
+                setIsRightSubDrawerOpen(true);
+                paymentCheckoutHandler();
               }}
               className="payment-card-next-button"
               Title="Next"

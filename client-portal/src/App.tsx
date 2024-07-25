@@ -62,7 +62,7 @@ const App: React.FunctionComponent<AppProps> = () => {
     <HashRouter>
       <Routes>
         {/* turned of the auth require */}
-        <Route element={<RequireAuth />}>
+        {/* <Route element={<RequireAuth />}> */}
           <Route path="/platform" element={<Platform />} />
           <Route path="transactions" element={<Transactions />} />
           {/* <Route path="/loan/get-loan" element={<GetLoan />} /> */}
@@ -70,7 +70,7 @@ const App: React.FunctionComponent<AppProps> = () => {
           {/* <Route path="/loan" element={<Loan />} /> */}
           {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
           <Route path="/statusDetails" element={<StatusDetails />} />
-        </Route>
+        {/* </Route> */}
         <Route path="/downloads" element={<Download />} />
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />

@@ -1,4 +1,5 @@
-import { Col, Row, Typography } from "antd";
+import { Col, Row, Typography, Form, Button } from "antd";
+
 import "./CardDetailsMenu.scss";
 import { PaymentIcon, SecureIcon } from "../../../../../assets/icons";
 import DepositInput from "../../../../../components/depositInput/DepositInput";
@@ -7,9 +8,12 @@ import {
   JcbCreditCardIcon,
   VisaCardIcon,
 } from "../../../../../assets/icons";
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction, useReducer } from "react";
 import { RightSubDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
+import { useAppSelector } from "@store/hooks";
+import { useForm } from "react-hook-form";
+import IBankCardPaymentForm from "@interfaces/IBankCardPaymentForm";
 
 const CreditCardsList = [
   {
@@ -18,9 +22,9 @@ const CreditCardsList = [
   {
     icon: <JcbCreditCardIcon />,
   },
-  {
-    // icon: <LibreCreditCardIcon />,
-  },
+  // {
+  //   icon: <LibreCreditCardIcon />,
+  // },
   {
     icon: <VisaCardIcon />,
   },
@@ -30,60 +34,149 @@ interface CardDetailsMenuProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 const CardDetailsMenu: FC<CardDetailsMenuProps> = ({
-  setIsRightSubDrawerOpen,
-  setIsRightSubDrawerContent,
+  // setIsRightSubDrawerOpen,
+  // setIsRightSubDrawerContent,
 }) => {
+  const { amount, selectedPaymentMethod } = useAppSelector((state) => state.payment);
+  const { handleSubmit, register } = useForm<IBankCardPaymentForm>();
+  const initialState = {
+    errors: {},
+    cardDetails: {
+        cvc: '',
+        cardNumber: '',
+        cardholderName: '',
+        expiryDate: ''
+    },
+    loading: false
+};
+  const [state, setState] = useReducer((state: any, newState: any) => ({ ...state, ...newState }), initialState);
+  const { errors, cardDetails, loading } = state;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target;
+    setState({
+      cardDetails: {
+          ...cardDetails,
+          [name]: value
+      },
+      errors: {
+          ...errors,
+          [name]: ''
+      }
+  });
+  }
+  const onSubmit = handleSubmit((data) =>
+    console.log(data)
+    // mutate({
+    //   uidb64,
+    //   token,
+    //   data,
+    // })
+  );
   return (
     <div className="card-details">
-      <Typography.Text className="deposit-subtext">
-        USD Account #65715654
-      </Typography.Text>
-      <div className="hr" />
-      <div className="payment-amount-info">
-        <PaymentIcon />
-        <div className="payment-text">
-          <Typography.Text className="payment-subtext">
-            Payment Amount
+       <Form layout="vertical" onFinish={onSubmit}>
+          <Typography.Text className="deposit-subtext">
+            USD Account #65715654
           </Typography.Text>
-          <Typography.Text className="payment-amount">30 USD</Typography.Text>
-        </div>
-      </div>
-      <DepositInput CardsIconList={CreditCardsList} placeholder="Card Number" />
-      <Row gutter={16}>
-        <Col span={12}>
-          <DepositInput placeholderColor type="text" placeholder="MM/YY" />
-        </Col>
-        <Col span={12}>
-          <DepositInput placeholderColor type="text" placeholder="CVV/CVC" />
-        </Col>
-        <Col span={24}>
-          <DepositInput
-            placeholderColor
-            type="text"
-            placeholder="Cardholder Name"
+          <div className="hr" />
+          <div className="payment-amount-info">
+            <PaymentIcon />
+            <div className="payment-text">
+              <Typography.Text className="payment-subtext">
+                Payment Amount
+              </Typography.Text>
+              <Typography.Text className="payment-amount">USD {amount}</Typography.Text>
+            </div>
+          </div>
+        
+            <Form.Item
+              name="cardNumber"
+              rules={[{ required: true, message: "Card number required" }]}
+            > 
+              <DepositInput 
+                CardsIconList={CreditCardsList} 
+                placeholder="Card Number" 
+                type="pattern" 
+                onChange={handleInputChange}
+                format="#### #### #### ####"
+                name="cardNumber"
+                value={cardDetails?.cardNumber}
+              />
+            </Form.Item>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item
+                  name="expiryDate"
+                  rules={[{ required: true, message: "Expiry date required" }]}
+                > 
+                  <DepositInput 
+                    placeholderColor 
+                    type="pattern" 
+                    placeholder="MM/YY"
+                    onChange={handleInputChange}
+                    format="##/##" 
+                    name="expiryDate"
+                    value={cardDetails?.expiryDate}
+                  />
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item
+                  name="cvc"
+                  rules={[{ required: true, message: "Card cvc required" }]}
+                > 
+                  <DepositInput 
+                    placeholderColor 
+                    type="pattern" 
+                    placeholder="CVV/CVC" 
+                    onChange={handleInputChange}
+                    name="cvc"
+                    value={cardDetails?.cvc}
+                    format="####"
+                  />
+                </Form.Item>
+              </Col>
+              <Col span={24}>
+                <Form.Item
+                  name="cardholderName"
+                  rules={[{ required: true, message: "Name required" }]}
+                > 
+                  <DepositInput
+                    placeholderColor
+                    type="text"
+                    onChange={handleInputChange}
+                    placeholder="Cardholder Name"
+                    name="cardholderName"
+                    value={cardDetails?.cardholderName}
+                    format=""
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+          
+          <div className="card-details-description-main">
+            <Typography.Text className="card-details-description">
+              Enter your full name as it is written on the card. If the card has no
+              name, enter your dull legal name.
+            </Typography.Text>
+          </div>
+          <div className="deposit-secure">
+            <SecureIcon />
+            <Typography.Text className="deposit-secure-text">
+              This is a secure 128-bit encrypted payment.
+            </Typography.Text>
+          </div>
+          <PrimaryButton
+            // onClick={() => {
+            //   setIsRightSubDrawerOpen(true);
+            //   setIsRightSubDrawerContent("deposit-confirm-payment");
+            // }}
+            htmlType="submit"
+            // onClick={undefined}
+            className="deposit-button"
+            Title={`Pay USD ${amount}`}
           />
-        </Col>
-      </Row>
-      <div className="card-details-description-main">
-        <Typography.Text className="card-details-description">
-          Enter your full name as it is written on the card. If the card has no
-          name, enter your dull legal name.
-        </Typography.Text>
-      </div>
-      <div className="deposit-secure">
-        <SecureIcon />
-        <Typography.Text className="deposit-secure-text">
-          This is a secure 128-bit encrypted payment.
-        </Typography.Text>
-      </div>
-      <PrimaryButton
-        onClick={() => {
-          setIsRightSubDrawerOpen(true);
-          setIsRightSubDrawerContent("deposit-confirm-payment");
-        }}
-        className="deposit-button"
-        Title="Pay USD 30"
-      />
+      </Form>
     </div>
   );
 };

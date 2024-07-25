@@ -1,5 +1,6 @@
-import { HTMLInputTypeAttribute } from "react";
+import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
 import "./DepositInput.scss";
+import { PatternFormat } from 'react-number-format';
 
 const DepositInput = ({
   CardsIconList,
@@ -7,7 +8,12 @@ const DepositInput = ({
   classname,
   placeholderColor,
   marginTop,
-  type = "text",
+  allowEmptyFormatting=false,
+  format,
+  name,
+  value,
+  onChange,
+  type = "pattern"
 }: {
   CardsIconList?: React.ReactNode[] | any;
   placeholder: string;
@@ -15,6 +21,11 @@ const DepositInput = ({
   placeholderColor?: boolean;
   marginTop?: boolean;
   type?: HTMLInputTypeAttribute;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  allowEmptyFormatting?: boolean;
+  format: string;
+  name: string;
+  value: string | number,
 }) => {
   return (
     <div
@@ -22,13 +33,30 @@ const DepositInput = ({
         marginTop ? "marginTop" : "marginTop2"
       } ${classname}`}
     >
-      <input
-        className={`deposit-input ${
-          placeholderColor ? "placeholderColor" : "placeholderColor2"
-        }`}
-        type={type}
-        placeholder={placeholder}
-      />
+      {type === 'pattern'? (
+        <PatternFormat
+          className={`deposit-input ${
+            placeholderColor ? "placeholderColor" : "placeholderColor2"
+          }`}
+          format={format}
+          allowEmptyFormatting ={allowEmptyFormatting}
+          onChange={onChange}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+        />
+      ):(
+        <input
+          className={`deposit-input ${
+            placeholderColor ? "placeholderColor" : "placeholderColor2"
+          }`}
+          name={name}
+          placeholder={placeholder}
+          onChange={onChange}
+          value={value}
+        />
+      )}
+      
       {CardsIconList &&
         CardsIconList.map((card: any, index: number) => (
           <div key={index} className="credit-cards">

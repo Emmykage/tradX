@@ -250,6 +250,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
             setIsRightSubDrawerContent,
             setIsRightDrawerContent
           )}
+   
         </Drawer>
 
         <Topbar
