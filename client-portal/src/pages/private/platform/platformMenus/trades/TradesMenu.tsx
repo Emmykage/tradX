@@ -7,12 +7,18 @@ import {
 } from "../../../../../assets/icons";
 import "./tradesMenu.scss";
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Row, Select } from "antd";
 import SearchBar from "../../../../../components/searchBar/SearchBar";
 import { forex } from "../assets/assetsData";
+import { Dispatch, SetStateAction } from "react";
+import { LeftSubDrawer } from "../../types";
 
-interface TradesMenuProps {}
+interface TradesMenuProps {
+  setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
+  setIsLeftSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
+}
 
 const RenderTab = ({
   title,
@@ -35,13 +41,22 @@ const RenderTab = ({
   );
 };
 
-const RenderData = () => {
+const RenderData: React.FunctionComponent = (props: any) => {
+  const {handleMenuClick} = props;
   const [forexData] = useState(forex);
-  const [selectedForex, setSelectedForex] = useState();
-  console.log('here');
+  const [selectedForex, setSelectedForex] = useState(null);
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
+    // setIsLeftSubDrawerOpen(false)
   };
+  const handleSelectedForex =(item: any) => {
+  
+    setSelectedForex(item);
+    handleMenuClick();
+    // setIsLeftSubDrawerOpen(false);
+    // setLeftSubDrawer();
+  };
+  
   return (
     <div className="tradesAssetMenu">
       <p className="tradeHeading">Active Trades</p>;
@@ -99,7 +114,7 @@ const RenderData = () => {
               className={`assetsListItem ${
                 selectedForex === item.value ? "active" : ""
               }`}
-              onClick={() => setSelectedForex(item)}
+              onClick={() => handleSelectedForex(item)}
             >
               <div className="contentLeft">
                 <img src={item.image} />
@@ -123,12 +138,13 @@ const RenderData = () => {
   );
 };
 
-const RenderFixedTime = () => (
+const RenderFixedTime: React.FunctionComponent = ({handleMenuClick}: any) =>(
   // <RenderTab
   //   title="Active Trades"
   //   description="You have no open trades on this account"
   // />
-  <RenderData />
+  // @ts-ignore
+  <RenderData handleMenuClick={handleMenuClick} />
 );
 const RenderForex = () => (
   <RenderTab
@@ -167,58 +183,70 @@ const RenderIPOs = () => (
   />
 );
 
-const items = [
-  {
-    key: "1",
-    tab: "Fixed Time",
-    label: "fixed",
-    component: RenderFixedTime,
-  },
-  {
-    key: "2",
-    tab: "Forex",
-    label: "forex",
-    component: RenderForex,
-  },
-  {
-    key: "3",
-    tab: "Stocks",
-    label: "stocks",
-    component: RenderStocks,
-  },
-  {
-    key: "4",
-    tab: "Commodities",
-    label: "commodities",
-    component: RenderCommodities,
-  },
-  {
-    key: "5",
-    tab: "Crypto",
-    label: "crypto",
-    component: RenderCrypto,
-  },
-  {
-    key: "6",
-    tab: "Bonds",
-    label: "bonds",
-    component: RenderBonds,
-  },
-  {
-    key: "7",
-    tab: "IPOs",
-    label: "ipos",
-    component: RenderIPOs,
-  },
-];
 
-const TradesMenu: React.FunctionComponent<TradesMenuProps> = () => {
+const TradesMenu: React.FunctionComponent<TradesMenuProps> = ({
+  setLeftSubDrawer,
+  setIsLeftSubDrawerOpen,
+  setIsDrawerOpen,
+}) => {
   const [selectedTab, setSelectedTab] = useState("fixed");
  
 
   const handleButtonClick = (buttonName: string) => {
     setSelectedTab(buttonName);
+    // setLeftSubDrawer(item?.path);
   };
+  const handleMenuClick = () => {
+    setIsLeftSubDrawerOpen(false);
+    setIsDrawerOpen(false);
+  };
+  
+  const items = [
+    {
+      key: "1",
+      tab: "Fixed Time",
+      label: "fixed",
+      // @ts-ignore
+      component: <RenderFixedTime handleMenuClick={handleMenuClick} />,
+    },
+    {
+      key: "2",
+      tab: "Forex",
+      label: "forex",
+      component: <RenderForex />,
+    },
+    {
+      key: "3",
+      tab: "Stocks",
+      label: "stocks",
+      component: <RenderStocks />,
+    },
+    {
+      key: "4",
+      tab: "Commodities",
+      label: "commodities",
+      component: <RenderCommodities />,
+    },
+    {
+      key: "5",
+      tab: "Crypto",
+      label: "crypto",
+      component: <RenderCrypto />,
+    },
+    {
+      key: "6",
+      tab: "Bonds",
+      label: "bonds",
+      component: <RenderBonds />,
+    },
+    {
+      key: "7",
+      tab: "IPOs",
+      label: "ipos",
+      component: <RenderIPOs />,
+    },
+  ];
+  
 
   return (
     <div className="tradesMenu">
@@ -238,7 +266,12 @@ const TradesMenu: React.FunctionComponent<TradesMenuProps> = () => {
         {items.map((item) => {
           if (item.label === selectedTab) {
             const TabComponent = item.component;
-            return <TabComponent />;
+            return(
+              <>
+               {item.component}
+              </>
+            )
+            // return <TabComponent setLeftSubDrawer={setLeftSubDrawer}  setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen} />;
           }
           return null;
         })}
