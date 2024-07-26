@@ -11,7 +11,7 @@ import { useState } from "react";
 import { forex, stocks, times } from "./assetsData";
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
 import { useAppDispatch } from "@store/hooks";
-import { setSymbol } from "@store/slices/markets";
+import { setAssets, setSymbol } from "@store/slices/markets";
 import { Dispatch, SetStateAction } from "react";
 import { LeftSubDrawer } from "../../types";
 
@@ -116,6 +116,7 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = ({setIsDrawerOpen})
                 }`}
                 onClick={() => {
                   dispatch(setSymbol(item.value));
+                  dispatch(setAssets(item.image));
                   setTimezone(item.value);
                   setIsDrawerOpen(false);
                 }}
@@ -160,6 +161,7 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = ({setIsDrawerOpen})
                 }`}
                 onClick={() => {
                   dispatch(setSymbol(item.value));
+                  dispatch(setAssets(item.image));
                   setSelectedForex(item.value);
                   setIsDrawerOpen(false);
                 }}
@@ -209,6 +211,7 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = ({setIsDrawerOpen})
                   } ${disabled ? "disabled" : ""}`}
                   onClick={() => {
                     dispatch(setSymbol(item.value));
+                    dispatch(setAssets(item.image));
                     setSelectedStock(!disabled ? item.value : selectedStock);
                     setIsDrawerOpen(false);
                   }}

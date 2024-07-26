@@ -36,7 +36,7 @@ export type AssestType = {
 // Define a type for the slice state
 export interface CryptoSliceState {
   crypto: Record<string, CryptoItem[]>;
-  assets: AssestType[];
+  assets: AssestType[] | string;
   status: "idle" | "loading" | "succeeded" | "failed";
   start: string;
   end?: string;

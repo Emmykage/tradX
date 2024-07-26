@@ -6,7 +6,7 @@ const initialState: CryptoSliceState = {
   crypto: {
     "BTC/USD": [],
   },
-  assets: [],
+  assets: "https://cfcdn.olymptrade.com/assets1/instrument/vector/EURUSD.2d7d9de55f45290ec68a8cce3745ad1c.svg",
   status: "idle",
   start: dateFormter(new Date()),
   timeFrame: "minute",
@@ -39,8 +39,12 @@ export const cryptoSlice = createSlice({
       state.wsRoom = action.payload.split("/").join("_");
       return state;
     },
-    setAssets: (state, {payload}) => {
-      state.assets = [...state.assets, ...payload];
+    // setAssets: (state, {payload}) => {
+    //   state.assets = [...state.assets, ...payload];
+    //   return state
+    // },
+    setAssets: (state, action) => {
+      state.assets = action.payload;
       return state
     },
     setCurrentSymbol: (state, action: PayloadAction<string>) => {
