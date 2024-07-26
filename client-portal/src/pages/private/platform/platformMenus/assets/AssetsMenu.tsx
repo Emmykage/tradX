@@ -12,10 +12,14 @@ import { forex, stocks, times } from "./assetsData";
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
 import { useAppDispatch } from "@store/hooks";
 import { setSymbol } from "@store/slices/markets";
+import { Dispatch, SetStateAction } from "react";
+import { LeftSubDrawer } from "../../types";
 
-interface AssetsMenuProps {}
+interface AssetsMenuProps {
+  setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
+}
 
-const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
+const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = ({setIsDrawerOpen}) => {
   const dispatch = useAppDispatch();
   const [timesData] = useState(times);
   const [forexData] = useState(forex);
@@ -113,6 +117,7 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
                 onClick={() => {
                   dispatch(setSymbol(item.value));
                   setTimezone(item.value);
+                  setIsDrawerOpen(false);
                 }}
               >
                 <div className="contentLeft">
@@ -156,6 +161,7 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
                 onClick={() => {
                   dispatch(setSymbol(item.value));
                   setSelectedForex(item.value);
+                  setIsDrawerOpen(false);
                 }}
               >
                 <div className="contentLeft">
@@ -204,6 +210,7 @@ const AssetsMenu: React.FunctionComponent<AssetsMenuProps> = () => {
                   onClick={() => {
                     dispatch(setSymbol(item.value));
                     setSelectedStock(!disabled ? item.value : selectedStock);
+                    setIsDrawerOpen(false);
                   }}
                 >
                   <div className="contentLeft">

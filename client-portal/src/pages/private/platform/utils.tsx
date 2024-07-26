@@ -107,11 +107,18 @@ export function leftDarwerTitleHandler(
 export function leftDrawerBodyHandler(
   currentDrawer: CurrentDrawerType,
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>,
-  setIsLeftSubDrawerOpen: Dispatch<SetStateAction<boolean>>
+  setIsLeftSubDrawerOpen: Dispatch<SetStateAction<boolean>>,
+  setIsDrawerOpen: Dispatch<SetStateAction<boolean>>,
 ): JSX.Element | null {
   switch (currentDrawer) {
     case "trades":
-      return <TradesMenu />;
+      return (
+        <TradesMenu 
+          setLeftSubDrawer={setLeftSubDrawer}
+          setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen}
+          setIsDrawerOpen={setIsDrawerOpen}
+        />
+      );
     case "market":
       return (
         <MarketMenu
@@ -134,7 +141,7 @@ export function leftDrawerBodyHandler(
         />
       );
     case "assets":
-      return <AssetsMenu />;
+      return <AssetsMenu setIsDrawerOpen={setIsDrawerOpen} />;
     case "ai":
       return (
         <AiMenu
