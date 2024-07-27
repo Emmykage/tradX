@@ -96,7 +96,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
    dispatch(changeAmount('increase'))
   }
   const handleDecreaseAmount = ()=>{
-    if(amount > 0){
+    if(amount > 1){
   
       dispatch(changeAmount('decrease'))
     }
@@ -134,6 +134,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
                 type="number"
                 name="amount"
                 value={amount}
+                min="1"
                 id="amounts"
                 onChange={(e)=>dispatch(setAmount(parseInt(e.target.value)))}
                 disabled={disabled}
@@ -143,7 +144,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
           </Tooltip>
 
           <div className="mathButtons">
-            <button disabled={disabled} onClick={handleDecreaseAmount}>
+            <button disabled={ amount == 1} onClick={handleDecreaseAmount}>
               <SubtractIcon />
             </button>
             <button
@@ -180,7 +181,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
 
           <div className="mathButtons">
             <button
-              disabled={hintDuration ? false : disabled}
+              disabled={ duration == 1}
               className={`${hintDuration ? "hint" : ""}`}
               onClick={handleDecreaseDuration}
             >
