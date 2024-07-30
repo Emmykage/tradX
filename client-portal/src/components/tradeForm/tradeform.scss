@@ -183,6 +183,7 @@
       align-items: center;
       margin-top: 0.5rem;
       margin-bottom: 1rem;
+      
 
       @media (max-width: 767px) {
         position: absolute;
@@ -201,6 +202,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        &:hover{
+          background-color: rgba(255, 255, 255, 0.201);
+          transition: all 0.1s ease;
+        }
+        &:disabled{
+          background-color: #383839;
+          transition: all 0.1s ease;
+        }
 
         @media (max-width: 767px) {
           height: calc(2.5rem - 0.125rem);
@@ -231,7 +240,11 @@
         color: #fff;
         font-size: 1rem;
         font-weight: 500;
-
+         &:disabled{
+          background-color: #283645 !important;
+          cursor: not-allowed;
+         }
+         
         .textContainerBtns {
           display: flex;
           flex-direction: column;
@@ -248,10 +261,18 @@
         }
       }
       button.up {
-        background: #1fbf75;
+        background: #18be71;
+        &:hover{
+          background-color: #2dd989;
+          transition: all 0.1s ease;
+        }
       }
       button.down {
         background: #f15131;
+        &:hover{
+          background-color: #eb6044;
+          transition: all 0.1s ease;
+        }
       }
 
       button.setupOrder {
@@ -265,6 +286,10 @@
         font-size: 1rem;
         font-weight: 500;
         background: #1a1d21;
+        &:hover{
+          background-color: rgba(255, 255, 255, 0.201);
+          transition: all 0.1 ease;
+        }
 
         @media (max-width: 767px) {
           margin: 0rem;

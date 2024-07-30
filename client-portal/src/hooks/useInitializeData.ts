@@ -51,7 +51,7 @@ const useInitializeData = () => {
       dispatch(setSelectedWallet(data.results[0] || undefined));
     },
     onError: (error) => {
-      console.log("fetching wallets error", error);
+      console.error("fetching wallets error", error);
     },
   });
 
@@ -63,7 +63,7 @@ const useInitializeData = () => {
     }
   }, [cookies.access_token, profileMutate, user]);
 
-  // Effect to fetch wallet data on login initialization
+  // Effect to fetch wallet data on login initializatio
   useEffect(() => {
     if (cookies.access_token && (!wallets || wallets.length === 0)) {
       setWalletsLoading(true);

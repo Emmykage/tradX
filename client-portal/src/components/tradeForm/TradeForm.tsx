@@ -64,21 +64,21 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   const dispatch = useDispatch();
 
 
-
+  console.log(finished, trade);
   const handleInputUp = ()=>{
     console.log('up');
     console.log(amount);
     console.log(duration);
     
-    // dispatch(setTrade('up'))
+    dispatch(setTrade('up'))
 
   }
   const handleInputDown = ()=>{
-    console.log('Down');
+    console.log('down');
     console.log(amount);
     console.log(duration);
 
-    // dispatch(setTrade('up'))
+    dispatch(setTrade('down'))
   }
 
   const handleIncreaseDuration = ()=>{
@@ -96,7 +96,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
    dispatch(changeAmount('increase'))
   }
   const handleDecreaseAmount = ()=>{
-    if(amount > 0){
+    if(amount > 1){
   
       dispatch(changeAmount('decrease'))
     }
@@ -134,6 +134,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
                 type="number"
                 name="amount"
                 value={amount}
+                min="1"
                 id="amounts"
                 onChange={(e)=>dispatch(setAmount(parseInt(e.target.value)))}
                 disabled={disabled}
@@ -143,7 +144,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
           </Tooltip>
 
           <div className="mathButtons">
-            <button disabled={disabled} onClick={handleDecreaseAmount}>
+            <button disabled={ amount == 1} onClick={handleDecreaseAmount}>
               <SubtractIcon />
             </button>
             <button
@@ -180,7 +181,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
 
           <div className="mathButtons">
             <button
-              disabled={hintDuration ? false : disabled}
+              disabled={ duration == 1}
               className={`${hintDuration ? "hint" : ""}`}
               onClick={handleDecreaseDuration}
             >
@@ -213,7 +214,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             ) : null}
             <button
               onClick={handleInputUp}
-              disabled={!hintTrades && disabled}
+              disabled={trade !==null && !finished }
               className={`up ${hintTrades ? "hint" : ""}`}
             >
               <div className="textContainerBtns">
@@ -228,7 +229,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             </button>
             <button
               onClick={handleInputDown}
-              disabled={!hintTrades && disabled}
+              disabled={trade !==null && !finished }
               className={`down ${hintTrades ? "hint" : ""}`}
             >
               <div className="textContainerBtns">

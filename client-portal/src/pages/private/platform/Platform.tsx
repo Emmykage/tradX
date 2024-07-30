@@ -173,7 +173,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           {leftDrawerBodyHandler(
             currentDrawer,
             setLeftSubDrawer,
-            setIsLeftSubDrawerOpen
+            setIsLeftSubDrawerOpen,
+            setIsDrawerOpen
           )}
         </div>
       </Drawer>
