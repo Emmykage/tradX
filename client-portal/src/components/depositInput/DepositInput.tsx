@@ -1,6 +1,6 @@
 import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
 import "./DepositInput.scss";
-import { PatternFormat } from 'react-number-format';
+import PatternFormat  from 'react-number-format';
 
 const DepositInput = ({
   CardsIconList,
