@@ -63,7 +63,7 @@ const useInitializeData = () => {
     }
   }, [cookies.access_token, profileMutate, user]);
 
-  // Effect to fetch wallet data on login initialization
+  // Effect to fetch wallet data on login initializatio
   useEffect(() => {
     if (cookies.access_token && (!wallets || wallets.length === 0)) {
       setWalletsLoading(true);
