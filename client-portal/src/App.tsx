@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import { Route, Routes, HashRouter } from "react-router-dom";
+import { Route, Routes, HashRouter, BrowserRouter } from "react-router-dom";
 import Platform from "./pages/private/platform/Platform";
 import Lender from "./pages/private/lender/Lender";
 import SignIn from "./pages/public/signIn/SignIn";
+import Welcome from "./pages/public/welcome/Welcome";
+
 import Download from "./pages/public/downloads/Download";
 import Transactions from "./pages/private/transactions/Transactions";
 // import GetLoan from "./pages/private/get-loan/GetLoan";
@@ -32,7 +34,7 @@ const App: React.FunctionComponent<AppProps> = () => {
 
   const { i18n } = useTranslation();
   document.body.dir = i18n.dir();
-  
+
   console.log(
     "Envrionment Variable: VITE_API_BASE_URL => ",
     getEnv("VITE_API_BASE_URL")
@@ -75,6 +77,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
         <Route path="/password-reset" element={<ResetPassword />} />
+        <Route path="/welcome" element={<Welcome />} />
       </Routes>
     </HashRouter>
   );
