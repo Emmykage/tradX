@@ -51,7 +51,7 @@ const useInitializeData = () => {
       dispatch(setSelectedWallet(data.results[0] || undefined));
     },
     onError: (error) => {
-      console.log("fetching wallets error", error);
+      console.error("fetching wallets error", error);
     },
   });
 
