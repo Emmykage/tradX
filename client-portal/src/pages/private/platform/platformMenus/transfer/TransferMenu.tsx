@@ -131,7 +131,7 @@ const TransferMenu: FC<TransferMenuProps> = ({
                 <Input variant={2} title={walletToTransferFrom?.amount? "Amount," : "" } subTitle={walletToTransferFrom?.title || "" } />
               </Col>
               <Col span={12}>
-                <Input variant={2} title={walletToTransferTo?.amount? "Amount," : "" } subTitle={walletToTransferTo?.title || "" } />
+                <Input variant={2} title={walletToTransferTo?.amount? "Amount," : "-" } subTitle={walletToTransferTo?.title || "" } />
               </Col>
             </Row>
           </div>
