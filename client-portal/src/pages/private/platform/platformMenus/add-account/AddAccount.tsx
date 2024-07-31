@@ -43,7 +43,7 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
       setItems(data.results);
     },
     onError: (error) => {
-      console.log("fetching wallet-types error", error);
+      // console.log("fetching wallet-types error", error);
     },
   });
 
