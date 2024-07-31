@@ -28,7 +28,6 @@ type useRefreshTokenProps = {
 export async function fethRefreshToken(
   data: RefreshTokenVariables
 ): Promise<boolean> {
-  console.log("REFRESH TOKEN CALLED");
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
     const response = await fetch(`${BASE_URL}/user/token/refresh/`, {

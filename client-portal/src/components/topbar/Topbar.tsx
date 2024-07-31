@@ -47,8 +47,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   );
 
   const { symbol,assets } = useAppSelector((state) => state.markets);
-  console.log(symbol);
-  console.log(assets);
+
   const ProfileImage = () => {
     if (loading) {
       return <Loading size="small" />;

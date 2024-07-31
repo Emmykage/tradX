@@ -312,7 +312,6 @@ export function rightDrawerBodyHandler(
 export function rightSubDrawerTitleHandler(
   rightSubDrawerContent: RightSubDrawerContent
 ): RightSubDrawerContent | string {
-  console.log(rightSubDrawerContent, 'here boss');
   switch (rightSubDrawerContent) {
     case "settings":
       return "Settings";
@@ -485,6 +484,7 @@ export function rightSubDrawerBodyHandler(
         <SelectAccount
           setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
           setIsRightSubDrawerContent={setIsRightSubDrawerContent}
+          hasParent={false}
         />
       );
     case "withdraw":

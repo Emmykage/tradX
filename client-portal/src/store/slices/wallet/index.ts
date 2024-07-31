@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { IWallet, IWalletType } from "@interfaces";
+import { InitialAccountsList, InitialAccountsListProps } from "pages/private/platform/platformMenus/add-account/constants";
 
 interface WalletData {
   account_type?: number;
@@ -13,12 +14,16 @@ export interface WalletSliceState {
   selectedWallet?: IWallet;
   walletTypes: IWalletType[];
   createWalletData?: WalletData;
+  walletToTransferFrom: InitialAccountsListProps;
+  walletToTransferTo: InitialAccountsListProps;
 }
 
 const initialState: WalletSliceState = {
   wallets: [],
   walletsLoading: false,
   walletTypes: [],
+  walletToTransferFrom: InitialAccountsList[0],
+  walletToTransferTo: {}
 };
 
 export const walletSlice = createSlice({
@@ -42,6 +47,14 @@ export const walletSlice = createSlice({
       state.walletTypes = [...action.payload];
       return state;
     },
+    setWalletToTransferFrom: (state, action: PayloadAction<InitialAccountsListProps>) => {
+      state.walletToTransferFrom = action.payload;
+      return state;
+    },
+    setWalletToTransferTo: (state, action: PayloadAction<InitialAccountsListProps>) => {
+      state.walletToTransferTo =  action.payload;
+      return state;
+    },
     setCreateWalletData: (state, action: PayloadAction<WalletData>) => {
       state.createWalletData = { ...state.createWalletData, ...action.payload };
       return state;
@@ -53,6 +66,8 @@ export const {
   setWallets,
   setWalletsLoading,
   setSelectedWallet,
+  setWalletToTransferFrom,
+  setWalletToTransferTo,
   setWalletTypes,
   setCreateWalletData,
 } = walletSlice.actions;
