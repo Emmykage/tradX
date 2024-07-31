@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 
 interface LiveChatWidgetFunctions {
     _h: ((...args: any[]) => void) | null;
@@ -12,9 +11,7 @@ interface LiveChatWidgetFunctions {
   init: () => void;
 }
 
-const LiveChatWidget: React.FC = () => {
-  useEffect(() => {
-    const initializeLiveChat = () => {
+export const initializeLiveChat = () => {
       window.__lc = window.__lc || {};
       window.__lc.license = 18342018;
       window.__lc.integration_name = 'manual_onboarding';
@@ -55,16 +52,9 @@ const LiveChatWidget: React.FC = () => {
         !n.__lc?.asyncInit && e.init();
         n.LiveChatWidget = n.LiveChatWidget || e;
       })(window, document);
-    };
 
-    initializeLiveChat();
 
-    return () => {
-      // Cleanup script if needed
-    };
-  }, []);
 
-  return null; // This component does not render anything visible
+
 };
 
-export default LiveChatWidget;
