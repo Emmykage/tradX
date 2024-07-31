@@ -1,0 +1,40 @@
+.welcomeStepThree {
+
+  .info {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    .text {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 21px;
+      color: #ffffff;
+      max-width: 70%;
+      text-align: center;
+    }
+  }
+}
+
+
+@media (max-width: 834px) {
+  .welcomeStepThree {
+    .info {
+
+    }
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .welcomeStepThree {
+    .info {
+      .text {
+        font-size: 13.19px;
+      }
+    }
+  }
+}

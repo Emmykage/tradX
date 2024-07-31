@@ -1,0 +1,109 @@
+.welcomeStepTwo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 100%;
+  padding-top: 80px;
+
+  .w_background {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 100;
+    padding-bottom: 150px;
+
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 23.2137px 27.7067px 23.2137px 29.0684px;
+      gap: 15px;
+      background: linear-gradient(
+        180deg,
+        #1b1d21 0%,
+        rgba(27, 29, 33, 0) 128.91%
+      );
+      border-radius: 14.9766px;
+
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 39.978px;
+      color: #ffffff;
+
+      .image {
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .main_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+
+    .text {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 21px;
+      color: #ffffff;
+      max-width: 70%;
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 834px) {
+  .welcomeStepTwo {
+    .items {
+      .item {
+        padding: 21.271px 25.3879px 21.271px 26.8947px;
+        gap: 6.86px;
+        font-size: 36.63px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .welcomeStepTwo {
+    .main_info {
+      .text {
+        font-size: 13.19px;
+      }
+    }
+
+    .items {
+      gap: 15px;
+      padding-bottom: 100px;
+
+      .item {
+        font-size: 19px;
+        padding: 11.0989px 13.2471px 11.0989px 13.8982px;
+      }
+    }
+  }
+}

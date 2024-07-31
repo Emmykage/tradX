@@ -1,0 +1,17 @@
+.welcomeSteps {
+  width: 100%;
+  min-height: 100vh;
+  gap: 20px;
+  background: #0b1118;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 834px) {
+  .welcomeSteps {
+    padding: 20px;
+  }
+}

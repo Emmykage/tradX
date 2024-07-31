@@ -1,0 +1,118 @@
+.welcomeHeader {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+
+  .image {
+    max-width: 39px;
+    max-height: 39px;
+    min-width: 39px;
+    min-height: 39px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .header_right {
+    display: flex;
+    min-width: 134px;
+    min-height: 78px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
+    background: #172331;
+    border-radius: 10px;
+    margin-left: auto;
+
+    .close_img {
+      display: flex;
+      max-width: 20px;
+      max-height: 20px;
+      min-width: 20px;
+      min-height: 20px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .header_text {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 28px;
+      color: #ffffff;
+    }
+
+    .line {
+      height: 90%;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  .header_left {
+    display: flex;
+    padding: 20px;
+    gap: 10px;
+    background: #172331;
+    opacity: 0.5;
+    border-radius: 12px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+  }
+}
+
+@media screen and (max-width: 834px) {
+  .welcomeHeader {
+    .image {
+      max-width: 51px;
+      max-height: 51px;
+      min-width: 51px;
+      min-height: 51px;
+    }
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .welcomeHeader {
+    .image {
+      max-width: 36px;
+      max-height: 36px;
+      min-width: 36px;
+      min-height: 36px;
+    }
+
+    .header_right {
+      min-width: 68px;
+      min-height: 40px;
+
+      .line {
+        height: 24.36px;
+      }
+
+      .header_text {
+        font-size: 14.21px;
+      }
+
+      .close_img {
+        max-width: 10px;
+        max-height: 10px;
+        min-width: 10px;
+        min-height: 10px;
+      }
+    }
+  }
+}
