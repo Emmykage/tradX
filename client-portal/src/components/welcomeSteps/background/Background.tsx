@@ -11,103 +11,113 @@ interface BackgroundProps {
 const Background: FC<BackgroundProps> = ({ step }) => {
   return (
     <div className="w_background">
-      <div className="">
-        {step <= 6 && (
-          <div className="image">
-            <div className="bg_image"></div>
-          </div>
-        )}
-
-        {step > 6 && (
-          <div className="image_shoter">
-            <div className="bg_image"></div>
-          </div>
-        )}
-
-        <div className="image_slide">
-          <div className="image"></div>
+      <div className="background_block">
+        <div className="w_image_slide">
+          <img
+            className="image"
+            src="welcome-icons/slide_main.png"
+            srcSet="
+      welcome-icons/slide_main_mobile.png 428w,
+      welcome-icons/slide_main_tablet.png 834w,
+      welcome-icons/slide_main.png 1200w
+    "
+            alt=""
+          />
         </div>
 
-        {step === 3 && (
+        <div className="b_right_side">
           <div className="right_side">
-            <div className="items_vector">
-              <div className="vector_up">
-                <img src="welcome-icons/vector_up.png" alt="" />
+            {step === 3 && (
+              <div className="step_three">
+                <div className="line_block">
+                  <img src="welcome-icons/romb.svg" />
+                  <div className="line"></div>
+                  <div className="amount_romb">1.1698</div>
+                  <img
+                    className="vector_up"
+                    src="welcome-icons/vector_up.png"
+                    alt=""
+                  />
+                  <img
+                    className="vector_down"
+                    src="welcome-icons/vector_down.png"
+                    alt=""
+                  />
+                </div>
               </div>
-              <div className="vector_down">
-                <img src="welcome-icons/vector_down.png" alt="" />
+            )}
+
+            {step === 4 && (
+              <div className="step_three">
+                <div className="line_block">
+                  <img src="welcome-icons/romb.svg" />
+                  <div className="line"></div>
+                  <div className="amount_romb">1.1698</div>
+                  <img
+                    className="step_four_image"
+                    src="welcome-icons/step_four.png"
+                    alt=""
+                  />
+                </div>
               </div>
-            </div>
-            <div>
-              <img src="welcome-icons/romb.svg" />
-            </div>
-            <div className="line"></div>
-            <div className="amount_romb">1.1698</div>
-          </div>
-        )}
+            )}
 
-        {step === 4 && (
-          <div className="right_side">
-            <div className="step_four_image">
-              <img src="welcome-icons/step_four.png" alt="" />
-            </div>
-            <div>
-              <img src="welcome-icons/romb.svg" />
-            </div>
-            <div className="line"></div>
-            <div className="amount_romb">1.1698</div>
-          </div>
-        )}
+            {step === 5 && (
+              <div className="step_three">
+                <div className="line_block">
+                  <img src="welcome-icons/romb.svg" />
+                  <div className="line"></div>
+                  <div className="amount_romb">1.1698</div>
+                  <img
+                    className="step_four_image"
+                    src="welcome-icons/step_five.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            )}
 
-        {step === 5 && (
-          <div className="right_side">
-            <div className="step_five_image">
-              <img src="welcome-icons/step_five.png" alt="" />
-            </div>
-            <div>
-              <img src="welcome-icons/romb.svg" />
-            </div>
-            <div className="line"></div>
-            <div className="amount_romb">1.1698</div>
-          </div>
-        )}
+            {step === 6 && (
+              <div className="step_three">
+                <div className="line_block">
+                  <img src="welcome-icons/romb.svg" />
+                  <div className="line"></div>
+                  <div className="amount_romb">1.1698</div>
+                </div>
+              </div>
+            )}
 
-        {step === 6 && (
-          <div className="right_side">
-            <div>
-              <img src="welcome-icons/romb.svg" />
-            </div>
-            <div className="line"></div>
-            <div className="amount_romb">1.1698</div>
+            {step >= 7 && (
+              <div className="right_side_shoter">
+                <div>
+                  <img src="welcome-icons/romb.svg" />
+                </div>
+                <div className="line"></div>
+                <div className="amount_romb">1.1698</div>
+              </div>
+            )}
           </div>
-        )}
 
-        {step >= 7 && (
-          <div className="right_side_shoter">
-            <div>
-              <img src="welcome-icons/romb.svg" />
-            </div>
-            <div className="line"></div>
-            <div className="amount_romb">1.1698</div>
-          </div>
-        )}
+          <div className="amount_b">
+            {step <= 6 && (
+              <div className="amount">
+                {amounts.map((item, index) => (
+                  <div key={index + item}>{item}</div>
+                ))}
+              </div>
+            )}
 
-        {step <= 6 && (
-          <div className="amount">
-            {amounts.map((item, index) => (
-              <div key={index + item}>{item}</div>
-            ))}
+            {step > 6 && (
+              <div className="amount_lefter">
+                {amounts.map((item, index) => (
+                  <div key={index + item}>{item}</div>
+                ))}
+              </div>
+            )}
           </div>
-        )}
-
-        {step > 6 && (
-          <div className="amount_lefter">
-            {amounts.map((item, index) => (
-              <div key={index + item}>{item}</div>
-            ))}
-          </div>
-        )}
+        </div>
       </div>
+
       <div className="times">
         {times.map((item, index) => (
           <div className="time-item" key={index + item}>

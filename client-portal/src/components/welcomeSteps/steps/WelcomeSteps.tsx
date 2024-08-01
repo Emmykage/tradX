@@ -55,8 +55,22 @@ const WelcomeSteps = () => {
 
   return (
     <div className="welcomeSteps">
-      <WelcomeHeader step={step} setStep={setStep} />
-      {renderStep()}
+      <div className="image_slide">
+        <img
+          className="image"
+          src="welcome-icons/w_backgroung.png"
+          srcSet="
+      welcome-icons/w_backgroung_mobile.png 428w,
+      welcome-icons/w_backgroung_tablet.png 834w,
+      welcome-icons/w_backgroung.png 1200w
+    "
+          alt=""
+        />
+      </div>
+      <div className="content">
+        <WelcomeHeader step={step} setStep={setStep} />
+        {renderStep()}
+      </div>
     </div>
   );
 };
