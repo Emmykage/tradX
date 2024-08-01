@@ -9,20 +9,20 @@ import StepThree from "../StepThree/StepThree";
 
 const WelcomeSteps = () => {
   const { t } = useTranslation();
-  const [step, setStep] = useState<number>(3);
+  const [step, setStep] = useState<number>(1);
   const [cookies, setCookie, removeCookie] = useCookies(["step"]); // Используем хук useCookies
 
-  // useEffect(() => {
-  //   const savedStep = cookies.step;
-  //   if (savedStep) {
-  //     // setStep(Number(savedStep));
-  //     setStep(Number(1));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const savedStep = cookies.step;
+    if (savedStep) {
+      // setStep(Number(savedStep));
+      setStep(Number(3));
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   setCookie("step", step.toString(), { path: "/", maxAge: 604800 });
-  // }, [step, setCookie]);
+  useEffect(() => {
+    setCookie("step", step.toString(), { path: "/", maxAge: 604800 });
+  }, [step, setCookie]);
 
 
   const renderStep = () => {
