@@ -11,9 +11,7 @@ interface StepSevenProps {
 const StepSeven: FC<StepSevenProps> = ({ step, setStep }) => {
   return (
     <div className="welcomeStepSeven">
-      <div className="background">
         <Background step={step} />
-      </div>
 
       <div className="modal">
         <TestWalkThrough setStep={setStep} step={step} />

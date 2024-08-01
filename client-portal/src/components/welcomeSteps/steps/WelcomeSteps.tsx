@@ -11,7 +11,7 @@ import StepSix from "../stepSix/StepSix.tsx";
 import StepSeven from "../stepSeven/StepSeven.tsx";
 
 const WelcomeSteps = () => {
-  const [step, setStep] = useState<number>(3);
+  const [step, setStep] = useState<number>(1);
   const [cookies, setCookie] = useCookies(["step"]); // Используем хук useCookies
 
   useEffect(() => {
@@ -55,18 +55,21 @@ const WelcomeSteps = () => {
 
   return (
     <div className="welcomeSteps">
-      <div className="image_slide">
-        <img
-          className="image"
-          src="welcome-icons/w_backgroung.png"
-          srcSet="
+      {step > 2 && (
+        <div className="image_slide">
+          <img
+            className="image"
+            src="welcome-icons/w_backgroung.png"
+            srcSet="
       welcome-icons/w_backgroung_mobile.png 428w,
       welcome-icons/w_backgroung_tablet.png 834w,
       welcome-icons/w_backgroung.png 1200w
     "
-          alt=""
-        />
-      </div>
+            alt=""
+          />
+        </div>
+      )}
+
       <div className="content">
         <WelcomeHeader step={step} setStep={setStep} />
         {renderStep()}

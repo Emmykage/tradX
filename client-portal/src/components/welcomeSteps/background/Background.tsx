@@ -10,7 +10,7 @@ interface BackgroundProps {
 
 const Background: FC<BackgroundProps> = ({ step }) => {
   return (
-    <div className="w_background">
+    <div className="w_background" style={{ width: step < 7 ? "100%" : "80%" }}>
       <div className="background_block">
         <div className="w_image_slide">
           <img
@@ -88,32 +88,23 @@ const Background: FC<BackgroundProps> = ({ step }) => {
             )}
 
             {step >= 7 && (
-              <div className="right_side_shoter">
-                <div>
+              <div className="step_three">
+                <div className="line_block">
                   <img src="welcome-icons/romb.svg" />
+                  <div className="line"></div>
+                  <div className="amount_romb">1.1698</div>
                 </div>
-                <div className="line"></div>
-                <div className="amount_romb">1.1698</div>
               </div>
             )}
+
           </div>
 
           <div className="amount_b">
-            {step <= 6 && (
               <div className="amount">
                 {amounts.map((item, index) => (
                   <div key={index + item}>{item}</div>
                 ))}
               </div>
-            )}
-
-            {step > 6 && (
-              <div className="amount_lefter">
-                {amounts.map((item, index) => (
-                  <div key={index + item}>{item}</div>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </div>
