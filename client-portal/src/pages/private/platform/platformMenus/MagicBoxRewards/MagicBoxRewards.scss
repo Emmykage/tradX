@@ -6,7 +6,6 @@ linear-gradient(0deg, #3D4046, #3D4046);
   position: absolute;
   top: 0;
   left: 0;
-  // z-index: 1;
 
 .magic-box-image-box {
   width: 100%;
@@ -24,7 +23,6 @@ linear-gradient(0deg, #3D4046, #3D4046);
   position: absolute;
   top: 0;
   left: 0;
-  // z-index: -1;
   img {
     width: 10rem;
     height: 9rem;
@@ -44,7 +42,6 @@ linear-gradient(0deg, #3D4046, #3D4046);
   display: flex;
   margin-top: 14rem;
   position: relative;
-  // z-index: -100;
   p {
     color: #969798;
     width: 100%;
@@ -59,7 +56,6 @@ linear-gradient(0deg, #3D4046, #3D4046);
 
 .magic-box-possible-rewards {
   position: relative;
-  // z-index: -100;
   display: flex;
   flex-direction: column;
   align-items: start;
