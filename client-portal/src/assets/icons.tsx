@@ -1590,6 +1590,45 @@ export const ArrowUpRightIcon = () => {
   );
 };
 
+export const ArrowUpRightIconColor: React.FC<{ color?: string }> = ({ color }) => {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill={`${color ? color : "none"}`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14 13V1M14 1H2M14 1L2 13"
+        stroke={`${color ? color : "none"}`}
+        stroke-width="2"
+        stroke-linecap="square"
+      />
+    </svg>
+  );
+};
+
+export const ArrowDownRightIconColor: React.FC<{ color?: string }> = ({ color }) => {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill={`${color ? color : "none"}`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14 2V14M14 14H2M14 14L2 2"
+        stroke={`${color ? color : "none"}`}
+        stroke-width="2"
+        stroke-linecap="square"
+      />
+    </svg>
+  );
+};
+
+
 export const ArrowDownRightIcon = () => {
   return (
     <svg

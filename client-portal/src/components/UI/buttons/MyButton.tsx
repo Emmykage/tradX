@@ -5,17 +5,19 @@ import "./MyButton.scss";
 interface MyButtonProps {
   text: string;
   background?: string;
+  color?: string
   handleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const MyButton: FC<MyButtonProps> = ({ background, text, handleClick }) => {
+const MyButton: FC<MyButtonProps> = ({ background, color, text, handleClick }) => {
   const { t } = useTranslation();
 
   return (
     <button
       onClick={handleClick}
       style={{
-        background: background ? background : "#ff0000",
+          background: background ? background : "#ff0000",
+          color: color ? color : "#ffffff",
       }}
       className="button"
     >

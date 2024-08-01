@@ -1,0 +1,22 @@
+.welcomeStepSeven {
+  width: 100%;
+  display: flex;
+
+  .modal {
+    margin-left: auto;
+    height: 70vh;
+  }
+}
+
+
+@media (max-width: 834px) {
+  .welcomeStepSeven {
+
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .welcomeStepSeven {
+
+  }
+}

@@ -6,9 +6,10 @@ import Background from "../background/Background";
 
 interface StepThreeProps {
   setStep: (step: number | ((prevStep: number) => number)) => void;
+  step: number;
 }
 
-const StepThree: FC<StepThreeProps> = ({ setStep }) => {
+const StepThree: FC<StepThreeProps> = ({ setStep, step }) => {
   const { t } = useTranslation();
 
   const handleClick = () => {
@@ -18,7 +19,7 @@ const StepThree: FC<StepThreeProps> = ({ setStep }) => {
   return (
     <div className="welcomeStepThree">
       <div className="background">
-        <Background />
+        <Background step={step} />
       </div>
       <div className="info">
         <div className="text">{t("walkthroughChartsSubText")}</div>

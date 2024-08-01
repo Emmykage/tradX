@@ -1,0 +1,120 @@
+.testContainer{
+    background-color: #0B1118;
+    // height: 100vh;
+    width: 16vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+.walkThroughSidbarContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .walkthroughInputContent{
+        display: flex;
+        flex-direction: column;
+        border-radius: 9px;
+        padding: 0.8rem 0.6rem;
+        border: 2px solid #414C58;
+        margin-top: 10px;
+        margin: 10px 0px;
+       
+        input{
+            text-decoration: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 18px;
+            color: white;
+           
+        
+    }
+    input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    label{
+        font-size: 10px;
+        margin-top: 1px;
+        color: rgb(164, 167, 172);
+    }
+}
+
+.walkThroughButtonsContainer{
+    // background-color: red;
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 5px;
+    .walkThroughButtons{
+        background-color: #0B1118;
+        width: 100%;
+        button{
+            background-color: #283645;
+            width: 100%;
+            padding: 0.5rem 0rem;
+            border-radius: 4px;
+        }
+    }
+    
+    
+}
+}
+.walkThroughupNdown{
+    margin-top: 10px;
+    button{
+        display: flex;
+        width: 100%;
+        background-color: #283645;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+        border-radius: 10px;
+        &:disabled{
+            .walkThroughupNdownTitle{
+                color: #ffffff5e;
+            }
+           
+        }
+    .walkThroughupNdownTitle{
+        color: white;
+       
+        h2{
+            font-weight: 500;
+            font-size: 16px;
+        }
+        span{
+            font-size: 11px;
+            margin-top: 2px;
+        }
+    }
+    .walkThroughBUttonIcon{
+        width: 20px;
+    }
+    }
+   
+}
+}
+
+// tool tip custom css
+
+.walkthroughCustomTooltip {
+
+    .ant-tooltip-inner {
+        font-size: 16px;
+        font-weight: 400;
+        width: 19.6875rem;
+        padding: 1.25rem;
+        line-height: 1.6875rem;
+    
+        @media (max-width: 991px) {
+          font-size: 1.125rem;
+          width: 18.125rem;
+        }
+    }
+}
