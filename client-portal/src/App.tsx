@@ -22,6 +22,8 @@ import RequireAuth from "components/requireAuth";
 import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
 import useInitializeData from "hooks/useInitializeData";
+import WalkThrough from "pages/private/platform/WalkThrough";
+import TestWalkThrough from "pages/private/testWalkThrough/TestWalkThrough";
 
 interface AppProps {}
 

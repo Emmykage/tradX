@@ -1571,18 +1571,18 @@ export const SubtractIcon = () => {
   );
 };
 
-export const ArrowUpRightIcon = () => {
+export const ArrowUpRightIcon:React.FC<{color?:string}> = ({color}) => {
   return (
     <svg
       width="15"
       height="15"
       viewBox="0 0 15 15"
-      fill="none"
+      fill={`${color ? color : 'none'}`}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M14 13V1M14 1H2M14 1L2 13"
-        stroke="white"
+        stroke={`${color ? color : 'none'}`}
         stroke-width="2"
         stroke-linecap="square"
       />
@@ -1590,18 +1590,18 @@ export const ArrowUpRightIcon = () => {
   );
 };
 
-export const ArrowDownRightIcon = () => {
+export const ArrowDownRightIcon:React.FC<{color?:string}> = ({color}) => {
   return (
     <svg
       width="15"
       height="15"
       viewBox="0 0 15 15"
-      fill="none"
+      fill={`${color ? color : 'none'}`}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M14 2V14M14 14H2M14 14L2 2"
-        stroke="white"
+        stroke={`${color ? color : 'none'}`}
         stroke-width="2"
         stroke-linecap="square"
       />
@@ -2061,7 +2061,7 @@ export const BellIconLender = () => {
   );
 };
 
-export const YellowEllipse = () => {
+export const TopEllipse:React.FC<{color?:string}> = ({color}) => {
   return (
     <svg
       width="55"
@@ -2070,12 +2070,12 @@ export const YellowEllipse = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="27.5" cy="27.5" r="27.5" fill="#C7DB54" />
+      <circle cx="27.5" cy="27.5" r="27.5" fill={color} />
     </svg>
   );
 };
 
-export const BlueEllipse = () => {
+export const BottomEllipse:React.FC<{color?:string}> = ({color}) => {
   return (
     <svg
       width="90"
@@ -2084,7 +2084,7 @@ export const BlueEllipse = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="45" cy="45" r="45" fill="#0066B3" />
+      <circle cx="45" cy="45" r="45" fill={color} />
     </svg>
   );
 };

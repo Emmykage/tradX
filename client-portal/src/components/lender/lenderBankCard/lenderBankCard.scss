@@ -9,6 +9,7 @@
     right: 0;
     bottom: 0;
   }
+ 
   .bankCard,
   .bankCardSmall {
     border-radius: 0.9375rem;
@@ -23,11 +24,25 @@
     font-size: 2rem;
     color: #fff;
     cursor: pointer;
+    @media (max-width: 767px) {
+      width: 18.8125rem;
+      height: 8.3125rem;
+    }
   }
+
   .bankCardSmall {
     width: 14.1875rem;
     height: 7.375rem;
   }
+}
+
+.bankImage{
+  width: 12rem;
+  max-height: 80%;
+}
+.bankImageSmall{
+  width: 10rem;
+  max-height: 80%;
 }
 .bankCardWrapperContSmall {
   .yellow {
