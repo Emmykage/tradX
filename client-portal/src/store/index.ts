@@ -5,8 +5,10 @@ import {
   globalReducer,
   walletReducer,
   paymentReducer,
-  tradeReducer
+  tradeReducer,
+  notificationReducer
 } from "@slices";
+
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +18,7 @@ export const store = configureStore({
     markets: marketsReducer,
     wallet: walletReducer,
     payment: paymentReducer,
+    notification: notificationReducer
   },
 });
 
