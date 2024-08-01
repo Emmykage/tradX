@@ -263,7 +263,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           setCurrentDrawer={setCurrentDrawer}
           currentDrawer={currentDrawer}
         />
-
+        
         <div
           className="trade-content"
           id="tradeContent"

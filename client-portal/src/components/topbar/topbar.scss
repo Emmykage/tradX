@@ -8,12 +8,40 @@
     flex-direction: column-reverse;
   }
 
+  .conversionDiv{
+    width: 80%;
+
+    @media (max-width: 1600px) {
+      width: 74%;
+    }
+
+    @media (max-width: 1292px) {
+      width: 67%;
+    }
+   @media (max-width: 1600px) {
+      width: 74%;
+    }
   .conversionTab {
     display: flex;
     gap: 0.81rem;
     align-items: center;
     height: 2.813rem;
     padding: 0 1.25rem;
+
+    .close-btn{
+      display: flex;
+      height: 20px;
+      width: 20px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+
+      &:hover{
+        background: #5e697852;
+      }
+
+    }
+
 
     @media (max-width: 767px) {
       width: 100%;
@@ -49,6 +77,7 @@
     background: #5e697852;
     border-radius: 0.313rem;
   }
+}
   .payProfileTab {
     display: flex;
     align-items: center;

@@ -5,7 +5,8 @@ import {
   globalReducer,
   walletReducer,
   paymentReducer,
-  tradeReducer
+  tradeReducer,
+  assetPairReducer
 } from "@slices";
 
 export const store = configureStore({
@@ -16,6 +17,7 @@ export const store = configureStore({
     markets: marketsReducer,
     wallet: walletReducer,
     payment: paymentReducer,
+    assetPair: assetPairReducer  
   },
 });
 
