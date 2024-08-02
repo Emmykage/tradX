@@ -46,14 +46,10 @@ export const staticData = [
   {
     time: 1706810580,
     value: 24.645200272830508,
-    image: "welcome-icons/vector_up.png",
-    title: "up"
   },
   {
     time: 1706810640,
     value: 28.588138978261032,
-    image: "welcome-icons/vector_down.png",
-    title: "down"
   },
   {
     time: 1706810700,

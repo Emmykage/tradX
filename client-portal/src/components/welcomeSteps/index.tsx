@@ -28,7 +28,7 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
   className,
   tradeFormHeight,
 }) => {
-  const [step, setStep] = useState<number>(3);
+  const [step, setStep] = useState<number>(1);
 
   const [cookies, setCookie] = useCookies(["step", "access_token"]);
 
@@ -53,7 +53,7 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
   useEffect(() => {
     const savedStep = cookies.step;
     if (savedStep) {
-      // setStep(Number(savedStep));
+      setStep(Number(savedStep));
     }
   }, []);
 
@@ -119,7 +119,62 @@ const WalkThrough: React.FC<WalkThroughProps> = ({
   return (
     <div className={`walkthroughContainer welcomeSteps ${className}`}>
       <WelcomeHeader step={step} setStep={setStep} />
+
+      {/* className={`${step === 1 ? "active" : ""}`} */}
+
       {renderStep()}
+
+      {/* <ForeCast className={`${step === 4 ? "active" : ""}`} setStep={setStep} />
+      <FixedDuration
+        className={`${step === 5 ? "active" : ""}`}
+        setStep={setStep}
+      />
+      <Profitablity
+        className={`${step === 6 ? "active" : ""}`}
+        setStep={setStep}
+        open={step === 6}
+      />
+      <SetInvestment
+        className={`${step === 7 ? "active" : ""}`}
+        setStep={setStep}
+        open={step === 7}
+        tradeFormHeight={tradeFormHeight}
+      />
+      <SetDuration
+        className={`${step === 8 ? "active" : ""}`}
+        setStep={setStep}
+        open={step === 8}
+        tradeFormHeight={tradeFormHeight}
+      />
+      <ChooseTrade
+        className={`${
+          step === 9 || step === 10 || step === 11 ? "active" : ""
+        }`}
+        setStep={setStep}
+        open={step === 9}
+        tradeFormHeight={tradeFormHeight}
+        onSkipWalkthrough={onSkipWalkthrough}
+      /> */}
+
+      {/* <Modal
+        rootClassName="walkthroughCloseModal"
+        open={modalOpen}
+        setOpen={setModalOpen}
+        closeable={false}
+        maskClosable={false}
+      >
+        <p className="modalHeading">Do you want to finish training?</p>
+        <p className="modalText">
+          You can resume your training later in the Help section.
+        </p>
+
+        <div className="modalButtons">
+          <Button onClick={() => setModalOpen(false)}>Cancel</Button>
+          <Button onClick={onSkipWalkthrough} className="danger">
+            Finish
+          </Button>
+        </div>
+      </Modal> */}
     </div>
   );
 };

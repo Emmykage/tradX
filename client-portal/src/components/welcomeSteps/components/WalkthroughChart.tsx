@@ -2,7 +2,6 @@ import {
   createChart,
   ColorType,
   IChartApi,
-  ISeriesApi,
   Time,
   LineStyle,
 } from "lightweight-charts";
@@ -12,7 +11,6 @@ import React, { RefObject, useEffect, useRef } from "react";
 export interface DataPoint {
   time: string;
   value: number;
-  image?: string;
 }
 
 interface ChartComponentProps {
@@ -71,7 +69,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({
       timeScale: {
         secondsVisible: true,
         timeVisible: true,
-        rightOffset: 60,
+        rightOffset: 20,
         allowShiftVisibleRangeOnWhitespaceReplacement: true,
         borderVisible: false,
       },
@@ -94,31 +92,6 @@ const ChartComponent: React.FC<ChartComponentProps> = ({
       priceLineStyle: LineStyle.Solid,
       priceLineWidth: 1,
     });
-
-    data.forEach((dataPoint: any) => {
-      if (dataPoint.image) {
-        const imageElement = document.createElement("img");
-        imageElement.src = dataPoint.image;
-        imageElement.style.position = "absolute";
-        imageElement.style.width = "400px";
-        imageElement.style.height = "200px";
-
-        if (dataPoint.title === "up") {
-          imageElement.style.right = `100px`;
-          imageElement.style.top = `${210}px`;
-        }
-
-        if (dataPoint.title === "down") {
-          imageElement.style.right = `100px`;
-          imageElement.style.top = `${400}px`;
-        }
-
-        if (chartContainerRef.current) {
-          chartContainerRef.current.appendChild(imageElement);
-        }
-      }
-    });
-
     newSeries.setData(data);
     const lineSeries = chart.addLineSeries();
 
