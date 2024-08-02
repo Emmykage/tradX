@@ -10,17 +10,20 @@
 
   .conversionDiv{
     width: 80%;
-
     @media (max-width: 1600px) {
       width: 74%;
     }
 
     @media (max-width: 1292px) {
-      width: 67%;
+      width: 70%;
     }
-   @media (max-width: 1600px) {
-      width: 74%;
+    @media (max-width: 11115px) {
+      width: 65%;
     }
+    @media (max-width: 9005px) {
+      width: 60%;
+    }
+   
   .conversionTab {
     display: flex;
     gap: 0.81rem;

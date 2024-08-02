@@ -46,14 +46,10 @@ const RenderTab = ({
 const RenderData: React.FunctionComponent = (props: any) => {
   const {handleMenuClick} = props;
   const dispatch = useAppDispatch();
-  const  {assetPairs} = useAppSelector(
-    (state: {assetPair: AssetPairSliceState }) => state.assetPair
-  ) 
 
-  console.log(assetPairs)
+
   const [forexData] = useState(forex);
   const [selectedForex, setSelectedForex] = useState(null);
-  const [selectedAsset, setSelectedAsset] = useState<any[]>([])
 
 
   const handleChange = (value: string) => {
@@ -64,7 +60,7 @@ const RenderData: React.FunctionComponent = (props: any) => {
   
     setSelectedForex(item);
     dispatch(setAssetPairs(item))
-    handleMenuClick();
+    // handleMenuClick();
 
 
     // setIsLeftSubDrawerOpen(false);

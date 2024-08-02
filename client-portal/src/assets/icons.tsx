@@ -8,6 +8,10 @@ export const LogoIcon = () => {
   );
 };
 
+export const Dot = () => (
+  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="10px" width="4px" xmlns="http://www.w3.org/2000/svg"><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"></path></svg>
+)
+
 export const SettingsIcon2 = () => (
   <svg
     width="32"
@@ -580,6 +584,8 @@ export const TradesIcon2 = () => (
     />
   </svg>
 );
+
+
 
 export const TradesIcon3 = () => (
   <svg
@@ -1514,6 +1520,14 @@ export const TimerIcon2 = () => (
   </svg>
 );
 
+export const ClockIcon = () => (
+  <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 5.5V11.393C10 11.4598 10.0334 11.5223 10.0891 11.5594L13 13.5" stroke="#0094FF" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="10" cy="10.5" r="9" stroke="#0094FF" stroke-width="2"/>
+  </svg>
+  
+
+)
 export const TimerIcon = () => {
   return (
     <svg
