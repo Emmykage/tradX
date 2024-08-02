@@ -36,9 +36,8 @@ const WelcomeHeader: FC<WelcomeHeaderProps> = ({ step, setStep }) => {
 
       {step === 6 && (
         <div className="header_left">
-          <div className="header_image">
-            <img src="/welcome-icons/step_two/usd_2.png" />
-          </div>          <div>EUR/USD</div>
+          <img src="/welcome-icons/step_two/usd_2.svg" />
+          <div>EUR/USD</div>
           <div className="info_block">
             <div className="triangle">
               <img src="/welcome-icons/triangle_little.svg" alt="" />

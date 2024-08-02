@@ -3,6 +3,7 @@ import { Route, Routes, HashRouter, BrowserRouter } from "react-router-dom";
 import Platform from "./pages/private/platform/Platform";
 import Lender from "./pages/private/lender/Lender";
 import SignIn from "./pages/public/signIn/SignIn";
+import Welcome from "./pages/public/welcome/Welcome";
 
 import Download from "./pages/public/downloads/Download";
 import Transactions from "./pages/private/transactions/Transactions";
@@ -23,7 +24,7 @@ import RequireAuth from "components/requireAuth";
 import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
 import useInitializeData from "hooks/useInitializeData";
-import WalkThrough from "components/welcomeSteps";
+import WalkThrough from "pages/private/platform/WalkThrough";
 
 interface AppProps {}
 
@@ -76,7 +77,8 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
         <Route path="/password-reset" element={<ResetPassword />} />
-        <Route path="/welcome" element={<WalkThrough tradeFormHeight={1} />} />
+        <Route path="/welcome" element={<Welcome />} />
+        {/* <Route path="/welcome" element={<WalkThrough tradeFormHeight={2} />} /> */}
         
       </Routes>
     </HashRouter>

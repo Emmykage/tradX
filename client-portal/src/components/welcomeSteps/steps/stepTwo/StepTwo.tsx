@@ -5,11 +5,10 @@ import { FC } from "react";
 import data from "./data.json";
 
 interface StepTwoProps {
-  className: string;
   setStep: (step: number | ((prevStep: number) => number)) => void;
 }
 
-const StepTwo: FC<StepTwoProps> = ({ setStep, className }) => {
+const StepTwo: FC<StepTwoProps> = ({ setStep }) => {
   const { t } = useTranslation();
 
   const handleClick = () => {
