@@ -37,7 +37,7 @@ const ConfirmMail: React.FunctionComponent<ConfirmMailProps> = () => {
   return (
     <div className="confirmMailMenu">
       <Input
-        disabled
+        disabled={false}
         placeholder="Enter your email"
         title="Email"
         defaultValue={email}

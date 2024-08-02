@@ -65,11 +65,11 @@ import {
   XRPFlag,
 } from "../../../../../assets/icons";
 
-interface InitialAccountsListProps {
-  id: number;
-  icon: JSX.Element;
-  title: string;
-  amount: string;
+export interface InitialAccountsListProps {
+  id?: number;
+  icon?: JSX.Element;
+  title?: string;
+  amount?: string;
 }
 
 export const InitialAccountsList: InitialAccountsListProps[] = [

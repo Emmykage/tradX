@@ -1,12 +1,14 @@
 import { CSSProperties } from "react";
 
-import { useAppSelector } from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
 import { WalletSliceState } from "@store/slices/wallet";
+import ArrowsSlider from "../../components/arrowsSlider/ArrowsSlider";
 
 import Loading from "components/loading";
 import {
   CaretDownIcon,
+  CloseIconsm,
   DropUpIcon,
   ProfileIcon,
   WalletIcon,
@@ -16,6 +18,8 @@ import {
   RightDrawerContent,
 } from "../../pages/private/platform/types";
 import "./topbar.scss";
+import { AssetPairSliceState, removeAssetPair } from "@store/slices/pairs";
+import { CryptoSliceState } from "@store/slices/markets/types";
 
 interface TopbarProps {
   isDrawerOpen: boolean;
@@ -46,7 +50,14 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
     (state: { wallet: WalletSliceState }) => state.wallet
   );
 
-  const { symbol,assets } = useAppSelector((state) => state.markets);
+  const  {assetPairs} = useAppSelector(
+    (state: {assetPair: AssetPairSliceState }) => state.assetPair
+
+
+  )  
+  const dispatch = useAppDispatch()
+
+  const { symbol,assets } = useAppSelector((state: {markets: CryptoSliceState }) => state.markets);
   console.log(symbol);
   console.log(assets);
   const ProfileImage = () => {
@@ -86,32 +97,50 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
 
   return (
     <div className="topbarContainer" id="topbarContainer" style={style}>
-      <div
-        className="conversionTab"
-        onClick={() => {
-          setIsDrawerOpen(
-            isDrawerOpen && currentDrawer === "assets" ? false : true
-          );
-          setCurrentDrawer("assets");
-        }}
-      >
-        <div className="convImg">
-          <img
-            // src="https://res.cloudinary.com/dt9pwfpi5/image/upload/v1703146258/conv_e2znxe.png"
-            src={assets}
-            
-            alt="conv"
-          />
-        </div>
-        <div className="convDetails">
-          <div className="topConv">
-            <span className="currency">{symbol}</span>
-            <span>OTC</span>
-            <span className="percent">85%</span>
+      <div className="conversionDiv">
+        <ArrowsSlider>
+        
+        {assetPairs.map(assetPair => (
+          <div
+            key={assetPair.name} // Ensure to add a unique key for list rendering
+            className="conversionTab"
+            onClick={() => {
+              setIsDrawerOpen(
+                isDrawerOpen && currentDrawer === "assets" ? false : true
+              );
+              setCurrentDrawer("assets");
+            }}
+          >
+            <div className="convImg">
+              <img
+                src={assetPair.image}
+                alt="conv"
+              />
+            </div>
+            <div className="convDetails">
+              <div className="topConv">
+                <span className="currency">{assetPair.value}</span>
+                <span className="percent">{assetPair.profit}</span>
+              </div>
+            </div>
+            {assetPairs.length > 1 && (
+              <span
+                className="close-btn"
+                onClick={(event) => {
+                  event.stopPropagation(); // Prevents the click event from bubbling up
+                  dispatch(removeAssetPair(assetPair));
+                }}
+              >
+                <CloseIconsm />
+              </span>
+            )}
           </div>
-        </div>
+))}
+
+
+      </ArrowsSlider>
       </div>
-      <div className="payProfileTab">
+      <div className="payProfileTab" id="top_right">
         <WalletsButton />
         <button
           onClick={() => {

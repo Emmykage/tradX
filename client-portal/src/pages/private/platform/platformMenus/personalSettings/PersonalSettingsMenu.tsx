@@ -22,9 +22,13 @@ const PersonalSettingsMenu: React.FunctionComponent<
     (state: { user: UserSliceState }) => state.user
   );
 
+  const clickSecurityCardItem = (item:string) => {
+    setIsRightSubDrawerContent("confirm-email");
+  };
+
   return (
     <div className="personalSettingsMenu">
-      <EnhanceSecurityCard variant1={3} variant2={3} />
+      <EnhanceSecurityCard variant1={3} variant2={3} onClick={clickSecurityCardItem} />
 
       <div>
         <p className="menuSectionTitle">Personal</p>

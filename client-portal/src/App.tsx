@@ -56,7 +56,6 @@ const App: React.FunctionComponent<AppProps> = () => {
 
   // hook that triggers a callback function when the user is inactuve for 5 minutes
   useMouseIdle(() => {
-    console.log("USER HAS BEEN IDLE");
     dispatch(setIsIdle(true));
   });
 

@@ -1,24 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
-import { IWallet } from "@interfaces";
+import { INotification } from "@interfaces";
 import getEnv from "utils/env";
 
-type WalletsResponse = {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: IWallet[];
-};
 
-type useWalletProps = {
-  onSuccess?: (data: WalletsResponse, variables: unknown, context: unknown) => void;
-  onError?: (error: unknown, variables: unknown, context: unknown) => void;
-  [index: string]: any;
-};
-
-export async function fethWallet(token: string): Promise<WalletsResponse> {
+export async function fetchNotificationList(token: string): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
-    const response = await fetch(`${BASE_URL}/wallet/wallets/`, {
+    const response = await fetch(`${BASE_URL}/notification/notifications/`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -29,19 +17,19 @@ export async function fethWallet(token: string): Promise<WalletsResponse> {
     if (!response.ok) {
       throw new Error(`${result}`);
     }
-    return {
-      count: result.count || 0,
-      next: result.next || null,
-      previous: result.previous || null,
-      results: result.results || [],
-    };
+    return result;
   } catch (error) {
     throw new Error(error as string);
   }
 }
 
-export const useWallet = (props: useWalletProps) => {
-  const receivedProps = props || ({} as useWalletProps);
+type useNotificationProps = {
+  onSuccess?: (data: INotification, variables: unknown, context: unknown) => void;
+  onError?: (error: unknown, variables: unknown, context: unknown) => void;
+  [index: string]: any;
+};
+export const useNotificationList = (props: useNotificationProps) => {
+  const receivedProps = props || ({} as useNotificationProps);
 
   const {
     onSuccess: onSuccessOverride,
@@ -50,7 +38,7 @@ export const useWallet = (props: useWalletProps) => {
   } = receivedProps;
 
   return useMutation<any, unknown, any>({
-    mutationFn: (token: string) => fethWallet(token),
+    mutationFn: (token: string) => fetchNotificationList(token),
     onSuccess: (data, variables, context) => {
       if (onSuccessOverride) {
         onSuccessOverride(data, variables, context);
@@ -65,4 +53,4 @@ export const useWallet = (props: useWalletProps) => {
   });
 };
 
-export default useWallet;
+export default useNotificationList;

@@ -13,6 +13,8 @@ import {
 import useProfile from "api/user/useProfile";
 import useWallet from "api/wallet/useWallet";
 import useWebSocketTicket from "api/user/useWebSocketTicket";
+import { NotificationSliceState, setNotificationList, setNotificationLoading } from "@store/slices/notification";
+import useNotificationList from "api/notification/useNotificationList";
 
 /**
  * Custom hook to initialize user and wallet data upon login.
@@ -29,10 +31,9 @@ const useInitializeData = () => {
   const { user } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
-  console.log(user);
+
   const { mutate: profileMutate } = useProfile({
     onSuccess: (data) => {
-      console.log(data);
       dispatch(setUser(data));
     },
     onError: () => {
@@ -46,12 +47,25 @@ const useInitializeData = () => {
   );
   const { mutate: walletMutate } = useWallet({
     onSuccess: (data) => {
-      console.log(data);
       dispatch(setWallets(data.results));
       dispatch(setSelectedWallet(data.results[0] || undefined));
     },
     onError: (error) => {
-      console.log("fetching wallets error", error);
+      console.error("fetching wallets error", error);
+    },
+  });
+
+  // Fetch notification data
+  const { notificationList } = useAppSelector(
+    (state: { notification: NotificationSliceState }) => state.notification
+  );
+  const { mutate: notificationListMutate } = useNotificationList({
+    onSuccess: (data) => {
+      // @ts-ignore
+      dispatch(setNotificationList(data.notifications));
+    },
+    onError: (error) => {
+      console.error("fetching notification list error", error);
     },
   });
 
@@ -63,13 +77,21 @@ const useInitializeData = () => {
     }
   }, [cookies.access_token, profileMutate, user]);
 
-  // Effect to fetch wallet data on login initialization
+  // Effect to fetch wallet data on login initializatio
   useEffect(() => {
     if (cookies.access_token && (!wallets || wallets.length === 0)) {
       setWalletsLoading(true);
       walletMutate(cookies.access_token);
     }
   }, [cookies.access_token, walletMutate]);
+
+  // Effect to fetch wallet data on login initializatio
+  useEffect(() => {
+    if (cookies.access_token && (!notificationList || notificationList.length === 0)) {
+      setNotificationLoading(true);
+      notificationListMutate(cookies.access_token);
+    }
+  }, [cookies.access_token, notificationListMutate]);
 
   // GET the web-socket ticket for validation after the app running
   const { mutate: webSocketTicketMutate } = useWebSocketTicket({

@@ -1,6 +1,5 @@
 import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
 import "./DepositInput.scss";
-import { PatternFormat } from 'react-number-format';
 
 const DepositInput = ({
   CardsIconList,
@@ -33,19 +32,7 @@ const DepositInput = ({
         marginTop ? "marginTop" : "marginTop2"
       } ${classname}`}
     >
-      {type === 'pattern'? (
-        <PatternFormat
-          className={`deposit-input ${
-            placeholderColor ? "placeholderColor" : "placeholderColor2"
-          }`}
-          format={format}
-          allowEmptyFormatting ={allowEmptyFormatting}
-          onChange={onChange}
-          name={name}
-          value={value}
-          placeholder={placeholder}
-        />
-      ):(
+      
         <input
           className={`deposit-input ${
             placeholderColor ? "placeholderColor" : "placeholderColor2"
@@ -55,7 +42,6 @@ const DepositInput = ({
           onChange={onChange}
           value={value}
         />
-      )}
       
       {CardsIconList &&
         CardsIconList.map((card: any, index: number) => (
