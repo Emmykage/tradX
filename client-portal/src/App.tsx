@@ -24,6 +24,7 @@ import RequireAuth from "components/requireAuth";
 import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
 import useInitializeData from "hooks/useInitializeData";
+import WalkThrough from "pages/private/platform/WalkThrough";
 
 interface AppProps {}
 
@@ -78,6 +79,8 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/verify-email" element={<EmailVerification />} />
         <Route path="/password-reset" element={<ResetPassword />} />
         <Route path="/welcome" element={<Welcome />} />
+        {/* <Route path="/welcome" element={<WalkThrough tradeFormHeight={2} />} /> */}
+        
       </Routes>
     </HashRouter>
   );

@@ -46,6 +46,7 @@
           width: 100%;
           height: 100%;
           position: relative;
+          z-index: -1;
 
           .line_block {
             position: absolute;
@@ -54,7 +55,7 @@
             left: -5px;
             display: flex;
             align-items: center;
-            width: 140%;
+            // width: 140%;
 
             .vector_up {
               position: absolute;
@@ -101,7 +102,7 @@
         width: 20%;
         margin-right: 10px;
         margin-top: -72px;
-        margin-left: 100px;
+        // margin-left: 100px;
 
         .amount {
           display: flex;
@@ -118,8 +119,9 @@
           color: rgba(255, 255, 255, 0.3);
 
           @media (max-width: 834px) {
-            height: 673px;
-            gap: 65px;
+            height: 80vh;
+            gap: 20px;
+            justify-content: space-around;
             font-size: 20.65px;
           }
 
@@ -167,4 +169,3 @@
     }
   }
 }
-

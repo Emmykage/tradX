@@ -1,5 +1,5 @@
 import "./Background.scss";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 const amounts = ["1.174", "1.172", "1.170", "1.168", "1.166", "1.164"];
 const times = ["17:52", "17:52:30", "17:53", "17:53:30", "17:54"];
@@ -9,8 +9,43 @@ interface BackgroundProps {
 }
 
 const Background: FC<BackgroundProps> = ({ step }) => {
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+
+  const getWidthStyle = () => {
+    if (windowWidth < 834 && step >= 7) {
+      return "100%";
+    }
+    return step < 7 ? "100%" : "80%";
+  };
+
+  const getLineBlockWidthStyle = () => {
+    return step >= 7 ? "120%" : "140%";
+  };
+
+  const getMLStyle = () => {
+    if (windowWidth <= 834 && step >= 7) {
+      return "-10px";
+    }
+    if (windowWidth > 834 && step >= 7) {
+      return "0px";
+    }
+    return step >= 7 ? "-10px" : "100px";
+  };
+
   return (
-    <div className="w_background" style={{ width: step < 7 ? "100%" : "80%" }}>
+    <div className="w_background" style={{ width: getWidthStyle() }}>
       <div className="background_block">
         <div className="w_image_slide">
           <img
@@ -29,7 +64,7 @@ const Background: FC<BackgroundProps> = ({ step }) => {
           <div className="right_side">
             {step === 3 && (
               <div className="step_three">
-                <div className="line_block">
+                <div className="line_block" style={{ width: getLineBlockWidthStyle() }}>
                   <img src="welcome-icons/romb.svg" />
                   <div className="line"></div>
                   <div className="amount_romb">1.1698</div>
@@ -49,7 +84,7 @@ const Background: FC<BackgroundProps> = ({ step }) => {
 
             {step === 4 && (
               <div className="step_three">
-                <div className="line_block">
+                <div className="line_block" style={{ width: getLineBlockWidthStyle() }}>
                   <img src="welcome-icons/romb.svg" />
                   <div className="line"></div>
                   <div className="amount_romb">1.1698</div>
@@ -64,7 +99,7 @@ const Background: FC<BackgroundProps> = ({ step }) => {
 
             {step === 5 && (
               <div className="step_three">
-                <div className="line_block">
+                <div className="line_block" style={{ width: getLineBlockWidthStyle() }}>
                   <img src="welcome-icons/romb.svg" />
                   <div className="line"></div>
                   <div className="amount_romb">1.1698</div>
@@ -77,19 +112,9 @@ const Background: FC<BackgroundProps> = ({ step }) => {
               </div>
             )}
 
-            {step === 6 && (
+            {step >= 6 && (
               <div className="step_three">
-                <div className="line_block">
-                  <img src="welcome-icons/romb.svg" />
-                  <div className="line"></div>
-                  <div className="amount_romb">1.1698</div>
-                </div>
-              </div>
-            )}
-
-            {step >= 7 && (
-              <div className="step_three">
-                <div className="line_block">
+                <div className="line_block" style={{ width: getLineBlockWidthStyle() }}>
                   <img src="welcome-icons/romb.svg" />
                   <div className="line"></div>
                   <div className="amount_romb">1.1698</div>
@@ -99,7 +124,7 @@ const Background: FC<BackgroundProps> = ({ step }) => {
 
           </div>
 
-          <div className="amount_b">
+          <div className="amount_b" style={{ marginLeft: getMLStyle() }}>
               <div className="amount">
                 {amounts.map((item, index) => (
                   <div key={index + item}>{item}</div>

@@ -9,6 +9,21 @@
   align-items: center;
   position: relative;
 
+  .info {
+    // position: absolute;
+    // bottom: 100px;
+
+    .text {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 21px;
+      color: #ffffff;
+      text-align: center;
+      z-index: 101;
+    }
+  }
+
   .image_slide {
     position: absolute;
     top: 0;
@@ -41,3 +56,5 @@
     // padding: 20px;
   }
 }
+
+

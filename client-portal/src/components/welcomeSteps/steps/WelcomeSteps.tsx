@@ -1,24 +1,47 @@
 import { useEffect, useState } from "react";
-import StepOne from "../stepOne/StepOne";
-import WelcomeHeader from "../welcomeHeader/WelcomeHeader";
+import StepOne from "./stepOne/StepOne.tsx";
 import "./WelcomeSteps.scss";
 import { useCookies } from "react-cookie";
-import StepTwo from "../stepTwo/StepTwo";
-import StepThree from "../stepThree/StepThree";
-import StepFour from "../stepFour/StepFour.tsx";
-import StepFive from "../stepFive/StepFive.tsx";
-import StepSix from "../stepSix/StepSix.tsx";
-import StepSeven from "../stepSeven/StepSeven.tsx";
+import StepTwo from "./stepTwo/StepTwo.tsx";
+import StepThree from "./stepThree/StepThree.tsx";
+import StepFour from "./stepFour/StepFour.tsx";
+import StepFive from "./stepFive/StepFive.tsx";
+import StepSix from "./stepSix/StepSix.tsx";
+import StepSeven from "./stepSeven/StepSeven.tsx";
+import { useTranslation } from "react-i18next";
+import { useAppDispatch } from "@store/hooks.ts";
+import useUpdateUser from "api/user/useUpdateUser.ts";
+import { setUser } from "@store/slices/user/index.ts";
+import WelcomeHeader from "../components/welcomeHeader/WelcomeHeader.tsx";
 
 const WelcomeSteps = () => {
+  const { t } = useTranslation();
+
   const [step, setStep] = useState<number>(1);
-  const [cookies, setCookie] = useCookies(["step"]); // Используем хук useCookies
+  const [cookies, setCookie] = useCookies(["step", "access_token"]);
+
+  const dispatch = useAppDispatch();
+
+  const { mutate } = useUpdateUser({
+    onSuccess: (data) => {
+      dispatch(setUser(data));
+    },
+  });
+
+  const onSkipWalkthrough = () => {
+    mutate({
+      data: {
+        is_walkthrough_completed: true,
+      },
+      token: cookies.access_token,
+    });
+    setStep(0);
+  };
 
   useEffect(() => {
     const savedStep = cookies.step;
     if (savedStep) {
       // setStep(Number(savedStep));
-      // setStep(Number(7));
     }
   }, []);
 
@@ -55,7 +78,12 @@ const WelcomeSteps = () => {
 
   return (
     <div className="welcomeSteps">
-      {step > 2 && (
+      {step === 10 && (
+        <div className="info">
+          <div className="text">{t("walkthroughChooseTrade", {})}</div>
+        </div>
+      )}
+      {/* {step > 2 && (
         <div className="image_slide">
           <img
             className="image"
@@ -68,7 +96,7 @@ const WelcomeSteps = () => {
             alt=""
           />
         </div>
-      )}
+      )} */}
 
       <div className="content">
         <WelcomeHeader step={step} setStep={setStep} />

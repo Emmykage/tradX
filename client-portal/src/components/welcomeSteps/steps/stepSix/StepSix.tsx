@@ -1,14 +1,13 @@
+import Background from "components/welcomeSteps/components/background/Background";
 import "./StepSix.scss";
 import { FC } from "react";
-import Background from "../background/Background";
 
 interface StepSixProps {
   setStep: (step: number | ((prevStep: number) => number)) => void;
-  step: number
+  step: number;
 }
 
 const StepSix: FC<StepSixProps> = ({ step }) => {
-
   return (
     <div className="welcomeStepSix">
       <div className="background">

@@ -1,15 +1,15 @@
 import MyButton from "components/UI/buttons/MyButton";
-import "./StepFive.scss";
+import "./StepFour.scss";
 import { useTranslation } from "react-i18next";
 import { FC } from "react";
-import Background from "../background/Background";
+import Background from "components/welcomeSteps/components/background/Background";
 
-interface StepFiveProps {
+interface StepFourProps {
   setStep: (step: number | ((prevStep: number) => number)) => void;
-  step: number
+  step: number;
 }
 
-const StepFive: FC<StepFiveProps> = ({ setStep, step }) => {
+const StepFour: FC<StepFourProps> = ({ setStep, step }) => {
   const { t } = useTranslation();
 
   const handleClick = () => {
@@ -17,12 +17,12 @@ const StepFive: FC<StepFiveProps> = ({ setStep, step }) => {
   };
 
   return (
-    <div className="welcomeStepFive">
+    <div className="welcomeStepFour">
       <div className="background">
         <Background step={step} />
       </div>
       <div className="info">
-        <div className="text">{t("walkthroughFixedDurationOffer")}</div>
+        <div className="text">{t("walkthroughForeCastSubText")}</div>
         <div className="button">
           <MyButton text="next" handleClick={handleClick} />
         </div>
@@ -31,4 +31,4 @@ const StepFive: FC<StepFiveProps> = ({ setStep, step }) => {
   );
 };
 
-export default StepFive;
+export default StepFour;
