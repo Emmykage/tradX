@@ -930,11 +930,11 @@ export const ArrowUpOS = () => {
   );
 };
 
-export const ArrowDownOS = () => {
+export const ArrowDownOS:React.FC<{height?:string,width?:string}>  = ({height,width}) => {
   return (
     <svg
-      width="32"
-      height="19"
+      width={width || "32"}
+      height={height || "19"}
       viewBox="0 0 32 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -1906,11 +1906,11 @@ export const SettingsIcon = () => {
   );
 };
 
-export const SearchIcon = () => {
+export const SearchIcon:React.FC<{height?:string,width?:string}> = ({height,width}) => {
   return (
     <svg
-      width="26"
-      height="26"
+      width={width || "26"}
+      height={height || "26"}
       viewBox="0 0 26 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -2122,6 +2122,16 @@ export const ThreeDotsMenu = () => {
         fill-opacity="0.8"
       />
     </svg>
+  );
+};
+export const MenuBar:React.FC<{height?:string, width?:string}> = ({height,width}) => {
+  return (
+    <svg fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 72 72" width={width || '64px'} height={height || '64px'}><path d="M56 48c2.209 0 4 1.791 4 4 0 2.209-1.791 4-4 4-1.202 0-38.798 0-40 0-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4C17.202 48 54.798 48 56 48zM56 32c2.209 0 4 1.791 4 4 0 2.209-1.791 4-4 4-1.202 0-38.798 0-40 0-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4C17.202 32 54.798 32 56 32zM56 16c2.209 0 4 1.791 4 4 0 2.209-1.791 4-4 4-1.202 0-38.798 0-40 0-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4C17.202 16 54.798 16 56 16z"/></svg>
+  );
+};
+export const MenuCloseIcon:React.FC<{height?:string, width?:string}> = ({height,width}) => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0,0,256,256" width={width || '24px'} height={height || '24px'}><g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" ><g transform="scale(10.66667,10.66667)"><path d="M4.70703,3.29297l-1.41406,1.41406l7.29297,7.29297l-7.29297,7.29297l1.41406,1.41406l7.29297,-7.29297l7.29297,7.29297l1.41406,-1.41406l-7.29297,-7.29297l7.29297,-7.29297l-1.41406,-1.41406l-7.29297,7.29297z"></path></g></g></svg>
   );
 };
 
