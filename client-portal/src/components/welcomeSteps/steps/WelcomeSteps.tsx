@@ -18,9 +18,9 @@ import StepTen from "./stepTen/StepTen.tsx";
 
 const WelcomeSteps = () => {
   const { t } = useTranslation();
-  const [time, setTime] = useState(6);
+  const [time, setTime] = useState(20);
   const [displayTimer, setDisplayTimer] = useState(true);
-  const [step, setStep] = useState<number>(10);
+  const [step, setStep] = useState<number>(1);
   const [cookies, setCookie] = useCookies(["step", "access_token"]);
 
   const dispatch = useAppDispatch();
@@ -44,7 +44,7 @@ const WelcomeSteps = () => {
   useEffect(() => {
     const savedStep = cookies.step;
     if (savedStep) {
-      // setStep(Number(savedStep));
+      setStep(Number(savedStep));
     }
   }, []);
 
