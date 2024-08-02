@@ -13,11 +13,14 @@ import { useAppDispatch } from "@store/hooks.ts";
 import useUpdateUser from "api/user/useUpdateUser.ts";
 import { setUser } from "@store/slices/user/index.ts";
 import WelcomeHeader from "../components/welcomeHeader/WelcomeHeader.tsx";
+import StepEleven from "./stepEleven/StepEleven.tsx";
+import StepTen from "./stepTen/StepTen.tsx";
 
 const WelcomeSteps = () => {
   const { t } = useTranslation();
-
-  const [step, setStep] = useState<number>(1);
+  const [time, setTime] = useState(6);
+  const [displayTimer, setDisplayTimer] = useState(true);
+  const [step, setStep] = useState<number>(10);
   const [cookies, setCookie] = useCookies(["step", "access_token"]);
 
   const dispatch = useAppDispatch();
@@ -70,20 +73,37 @@ const WelcomeSteps = () => {
       case 9:
         return <StepSeven setStep={setStep} step={step} />;
       case 10:
-        return <StepSeven setStep={setStep} step={step} />;
+        return <StepTen setStep={setStep} step={step} />;
+      case 11:
+        return <StepEleven handleClick={onSkipWalkthrough} setStep={setStep} step={step} />;
       default:
         return <StepOne setStep={setStep} />;
     }
   };
 
+  useEffect(() => {
+    if (displayTimer && time > 0) {
+      const timerInterval = setTimeout(() => {
+        setTime((prevTime) => prevTime - 1);
+
+        if (time <= 1) {
+          setDisplayTimer(false);
+          setStep(11);
+        }
+      }, 230);
+
+      return () => clearTimeout(timerInterval);
+    }
+  }, [displayTimer, time]);
+
   return (
     <div className="welcomeSteps">
       {step === 10 && (
         <div className="info">
-          <div className="text">{t("walkthroughChooseTrade", {})}</div>
+          <div className="text">{t("walkthroughChooseTrade", {time})}</div>
         </div>
       )}
-      {/* {step > 2 && (
+      {step > 2 && (
         <div className="image_slide">
           <img
             className="image"
@@ -96,7 +116,7 @@ const WelcomeSteps = () => {
             alt=""
           />
         </div>
-      )} */}
+      )}
 
       <div className="content">
         <WelcomeHeader step={step} setStep={setStep} />

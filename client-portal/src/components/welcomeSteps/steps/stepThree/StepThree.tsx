@@ -1,10 +1,8 @@
 import MyButton from "components/UI/buttons/MyButton";
 import "./StepThree.scss";
 import { useTranslation } from "react-i18next";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Background from "../../components/background/Background";
-import { staticData } from "../../data/initialGraphData";
-import ChartComponent from "components/welcomeSteps/components/WalkthroughChart";
 
 interface StepThreeProps {
   setStep: (step: number | ((prevStep: number) => number)) => void;
@@ -13,11 +11,6 @@ interface StepThreeProps {
 
 const StepThree: FC<StepThreeProps> = ({ setStep, step }) => {
   const { t } = useTranslation();
-  const [graphData, setGraphData] = useState<any>([]);
-
-  useEffect(() => {
-    setGraphData(staticData);
-  }, []);
 
   const handleClick = () => {
     setStep((prevStep: number) => prevStep + 1);

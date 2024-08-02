@@ -192,6 +192,21 @@
       border-radius: 6.26075px;
       font-size: 12.52px;
 
+      .info_block {
+        top: 80px;
+        padding: 10.728px;
+        gap: 8.58px;
+        width: 169.5px;
+        border-radius: 5.14945px;
+        font-size: 11.16px;
+
+        .triangle {
+          position: absolute;
+          left: 70px;
+          top: -15px;
+        }
+      }
+
       .header_image {
         width: 21px;
         height: 17px;

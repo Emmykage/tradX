@@ -10,8 +10,8 @@
   position: relative;
 
   .info {
-    // position: absolute;
-    // bottom: 100px;
+     position: absolute;
+     bottom: 100px;
 
     .text {
       font-family: "Roboto";
@@ -54,6 +54,21 @@
 @media screen and (max-width: 834px) {
   .welcomeSteps {
     // padding: 20px;
+
+    .info {
+      position: absolute;
+      bottom: 300px;
+
+      .text {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 21px;
+        color: #ffffff;
+        text-align: center;
+        z-index: 101;
+      }
+    }
   }
 }
 

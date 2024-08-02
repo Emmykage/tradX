@@ -36,7 +36,9 @@ const WelcomeHeader: FC<WelcomeHeaderProps> = ({ step, setStep }) => {
 
       {step === 6 && (
         <div className="header_left">
-          <img src="/welcome-icons/step_two/usd_2.svg" />
+          <div className="header_image">
+            <img src="/welcome-icons/step_two/usd_2.png"/>
+          </div>
           <div>EUR/USD</div>
           <div className="info_block">
             <div className="triangle">
@@ -44,6 +46,7 @@ const WelcomeHeader: FC<WelcomeHeaderProps> = ({ step, setStep }) => {
             </div>
             <div>{t("toolTipContent")}</div>
             <MyButton
+                width={"128px"}
               color={"#172331"}
               background={"#FFFFFF"}
               text={"understand"}
