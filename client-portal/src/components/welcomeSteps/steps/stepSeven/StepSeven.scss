@@ -4,7 +4,7 @@
 
   .modal {
     margin-top: 80px;
-    margin-left: 20px;
+    padding: 40px;
   }
 }
 
@@ -20,7 +20,9 @@
     .modal {
       margin-top: -250px;
       margin-left: 0px;
-      width: 85%;
+      width: 100%;
+      padding: 20px;
+      z-index: 1000;
     }
   }
 }
