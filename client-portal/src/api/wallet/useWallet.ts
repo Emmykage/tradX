@@ -29,7 +29,12 @@ export async function fethWallet(token: string): Promise<WalletsResponse> {
     if (!response.ok) {
       throw new Error(`${result}`);
     }
-    return result;
+    return {
+      count: result.count || 0,
+      next: result.next || null,
+      previous: result.previous || null,
+      results: result.results || [],
+    };
   } catch (error) {
     throw new Error(error as string);
   }

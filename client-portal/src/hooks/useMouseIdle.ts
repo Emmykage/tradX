@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react";
 
 function useMouseIdle(
   callback: () => void,
-  delay = 300000 /* 5 minutes in milliseconds */
+  delay = 300000 /* 5 minutes in millisecons */
 ) {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
