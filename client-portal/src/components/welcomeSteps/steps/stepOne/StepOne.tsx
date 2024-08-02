@@ -15,17 +15,15 @@ const StepOne: FC<StepOneProps> = ({ setStep }) => {
   };
 
   return (
-    <div className="welcomeStepOne">
-      <div className="image">
+    <div className="step">
         <img src="welcome-icons/big_like.png" />
-      </div>
-      <div className="info">
-        <div className="title">{t("welcome")}</div>
-        <div className="text">{t("walkthroughWelcomeSubText")}</div>
-        <div className="button">
-          <MyButton text="startTraining" handleClick={handleClick} />
+          <div className="stepOneHeader">
+              <h2>{t("welcome")}</h2>
+              <span>{t("walkthroughWelcomeSubText")}</span>
+          <div className="stepOneButton">
+           <MyButton text="startTraining" handleClick={handleClick} />
+          </div>
         </div>
-      </div>
     </div>
   );
 };

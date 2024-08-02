@@ -15,6 +15,7 @@ import { setUser } from "@store/slices/user/index.ts";
 import WelcomeHeader from "../components/welcomeHeader/WelcomeHeader.tsx";
 import StepEleven from "./stepEleven/StepEleven.tsx";
 import StepTen from "./stepTen/StepTen.tsx";
+import LastStep from "./lastStep/LastStep.tsx";
 
 const WelcomeSteps = () => {
   const { t } = useTranslation();
@@ -97,32 +98,33 @@ const WelcomeSteps = () => {
   }, [displayTimer, time]);
 
   return (
-    <div className="welcomeSteps">
-      {step === 10 && (
-        <div className="info">
-          <div className="text">{t("walkthroughChooseTrade", {time})}</div>
-        </div>
-      )}
-      {step > 2 && (
-        <div className="image_slide">
-          <img
-            className="image"
-            src="welcome-icons/w_backgroung.png"
-            srcSet="
-      welcome-icons/w_backgroung_mobile.png 428w,
-      welcome-icons/w_backgroung_tablet.png 834w,
-      welcome-icons/w_backgroung.png 1200w
-    "
-            alt=""
-          />
-        </div>
-      )}
+    // <div className="welcomeSteps">
+    //   {step === 10 && (
+    //     <div className="info">
+    //       <div className="text">{t("walkthroughChooseTrade", {time})}</div>
+    //     </div>
+    //   )}
+    //   {step > 2 && (
+    //     <div className="image_slide">
+    //       <img
+    //         className="image"
+    //         src="welcome-icons/w_backgroung.png"
+    //         srcSet="
+    //   welcome-icons/w_backgroung_mobile.png 428w,
+    //   welcome-icons/w_backgroung_tablet.png 834w,
+    //   welcome-icons/w_backgroung.png 1200w
+    // "
+    //         alt=""
+    //       />
+    //     </div>
+    //   )}
 
-      <div className="content">
-        <WelcomeHeader step={step} setStep={setStep} />
-        {renderStep()}
-      </div>
-    </div>
+    //   <div className="content">
+    //     <WelcomeHeader step={step} setStep={setStep} />
+    //     {renderStep()}
+    //   </div>
+    // </div>
+    <LastStep/>
   );
 };
 
