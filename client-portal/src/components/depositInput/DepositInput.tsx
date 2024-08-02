@@ -1,6 +1,5 @@
 import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
 import "./DepositInput.scss";
-// import PatternFormat  from 'react-number-format';
 
 const DepositInput = ({
   CardsIconList,
@@ -43,7 +42,6 @@ const DepositInput = ({
           onChange={onChange}
           value={value}
         />
-
       
       {CardsIconList &&
         CardsIconList.map((card: any, index: number) => (

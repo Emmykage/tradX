@@ -2,18 +2,23 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { SearchIcon } from "../../../../../assets/icons";
 import "./selectAccount.scss";
 import { RightSubDrawerContent } from "../../types";
-import { InitialAccountsList } from "../add-account/constants";
+import { InitialAccountsList, InitialAccountsListProps } from "../add-account/constants";
 import { debounce } from "lodash";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 
 interface SelectAccountProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+  hasParent: boolean | null;
+  onitemSelection?: Function;
 }
 
 const SelectAccount: React.FC<SelectAccountProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
+  hasParent= false,
+  onitemSelection
+
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [items, setItems] = useState(InitialAccountsList);
@@ -23,6 +28,16 @@ const SelectAccount: React.FC<SelectAccountProps> = ({
     target: { value: SetStateAction<string> };
   }) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleItemClick = (item: InitialAccountsListProps): void => {
+    if(hasParent){
+      // @ts-ignore
+      onitemSelection(item)
+    }
+    else{
+      setPinnedAccount(item);
+    }
   };
 
   useEffect(() => {
@@ -67,7 +82,7 @@ const SelectAccount: React.FC<SelectAccountProps> = ({
           <div
             className="AccountsData"
             onClick={() => {
-              setPinnedAccount(item);
+              handleItemClick(item);
             }}
           >
             {item.icon}

@@ -12,3 +12,4 @@ export const setAppearanceBackground = (id: string) => {
     console.error("Element with id 'tradeGraph' not found.");
   }
 };
+

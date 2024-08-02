@@ -64,20 +64,14 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   const dispatch = useDispatch();
 
 
-  console.log(finished, trade);
+
   const handleInputUp = ()=>{
-    console.log('up');
-    console.log(amount);
-    console.log(duration);
+
     
     dispatch(setTrade('up'))
 
   }
   const handleInputDown = ()=>{
-    console.log('down');
-    console.log(amount);
-    console.log(duration);
-
     dispatch(setTrade('down'))
   }
 

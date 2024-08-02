@@ -157,7 +157,6 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
   };
 
   export const createCustomMarker3 = ( price:number,trade:string) => {
-    console.log(trade);
     const marker = document.createElement('div');
     marker.style.display = 'flex';
     marker.id= 'textElement3'
