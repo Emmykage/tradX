@@ -13,7 +13,7 @@ import {
 import useProfile from "api/user/useProfile";
 import useWallet from "api/wallet/useWallet";
 import useWebSocketTicket from "api/user/useWebSocketTicket";
-import { NotificationSliceState } from "@store/slices/notification";
+import { NotificationSliceState, setNotificationList, setNotificationLoading } from "@store/slices/notification";
 import useNotificationList from "api/notification/useNotificationList";
 
 /**
@@ -34,7 +34,6 @@ const useInitializeData = () => {
 
   const { mutate: profileMutate } = useProfile({
     onSuccess: (data) => {
-      console.log(data);
       dispatch(setUser(data));
     },
     onError: () => {
@@ -62,9 +61,8 @@ const useInitializeData = () => {
   );
   const { mutate: notificationListMutate } = useNotificationList({
     onSuccess: (data) => {
-      console.log(data, 'pattern');
-      // dispatch(setWallets(data.results));
-      // dispatch(setSelectedWallet(data.results[0] || undefined));
+      // @ts-ignore
+      dispatch(setNotificationList(data.notifications));
     },
     onError: (error) => {
       console.error("fetching notification list error", error);
@@ -90,7 +88,7 @@ const useInitializeData = () => {
   // Effect to fetch wallet data on login initializatio
   useEffect(() => {
     if (cookies.access_token && (!notificationList || notificationList.length === 0)) {
-      setWalletsLoading(true);
+      setNotificationLoading(true);
       notificationListMutate(cookies.access_token);
     }
   }, [cookies.access_token, notificationListMutate]);

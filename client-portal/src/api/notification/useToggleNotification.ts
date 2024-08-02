@@ -2,15 +2,17 @@ import { useMutation } from "@tanstack/react-query";
 import { INotification } from "@interfaces";
 import getEnv from "utils/env";
 
-
-export async function fetchNotificationList(token: string): Promise<boolean> {
+export async function toggleSingeNotification(data: any, token: string): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
-    const response = await fetch(`${BASE_URL}/notification/notifications/`, {
-      method: "GET",
+    const response = await fetch(`${BASE_URL}/notification/toggle_notification/`, {
+      method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json' 
       },
+      body: JSON.stringify(data),
     });
     const result = await response.json();
 
@@ -28,7 +30,7 @@ type useNotificationProps = {
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };
-export const useNotificationList = (props: useNotificationProps) => {
+export const useNotificationToggle = (props: useNotificationProps) => {
   const receivedProps = props || ({} as useNotificationProps);
 
   const {
@@ -38,7 +40,7 @@ export const useNotificationList = (props: useNotificationProps) => {
   } = receivedProps;
 
   return useMutation<any, unknown, any>({
-    mutationFn: (token: string) => fetchNotificationList(token),
+    mutationFn: (variables) => toggleSingeNotification(variables.data, variables.token),
     onSuccess: (data, variables, context) => {
       if (onSuccessOverride) {
         onSuccessOverride(data, variables, context);
@@ -53,4 +55,4 @@ export const useNotificationList = (props: useNotificationProps) => {
   });
 };
 
-export default useNotificationList;
+export default useNotificationToggle;
