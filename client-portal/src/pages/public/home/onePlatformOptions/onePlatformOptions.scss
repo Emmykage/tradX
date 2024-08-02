@@ -8,7 +8,7 @@
     color: white;
     margin-left: auto;
     margin-right: auto;
-
+  
     h2{
         margin-top: 6rem;
         font-family: 'poppins','sans-serif';
@@ -19,7 +19,6 @@
         font-family: 'poppins','sans-serif';
         max-width: 70%;
         font-size: 18px;
-        color: #999999;
     }
     .platformOptionsListContainer{
         margin-top: 1rem;
@@ -46,23 +45,37 @@
         font-size: 13px;
         color: white;
     }
-    .asset-table-container {
+    .assetTableContainer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      .asset-table-container {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 1rem;
+        
         color: white;
-        background-color: #1a1a2e;
         border-radius: 8px;
-      
-        .asset-table-header,
+        @media (max-width: 768px) {
+          padding: 1rem 0rem;
+        }
+        .asset-table-header{
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr 1fr;
+          align-items: center;
+          padding: 1rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
         .asset-table-row {
           display: grid;
           grid-template-columns: 1.5fr 1fr 1fr 1fr;
           align-items: center;
           padding: 1rem;
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      
+          
+         
           & > div {
             text-align: center;
           }
@@ -76,7 +89,14 @@
               margin-right: 0.5rem;
             }
           }
-      
+          .changeTableGraph{
+            background-color: #1fbf75;
+            img{
+              width: 80px;
+              margin-left: 0.6rem;
+            }
+          }
+          
           .sell,
           .buy,
           .change {
@@ -88,35 +108,33 @@
             }
           }
         }
-      
+        
         .asset-table-header {
           font-weight: bold;
-          background-color: #2e2e3e;
         }
       
         .asset-table-row {
           &:nth-child(even) {
-            background-color: #2e2e3e;
           }
         }
-      
-        @media (max-width: 768px) {
+        
+        @media (max-width: 730px) {
           .asset-table-header,
           .asset-table-row {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto auto auto auto;
-            gap: 0.5rem;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 0.2rem;
       
             .asset {
               justify-content: center;
             }
-      
+            
             .sell,
             .buy,
             .change {
               text-align: center;
             }
           }
+        }
         }
       }
       
