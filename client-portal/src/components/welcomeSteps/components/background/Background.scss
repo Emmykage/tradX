@@ -4,12 +4,16 @@
   .background_block {
     display: flex;
     width: 100%;
-    padding-top: 25px;
-    height: 77vh;
+    // padding-top: 25px;
+    height: 100%;
+    // background-color: red;
 
     @media (max-width: 834px) {
       .w_image_slide {
         width: 50%;
+      height: 70vh;
+
+        
       }
     }
 
@@ -19,7 +23,8 @@
 
     .w_image_slide {
       width: 65%;
-      height: 100%;
+      height: 70vh;
+      // background-color: yellow;
 
       .image {
         width: 100%;
@@ -42,6 +47,9 @@
 
       .right_side {
         width: 80%;
+        @media (max-width: 834px) {
+          width: 100%;
+        }
         .step_three {
           width: 100%;
           height: 100%;
@@ -51,23 +59,29 @@
           .line_block {
             position: absolute;
             position: relative;
-            top: 228px;
-            left: -5px;
+            top: 145px;
+            left: -4px;
             display: flex;
             align-items: center;
             // width: 140%;
 
             .vector_up {
               position: absolute;
-              bottom: 0px;
-              width: 90%;
+              bottom: 10px;
+              width: 55%;
+              @media (max-width: 834px) {
+                width: 100%;
+              }
             }
 
             .vector_down {
               position: absolute;
-              width: 90%;
+              width: 55%;
               left: 0;
               top: 10px;
+              @media (max-width: 834px) {
+                width: 100%;
+              }
             }
 
             .step_four_image {
@@ -77,11 +91,14 @@
             }
 
             .line {
-              width: 90%;
+              width: 70%;
               height: 0px;
               margin-left: -10px;
-              border: 2px solid #ffffff;
+              border-top: 1px solid #ffffff;
               transform: rotate(180deg);
+              @media (max-width: 834px) {
+                width: 100%;
+              }
             }
 
             .amount_romb {
@@ -109,7 +126,7 @@
           flex-direction: column;
           align-items: flex-start;
           padding: 0px;
-          gap: 120px;
+          gap: 60px;
           height: 100%;
           font-family: "Roboto";
           font-style: normal;
@@ -150,7 +167,7 @@
 
     @media (max-width: 834px) {
       width: 75vw;
-      bottom: 245px;
+      // bottom: 245px;
       font-size: 19.62px;
     }
 

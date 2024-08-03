@@ -29,7 +29,7 @@ const WelcomeHeader: FC<WelcomeHeaderProps> = ({ step, setStep }) => {
           <div className="header_image">
             <img src="/welcome-icons/step_two/usd_2.png" />
           </div>
-          <div>EUR/USD</div>
+          <h2>EUR/USD</h2>
           {step >= 7 && <div className="percent_text">82%</div>}
         </div>
       )}
@@ -44,9 +44,8 @@ const WelcomeHeader: FC<WelcomeHeaderProps> = ({ step, setStep }) => {
             <div className="triangle">
               <img src="/welcome-icons/triangle_little.svg" alt="" />
             </div>
-            <div>{t("toolTipContent")}</div>
+            <h2>{t("toolTipContent")}</h2>
             <MyButton
-                width={"128px"}
               color={"#172331"}
               background={"#FFFFFF"}
               text={"understand"}
@@ -57,9 +56,9 @@ const WelcomeHeader: FC<WelcomeHeaderProps> = ({ step, setStep }) => {
       )}
 
       <div className="header_right">
-        <div className="header_text">
+        <h2>
           {step <= STEPS_VALUE ? step : STEPS_VALUE}/{STEPS_VALUE}
-        </div>
+        </h2>
         <div className="line"></div>
         <div className="close_img">
           <img src="welcome-icons/close_grey.svg" />

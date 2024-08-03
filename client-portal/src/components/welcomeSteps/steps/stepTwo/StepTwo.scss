@@ -5,9 +5,9 @@
   justify-content: space-between;
   gap: 20px;
   height: 100%;
-  padding-top: 80px;
+  // padding-top: 80px;
 
-  .w_background {
+  .stepTwoW_background {
     width: 80%;
     height: 80%;
     position: absolute;
@@ -21,36 +21,44 @@
     }
   }
 
-  .items {
+  .stepTwoItems {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 20px;
     z-index: 100;
-    padding-bottom: 150px;
+    max-width: 85%;
+    margin: auto;
+    @media screen and (max-width: 730px) {
+      max-width: 100%;
+   }
 
-    .item {
+    .setpTwoItemCard {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 23.2137px 27.7067px 23.2137px 29.0684px;
-      gap: 15px;
+      gap: 10px;
       background: linear-gradient(
         180deg,
         #1b1d21 0%,
         rgba(27, 29, 33, 0) 128.91%
       );
       border-radius: 14.9766px;
-
       font-family: "Roboto";
       font-style: normal;
       font-weight: 500;
-      font-size: 39.978px;
+      font-size: 32px;
       color: #ffffff;
+      
+
+      h2{
+        font-size: 20px;
+      }
 
       .image {
-        min-height: 38px;
+        max-height: 38px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -58,28 +66,38 @@
     }
   }
 
-  .main_info {
+  .stepTwomain_info {
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 100;
+    color: white;
+    margin-top: 4rem;
+    max-width: 70%;
+    text-align: center;
+    @media screen and (max-width: 730px) {
+      max-width: 95%;
+   }
+    h2{
+      font-weight: 500;
+      font-family: "Poppins", sans-serif;
+      font-size: 17px;
 
-    .text {
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 21px;
-      color: #ffffff;
-      max-width: 70%;
-      text-align: center;
     }
+    .stepTwoButton{
+      margin-top: 1rem;
+      @media screen and (max-width: 730px) {
+        margin-bottom: 2rem;
+     }
+    }
+    
   }
 }
 
 @media screen and (max-width: 834px) {
   .welcomeStepTwo {
-    .items {
-      .item {
+    .stepTwoItems {
+      .setpTwoItemCard {
         padding: 21.271px 25.3879px 21.271px 26.8947px;
         gap: 6.86px;
         font-size: 36.63px;
@@ -90,17 +108,17 @@
 
 @media screen and (max-width: 428px) {
   .welcomeStepTwo {
-    .main_info {
-      .text {
+    .stepTwomain_info  {
+      h2 {
         font-size: 13.19px;
       }
     }
 
-    .items {
+    .stepTwoItems {
       gap: 15px;
-      padding-bottom: 100px;
+      // padding-bottom: 100px;
 
-      .item {
+      .setpTwoItemCard {
         font-size: 19px;
         padding: 11.0989px 13.2471px 11.0989px 13.8982px;
       }

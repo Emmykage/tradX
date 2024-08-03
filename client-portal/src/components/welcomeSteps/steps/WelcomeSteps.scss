@@ -42,7 +42,6 @@
     z-index: 1000;
     height: 100%;
 
-    min-height: 100vh;
     // gap: 20px;
     display: flex;
     flex-direction: column;
@@ -72,4 +71,19 @@
   }
 }
 
+
+
+// common styling for the buttons
+
+.stepButton{
+  padding: 0.8rem 2.5rem;
+  border-radius: 0.6rem;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  @media screen and (max-width: 730px) {
+      font-size: 16px;
+      padding: 0.6rem 2rem;
+   }
+}
 

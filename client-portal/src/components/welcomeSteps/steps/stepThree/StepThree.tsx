@@ -21,9 +21,9 @@ const StepThree: FC<StepThreeProps> = ({ setStep, step }) => {
       <div className="background">
         <Background step={step} />
       </div>
-      <div className="info">
-        <div className="text">{t("walkthroughChartsSubText")}</div>
-        <div className="button">
+      <div className="stepThreeInfo">
+        <h2>{t("walkthroughChartsSubText")}</h2>
+        <div className="stepThreeButton">
           <MyButton text="next" handleClick={handleClick} />
         </div>
       </div>

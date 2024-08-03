@@ -1,43 +1,29 @@
-.welcomeStepThree {
-  width: 100%;
+.stepThreeInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  color: white;
+  position: absolute;
+  bottom: 5%;
+  margin-left: 15%;
+  // margin-top: 4rem;
+  max-width: 70%;
+  text-align: center;
+  @media screen and (max-width: 730px) {
+    max-width: 95%;
+    margin-left: 3%;
+ }
+  h2{
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
 
-  .info {
-    margin-top: -250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-
-    .text {
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 21px;
-      color: #ffffff;
-      max-width: 70%;
-      text-align: center;
-      z-index: 101;
-      max-width: 50%;
-    }
   }
-}
-
-
-@media (max-width: 834px) {
-  .welcomeStepThree {
-    .info {
-        margin-top: 70px;
-    }
-  }
-}
-
-@media screen and (max-width: 428px) {
-  .welcomeStepThree {
-    .info {
-      .text {
-        font-size: 13.19px;
-      }
-    }
+  .stepThreeButton{
+    margin-top: 1rem;
+    @media screen and (max-width: 730px) {
+      margin-bottom: 2rem;
+   }
   }
 }

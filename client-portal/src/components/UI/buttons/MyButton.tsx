@@ -21,7 +21,7 @@ const MyButton: FC<MyButtonProps> = ({ background, width, color, text, handleCli
           color: color ? color : "#ffffff",
           width: width ? width : "100%",
       }}
-      className="button"
+      className="stepButton"
     >
       {t(text)}
     </button>

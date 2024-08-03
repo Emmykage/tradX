@@ -17,23 +17,21 @@ const StepTwo: FC<StepTwoProps> = ({ setStep }) => {
 
   return (
     <div className="welcomeStepTwo">
-      <div className="w_background">
+      <div className="stepTwoW_background">
         <img src="welcome-icons/welcome_step_two_background.png" />
       </div>
-      <div className="items">
+      <div className="stepTwoItems">
         {data.assets &&
           data.assets.map((item, index) => (
-            <div className="item" key={index + item.name}>
-              <div className="image">
+            <div className="setpTwoItemCard" key={index + item.name}>
                 <img src={item.image} alt="" />
-              </div>
-              <div>{item.name}</div>
+              <h2>{item.name}</h2>
             </div>
           ))}
       </div>
-      <div className="main_info">
-        <div className="text">{t("walkthroughStocksSubText")}</div>
-        <div className="button">
+      <div className="stepTwomain_info">
+        <h2>{t("walkthroughStocksSubText")}</h2>
+        <div className="stepTwoButton">
           <MyButton text="next" handleClick={handleClick} />
         </div>
       </div>

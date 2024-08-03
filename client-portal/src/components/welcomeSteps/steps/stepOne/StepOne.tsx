@@ -15,7 +15,7 @@ const StepOne: FC<StepOneProps> = ({ setStep }) => {
   };
 
   return (
-    <div className="step">
+    <div className="stepOneContainer">
         <img src="welcome-icons/big_like.png" />
           <div className="stepOneHeader">
               <h2>{t("welcome")}</h2>
