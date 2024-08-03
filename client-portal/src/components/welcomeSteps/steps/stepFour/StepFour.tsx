@@ -21,9 +21,9 @@ const StepFour: FC<StepFourProps> = ({ setStep, step }) => {
       <div className="background">
         <Background step={step} />
       </div>
-      <div className="info">
-        <div className="text">{t("walkthroughForeCastSubText")}</div>
-        <div className="button">
+      <div className="stepBottomInfo">
+        <h2>{t("walkthroughForeCastSubText")}</h2>
+        <div className="stepBottomButton">
           <MyButton text="next" handleClick={handleClick} />
         </div>
       </div>

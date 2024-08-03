@@ -21,13 +21,14 @@ const StepFive: FC<StepFiveProps> = ({ setStep, step }) => {
       <div className="background">
         <Background step={step} />
       </div>
-      <div className="info">
-        <div className="text">{t("walkthroughFixedDurationOffer")}</div>
-        <div className="button">
+      <div className="stepBottomInfo">
+        <h2>{t("walkthroughFixedDurationOffer")}</h2>
+        <div className="stepBottomButton">
           <MyButton text="next" handleClick={handleClick} />
         </div>
       </div>
     </div>
+    
   );
 };
 

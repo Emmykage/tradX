@@ -1,6 +1,11 @@
 .lastStepContainer{
     background-color: #0B1118;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
     display: flex;
+    z-index: 100;
     justify-content: center;
     align-items: center;
     height: 100vh;

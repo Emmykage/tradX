@@ -1,6 +1,8 @@
 import "./Background.scss";
 import { FC, useEffect, useState } from "react";
 
+
+
 const amounts = ["1.174", "1.172", "1.170", "1.168", "1.166", "1.164"];
 const times = ["17:52", "17:52:30", "17:53", "17:53:30", "17:54"];
 
@@ -51,14 +53,17 @@ const Background: FC<BackgroundProps> = ({ step }) => {
           <img
             className="image"
             src="welcome-icons/slide_main.png"
-            srcSet="
-      welcome-icons/slide_main_mobile.png 428w,
-      welcome-icons/slide_main_tablet.png 834w,
-      welcome-icons/slide_main.png 1200w
-    "
+          //   srcSet="
+          //   welcome-icons/slide_main_mobile.png 428w,
+          //   welcome-icons/slide_main_tablet.png 834w,
+          //   welcome-icons/slide_main.png 1200w
+          // " 
+          //  sizes="(max-width: 428px) 100vw, (max-width: 834px) 834px, 1200px"
             alt=""
           />
         </div>
+
+       
 
         <div className="b_right_side">
           <div className="right_side">

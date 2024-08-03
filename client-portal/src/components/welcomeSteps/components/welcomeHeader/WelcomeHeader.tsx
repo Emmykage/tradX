@@ -39,7 +39,7 @@ const WelcomeHeader: FC<WelcomeHeaderProps> = ({ step, setStep }) => {
           <div className="header_image">
             <img src="/welcome-icons/step_two/usd_2.png"/>
           </div>
-          <div>EUR/USD</div>
+          <h2>EUR/USD</h2>
           <div className="info_block">
             <div className="triangle">
               <img src="/welcome-icons/triangle_little.svg" alt="" />

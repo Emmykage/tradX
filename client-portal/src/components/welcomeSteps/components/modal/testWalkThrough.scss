@@ -6,13 +6,28 @@
   justify-content: center;
   align-items: center;
   gap: 4rem;
+  @media screen and (max-width: 830px) {
+    width: 100%;
+ }
 
   .walkThroughSidbarContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 5px;
-
+    .walkThroughSidbarTwoBlocks{
+     
+      
+      @media screen and (max-width: 830px) {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 1rem;
+        flex-direction: row;
+     }
+    }
+    
+    
     .walkthroughInputContent {
       display: flex;
       flex-direction: column;
@@ -46,12 +61,10 @@
     }
 
     .walkThroughButtonsContainer {
-      // background-color: red;
       display: flex;
       gap: 0.4rem;
       margin-top: 5px;
       .walkThroughButtons {
-        background-color: #0b1118;
         width: 100%;
         button {
           background-color: #283645;
@@ -62,98 +75,141 @@
       }
     }
   }
-  .walkThroughupNdown {
-    margin-top: 10px;
-    button {
-      display: flex;
-      width: 100%;
-      background-color: #283645;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 24px;
-      border-radius: 10px;
-      &:disabled {
-        .walkThroughupNdownTitle {
-          color: #ffffff5e;
-        }
-      }
-      .walkThroughupNdownTitle {
-        color: white;
+  .bottomButtonNDownContainer{
+    display: flex;
+    width: 100%;
+   .walkThroughSidbarUpDown{
+  
+    display: flex;
+    width: 100%;
+    flex-direction: column;
 
-        h2 {
-          font-weight: 500;
-          font-size: 16px;
+    @media screen and (max-width: 830px) {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           flex-direction: row;
+           gap: 2rem;
+    }
+    .walkThroughupNdown {
+      margin-top: 10px;
+      @media screen and (max-width: 830px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+ }
+      button {
+        display: flex;
+        width: 100%;
+        background-color: #283645;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+        border-radius: 10px;
+        
+        
+      
+        &:disabled {
+          .walkThroughupNdownTitle {
+            color: #ffffff5e;
+          }
         }
-        span {
-          font-size: 11px;
-          margin-top: 2px;
+        .walkThroughupNdownTitle {
+          color: white;
+          
+          h2 {
+            font-weight: 500;
+            font-size: 16px;
+          }
+          span {
+            font-size: 11px;
+            margin-top: 2px;
         }
       }
       .walkThroughBUttonIcon {
         width: 20px;
       }
     }
+    }
   }
 }
+}
+
+
+
+
+
 
 // tool tip custom css
 
-.walkthroughCustomTooltip {
-  .ant-tooltip-inner {
-    font-size: 16px;
-    font-weight: 400;
-    width: 19.6875rem;
-    padding: 1.25rem;
-    line-height: 1.6875rem;
+// .walkthroughCustomTooltip {
+//   .ant-tooltip-inner {
+//     font-size: 16px;
+//     font-weight: 400;
+//     // width: 19.6875rem;
+//     padding: 1.25rem;
+//     line-height: 1.6875rem;
 
-    @media (max-width: 991px) {
-      font-size: 1.125rem;
-      width: 18.125rem;
-    }
+//     @media (max-width: 991px) {
+//       font-size: 1.125rem;
+//       width: 18.125rem;
+//     }
 
-    @media (max-width: 834px) {
-        padding-top: 200px;
-    }
-  }
-}
+//     @media (max-width: 834px) {
+//         padding-top: 200px;
+//     }
+//   }
+// }
 
-@media (max-width: 834px) {
-  .testContainer {
-    width: 100%;
-    z-index: 1000;
+// @media (max-width: 834px) {
+//   .testContainer {
+//     width: 100%;
+//     z-index: 1000;
+//     bottom: 0;
+//     @media (max-width: 834px) {
+//       width: auto;
+//   }
 
-    .walkThroughSidbarContainer {
-      .walkThroughSidbarTwoBlocks {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
+//     .walkThroughSidbarContainer {
+//       .walkThroughSidbarTwoBlocks {
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         gap: 0px;
 
-        .walkThroughSidbarItems {
-          width: 49%;
-        }
-      }
+//         .walkThroughSidbarItems {
+//           width: 49%;
+//         }
+//       }
 
-      .walkthroughInputContent {
-        display: flex;
-        flex-direction: column;
-      }
+//       .walkthroughInputContent {
+//         display: flex;
+//         flex-direction: column;
+//       }
 
-      .walkThroughButtonsContainer {
+//       .walkThroughButtonsContainer {
 
-        .walkThroughButtons {
-            width: 50%;
-        }
-      }
+//         .walkThroughButtons {
+//             width: 50%;
+//         }
+//       }
 
-      .walkThroughSidbarUpDown {
-        display: flex;
-        gap: 10px;
 
-        .walkThroughupNdown {
-          width: 50%;
-        }
-      }
-    }
-  }
-}
+//       .walkThroughSidbarUpDown {
+//         display: flex;
+//         gap: 10px;
+
+//         .walkThroughupNdown {
+//           width: 50%;
+//         }
+//         .walkThroughupNdown{
+//           // background-color: red;
+//           button{
+//             // background-color: pink;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

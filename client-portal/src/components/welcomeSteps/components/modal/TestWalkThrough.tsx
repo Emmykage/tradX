@@ -50,13 +50,15 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep }) => {
       <div className="walkThroughSidbarContainer">
         <div className="walkThroughSidbarTwoBlocks">
           <div className="walkThroughSidbarItems">
+            <div  className="sidebarUpperInput">
+
             <Tooltip
               rootClassName="walkthroughTooltip amountTooltip"
               placement={getWidthStyle()}
               title="Set the investment amount at $100. Don’t worry, this is training money."
               color="#1973FA"
               open={step == 7}
-            >
+              >
               <div
                 className="walkthroughInputContent"
                 style={{ backgroundColor: "#283645" }}
@@ -119,8 +121,10 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep }) => {
                   <PlusIcon />
                 </button>
               </div>
+                      </div>
             </div>
           </div>
+          <div className="sidebarLowerInput">
 
           <div className="walkThroughSidbarItems">
             <Tooltip
@@ -129,7 +133,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep }) => {
               title="Select 1 minute as the duration of the trade"
               color="#1973FA"
               open={step == 8}
-            >
+              >
               <div className="walkthroughInputContent">
                 <label htmlFor="amount">Duration</label>
                 <input type="text" value={`${tradeForm.duration} min`} />
@@ -141,7 +145,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep }) => {
                   style={{ backgroundColor: `${step === 8 ? "#0094FF" : ""}` }}
                   onClick={() => {
                     console.log(tradeForm.duration);
-
+                    
                     if (step == 8) {
                       if (tradeForm.duration - 1 == 1) {
                         setStep((prevStep) => prevStep + 1);
@@ -168,15 +172,15 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep }) => {
               <div className="walkThroughButtons">
                 <button
                 // onClick={() => {
-                //   if (step === 8) {
-                //     setFormData((prevDuration) => {
-                //       if (
-                //         prevDuration.duration !== undefined &&
-                //         prevDuration.duration > 0
-                //       ) {
-                //         return {
-                //           ...prevDuration,
-                //           duration: prevDuration.duration + 1,
+                  //   if (step === 8) {
+                    //     setFormData((prevDuration) => {
+                      //       if (
+                        //         prevDuration.duration !== undefined &&
+                        //         prevDuration.duration > 0
+                        //       ) {
+                          //         return {
+                            //           ...prevDuration,
+                            //           duration: prevDuration.duration + 1,
                 //         };
                 //       }
                 //       return prevDuration;
@@ -190,16 +194,21 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep }) => {
             </div>
           </div>
         </div>
+                </div>
+
+                <div className="bottomButtonNDownContainer">
+
 
         <div className="walkThroughSidbarUpDown">
+            <div className="walkThroughupNdown">
           <Tooltip
             rootClassName="walkthroughTooltip amountTooltip"
             placement={getWidthDownStyle()}
             title="Look at the chart and decide where it will go next: Up or Down"
             color="#1973FA"
+            
             open={step == 9}
           >
-            <div className="walkThroughupNdown">
               <button
                 disabled={step !== 9 && step !== 10 && step !== 11}
                 style={{
@@ -225,12 +234,12 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep }) => {
                       step !== 9 && step !== 10 && step !== 11
                         ? " #ffffff5e"
                         : " #ffffff"
-                    }
+                      }
                   />
                 </div>
               </button>
-            </div>
           </Tooltip>
+            </div>
           <div className="walkThroughupNdown">
             <button
               disabled={step !== 9 && step !== 10 && step !== 11}
@@ -248,12 +257,13 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep }) => {
                 <ArrowDownRightIconColor
                   color={
                     step !== 9 && step !== 10 && step !== 11
-                      ? " #ffffff5e"
+                    ? " #ffffff5e"
                       : " #ffffff"
-                  }
-                />
+                    }
+                    />
               </div>
             </button>
+          </div>
           </div>
         </div>
       </div>

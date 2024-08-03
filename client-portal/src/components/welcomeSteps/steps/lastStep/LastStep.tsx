@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './lastStep.scss'
 
 const LastStep = () => {
@@ -10,7 +11,9 @@ const LastStep = () => {
         </div>
         <div className='lastStepModalButtonContainer'>
             <button className='lastStepCancelButton'>Cancel</button>
+            <Link to={'/platform'}>
             <button className='lastStepFinishButton'>Finish</button>
+            </Link>
         </div>
        </div>
     </div>

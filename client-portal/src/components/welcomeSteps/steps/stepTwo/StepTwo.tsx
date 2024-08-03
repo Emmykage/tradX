@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { FC } from "react";
 import data from "./data.json";
 
+import SecondStepIcon from '../../../../../public/welcome-icons/welcome_step_two_background.png'
+
 interface StepTwoProps {
   setStep: (step: number | ((prevStep: number) => number)) => void;
 }
@@ -18,7 +20,7 @@ const StepTwo: FC<StepTwoProps> = ({ setStep }) => {
   return (
     <div className="welcomeStepTwo">
       <div className="stepTwoW_background">
-        <img src="welcome-icons/welcome_step_two_background.png" />
+        <img src={SecondStepIcon} />
       </div>
       <div className="stepTwoItems">
         {data.assets &&

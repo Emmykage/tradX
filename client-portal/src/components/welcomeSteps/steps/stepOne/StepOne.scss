@@ -8,8 +8,10 @@
 
   img{
     width: 210px;
+    margin-top: 2%;
     @media screen and (max-width: 730px) {
       width: 170px;
+      margin-top: 20%;
    }
   }
   .stepOneHeader{
@@ -29,6 +31,9 @@
       margin-top: 1rem;
       text-align: center;
       font-family: "Poppins", sans-serif;
+      @media screen and (max-width: 730px) {
+        max-width: 80%;
+     }
 
     }
     .stepOneButton{

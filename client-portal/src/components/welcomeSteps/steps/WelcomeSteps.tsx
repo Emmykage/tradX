@@ -15,12 +15,14 @@ import WelcomeHeader from "../components/welcomeHeader/WelcomeHeader.tsx";
 import StepEleven from "./stepEleven/StepEleven.tsx";
 import StepTen from "./stepTen/StepTen.tsx";
 import StepOne from './stepOne/StepOne.tsx'
+import CountDown from "components/countDown/CountDown.tsx";
+import LastStep from "./lastStep/LastStep.tsx";
 
 const WelcomeSteps = () => {
   const { t } = useTranslation();
   const [time, setTime] = useState(20);
   const [displayTimer, setDisplayTimer] = useState(true);
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(11);
   const [cookies, setCookie] = useCookies(["step", "access_token"]);
 
   const dispatch = useAppDispatch();
@@ -76,6 +78,8 @@ const WelcomeSteps = () => {
         return <StepTen setStep={setStep} step={step} />;
       case 11:
         return <StepEleven handleClick={onSkipWalkthrough} setStep={setStep} step={step} />;
+      case 12:
+        return <LastStep/>;
       default:
         return <StepOne setStep={setStep} />;
     }
@@ -96,11 +100,19 @@ const WelcomeSteps = () => {
   //   }
   // }, [displayTimer, time]);
 
+  useEffect(()=>{
+    setTimeout(() => {
+      if(step === 10){
+        setStep(11)
+      }
+    }, 60000);
+  },[step])
   return (
     <div className="welcomeSteps">
       {step === 10 && (
         <div className="info">
-          <div className="text">{t("walkthroughChooseTrade", {time})}</div>
+          <CountDown time={1} color="white"/>
+          
         </div>
       )}
       {step > 2 && (
@@ -108,11 +120,11 @@ const WelcomeSteps = () => {
           <img
             className="image"
             src="welcome-icons/w_backgroung.png"
-            srcSet="
-      welcome-icons/w_backgroung_mobile.png 428w,
-      welcome-icons/w_backgroung_tablet.png 834w,
-      welcome-icons/w_backgroung.png 1200w
-    "
+    //         srcSet="
+    //   welcome-icons/w_backgroung_mobile.png 428w,
+    //   welcome-icons/w_backgroung_tablet.png 834w,
+    //   welcome-icons/w_backgroung.png 1200w
+    // "
             alt=""
           />
         </div>

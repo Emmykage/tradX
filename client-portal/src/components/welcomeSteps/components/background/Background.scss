@@ -1,6 +1,6 @@
 .w_background {
   // width: 100%;
-
+  overflow: hidden;
   .background_block {
     display: flex;
     width: 100%;
@@ -10,8 +10,14 @@
 
     @media (max-width: 834px) {
       .w_image_slide {
-        width: 50%;
-      height: 70vh;
+        width: 700vw;
+       height: 70vh;
+       margin-left: -30%;
+      img{
+      width: 80vw !important;
+    
+       
+      }
 
         
       }
@@ -23,8 +29,16 @@
 
     .w_image_slide {
       width: 65%;
-      height: 70vh;
-      // background-color: yellow;
+      height: 100%;
+      @media (max-width: 834px) {
+          width: 100vw;
+         height: 70vh;
+         margin-left: -30%;
+        img{
+        width: 100vw !important;
+        }
+      }
+  
 
       .image {
         width: 100%;
@@ -38,7 +52,7 @@
       justify-content: space-between;
 
       @media (max-width: 834px) {
-        width: 60%;
+        width: 20%;
       }
 
       .d_none {
@@ -59,11 +73,13 @@
           .line_block {
             position: absolute;
             position: relative;
-            top: 145px;
-            left: -4px;
+            top: 160px;
+            left: -5px;
             display: flex;
             align-items: center;
-            // width: 140%;
+            @media (max-width: 834px) {
+              width: 140%;
+            }
 
             .vector_up {
               position: absolute;
@@ -77,8 +93,8 @@
             .vector_down {
               position: absolute;
               width: 55%;
-              left: 0;
-              top: 10px;
+              left: 5px;
+              top: 15px;
               @media (max-width: 834px) {
                 width: 100%;
               }
@@ -131,7 +147,7 @@
           font-family: "Roboto";
           font-style: normal;
           font-weight: 400;
-          font-size: 24px;
+          font-size: 17px;
           line-height: 28px;
           color: rgba(255, 255, 255, 0.3);
 
