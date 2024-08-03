@@ -21,7 +21,11 @@
       width: 65%;
     }
     @media (max-width: 9005px) {
-      width: 60%;
+      width: 65%;
+    }
+    .asset-pair-container{
+      display: flex;
+      gap: 8px;
     }
    
   .conversionTab {
@@ -29,8 +33,10 @@
     gap: 0.81rem;
     align-items: center;
     height: 2.813rem;
-    padding: 0 1.25rem;
+    padding: 0 0.6rem;
     cursor: pointer;
+    border-radius: 0.313rem;
+    border: 0.0625rem solid rgba(32, 92, 146, 0.22);
     @media (max-width: 767px) {
       width: 100%;
       margin-top: 0.625rem;
@@ -49,6 +55,8 @@
         span {
           color: #fff;
         }
+        font-size: 0.8125rem;
+        line-height: 1rem;
         span.percent {
           background-color: #0094ff;
           color: #fff;
@@ -61,7 +69,6 @@
   }
   .conversionTab:hover {
     background: #5e697852;
-    border-radius: 0.313rem;
   }
 }
   .payProfileTab {

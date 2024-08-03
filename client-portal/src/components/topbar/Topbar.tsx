@@ -99,43 +99,44 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
     <div className="topbarContainer" id="topbarContainer" style={style}>
       <div className="conversionDiv">
         <ArrowsSlider>
-        
-        {assetPairs.map(assetPair => (
-          <div
-            key={assetPair.name} // Ensure to add a unique key for list rendering
-            className="conversionTab"
-            onClick={() => {
-              setIsDrawerOpen(
-                isDrawerOpen && currentDrawer === "assets" ? false : true
-              );
-              setCurrentDrawer("assets");
-            }}
-          >
-            <div className="convImg">
-              <img
-                src={assetPair.image}
-                alt="conv"
-              />
-            </div>
-            <div className="convDetails">
-              <div className="topConv">
-                <span className="currency">{assetPair.value}</span>
-                <span className="percent">{assetPair.profit}</span>
+        <div className="asset-pair-container">
+          {assetPairs.map(assetPair => (
+            <div
+              key={assetPair.name} // Ensure to add a unique key for list rendering
+              className="conversionTab"
+              onClick={() => {
+                setIsDrawerOpen(
+                  isDrawerOpen && currentDrawer === "assets" ? false : true
+                );
+                setCurrentDrawer("assets");
+              }}
+            >
+              <div className="convImg">
+                <img
+                  src={assetPair.image}
+                  alt="conv"
+                />
               </div>
+              <div className="convDetails">
+                <div className="topConv">
+                  <span className="currency">{assetPair.value}</span>
+                  <span className="percent">{assetPair.profit}</span>
+                </div>
+              </div>
+              {assetPairs.length > 1 && (
+                <span
+                  className="close-btn"
+                  onClick={(event) => {
+                    event.stopPropagation(); // Prevents the click event from bubbling up
+                    dispatch(removeAssetPair(assetPair));
+                  }}
+                >
+                  <CloseIconsm />
+                </span>
+              )}
             </div>
-            {assetPairs.length > 1 && (
-              <span
-                className="close-btn"
-                onClick={(event) => {
-                  event.stopPropagation(); // Prevents the click event from bubbling up
-                  dispatch(removeAssetPair(assetPair));
-                }}
-              >
-                <CloseIconsm />
-              </span>
-            )}
-          </div>
-))}
+          ))}
+        </div>
 
 
       </ArrowsSlider>
