@@ -17,12 +17,14 @@ import StepTen from "./stepTen/StepTen.tsx";
 import StepOne from './stepOne/StepOne.tsx'
 import CountDown from "components/countDown/CountDown.tsx";
 import LastStep from "./lastStep/LastStep.tsx";
+import StepElevenDown from "./stepElevenDown/StepElevenDown.tsx";
 
 const WelcomeSteps = () => {
   const { t } = useTranslation();
   const [time, setTime] = useState(20);
   const [displayTimer, setDisplayTimer] = useState(true);
   const [step, setStep] = useState<number>(11);
+  const [trade,setTrade] = useState<string>('down')
   const [cookies, setCookie] = useCookies(["step", "access_token"]);
 
   const dispatch = useAppDispatch();
@@ -73,11 +75,18 @@ const WelcomeSteps = () => {
       case 8:
         return <StepSeven setStep={setStep} step={step} />;
       case 9:
-        return <StepSeven setStep={setStep} step={step} />;
+        return <StepSeven setStep={setStep} step={step} trade={trade} setTrade={setTrade} />;
       case 10:
-        return <StepTen setStep={setStep} step={step} />;
+        return  <StepTen setStep={setStep} step={step} />;
       case 11:
-        return <StepEleven handleClick={onSkipWalkthrough} setStep={setStep} step={step} />;
+        if(trade && trade == 'up'){
+          console.log('down');
+          return  <StepEleven handleClick={onSkipWalkthrough} setStep={setStep} step={step} />;
+        }else if(trade && trade == 'down'){
+          console.log('down ');
+         return  <StepElevenDown handleClick={onSkipWalkthrough} setStep={setStep} step={step}/>;
+        }
+        
       case 12:
         return <LastStep/>;
       default:

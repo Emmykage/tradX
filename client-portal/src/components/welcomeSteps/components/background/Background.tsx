@@ -1,3 +1,5 @@
+import CustomMarkerOne from "../customMarkerOne/CustomMarkerOne";
+import CustomMarkerTwo from "../customMarkerTwo/CustomMarkerTwo";
 import "./Background.scss";
 import { FC, useEffect, useState } from "react";
 
@@ -117,12 +119,26 @@ const Background: FC<BackgroundProps> = ({ step }) => {
               </div>
             )}
 
-            {step >= 6 && (
+            {  step >= 6 && step !== 11 && (
               <div className="step_three">
                 <div className="line_block" style={{ width: getLineBlockWidthStyle() }}>
                   <img src="welcome-icons/romb.svg" />
                   <div className="line"></div>
                   <div className="amount_romb">1.1698</div>
+                </div>
+              </div>
+            )}
+
+            {step === 11 && (
+              <div className="step_eleven">
+                <div className="customMarkerOneWalkThrough">
+                   <CustomMarkerOne/>
+                </div>
+                <div className="customMarkerTwoWalkThrough">
+                   <span>+$85%</span>
+                </div>
+                <div className="customMarkerThreeWalkThrough">
+                   <CustomMarkerTwo/>
                 </div>
               </div>
             )}

@@ -8,6 +8,7 @@
     z-index: 100;
     justify-content: center;
     align-items: center;
+    animation: fadeIn 0.8s forwards;
     height: 100vh;
     @media screen and (max-width: 730px) {
         align-items: start;
@@ -18,7 +19,7 @@
         border-radius: 1rem;
         padding: 2.8rem 3.5rem;
         @media screen and (max-width: 730px) {
-           margin-top: 15%;
+           margin-top: 35%;
            max-width: 90%;
            padding: 1rem 1rem;
         }

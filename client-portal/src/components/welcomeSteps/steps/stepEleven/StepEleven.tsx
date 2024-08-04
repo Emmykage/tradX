@@ -1,8 +1,8 @@
 import { useTranslation, withTranslation} from "react-i18next";
 import TestWalkThrough from "components/welcomeSteps/components/modal/TestWalkThrough";
 import Background from "../../components/background/Background.tsx";
-import CountDown from "components/countDown/CountDown.tsx";
 import MyButton from "components/UI/buttons/MyButton.tsx";
+
 
 import './stepEleven.scss'
 

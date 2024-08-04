@@ -46,14 +46,15 @@
   
   .solid-line {
     width: 24rem;
-    
     background-color: #1FBF75;
     height: 1px;
     border: 0rem solid #1FBF75;
     position: absolute;
     top: 0.2005rem;
     left: 0.6rem;
-    
+    @media (max-width: 730px) {
+      width: 60px;
+    }
   }
   
   .dashed-line {

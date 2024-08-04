@@ -5,6 +5,7 @@
   justify-content: space-between;
   gap: 20px;
   height: 100%;
+  animation: slideInFromRight 0.9s forwards;
   // padding-top: 80px;
 
   .stepTwoW_background {
@@ -84,6 +85,8 @@
     }
     .stepTwoButton{
       margin-top: 1rem;
+      animation: buttonPulse 1s infinite;
+      transition: all 0.5s ease-in-out;
       @media screen and (max-width: 730px) {
         margin-bottom: 2rem;
      }

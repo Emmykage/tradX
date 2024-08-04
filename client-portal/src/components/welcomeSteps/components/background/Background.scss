@@ -1,6 +1,7 @@
 .w_background {
   // width: 100%;
   overflow: hidden;
+  animation: fadeIn 0.8s forwards;
   .background_block {
     display: flex;
     width: 100%;
@@ -11,13 +12,15 @@
     @media (max-width: 834px) {
       .w_image_slide {
         width: 700vw;
-       height: 70vh;
-       margin-left: -30%;
-      img{
-      width: 80vw !important;
-    
-       
-      }
+        height: 70vh;
+        margin-left: -30%;
+        @media (max-width: 428px) {
+          margin-left: -50%;
+        }
+        img{
+        width: 80vw !important;   
+        }
+      
 
         
       }
@@ -29,21 +32,25 @@
 
     .w_image_slide {
       width: 65%;
-      height: 100%;
+      height: 70%;
+      // background-color: yellow;
       @media (max-width: 834px) {
-          width: 100vw;
+        width: 100vw;
          height: 70vh;
          margin-left: -30%;
+         @media (max-width: 428px) {
+          margin-left: -40%;
+        }
         img{
         width: 100vw !important;
         }
       }
   
 
-      .image {
-        width: 100%;
-        height: 100%;
-      }
+     img{
+      width: 100%;
+      height: 80vh;
+     }
     }
 
     .b_right_side {
@@ -69,22 +76,24 @@
           height: 100%;
           position: relative;
           z-index: -1;
-
+          @media (max-width: 834px) {
+            width: 100px;
+          }
           .line_block {
             position: absolute;
             position: relative;
-            top: 160px;
-            left: -5px;
+            top: 180px;
+            left: -8px;
             display: flex;
             align-items: center;
             @media (max-width: 834px) {
-              width: 140%;
+              width: 90px
             }
 
             .vector_up {
               position: absolute;
               bottom: 10px;
-              width: 55%;
+              width: 59%;
               @media (max-width: 834px) {
                 width: 100%;
               }
@@ -92,7 +101,7 @@
 
             .vector_down {
               position: absolute;
-              width: 55%;
+              width: 59%;
               left: 5px;
               top: 15px;
               @media (max-width: 834px) {
@@ -173,18 +182,18 @@
     width: 85vw;
     padding: 0 30px;
     gap: 5px;
-    height: 28px;
+    // height: 28px;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 28px;
     color: rgba(255, 255, 255, 0.3);
 
     @media (max-width: 834px) {
       width: 75vw;
       // bottom: 245px;
-      font-size: 19.62px;
+      font-size: 17.62px;
     }
 
     @media (max-width: 428px) {
@@ -200,5 +209,42 @@
         }
       }
     }
+  }
+}
+
+
+.step_eleven{
+  overflow: hidden !important;
+
+  .customMarkerOneWalkThrough{
+    position: absolute;
+    top: 51%;
+    left: 43%;
+    @media (max-width: 834px) {
+     top: 34%;
+     left: 43%;
+    }
+  }
+  .customMarkerTwoWalkThrough{
+    span{
+      color: #1FBF75;
+    }
+    position: absolute;
+    top: 43%;
+    left: 45%;
+    @media (max-width: 834px) {
+      top: 30%;
+      left: 49%;
+     }
+  }
+  .customMarkerThreeWalkThrough{
+    position: absolute;
+    top: 42%;
+    left: 51.5%;
+    @media (max-width: 834px) {
+      top: 27%;
+      left: 59%;
+     }
+    
   }
 }

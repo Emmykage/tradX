@@ -1,11 +1,11 @@
 import './CustomMarkerOne.scss'
-const CustomMarkerOne = () => {
+const CustomMarkerOne:React.FC<{color?:string}> = ({color}) => {
   return (
     <div className='flex-container'>
-    <div className="indicator-container">
+    <div className="indicator-container" style={{borderColor:color}}>
       <div className="indicator-label-container">
-        <div className='indicator-label'>
-          <span className="label-text">$100</span>
+        <div className='indicator-label' style={{backgroundColor:color}}>
+          <span className="label-text" >$100</span>
           <div className='indicator-icon'>
             <svg width="22px" height="29px" viewBox="0 0 190.00 190.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" transform="rotate(0)">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -17,8 +17,8 @@ const CustomMarkerOne = () => {
           </div>
         </div>
       </div>
-      <div className="solid-line"></div>
-      <div className="dashed-line"></div>
+      <div className="solid-line" style={{backgroundColor:color}}></div>
+      <div className="dashed-line" style={{borderColor:color}}></div>
     </div>
   </div>
   )
