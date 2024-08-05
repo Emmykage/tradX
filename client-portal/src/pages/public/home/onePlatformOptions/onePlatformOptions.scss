@@ -19,6 +19,11 @@
         font-family: 'poppins','sans-serif';
         max-width: 70%;
         font-size: 18px;
+
+        @media (max-width: 730px) {
+          max-width: 100%;
+          font-size: 16px;
+        }
     }
     .platformOptionsListContainer{
         margin-top: 1rem;
@@ -50,6 +55,7 @@
       justify-content: center;
       align-items: center;
       width: 100%;
+      margin-top: 1rem;
       .asset-table-container {
         display: grid;
         grid-template-columns: 1fr;
@@ -90,10 +96,12 @@
             }
           }
           .changeTableGraph{
-            background-color: #1fbf75;
             img{
               width: 80px;
               margin-left: 0.6rem;
+              @media(max-width:730px){
+                margin-top: 0.7rem;
+              }
             }
           }
           
@@ -123,7 +131,6 @@
           .asset-table-row {
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 0.2rem;
-      
             .asset {
               justify-content: center;
             }

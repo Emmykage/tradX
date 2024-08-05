@@ -10,6 +10,11 @@
         font-size: 36px;
         color: white;
         font-weight: 500;
+
+        @media (max-width: 730px){
+            padding: 0rem 1rem;
+            font-size: 32px;
+        }
     }
     .leadPlatformCardContainer{
         display: flex ;

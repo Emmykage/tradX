@@ -75,7 +75,10 @@
             font-size: 36px;
             font-family: 'poppins','sans-serif';
             font-weight: 400;
-
+            @media (max-width: 730px){
+                padding: 0rem 1rem;
+                font-size: 32px;
+            }
         }
         .traderCards{
             display: flex;

@@ -5,6 +5,8 @@ import Landing from './landing/Landing'
 import LeadPlatform from './leadPlatform/LeadPlatform'
 import Navbar from './navbar/Navbar'
 import OnePlatformOptions from './onePlatformOptions/OnePlatformOptions'
+import OnePlatformSlider from './onePlatformSlider/OnePlatformSlider'
+import AboutUsSlider from './aboutUs/AboutUsSlider'
 
 const Home = () => {
   const [ipAddress, setIpAddress] = useState('');
@@ -55,11 +57,13 @@ const Home = () => {
   return (
     <div className='homeContainer'>
         <Navbar countryCode={countryCode} setCountryCode={setCountryCode} loading={loading}/>
-        <h1>{geoInfo.country}</h1>
+        {/* <h1>{geoInfo.country}</h1> */}
         <Landing/>
         <CheckCurrency/>
         <LeadPlatform/>
         <OnePlatformOptions/>
+        <OnePlatformSlider/>
+        <AboutUsSlider />
     </div>
   )
 }

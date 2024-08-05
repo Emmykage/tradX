@@ -6,19 +6,32 @@ import ENIcon from '../../../../assets/home/langicon.png'
 
 
 import { ArrowDownOS, MenuBar, MenuCloseIcon, SearchIcon } from 'assets/icons'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { localFlagHandler } from 'i18n/helpers'
 import { Spin } from 'antd'
 interface NavbarProps {
     countryCode: string;
     setCountryCode: (prevCountryCode:string)=>void;
-    loading: string;
+    loading: boolean;
 }
 const Navbar:React.FC<NavbarProps>= ({countryCode ,setCountryCode,loading}) => {
     const [toggleLanguageSelector,setToggleLanguageSelector] = useState(false)
     const [toggleMobileNav,setToggleMobileNav] = useState(false)
     console.log(localFlagHandler(countryCode.toLocaleLowerCase()))
     console.log(countryCode.toLocaleLowerCase());
+    const languageSelectorRef = useRef()
+    const handleClickOutside = (event) => {
+        if (languageSelectorRef.current && !languageSelectorRef.current?.contains(event.target)) {
+          setToggleLanguageSelector(false);
+        }
+      };
+    
+      useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+      }, []);
   return (
     <div className='navbarContainer'>
         {/* left side nav */}
@@ -42,7 +55,9 @@ const Navbar:React.FC<NavbarProps>= ({countryCode ,setCountryCode,loading}) => {
             {/* language selector */}
             <div className='languageSelectorContainer'>
                 {loading ? (
+                    <div>
                     <Spin/>
+                    </div>
                 ): (
                     <div className='languageButton' onClick={()=>setToggleLanguageSelector(!toggleLanguageSelector)}>
                     <img src={localFlagHandler(countryCode.toLocaleLowerCase())} alt="" />
@@ -51,24 +66,40 @@ const Navbar:React.FC<NavbarProps>= ({countryCode ,setCountryCode,loading}) => {
                 </div>
                 )}
                 
-                <div className={`languageDropDownMenu ${toggleLanguageSelector ? 'showLanguageDropDown': 'closeLanguageDropDown'}`}>
-                    <div className='languageValue'>
+                <div ref={languageSelectorRef} className={`languageDropDownMenu ${toggleLanguageSelector ? 'showLanguageDropDown': 'closeLanguageDropDown'}`}>
+                    <div className='languageValue' onClick={()=>{
+                        setCountryCode('EN')
+                        setToggleLanguageSelector(false)
+                        }}>
                     <img src={localFlagHandler('en')} alt="" />
                     <h2>English</h2> 
                     </div>
-                    <div className='languageValue'>
+                    <div className='languageValue' onClick={()=>{
+                        setCountryCode('ES')
+                        setToggleLanguageSelector(false)
+                        }}>
                     <img src={localFlagHandler('es')} alt="" />
                     <h2>Spanish</h2> 
                     </div>
-                    <div className='languageValue'>
-                    <img src={localFlagHandler('ja')} alt="" />
+                    <div className='languageValue' onClick={()=>{
+                        setCountryCode('JP')
+                        setToggleLanguageSelector(false)
+
+                    }}>
+                    <img src={localFlagHandler('jp')} alt="" />
                     <h2>Japanese</h2> 
                     </div>
-                    <div className='languageValue'>
+                    <div className='languageValue' onClick={()=>{
+                        setCountryCode('AR')
+                        setToggleLanguageSelector(false)
+                        }}>
                     <img src={localFlagHandler('ar')} alt="" />
                     <h2>Arabic</h2> 
                     </div>
-                    <div className='languageValue'>
+                    <div className='languageValue' onClick={()=>{
+                        setCountryCode('HI')
+                        setToggleLanguageSelector(false)
+                        }}>
                     <img src={localFlagHandler('hi')} alt="" />
                     <h2>India</h2> 
                     </div>
