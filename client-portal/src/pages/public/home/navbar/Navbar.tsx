@@ -1,13 +1,24 @@
 import './navbar.scss'
 import TradxLogo from '../../../../assets/home/tradxlogo.png'
-import LangIcon from '../../../../assets/home/langIcon.png'
+import ENIcon from '../../../../assets/home/langicon.png'
+
+
 
 
 import { ArrowDownOS, MenuBar, MenuCloseIcon, SearchIcon } from 'assets/icons'
 import { useState } from 'react'
-const Navbar = () => {
+import { localFlagHandler } from 'i18n/helpers'
+import { Spin } from 'antd'
+interface NavbarProps {
+    countryCode: string;
+    setCountryCode: (prevCountryCode:string)=>void;
+    loading: string;
+}
+const Navbar:React.FC<NavbarProps>= ({countryCode ,setCountryCode,loading}) => {
     const [toggleLanguageSelector,setToggleLanguageSelector] = useState(false)
     const [toggleMobileNav,setToggleMobileNav] = useState(false)
+    console.log(localFlagHandler(countryCode.toLocaleLowerCase()))
+    console.log(countryCode.toLocaleLowerCase());
   return (
     <div className='navbarContainer'>
         {/* left side nav */}
@@ -26,29 +37,40 @@ const Navbar = () => {
             <SearchIcon height="16" width="16"/>
             <input type="text" placeholder='Search'/>
             </div>
+
+           
             {/* language selector */}
             <div className='languageSelectorContainer'>
-                <div className='languageButton' onClick={()=>setToggleLanguageSelector(!toggleLanguageSelector)}>
-                    <img src={LangIcon} alt="" />
-                    <h2>En</h2>
+                {loading ? (
+                    <Spin/>
+                ): (
+                    <div className='languageButton' onClick={()=>setToggleLanguageSelector(!toggleLanguageSelector)}>
+                    <img src={localFlagHandler(countryCode.toLocaleLowerCase())} alt="" />
+                    <h2>{countryCode}</h2>
                     <ArrowDownOS height="15" width="10"/>
                 </div>
+                )}
+                
                 <div className={`languageDropDownMenu ${toggleLanguageSelector ? 'showLanguageDropDown': 'closeLanguageDropDown'}`}>
                     <div className='languageValue'>
-                    <img src={LangIcon} alt="" />
+                    <img src={localFlagHandler('en')} alt="" />
                     <h2>English</h2> 
                     </div>
                     <div className='languageValue'>
-                    <img src={LangIcon} alt="" />
-                    <h2>Spanich</h2> 
+                    <img src={localFlagHandler('es')} alt="" />
+                    <h2>Spanish</h2> 
                     </div>
                     <div className='languageValue'>
-                    <img src={LangIcon} alt="" />
+                    <img src={localFlagHandler('ja')} alt="" />
+                    <h2>Japanese</h2> 
+                    </div>
+                    <div className='languageValue'>
+                    <img src={localFlagHandler('ar')} alt="" />
                     <h2>Arabic</h2> 
                     </div>
                     <div className='languageValue'>
-                    <img src={LangIcon} alt="" />
-                    <h2>Mandarin</h2> 
+                    <img src={localFlagHandler('hi')} alt="" />
+                    <h2>India</h2> 
                     </div>
                 </div>
             </div>
@@ -79,25 +101,25 @@ const Navbar = () => {
             {/* language selector */}
             <div className='languageSelectorContainer'>
                 <div className='languageButton' onClick={()=>setToggleLanguageSelector(!toggleLanguageSelector)}>
-                    <img src={LangIcon} alt="" />
+                    <img src={ENIcon} alt="" />
                     <h2>En</h2>
                     <ArrowDownOS height="15" width="10"/>
                 </div>
                 <div className={`languageDropDownMenu ${toggleLanguageSelector ? 'showLanguageDropDown': 'closeLanguageDropDown'}`}>
                     <div className='languageValue'>
-                    <img src={LangIcon} alt="" />
+                    <img src={ENIcon} alt="" />
                     <h2>English</h2> 
                     </div>
                     <div className='languageValue'>
-                    <img src={LangIcon} alt="" />
+                    <img src={ENIcon} alt="" />
                     <h2>Spanich</h2> 
                     </div>
                     <div className='languageValue'>
-                    <img src={LangIcon} alt="" />
+                    <img src={ENIcon} alt="" />
                     <h2>Arabic</h2> 
                     </div>
                     <div className='languageValue'>
-                    <img src={LangIcon} alt="" />
+                    <img src={ENIcon} alt="" />
                     <h2>Mandarin</h2> 
                     </div>
                 </div>
