@@ -33,6 +33,7 @@
                 right: 55%;
                 bottom: 50%;
             }
+            
              .customMarkerTwoWalkThroughDown{
                 position: absolute;
                 right: 50%;
@@ -41,10 +42,31 @@
                    color: #FF0000;
                 }
             }
+            
              .customMarkerThreeWalkThroughDown{
                 position: absolute;
                 right: 0%;
                 bottom: -1%;
+            }
+
+            .customMarkerOneWalkThroughUp{
+                position: absolute;
+                right: 45%;
+                top: 20%;
+            }
+            
+            .customMarkerTwoWalkThroughUp{
+                position: absolute;
+                right: 38%;
+                top: 13%;
+                span{
+                   color: #1FBF75;
+                }
+            }
+            .customMarkerThreeWalkThroughUp{
+                position: absolute;
+                right: -2%;
+                top: 34%;
             }
              
             img{

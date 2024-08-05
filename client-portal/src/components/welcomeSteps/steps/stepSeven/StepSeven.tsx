@@ -13,9 +13,11 @@ const StepSeven: FC<StepSevenProps> = ({ step, setStep,trade,setTrade }) => {
   return (
     <div className="welcomeStepSeven">
       <Background step={step} />
+      <div className="modalSevenContainer">
 
       <div className="modal">
         <TestWalkThrough setStep={setStep} step={step} trade={trade} setTrade={setTrade} />
+      </div>
       </div>
     </div>
   );

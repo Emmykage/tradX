@@ -127,7 +127,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
         <div className="durationInputContainer">
         <Tooltip
               rootClassName="walkthroughTooltip amountTooltip"
-              placement={"left"}
+              placement={getWidthStyle()}
               title="Select 1 minute as the duration of the trade"
               color="#1973FA"
               open={step == 8}

@@ -15,9 +15,10 @@ const StepTen: React.FC<StepTenProps> = ({
   return (
   <div className="welcomeStepSeven">
     <Background step={step} />
-
+    <div className="modalSevenContainer">
     <div className="modal">
       <TestWalkThrough setStep={setStep} step={step}/>
+    </div>
     </div>
   </div>
 
