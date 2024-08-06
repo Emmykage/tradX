@@ -38,8 +38,9 @@ const ArrowButtonNext:React.FC<{onClick: any}>  = ({onClick }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2.2,
+    slidesToShow: 2.3,
     centerMode:true,
+    
     slidesToScroll: 1,
     prevArrow: <ArrowButtonPrevious onClick={onclick}  />,
     nextArrow: <ArrowButtonNext  onClick={onclick}/>,
@@ -47,7 +48,7 @@ const ArrowButtonNext:React.FC<{onClick: any}>  = ({onClick }) => {
       breakpoint: 600,
       settings: {
         dots: true,
-        centerMode:false,
+        centerMode: false,
         slidesToShow: 1,
         slidesToScroll:1,
         arrows:false,
@@ -130,12 +131,6 @@ const ArrowButtonNext:React.FC<{onClick: any}>  = ({onClick }) => {
                   </div>
                 </div>
             </div>
-          
-                
-           
-                
-           
-                
             </Slider>
                 </div>
     </div>

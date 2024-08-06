@@ -7,6 +7,8 @@ import Navbar from './navbar/Navbar'
 import OnePlatformOptions from './onePlatformOptions/OnePlatformOptions'
 import OnePlatformSlider from './onePlatformSlider/OnePlatformSlider'
 import AboutUsSlider from './aboutUs/AboutUsSlider'
+import ExecutiveBonuses from './executiveBounuses/ExecutiveBonuses'
+import Footer from './footer/Footer'
 
 const Home = () => {
   const [ipAddress, setIpAddress] = useState('');
@@ -64,6 +66,8 @@ const Home = () => {
         <OnePlatformOptions/>
         <OnePlatformSlider/>
         <AboutUsSlider />
+        <ExecutiveBonuses />
+        <Footer/>
     </div>
   )
 }

@@ -10,21 +10,24 @@
         font-size: 36px;
         color: white;
         font-weight: 500;
+        margin-bottom: 3rem;
+        text-align: center;
 
         @media (max-width: 730px){
             padding: 0rem 1rem;
             font-size: 32px;
+            margin-bottom: 1rem;
         }
     }
     .leadPlatformCardContainer{
         display: flex ;
         flex-wrap: wrap;
-        gap: 3rem;
+        gap: 2rem;
         justify-content: center;
         align-items: center;
         max-width: 85%;
        .leadPlatformCard{
-        margin-top: 3rem;
+        margin-top: 0rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
