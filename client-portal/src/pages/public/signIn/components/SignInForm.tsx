@@ -23,6 +23,7 @@ const SignInForm: React.FunctionComponent<SignInFormProps> = ({
       const expirationInSeconds = 270;
       setCookie("access_token", data.access, { maxAge: expirationInSeconds });
       setCookie("refresh_token", data.refresh);
+      // user.is_walkthrough_completed ? navigate("/welcome") : navigate("/platform");
       navigate("/platform");
     },
     onError: () => {},

@@ -25,6 +25,7 @@ import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
 import useInitializeData from "hooks/useInitializeData";
 import WalkThrough from "pages/private/platform/WalkThrough";
+import PrivateRoute from "utils/ProtectedRoute ";
 
 interface AppProps {}
 
@@ -64,7 +65,7 @@ const App: React.FunctionComponent<AppProps> = () => {
     <HashRouter>
       <Routes>
         {/* turned of the auth require */}
-        <Route element={<RequireAuth />}>
+        <Route element={<RequireAuth  />}>
           <Route path="/platform" element={<Platform />} />
           <Route path="transactions" element={<Transactions />} />
           {/* <Route path="/loan/get-loan" element={<GetLoan />} /> */}
@@ -77,7 +78,11 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
         <Route path="/password-reset" element={<ResetPassword />} />
+        {/* Private route using PrivateRoute component */}
+        <Route path="/" element={<PrivateRoute />}>
         <Route path="/welcome" element={<Welcome />} />
+        </Route>
+        
         {/* <Route path="/welcome" element={<WalkThrough tradeFormHeight={2} />} /> */}
         
       </Routes>

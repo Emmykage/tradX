@@ -77,6 +77,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   const isWalkthroughSkipped = user?.is_walkthrough_completed ?? true;
 
+  // useEffect(() => {
+  //   if (user?.is_walkthrough_completed) {
+  //     navigate('/welcome');
+  //   }
+  // }, [user, navigate]);
+
   useEffect(() => {
     setChartInitialData(initialData);
   }, []);
