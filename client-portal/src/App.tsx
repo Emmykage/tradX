@@ -24,6 +24,7 @@ import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
 import useInitializeData from "hooks/useInitializeData";
 import WalkThrough from "pages/private/platform/WalkThrough";
+import Markets from "pages/public/markets/Markets";
 
 interface AppProps {}
 
@@ -34,7 +35,7 @@ const App: React.FunctionComponent<AppProps> = () => {
 
   const { i18n } = useTranslation();
   document.body.dir = i18n.dir();
-  
+
   console.log(
     "Envrionment Variable: VITE_API_BASE_URL => ",
     getEnv("VITE_API_BASE_URL")
@@ -74,6 +75,7 @@ const App: React.FunctionComponent<AppProps> = () => {
           <Route path="/statusDetails" element={<StatusDetails />} />
         </Route>
         <Route path="/home" element={<Home />} />
+        <Route path="/markets" element={<Markets />} />
         <Route path="/downloads" element={<Download />} />
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />

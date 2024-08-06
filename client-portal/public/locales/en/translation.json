@@ -44,5 +44,12 @@
   "tradeCommodities": "Trade Commodities",
   "whyTradeCommodityCFDs": "Why Trade Commodity CFDs with tradex.io",
   "subWhyTradeCommodityCFDs": "Commodity CFDs - A CFD account will allow you to trade online, accessing a range of spot and futures commodity markets, as well as commodity stocks and ETFs.",
-  "startTrading": "Start trading"
+  "startTrading": "Start trading",
+  "commodityCFDStocksETFs": "Commodity CFDs stocks & ETFs",
+  "subCommodityCFDStocksETFs": "You can trade on a range of commodity stocks like mines and ETFs linked to commodity markets such as GLD with the same CFD account.",
+  "tradeNow": "Trade Now",
+  "IPOTrading": "IPO trading",
+  "subIPOTrading": "Discover upcoming IPOs and how to trade CFDs on grey markets at markets.com",
+  "waysTradeIndices": "Ways to Trade Indices",
+  "subWaysTradeIndices": "Trade CFDs - A CFD account will allow you to trade indices like the Dow Jones, FTSE 100 and much more."
 }

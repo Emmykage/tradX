@@ -2,12 +2,12 @@ import { useTranslation } from "react-i18next";
 import "./CommoditiesUpDown.scss";
 
 //img
-import DdopsImg from "../../../../assets/markets/commodities/drops-blue.png";
-import BigGoldImg from "../../../../assets/markets/commodities/big-gold.png";
-import GreyGoldImg from "../../../../assets/markets/commodities/gold-grey.png";
-import TimeSvg from "../../../../assets/markets/commodities/time.svg";
-import RightUpSvg from "../../../../assets/markets/commodities/arrowRightUp.svg";
-import RightDownSvg from "../../../../assets/markets/commodities/arrowRightDown.svg";
+import DdopsImg from "../../../../../assets/markets/commodities/drops-blue.png";
+import BigGoldImg from "../../../../../assets/markets/commodities/big-gold.png";
+import GreyGoldImg from "../../../../../assets/markets/commodities/gold-grey.png";
+import TimeSvg from "../../../../../assets/markets/commodities/time.svg";
+import RightUpSvg from "../../../../../assets/markets/commodities/arrowRightUp.svg";
+import RightDownSvg from "../../../../../assets/markets/commodities/arrowRightDown.svg";
 
 const data = [
   {
@@ -32,7 +32,7 @@ const CommoditiesUpDown = () => {
   return (
     <div className="commoditiesUpDownContainer">
       <div className="commoditiesUpDownFirst">
-        <h2>{t("Why Trade Commodity CFDs with tradex.io")}</h2>
+        <h2>{t("whyTradeCommodityCFDs")}</h2>
         <span>{t("subWhyTradeCommodityCFDs")}</span>
         <button>{t("startTrading")}</button>
       </div>
