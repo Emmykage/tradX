@@ -1,0 +1,237 @@
+
+.navbarContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin: auto;
+    padding: 1rem 0rem;
+    color: white;
+    
+
+    .leftSideNav{
+        display: flex;
+        flex: 50%;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width: 730px) {
+            flex: none;
+          }
+        img{
+            height: 1.6rem;
+        }
+        .navContent{
+            margin-right: 1rem;
+            @media (max-width: 730px) {
+                background-color: yellow;
+                display: none;
+              }
+
+            span{
+                padding: 0rem 2rem;
+                font-family: "Poppins", sans-serif;
+                font-size: 13px;
+                cursor: pointer;
+                font-weight: 500;
+                @media (max-width: 878px) {
+                    padding: 0rem 1rem;
+                  }
+            }
+        }
+    }
+    .rightSideNav{
+        display: flex;
+        flex: 50%;
+        justify-content: end;
+        align-items: center;
+        @media (max-width: 730px) {
+            display: none;
+          }
+    }
+    .navSearchContainer{
+        display: flex;
+        align-items: center;
+        @media (max-width: 730px) {
+            margin-top: 2rem;
+            background-color: #212124;
+            padding: 0.2rem 0.7rem;
+            border-radius: 5px;
+          }
+        input{
+            background-color: transparent;
+            outline: none;
+            margin-left: 0.8rem;
+            max-width: 3.4rem;
+            font-family: "Poppins", sans-serif;
+            font-size: 13px;
+            color: white;
+            @media (max-width: 878px) {
+                margin-left: 0.4rem;
+                max-width: none;
+                
+              }
+          
+
+        }
+    }
+    .languageSelectorContainer{
+        @media (max-width: 730px) {
+            margin-top: 1rem;
+          }
+    
+    .languageButton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0.5rem;
+        cursor: pointer;
+        position: relative;
+        h2{
+            font-size: 14px;
+            margin-left: 0.4rem;
+            margin-right: 0.35rem;
+        }
+        img{
+            width: 15px;
+            height: 15px;
+            margin-bottom: 1px;
+        }
+    }
+    .languageDropDownMenu{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background-color: #0E0F12;
+        
+        margin-top: 12px;
+        color: white;
+        border: 1px solid white;
+        border-radius: 8px;
+
+    }
+    .closeLanguageDropDown{
+        display: none;
+    }
+    .showLanguageDropDown{
+        display: flex;
+    }
+    .languageValue{
+        display: flex;
+        padding: 0.5rem 0.8rem;
+        cursor: pointer;
+        overflow-y: hidden;
+        &:hover{
+            background-color: rgba(255, 255, 255, 0.179);
+        }
+        h2{
+            font-size: 12px;
+            margin-left: 0.4rem;
+            margin-right: 0.35rem;
+            font-family: 100;
+            font-family: 'poppins','sans-serif';
+            color: white;
+
+        }
+        img{
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+}
+.menuBarButton{
+    display: none;
+    @media (max-width: 730px) {
+        display: flex;
+      }
+}
+.mobileNavClose{
+    display: none;
+    transition: all 0.3s ease-in;
+    @media (max-width: 730px) {
+        display: none;
+        flex-direction: column;
+      }
+}
+.mobileNavOpen{
+    display: none;
+    @media (max-width: 730px) {
+        display: flex;
+        
+        overflow-y: hidden !important;
+        flex-direction: column;
+        background-color: #0E0F12;
+      }
+    transition: all 0.2s ease-in-out;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    overflow: hidden;
+    background-color: #0E0F12;
+    padding: 1.2rem 1.2rem;
+
+    .mobileNavLogo{
+        img{
+            height: 20px;
+        }
+    }
+    .menuCloseIcon{
+        position: absolute;
+        top: 4;
+        right: 0;
+        margin-right: 14px;
+    }
+    .mobileNavContent{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        margin-top: 3rem;
+        flex: 80%;
+        span{
+            margin-top: 1.5rem;
+        }
+       
+    }
+    .mobileBottomNav{
+        display: flex;
+        flex-direction: column;
+    }
+}
+.primaryButton{
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0.4rem 0.6rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    color: white;
+    @media (max-width: 730px) {
+      margin-top: 2rem;
+    }
+  
+  }
+  .secondaryButton{
+    background-color: red;
+    border-radius: 5px;
+    padding: 0.4rem 0.6rem;
+    margin-left: 0.8rem;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    color: white;
+    @media (max-width: 730px) {
+      margin-top: 1.2rem;
+      padding: 0.4rem 1rem;
+    }
+  
+  }
+  
+}
+
+

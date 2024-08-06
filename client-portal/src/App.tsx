@@ -10,6 +10,7 @@ import Transactions from "./pages/private/transactions/Transactions";
 // import LoanMicroLenders from "./pages/private/loanMicroLenders/LoanMicroLenders";
 import EmailVerification from "pages/public/emailVerification/EmailVerification";
 import ResetPassword from "pages/public/resetPassword/ResetPassword";
+import Home from "pages/public/home/Home";
 
 import getEnv from "./utils/env";
 
@@ -22,6 +23,7 @@ import RequireAuth from "components/requireAuth";
 import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
 import useInitializeData from "hooks/useInitializeData";
+import WalkThrough from "pages/private/platform/WalkThrough";
 
 interface AppProps {}
 
@@ -71,6 +73,7 @@ const App: React.FunctionComponent<AppProps> = () => {
           {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
           <Route path="/statusDetails" element={<StatusDetails />} />
         </Route>
+        <Route path="/home" element={<Home />} />
         <Route path="/downloads" element={<Download />} />
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />

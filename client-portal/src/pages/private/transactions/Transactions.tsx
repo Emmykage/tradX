@@ -15,12 +15,15 @@ const Transactions: React.FunctionComponent<TransactionsProps> = () => {
   const [visiableIndex, setVisiableIndex] = useState(0);
   const headers = useMemo(() => ["Transactions", "Trades", "Profile"], []);
 
-  const { mutate, data } = useTransactions({
+  const { mutate, data:newData } = useTransactions({
     onSuccess: () => {},
     onError: (error) => {
       console.log("fetching wallets error", error);
     },
   });
+  const data:any = []
+  
+  console.log(data);
 
   useEffect(() => {
     mutate({token: cookies.access_token});

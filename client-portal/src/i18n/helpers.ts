@@ -10,7 +10,7 @@ export function localFlagHandler(countryCode: string) {
       return "/public/menu-images/svgs/france.svg";
     case "de":
       return "/public/menu-images/svgs/germany.svg";
-    case "ja":
+    case "jp":
       return "/public/menu-images/svgs/japan.svg";
     case "es":
       return "/public/menu-images/svgs/spain.svg";
