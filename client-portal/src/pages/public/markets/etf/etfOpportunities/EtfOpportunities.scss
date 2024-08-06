@@ -1,4 +1,4 @@
-.ipoTradingContainer {
+.etfOpportunitiesContainer {
   width: 90%;
   margin: 0 auto;
   padding: 40px 0;
@@ -8,34 +8,32 @@
   gap: 50px;
 
   @media (max-width: 478px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   div:first-child {
-    width: 45%;
+    width: 50%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
-    @media (max-width: 478px) {
-      width: 100%;
-    }
-
     img {
-      max-width: 162px;
-      width: 30%;
+      width: 100%;
       height: auto;
-      max-height: 162px;
+      max-width: 417px;
+      max-height: 328px;
 
       @media (max-width: 478px) {
-        max-width: 71px;
-        max-height: 71px;
+        min-height: 183px;
+        min-width: 233px;
+        width: 100%;
+        height: 100%;
       }
     }
   }
 
-  div:last-child {
-    width: 55%;
+  div {
+    width: 50%;
 
     @media (max-width: 478px) {
       width: 100%;
@@ -53,7 +51,7 @@
     }
 
     span {
-      margin-top: 20px;
+      padding-top: 20px;
       font-family: "Poppins";
       font-style: normal;
       font-weight: 400;
@@ -63,6 +61,10 @@
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+
+    span:last-child {
+      padding-top: 0px;
     }
   }
 }
