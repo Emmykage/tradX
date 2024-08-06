@@ -2,6 +2,7 @@ import { FC, ReactNode, createRef, useEffect, useState } from "react";
 import { ArrowLeftOS, ArrowRightOS } from "../../assets/icons";
 
 import "./ArrowsSlider.scss";
+import { useAppSelector } from "@store/hooks";
 
 interface ArrowsSliderProps {
   children: ReactNode;
@@ -12,6 +13,8 @@ const ArrowsSlider: FC<ArrowsSliderProps> = ({ children }) => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
   const scrollbarContainerRef = createRef<HTMLDivElement>();
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
 
   useEffect(() => {
     const container = scrollbarContainerRef.current;
@@ -57,7 +60,7 @@ const ArrowsSlider: FC<ArrowsSliderProps> = ({ children }) => {
   };
 
   return (
-    <div className="arrows-slider-container">
+    <div className={`arrows-slider-container ${themeSelect}`}>
       {showLeftArrow && (
         <div
           className="arrows-slider-left-icon"

@@ -3,6 +3,7 @@ import { DollarSign, Wifi } from "../../../../../assets/icons";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import SecondaryButton from "../../../../../components/secondaryButton/SecondaryButton";
 import "./aiAssetSummaryMenu.scss";
+import { useAppSelector } from "@store/hooks";
 
 const AiAssetSummaryMenu = () => {
   const [activeButton, setActiveButton] = useState("Recent");
@@ -52,9 +53,10 @@ const AiAssetSummaryMenu = () => {
       btn: " www.finance.com",
     },
   ];
+  const {themeSelect} = useAppSelector(state => state.themeBg)
 
   return (
-    <div className="aiAssetSummaryMenu">
+    <div className={`${themeSelect} aiAssetSummaryMenu`}>
       <div className="assetHeader">
         <SecondaryButton
           className="favouriteBtn"

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Select as SelectOriginal } from "antd";
 import { DropdownIcon } from "../../assets/icons";
 import "./selectList.scss";
+import { useAppSelector } from "@store/hooks";
 
 interface SelectProps {
   handleChange?: (value: any) => void;
@@ -28,8 +29,9 @@ const Select: React.FunctionComponent<SelectProps> = ({
   height,
   customRootClass,
 }) => {
+  const {themeSelect} = useAppSelector(state =>  state.themeBg)
   return (
-    <div className={`selectContainer`}>
+    <div className={`${themeSelect} selectContainer`}>
       <div className={`selectList ${icon ? "withIcon" : ""}`}>
         {icon ? <div className="iconContainer">{icon}</div> : null}
         {label && <label>{label}</label>}
@@ -39,7 +41,7 @@ const Select: React.FunctionComponent<SelectProps> = ({
           onChange={handleChange}
           options={options}
           suffixIcon={<DropdownIcon />}
-          rootClassName={`customSelectDropdown ${height ? height : ""} ${
+          rootClassName={`${themeSelect == 'day' ? "customSelectDropdownDay": "customSelectDropdown"} ${height ? height : ""} ${
             background ? background : ""
           } ${customRootClass}`}
           onClick={onClick}

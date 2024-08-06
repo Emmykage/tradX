@@ -2,6 +2,7 @@ import { Col, Row } from "antd";
 import MainItemCard from "../mainItemCard/MainItemCard";
 import { CheckIcon, PhoneColoredIcon } from "../../assets/icons";
 import "./enhanceSecurityStyles.scss";
+import { useAppSelector } from "@store/hooks";
 
 interface EnhanceSecurityCardProps {
   variant1?: 1 | 2 | 3;
@@ -11,8 +12,9 @@ interface EnhanceSecurityCardProps {
 const EnhanceSecurityCard: React.FunctionComponent<
   EnhanceSecurityCardProps
 > = ({ variant1, variant2 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <div className="enhanceSecurityContainer">
+    <div className={`enhanceSecurityContainer ${themeSelect}`}>
       <p className="securityTitle">Enhance your account security</p>
       <p className="securitySubtitle">
         Add extra protection to your account and get a 50% deposit bonus

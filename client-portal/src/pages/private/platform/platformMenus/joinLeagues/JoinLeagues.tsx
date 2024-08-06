@@ -3,6 +3,7 @@ import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton
 import "./joinLeagues.scss";
 import StoriesModal from "../profile/components/Stories";
 import { Story } from "react-insta-stories/dist/interfaces";
+import { useAppSelector } from "@store/hooks";
 
 const JoinLeaguesData = {
   storiesData: [
@@ -30,9 +31,10 @@ const JoinLeagues = () => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
   const [selectedStories, setSelectedStories] = useState<Story[]>([]);
   const [modalKey, setModalKey] = useState<number>(0);
+  const {themeSelect} = useAppSelector(state => state.themeBg)
 
   return (
-    <div className="joinLeagues">
+    <div className={`${themeSelect} joinLeagues`}>
       <div className="leaguesHeader">
         <div className="coinsDiv">
           <img

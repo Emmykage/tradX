@@ -1,3 +1,4 @@
+import { useAppSelector } from "@store/hooks";
 import {
   ChartIcon,
   ProfileIcon,
@@ -9,8 +10,10 @@ import "./tradingMenu.scss";
 interface TradingMenuProps {}
 
 const TradingMenu: React.FunctionComponent<TradingMenuProps> = () => {
+
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <div className="tradingMenu">
+    <div className={`${themeSelect} tradingMenu`}>
       <div className="tradingMenuSection firstOrder">
         <p className="tradingSectionTitle">
           <ChartIcon /> Chart

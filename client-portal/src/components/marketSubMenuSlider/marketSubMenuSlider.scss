@@ -47,6 +47,33 @@
     }
   }
 }
+
+// day mode 
+.day.marketSubMenuSlider {
+
+  cursor: pointer;
+  .menuSecondCard {
+
+    .menuSecondCardText1 {
+
+      color: #000000;
+    }
+    .menuSecondCardText2 {
+
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+  .menuSecondCardImage {
+    .imgDiv {
+      .img {
+
+      }
+    }
+    .backgroundImage {
+
+    }
+  }
+}
 .red {
   background: linear-gradient(
     to left,

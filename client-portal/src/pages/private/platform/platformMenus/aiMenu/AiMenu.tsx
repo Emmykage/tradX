@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import Slider from "react-slick";
 import TextArea from "antd/es/input/TextArea";
 import { LeftSubDrawer } from "../../types";
+import { useAppSelector } from "@store/hooks";
 
 interface AiMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
@@ -22,6 +23,8 @@ const AiMenu: React.FunctionComponent<AiMenuProps> = ({
     setActiveButton(buttonName);
   };
 
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   const settings = {
     dots: false,
     infinite: false,
@@ -33,7 +36,7 @@ const AiMenu: React.FunctionComponent<AiMenuProps> = ({
   };
 
   return (
-    <div className="aiMenu">
+    <div className={` ${themeSelect} aiMenu`}>
       <div className="aiMenuHeader">
         <button
           className={activeButton === "summary" ? "active" : ""}

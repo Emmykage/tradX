@@ -1,5 +1,6 @@
 import { Col, Row } from "antd";
 import "./marketSubMenuSlider.scss";
+import { useAppSelector } from "@store/hooks";
 
 const MarketSubMenuSlider = ({
   title,
@@ -16,8 +17,9 @@ const MarketSubMenuSlider = ({
   bgCol: string;
   onClick?: () => void;
 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <Row onClick={onClick} className={`marketSubMenuSlider ${bgCol}`}>
+    <Row onClick={onClick} className={`marketSubMenuSlider ${bgCol} ${themeSelect}`}>
       <Col span={12} className="menuSecondCard">
         <p className="menuSecondCardText1">{title}</p>
         <p className="menuSecondCardText2">{desc}</p>

@@ -59,24 +59,28 @@ const App: React.FunctionComponent<AppProps> = () => {
   });
 
   return (
+    <div data-theme={"dark"}>
+
     <HashRouter>
       <Routes>
         {/* turned of the auth require */}
-        <Route element={<RequireAuth />}>
-          <Route path="/platform" element={<Platform />} />
+        {/* <Route element={<RequireAuth />}> */}
+          <Route path="/platform" element={ <Platform />} />
           <Route path="transactions" element={<Transactions />} />
           {/* <Route path="/loan/get-loan" element={<GetLoan />} /> */}
           <Route path="/lender" element={<Lender />} />
           {/* <Route path="/loan" element={<Loan />} /> */}
           {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
           <Route path="/statusDetails" element={<StatusDetails />} />
-        </Route>
+        {/* </Route> */}
         <Route path="/downloads" element={<Download />} />
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
         <Route path="/password-reset" element={<ResetPassword />} />
       </Routes>
     </HashRouter>
+    </div>
+
   );
 };
 

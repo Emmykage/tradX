@@ -47,3 +47,45 @@
     }
   }
 }
+
+
+// Light Mode 
+
+.day.searchBar {
+
+
+  &.extraSpacing {
+
+    .searchIcon {
+
+      svg {
+        path{
+          stroke: #000
+        }
+      }
+    }
+  }
+
+  &:not(.extraSpacing) {
+    .searchIcon {
+      svg {
+        path{
+          stroke: #000
+        }
+      }
+    }
+  }
+
+  input {
+
+    color: #000000;
+
+    &::placeholder {
+      color: #5a5a5a;
+  
+    }
+
+    &:focus {
+    }
+  }
+}

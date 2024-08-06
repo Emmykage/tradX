@@ -6,7 +6,8 @@ import {
   walletReducer,
   paymentReducer,
   tradeReducer,
-  assetPairReducer
+  assetPairReducer,
+  themeBackgroundReducer
 } from "@slices";
 
 export const store = configureStore({
@@ -17,7 +18,8 @@ export const store = configureStore({
     markets: marketsReducer,
     wallet: walletReducer,
     payment: paymentReducer,
-    assetPair: assetPairReducer  
+    assetPair: assetPairReducer,
+    themeBg: themeBackgroundReducer
   },
 });
 

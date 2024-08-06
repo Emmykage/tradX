@@ -1,4 +1,11 @@
 .newsMenu {
+    .payment-methods-filter-btns{
+       
+        .active{
+            background-color: rgb(22, 23, 26);
+            color: #eeebeb;
+        }
+    }
     .searchContainer {
         .inputSearch {
             width: 100%;
@@ -83,15 +90,22 @@
         }
     }
 
+   
+
     .news-top{
         font-size: 13px;
         font-weight: 600;
         line-height: 20px;
+        color: #eeebeb;
     }
     .news-body{
-        font-weight: 400px;
+        font-weight: 400;
         font-size: 12px;
-        color: #969798;
+        color: #a7a3a3;
+    }
+    .newsCardFooter{
+        display: flex;
+        background-color: red;
     }
     .news-timer{
         display: flex;
@@ -124,3 +138,111 @@
     }
 }
 }
+
+.day.newsMenu {
+    .payment-methods-filter-btns{
+        .active{
+            background-color: rgb(233, 232, 226);
+            color: #000000;
+        }
+    }
+
+    .searchContainer {
+        .inputSearch {
+       
+            input {
+   
+                color: rgb(0, 0, 0);
+            }
+            svg{
+                path{
+                    stroke: #000000;
+                }
+            }
+        }
+    }
+    .textContainer {
+    
+        border: 0.0625rem solid rgba(0, 0, 0, 0.3);
+    h2 {
+        color: #000000;
+    }
+    p {
+
+        color: rgb(63, 63, 63);
+    }
+    .textFooter {  
+          li {
+            color: rgb(63, 63, 63);
+     
+        }
+        .time {
+            background-color: rgba(104, 104, 104, 0.1);
+      
+            color: rgb(70, 70, 70);
+        }
+    }
+    }
+    .news-content{
+ 
+
+        .ant-card {
+            margin-bottom: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.363);
+
+            padding: 0 !important; /* Custom padding with higher precedence */
+
+        }
+
+        .news-top{
+            color: #000000;
+        }
+        .news-body{
+            color: #3a3a3a;
+        }
+        .date{
+            background: #9b9a9a18 ;
+            color: #3b3b3b;
+
+        }
+    }
+}
+
+.newsMenuWrapper {
+    p.newsHeading {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      color: #ffffff
+    }
+    .newsIconWrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 4rem;
+      margin-bottom: 1.38rem;
+      svg {
+        width: 5.5rem;
+        height: 5.5rem;
+      }
+    }
+    p.noNews {
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.1719rem;
+      font-style: normal;
+    }
+  }
+  
+  .day{
+    .newsMenuWrapper {
+    p.newsHeading {
+
+      color: #494949;
+    }
+  
+    p.noNews {
+      color: rgba(0, 0, 0, 0.6);
+  
+    }
+  }}
