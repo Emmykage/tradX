@@ -5,6 +5,7 @@ import { FC } from "react";
 interface InfoBlockWithButtonProps {
   item: {
     image: string;
+    imageTablet: string;
     title: string;
     text: string;
     buttonText: string
@@ -20,7 +21,17 @@ const InfoBlockWithButton: FC<InfoBlockWithButtonProps> = ({ item }) => {
         <span>{t(item.text)}</span>
         <button>{t(item.buttonText)}</button>
       </div>
-      <img src={item.image} alt="" />
+      {/* <img src={item.image} alt="" /> */}
+
+      <picture>
+          <source srcSet={item.image} media="(min-width: 835px)" />
+          {/* <source
+            srcSet={item.imageTablet}
+            media="(min-width: 479px) and (max-width: 834px)"
+          /> */}
+          <source srcSet={item.imageTablet} media="(max-width: 834px)" />
+          <img src={item.image} alt="" />
+        </picture>
     </div>
   );
 };

@@ -1,9 +1,16 @@
-import Navbar from "pages/public/home/navbar/Navbar";
 import "./Bonds.scss";
-import InfoBlock from "../components/infoBlock/InfoBlock";
-import { InfoBlockData, InfoBlockWithButtonData } from "./data"
-import InfoBlockWithButton from "../components/infoBlockWithButton/InfoBlockWithButton";
+import {
+  InfoBlockData,
+  InfoBlockWithButtonData,
+  NeedMoreInfoData,
+} from "./data";
 
+//components
+import InfoBlock from "../components/infoBlock/InfoBlock";
+import InfoBlockWithButton from "../components/infoBlockWithButton/InfoBlockWithButton";
+import JoinInThreeSteps from "../components/joinInThreeSteps/JoinInThreeSteps";
+import NeedMoreInfo from "../components/needMoteInfo/NeedMoreInfo";
+import Navbar from "pages/public/home/navbar/Navbar";
 
 const Bonds = () => {
   return (
@@ -11,6 +18,8 @@ const Bonds = () => {
       <Navbar />
       <InfoBlock item={InfoBlockData} />
       <InfoBlockWithButton item={InfoBlockWithButtonData} />
+      <JoinInThreeSteps />
+      <NeedMoreInfo items={NeedMoreInfoData} />
     </div>
   );
 };

@@ -48,8 +48,11 @@
     width: 50%;
     height: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    margin: 0 auto;
     align-items: center;
+    max-width: 491px;
+    max-height: 276px;
 
     @media (max-width: 478px) {
       width: 100%;
