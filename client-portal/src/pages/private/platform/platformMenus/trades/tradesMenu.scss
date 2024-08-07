@@ -167,21 +167,7 @@
       }
     }
 
-    
-    .filterSelectlist.day {
-
-      .ant-select-selector {
-        border: 0rem solid #000;
-        
-        .ant-select-selection-item {
-        
-          color: rgba(0, 0, 0, 0.6);
-        }
-        .ant-select-selection-item:hover {
-          color: #000;
-        }
-      }
-    }
+  
     
   }
   
@@ -255,12 +241,12 @@
           margin-right: 0.625rem;
         }
 
-        .itemTitle.night {
+        .itemTitle {
           font-size: 0.8rem;
           font-weight: 500;
           color: #fff;
         }
-        .itemTitle.day {        
+        .itemTitle {        
           color: #000;
         }
         .itemTitle.night {
@@ -303,71 +289,7 @@
         }
       }
     }
-    .assetsListItem.day {
-  
-      &:hover {
-        background-color: #dde9f8;
-      }
-
-      &.active {
-        background-color: transparent;
-        box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
-          0 0.0943rem 0 0.063rem inset rgba(39, 162, 255, 0.5);
-      }
-
-      &.disabled {
-
-        .contentLeft {
-          .itemTitle {
-            color: #727272;
-          }
-        }
-
-        &:hover {
-          background-color: transparent;
-        }
-      }
-
-      .contentLeft {
-        img {
-
-        }
-
  
-        .itemTitle {        
-          color: #000;
-        }
-  
-
-        .itemSubtext {
-
-        }
-      }
-
-      .contentRight {
-
-        .itemText {
-
-          color: #969798;
-
-          &.success {
-            color: #5dac49;
-          }
-
-          &.danger {
-            color: #e53939;
-          }
-
-          &.primary {
-            color: #5d86a6;
-          }
-        }
-
-        svg {
-          width: 1rem;
-        }
-      }
-    }
   }
 }
 
@@ -402,22 +324,6 @@
         }
         .ant-select-selection-item:hover {
           color: #fff;
-        }
-      }
-    }
-
-    
-    .filterSelectlist.day {
-
-      .ant-select-selector {
-        border: 0rem solid #000;
-        
-        .ant-select-selection-item {
-        
-          color: rgba(0, 0, 0, 0.6);
-        }
-        .ant-select-selection-item:hover {
-          color: #000;
         }
       }
     }
@@ -466,11 +372,7 @@
       &.disabled {
         cursor: default;
 
-        .contentLeft {
-          .itemTitle {
-            color: #969798;
-          }
-        }
+      
 
         &:hover {
           background-color: transparent;
@@ -479,28 +381,21 @@
 
       .contentLeft {
       
-        .itemTitle.day {        
+        .itemTitle {        
           color: #000;
         }
    
 
         .itemSubtext {
-          font-size: 0.65rem;
-          font-weight: 400;
-          color: #969798;
-          margin-top: 0.3125rem;
+          color: #3d3d3d;
         }
       }
 
       .contentRight {
-        display: flex;
-        align-items: center;
+
 
         .itemText {
-          font-size: 0.7rem;
-          font-weight: 400;
-          color: #969798;
-          margin-right: 0.625rem;
+          color: #3b3b3b;
 
           &.success {
             color: #5dac49;
@@ -520,7 +415,7 @@
         }
       }
     }
-    .assetsListItem.day {
+    .assetsListItem {
   
       &:hover {
         background-color: #dde9f8;
@@ -536,7 +431,7 @@
 
         .contentLeft {
           .itemTitle {
-            color: #727272;
+            color: #505050;
           }
         }
 
@@ -545,15 +440,7 @@
         }
       }
 
-      .contentLeft {
- 
- 
-        .itemTitle {        
-          color: #000;
-        }
-      }
-
-      .contentRight {
+       .contentRight {
 
         .itemText {
 
