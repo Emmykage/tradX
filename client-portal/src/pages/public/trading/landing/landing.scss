@@ -1,5 +1,4 @@
 .landingContainer{
-    // background: linear-gradient(#00000057, #000), url('../../../../assets/trading/Frame_black2.png');
     background: linear-gradient(#000, #000);
     padding-top: 50px;
 h1{
@@ -23,10 +22,6 @@ p{
     background: #000;
     width: 1200px;
     height: 950px;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    
     img{
         display: block;
         margin: auto;
@@ -43,19 +38,6 @@ p{
     
 }
 
-.tradingCardContainer{
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    padding: 0 12px;
-    
 
-    @media(max-width: 767px) {
-        gap: 0.8rem;
-        width: fit-content;
-        flex-wrap: wrap;
-      }
-    
-    }
 
 }
