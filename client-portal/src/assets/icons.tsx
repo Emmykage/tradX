@@ -23,6 +23,15 @@ export const SettingsIcon2 = () => (
   </svg>
 );
 
+export const GraphIcon = () => (
+    <svg width="41" height="43" viewBox="0 0 71 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect y="20.9375" width="19" height="52" fill="white"/>
+    <rect x="52" y="41.9375" width="19" height="31" fill="white"/>
+    <rect x="26" y="0.9375" width="19" height="72" fill="white"/>
+    </svg>
+
+  )
+
 export const IOSIcon = () => (
   <svg
     width="100"

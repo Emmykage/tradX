@@ -10,6 +10,8 @@ import IconShield from '../../../assets/trading/cardIconStarShield.png'
 import IconWave from '../../../assets/trading/cardIconWaves.png'
 import PerksCard from './perksCard/PerksCard'
 import TradingSteps from './tradingSteps/TradingSteps'
+import TradingExperience from './experience/TradingExperience'
+import user from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash 2.png'
 
 
 const Trading = () => {
@@ -74,6 +76,14 @@ const Trading = () => {
 
         <div className='padding'>
           <CTABanner/>
+        </div>
+
+        <div className="padding">
+        <TradingExperience  
+        image={user} 
+        title={"Elevate your trading experience with MetaTrader 5"} 
+        text={"Use your markets.com account to seamlessly install MT5 and start trading right away in your desktop markets.com platform. The video tutorial above can walk you through the process. Explore here step-by-step instructions on adding a MetaTrader 5 trading account. Don't have a markets.com account yet? No worries, visit the markets.com Sign Up page and provide the required information to quickly complete full registration."}/>
+
         </div>
 
         <ProfileCard/>
