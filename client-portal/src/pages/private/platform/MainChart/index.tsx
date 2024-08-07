@@ -44,6 +44,8 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
   const { trade, finished, duration, amount } = useAppSelector((state) => state.trades);
   const userState = useAppSelector((state) => state);
 
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   const dispatch = useAppDispatch();
   console.log(duration);
   console.log(userState);
@@ -177,11 +179,11 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
       },
       grid: {
         vertLines: {
-          color: "#16171a",
+          color: themeSelect == "night" ? "#16171a" : "#b9b9b9",
           visible: true,
         },
         horzLines: {
-          color: "#16171a",
+          color: themeSelect == "night" ? "#16171a" : "#b9b9b9",
           visible: true,
         },
       },
@@ -475,7 +477,7 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     areaTopColor,
     areaBottomColor,
     gridLines,
-  ]);
+    themeSelect ]);
 
 
 
