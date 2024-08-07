@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { ISignInForm } from "@interfaces";
 import { useLogin } from "api/user/useLogin";
+import { useAppSelector } from "@store/hooks";
 
 interface SignInFormProps {
   setForgotPasswordView: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,15 +16,14 @@ const SignInForm: React.FunctionComponent<SignInFormProps> = ({
 }) => {
   const navigate = useNavigate();
   const [, setCookie] = useCookies(["access_token", "refresh_token"]);
-
+  const { user } = useAppSelector((state) => state.user);
   const { handleSubmit, register } = useForm<ISignInForm>();
-
   const { mutate, isPending } = useLogin({
     onSuccess: (data) => {
       const expirationInSeconds = 270;
       setCookie("access_token", data.access, { maxAge: expirationInSeconds });
       setCookie("refresh_token", data.refresh);
-      // user.is_walkthrough_completed ? navigate("/welcome") : navigate("/platform");
+      !user?.is_walkthrough ? navigate("/welcome") : navigate("/platform");
       navigate("/platform");
     },
     onError: () => {},

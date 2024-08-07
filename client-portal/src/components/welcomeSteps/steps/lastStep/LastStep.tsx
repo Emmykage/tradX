@@ -2,7 +2,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import './lastStep.scss'
 import useDisableWalkThrough from 'api/user/useDisableWalkthrough';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
+
 import { useCookies } from 'react-cookie';
+import { updateWalkthrough } from '@store/slices/user';
 
 const LastStep = () => {
 
@@ -12,16 +14,21 @@ const LastStep = () => {
   const navigate = useNavigate()
   const { mutate, isPending } = useDisableWalkThrough({
     onSuccess: (data) => {
-      // dispatch(updateNotificationList(data));
+      console.log(data);
+      dispatch(updateWalkthrough());
       // update user data
       // navigate to platform page
       navigate('/platform')
     },
-    onError: (error) => { },
+    onError: (error) => {
+      console.log('error not disabled');
+      console.log(error);
+     },
   });
 
 
   const handleFinishWalkThrough = () =>{
+    console.log('runned');
     mutate({
       token: cookies.access_token,
     });

@@ -1,11 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
-import { INotification, IUser } from "@interfaces";
+import {  IUser } from "@interfaces";
 import getEnv from "utils/env";
 
 export async function disableUserWalkThrough( token: string): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
-    const response = await fetch(`${BASE_URL}/user/disable_walkThrough/`, {
+    const response = await fetch(`${BASE_URL}/user/disable_walkthrough/`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,

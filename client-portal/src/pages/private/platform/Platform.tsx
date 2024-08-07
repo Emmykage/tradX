@@ -75,7 +75,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   })
   // console.log(newCandleData);
 
-  const isWalkthroughSkipped = user?.is_walkthrough_completed ?? true;
+  const isWalkthroughSkipped = user?.is_walkthrough ?? true;
+
+  console.log(user);
 
   // useEffect(() => {
   //   if (user?.is_walkthrough_completed) {
@@ -288,12 +290,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         </div>
       </div>
 
-      {!isWalkthroughSkipped && !loading && (
+      {/* {!isWalkthroughSkipped && !loading && (
         <WalkThrough
           className={!isWalkthroughSkipped && !loading ? "" : "hidden"}
           tradeFormHeight={tradeFormHeight}
         />
-      )}
+      )} */}
     </div>
   );
 };

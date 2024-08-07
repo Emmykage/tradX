@@ -11,5 +11,5 @@ export default interface IUser {
   phone_number?: string;
   blured_phone_number?: string;
   phone_verified?: boolean;
-  is_walkthrough_completed?: boolean;
+  is_walkthrough?: boolean;
 }

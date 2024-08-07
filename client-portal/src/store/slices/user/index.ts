@@ -26,6 +26,11 @@ export const userSlice = createSlice({
       state.loading = false;
       return state;
     },
+    updateWalkthrough: (state) => {
+      if (state.user) {
+        state.user.is_walkthrough = false;
+      }
+    },
     setUserLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
       return state;
@@ -42,6 +47,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser, setUserLoading, setWSTicket } = userSlice.actions;
+export const { setUser, setUserLoading, setWSTicket, updateWalkthrough } = userSlice.actions;
 
 export default userSlice.reducer;
