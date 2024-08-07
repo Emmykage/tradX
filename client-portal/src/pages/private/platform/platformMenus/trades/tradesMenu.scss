@@ -96,6 +96,7 @@
   }
 }
 
+
 .tradesAssetMenu {
   p.tradeHeading {
     font-size: 1.3rem;
@@ -135,7 +136,7 @@
         color: #fff;
       }
     }
-   
+
     .filterSelectlist {
       width: auto !important;
 
@@ -166,11 +167,7 @@
         }
       }
     }
-
-  
-    
   }
-  
   .assetsList {
     .assetsListCol {
       display: flex;
@@ -246,12 +243,6 @@
           font-weight: 500;
           color: #fff;
         }
-        .itemTitle {        
-          color: #000;
-        }
-        .itemTitle.night {
-          color: #fff;
-        }
 
         .itemSubtext {
           font-size: 0.65rem;
@@ -289,7 +280,6 @@
         }
       }
     }
- 
   }
 }
 
@@ -320,10 +310,10 @@
       .ant-select-selector {
         border: 0rem solid rgb(238, 238, 238);
         .ant-select-selection-item {
-          color: rgba(0, 0, 0, 0.6);
+          color: rgba(41, 40, 40, 0.6);
         }
         .ant-select-selection-item:hover {
-          color: #fff;
+          color: #000;
         }
       }
     }
@@ -412,6 +402,9 @@
 
         svg {
           width: 1rem;
+          path{
+            fill: #000
+          }
         }
       }
     }
