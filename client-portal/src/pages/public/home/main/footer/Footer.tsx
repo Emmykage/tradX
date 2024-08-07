@@ -1,13 +1,12 @@
 import './footer.scss'
 
-import FooterIcon from '../../../../assets/home/tradxlogo.png'
+import FooterIcon from '../../../../../assets/home/tradxlogo.png'
 
-import XIcon from '../../../../assets/home/footerSocial/x.png'
-import FacebookIcon from '../../../../assets/home/footerSocial/facebook.png'
-import InstagramIcon from '../../../../assets/home/footerSocial/instagram.png'
-import LinkidenIcon from '../../../../assets/home/footerSocial/linkiden.png'
-import YoutubeIcon from '../../../../assets/home/footerSocial/youtube.png'
-import { useEffect } from 'react'
+import XIcon from '../../../../../assets/home/footerSocial/x.png'
+import FacebookIcon from '../../../../../assets/home/footerSocial/facebook.png'
+import InstagramIcon from '../../../../../assets/home/footerSocial/instagram.png'
+import LinkidenIcon from '../../../../../assets/home/footerSocial/linkiden.png'
+import YoutubeIcon from '../../../../../assets/home/footerSocial/youtube.png'
 
 const Footer = () => {
 

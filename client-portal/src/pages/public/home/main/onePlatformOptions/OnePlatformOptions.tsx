@@ -1,16 +1,16 @@
 import './onePlatformOptions.scss'
 
-import TickIcon from '../../../../assets/home/tick.png'
-import UsaFlag from '../../../../assets/home/usa.png'
-import UkFlag from '../../../../assets/home/uk.png'
-import FrancceFlag from '../../../../assets/home/francce.png'
-import SwedenFlag from '../../../../assets/home/sweden.png'
+import TickIcon from '../../../../../assets/home/tick.png'
+import UsaFlag from '../../../../../assets/home/usa.png'
+import UkFlag from '../../../../../assets/home/uk.png'
+import FrancceFlag from '../../../../../assets/home/francce.png'
+import SwedenFlag from '../../../../../assets/home/sweden.png'
 
 
-import Graph1Image from '../../../../assets/home/graph1.png'
-import Graph2Image from '../../../../assets/home/graph2.png'
-import Graph3Image from '../../../../assets/home/graph3.png'
-import Graph4Image from '../../../../assets/home/graph4.png'
+import Graph1Image from '../../../../../assets/home/graph1.png'
+import Graph2Image from '../../../../../assets/home/graph2.png'
+import Graph3Image from '../../../../../assets/home/graph3.png'
+import Graph4Image from '../../../../../assets/home/graph4.png'
 
 
 const OnePlatformOptions = () => {

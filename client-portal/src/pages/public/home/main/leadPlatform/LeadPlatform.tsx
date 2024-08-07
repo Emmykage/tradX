@@ -1,12 +1,12 @@
 import './leadPlatform.scss'
 import React, { PropsWithChildren } from 'react';
 
-import LicenceIcon from '../../../../assets/home/leadPlatform/licence.png'
-import BanksIcon from '../../../../assets/home/leadPlatform/Banks.png'
-import CustomerSupportIcon from '../../../../assets/home/leadPlatform/customerSupport.png'
-import SecurityIcon from '../../../../assets/home/leadPlatform/security.png'
-import TransparentIcon from '../../../../assets/home/leadPlatform/transparent.png'
-import UnparallelIcon from '../../../../assets/home/leadPlatform/unparallel.png'
+import LicenceIcon from '../../../../../assets/home/leadPlatform/licence.png'
+import BanksIcon from '../../../../../assets/home/leadPlatform/Banks.png'
+import CustomerSupportIcon from '../../../../../assets/home/leadPlatform/customerSupport.png'
+import SecurityIcon from '../../../../../assets/home/leadPlatform/security.png'
+import TransparentIcon from '../../../../../assets/home/leadPlatform/transparent.png'
+import UnparallelIcon from '../../../../../assets/home/leadPlatform/unparallel.png'
 
 interface LeadPlatformCardProps {
     title: string;

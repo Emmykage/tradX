@@ -1,6 +1,6 @@
 import './navbar.scss'
-import TradxLogo from '../../../../assets/home/tradxlogo.png'
-import ENIcon from '../../../../assets/home/langicon.png'
+import TradxLogo from '../../../../../assets/home/tradxlogo.png'
+import ENIcon from '../../../../../assets/home/langicon.png'
 
 
 
@@ -14,7 +14,50 @@ interface NavbarProps {
     setCountryCode: (prevCountryCode:string)=>void;
     loading: boolean;
 }
-const Navbar:React.FC<NavbarProps>= ({countryCode ,setCountryCode,loading}) => {
+const Navbar= () => {
+    const [ipAddress, setIpAddress] = useState('');
+    const [geoInfo, setGeoInfo] = useState<{countryCode:string}>()
+    const [countryCode, setCountryCode] = useState('EN')
+    const [loading, setLoading] = useState(false)
+  
+    const getVisitorIp = async()=>{
+      setLoading(true)
+      try {
+        const response = await fetch('https://api.ipify.org')
+        const data   = await response.text()
+        console.log(data);
+        setIpAddress(data)
+      } catch (error) {
+        console.log(error);
+        setLoading(false)
+      }
+    }
+  
+    const fetchIpInfo = async ()=>{
+      try {
+        const response = await fetch(`http://ip-api.com/json/${ipAddress}`)
+        const data = await response.json()
+        setGeoInfo(data)
+        setLoading(false)
+      } catch (error) {
+        setCountryCode('EN')
+        console.log(error);
+        setLoading(false)
+      }
+    }
+    useEffect(()=>{
+      getVisitorIp()
+    },[])
+  
+    useEffect(()=>{
+      fetchIpInfo()
+      if(geoInfo){
+        console.log(geoInfo?.countryCode);
+        setCountryCode(geoInfo?.countryCode)
+      }
+      console.log(geoInfo);
+    },[ipAddress])
+
     const [toggleLanguageSelector,setToggleLanguageSelector] = useState(false)
     const [toggleMobileNav,setToggleMobileNav] = useState(false)
     console.log(localFlagHandler(countryCode.toLocaleLowerCase()))

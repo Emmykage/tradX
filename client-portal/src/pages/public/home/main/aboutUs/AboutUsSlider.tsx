@@ -3,9 +3,9 @@ import { ArrowLeftOS, ArrowRightOS } from 'assets/icons';
 
 import './aboutUsSlider.scss'
 
-import RightQuoteIcon from '../../../../assets/home/quoteRight.png'
-import LeftQuoteIcon from '../../../../assets/home/quoteLeft.png'
-import RatingStarIcon from '../../../../assets/home/ratingStar.png'
+import RightQuoteIcon from '../../../../../assets/home/quoteRight.png'
+import LeftQuoteIcon from '../../../../../assets/home/quoteLeft.png'
+import RatingStarIcon from '../../../../../assets/home/ratingStar.png'
 
 const AboutUsSlider = () => {
   const ArrowButtonPrevious:React.FC<{onClick: any}> = ({  onClick }) => {

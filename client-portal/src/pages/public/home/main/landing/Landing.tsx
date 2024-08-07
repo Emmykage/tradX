@@ -1,6 +1,6 @@
 import './landing.scss'
-import HomeGraph from '../../../../assets/home/homeGraph.png'
-import TradingFunctionality from '../../../../assets/home/tradeFunctionality.png'
+import HomeGraph from '../../../../../assets/home/homeGraph.png'
+import TradingFunctionality from '../../../../../assets/home/tradeFunctionality.png'
 import CustomMarker1 from '../Indicators/customMarker1/CustomMarker1'
 import CustomMarker2 from '../Indicators/customMarker2/CustomMarker2'
 

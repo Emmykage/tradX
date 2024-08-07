@@ -2,13 +2,13 @@ import Slider from 'react-slick'
 import './onePlatformSlider.scss'
 import {  ArrowLeftOS, ArrowRightOS } from 'assets/icons';
 
-import Forex from '../../../../assets/onePlatformSlider/forex.png'
-import Bonds from '../../../../assets/onePlatformSlider/bonds.png'
-import Commodities from '../../../../assets/onePlatformSlider/commodites.png'
-import Crypto from '../../../../assets/onePlatformSlider/crypto.png'
-import Indices from '../../../../assets/onePlatformSlider/inidces.png'
-import Ipo from '../../../../assets/onePlatformSlider/ipo.png'
-import Stocks from '../../../../assets/onePlatformSlider/stocks.png'
+import Forex from '../../../../../assets/onePlatformSlider/forex.png'
+import Bonds from '../../../../../assets/onePlatformSlider/bonds.png'
+import Commodities from '../../../../../assets/onePlatformSlider/commodites.png'
+import Crypto from '../../../../../assets/onePlatformSlider/crypto.png'
+import Indices from '../../../../../assets/onePlatformSlider/inidces.png'
+import Ipo from '../../../../../assets/onePlatformSlider/ipo.png'
+import Stocks from '../../../../../assets/onePlatformSlider/stocks.png'
 import React from 'react';
 
 const OnePlatformSlider = () => {
