@@ -34,9 +34,10 @@
   "walkthroughStocksSubText": "Trading is an activity that lets you earn money on price fluctuations of different assets such as currency pairs, commodities and stocks.",
   "walkthroughForeCastSubText": "Traders make forecasts on the price will change in the near future. such a forecast is called a “trade”.",
   "walkthroughFixedDurationSubText": "Traders make forecasts on the price will change in the near future. such a forecast is called a “trade”.",
+  "walkthroughFixedDurationOffer": "Trades of fixed duration that offer a fixed profit are know as Fixed Time Trades or FTT.",
   "toolTipContent": "FTT assets vary in profitability. In this case, you will receive 82% of profit if, when the trade expires, the chart will still be moving in the correct direction.",
   "understand": "I Understand",
   "walkthroughChooseTrade": "Wait for the result of the trade ({{time}}).",
   "walkthroughChooseTradeSubText": "Congratulations! Your trade was successful. By Investing $100, you’ve earned $85 - a 85% return in just 1 minute.",
-  "finishTrading": "Finish training"
+  "finishTrading": "Congratulations! Your trade was successful. By Investing $100, you’ve earned $85 - a 85% return in just 1 minute."
 }

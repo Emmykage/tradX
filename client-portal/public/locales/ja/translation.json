@@ -38,5 +38,5 @@
   "understand": "理解しました",
   "walkthroughChooseTrade": "取引の結果を待ちます（{{time}}）。",
   "walkthroughChooseTradeSubText": "おめでとうございます！ あなたの取引は成功しました。100ドルを投資することで、わずか1分で85ドルの収益を上げました。",
-  "finishTrading": "トレーニングを終了"
+  "finishTrading": "おめでとうございます！取引が成功しました。100ドルを投資して、85ドルを稼ぎました - わずか1分で85％のリターンです。"
 }

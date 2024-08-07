@@ -3,32 +3,15 @@ import { Col, Row, Typography, Form, Button } from "antd";
 import "./CardDetailsMenu.scss";
 import { PaymentIcon, SecureIcon } from "../../../../../assets/icons";
 import DepositInput from "../../../../../components/depositInput/DepositInput";
-import {
-  AmericanCreditCardIcon,
-  JcbCreditCardIcon,
-  VisaCardIcon,
-} from "../../../../../assets/icons";
+
 import { Dispatch, FC, SetStateAction, useReducer } from "react";
 import { RightSubDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import { useAppSelector } from "@store/hooks";
 import { useForm } from "react-hook-form";
 import IBankCardPaymentForm from "@interfaces/IBankCardPaymentForm";
+import {CreditCardCVVInput, CreditCardExpiryDate, CreditCardNumberInput} from "components/creditCardNumberInput/CreditCardNumberInput";
 
-const CreditCardsList = [
-  {
-    icon: <AmericanCreditCardIcon />,
-  },
-  {
-    icon: <JcbCreditCardIcon />,
-  },
-  // {
-  //   icon: <LibreCreditCardIcon />,
-  // },
-  {
-    icon: <VisaCardIcon />,
-  },
-];
 interface CardDetailsMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
@@ -72,6 +55,7 @@ const CardDetailsMenu: FC<CardDetailsMenuProps> = ({
     //   data,
     // })
   );
+
   return (
     <div className="card-details">
        <Form layout="vertical" onFinish={onSubmit}>
@@ -93,14 +77,12 @@ const CardDetailsMenu: FC<CardDetailsMenuProps> = ({
               name="cardNumber"
               rules={[{ required: true, message: "Card number required" }]}
             > 
-              <DepositInput 
-                CardsIconList={CreditCardsList} 
+              <CreditCardNumberInput
                 placeholder="Card Number" 
                 type="pattern" 
                 onChange={handleInputChange}
-                format="#### #### #### ####"
                 name="cardNumber"
-                value={cardDetails?.cardNumber}
+                inputValue={cardDetails?.cardNumber}
               />
             </Form.Item>
             <Row gutter={16}>
@@ -109,14 +91,12 @@ const CardDetailsMenu: FC<CardDetailsMenuProps> = ({
                   name="expiryDate"
                   rules={[{ required: true, message: "Expiry date required" }]}
                 > 
-                  <DepositInput 
+                  <CreditCardExpiryDate
                     placeholderColor 
-                    type="pattern" 
                     placeholder="MM/YY"
                     onChange={handleInputChange}
-                    format="##/##" 
                     name="expiryDate"
-                    value={cardDetails?.expiryDate}
+                    inputValue={cardDetails?.expiryDate}
                   />
                 </Form.Item>
               </Col>
@@ -125,14 +105,14 @@ const CardDetailsMenu: FC<CardDetailsMenuProps> = ({
                   name="cvc"
                   rules={[{ required: true, message: "Card cvc required" }]}
                 > 
-                  <DepositInput 
+                  <CreditCardCVVInput
                     placeholderColor 
                     type="pattern" 
                     placeholder="CVV/CVC" 
                     onChange={handleInputChange}
                     name="cvc"
-                    value={cardDetails?.cvc}
-                    format="####"
+                    inputValue={cardDetails?.cvc}
+              
                   />
                 </Form.Item>
               </Col>

@@ -13,6 +13,8 @@ import SearchBar from "../../../../../components/searchBar/SearchBar";
 import { forex } from "../assets/assetsData";
 import { Dispatch, SetStateAction } from "react";
 import { LeftSubDrawer } from "../../types";
+import { AssetPairSliceState, setAssetPairs } from "@store/slices/pairs";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 
 interface TradesMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
@@ -43,8 +45,13 @@ const RenderTab = ({
 
 const RenderData: React.FunctionComponent = (props: any) => {
   const {handleMenuClick} = props;
+  const dispatch = useAppDispatch();
+
+
   const [forexData] = useState(forex);
   const [selectedForex, setSelectedForex] = useState(null);
+
+
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
     // setIsLeftSubDrawerOpen(false)
@@ -52,7 +59,10 @@ const RenderData: React.FunctionComponent = (props: any) => {
   const handleSelectedForex =(item: any) => {
   
     setSelectedForex(item);
-    handleMenuClick();
+    dispatch(setAssetPairs(item))
+    // handleMenuClick();
+
+
     // setIsLeftSubDrawerOpen(false);
     // setLeftSubDrawer();
   };

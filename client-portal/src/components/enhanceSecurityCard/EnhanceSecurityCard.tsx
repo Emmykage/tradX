@@ -6,11 +6,12 @@ import "./enhanceSecurityStyles.scss";
 interface EnhanceSecurityCardProps {
   variant1?: 1 | 2 | 3;
   variant2?: 1 | 2 | 3;
+  onClick: (item: string) => void;
 }
 
 const EnhanceSecurityCard: React.FunctionComponent<
   EnhanceSecurityCardProps
-> = ({ variant1, variant2 }) => {
+> = ({ variant1, variant2, onClick }) => {
   return (
     <div className="enhanceSecurityContainer">
       <p className="securityTitle">Enhance your account security</p>
@@ -35,6 +36,7 @@ const EnhanceSecurityCard: React.FunctionComponent<
             variant={variant1 ? variant1 : 1}
             fullHeight
             className="securityItem"
+            onClick={()=> onClick('confirm-email')}
           >
             <div className="securityItemIcon">
               <CheckIcon />

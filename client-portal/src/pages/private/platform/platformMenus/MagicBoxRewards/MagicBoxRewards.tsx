@@ -5,6 +5,7 @@ import "./MagicBoxRewards.scss";
 interface MagicBoxRewardsProps {}
 
 const MagicBoxRewards: FC<MagicBoxRewardsProps> = () => {
+
   return (
     <div>
       <div className="magicBoxContainer">

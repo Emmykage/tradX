@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import { Route, Routes, HashRouter } from "react-router-dom";
+import { Route, Routes, HashRouter, BrowserRouter } from "react-router-dom";
 import Platform from "./pages/private/platform/Platform";
 import Lender from "./pages/private/lender/Lender";
 import SignIn from "./pages/public/signIn/SignIn";
+import Welcome from "./pages/public/welcome/Welcome";
+
 import Download from "./pages/public/downloads/Download";
 import Transactions from "./pages/private/transactions/Transactions";
 // import GetLoan from "./pages/private/get-loan/GetLoan";
@@ -24,6 +26,7 @@ import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
 import useInitializeData from "hooks/useInitializeData";
 import WalkThrough from "pages/private/platform/WalkThrough";
+import PrivateRoute from "utils/ProtectedRoute ";
 import CookieDisclosure from "pages/public/home/cookieDisclosure/CookieDisclosure";
 
 interface AppProps {}
@@ -35,7 +38,7 @@ const App: React.FunctionComponent<AppProps> = () => {
 
   const { i18n } = useTranslation();
   document.body.dir = i18n.dir();
-  
+
   console.log(
     "Envrionment Variable: VITE_API_BASE_URL => ",
     getEnv("VITE_API_BASE_URL")
@@ -57,7 +60,6 @@ const App: React.FunctionComponent<AppProps> = () => {
 
   // hook that triggers a callback function when the user is inactuve for 5 minutes
   useMouseIdle(() => {
-    console.log("USER HAS BEEN IDLE");
     dispatch(setIsIdle(true));
   });
 
@@ -65,7 +67,7 @@ const App: React.FunctionComponent<AppProps> = () => {
     <HashRouter>
       <Routes>
         {/* turned of the auth require */}
-        <Route element={<RequireAuth />}>
+        <Route element={<RequireAuth  />}>
           <Route path="/platform" element={<Platform />} />
           <Route path="transactions" element={<Transactions />} />
           {/* <Route path="/loan/get-loan" element={<GetLoan />} /> */}
@@ -80,6 +82,13 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
         <Route path="/password-reset" element={<ResetPassword />} />
+        {/* Private route using PrivateRoute component */}
+        <Route path="/" element={<PrivateRoute />}>
+        <Route path="/welcome" element={<Welcome />} />
+        </Route>
+        
+        {/* <Route path="/welcome" element={<WalkThrough tradeFormHeight={2} />} /> */}
+        
       </Routes>
     </HashRouter>
   );
