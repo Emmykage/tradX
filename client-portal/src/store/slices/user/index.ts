@@ -27,10 +27,15 @@ export const userSlice = createSlice({
       return state;
     },
     updateWalkthrough: (state) => {
-      if (state.user) {
-        state.user.is_walkthrough = false;
-      }
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          is_walkthrough: true,
+        },
+      };
     },
+    
     setUserLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
       return state;

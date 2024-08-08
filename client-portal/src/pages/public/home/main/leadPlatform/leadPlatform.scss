@@ -37,6 +37,10 @@
         min-width: 340px;
         padding: 2rem 3rem;
         background: linear-gradient(180deg, rgba(47,57,83,1) 0%, rgba(255,255,255,0) 100%);
+
+        @media (max-width:365px){
+         min-width: 100%;
+        }
         img{
             width: 90px;
         }

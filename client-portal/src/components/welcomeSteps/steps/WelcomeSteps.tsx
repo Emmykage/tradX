@@ -23,7 +23,7 @@ const WelcomeSteps = () => {
   const { t } = useTranslation();
   const [time, setTime] = useState(20);
   const [displayTimer, setDisplayTimer] = useState(true);
-  const [step, setStep] = useState<number>(11);
+  const [step, setStep] = useState<number>(1);
   const [trade,setTrade] = useState<string>('down')
   const [cookies, setCookie] = useCookies(["step", "access_token"]);
 

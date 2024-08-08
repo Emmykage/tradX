@@ -8,11 +8,16 @@ import SignInForm from "./components/SignInForm";
 import "./signIn.scss";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
 import { withTranslation } from "react-i18next";
+import { useAppSelector } from "@store/hooks";
+import { GlobalStates } from "@store/slices/global";
 
 interface SignInProps {}
 
 const SignIn: React.FunctionComponent<SignInProps> = () => {
   const [forgotPasswordView, setForgotPasswordView] = useState(false);
+  const {  signInTab } = useAppSelector(
+    (state: { global: GlobalStates }) => state.global
+  );
 
   const items: TabsProps["items"] = [
     {
@@ -34,7 +39,7 @@ const SignIn: React.FunctionComponent<SignInProps> = () => {
         ) : (
           <Tabs
             centered
-            defaultActiveKey="1"
+            defaultActiveKey={signInTab}
             items={items}
             indicatorSize={150}
             tabBarGutter={100}

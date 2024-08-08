@@ -17,14 +17,18 @@ const SignInForm: React.FunctionComponent<SignInFormProps> = ({
   const navigate = useNavigate();
   const [, setCookie] = useCookies(["access_token", "refresh_token"]);
   const { user } = useAppSelector((state) => state.user);
+  const { loading } = useAppSelector((state) => state.user);
   const { handleSubmit, register } = useForm<ISignInForm>();
   const { mutate, isPending } = useLogin({
     onSuccess: (data) => {
       const expirationInSeconds = 270;
       setCookie("access_token", data.access, { maxAge: expirationInSeconds });
       setCookie("refresh_token", data.refresh);
-      !user?.is_walkthrough ? navigate("/welcome") : navigate("/platform");
-      navigate("/platform");
+      // console.log(user?.is_walkthrough);
+      if(!loading){
+        user?.is_walkthrough ? navigate("/platform") : navigate("/welcome");
+      }
+      // navigate("/platform");
     },
     onError: () => {},
   });

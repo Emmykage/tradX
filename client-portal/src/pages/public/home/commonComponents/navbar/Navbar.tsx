@@ -9,6 +9,9 @@ import { ArrowDownOS, MenuBar, MenuCloseIcon, SearchIcon } from 'assets/icons'
 import { useEffect, useRef, useState } from 'react'
 import { localFlagHandler } from 'i18n/helpers'
 import { Spin } from 'antd'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { setSignInTab } from '@store/slices/global'
 interface NavbarProps {
     countryCode: string;
     setCountryCode: (prevCountryCode:string)=>void;
@@ -19,6 +22,10 @@ const Navbar= () => {
     const [geoInfo, setGeoInfo] = useState<{countryCode:string}>()
     const [countryCode, setCountryCode] = useState('EN')
     const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate()
+
+    const dispatch = useDispatch()
   
     const getVisitorIp = async()=>{
       setLoading(true)
@@ -148,8 +155,14 @@ const Navbar= () => {
                     </div>
                 </div>
             </div>
-            <button className='primaryButton'>Login</button>
-            <button className='secondaryButton'>Sign Up</button>
+            <button className='primaryButton'  onClick={()=>{
+              dispatch(setSignInTab('1'))
+              navigate('/signIn')
+            }}>Login</button>
+            <button className='secondaryButton'  onClick={()=>{
+              dispatch(setSignInTab('2'))
+              navigate('/signIn')
+            }}>Sign Up</button>
         </div>
         <div className='menuBarButton' onClick={()=>setToggleMobileNav(true)}>
             <MenuBar height="30px" width="30px"/>
@@ -198,8 +211,17 @@ const Navbar= () => {
                     </div>
                 </div>
             </div>
-            <button className='primaryButton'>Login</button>
-            <button className='secondaryButton'>Sign Up</button>
+            <button className='primaryButton' onClick={()=>{
+              dispatch(setSignInTab('1'))
+              navigate('/signIn')
+              setToggleMobileNav(false)
+            }}>Login</button>
+            <button className='secondaryButton' onClick={()=>{
+              dispatch(setSignInTab('2'))
+              navigate('/signIn')
+              setToggleMobileNav(false)
+
+            }}>Sign Up</button>
         </div>
             </div>
         </div>

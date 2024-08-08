@@ -32,6 +32,7 @@ import { initialCandleData } from "./MainChart/candleData";
 import { setAppearanceBackground } from "../../lib/utils";
 import { useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
+import { useNavigate } from "react-router-dom";
 
 interface PlatformProps {}
 
@@ -66,6 +67,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const { user, loading } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
+  const navigate = useNavigate();
 
   
   // candle series chart data formatting 
@@ -76,6 +78,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   // console.log(newCandleData);
 
   const isWalkthroughSkipped = user?.is_walkthrough ?? true;
+
 
   console.log(user);
 

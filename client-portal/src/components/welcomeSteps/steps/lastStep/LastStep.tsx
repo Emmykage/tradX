@@ -16,8 +16,6 @@ const LastStep = () => {
     onSuccess: (data) => {
       console.log(data);
       dispatch(updateWalkthrough());
-      // update user data
-      // navigate to platform page
       navigate('/platform')
     },
     onError: (error) => {
@@ -28,10 +26,12 @@ const LastStep = () => {
 
 
   const handleFinishWalkThrough = () =>{
-    console.log('runned');
+    
     mutate({
       token: cookies.access_token,
     });
+    
+
   }
   return (
     <div className='lastStepContainer'>
