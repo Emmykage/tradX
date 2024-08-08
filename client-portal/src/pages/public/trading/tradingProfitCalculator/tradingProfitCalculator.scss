@@ -1,0 +1,55 @@
+.tradingProfitWrapper{
+    display: flex;
+    color: white;
+    .imageBackdrop{
+        flex-basis: 50%;
+
+        div{
+            // background-color: red;
+            position: relative;
+            max-width: 500px;
+            img{
+                width: 350px;
+                height: 350px;
+    
+            }
+            .icon-1{
+                position: absolute;
+                top: 0px;
+                transform: translate(-50%, -50%);
+                left: 350px;
+                width: 40px;
+                height: 40px;
+
+
+            }
+
+            .icon-2{
+                position: absolute;
+                top: 0px;
+                left: 90%;
+                width: 40px;
+                height: 40px;
+                transform: translate(-50%, -50%);
+
+
+            }
+    
+        }
+       
+
+    }
+
+    .textWrapper{
+        flex-basis: 50%;
+        h3{
+            font-size: 34px;
+            margin-bottom: 12px;
+
+        }
+        p{
+            color: #999999;
+            font-size: 16px;
+        }
+    }
+}

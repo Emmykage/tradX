@@ -1,17 +1,48 @@
 import React from 'react'
 import './tradingStep.scss'
 
-const TradingSteps = () => {
+interface tradingStepsProp  {
+    step1: string,
+    step2: string,
+    step3: string,
+    step4: string,
+    step5?: string,
+}
+
+const TradingSteps: React.FC<tradingStepsProp>  = ({step1, step2, step3, step4, step5} ) => {
   return (
     <div className='getting-started-steps'>
         
         <div className='getting-started-wrapper'>
         <hr />
 
+        <div>
         <span className='step-1'>1</span>
+        <p>{step1}</p>
+
+        </div>
+        <div>
         <span className='step-1'>2</span>
+
+        <p>{step2} </p>
+        </div>
+        <div>
         <span className='step-1'>3</span>
+        <p>{step3}</p>
+        </div>
+        <div>
         <span className='step-1'>4</span>
+        <p>{step4}</p>
+
+        </div>
+        {step5 && 
+        <div>
+        <span className='step-1'>5</span>
+        <p>{step5} </p>
+
+        </div>
+}
+
         </div>
     </div>
   )

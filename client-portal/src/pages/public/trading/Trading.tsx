@@ -12,6 +12,10 @@ import PerksCard from './perksCard/PerksCard'
 import TradingSteps from './tradingSteps/TradingSteps'
 import TradingExperience from './experience/TradingExperience'
 import user from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash 2.png'
+import CopyTrade from './copyTrade/CopyTrade'
+import ForexCalculator from './forexCalculator/ForexCalculator'
+import CostExplanation from './costExplanation/costExplanation'
+import TradingProfitCalculator from './tradingProfitCalculator/TradingProfitCalculator'
 
 
 const Trading = () => {
@@ -19,13 +23,16 @@ const Trading = () => {
     <div className='tradingContainer' >
         {/* <Navbar/> */}
         <Landing />
+        <div className='container'>
 
 
         <div className='tradingCardContainer'> 
+
+
             <TradingCardInfo 
             cardTitle='Multi-Asset Platform' 
             cardText='Upgraded platform rich with features & thousands of assets to speculate on.' 
-            icon={"../../../../../public/trading-Icons/cardWheel1.svg"} /> 
+            icon={"/trading-images/wheelIcon.png"} /> 
             <TradingCardInfo 
             cardTitle='Multi-Asset Platform' 
             cardText='Upgraded platform rich with features & thousands of assets to speculate on.' 
@@ -34,6 +41,11 @@ const Trading = () => {
             cardTitle='Multi-Asset Platform' 
             cardText='Upgraded platform rich with features & thousands of assets to speculate on.' 
             icon={IconWave} /> 
+
+          </div>
+
+          <div className='tradingCardContainer margin'> 
+
 
           <PerksCard 
           icon="/trading-images/Eye.png"
@@ -59,6 +71,21 @@ const Trading = () => {
           />
 
           <PerksCard 
+          icon="/trading-images/automation-icon.png"
+          cardTitle='Savvy Traders Automation'
+          type='follower'
+
+          cardText='Get instant trading signals and follow trades to access potential market opportunities.'
+          />
+
+<PerksCard 
+          icon="/trading-images/briefcase-icon.png"
+          cardTitle='Portfolio Diversification'
+          type='follower'
+
+          cardText='Explore different approaches to trading for a more balanced experience with top performing strategies.'
+          />
+             <PerksCard 
           icon="/trading-images/podcast-icon.png"
           cardTitle='Real-Time Signals'
           type='follower'
@@ -66,19 +93,29 @@ const Trading = () => {
           cardText='Get instant trading signals and follow trades to access potential market opportunities.'
           />
 
-         
+         </div>
 
 
 
         </div>
-        <TradingSteps/>
+        <TradingSteps
+        step1="Sign up for a
+        Tradex.io account"
+        step2='Login to 
+        Tradex.io'
+        step3="Select Copy Trading"
+        step4="Review  Profile Stats"
+        // step5="Select a profile to Copy "
+
+/>
 
 
-        <div className='padding'>
+
+        <div className='container'>
           <CTABanner/>
         </div>
 
-        <div className="padding">
+        <div className="container">
         <TradingExperience  
         image={user} 
         title={"Elevate your trading experience with MetaTrader 5"} 
@@ -87,6 +124,26 @@ const Trading = () => {
         </div>
 
         <ProfileCard/>
+
+        <div className='container'>
+          <CopyTrade />
+
+        </div>
+
+        <div className="container">
+          <ForexCalculator />
+        </div>
+
+
+        <div className='container'>
+        <CostExplanation/>
+
+        </div>
+        <div>
+          <TradingProfitCalculator/>
+        </div>
+
+
 
        
     </div>
