@@ -14,29 +14,7 @@ const Landing = () => {
         </div>
         <h1>Trading Platform</h1>
         <p>Take your trading to the next level with the markets.com powerful, feature & benefit rich platform, featuring high grade charting, unique analytic tools and customisable alerts.</p>
- 
-        
-        {/* <div className='tradingCardContainer'> 
-            <TradingCardInfo 
-            cardTitle='Multi-Asset Platform' 
-            cardText='Upgraded platform rich with features & thousands of assets to speculate on.' 
-            icon={"../../../../../public/trading-Icons/cardWheel1.svg"} /> 
-            <TradingCardInfo 
-            cardTitle='Multi-Asset Platform' 
-            cardText='Upgraded platform rich with features & thousands of assets to speculate on.' 
-            icon={IconShield} /> 
-            <TradingCardInfo 
-            cardTitle='Multi-Asset Platform' 
-            cardText='Upgraded platform rich with features & thousands of assets to speculate on.' 
-            icon={IconWave} /> 
-
-
-
-        </div> */}
-
-
-
-    </div>
+     </div>
 
   )
 }

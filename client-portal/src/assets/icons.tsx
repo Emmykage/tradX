@@ -11366,3 +11366,35 @@ export const HomeIcon = () => (
 </svg>
 
 )
+
+export const Graphycon = () => (
+  <svg width="24" height="26" viewBox="0 0 24 26" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="24" height="25" transform="translate(0 0.779297)" fill="url(#pattern0_5201_138899)"/>
+<defs>
+<pattern id="pattern0_5201_138899" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_5201_138899" transform="scale(0.0416667 0.04)"/>
+</pattern>
+<image id="image0_5201_138899" width="24" height="25" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAZCAYAAAArK+5dAAAAAXNSR0IArs4c6QAAAMtJREFUSEvtlcENwjAMRZ83QEwAYpNuwgCIIViAiViBDaDqnRkMQUVKDCRplCCQyK2H+vl/J99C4yON6/NZgKrOgLmInGopCxSo6tkVFpFlK4COgLfWTVVpFeQAJqksASSb8O1NAqwlqlodEFjSAhB0bAGpoedYlAJEh14DEJ3JH0DqVn2FRXvgIiI790Jv1zL6bUPyVZougFWtyLYA190W6IF1YWQPfnMW4BbOEXAqSk/v75On3B+f/gboCgmHx7zuu6WwSPZvvw+4AghD0Rr/Ss4vAAAAAElFTkSuQmCC"/>
+</defs>
+</svg>
+
+)
+
+export const GoogleIcon = () => (
+  <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23.2496 10.0184C21.53 8.37836 19.2351 7.48492 16.8607 7.52164C12.5168 7.52164 8.82737 10.4516 7.51083 14.3973V14.4014C6.81331 16.4695 6.81319 18.7089 7.51047 20.777H7.51603C8.83788 24.7181 12.5219 27.6494 16.8668 27.6494C19.1062 27.6494 21.0292 27.0775 22.5205 26.0671V26.058C24.2768 24.8953 25.4763 23.0654 25.8496 20.997H16.8537V14.5836H32.5628C32.7587 15.6974 32.8505 16.8357 32.8505 17.9678C32.8505 23.0317 31.0413 27.3133 27.8933 30.214L27.9006 30.2196C25.1406 32.7654 21.3526 34.2402 16.8607 34.2402C10.5636 34.2402 4.80506 30.6908 1.97777 25.0669V25.0661C-0.38352 20.3605 -0.383217 14.817 1.97869 10.1115H1.97943L1.97777 10.1102C4.80506 4.48018 10.5636 0.930811 16.8607 0.930811C20.9976 0.88182 24.9937 2.43624 28.0045 5.26352L23.2496 10.0184Z" fill="url(#paint0_linear_5201_138935)"/>
+<defs>
+<linearGradient id="paint0_linear_5201_138935" x1="16.5288" y1="0.929687" x2="16" y2="41.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>
+
+)
+export const CheckIcon1 = () => (
+  <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.13281 4.43372L3.29948 7.03372L6.76615 1.40039" stroke="white" stroke-width="1.73333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+)

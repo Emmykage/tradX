@@ -12,7 +12,8 @@ const CopyTrade = () => {
         <img src={flagIcon} className='flag-icon' alt="pic" />
         <img src={groupIcon} alt="pic"  className='group-icon' />
        
-        <ImageCard/>
+        <ImageCard style={{left: "299px", top: 0}} avatar={ProfilePic} name="Lana" profit="+6,103" ROI="+89"
+        />
 
 
             <img src={user} alt="" className='user'  />
@@ -40,15 +41,15 @@ const CopyTrade = () => {
   )
 }
 
-export const ImageCard = () => (
-    <div className='pic-card'>
+export const ImageCard = ({avatar, name, profit, ROI, style} : {avatar: string,  name: string, profit: string, ROI: string, style: {}}) => (
+    <div style={style} className='pic-card'>
         <div className='pic-wrapper'>
-        <img src={ProfilePic} alt="pic" />
+        <img src={avatar} alt="pic" />
          </div>
         <div className='pic-info'>
-            <p className='name'>Lana</p>
-            <p className='fig'>+6,103</p>
-            <p className='ROI'>ROI <span>+89</span> </p>
+            <p className='name'>{name}</p>
+            <p className='fig'>{profit}</p>
+            <p className='ROI'>ROI <span>{ROI}</span> </p>
             <button>follow</button>
         </div>
     </div>

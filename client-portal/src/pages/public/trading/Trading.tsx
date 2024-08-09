@@ -2,7 +2,6 @@ import React from 'react'
 import './trading.scss'
 import Navbar from '../home/navbar/Navbar'
 import Landing from './landing/Landing'
-import TradingInstruction from './tradingIntruction/TradingInstruction'
 import CTABanner from './call-to-action/CTABanner'
 import ProfileCard from './profileCard/ProfileCard'
 import TradingCardInfo from './tradingCardInfo/TradingCardInfo'
@@ -21,7 +20,6 @@ import CanIcon from '../../../assets/trading/canadaflagicon.png'
 import BgImage from '../../../assets/trading/adam-tradingProfit.png'
 import ProfitMarginGuide from './profitMarginGuide/ProfitMarginGuide'
 import TradeAnalyzer from './tradeAnalyzer/TradeAnalyzer'
-import handImage from '../../../assets/trading/adam-nowakowski-hand-graph-unsplash 2.png'
 import UkIFlag from '../../../assets/trading/UK.png'
 import StraightForwardTrading from './straightForwardTradingComponent/StraightForwardTrading'
 import LandingPageMobile from './LandingPageMobileTrading/LandingPageMobile'
@@ -30,12 +28,17 @@ import imageBgEve from '../../../assets/trading/eve-nowakowski-D4LDw5eXhgg.png'
 import imageBgAdamLp from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash.png'
 import MetaTrader4Landing from './metaTrader4/MetaTrader4'
 import MetaTrader5Landing from './metaTrader5/MetaTrader5'
+import TrackTrade from './trackTrade/TrackTrade'
+import TrackTradeLanding from './trackTradeLandingPage/TrackTradeLanding'
 const Trading = () => {
   return (
     <div className='tradingContainer' >
       <Navbar />
       <Landing />
+      <div className="container">
       <StraightForwardTrading/>
+
+      </div>
 
       <LandingPageMobile/>
 
@@ -69,6 +72,11 @@ const Trading = () => {
         button={true}
         />
       </div>
+
+
+      <TrackTradeLanding/>
+
+
 
         <div className='container'>
 
@@ -210,6 +218,11 @@ tradex.io offers a commodity calculator that does the job for you. You simply ne
     <div className="container">
       <TradeAnalyzer/>
     </div>
+    <div className="container">
+      <TrackTrade/>
+    </div>
+
+
 
        
     </div>
