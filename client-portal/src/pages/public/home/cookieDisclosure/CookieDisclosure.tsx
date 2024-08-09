@@ -7,6 +7,7 @@ import Introduction from './introduction/Introduction'
 import ThirdPartyCookies from './thirdPartyCookie/ThirdPartyCookies'
 import WhatAreCookies from './whatAreCookies/WhatAreCookies'
 import CategorySlider from '../commonComponents/categorySlider/CategorySlider'
+import TradeTable from '../commonComponents/tradeTable/TradeTable'
 
 const CookieDisclosure = () => {
 
@@ -15,10 +16,11 @@ const CookieDisclosure = () => {
   console.log(pathNames);
   
 
-  return (git 
+  return ( 
     <div className='cookieDisclosurePageContainer'>
         <Navbar/>
         {/* <CategorySlider/> */}
+        <TradeTable/>
       {/* custom routing */}
       {/* <div>
         <Link to='/home'>

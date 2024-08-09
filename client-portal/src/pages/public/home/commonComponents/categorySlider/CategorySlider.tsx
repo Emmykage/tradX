@@ -52,11 +52,17 @@ const CategorySlider = () => {
         }]
       };
 
+
+     
+
+      
       const AllPairs = (
         <div className="categorySliderContainer">
-
+          
+        
         <Slider {...settings_3}>
         <div className="categorySliderCard">
+          
             {/* top */}
             <div className="categorySliderTopContainer">
                 {/* left */}
