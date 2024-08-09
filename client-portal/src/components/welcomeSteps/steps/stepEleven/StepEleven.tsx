@@ -1,5 +1,5 @@
 import React from 'react';
-import './stepEleven.scss'
+import './StepEleven.scss'
 import TestWalkThrough from 'components/welcomeSteps/components/modal/TestWalkThrough';
 import CustomMarkerOne from 'components/welcomeSteps/components/customMarkerOne/CustomMarkerOne';
 import CustomMarkerTwo from 'components/welcomeSteps/components/customMarkerTwo/CustomMarkerTwo';
