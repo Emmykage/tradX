@@ -11295,3 +11295,50 @@ export const StarFavouriteIcon = () => (
     />
   </svg>
 ); 
+
+export const MainChartSignalsIcon = () => (
+  <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="10" cy="6" r="2" stroke="#9F9FA1" stroke-width="2"/>
+    <path d="M18 20.5L10.1685 8.26321C10.0898 8.14029 9.91021 8.14029 9.83155 8.26321L2 20.5" stroke="#9F9FA1" stroke-width="2" stroke-linecap="round"/>
+    <path d="M10 1V4" stroke="#9F9FA1" stroke-width="2" stroke-linecap="round"/>
+    <path d="M10 14V18" stroke="#9F9FA1" stroke-width="2" stroke-linecap="round"/>
+    <path d="M19 16H1" stroke="#9F9FA1" stroke-width="2" stroke-linecap="round"/>
+</svg>
+
+);
+export const MainChartChangeIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="17" viewBox="0 0 24 17" fill="none">
+    <path d="M1 16H4.15104C4.22842 16 4.29885 15.9554 4.33189 15.8854L7.057 10.1146C7.09004 10.0446 7.16047 10 7.23784 10H12.8632C12.9457 10 13.0197 9.94936 13.0496 9.87249L16.3059 1.49923C16.3729 1.32673 16.6182 1.33005 16.6806 1.5043L19.6748 9.86741C19.7032 9.94694 19.7786 10 19.863 10H23" stroke="#9F9FA1" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+
+);
+export const MainChartAnalysisIcon = () => (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="1" width="16" height="16" rx="2" stroke="#9F9FA1" stroke-width="2"/>
+    <line x1="1" y1="8" x2="18" y2="8" stroke="#9F9FA1" stroke-width="2"/>
+    </svg>
+
+);
+
+export const ZoomInChartIcon = () => (
+  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9.45703 4.13574V5.66504H0.685547V4.13574H9.45703ZM5.88867 0.400391V9.7168H4.2627V0.400391H5.88867Z" fill="#9F9FA1"/>
+  </svg>
+);
+
+export const ZoomOutChartIcon = () => (
+  <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9.45703 0.136719V1.66602H0.685547V0.136719H9.45703ZM5.88867 0.136719V1.66602H4.2627V0.136719H5.88867Z" fill="#9F9FA1"/>
+  </svg>
+);
+
+export const CandleStickIcon = () => (
+  <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 24 24" data-icon="icon-chartcandles"><path fill="currentColor" fill-rule="evenodd" d="M7 3a1 1 0 0 1 1 1v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H8v2a1 1 0 1 1-2 0v-2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h1V4a1 1 0 0 1 1-1Zm10 4a1 1 0 0 1 1 1v2h1a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1v2a1 1 0 1 1-2 0v-2h-1a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1V8a1 1 0 0 1 1-1ZM5 8v8h4V8H5Zm10 4v4h4v-4h-4Z" clip-rule="evenodd"></path></svg>
+);
+export const BarChartIcon = () => (
+  <svg aria-hidden="true" role="presentation" viewBox="0 0 24 24" data-icon="icon-chartbars"><path fill="currentColor" fill-rule="evenodd" d="M12 4a1 1 0 0 1 1 1v8h1a1 1 0 1 1 0 2h-1v1a1 1 0 1 1-2 0v-6h-1a1 1 0 0 1 0-2h1V5a1 1 0 0 1 1-1ZM5 7a1 1 0 0 1 1 1v3h1a1 1 0 1 1 0 2H6v6a1 1 0 1 1-2 0V8a1 1 0 0 1 1-1Zm11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v10a1 1 0 1 1-2 0v-9h-1a1 1 0 0 1-1-1Z" clip-rule="evenodd"></path></svg>
+);
+
+export const AreaChartIcon = () => (
+  <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 24 24" data-icon="icon-chartline"><path fill="currentColor" fill-rule="evenodd" d="m14.842 8.058-1.845 5.774a1.2 1.2 0 0 1-1.143.835H8.507L6.972 18.27a1.2 1.2 0 0 1-1.104.73H3a1 1 0 1 1 0-2h2.34l1.534-3.604a1.2 1.2 0 0 1 1.104-.73h3.292l2.37-7.42c.348-1.085 1.87-1.121 2.268-.054l2.786 7.475H21a1 1 0 1 1 0 2h-2.861a1.2 1.2 0 0 1-1.124-.781l-2.173-5.828Z" clip-rule="evenodd"></path></svg>
+)

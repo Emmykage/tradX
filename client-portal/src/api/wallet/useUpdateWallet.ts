@@ -3,25 +3,25 @@ import { useMutation } from "@tanstack/react-query";
 
 import { IWallet } from "@interfaces";
 import getEnv from "utils/env";
+import { WalletData } from "@store/slices/wallet";
 
-type useCreateWalletProps = {
-  onSuccess?: (data: IWallet, variables: unknown, context: unknown) => void;
+type useUpdateWalletProps = {
+  onSuccess?: (data: {wallet: WalletData}, variables: unknown, context: unknown) => void;
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };
 
-type WalletData = {
-  account_type: number;
-};
-
-export async function fetchCreateWallet(
+export async function fetchUpdateWallet(
   data: WalletData,
-  token: string
+  id: string | number,
+  token: string,
+  archive = false
 ): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
-    const response = await fetch(`${BASE_URL}/wallet/wallets/`, {
-      method: "POST",
+    let url = archive? `${BASE_URL}/wallet/${id}/archive/` : `${BASE_URL}/wallet/${id}/update_name/`;
+    const response = await fetch(url, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -45,8 +45,8 @@ export async function fetchCreateWallet(
   }
 }
 
-export const useCreateWallet = (props: useCreateWalletProps) => {
-  const receivedProps = props || ({} as useCreateWalletProps);
+export const useUpdateWallet = (props: useUpdateWalletProps) => {
+  const receivedProps = props || ({} as useUpdateWalletProps);
 
   const {
     onSuccess: onSuccessOverride,
@@ -56,7 +56,7 @@ export const useCreateWallet = (props: useCreateWalletProps) => {
 
   return useMutation<any, unknown, any>({
     mutationFn: (variables) =>
-      fetchCreateWallet(variables.data, variables.token),
+      fetchUpdateWallet(variables.data, variables?.id, variables.token, variables?.archive),
     onSuccess: (data, variables, context) => {
       if (onSuccessOverride) {
         onSuccessOverride(data, variables, context);
@@ -71,4 +71,4 @@ export const useCreateWallet = (props: useCreateWalletProps) => {
   });
 };
 
-export default useCreateWallet;
+export default useUpdateWallet;

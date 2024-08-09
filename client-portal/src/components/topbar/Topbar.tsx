@@ -20,6 +20,9 @@ import {
 import "./topbar.scss";
 import { AssetPairSliceState, removeAssetPair } from "@store/slices/pairs";
 import { CryptoSliceState } from "@store/slices/markets/types";
+import AssetSelectionContainer from "components/assetSelectionContainer/AssetSelectionContainer";
+import { ITradeAssets } from "@interfaces";
+import DropdownMenu from "components/dropdownMenu/DropdownMenu";
 
 interface TopbarProps {
   isDrawerOpen: boolean;
@@ -31,6 +34,7 @@ interface TopbarProps {
   setCurrentDrawer: React.Dispatch<React.SetStateAction<CurrentDrawerType>>;
   currentDrawer: CurrentDrawerType;
   style?: CSSProperties;
+  chartOptionMenus: Array<any>;
 }
 
 const Topbar: React.FunctionComponent<TopbarProps> = ({
@@ -40,6 +44,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   setIsDrawerOpen,
   setCurrentDrawer,
   currentDrawer,
+  chartOptionMenus,
   style,
 }) => {
   const { user, loading } = useAppSelector(
@@ -97,50 +102,28 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
 
   return (
     <div className="topbarContainer" id="topbarContainer" style={style}>
-      <div className="conversionDiv">
-        <ArrowsSlider>
-        <div className="asset-pair-container">
-          {assetPairs.map(assetPair => (
-            <div
-              key={assetPair.name} // Ensure to add a unique key for list rendering
-              className="conversionTab"
-              onClick={() => {
-                setIsDrawerOpen(
-                  isDrawerOpen && currentDrawer === "assets" ? false : true
-                );
-                setCurrentDrawer("assets");
-              }}
-            >
-              <div className="convImg">
-                <img
-                  src={assetPair.image}
-                  alt="conv"
-                />
-              </div>
-              <div className="convDetails">
-                <div className="topConv">
-                  <span className="currency">{assetPair.value}</span>
-                  <span className="percent">{assetPair.profit}</span>
-                </div>
-              </div>
-              {assetPairs.length > 1 && (
-                <span
-                  className="close-btn"
-                  onClick={(event) => {
-                    event.stopPropagation(); // Prevents the click event from bubbling up
-                    dispatch(removeAssetPair(assetPair));
-                  }}
-                >
-                  <CloseIconsm />
-                </span>
-              )}
+      
+        <div className="conversionDiv">
+          <ArrowsSlider>
+            <div className="asset-pair-container">
+              {assetPairs.map((assetPair: ITradeAssets, _i: number) => (
+                <>
+                  <AssetSelectionContainer data={assetPair} key={_i}/>
+                </>
+              ))}
             </div>
-          ))}
+          </ArrowsSlider>
+          <div className="top-bar-chart-options">
+                {chartOptionMenus.map((data, _i) => (
+                  <DropdownMenu key={_i} position="bottom-left" type={data?.type} menuItems={data.menus}>
+                    <div className="top-bar-chart-option" onClick={data.onClick}>
+                        {data.icon}
+                    </div>
+                  </DropdownMenu>
+                ))}
+              </div>
         </div>
-
-
-      </ArrowsSlider>
-      </div>
+ 
       <div className="payProfileTab" id="top_right">
         <WalletsButton />
         <button

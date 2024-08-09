@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { WalletSliceState, setSelectedWallet } from "@store/slices/wallet";
+import { WalletData, WalletSliceState, setSelectedWallet } from "@store/slices/wallet";
 
 import Loading from "components/loading";
 import IocnPlaceholder from "assets/icons/IocnPlaceholder";
@@ -63,9 +63,10 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
             key={account.id}
             onClick={() => dispatch(setSelectedWallet(account))}
             icon={<IocnPlaceholder />} // To be replaced when backend add images to wallets
-            accountType={account.name}
-            amount={account.available_balance.toString()}
-            secAmount={account.account_type__symbol}
+            // accountType={account.name}
+            // amount={account.available_balance.toString()}
+            // secAmount={account.account_type__symbol}
+            accountData={account}
             suffixIcon={<ThreeDotsMenu />}
             tag="" // To be added when backend updates response
             selectedCard={selectedWallet?.id === account.id}

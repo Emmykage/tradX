@@ -7,7 +7,7 @@ import {
   CrosshairMode,
   UTCTimestamp,
 } from "lightweight-charts";
-import React, { useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { useCookies } from "react-cookie";
 
 import useSocketConnect from "../../../../hooks/useSocketConnect";
@@ -29,9 +29,12 @@ import { setAmount, SetDuration, setFinished, setTrade } from "@store/slices/tra
 
 
 
-const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
+const MainChart: React.FunctionComponent<any>  = forwardRef(({ data: newData,colors, type, chartScale }) => {
   // rename data being passed down to new data so it wont confilict real data thats coming from the socket 
-  
+  const chartContainerRef = useRef<HTMLDivElement>(null);
+
+  const chartRef = useRef<IChartApi>();
+  // const {chartContainerRef, chartRef} = refs;
   const [cookies] = useCookies(["access_token"]);
 
 
@@ -45,8 +48,6 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
   const userState = useAppSelector((state) => state);
 
   const dispatch = useAppDispatch();
-  console.log(duration);
-  console.log(userState);
   const { data: socketData, socket } = useSocketConnect(wsTicket as string);
 
   const data: MarketData[] = markets.crypto[markets.currentSymbol];
@@ -55,7 +56,6 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     getClockMutate(cookies.access_token);
   }, []);
 
- 
 
   useEffect(() => {
     if (clockData) {
@@ -151,9 +151,7 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     gridLines = "#ffccff",
   } = colors || {};
 
-  const chartContainerRef = useRef<HTMLDivElement>(null);
 
-  const chartRef = useRef<IChartApi>();
 
   useEffect(()=>{
     console.log('object');
@@ -168,6 +166,8 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     }
     
   },[finished])
+
+  // Chart logic
   useEffect(() => {
     const chartContainer = chartContainerRef.current!;
     const chart = createChart(chartContainer, {
@@ -210,10 +210,12 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
       borderUpColor: 'green',
       wickDownColor: 'red',
       wickUpColor: 'green',
-  });
+    });
 
 
   candlestickSeries.setData(newData);
+  
+  
 
     // const newSeries = chart.addAreaSeries({
     //   lineColor,
@@ -233,13 +235,6 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     //   lineWidth: undefined,
     //   axisLabelVisible: false,
     // });
-
-  
-
-   
-
-
-    console.log(finished,trade,duration,amount);
 
       const textElement1 = createCustomMarker1('1.21')
       if(finished){
@@ -356,9 +351,6 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     
     
           let timeCoordinate = chart.timeScale().timeToCoordinate(1721280300000 / 1000 as UTCTimestamp);
-    
-          console.log('Price coordinate:', priceCoordinate);
-          console.log('Time coordinate:', timeCoordinate);
           if (timeCoordinate === null) {
             // If the specified time is not found use the first visible time
             const visibleRange = chart.timeScale().getVisibleRange();
@@ -409,8 +401,6 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     candlestickSeries.setData(newData);
     
     chartRef.current = chart;
-
-    console.log(data);
 
     chart.applyOptions({
       crosshair: {
@@ -476,6 +466,14 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
     areaBottomColor,
     gridLines,
   ]);
+  // ** Chart logic ends
+
+  useEffect(() => {
+    //  @ts-ignore
+    chartRef.current.timeScale().applyOptions({
+        barSpacing: chartScale
+    });
+  }, [chartScale]);
 
 
 
@@ -503,6 +501,6 @@ const MainChart: React.FunctionComponent<any>  = ({ data: newData,colors }) => {
   
     
     
-};
+});
 
 export default MainChart;

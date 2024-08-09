@@ -1,4 +1,4 @@
-import { Switch } from "antd";
+import Switch from "antd/es/switch";
 import "./toggle.scss";
 
 interface ToggleProps {

@@ -11,6 +11,9 @@
       color: white;
     }
   }
+  .account-types:not(:first-child) {
+    margin-top: 20px;
+  }
   .AccountPinned {
     display: flex;
     align-items: center;

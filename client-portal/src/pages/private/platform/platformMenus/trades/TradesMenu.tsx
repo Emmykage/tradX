@@ -7,14 +7,14 @@ import {
 } from "../../../../../assets/icons";
 import "./tradesMenu.scss";
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Col, Row, Select } from "antd";
 import SearchBar from "../../../../../components/searchBar/SearchBar";
 import { forex } from "../assets/assetsData";
 import { Dispatch, SetStateAction } from "react";
 import { LeftSubDrawer } from "../../types";
-import { AssetPairSliceState, setAssetPairs } from "@store/slices/pairs";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
+import {  setAssetPairs } from "@store/slices/pairs";
+import { useAppDispatch } from "@store/hooks";
 
 interface TradesMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
@@ -57,14 +57,8 @@ const RenderData: React.FunctionComponent = (props: any) => {
     // setIsLeftSubDrawerOpen(false)
   };
   const handleSelectedForex =(item: any) => {
-  
     setSelectedForex(item);
     dispatch(setAssetPairs(item))
-    // handleMenuClick();
-
-
-    // setIsLeftSubDrawerOpen(false);
-    // setLeftSubDrawer();
   };
   
   return (

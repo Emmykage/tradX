@@ -6,70 +6,57 @@
 
   @media (max-width: 767px) {
     flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 8px;
   }
 
   .conversionDiv{
-    width: 80%;
-    @media (max-width: 1600px) {
-      width: 74%;
+    width: 65%;
+    @media (max-width: 767px) {
+      width: 100%;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      // width: auto;
     }
+    // @media (max-width: 1600px) {
+    //   width: 74%;
+    // }
 
-    @media (max-width: 1292px) {
-      width: 70%;
-    }
-    @media (max-width: 11115px) {
-      width: 65%;
-    }
-    @media (max-width: 9005px) {
-      width: 65%;
-    }
+    // @media (max-width: 1292px) {
+    //   width: 70%;
+    // }
+    // @media (max-width: 11115px) {
+    //   width: 65%;
+    // }
+    // @media (max-width: 9005px) {
+    //   width: 65%;
+    // }
     .asset-pair-container{
       display: flex;
       gap: 8px;
     }
-   
-  .conversionTab {
-    display: flex;
-    gap: 0.81rem;
-    align-items: center;
-    height: 2.813rem;
-    padding: 0 0.6rem;
-    cursor: pointer;
-    border-radius: 0.313rem;
-    border: 0.0625rem solid rgba(32, 92, 146, 0.22);
-    @media (max-width: 767px) {
-      width: 100%;
-      margin-top: 0.625rem;
-    }
-    .convImg {
-      img {
-        width: 1.375rem;
-      }
-    }
-    .convDetails {
-      .topConv {
+    .top-bar-chart-options{
+      display: none;
+      @media (max-width: 767px) {
         display: flex;
-        gap: 0.38rem;
+        gap: 12px;
         align-items: center;
-        font-size: 1rem;
-        span {
-          color: #fff;
-        }
-        font-size: 0.8125rem;
-        line-height: 1rem;
-        span.percent {
-          background-color: #0094ff;
-          color: #fff;
-          border-radius: 0.188rem;
-          font-size: 0.75rem;
-          padding: 0.125rem 0.313rem;
-        }
+      }
+      .top-bar-chart-option{
+        width: 42px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 7px;
+        background: #1A1D21;
+        z-index: 3;
+        cursor: pointer;
       }
     }
-  }
-  .conversionTab:hover {
-    background: #5e697852;
-  }
+   
 }
   .payProfileTab {
     display: flex;
