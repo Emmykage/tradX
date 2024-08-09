@@ -48,7 +48,6 @@ const CategorySlider = () => {
               centerMode: false,
               slidesToShow: 3,
               slidesToScroll:1,
-              arrows:false,
               
             },
           },
@@ -75,10 +74,10 @@ const CategorySlider = () => {
           
         
         <Slider {...settings}>
-        <div className="categorySliderCard">
+        <div className="categorySliderCard" style={{backgroundColor:'pink'}}>
           
             {/* top */}
-            <div className="categorySliderTopContainer">
+            <div className="categorySliderTopContainer" >
                 {/* left */}
                 <div className="categorySliderTopLeftContainer">
                     <h2>UKOIL</h2>
