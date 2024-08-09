@@ -8,8 +8,8 @@ export const LogoIcon = () => {
   );
 };
 
-export const Dot = () => (
-  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="10px" width="4px" xmlns="http://www.w3.org/2000/svg"><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"></path></svg>
+export const Dot:React.FC<{color?:string,width?:string,height?:string}> = ({color,width,height}) => (
+  <svg stroke={color || "currentColor"} fill={color || "currentColor"} stroke-width="0" viewBox="0 0 24 24" height={height || "10px"} width={width || "4px"} xmlns="http://www.w3.org/2000/svg"><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"></path></svg>
 )
 
 export const SettingsIcon2 = () => (
@@ -876,7 +876,7 @@ export const CloseIconsm = ({ color = "white" }) => (
   </svg>
 );
 
-export const ArrowLeftOS = () => {
+export const ArrowLeftOS:React.FC<{color?:string}> = ({color}) => {
   return (
     <svg
       width="12"
@@ -887,7 +887,7 @@ export const ArrowLeftOS = () => {
     >
       <path
         d="M4.43741 8.99998L11.0374 15.6L9.15208 17.4853L0.666748 8.99998L9.15208 0.514648L11.0374 2.39998L4.43741 8.99998Z"
-        fill="white"
+        fill={color || 'white'}
       />
     </svg>
   );
@@ -917,8 +917,8 @@ export const ArrowRightOS = ({
   stroke?: string;
 }) => (
   <svg
-    width={width ? "" : "16"}
-    height={height ? "" : "16"}
+    width={width ? width : "16"}
+    height={height ? height : "16"}
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -950,11 +950,11 @@ export const ArrowUpOS = () => {
   );
 };
 
-export const ArrowDownOS = () => {
+export const ArrowDownOS:React.FC<{height?:string,width?:string}>  = ({height,width}) => {
   return (
     <svg
-      width="32"
-      height="19"
+      width={width || "32"}
+      height={height || "19"}
       viewBox="0 0 32 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -1618,18 +1618,18 @@ export const SubtractIcon = () => {
   );
 };
 
-export const ArrowUpRightIcon = () => {
+export const ArrowUpRightIcon:React.FC<{color?:string}> = ({color}) => {
   return (
     <svg
       width="15"
       height="15"
       viewBox="0 0 15 15"
-      fill="none"
+      fill={`${color ? color : 'none'}`}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M14 13V1M14 1H2M14 1L2 13"
-        stroke="white"
+        stroke={`${color ? color : 'none'}`}
         stroke-width="2"
         stroke-linecap="square"
       />
@@ -1637,18 +1637,57 @@ export const ArrowUpRightIcon = () => {
   );
 };
 
-export const ArrowDownRightIcon = () => {
+export const ArrowUpRightIconColor: React.FC<{ color?: string }> = ({ color }) => {
   return (
     <svg
       width="15"
       height="15"
       viewBox="0 0 15 15"
-      fill="none"
+      fill={`${color ? color : "none"}`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14 13V1M14 1H2M14 1L2 13"
+        stroke={`${color ? color : "none"}`}
+        stroke-width="2"
+        stroke-linecap="square"
+      />
+    </svg>
+  );
+};
+
+export const ArrowDownRightIconColor: React.FC<{ color?: string }> = ({ color }) => {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill={`${color ? color : "none"}`}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M14 2V14M14 14H2M14 14L2 2"
-        stroke="white"
+        stroke={`${color ? color : "none"}`}
+        stroke-width="2"
+        stroke-linecap="square"
+      />
+    </svg>
+  );
+};
+
+
+export const ArrowDownRightIcon: React.FC<{ color?: string }> = ({color}) => {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill={`${color ? color : 'none'}`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14 2V14M14 14H2M14 14L2 2"
+        stroke={`${color ? color : 'none'}`}
         stroke-width="2"
         stroke-linecap="square"
       />
@@ -1953,11 +1992,11 @@ export const SettingsIcon = () => {
   );
 };
 
-export const SearchIcon = () => {
+export const SearchIcon:React.FC<{height?:string,width?:string}> = ({height,width}) => {
   return (
     <svg
-      width="26"
-      height="26"
+      width={width || "26"}
+      height={height || "26"}
       viewBox="0 0 26 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -2108,7 +2147,7 @@ export const BellIconLender = () => {
   );
 };
 
-export const YellowEllipse = () => {
+export const TopEllipse:React.FC<{color?:string}> = ({color}) => {
   return (
     <svg
       width="55"
@@ -2117,12 +2156,12 @@ export const YellowEllipse = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="27.5" cy="27.5" r="27.5" fill="#C7DB54" />
+      <circle cx="27.5" cy="27.5" r="27.5" fill={color} />
     </svg>
   );
 };
 
-export const BlueEllipse = () => {
+export const BottomEllipse:React.FC<{color?:string}> = ({color}) => {
   return (
     <svg
       width="90"
@@ -2131,7 +2170,7 @@ export const BlueEllipse = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="45" cy="45" r="45" fill="#0066B3" />
+      <circle cx="45" cy="45" r="45" fill={color} />
     </svg>
   );
 };
@@ -2169,6 +2208,16 @@ export const ThreeDotsMenu = () => {
         fill-opacity="0.8"
       />
     </svg>
+  );
+};
+export const MenuBar:React.FC<{height?:string, width?:string}> = ({height,width}) => {
+  return (
+    <svg fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 72 72" width={width || '64px'} height={height || '64px'}><path d="M56 48c2.209 0 4 1.791 4 4 0 2.209-1.791 4-4 4-1.202 0-38.798 0-40 0-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4C17.202 48 54.798 48 56 48zM56 32c2.209 0 4 1.791 4 4 0 2.209-1.791 4-4 4-1.202 0-38.798 0-40 0-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4C17.202 32 54.798 32 56 32zM56 16c2.209 0 4 1.791 4 4 0 2.209-1.791 4-4 4-1.202 0-38.798 0-40 0-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4C17.202 16 54.798 16 56 16z"/></svg>
+  );
+};
+export const MenuCloseIcon:React.FC<{height?:string, width?:string}> = ({height,width}) => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0,0,256,256" width={width || '24px'} height={height || '24px'}><g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" ><g transform="scale(10.66667,10.66667)"><path d="M4.70703,3.29297l-1.41406,1.41406l7.29297,7.29297l-7.29297,7.29297l1.41406,1.41406l7.29297,-7.29297l7.29297,7.29297l1.41406,-1.41406l-7.29297,-7.29297l7.29297,-7.29297l-1.41406,-1.41406l-7.29297,7.29297z"></path></g></g></svg>
   );
 };
 

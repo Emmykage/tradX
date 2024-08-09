@@ -37,7 +37,7 @@ import { AreaChart } from "./MainChart/AreaChart";
 import {  isArrayEmpty, timeScaleMenu } from "utils/utils";
 import DropdownMenu from "components/dropdownMenu/DropdownMenu";
 import BarChart from "./MainChart/BarChart";
-
+import { useNavigate } from "react-router-dom";
 
 interface PlatformProps {}
 
@@ -77,6 +77,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const { user, loading } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
+  const navigate = useNavigate();
 
   const formatAreaData = () => {
     let datetime : any = initialAreaData.DateTime;
@@ -112,7 +113,16 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   
 
 
-  const isWalkthroughSkipped = user?.is_walkthrough_completed ?? true;
+  const isWalkthroughSkipped = user?.is_walkthrough ?? true;
+
+
+  console.log(user);
+
+  // useEffect(() => {
+  //   if (user?.is_walkthrough_completed) {
+  //     navigate('/welcome');
+  //   }
+  // }, [user, navigate]);
 
   useEffect(() => {
     setChartInitialData(initialData);
@@ -430,12 +440,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         </div>
       </div>
 
-      {!isWalkthroughSkipped && !loading && (
+      {/* {!isWalkthroughSkipped && !loading && (
         <WalkThrough
           className={!isWalkthroughSkipped && !loading ? "" : "hidden"}
           tradeFormHeight={tradeFormHeight}
         />
-      )}
+      )} */}
     </div>
   );
 };

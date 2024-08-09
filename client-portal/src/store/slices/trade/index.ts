@@ -11,8 +11,8 @@ export interface TradeStates {
 
 // Define the initial state using that type
 const initialState: TradeStates = {
-  duration: 1,
-  amount: 1,
+  duration: 2,
+  amount: 90,
   trade: null,
   finished:false,
   

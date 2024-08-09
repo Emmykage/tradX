@@ -55,6 +55,7 @@ const SetInvestment: React.FC<SetInvestmentProps> = ({
           profitPercent="+85%"
           hintPlus
           disabled
+          setStep={setStep}
         />
       </div>
     </div>

@@ -1,0 +1,52 @@
+{
+  "assets": [
+    {
+      "name": "Caterpillar",
+      "image": "/welcome-icons/step_two/caterpillar.svg"
+    },
+    {
+      "name": "GBP/CAD",
+      "image": "/welcome-icons/step_two/gbp_cad.svg"
+    },
+    {
+      "name": "Copper",
+      "image": "/welcome-icons/step_two/copper.svg"
+    },
+    {
+      "name": "AUD/CHF",
+      "image": "/welcome-icons/step_two/aud_chf.svg"
+    },
+    {
+      "name": "Nike",
+      "image": "/welcome-icons/step_two/nike.svg"
+    },
+    {
+      "name": "BMW",
+      "image": "/welcome-icons/step_two/bmw.svg"
+    },
+    {
+      "name": "Tesla",
+      "image": "/welcome-icons/step_two/tesla.svg"
+    },
+    {
+      "name": "Gold",
+      "image": "/welcome-icons/step_two/gold.svg"
+    },
+    {
+      "name": "EUR/USD",
+      "image": "/welcome-icons/step_two/eur_usd.svg"
+    },
+    {
+      "name": "Apple",
+      "image": "/welcome-icons/step_two/apple.svg"
+    },
+    {
+      "name": "Mc Donald’s",
+      "image": "/welcome-icons/step_two/mc_donalds.svg"
+    },
+    {
+      "name": "Brent",
+      "image": "/welcome-icons/step_two/brent.svg"
+    }
+  ]
+}
