@@ -1,4 +1,3 @@
-import { OferIcon } from 'assets/icons'
 import React from 'react'
 import './costExplanation.scss'
 const CostExplanation = () => {
