@@ -2,14 +2,17 @@ import React from 'react'
 import './tradingExperience.scss'
 import graphVector from '../../../../assets/trading/Vector.png'
 import { GraphIcon, TheGraphFlag } from 'assets/icons'
-const TradingExperience = ({image, title, text} : {image?: string, title?: string, text?: string}) => {
+const TradingExperience = ({image, title, text, button} : {image?: string, title?: string, text?: string, button?: boolean }) => {
   return (
     <div className='trading-experience'>
         <div className='exp-info'>
             <h3>{title}</h3>
             <p>
                 {text} </p>
-            <button>Join Now</button>
+
+
+            {button && (<button>Join Now</button>)}
+            
 
         </div>
         <div className='exp-graph'> 
@@ -23,7 +26,7 @@ const TradingExperience = ({image, title, text} : {image?: string, title?: strin
             <img src={graphVector} alt="" className='vect'  />
 
 
-        
+
 
         </div>
         

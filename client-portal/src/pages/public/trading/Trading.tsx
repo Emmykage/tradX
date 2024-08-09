@@ -19,12 +19,57 @@ import TradingProfitCalculator from './tradingProfitCalculator/TradingProfitCalc
 import USUKICon from '../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
 import CanIcon from '../../../assets/trading/canadaflagicon.png'
 import BgImage from '../../../assets/trading/adam-tradingProfit.png'
-
+import ProfitMarginGuide from './profitMarginGuide/ProfitMarginGuide'
+import TradeAnalyzer from './tradeAnalyzer/TradeAnalyzer'
+import handImage from '../../../assets/trading/adam-nowakowski-hand-graph-unsplash 2.png'
+import UkIFlag from '../../../assets/trading/UK.png'
+import StraightForwardTrading from './straightForwardTradingComponent/StraightForwardTrading'
+import LandingPageMobile from './LandingPageMobileTrading/LandingPageMobile'
+import imageBgAdam from '../../../assets/trading/adam-nowakowski-phone.png'
+import imageBgEve from '../../../assets/trading/eve-nowakowski-D4LDw5eXhgg.png'
+import imageBgAdamLp from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash.png'
+import MetaTrader4Landing from './metaTrader4/MetaTrader4'
+import MetaTrader5Landing from './metaTrader5/MetaTrader5'
 const Trading = () => {
   return (
     <div className='tradingContainer' >
-        {/* <Navbar/> */}
-        <Landing />
+      <Navbar />
+      <Landing />
+      <StraightForwardTrading/>
+
+      <LandingPageMobile/>
+
+      
+      <div className="container">
+        <TradingExperience  
+        image={imageBgAdam} 
+        title={"Where intuition meets functionality"} 
+        text={"The markets.com app offers a streamlined interface that executes orders quickly and reliably. Trade the markets your way. With sleek, uncluttered and powerful technology."}
+        button={false}
+        />
+        </div>
+
+        <MetaTrader4Landing/>
+
+        <div className="container">
+        <TradingExperience  
+        image={imageBgEve} 
+        title={"Use MT4 to trade with tradex.io"} 
+        text={"If you already have a tradex.io account, you are all set. Now you can simply install MT4 and add a trading account via your desktop markets.com platform. For more information on how to add MetaTrader trading account please click here. If you don’t have a markets.com account yet, don’t worry – registering is easy and fast."}
+        button={true}
+        />
+
+      </div>
+      <MetaTrader5Landing/>
+      <div className="container">
+      <TradingExperience  
+        image={imageBgAdamLp} 
+        title={"Elevate your trading experience with MetaTrader 5"} 
+        text={"Use your markets.com account to seamlessly install MT5 and start trading right away in your desktop markets.com platform. The video tutorial above can walk you through the process. Explore here step-by-step instructions on adding a MetaTrader 5 trading account. Don't have a markets.com account yet? No worries, visit the markets.com Sign Up page and provide the required information to quickly complete full registration. "}
+        button={true}
+        />
+      </div>
+
         <div className='container'>
 
 
@@ -79,8 +124,7 @@ const Trading = () => {
 
           cardText='Get instant trading signals and follow trades to access potential market opportunities.'
           />
-
-<PerksCard 
+          <PerksCard 
           icon="/trading-images/briefcase-icon.png"
           cardTitle='Portfolio Diversification'
           type='follower'
@@ -151,7 +195,21 @@ const Trading = () => {
           icon2={CanIcon}/>
         </div>
 
+    <div className="container">
+      <ProfitMarginGuide
+        title="How is Profit Calculated in ForexTrading?"
+        text1='Profit in forex trading is calculated by subtracting the entry price from the exit price of a trade. This can be in either a positive or negative value depending on whether the trade resulted in a loss or gain. Forex traders will look to open a trade at a lower price and close it at a higher price, in order to turn a profit'
+        text2="However, you don't need to do these calculations manually as
+tradex.io offers a commodity calculator that does the job for you. You simply need to input the necessary information, and the calculator will provide you with the estimate profit or loss amount. This makes the process simple and convenient, allowing you to focus on making informed trading decisions."
+        icon1={USUKICon}
+        image={BgImage}
+        icon2={UkIFlag}
+        />
+    </div>
 
+    <div className="container">
+      <TradeAnalyzer/>
+    </div>
 
        
     </div>

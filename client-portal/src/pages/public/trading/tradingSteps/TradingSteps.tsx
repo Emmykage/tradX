@@ -22,22 +22,22 @@ const TradingSteps: React.FC<tradingStepsProp>  = ({step1, step2, step3, step4, 
 
         </div>
         <div>
-        <span className='step-1'>2</span>
+        <span className='step-2'>2</span>
 
         <p>{step2} </p>
         </div>
         <div>
-        <span className='step-1'>3</span>
+        <span className='step-3'>3</span>
         <p>{step3}</p>
         </div>
         <div>
-        <span className='step-1'>4</span>
+        <span className='step-4'>4</span>
         <p>{step4}</p>
 
         </div>
         {step5 && 
         <div>
-        <span className='step-1'>5</span>
+        <span className='step-5'>5</span>
         <p>{step5} </p>
 
         </div>
