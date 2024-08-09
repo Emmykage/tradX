@@ -8,7 +8,9 @@ const DescriptionBlock = () => {
       <div className="descriptionWrapper">
         {dataShared &&
           dataShared.map((item, index) => (
-            <ItemDescription item={item} index={index + item.index} />
+            <div key={index + item.index}>
+              <ItemDescription item={item}  />
+            </div>
           ))}
       </div>
     </div>

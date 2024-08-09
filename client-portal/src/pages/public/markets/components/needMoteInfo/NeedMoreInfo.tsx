@@ -27,15 +27,15 @@ const NeedMoreInfo: FC<NeedMoreInfoProps> = ({ items }) => {
       <div className="needMoreInfoQuestions">
         {items &&
           items.map((item, index) => (
-            <>
-              <div key={index + item.num} onClick={() => handleOpen(item.num)}>
+            <div key={index + item.num}>
+              <p onClick={() => handleOpen(item.num)}>
                 <span>{t(item.question)}</span>
                 <img src={PlusSvg} alt="" />
-              </div>
+              </p>
               {active === item.num && (
                 <span className="needMoreInfoAnswer">{t(item.answer)}</span>
               )}
-            </>
+            </div>
           ))}
       </div>
     </div>

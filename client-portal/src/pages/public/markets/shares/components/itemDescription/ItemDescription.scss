@@ -2,13 +2,13 @@
   display: flex;
   gap: 50px;
 
-  @media (max-width: 478px) {
+  @media (max-width: 778px) {
     flex-direction: column;
   }
 
   &.reverse {
     flex-direction: row-reverse;
-    @media (max-width: 478px) {
+    @media (max-width: 778px) {
       flex-direction: column;
     }
   }
@@ -19,7 +19,7 @@
     flex-direction: column;
     gap: 20px;
 
-    @media (max-width: 478px) {
+    @media (max-width: 778px) {
       width: 100%;
     }
 
@@ -58,11 +58,13 @@
   }
 
   img {
-    margin: auto 0;
+    margin: 0 auto;
     width: 45%;
     height: 100%;
+    max-width: 548px;
+    max-height: 447;
 
-    @media (max-width: 478px) {
+    @media (max-width: 778px) {
       width: 100%;
     }
   }

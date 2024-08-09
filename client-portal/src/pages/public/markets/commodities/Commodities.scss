@@ -1,4 +1,9 @@
-.commoditiesContainer{
-    background-color: #0E1422;
-    
+.commoditiesContainer {
+  background-color: #0e1422;
+  @media (max-width: 878px) {
+    .revertCompanents {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
 }

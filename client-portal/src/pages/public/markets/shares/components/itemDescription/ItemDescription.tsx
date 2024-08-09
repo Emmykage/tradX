@@ -10,7 +10,6 @@ interface ItemDescriptionProps {
     sub_text?: string[];
     left?: boolean;
   };
-  index: number;
 }
 
 const ItemDescription: FC<ItemDescriptionProps> = ({ item }) => {

@@ -140,7 +140,6 @@
   "answerBondsThree": "What is the difference between tbond and tnote?",
   "questionBondsFour": "Can I check when my cfd on futures position will be rolled over?",
   "answerBondsFour": "Can I check when my cfd on futures position will be rolled over?",
-
   "questionIpoOne": "Are indices credited/debited with cash dividends?",
   "answerIpoOne": "Are indices credited/debited with cash dividends?",
   "questionIpoTwo": "Can I check when my CFD on futures position will be rolled over?",
@@ -148,6 +147,18 @@
   "questionIpoThree": "How do I start trading indices?",
   "answerIpoThree": "How do I start trading indices?",
   "questionIpoFour": "Why trade indices with tradex.com?",
-  "answerIpoFour": "Why trade indices with tradex.com?"
+  "answerIpoFour": "Why trade indices with tradex.com?",
+  "questionCryptoOne": "What are the trading hours for crypto CFDs?",
+  "answerCryptoOne": "What are the trading hours for crypto CFDs?",
+  "questionCryptoTwo": "What are the costs to trade crypto CFDs?",
+  "answerCryptoTwo": "What are the costs to trade crypto CFDs?",
+  "questionCryptoThree": "Can I trade crypto with leverage?",
+  "answerCryptoThree": "Can I trade crypto with leverage?",
+  "questionCryptoFour": "Do I need crypto wallet to trade cryptocurrencies?",
+  "answerCryptoFour": "Do I need crypto wallet to trade cryptocurrencies?",
+  "whyTradeCrypto": "Why Trade Cryptocurrencies CFDs at tradex.io",
+  "subWhyTradeCryptoOne": "Go long or short with crypto CFDs on different assets",
+  "subWhyTradeCryptoTwo": "No need for a crypto wallet or to own the underlying asset – simply trade the price action",
+  "subWhyTradeCryptoThree": "Institutional-grade liquidity provides access to narrower spreads and reduced slippage"
 
 }

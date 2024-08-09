@@ -1,7 +1,9 @@
 .etfContainer {
   background-color: #0e1422;
-
-  div {
-        
+  @media (max-width: 878px) {
+    .revertCompanents {
+      display: flex;
+      flex-direction: column-reverse;
+    }
   }
 }

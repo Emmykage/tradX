@@ -8,6 +8,8 @@ import CapitalIPO from "./capitalIPO/CapitalIPO";
 import InfoBlockWithButton from "../components/infoBlockWithButton/InfoBlockWithButton";
 import JoinInThreeSteps from "../components/joinInThreeSteps/JoinInThreeSteps";
 import NeedMoreInfo from "../components/needMoteInfo/NeedMoreInfo";
+import RegisterBlock from "../components/registerBlock/RegisterBlock";
+import TradCalc from "../../../../components/tradCalc/TradCalc";
 
 export const Ipo = () => {
   return (
@@ -17,8 +19,12 @@ export const Ipo = () => {
       <InfoBlockWithButton item={IPOStocks} />
       <InfoBlock item={HowItWorks} />
       <CapitalIPO />
-      <JoinInThreeSteps />
+      <div className="revertCompanents">
+        <TradCalc />
+        <JoinInThreeSteps />
+      </div>
       <NeedMoreInfo items={NeedMoreInfoData} />
+      <RegisterBlock />
     </div>
   );
 };

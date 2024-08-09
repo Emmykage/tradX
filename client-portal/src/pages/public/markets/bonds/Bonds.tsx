@@ -11,6 +11,8 @@ import InfoBlockWithButton from "../components/infoBlockWithButton/InfoBlockWith
 import JoinInThreeSteps from "../components/joinInThreeSteps/JoinInThreeSteps";
 import NeedMoreInfo from "../components/needMoteInfo/NeedMoreInfo";
 import Navbar from "pages/public/home/navbar/Navbar";
+import RegisterBlock from "../components/registerBlock/RegisterBlock";
+import TradCalc from "../../../../components/tradCalc/TradCalc";
 
 const Bonds = () => {
   return (
@@ -18,8 +20,12 @@ const Bonds = () => {
       <Navbar />
       <InfoBlock item={InfoBlockData} />
       <InfoBlockWithButton item={InfoBlockWithButtonData} />
-      <JoinInThreeSteps />
+      <div className="revertCompanents">
+        <TradCalc />
+        <JoinInThreeSteps />
+      </div>
       <NeedMoreInfo items={NeedMoreInfoData} />
+      <RegisterBlock />
     </div>
   );
 };
