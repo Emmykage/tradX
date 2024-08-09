@@ -1,0 +1,36 @@
+.headIntroContainer{
+    max-width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+
+    h2{
+        color: white;
+        font-family: "Poppins", sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+    }
+    p{
+        color: #999999;
+        font-size: 20px;
+        max-width: 75%;
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+
+    }
+
+    button{
+        color: white;
+        background-color: #FF1802;
+        padding: 1rem 4rem;
+        border-radius: 15px;
+        font-size: 18px;
+        font-weight: 500;
+        font-family: "Poppins", sans-serif;
+
+    }
+}

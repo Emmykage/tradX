@@ -8,6 +8,7 @@ import ThirdPartyCookies from './thirdPartyCookie/ThirdPartyCookies'
 import WhatAreCookies from './whatAreCookies/WhatAreCookies'
 import CategorySlider from '../commonComponents/categorySlider/CategorySlider'
 import TradeTable from '../commonComponents/tradeTable/TradeTable'
+import HeadIntro from '../commonComponents/headIntro/HeadIntro'
 
 const CookieDisclosure = () => {
 
@@ -19,8 +20,9 @@ const CookieDisclosure = () => {
   return ( 
     <div className='cookieDisclosurePageContainer'>
         <Navbar/>
-        {/* <CategorySlider/> */}
-        <TradeTable/>
+        <CategorySlider/>
+        {/* <HeadIntro/> */}
+        {/* <TradeTable/> */}
       {/* custom routing */}
       {/* <div>
         <Link to='/home'>

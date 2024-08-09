@@ -1,5 +1,7 @@
 import './categorySlider.scss';
 import OilImage from '../../../../../assets/categorySlider/oil.png'
+import GoldImage from '../../../../../assets/categorySlider/gold.png'
+import GasImage from '../../../../../assets/categorySlider/gas.png'
 import Slider from 'react-slick';
 import { ArrowLeftOS, ArrowRightOS } from 'assets/icons';
 import { useState } from 'react';
@@ -8,9 +10,9 @@ const CategorySlider = () => {
         return (
           <button
             onClick={onClick}
-            className="aboutUsPreviousSliderButton"
+            className="categoryPreviousSliderButton"
           >
-            <div className='aboutPreviousSliderIconContainer'>
+            <div className='categoryPreviousSliderIconContainer'>
                 <ArrowLeftOS/>
                 
             </div>
@@ -20,17 +22,17 @@ const CategorySlider = () => {
     const ArrowButtonNext:React.FC<{onClick: any}>  = ({onClick }) => {
         return (
           <button
-          className="aboutUsNextSliderButton"
+          className="categoryNextSliderButton"
             onClick={onClick}
           >
-             <div className='aboutUsNextSliderIconContainer'>
+             <div className='categoryNextSliderIconContainer'>
              <ArrowRightOS  height='20' width='20' />
             </div>
           </button>
         );
       };
     
-    const settings_3 = {
+    const settings = {
         dots: false,
         infinite: true,
         speed: 500,
@@ -39,17 +41,29 @@ const CategorySlider = () => {
         nextArrow: <ArrowButtonNext  onClick={onclick}/>,
         
         slidesToScroll: 1,
-         responsive: [{
+         responsive: [
+          {
+            breakPoint:900,
+            settings: {
+              centerMode: false,
+              slidesToShow: 3,
+              slidesToScroll:1,
+              arrows:false,
+              
+            },
+          },
+          {
           breakpoint: 600,
-          settings: {
+          settings_1: {
             dots: true,
             centerMode: false,
             slidesToShow: 1,
             slidesToScroll:1,
             arrows:false,
-            
-          }
-        }]
+          },
+        },
+       
+      ]
       };
 
 
@@ -60,7 +74,7 @@ const CategorySlider = () => {
         <div className="categorySliderContainer">
           
         
-        <Slider {...settings_3}>
+        <Slider {...settings}>
         <div className="categorySliderCard">
           
             {/* top */}
@@ -92,7 +106,7 @@ const CategorySlider = () => {
         </div>
         <div className="categorySliderCard">
             {/* top */}
-            <div className="categorySliderTopContainer">
+            <div className="categorySliderTopContainer" >
                 {/* left */}
                 <div className="categorySliderTopLeftContainer">
                     <h2>UKOIL</h2>
@@ -110,7 +124,7 @@ const CategorySlider = () => {
             </div>
             {/* middle */}
             <div className="categorySliderMiddleContainer">
-                <img src={OilImage} alt="" />
+                <img src={GoldImage} alt="" />
             </div>
             {/* bottom */}
             <div className="categorySliderBottomContainer">
@@ -138,7 +152,7 @@ const CategorySlider = () => {
             </div>
             {/* middle */}
             <div className="categorySliderMiddleContainer">
-                <img src={OilImage} alt="" />
+                <img src={GasImage} alt="" />
             </div>
             {/* bottom */}
             <div className="categorySliderBottomContainer">

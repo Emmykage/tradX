@@ -876,7 +876,7 @@ export const CloseIconsm = ({ color = "white" }) => (
   </svg>
 );
 
-export const ArrowLeftOS = () => {
+export const ArrowLeftOS:React.FC<{color?:string}> = ({color}) => {
   return (
     <svg
       width="12"
@@ -887,7 +887,7 @@ export const ArrowLeftOS = () => {
     >
       <path
         d="M4.43741 8.99998L11.0374 15.6L9.15208 17.4853L0.666748 8.99998L9.15208 0.514648L11.0374 2.39998L4.43741 8.99998Z"
-        fill="white"
+        fill={color || 'white'}
       />
     </svg>
   );
