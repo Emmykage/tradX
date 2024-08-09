@@ -13,8 +13,9 @@ const CookieDisclosure = () => {
   const pathNames = location.pathname.split('/').filter((x)=>x)
   console.log(location.pathname);
   console.log(pathNames);
+  
 
-  return (
+  return (git 
     <div className='cookieDisclosurePageContainer'>
         <Navbar/>
         {/* <CategorySlider/> */}
