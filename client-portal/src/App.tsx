@@ -25,6 +25,8 @@ import PrivateRoute from "utils/ProtectedRoute ";
 import Platform from "pages/private/platform/Platform";
 import Loading from "components/loading";
 import { useCookies } from "react-cookie";
+import PrivacyPolicy from "pages/public/home/privacyPolicy/PrivacyPolicy";
+import Regulation from "pages/public/home/regulation/Regulation";
 
 
 // Lazy load components
@@ -89,8 +91,8 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route element={<RequireAuth  />}>
           <Route path="/platform" element={<Platform />} />
           {/* Private route using PrivateRoute component */}
-          <Route path="/" element={<PrivateRoute />}>
-              <Route path="/welcome" element={<Welcome />} />
+          <Route path="/user" element={<PrivateRoute />}>
+              <Route path="/user/welcome" element={<Welcome />} />
            </Route>
           <Route path="transactions" element={<Transactions />} />
           {/* <Route path="/loan/get-loan" element={<GetLoan />} /> */}
@@ -100,7 +102,9 @@ const App: React.FunctionComponent<AppProps> = () => {
           <Route path="/statusDetails" element={<StatusDetails />} />
         </Route>
         <Route path="/" element={<Home />} />
+        <Route path="/markets/regulations" element={<Regulation />} />
         <Route path="/markets/cookieDisclosure" element={<CookieDisclosure />} />
+        <Route path="/markets/privacyPolciy" element={<PrivacyPolicy />} />
         <Route path="/downloads" element={<Download />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />

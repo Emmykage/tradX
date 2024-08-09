@@ -6,6 +6,7 @@ import CookiesUse from './cookiesUse/CookiesUse'
 import Introduction from './introduction/Introduction'
 import ThirdPartyCookies from './thirdPartyCookie/ThirdPartyCookies'
 import WhatAreCookies from './whatAreCookies/WhatAreCookies'
+import CategorySlider from '../commonComponents/categorySlider/CategorySlider'
 
 const CookieDisclosure = () => {
 
@@ -16,6 +17,7 @@ const CookieDisclosure = () => {
   return (
     <div className='cookieDisclosurePageContainer'>
         <Navbar/>
+        {/* <CategorySlider/> */}
       {/* custom routing */}
       {/* <div>
         <Link to='/home'>
