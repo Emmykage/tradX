@@ -14,7 +14,7 @@ import { forex } from "../assets/assetsData";
 import { Dispatch, SetStateAction } from "react";
 import { LeftSubDrawer } from "../../types";
 import {  setAssetPairs } from "@store/slices/pairs";
-import { useAppDispatch } from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 
 interface TradesMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
