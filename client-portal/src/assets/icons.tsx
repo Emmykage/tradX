@@ -11405,3 +11405,13 @@ export const CheckIcon2 = () => (
 </svg>
 
 )
+
+export const RightArrowIcon1 = () => (
+  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1_6102_31061" fill="white">
+<path d="M0.550049 5.5L5.4998 0.550248L10.4496 5.5L5.4998 10.4498L0.550049 5.5Z"/>
+</mask>
+<path d="M10.4496 5.5L11.8638 6.91421L13.278 5.5L11.8638 4.08579L10.4496 5.5ZM4.08559 1.96446L9.03534 6.91421L11.8638 4.08579L6.91401 -0.863966L4.08559 1.96446ZM9.03534 4.08579L4.08559 9.03554L6.91401 11.864L11.8638 6.91421L9.03534 4.08579Z" fill="#969696" mask="url(#path-1-inside-1_6102_31061)"/>
+</svg>
+
+)

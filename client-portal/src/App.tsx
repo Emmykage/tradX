@@ -23,8 +23,8 @@ import RequireAuth from "components/requireAuth";
 import { useAppDispatch } from "@store/hooks";
 import { setIsIdle } from "@store/slices/global";
 import useInitializeData from "hooks/useInitializeData";
-import WalkThrough from "pages/private/platform/WalkThrough";
-import Trading from "pages/public/trading/Trading";
+import TradingPlatform from "pages/public/trading/platform";
+
 
 interface AppProps {}
 
@@ -75,7 +75,7 @@ const App: React.FunctionComponent<AppProps> = () => {
           <Route path="/statusDetails" element={<StatusDetails />} />
         </Route>
         <Route path="/home" element={<Home />} />
-        <Route path="/trading" element={<Trading />} />
+        <Route path="/trading" element={<TradingPlatform/>} />
         <Route path="/downloads" element={<Download />} />
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />

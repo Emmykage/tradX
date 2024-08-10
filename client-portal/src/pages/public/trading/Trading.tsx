@@ -1,36 +1,38 @@
 import React from 'react'
 import './trading.scss'
 import Navbar from '../home/navbar/Navbar'
-import Landing from './landing/Landing'
-import CTABanner from './call-to-action/CTABanner'
-import ProfileCard from './profileCard/ProfileCard'
-import TradingCardInfo from './tradingCardInfo/TradingCardInfo'
+import Landing from './platform/landing/Landing'
+import CTABanner from '../../../components/call-to-action/CTABanner'
+import ProfileCard from './trackTrades/profileCard/ProfileCard'
+import TradingCardInfo from '../../../components/tradingCardInfo/TradingCardInfo'
 import IconShield from '../../../assets/trading/cardIconStarShield.png'
 import IconWave from '../../../assets/trading/cardIconWaves.png'
-import PerksCard from './perksCard/PerksCard'
-import TradingSteps from './tradingSteps/TradingSteps'
-import TradingExperience from './experience/TradingExperience'
+import PerksCard from '../../../components/perksCard/PerksCard'
+import TradingSteps from '../../../components/tradingSteps/TradingSteps'
+import TradingExperience from '../../../components/experience/TradingExperience'
 import user from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash 2.png'
-import CopyTrade from './copyTrade/CopyTrade'
-import ForexCalculator from './forexCalculator/ForexCalculator'
-import CostExplanation from './costExplanation/CostExplanationComp'
-import TradingProfitCalculator from './tradingProfitCalculator/TradingProfitCalculator'
+import CopyTrade from './trackTrades/copyTrade/CopyTrade'
+import ForexCalculator from './ForexProitCalculator/forexCalculator/ForexCalculator'
+import CostExplanation from '../../../components/tradingCostExplanation/CostExplanationComp'
+import TradingProfitCalculator from '../../../components/tradingProfitCalculator/TradingProfitCalculator'
 import USUKICon from '../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
 import CanIcon from '../../../assets/trading/canadaflagicon.png'
 import BgImage from '../../../assets/trading/adam-tradingProfit.png'
 import ProfitMarginGuide from './profitMarginGuide/ProfitMarginGuide'
-import TradeAnalyzer from './tradeAnalyzer/TradeAnalyzer'
+import TradeAnalyzer from './CommoditiesProfitCal/tradeAnalyzer/TradeAnalyzer'
 import UkIFlag from '../../../assets/trading/UK.png'
-import StraightForwardTrading from './straightForwardTradingComponent/StraightForwardTrading'
-import LandingPageMobile from './LandingPageMobileTrading/LandingPageMobile'
+import StraightForwardTrading from './platform/straightForwardTradingComponent/StraightForwardTrading'
+// import LandingPageMobile from './LandingPageMobileTrading/LandingPageMobile'
 import imageBgAdam from '../../../assets/trading/adam-nowakowski-phone.png'
 import imageBgEve from '../../../assets/trading/eve-nowakowski-D4LDw5eXhgg.png'
 import imageBgAdamLp from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash.png'
 import MetaTrader4Landing from './metaTrader4/MetaTrader4'
 import MetaTrader5Landing from './metaTrader5/MetaTrader5'
-import TrackTrade from './trackTrade/TrackTrade'
-import TrackTradeLanding from './trackTradeLandingPage/TrackTradeLanding'
-import MetaTrading from './metaTrading/MetaTrading'
+import TrackTrade from './trackTrades/trackTrade/TrackTrade'
+// import TrackTradeLanding from './trackTrades/trackTradeLandingPage/TrackTradeLanding'
+import MetaTrading from '../../../components/metaTrading/MetaTrading'
+import LandingPageMobile from './tradingMobile/LandingPageMobileTrading/LandingPageMobile'
+import TradingInstruction from './tradingIntruction/TradingInstruction'
 const Trading = () => {
   return (
     <div className='tradingContainer' >
@@ -41,19 +43,12 @@ const Trading = () => {
 
       </div>
 
-      <LandingPageMobile/>
+      <LandingPageMobile/> 
 
       
-      <div className="container">
-        <TradingExperience  
-        image={imageBgAdam} 
-        title={"Where intuition meets functionality"} 
-        text={"The markets.com app offers a streamlined interface that executes orders quickly and reliably. Trade the markets your way. With sleek, uncluttered and powerful technology."}
-        button={false}
-        />
-        </div>
+   
 
-        <MetaTrader4Landing/>
+        {/* <MetaTrader4Landing/>
 
         <div className="container">
         <TradingExperience  
@@ -63,8 +58,8 @@ const Trading = () => {
         button={true}
         />
 
-      </div>
-      <MetaTrader5Landing/>
+      </div> */}
+      {/* <MetaTrader5Landing/>
       <div className="container">
       <TradingExperience  
         image={imageBgAdamLp} 
@@ -72,10 +67,10 @@ const Trading = () => {
         text={"Use your markets.com account to seamlessly install MT5 and start trading right away in your desktop markets.com platform. The video tutorial above can walk you through the process. Explore here step-by-step instructions on adding a MetaTrader 5 trading account. Don't have a markets.com account yet? No worries, visit the markets.com Sign Up page and provide the required information to quickly complete full registration. "}
         button={true}
         />
-      </div>
+      </div> */}
 
 
-      <TrackTradeLanding/>
+       {/* <TrackTradeLanding/>  */}
 
 
 
@@ -227,8 +222,6 @@ tradex.io offers a commodity calculator that does the job for you. You simply ne
       body='You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms'
       type= "mt5"/>
     </div>
-
-
        
     </div>
   )
