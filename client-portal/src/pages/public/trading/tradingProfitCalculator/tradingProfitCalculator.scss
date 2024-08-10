@@ -1,0 +1,68 @@
+.tradingProfitWrapper{
+    display: flex;
+    padding: 12px;
+    color: white;
+    // background-color: red;
+    @media (max-width:720px) {
+    flex-direction: column;
+    .imageBackdrop{
+        display: none;
+    }
+        
+    }
+    .imageBackdrop{
+        flex-basis: 50%;
+
+        div{
+            // background-color: red;
+            position: relative;
+            max-width: 500px;
+            margin-left: auto;
+            img{
+                width: 350px;
+                height: 350px;
+                border-radius: 14px;
+    
+            }
+            .icon-1{
+                position: absolute;
+                top: 0px;
+                transform: translate(-50%, -50%);
+                left: 350px;
+                width: 90px;
+                height: 90px;
+                z-index: 1;
+
+
+            }
+
+            .icon-2{
+                position: absolute;
+                top: 30px;
+                left: 400px;
+                width: 70px;
+                height: 70px;
+                transform: translate(-50%, -50%);
+
+
+            }
+    
+        }
+       
+
+    }
+
+    .textWrapper{
+        flex-basis: 50%;
+        h3{
+            font-size: 34px;
+            margin-bottom: 12px;
+
+        }
+        p{
+            color: #999999;
+            font-size: 16px;
+            margin-bottom: 22px;
+        }
+    }
+}

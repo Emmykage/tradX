@@ -1,0 +1,51 @@
+.costContainer{
+    h3{
+        font-size: 34px;
+        color: white;
+        text-align: center;
+        margin: 19px;
+    }
+    .costExp-Wrapper{
+        color: white;
+
+        
+        ul{
+            display: grid;
+            width: 100%;
+            column-gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            
+            li{
+                display: flex;
+                column-gap: 10px;
+                line-height: 29px;
+                
+                .icon-bg{
+                    height: 40px;
+                    border-radius: 100%;
+                   background: linear-gradient(230deg, #0094FF 0%, rgba(0, 0, 0, 0.541) 100%);
+                    width: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+                    flex-shrink: 0;
+                }
+                // .text{                
+
+                strong{
+                    font-weight: 600;
+                    font-size: 16px;
+                }
+                p{
+                    font-weight: 400;
+                    color: #999999;
+                }
+            // }
+            }
+            flex: 1;
+
+        }
+
+    }
+}

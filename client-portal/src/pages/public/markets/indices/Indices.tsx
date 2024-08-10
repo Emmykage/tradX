@@ -26,7 +26,7 @@ const Indices = () => {
       {
         title: "US30",
         subtitle: "USA 30",
-        category: "COMMODITIES",
+        category: "INDICES",
         value: "39095.25",
         change: "0.88%",
         image: Us30
@@ -34,7 +34,7 @@ const Indices = () => {
       {
         title: "US100",
         subtitle: "US Tech 100",
-        category: "COMMODITIES",
+        category: "INDICES",
         value: "15.85",
         change: "-1.96%",
         image: Us100
@@ -42,7 +42,7 @@ const Indices = () => {
       {
         title: "SA40",
         subtitle: "South Africa 40",
-        category: "COMMODITIES",
+        category: "INDICES",
         value: "93.85",
         change: "3.44%",
         image: Sa40

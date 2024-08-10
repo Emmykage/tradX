@@ -23,7 +23,7 @@ const Crypto = () => {
     {
       title: "BITCOIN",
       subtitle: "BITCOIN",
-      category: "COMMODITIES",
+      category: "C",
       value: "80.90",
       change: "-2.02%",
       image: BitCoinImage
@@ -31,7 +31,7 @@ const Crypto = () => {
     {
       title: "RIPPLE",
       subtitle: "XRP",
-      category: "COMMODITIES",
+      category: "C",
       value: "80.90",
       change: "-2.02%",
       image: RippleImage
@@ -39,7 +39,7 @@ const Crypto = () => {
     {
       title: "ETHEREUM",
       subtitle: "ETH",
-      category: "COMMODITIES",
+      category: "C",
       value: "1.579",
       change: "-7.44%",
       image: EthereumImage

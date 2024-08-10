@@ -10,6 +10,7 @@ import Indices from '../../../../../assets/onePlatformSlider/inidces.png'
 import Ipo from '../../../../../assets/onePlatformSlider/ipo.png'
 import Stocks from '../../../../../assets/onePlatformSlider/stocks.png'
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const OnePlatformSlider = () => {
 
@@ -84,35 +85,45 @@ const ArrowButtonNext:React.FC<{onClick: any}>  = ({onClick }) => {
                 <div className='onePlatformSliderInnerItem'>
                   <h2>Commodities</h2>
                   <img src={Commodities} alt="Forex" />
+                  <Link to={'/markets/Commodities'}>
                   <button>More Info</button>
+                  </Link>
                 </div>
             </div>
             <div className='onePlatformSliderItem'>
                 <div className='onePlatformSliderInnerItem'>
                   <h2>Indices</h2>
                   <img src={Indices} alt="Forex" />
+                  <Link to={"/markets/indices"}>
                   <button>More Info</button>
+                  </Link>
                 </div>
             </div>
             <div className='onePlatformSliderItem'>
                 <div className='onePlatformSliderInnerItem'>
                   <h2>Crypto</h2>
                   <img src={Crypto} alt="Forex" />
+                  <Link to={"/markets/crypto"}>
                   <button>More Info</button>
+                  </Link>
                 </div>
             </div>
             <div className='onePlatformSliderItem'>
                 <div className='onePlatformSliderInnerItem'>
                   <h2>IPO</h2>
                   <img src={Ipo} alt="Forex" />
+                  <Link to={'/markets/ipos'}>
                   <button>More Info</button>
+                  </Link>
                 </div>
             </div>
             <div className='onePlatformSliderItem'>
                 <div className='onePlatformSliderInnerItem'>
                   <h2>Bonds</h2>
                   <img src={Bonds} alt="Forex" />
+                  <Link to={'/markets/bonds'}>
                   <button>More Info</button>
+                  </Link>
                 </div>
             </div>
                 

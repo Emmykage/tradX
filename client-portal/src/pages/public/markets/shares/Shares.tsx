@@ -26,7 +26,7 @@ const Shares = () => {
       {
         title: "TESLA",
         subtitle: "TESLA",
-        category: "COMMODITIES",
+        category: "SHARES",
         value: "191.62",
         change: "-2.57%",
         image: TeslaImage
@@ -34,7 +34,7 @@ const Shares = () => {
       {
         title: "AMAZON",
         subtitle: "AMZN",
-        category: "COMMODITIES",
+        category: "SHARES",
         value: "174.47",
         change: "0.32%",
         image: AmazonImage
@@ -42,7 +42,7 @@ const Shares = () => {
       {
         title: "DEUTSCHEBANK",
         subtitle: "DBN",
-        category: "COMMODITIES",
+        category: "SHARES",
         value: "174.47",
         change: "12.34%",
         image: DeutchBankImage

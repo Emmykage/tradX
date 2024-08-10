@@ -13,7 +13,7 @@ import Navbar from "pages/public/home/commonComponents/navbar/Navbar";
 import Footer from "pages/public/home/main/footer/Footer";
 import HeadIntro from "pages/public/home/commonComponents/headIntro/HeadIntro";
 
-export const Ipo = () => {
+ const Ipo = () => {
   const title = 'IPOs CFDs'
   const detail = "Trade on the hottest companies going public with our IPO markets."
   const buttonTitle = 'Trade IPOs'
@@ -36,3 +36,5 @@ export const Ipo = () => {
     </div>
   );
 };
+
+export default Ipo
