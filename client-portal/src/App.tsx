@@ -30,10 +30,11 @@ import Regulation from "pages/public/home/regulation/Regulation";
 import Commodities from "pages/public/markets/commodities/Commodities";
 import Shares from "pages/public/markets/shares/Shares";
 import Indices from "pages/public/markets/indices/Indices";
-import Etf from "pages/public/markets/etf/Etf";
 import Bonds from "pages/public/markets/bonds/Bonds";
 import { Ipo } from "pages/public/markets/ipo/Ipo";
+import Etf from "pages/public/markets/etf/Etf";
 import Crypto from "pages/public/markets/crypto/Crypto";
+
 
 
 // Lazy load components

@@ -1,0 +1,19 @@
+.trackTrade{
+    font-size: 16px;
+    background-position: center 100px;
+    background-repeat: no-repeat;
+    width: 90%;
+    .navRouting{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        color: #96969696;
+        svg{
+            path{
+                stroke: #96969696;
+            }
+        }
+    }
+
+
+}
