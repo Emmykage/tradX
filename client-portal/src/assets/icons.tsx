@@ -11398,3 +11398,10 @@ export const CheckIcon1 = () => (
 </svg>
 
 )
+
+export const CheckIcon2 = () => (
+  <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.03613 8.03047L3.96113 11.2805L14.3611 1.85547" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+)
