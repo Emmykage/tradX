@@ -15,6 +15,12 @@ import CategorySlider from "pages/public/home/commonComponents/categorySlider/Ca
 import TradeTable from "pages/public/home/commonComponents/tradeTable/TradeTable";
 import Footer from "pages/public/home/main/footer/Footer";
 
+
+import Graph1Image from '../../../../assets/home/graph1.png'
+import Graph2Image from '../../../../assets/home/graph2.png'
+import Graph3Image from '../../../../assets/home/graph3.png'
+import Graph4Image from '../../../../assets/home/graph4.png'
+
 import EtfImage from '../../../../assets/categorySlider/ETF.png'
 
 const Etf = () => {
@@ -26,7 +32,7 @@ const Etf = () => {
       {
         title: "FTGC",
         subtitle: "First Trust Global Com",
-        category: "COMMODITIES",
+        category: "ETF",
         value: "80.90",
         change: "-2.02%",
         image: EtfImage
@@ -34,7 +40,7 @@ const Etf = () => {
       {
         title: "INVESCO",
         subtitle: "Invesco",
-        category: "COMMODITIES",
+        category: "ETF",
         value: "80.90",
         change: "-2.02%",
         image: EtfImage
@@ -42,18 +48,25 @@ const Etf = () => {
       {
         title: "DELLTECH",
         subtitle: "Dell",
-        category: "COMMODITIES",
+        category: "ETF",
         value: "1.579",
         change: "-7.44%",
         image: EtfImage
       }
+    ];
+    const data = [
+      {  name: 'Trade WisdomTree', sell: '399.53', buy: '400.23', change: '-2.04%', graph:Graph1Image },
+      {  name: 'Internet ETF', sell: '399.53', buy: '400.23', change: '-1.66%', graph:Graph1Image },
+      {  name: 'Taiwan MSCI', sell: '80.90', buy: '80.95', change: '+2.02%', graph:Graph2Image },
+      {  name: 'QQQ Ultra Pro', sell: '179.63', buy: '180.03', change: '-1.83%', graph:Graph3Image },
+      {  name: 'Sprot Physical', sell: '81.69', buy: '81.74', change: '+2.06%', graph:Graph4Image },
     ];
   return (
     <div className="etfContainer">
       <Navbar />
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
       <CategorySlider allPairsData={allPairsData}/>
-      <TradeTable/>
+      <TradeTable data={data}/>
       <Header />
       <EtfOpportunities />
       <InfoBlockWithList item={InfoBlockWithListData} />

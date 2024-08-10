@@ -7,14 +7,25 @@ import Graph4Image from '../../../../../assets/home/graph4.png'
 import { ArrowLeftOS, ArrowRightOS } from 'assets/icons'
 
 
-const TradeTable = () => {
-    const data = [
-        {  name: 'Crude Oil', sell: '399.53', buy: '400.23', change: '-2.04%', graph:Graph1Image },
-        {  name: 'Corn', sell: '399.53', buy: '400.23', change: '-1.66%', graph:Graph1Image },
-        {  name: 'Brent Oil', sell: '80.90', buy: '80.95', change: '+2.02%', graph:Graph2Image },
-        {  name: 'Coffee', sell: '179.63', buy: '180.03', change: '-1.83%', graph:Graph3Image },
-        {  name: 'Brent Oil Futures', sell: '81.69', buy: '81.74', change: '+2.06%', graph:Graph4Image },
-      ];
+interface TradeTableProps{
+  data?:Array<{
+    name?:string
+    sell?:string
+    buy?:string
+    change:string
+    graph?:string
+  }>
+}
+const TradeTable:React.FC<TradeTableProps> = ({data}) => {
+  const defaultData = [
+    {  name: 'Crude Oil', sell: '399.53', buy: '400.23', change: '-2.04%', graph:Graph1Image },
+    {  name: 'Corn', sell: '399.53', buy: '400.23', change: '-1.66%', graph:Graph1Image },
+    {  name: 'Brent Oil', sell: '80.90', buy: '80.95', change: '+2.02%', graph:Graph2Image },
+    {  name: 'Coffee', sell: '179.63', buy: '180.03', change: '-1.83%', graph:Graph3Image },
+    {  name: 'Brent Oil Futures', sell: '81.69', buy: '81.74', change: '+2.06%', graph:Graph4Image },
+  ];
+
+  const tableData = data || defaultData;
   return (
     <div className="tradeTableContainer">
 
@@ -26,7 +37,7 @@ const TradeTable = () => {
         <div>Buy</div>
         <div>Change (%)</div>
       </div>
-      {data.map((item, index) => (
+      { tableData.map((item, index) => (
         <div className="trade-table-row" key={index}>
           <div className={`trade `}>
           <div className='circleIcon'>

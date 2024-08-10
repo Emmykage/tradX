@@ -57,17 +57,25 @@
             padding: 0.2rem 0.7rem;
             border-radius: 5px;
           }
+
+          svg{
+            cursor: pointer;
+          }
         input{
             background-color: transparent;
             outline: none;
-            margin-left: 0.8rem;
-            max-width: 3.4rem;
+            margin-left: 0.3rem;
+            margin-right: 0.8rem;
+            max-width: 3.8rem;
             font-family: "Poppins", sans-serif;
             font-size: 13px;
             color: white;
+            letter-spacing: 1px;
+           
+
             @media (max-width: 878px) {
                 margin-left: 0.4rem;
-                max-width: none;
+                width: 100%;
                 
               }
           
@@ -160,7 +168,8 @@
         
         overflow-y: hidden !important;
         flex-direction: column;
-        background-color: #0E0F12;
+        background-color:#0e1422;
+
       }
     transition: all 0.2s ease-in-out;
     position: fixed;
@@ -191,6 +200,28 @@
         align-items: center;
         margin-top: 3rem;
         flex: 80%;
+
+        .navSearchMoblieContainer{
+            display: flex;
+            border: 1px solid white;
+            width: 150px;
+            padding: 0.4rem 0.4rem;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+
+            svg{
+                flex-shrink: 0;
+            }
+            input{
+                background-color: transparent;
+                font-size: 16px;
+                width: 100%;
+                color: white;
+                margin-left: 4px;
+                outline: none;
+            }
+        }
         span{
             margin-top: 1.5rem;
         }
@@ -199,6 +230,8 @@
     .mobileBottomNav{
         display: flex;
         flex-direction: column;
+
+       
     }
 }
 .primaryButton{

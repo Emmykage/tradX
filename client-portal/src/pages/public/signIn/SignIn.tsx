@@ -9,7 +9,8 @@ import "./signIn.scss";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
 import { withTranslation } from "react-i18next";
 import { useAppSelector } from "@store/hooks";
-import { GlobalStates } from "@store/slices/global";
+import { GlobalStates, setSignInTab } from "@store/slices/global";
+import { useDispatch } from "react-redux";
 
 interface SignInProps {}
 
@@ -18,6 +19,8 @@ const SignIn: React.FunctionComponent<SignInProps> = () => {
   const {  signInTab } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
+
+  const dispatch = useDispatch()
 
   const items: TabsProps["items"] = [
     {
@@ -31,6 +34,8 @@ const SignIn: React.FunctionComponent<SignInProps> = () => {
       children: <SignUpForm />,
     },
   ];
+
+  console.log(signInTab);
   return (
     <div className="loginContainer">
       <div className="centerWrapper">
@@ -43,6 +48,7 @@ const SignIn: React.FunctionComponent<SignInProps> = () => {
             items={items}
             indicatorSize={150}
             tabBarGutter={100}
+            onChange={(key)=>dispatch(setSignInTab(key))}
           />
         )}
       </div>

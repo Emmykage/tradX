@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react'
 import { localFlagHandler } from 'i18n/helpers'
 import { Spin } from 'antd'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { setSignInTab } from '@store/slices/global'
 interface NavbarProps {
     countryCode: string;
@@ -85,7 +85,9 @@ const Navbar= () => {
     <div className='navbarContainer'>
         {/* left side nav */}
         <div className='leftSideNav'>
+          <Link to="/">
             <img src={TradxLogo} alt="" />
+          </Link>
             <div className='navContent'>
                 <span>Markets</span>
                 <span>Trading</span>
@@ -175,15 +177,15 @@ const Navbar= () => {
             </div>
 
              <div className='mobileNavContent'>
+            {/* search */}
+            <div className='navSearchMoblieContainer'>
+            <SearchIcon height="13" width="13"/>
+            <input id='search' name='search' type="text" placeholder='Search'/>
+            </div>
                 <span>Markets</span>
                 <span>Trading</span>
                 <span>Learn</span>
             <div className='mobileBottomNav'>
-            {/* search */}
-            <div className='navSearchContainer'>
-            <SearchIcon height="13" width="13"/>
-            <input type="text" placeholder='Search'/>
-            </div>
             {/* language selector */}
             <div className='languageSelectorContainer'>
                 <div className='languageButton' onClick={()=>setToggleLanguageSelector(!toggleLanguageSelector)}>
@@ -214,6 +216,8 @@ const Navbar= () => {
                     </div>
                 </div>
             </div>
+            <div>
+
             <button className='primaryButton' onClick={()=>{
               dispatch(setSignInTab('1'))
               navigate('/signIn')
@@ -223,8 +227,9 @@ const Navbar= () => {
               dispatch(setSignInTab('2'))
               navigate('/signIn')
               setToggleMobileNav(false)
-
+              
             }}>Sign Up</button>
+            </div>
         </div>
             </div>
         </div>

@@ -3,8 +3,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import useRegister from "api/user/useRegister";
 import { toast } from "react-toastify";
-import { setSignInTab } from "@store/slices/global";
+import { GlobalStates, setSignInTab } from "@store/slices/global";
 import { useDispatch } from "react-redux";
+import { useAppSelector } from "@store/hooks";
 
 interface SignUpFormData {
   email: string;
@@ -15,15 +16,21 @@ interface SignUpFormData {
 }
 
 const SignUpForm = () => {
+  const {  signInTab } = useAppSelector(
+    (state: { global: GlobalStates }) => state.global
+  );
   const { handleSubmit, register, reset } = useForm<SignUpFormData>();
   const dispatch = useDispatch()
   const { mutate, isPending } = useRegister({
     onSuccess: () => {
       reset();
-      dispatch(setSignInTab('1'))
       toast.success(
         "You have successfully registered your account, Login Now!"
       );
+      console.log(`before dispach ${signInTab}`);
+      dispatch(setSignInTab("1"))
+      console.log(`before dispach ${signInTab}`);
+      
     },
   });
 

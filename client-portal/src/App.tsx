@@ -27,15 +27,18 @@ import Loading from "components/loading";
 import { useCookies } from "react-cookie";
 import PrivacyPolicy from "pages/public/home/privacyPolicy/PrivacyPolicy";
 import Regulation from "pages/public/home/regulation/Regulation";
-import Commodities from "pages/public/markets/commodities/Commodities";
-import Shares from "pages/public/markets/shares/Shares";
-import Indices from "pages/public/markets/indices/Indices";
-import Bonds from "pages/public/markets/bonds/Bonds";
-import { Ipo } from "pages/public/markets/ipo/Ipo";
-import Etf from "pages/public/markets/etf/Etf";
-import Crypto from "pages/public/markets/crypto/Crypto";
+import NotFoundPage from "pages/private/platform/platformMenus/notFound/NotFoundPage";
 
 
+
+
+const Commodities = lazy(()=>import("pages/public/markets/commodities/Commodities"))
+const Crypto = lazy(()=>import("pages/public/markets/crypto/Crypto"))
+const Etf = lazy(()=>import("pages/public/markets/etf/Etf"))
+const Bonds = lazy(()=>import("pages/public/markets/bonds/Bonds"))
+const Indices = lazy(()=>import("pages/public/markets/indices/Indices"))
+const Shares = lazy(()=>import("pages/public/markets/shares/Shares"))
+const Ipo = lazy(()=>import("pages/public/markets/ipo/Ipo"))
 
 // Lazy load components
 const Lender = lazy(() => import("./pages/private/lender/Lender"));
@@ -95,7 +98,7 @@ const App: React.FunctionComponent<AppProps> = () => {
     <div data-theme={"dark"}>
 
     <HashRouter>
-      <Suspense fallback={<Loading/>}>
+      <Suspense fallback={<div className="fullLoadingBackground"><Loading/></div>}>
       <Routes>
         {/* turned of the auth require */}
         <Route element={<RequireAuth  />}>
@@ -111,17 +114,18 @@ const App: React.FunctionComponent<AppProps> = () => {
           {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
           <Route path="/statusDetails" element={<StatusDetails />} />
         </Route>
-        <Route path="/" element={<Home />} />
+        
         {/* <Route path="/markets/regulations" element={<Regulation />} />
         <Route path="/markets/cookieDisclosure" element={<CookieDisclosure />} />
         <Route path="/markets/privacyPolciy" element={<PrivacyPolicy />} /> */}
+        <Route path="/" element={<Home />} />
         <Route path="/markets/Commodities" element={<Commodities />} /> 
         <Route path="/markets/shares" element={<Shares />} /> 
         <Route path="/markets/indices" element={<Indices />} /> 
         <Route path="/markets/etfs" element={<Etf />} /> 
         <Route path="/markets/bonds" element={<Bonds />} /> 
         <Route path="/markets/ipos" element={<Ipo />} /> 
-        <Route path="/markets/cryptoCurrency" element={<Crypto />} /> 
+        <Route path="/markets/crypto" element={<Crypto />} /> 
         <Route path="/downloads" element={<Download />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
@@ -130,6 +134,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         
         {/* <Route path="/welcome" element={<WalkThrough tradeFormHeight={2} />} /> */}
         
+      <Route path="*" element={<NotFoundPage/>} />
       </Routes>
       </Suspense>
     </HashRouter>
