@@ -1,7 +1,6 @@
 .footerMainContainer{
     background-color: #192134;
 
-
     .footerBackgroundContainer{
         max-width: 90%;
         margin: auto;
@@ -10,6 +9,8 @@
         align-items: center;
         margin-top: 4rem;
         padding: 1.2rem 1rem;
+         overflow-x: hidden;
+
         @media (max-width:730px){
             padding: 1rem 0.5rem;
         }
