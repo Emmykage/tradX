@@ -71,6 +71,8 @@
   }
 }
 
+
+
 .logoutModal {
   background-color: #333b41;
   border-radius: 0.5rem !important;
@@ -163,4 +165,60 @@
 
 .mainItemCardv2 {
   height: auto !important;
+}
+
+
+
+.day.settingsMenu {
+  color: rgb(0, 0, 0);
+  .settingsSection {
+    .settingsMenuItem {
+      border-top: 2px solid rgba(216, 94, 0, 0);
+      border-bottom: 0px solid rgb(0, 0, 0);
+      background-image: 
+          linear-gradient(to bottom,  rgba(0, 0, 0, 0) 1%, rgba(39, 161, 255, 0) 2.7%, rgba(255,255,255,0) 78%),
+          linear-gradient(to bottom,  rgba(0, 0, 0, 0) 1%, rgba(39, 161, 255, 0) 2.7%, rgba(255,255,255,0) 78%);
+
+      h2 {
+        color: rgba(0, 0, 0, 0.75);
+   
+      }
+      p {
+        color: rgba(0, 0, 0, 0.6);
+
+      }
+      svg{
+        path{
+          fill: #2e3439;
+          // stroke: #2e3439;
+        }
+      }
+    }
+    .settingsMenuItem:hover {
+    
+      border-top: 2px solid rgba(39,161,255,0.49);
+      background-image: 
+      linear-gradient(to bottom,  rgba(0, 0, 0, 0) 1%, rgba(39,161,255,0.49) 2.7%, rgba(255,255,255,0) 85%),
+      linear-gradient(to bottom,  rgba(0, 0, 0, 0) 1%, rgba(39,161,255,0.49) 2.7%, rgba(255,255,255,0) 85%);
+       -webkit-box-shadow: 0px 3px 10px 0px rgba(38,37,38,1);
+      -moz-box-shadow: 0px 3px 10px 0px rgba(38,37,38,1);
+      box-shadow: 0px 3px 10px 0px rgba(20, 19, 19, 0.799);
+    }
+  }
+  .settingsMenuTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    color: black;
+  }
+  .settingsMenuTitle2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
+  }
+
+  .settingsLogoutButton {
+    margin-top: 1.5rem;
+  }
 }

@@ -7,12 +7,14 @@ import {
 } from "../../../../../assets/icons";
 import "./tradesMenu.scss";
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Col, Row, Select } from "antd";
 import SearchBar from "../../../../../components/searchBar/SearchBar";
 import { forex } from "../assets/assetsData";
 import { Dispatch, SetStateAction } from "react";
 import { LeftSubDrawer } from "../../types";
+import {  setAssetPairs } from "@store/slices/pairs";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 
 interface TradesMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
@@ -28,9 +30,11 @@ const RenderTab = ({
   description: string;
 }) => {
   const [part1, part2] = description.split(" on ");
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
 
   return (
-    <div className="tradesMenuWrapper">
+    <div className={`${themeSelect} tradesMenuWrapper`}>
       <p className="tradeHeading">{title}</p>
       <div className="tradeIconWrapper">
         <TradesIcon3 />
@@ -42,31 +46,38 @@ const RenderTab = ({
 };
 
 const RenderData: React.FunctionComponent = (props: any) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   const {handleMenuClick} = props;
+  const dispatch = useAppDispatch();
+
+
   const [forexData] = useState(forex);
   const [selectedForex, setSelectedForex] = useState(null);
+
+
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
     // setIsLeftSubDrawerOpen(false)
   };
   const handleSelectedForex =(item: any) => {
-  
     setSelectedForex(item);
-    handleMenuClick();
-    // setIsLeftSubDrawerOpen(false);
-    // setLeftSubDrawer();
+    dispatch(setAssetPairs(item))
   };
-  
+  const style = {
+    color: themeSelect == "night" ?  "#fff" : "#000",
+    backgroundColor: themeSelect == "night" ?  "#000" : "#fff",
+  }
   return (
-    <div className="tradesAssetMenu">
-      <p className="tradeHeading">Active Trades</p>;
-      <SearchBar className="assetsSearchbar" />
+    <div className={`${themeSelect} tradesAssetMenu`}>
+      <p className="tradeHeading" style={{color: style.color}}>Active Trades</p>;
+      <SearchBar className={`assetsSearchbar ${themeSelect}` } />
       <div className="assetsFilters">
-        <div className="filterButton">
+        <div className={`${themeSelect} filterButton`}>
           <StarFavouriteIcon /> Favorites
         </div>
         <Select
-          className="filterSelectlist"
+          className={`${themeSelect} filterSelectlist`}
           defaultValue="any"
           style={{ width: 120 }}
           onChange={handleChange}
@@ -81,7 +92,7 @@ const RenderData: React.FunctionComponent = (props: any) => {
           popupClassName="assetsDropdown"
         />
         <Select
-          className="filterSelectlist"
+          className={`${themeSelect == "night"  ? "night" : themeSelect == "day" ? 'day': ""} filterSelectlist `}
           defaultValue="any"
           style={{ width: 120 }}
           onChange={handleChange}
@@ -96,7 +107,7 @@ const RenderData: React.FunctionComponent = (props: any) => {
           popupClassName="assetsDropdown"
         />
       </div>
-      <Row className="assetsList" gutter={[2, 2]} justify="start">
+      <Row className={`assetsList ${themeSelect}`} gutter={[2, 2]} justify="start">
         <Col span={12} className="assetsListCol">
           <div className="assetsColIcon barsIcon">
             <FilterBarsIcon />
@@ -111,7 +122,7 @@ const RenderData: React.FunctionComponent = (props: any) => {
         {forexData.map((item, index) => (
           <Col span={24} key={`assetListItem ${item.value + "_" + index}`}>
             <div
-              className={`assetsListItem ${
+              className={`assetsListItem ${themeSelect}  ${
                 selectedForex === item.value ? "active" : ""
               }`}
               onClick={() => handleSelectedForex(item)}
@@ -190,6 +201,8 @@ const TradesMenu: React.FunctionComponent<TradesMenuProps> = ({
   setIsDrawerOpen,
 }) => {
   const [selectedTab, setSelectedTab] = useState("fixed");
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
  
 
   const handleButtonClick = (buttonName: string) => {
@@ -249,7 +262,7 @@ const TradesMenu: React.FunctionComponent<TradesMenuProps> = ({
   
 
   return (
-    <div className="tradesMenu">
+    <div className={`${themeSelect} tradesMenu`}>
       <ArrowsSlider>
         <div className="slider">
           {items.map((item) => (

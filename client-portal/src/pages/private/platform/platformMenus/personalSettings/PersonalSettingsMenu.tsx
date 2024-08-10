@@ -22,9 +22,14 @@ const PersonalSettingsMenu: React.FunctionComponent<
     (state: { user: UserSliceState }) => state.user
   );
 
+  const clickSecurityCardItem = (item:string) => {
+    setIsRightSubDrawerContent("confirm-email");
+  };
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   return (
-    <div className="personalSettingsMenu">
-      <EnhanceSecurityCard variant1={3} variant2={3} />
+    <div className={`${themeSelect} personalSettingsMenu`}>
+      <EnhanceSecurityCard variant1={3} variant2={3} onClick={clickSecurityCardItem} />
 
       <div>
         <p className="menuSectionTitle">Personal</p>

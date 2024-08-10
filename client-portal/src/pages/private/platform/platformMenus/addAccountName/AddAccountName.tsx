@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { Typography } from "antd";
-
+import { Typography, Form } from "antd";
 import Input from "../../../../../components/input/Input";
 import { RightDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
@@ -50,18 +49,29 @@ const AddAccountName: React.FunctionComponent<AddAccountNameProps> = ({
         Set the account name. This is how it will be displayed on the list of
         your accounts.
       </Typography.Text>
-      <Input
-        placeholder="Account Name"
-        title="Account Name"
-        defaultValue={name}
-        onChange={(e) => setName(e.target.value)}
-        type="text"
-      />
-      <PrimaryButton
-        Title="Confirm"
-        onClick={onCreateWallet}
-        disabled={isPending}
-      />
+      <Form layout="vertical" onFinish={onCreateWallet}>
+        
+        <Form.Item
+          name="accountName"
+          rules={[{ required: true, message: "Account name is required" }]}
+        >
+          <Input
+            placeholder="Account Name"
+            title="Account Name"
+            name="accountName"
+            defaultValue={name}
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+          />
+        </Form.Item>
+        
+        <PrimaryButton
+          Title="Confirm"
+          htmlType="submit"
+          // onClick={onCreateWallet}
+          disabled={isPending}
+        />
+      </Form>
     </div>
   );
 };

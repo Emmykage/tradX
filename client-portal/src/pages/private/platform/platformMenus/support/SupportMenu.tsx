@@ -3,17 +3,36 @@ import { DownloadIcon } from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./supportMenu.scss";
 import { Col, Row } from "antd";
+import { useEffect } from "react";
+import { initializeLiveChat } from "api/livechat/liveChatBot";
+import { useAppSelector } from "@store/hooks";
 
 interface SupportMenuProps {}
 
+
+
 const SupportMenu: React.FunctionComponent<SupportMenuProps> = () => {
+  const openChat = ()=> {
+    if(window.LiveChatWidget){
+      window.LiveChatWidget.call('maximize'); //call mazimize method on the LiveChat
+    }
+   }
+
+   const {themeSelect} = useAppSelector(state => state.themeBg)
+  useEffect(()=> {
+    initializeLiveChat()
+
+    return () => {
+
+    }
+  }, [])
   return (
-    <div className="supportMenu">
+    <div className={`${themeSelect} supportMenu`}>
       <p className="supportSectionTitle">
         Support, want to get in touch? Here`s how you can reach us.
       </p>
 
-      <Row className="firstMenuListCard">
+      <Row className="firstMenuListCard" onClick={openChat}>
         <Col span={14} className="textCol">
           <h2>Chat</h2>
           <p>Out chatbot and support team are here to help</p>

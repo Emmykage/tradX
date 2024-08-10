@@ -24,6 +24,29 @@
   }
 }
 
+.day.tradesMenuWrapper {
+  p.tradeHeading {
+    color: #000000ab;
+  }
+  .tradeIconWrapper {
+
+    svg {
+      circle{
+        fill:#969798
+      }
+      path{
+        fill:#000
+      }
+
+    }
+  }
+  p.noTrade {
+    color: rgba(0, 0, 0, 0.6);
+
+  }
+}
+
+
 .tradesMenu {
   .slider {
     display: flex;
@@ -52,6 +75,27 @@
     }
   }
 }
+
+.tradesMenu.day {
+  .slider {
+    button {
+      border: 0.0625rem solid rgb(162, 121, 89);
+      color: #000;
+  
+    }
+
+    .active {
+      background-color: rgb(233, 232, 229);
+      color: #000000;
+    }
+    button:hover {
+      background-color: rgb(233, 232, 229);
+      color: #000000;
+
+    }
+  }
+}
+
 
 .tradesAssetMenu {
   p.tradeHeading {
@@ -217,6 +261,184 @@
           font-weight: 400;
           color: #969798;
           margin-right: 0.625rem;
+
+          &.success {
+            color: #5dac49;
+          }
+
+          &.danger {
+            color: #e53939;
+          }
+
+          &.primary {
+            color: #5d86a6;
+          }
+        }
+
+        svg {
+          width: 1rem;
+        }
+        // color: #e6e6e6;
+      }
+    }
+  }
+}
+
+.day.tradesAssetMenu {
+  p.tradeHeading {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .assetsFilters {
+    .filterButton {
+      cursor: pointer;
+      color: rgba(41, 40, 40, 0.6);
+      &:hover {
+        color: #030303;
+      }
+    }
+   
+    .filterSelectlist {
+
+
+      .ant-select-arrow {
+        svg {
+          path{
+            stroke: #727272;
+          }
+        }
+      }
+
+      .ant-select-selector {
+        border: 0rem solid rgb(238, 238, 238);
+        .ant-select-selection-item {
+          color: rgba(41, 40, 40, 0.6);
+        }
+        .ant-select-selection-item:hover {
+          color: #000;
+        }
+      }
+    }
+    
+  }
+  
+  .assetsList {
+    .assetsListCol {
+      display: flex;
+      align-items: center;
+
+      &.alignEnd {
+        justify-content: flex-end;
+      }
+
+      .assetsColIcon {
+        display: flex;
+        align-items: center;
+      }
+
+      .assetsListColTitle {
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: #969798;
+      }
+
+      .barsIcon {
+        width: 2rem;
+      }
+
+      .questionIcon {
+        width: 1.25rem;
+      }
+    }
+
+    .assetsListItem {
+      &:hover {
+        background-color: #1a1d21;
+      }
+
+      &.active {
+        box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+          0 0.0943rem 0 0.063rem inset rgba(39, 162, 255, 0.5);
+      }
+
+      &.disabled {
+        cursor: default;
+
+      
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+
+      .contentLeft {
+      
+        .itemTitle {        
+          color: #000;
+        }
+   
+
+        .itemSubtext {
+          color: #3d3d3d;
+        }
+      }
+
+      .contentRight {
+
+
+        .itemText {
+          color: #3b3b3b;
+
+          &.success {
+            color: #5dac49;
+          }
+
+          &.danger {
+            color: #e53939;
+          }
+
+          &.primary {
+            color: #5d86a6;
+          }
+        }
+
+        svg {
+          width: 1rem;
+          path{
+            fill: #000
+          }
+        }
+      }
+    }
+    .assetsListItem {
+  
+      &:hover {
+        background-color: #dde9f8;
+      }
+
+      &.active {
+        background-color: transparent;
+        box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+          0 0.0943rem 0 0.063rem inset rgba(39, 162, 255, 0.5);
+      }
+
+      &.disabled {
+
+        .contentLeft {
+          .itemTitle {
+            color: #505050;
+          }
+        }
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+
+       .contentRight {
+
+        .itemText {
+
+          color: #969798;
 
           &.success {
             color: #5dac49;

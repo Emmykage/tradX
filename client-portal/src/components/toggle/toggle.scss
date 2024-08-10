@@ -62,3 +62,48 @@
     margin-top: 0.5rem;
   }
 }
+
+.day.customToggle {
+  .toggleContainer {
+    .toggleTextContainer {
+      .toggleLabel {
+        color: rgba(0, 0, 0, 0.85);
+      }
+
+      .toggleSubtext {
+
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 10px;
+        font-weight: 500;
+      }
+    }
+
+    .ant-switch {
+      border: 0.125rem solid #3f3f3f;
+      &:hover {
+      }
+
+      .ant-switch-handle {
+        border: 0.125rem solid #414141;
+      }
+
+      .ant-switch-inner {
+            }
+
+      &.ant-switch-checked {
+        border: 0.125rem solid #0094ff;
+        &:hover {
+          background: transparent;
+        }
+
+        .ant-switch-handle {
+          border: 0.125rem solid #0094ff;
+        }
+      }
+    }
+  }
+
+  .infoText {
+    color: #0094ff;
+   }
+}

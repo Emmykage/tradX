@@ -13,10 +13,9 @@ import {
 
 import Loading from "components/loading";
 import useWalletTypes from "api/wallet/useWalletTypes";
-import IocnPlaceholder from "assets/icons/IocnPlaceholder";
-import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import { debounce } from "lodash";
 import { PinnedIcon, SearchIcon } from "../../../../../assets/icons";
+import RadioInput from "components/radio/Radio";
 
 interface AddAccountMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -33,17 +32,17 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
 
   const dispatch = useAppDispatch();
   const [cookies] = useCookies(["access_token"]);
-  const { walletTypes } = useAppSelector(
-    (state: { wallet: WalletSliceState }) => state.wallet
+  const { walletTypes, createWalletData } = useAppSelector(
+    (state: { wallet: WalletSliceState  }) => state.wallet
   );
-
+ 
   const { mutate, isPending } = useWalletTypes({
     onSuccess: (data) => {
       dispatch(setWalletTypes(data.results));
       setItems(data.results);
     },
     onError: (error) => {
-      console.log("fetching wallet-types error", error);
+      // console.log("fetching wallet-types error", error);
     },
   });
 
@@ -63,7 +62,10 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
     if (walletTypes.length <= 0) {
       mutate(cookies.access_token);
     }
-  }, [mutate, walletTypes, cookies.access_token]);
+  }, [cookies.access_token]);
+  // useEffect(() => {
+
+  // }, []);
 
   const debouncedSearch = debounce((searchTerm: string) => {
     if (searchTerm === "") {
@@ -77,29 +79,38 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
       setItems(filteredItems);
     }
   }, 300);
-
-  useEffect(() => {
-    debouncedSearch(searchTerm);
-    return () => debouncedSearch.cancel();
-  }, [searchTerm, pinnedAccount, items, debouncedSearch]);
+  {/* TODO: Implement search feature */}
+  // useEffect(() => {
+  //   debouncedSearch(searchTerm);
+  //   return () => debouncedSearch.cancel();
+  // }, [searchTerm, pinnedAccount, items, debouncedSearch]);
 
   if (isPending) {
     return <Loading size="large" />;
   }
-
   return (
     <div className="addAccount">
       <div className="searchAccount">
         <SearchIcon />
         <input type="text" value={searchTerm} onChange={handleSearch} />
       </div>
-      {pinnedAccount ? (
+      {walletTypes.map((item) => (
+          <div
+            className="account-types"
+            key={item?.id}
+          >
+            <RadioInput label={item.name} id={`${item?.id}`} checked={createWalletData?.account_type === item?.id}  onChange={() => onSelectAccountType(item.id)} />
+          </div>
+       
+      ))}
+
+      {/* {pinnedAccount ? (
         <MainItemCard className="AccountPinned" variant={2}>
           <div
             className="PinnedValue"
             onClick={() => onSelectAccountType(pinnedAccount.id)}
           >
-            {/* TODO: Replace once backend sends images */}
+       
             <IocnPlaceholder />
             <div>
               <h2>{pinnedAccount.symbol}</h2>
@@ -108,25 +119,8 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
           </div>
           <PinnedIcon />
         </MainItemCard>
-      ) : null}
-      {items.map((item) => (
-        <div key={item.id} className="AccountPinnedData">
-          <div
-            className="AccountsData"
-            onClick={() => onSelectAccountType(item.id)}
-          >
-            {/* TODO: Replace once backend sends images */}
-            <IocnPlaceholder />
-            <div>
-              <h2>{item.symbol}</h2>
-              <p>{item.name}</p>
-            </div>
-          </div>
-          <div className="hoverPinned" onClick={() => setPinnedAccount(item)}>
-            <PinnedIcon />
-          </div>
-        </div>
-      ))}
+      ) : null} */}
+      
     </div>
   );
 };

@@ -33,6 +33,7 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
   const [modalKey, setModalKey] = useState<number>(0);
   const [stories] = useState<StorieList[]>(storiesList);
+  const {themeSelect} = useAppSelector(state => state.themeBg)
 
   const userRedux = useAppSelector(
     (state: { user: UserSliceState }) => state.user.user
@@ -51,7 +52,7 @@ const ProfileMenu: React.FunctionComponent<ProfileMenuProps> = ({
   };
 
   return (
-    <div>
+    <div className={`${themeSelect}`}>
       <div
         className="headerExtraIcon"
         onClick={() => {

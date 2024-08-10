@@ -133,3 +133,110 @@
     }
   }
 }
+
+.day.aiAssetSummaryMenu {
+  .assetHeader {
+    .favouriteBtn {
+      border: 0.0625rem solid #000000;
+
+    }
+    .tradeBtn {
+
+    }
+  }
+  .assetBody {
+    margin-top: 1rem;
+    h2 {
+      color: #000000;
+    }
+    p {
+
+      color: rgba(105, 104, 103, 1);
+    }
+    .priceContainer {
+      .currentPrice {
+  
+        h2 {
+
+          color: #020202;
+        }
+        p {
+          color: rgba(105, 104, 103, 1);
+          }
+          svg{
+            circle{
+              stroke: #000000;
+            }
+            g{
+              stroke: #000000;
+            }
+            path{
+              fill: #000000;
+              stroke: #000000;
+            }
+            rect{
+              fill: blue;
+            }
+          }
+      }
+    }
+  }
+  .btnsClickAble {
+    button {
+      background: transparent;
+      border: 0.0625rem solid rgba(163, 121, 89, 1);
+      color: rgb(0, 0, 0);
+
+    }
+    .active {
+      background-color: rgba(233, 232, 229, 1);
+    }
+    button:hover {
+      background-color: rgba(233, 232, 229, 1);
+    }
+  }
+  h1 {
+    margin-top: 2rem;
+    color: #000000;
+  }
+  .financialsContainer {
+    margin-top: 1rem;
+    .financialItem {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 1rem 0;
+      h3 {
+        color: rgba(105, 104, 103, 1);
+      }
+      h4 {
+        color: rgba(105, 104, 103, 1);
+
+      }
+    }
+  }
+  .recentUpdatesContainer {
+
+    li {
+      color: rgba(105, 104, 103, 1);
+
+    }
+    .btnContainer {
+      margin-top: 0.5rem;
+      button {
+        border: 0.0494rem solid rgba(0, 0, 0, 0.3);
+
+        color: rgba(0, 148, 255, 1);
+
+      }
+    }
+  }
+  .swotContainer {
+    li {
+       color: rgba(105, 104, 103, 1);
+      span {
+      }
+    }
+  }
+}

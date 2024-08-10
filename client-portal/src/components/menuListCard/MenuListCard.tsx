@@ -1,6 +1,7 @@
 import React from "react";
 import MainItemCard from "../mainItemCard/MainItemCard";
 import "./menuListCard.scss";
+import { useAppSelector } from "@store/hooks";
 
 interface MenuListCardProps {
   icon?: React.ReactNode;
@@ -33,9 +34,10 @@ const MenuListCard: React.FC<MenuListCardProps> = ({
   variant = 2,
   suffix,
 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
     <MainItemCard
-      className={`menuListCard ${danger ? "danger" : ""} ${
+      className={`menuListCard ${themeSelect} ${danger ? "danger" : ""} ${
         className ? className : ""
       }`}
       variant={variant}

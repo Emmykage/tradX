@@ -22,3 +22,21 @@
     }
   }
 }
+
+
+.day.tradingMenu {
+  .tradingMenuSection {
+
+    .tradingSectionTitle {
+      color: #000000;
+      svg{
+        path{
+          fill: #000000
+        }
+        rect{
+          stroke: #000000;
+        }
+      }
+    }
+  }
+}

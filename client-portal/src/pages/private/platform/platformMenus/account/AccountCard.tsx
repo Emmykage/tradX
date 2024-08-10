@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState, useRef, useEffect } from "react";
 import {
   ArchiveIcon,
   DepositsIcon2,
@@ -15,13 +15,17 @@ import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import { Col, Row } from "antd";
 import SecondaryButton from "../../../../../components/secondaryButton/SecondaryButton";
+import { setEditableWallet } from "@store/slices/wallet";
+import { useAppDispatch } from "@store/hooks";
+import { formatMoney } from "utils/utils";
 
 interface AccountCardProps {
   icon: React.ReactNode;
   suffixIcon: React.ReactNode;
-  accountType: string;
+  accountType?: string;
+  accountData?: any;
   amount?: string;
-  secAmount: string;
+  secAmount?: string;
   selected?: boolean;
   tag?: string;
   onClick: () => void;
@@ -39,18 +43,33 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
   selected,
   selectedCard,
   tag,
+  accountData,
   onClick,
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const dropdownRef = useRef(null);
 
   const navigate = useNavigate();
-
+  const dispatch = useAppDispatch();
   const handleSuffixIconClick = (event: React.MouseEvent) => {
     event.stopPropagation();
     setDropdownVisible(!isDropdownVisible);
   };
+
+  useEffect(() => {
+    const handler = (e: any) => {
+        // @ts-ignore
+        if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+          setDropdownVisible(false);
+        }
+    };
+    window.addEventListener('click', handler);
+    return () => {
+        window.removeEventListener('click', handler);
+    };
+  });
 
   return (
     <div
@@ -58,23 +77,26 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
       className={`accountCardWrapper ${selected ? "selected" : ""}`}
     >
       {selectedCard ? (
-        <MainItemCard
-          variant={2}
-          className={`new-card ${
-            isDropdownVisible ? "backgroundNone" : "backgroundColor"
-          }`}
-        >
+
+        // <MainItemCard
+        //   variant={2}
+        //   className={`new-card ${
+        //     isDropdownVisible ? "backgroundNone" : "backgroundColor"
+        //   }`}
+        // >
+        <div className="selected-account-card">
           <div className="leftSide-card">
             <div className="leftSide">
               <div className="icon">{icon}</div>
               <div className="accountDeets">
-                <div className="accountType">{accountType}</div>
-                {amount ? <div className="amount">{amount}</div> : null}
+                <div className="accountType">{accountData?.name}</div>
+                 <div className="amount">{formatMoney(accountData?.available_balance || 0)}</div> 
                 <div className="secAmount">{secAmount}</div>
               </div>
             </div>
             <div
               className="suffixIcon"
+              ref={dropdownRef}
               onBlur={() => setDropdownVisible(false)}
               onClick={handleSuffixIconClick}
             >
@@ -138,6 +160,7 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
                   </div>
                   <div
                     onClick={() => {
+                      dispatch(setEditableWallet(accountData));
                       setIsRightSubDrawerOpen(true);
                       setIsRightSubDrawerContent("account-rename");
                     }}
@@ -150,6 +173,7 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
                   </div>
                   <div
                     onClick={() => {
+                      dispatch(setEditableWallet(accountData));
                       setIsRightSubDrawerOpen(true);
                       setIsRightSubDrawerContent("account-archive-menu");
                     }}
@@ -186,14 +210,15 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
               />
             </Col>
           </Row>
-        </MainItemCard>
+        {/* </MainItemCard> */}
+        </div>
       ) : (
         <>
           <div className="leftSide">
             <div className="icon">{icon}</div>
             <div className="accountDeets">
-              <div className="accountType">{accountType}</div>
-              {amount ? <div className="amount">{amount}</div> : null}
+              <div className="accountType">{accountData?.name}</div>
+              <div className="amount">{accountData?.available_balance || 0}</div>
               <div className="secAmount">{secAmount}</div>
             </div>
           </div>

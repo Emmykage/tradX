@@ -16,10 +16,34 @@
     
 }
 
+// day mode 
+.day{
+    .payment-methods-filter-btns{
+  
+        .payment-methods-filter-btn{
+
+            border: 1px solid #5D86A6;
+
+            color: #000000;
+        }
+        
+    }
+}
+
 .payment-method-list-title{
     color: #fff;
     font-weight: 500;
     font-size: 1rem;
+}
+
+// day mode 
+.day{
+    .payment-method-list-title{
+        color: #000000;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+    
 }
 
 .payment-method-list-item{
@@ -33,10 +57,24 @@
     span {
         margin-left: 0.5rem;
         color: #969798;
-        font-size: 1rem;
-        font-weight: 600;
+    }
+}
+// day mode 
+.day {
+    .payment-method-list-item{
+        span {
+            margin-left: 0.5rem;
+            color: #444444;
+        
+        }
     }
 }
 .active-payment-method-list-item{
     background-color: #1b1d21;
+}
+.day {
+    .active-payment-method-list-item{
+        background-color: #454647;
+    }
+    
 }

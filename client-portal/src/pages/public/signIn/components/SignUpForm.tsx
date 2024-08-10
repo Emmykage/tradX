@@ -3,6 +3,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import useRegister from "api/user/useRegister";
 import { toast } from "react-toastify";
+import { setSignInTab } from "@store/slices/global";
+import { useDispatch } from "react-redux";
 
 interface SignUpFormData {
   email: string;
@@ -14,9 +16,11 @@ interface SignUpFormData {
 
 const SignUpForm = () => {
   const { handleSubmit, register, reset } = useForm<SignUpFormData>();
+  const dispatch = useDispatch()
   const { mutate, isPending } = useRegister({
     onSuccess: () => {
       reset();
+      dispatch(setSignInTab('1'))
       toast.success(
         "You have successfully registered your account, Login Now!"
       );

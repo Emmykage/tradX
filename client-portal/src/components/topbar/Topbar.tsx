@@ -1,12 +1,14 @@
 import { CSSProperties } from "react";
 
-import { useAppSelector } from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
 import { WalletSliceState } from "@store/slices/wallet";
+import ArrowsSlider from "../../components/arrowsSlider/ArrowsSlider";
 
 import Loading from "components/loading";
 import {
   CaretDownIcon,
+  CloseIconsm,
   DropUpIcon,
   ProfileIcon,
   WalletIcon,
@@ -16,6 +18,11 @@ import {
   RightDrawerContent,
 } from "../../pages/private/platform/types";
 import "./topbar.scss";
+import { AssetPairSliceState, removeAssetPair } from "@store/slices/pairs";
+import { CryptoSliceState } from "@store/slices/markets/types";
+import AssetSelectionContainer from "components/assetSelectionContainer/AssetSelectionContainer";
+import { ITradeAssets } from "@interfaces";
+import DropdownMenu from "components/dropdownMenu/DropdownMenu";
 
 interface TopbarProps {
   isDrawerOpen: boolean;
@@ -27,6 +34,7 @@ interface TopbarProps {
   setCurrentDrawer: React.Dispatch<React.SetStateAction<CurrentDrawerType>>;
   currentDrawer: CurrentDrawerType;
   style?: CSSProperties;
+  chartOptionMenus: Array<any>;
 }
 
 const Topbar: React.FunctionComponent<TopbarProps> = ({
@@ -36,6 +44,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   setIsDrawerOpen,
   setCurrentDrawer,
   currentDrawer,
+  chartOptionMenus,
   style,
 }) => {
   const { user, loading } = useAppSelector(
@@ -46,7 +55,14 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
     (state: { wallet: WalletSliceState }) => state.wallet
   );
 
-  const { symbol,assets } = useAppSelector((state) => state.markets);
+  const  {assetPairs} = useAppSelector(
+    (state: {assetPair: AssetPairSliceState }) => state.assetPair
+
+
+  )  
+  const dispatch = useAppDispatch()
+
+  const { symbol,assets } = useAppSelector((state: {markets: CryptoSliceState }) => state.markets);
   console.log(symbol);
   console.log(assets);
   const ProfileImage = () => {
@@ -86,32 +102,29 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
 
   return (
     <div className="topbarContainer" id="topbarContainer" style={style}>
-      <div
-        className="conversionTab"
-        onClick={() => {
-          setIsDrawerOpen(
-            isDrawerOpen && currentDrawer === "assets" ? false : true
-          );
-          setCurrentDrawer("assets");
-        }}
-      >
-        <div className="convImg">
-          <img
-            // src="https://res.cloudinary.com/dt9pwfpi5/image/upload/v1703146258/conv_e2znxe.png"
-            src={assets}
-            
-            alt="conv"
-          />
+      
+        <div className="conversionDiv">
+          <ArrowsSlider>
+            <div className="asset-pair-container">
+              {assetPairs.map((assetPair: ITradeAssets, _i: number) => (
+                <>
+                  <AssetSelectionContainer data={assetPair} key={_i}/>
+                </>
+              ))}
+            </div>
+          </ArrowsSlider>
+          <div className="top-bar-chart-options">
+                {chartOptionMenus.map((data, _i) => (
+                  <DropdownMenu key={_i} position="bottom-left" type={data?.type} menuItems={data.menus}>
+                    <div className="top-bar-chart-option" onClick={data.onClick}>
+                        {data.icon}
+                    </div>
+                  </DropdownMenu>
+                ))}
+              </div>
         </div>
-        <div className="convDetails">
-          <div className="topConv">
-            <span className="currency">{symbol}</span>
-            <span>OTC</span>
-            <span className="percent">85%</span>
-          </div>
-        </div>
-      </div>
-      <div className="payProfileTab">
+ 
+      <div className="payProfileTab" id="top_right">
         <WalletsButton />
         <button
           onClick={() => {

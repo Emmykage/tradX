@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 
-const CountDown:React.FC<{time: number}> = ({time}) => {
+const CountDown:React.FC<{time: number,color?:string}> = ({time,color:colorProps}) => {
 
      // minutes
 
@@ -46,7 +46,7 @@ const formatTime = () => {
 };
   return (
     <div className="bg-gray-800 h-screen w-screen flex justify-center items-center absolute top-0">
-        <div>
+        <div style={{color: colorProps ? colorProps : 'black'}}>
             {finished ? '': <p>{formatTime()}</p>}
         </div>
         

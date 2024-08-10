@@ -1,33 +1,59 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { IWallet, IWalletType } from "@interfaces";
+import { InitialAccountsList, InitialAccountsListProps } from "pages/private/platform/platformMenus/add-account/constants";
 
-interface WalletData {
+export interface WalletData {
   account_type?: number;
   name?: string;
+  user?: number;
+  updated_at?: string;
+  is_archived?: boolean;
+  id?: number;
+  created_at?: string;
+  balance?: number;
+  available_balance?: number;
 }
 
 export interface WalletSliceState {
-  wallets: IWallet[];
+  wallets: WalletData[];
   walletsLoading: boolean;
   selectedWallet?: IWallet;
+  editableWallet?: WalletData;
   walletTypes: IWalletType[];
   createWalletData?: WalletData;
+  walletToTransferFrom: InitialAccountsListProps;
+  walletToTransferTo: InitialAccountsListProps;
 }
 
 const initialState: WalletSliceState = {
   wallets: [],
   walletsLoading: false,
+  editableWallet: {},
   walletTypes: [],
+  walletToTransferFrom: InitialAccountsList[0],
+  walletToTransferTo: {}
 };
 
 export const walletSlice = createSlice({
   name: "wallet",
   initialState,
   reducers: {
-    setWallets: (state, action: PayloadAction<IWallet[]>) => {
+    setWallets: (state, action: PayloadAction<WalletData[]>) => {
       state.wallets = [...action.payload];
       state.walletsLoading = false;
+      return state;
+    },
+    updateWalletsArray: (state, action:  PayloadAction<WalletData>) => {
+      let walletsArray: Array<WalletData>  = [...state.wallets];
+      walletsArray = walletsArray.map((obj) => {
+          if (Number(obj.id) === action?.payload?.id) {
+              return action?.payload;
+          }
+
+          return obj;
+      });
+      state.wallets = [...walletsArray];
       return state;
     },
     setWalletsLoading: (state, action: PayloadAction<boolean>) => {
@@ -38,13 +64,27 @@ export const walletSlice = createSlice({
       state.selectedWallet = action.payload;
       return state;
     },
+    setEditableWallet: (state, action: PayloadAction<WalletData | undefined>) => {
+      state.editableWallet = action.payload;
+      return state;
+    },
     setWalletTypes: (state, action: PayloadAction<IWalletType[]>) => {
       state.walletTypes = [...action.payload];
       return state;
     },
-    setCreateWalletData: (state, action: PayloadAction<WalletData>) => {
-      state.createWalletData = { ...state.createWalletData, ...action.payload };
+    setWalletToTransferFrom: (state, action: PayloadAction<InitialAccountsListProps>) => {
+      state.walletToTransferFrom = action.payload;
       return state;
+    },
+    setWalletToTransferTo: (state, action: PayloadAction<InitialAccountsListProps>) => {
+      state.walletToTransferTo =  action.payload;
+      return state;
+    },
+    setCreateWalletData: (state, action: PayloadAction<WalletData>) => {
+      return {
+        ...state,
+        createWalletData: { ...state.createWalletData, account_type: action.payload?.account_type }
+      };
     },
   },
 });
@@ -53,8 +93,12 @@ export const {
   setWallets,
   setWalletsLoading,
   setSelectedWallet,
+  setWalletToTransferFrom,
+  setWalletToTransferTo,
   setWalletTypes,
   setCreateWalletData,
+  setEditableWallet,
+  updateWalletsArray
 } = walletSlice.actions;
 
 export default walletSlice.reducer;

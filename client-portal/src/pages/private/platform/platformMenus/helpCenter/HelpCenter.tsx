@@ -14,6 +14,7 @@ import {
 import "./helpCenter.scss";
 import { Dispatch, SetStateAction } from "react";
 import { LeftSubDrawer } from "../../types";
+import { useAppSelector } from "@store/hooks";
 
 interface HelpCenterProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
@@ -22,8 +23,11 @@ interface HelpCenterProps {
 const HelpCenter: React.FunctionComponent<HelpCenterProps> = ({
   setLeftSubDrawer,
 }) => {
+
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   return (
-    <div className="helpCenter">
+    <div className={`${themeSelect} helpCenter`}>
       <SearchBar
         className="helpCenterSearch"
         placeholder="Find the help you need"

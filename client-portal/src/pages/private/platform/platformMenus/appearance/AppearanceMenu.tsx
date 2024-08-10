@@ -14,6 +14,8 @@ import { useTranslation } from "react-i18next";
 import "./appearanceMenu.scss";
 import { languages } from "../../../../../constants";
 import { localFlagHandler } from "../../../../../i18n/helpers";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { setBgTheme } from "@store/slices/theme";
 
 interface AppearanceMenuProps {}
 
@@ -25,8 +27,11 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
     useState<boolean>(false);
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] =
     useState<boolean>(false);
+    const dispatch = useAppDispatch()
+
+    const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <div className="appearanceMenu">
+    <div className={`${themeSelect} appearanceMenu`}>
       <InterfaceScale />
 
       <Select
@@ -38,7 +43,7 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
         options={languages.map(({ value, label }) => ({
           value,
           label: (
-            <div className="dropDownMenuItem">
+            <div className={`${themeSelect} dropDownMenuItem`}>
               <div className="dropDownMenuItemIcon">
                 <img src={localFlagHandler(value)} />
               </div>
@@ -47,6 +52,7 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
           ),
         }))}
         height="height"
+        background="background"
       />
       {!isLanguageDropdownOpen && (
         <>
@@ -94,41 +100,42 @@ const AppearanceMenu: React.FunctionComponent<AppearanceMenuProps> = () => {
           <Select
             onClick={() => setIsThemeDropdownOpen(!isThemeDropdownOpen)}
             label="Color theme"
-            defaultValue="dark"
+            defaultValue={themeSelect}
+            handleChange={(value)=> dispatch(setBgTheme(value))}
             options={[
               {
-                value: "light",
+                value: "day",
                 label: (
                   <div className="dropDownMenuItem">
                     <div className="dropDownMenuItemIcon">
                       <LightIcon />
                     </div>
-                    <div className="dropDownMenuItemText">Light </div>
+                    <div className="dropDownMenuItemText">Day </div>
                   </div>
                 ),
               },
               {
-                value: "dark",
+                value: "night",
                 label: (
                   <div className="dropDownMenuItem">
                     <div className="dropDownMenuItemIcon">
                       <DarkIcon />
                     </div>
-                    <div className="dropDownMenuItemText">Dark </div>
+                    <div className="dropDownMenuItemText">Night </div>
                   </div>
                 ),
               },
-              {
-                value: "classic",
-                label: (
-                  <div className="dropDownMenuItem">
-                    <div className="dropDownMenuItemIcon">
-                      <ClassicIcon />
-                    </div>
-                    <div className="dropDownMenuItemText">Classic </div>
-                  </div>
-                ),
-              },
+              // {
+              //   value: "classic",
+              //   label: (
+              //     <div className="dropDownMenuItem">
+              //       <div className="dropDownMenuItemIcon">
+              //         <ClassicIcon />
+              //       </div>
+              //       <div className="dropDownMenuItemText">Classic </div>
+              //     </div>
+              //   ),
+              // },
             ]}
             background="background"
           />

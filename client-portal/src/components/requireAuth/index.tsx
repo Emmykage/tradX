@@ -33,7 +33,7 @@ const RequireAuth = () => {
       removeCookie("access_token");
       removeCookie("refresh_token");
 
-      return <Navigate to="/" state={{ from: location }} />;
+      return <Navigate to="/signIn" state={{ from: location }} />;
     },
   });
 
@@ -95,7 +95,7 @@ const RequireAuth = () => {
   }, [cookies.access_token]);
 
   if (!cookies.access_token && !isIdle) {
-    return <Navigate to="/" state={{ from: location }} />;
+    return <Navigate to="/signIn" state={{ from: location }} />;
   }
 
   return (

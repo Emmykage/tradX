@@ -28,6 +28,7 @@ interface TradeFormProps {
   hintPlus?: boolean;
   hintDuration?: boolean;
   hintTrades?: boolean;
+  setStep?:React.Dispatch<React.SetStateAction<number>>;
   handleUserInputUp?: () => void;
   handleUserInputDown?: () => void;
   profitPercent?: string;
@@ -52,6 +53,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   hintTrades = false,
   handleUserInputUp,
   handleUserInputDown,
+  setStep,
   profitPercent,
   amountTooltipPlacement = "left",
   durationTooltipPlacement = "left",
@@ -64,20 +66,14 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   const dispatch = useDispatch();
 
 
-  console.log(finished, trade);
+
   const handleInputUp = ()=>{
-    console.log('up');
-    console.log(amount);
-    console.log(duration);
+
     
     dispatch(setTrade('up'))
 
   }
   const handleInputDown = ()=>{
-    console.log('down');
-    console.log(amount);
-    console.log(duration);
-
     dispatch(setTrade('down'))
   }
 
@@ -91,9 +87,16 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   
       dispatch(changeDuration('decrease'))
     }
+     if (duration  === 0 && setStep){
+      setStep(9)
+    }
   }
   const handleIncreaseAmount = ()=>{
    dispatch(changeAmount('increase'))
+   if(amount === 99 && setStep){
+    setStep(8)
+   }
+
   }
   const handleDecreaseAmount = ()=>{
     if(amount > 1){

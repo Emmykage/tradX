@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import { setUser } from "@store/slices/user";
-import { useAppDispatch } from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { setWallets } from "@store/slices/wallet";
 
 import {
@@ -31,7 +31,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
   const navigate = useNavigate();
   const [, , removeCookie] = useCookies(["access_token", "refresh_token"]);
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   const handleLogout = () => {
     dispatch(setUser(null));
     dispatch(setWallets([]));
@@ -41,7 +41,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
   };
 
   return (
-    <div className="settingsMenu">
+    <div className={`${themeSelect} settingsMenu`}>
       {/* <EnhanceSecurityCard /> */}
       <div className="settingsSection">
         <p className="settingsMenuTitle">Profile</p>
