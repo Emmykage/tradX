@@ -4,6 +4,7 @@ import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import "./verificationMenu.scss";
 import { RightSubDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
+import { useAppSelector } from "@store/hooks";
 
 interface VerificationMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -14,8 +15,9 @@ const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <div className="verificationsContainer">
+    <div className={`${themeSelect} verificationsContainer`}>
       <div className="verificationBadge">
         <img src="/menu-images/verification-img.png" />
       </div>

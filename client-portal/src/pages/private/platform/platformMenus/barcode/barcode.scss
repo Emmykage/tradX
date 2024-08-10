@@ -58,3 +58,47 @@
     }
   }
 }
+
+.barcodeMenu.day {
+  img {
+    width: 4.5rem !important;
+    height: 4.5rem;
+    object-fit: cover;
+    margin-right: 0.5rem;
+  }
+  .barcodeCardContent {
+    h2 {
+
+      color: #000000;
+    }
+    .cardTop {
+      .cardTitle {
+
+        color: #050505;
+      }
+
+      .cardTime {
+
+        color: #727272;
+        margin-left: 0.625rem;
+      }
+    }
+
+    .cardBottom {
+      .cardSubtext {
+        color: #727272;
+      }
+
+      .cardRating {
+        & > p {
+           color: #000000;
+        }
+        svg {
+          path{
+            stroke: black
+          }
+        }
+      }
+    }
+  }
+}

@@ -32,7 +32,7 @@
       );
     }
     .mainItemCard::before {
-      background-image: linear-gradient(to right, #3c3d40, #2d2e32);
+      background-image: linear-gradient(to right, rgb(60, 61, 64), rgb(45, 46, 50));
     }
     .menuthirdCard {
       display: flex;
@@ -65,6 +65,53 @@
             height: 4rem;
           }
         }
+      }
+    }
+  }
+}
+
+.day.market-menu {
+
+  .mainItemCardv2 {
+    box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+      0 0.063rem 0 0.063rem inset rgba(0, 0, 0, 0.3);
+  }
+  .menufirstCard {
+
+    .menufirstCardText {
+      color: #000000;
+
+    }
+      path{
+        stroke: #000
+    }
+  }
+  .menuthirdCardCon {
+
+    .mainItemCard {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3),
+        rgba(255, 255, 255, 0)
+      );
+    }
+    .mainItemCard::before {
+      background-image: linear-gradient(to right, rgb(195, 194, 191), #2d2e32);
+    }
+    .menuthirdCard {
+
+      .menuThirdCardRow {
+
+        .menuthirdCardText1 {
+
+          color: #000000;
+          line-height: 2rem;
+        }
+        .menuthirdCardText2 {
+
+          color: rgb(18, 20, 22);
+        }
+
       }
     }
   }

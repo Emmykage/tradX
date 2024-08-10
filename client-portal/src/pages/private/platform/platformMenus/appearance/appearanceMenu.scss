@@ -21,3 +21,27 @@
     margin-left: 0rem;
   }
 }
+
+  .day{
+    .dropDownMenuItem {
+    color: black;
+
+    .dropDownMenuItemIcon {
+      img,
+      svg {
+        path{
+          fill: #000;
+          stroke: black 
+        }
+
+      }
+    }
+    .dropDownMenuItemText {
+      display: flex;
+      margin-left: 0rem;
+    }
+  }
+  // .rc-virtual-list{
+  //   background-color: red;
+  // }
+}

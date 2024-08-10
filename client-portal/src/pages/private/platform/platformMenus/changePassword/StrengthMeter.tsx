@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./strengthMeter.scss";
+import { useAppSelector } from "@store/hooks";
 
 interface StrengthMeterProps {
   password: string;
@@ -25,8 +26,10 @@ const StrengthMeter: React.FC<StrengthMeterProps> = ({ password }) => {
     calculateStrength();
   }, [password]);
 
+  const {themeSelect} = useAppSelector(state=> state.themeBg)
+
   return (
-    <div className="strength-meter">
+    <div className={`${themeSelect} strength-meter`}>
       <div className="strength-label">
         <p className="label">Password strength</p>{" "}
         <p className={`strength strength-${strength}`}>

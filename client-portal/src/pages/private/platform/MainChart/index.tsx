@@ -47,6 +47,8 @@ const MainChart: React.FunctionComponent<any>  = forwardRef(({ data: newData,col
   const { trade, finished, duration, amount } = useAppSelector((state) => state.trades);
   const userState = useAppSelector((state) => state);
 
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   const dispatch = useAppDispatch();
   const { data: socketData, socket } = useSocketConnect(wsTicket as string);
 
@@ -177,11 +179,11 @@ const MainChart: React.FunctionComponent<any>  = forwardRef(({ data: newData,col
       },
       grid: {
         vertLines: {
-          color: "#16171a",
+          color: themeSelect == "night" ? "#16171a" : "#b9b9b9",
           visible: true,
         },
         horzLines: {
-          color: "#16171a",
+          color: themeSelect == "night" ? "#16171a" : "#b9b9b9",
           visible: true,
         },
       },

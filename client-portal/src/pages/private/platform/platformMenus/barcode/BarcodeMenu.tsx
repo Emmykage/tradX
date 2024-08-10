@@ -1,3 +1,4 @@
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { StarRatingIcon } from "../../../../../assets/icons";
 import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./barcode.scss";
@@ -5,6 +6,8 @@ import "./barcode.scss";
 interface BarcodeMenuProps {}
 
 const BarcodeMenu: React.FunctionComponent<BarcodeMenuProps> = () => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   const BarcodeCardContent = () => (
     <div className="barcodeCardContent">
       <h2>Barcode</h2>
@@ -22,7 +25,7 @@ const BarcodeMenu: React.FunctionComponent<BarcodeMenuProps> = () => {
     </div>
   );
   return (
-    <div className="barcodeMenu">
+    <div className={`${themeSelect} barcodeMenu`}>
       <MenuListCard
         icon={<img src="/market-menu-images/BarCode.svg" alt="barcode" />}
         customContent={<BarcodeCardContent />}

@@ -5,6 +5,7 @@ import { EyeSlashIcon } from "../../assets/icons";
 import { BackgroundImage, backgroundImages } from "./imagesData";
 import "./backgroundImageSelector.scss";
 import { setAppearanceBackground } from "../../pages/lib/utils";
+import { useAppSelector } from "@store/hooks";
 
 interface BackgroundImageSelectorProps {}
 
@@ -15,7 +16,7 @@ const BackgroundImageSelector: React.FunctionComponent<
 
   const storedImageId = localStorage.getItem("selectedBackgroundImage");
   const selectedImageId = storedImageId ? parseInt(storedImageId) : "0";
-
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   useEffect(() => {
     setImage(backgroundImages);
   }, []);
@@ -25,7 +26,7 @@ const BackgroundImageSelector: React.FunctionComponent<
   };
 
   return (
-    <div className="backgroundImageSelector">
+    <div className={`${themeSelect} backgroundImageSelector`}>
       <p className="selectorTitle">Background image</p>
       <div className="imageList">
         <Row gutter={[12, 12]} justify="start">

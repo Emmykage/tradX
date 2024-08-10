@@ -1,11 +1,12 @@
-.platformWrapper {
+ .platformWrapper {
   display: flex;
   background: #0e0f12;
   height: 100vh;
   overflow: hidden;
   .trade-section {
     transition: margin-left 0.25s ease;
-    background: #0e0f12;
+    background: var(--surface-canvas);
+    
     width: 100%;
     height: 100vh;
     position: relative;
@@ -32,6 +33,7 @@
     transition: margin-left 0.25s ease;
   }
 }
+// default mode-night
 .ml-106 {
   &.leftSubDrawer {
     .ant-drawer-wrapper-body {
@@ -84,6 +86,49 @@
     color: #fff;
   }
 }
+
+// day mode 
+.ml-106.day {
+
+  &.leftMainDrawer.day {
+  background: rgb(231, 237, 243);
+
+  .ant-drawer-title{
+      color: #000000;
+    }
+  }
+
+
+  .ant-drawer-wrapper-body {
+    background: rgba(255, 255, 255, 0.07);
+  }
+  .ant-drawer-header {
+
+    .ant-drawer-extra {
+      > div {
+        svg {
+          path{
+            fill:#0e0f12;
+          }
+        }
+      }
+    }
+  }
+  .ant-drawer-header-title {
+
+    button {
+      svg {
+        path{
+          fill:#000;
+        }
+      }
+    }
+  }
+  .ant-drawer-title {
+    color: black;
+  }
+
+}
 // #0e0f12
 .rightDrawer {
   &.rightSubDrawer {
@@ -135,6 +180,51 @@
   }
 }
 
+
+.rightDrawer.day {
+  &.rightSubDrawer {
+    .ant-drawer-wrapper-body {
+      .ant-drawer-body {
+        padding: 1rem !important;
+      }
+    }
+  }
+  .ant-drawer-wrapper-body {
+    background: rgba(255, 255, 255, 0.13);
+
+  }
+  .ant-drawer-header {
+
+    .ant-drawer-extra {
+
+
+      > div {
+
+        svg {
+          path{
+            fill: #000000;
+          }
+        }
+      }
+    }
+  }
+  .ant-drawer-header-title {
+
+    button {
+      svg {
+        path{
+          fill:#0e0f12
+        }
+      }
+    }
+  }
+  .ant-drawer-title {
+    color: #000000;
+    font-size: 1.275rem;
+    font-weight: 500;
+  }
+}
+
 .ant-tabs-top > .ant-tabs-nav::before,
 .ant-tabs-bottom > .ant-tabs-nav::before,
 .ant-tabs-top > div > .ant-tabs-nav::before,
@@ -154,9 +244,15 @@
 .ant-tabs .ant-tabs-ink-bar {
   background: #b2b4b8;
 }
-.ant-drawer .ant-drawer-content {
-  // background-color: transparent;
+
+.ant-drawer-content.night.rightDrawer, .ant-drawer .ant-drawer-content.night{
   background-color: #0e0f12;
+
+}
+
+.ant-drawer-content.day.rightDrawer{
+  background-color: rgba(231, 237, 243, 1);
+
 }
 
 .radioGroupVerticle {

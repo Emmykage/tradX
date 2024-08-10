@@ -3,6 +3,7 @@ import "./helpMenu.scss";
 import { VideoIcon } from "../../../../../assets/icons";
 import { LeftSubDrawer } from "../../types";
 import { Col, Row } from "antd";
+import { useAppSelector } from "@store/hooks";
 
 interface HelpMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
@@ -20,8 +21,10 @@ const HelpLink = ({
   text: string;
   onClick?: () => void;
 }) => {
+
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <div className="helpLnkContainer" onClick={onClick}>
+    <div className={`${themeSelect} helpLnkContainer`} onClick={onClick}>
       <div className="icon">{icon}</div>
       <p className="helpHead">{heading}</p>
       <p className="helpTxt">{text}</p>
@@ -60,8 +63,10 @@ const HelpMenu: React.FunctionComponent<HelpMenuProps> = ({
   setLeftSubDrawer,
   setIsLeftSubDrawerOpen,
 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   return (
-    <div className="helpMenu">
+    <div className={`${themeSelect} helpMenu`}>
       <div className="flexHelpLnks">
         <HelpLink
           icon={<img src="/menu-images/svgs/SupportMenuIcon.svg" />}

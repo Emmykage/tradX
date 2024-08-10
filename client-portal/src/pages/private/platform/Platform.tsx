@@ -67,6 +67,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [selectedTimeScale, setSelectedTimeScale] = useState<any>(timeScaleMenu[8]);
   const storedScale = localStorage.getItem("scale");
 
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   useQueryParamHandler({
     setIsRightDrawerOpen,
     setIsRightDrawerContent,
@@ -278,21 +279,21 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   ];
 
   return (
-    <div className="platformWrapper">
+    <div className="platformWrapper"  data-theme={themeSelect}>
       {windowWidth >= 768 ? (
         <MainSidebar id="main_sidebar" />
       ) : (
         <MainSidebar id="bottom_sidebar" />
       )}
-      <Drawer
+       <Drawer
         title={leftDarwerTitleHandler(currentDrawer)}
         placement="left"
         onClose={() => {
           setIsDrawerOpen(false);
         }}
         open={isDrawerOpen}
-        className="ml-106"
-        style={{ marginLeft: `${mainSidebarWidth}px` }}
+        className={`${themeSelect} ml-106 leftMainDrawer`}
+        style={{ marginLeft: `${mainSidebarWidth}px`}}    
         closeIcon={<CloseIcon />}
         mask={false}
         width={
@@ -321,8 +322,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           setIsLeftSubDrawerOpen(false);
         }}
         open={isLeftSubDrawerOpen}
-        className="ml-106 leftSubDrawer"
-        style={{ marginLeft: `${mainSidebarWidth}px` }}
+        className={`ml-106 leftSubDrawer ${themeSelect}`}
+        style={{ marginLeft: `${mainSidebarWidth}px`}}
         closeIcon={<CloseIcon />}
         mask={false}
         width={
@@ -339,7 +340,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           onClose={() => setIsRightDrawerOpen(false)}
           open={isRightDrawerOpen}
           closeIcon={<CloseIcon />}
-          className="rightDrawer"
+          className={`${themeSelect} rightDrawer`}
           width={
             windowWidth <= 768
               ? `calc(100% - ${mainSidebarWidth}px)`
@@ -367,7 +368,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           }}
           open={isRightSubDrawerOpen}
           closeIcon={<CloseIcon />}
-          className="rightDrawer rightSubDrawer"
+          className={`${themeSelect} rightDrawer rightSubDrawer`}
           maskClassName="rightSubDrawerMask"
           width={
             windowWidth <= 768
