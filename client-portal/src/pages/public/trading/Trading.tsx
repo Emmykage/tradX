@@ -26,13 +26,12 @@ import StraightForwardTrading from './platform/straightForwardTradingComponent/S
 import imageBgAdam from '../../../assets/trading/adam-nowakowski-phone.png'
 import imageBgEve from '../../../assets/trading/eve-nowakowski-D4LDw5eXhgg.png'
 import imageBgAdamLp from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash.png'
-import MetaTrader4Landing from './metaTrader4/MetaTrader4'
-import MetaTrader5Landing from './metaTrader5/MetaTrader5'
 import TrackTrade from './trackTrades/trackTrade/TrackTrade'
-// import TrackTradeLanding from './trackTrades/trackTradeLandingPage/TrackTradeLanding'
 import MetaTrading from '../../../components/metaTrading/MetaTrading'
 import LandingPageMobile from './tradingMobile/LandingPageMobileTrading/LandingPageMobile'
-import TradingInstruction from './tradingIntruction/TradingInstruction'
+import TrackTradeLanding from './trackTrades/trackTrade/TrackTrade'
+import MetaTrader4Landing from './metaTrading4/metaTrader4Landing/MetaTrader4'
+import MetaTrader5Landing from './metaTrading5/metaTrader5/MetaTrader5Landing'
 const Trading = () => {
   return (
     <div className='tradingContainer' >
@@ -48,7 +47,7 @@ const Trading = () => {
       
    
 
-        {/* <MetaTrader4Landing/>
+        <MetaTrader4Landing/>
 
         <div className="container">
         <TradingExperience  
@@ -58,8 +57,8 @@ const Trading = () => {
         button={true}
         />
 
-      </div> */}
-      {/* <MetaTrader5Landing/>
+      </div>
+       <MetaTrader5Landing/>
       <div className="container">
       <TradingExperience  
         image={imageBgAdamLp} 
@@ -67,10 +66,10 @@ const Trading = () => {
         text={"Use your markets.com account to seamlessly install MT5 and start trading right away in your desktop markets.com platform. The video tutorial above can walk you through the process. Explore here step-by-step instructions on adding a MetaTrader 5 trading account. Don't have a markets.com account yet? No worries, visit the markets.com Sign Up page and provide the required information to quickly complete full registration. "}
         button={true}
         />
-      </div> */}
+      </div>
 
 
-       {/* <TrackTradeLanding/>  */}
+       <TrackTradeLanding/> 
 
 
 
@@ -156,6 +155,17 @@ const Trading = () => {
         step3="Select Copy Trading"
         step4="Review  Profile Stats"
         // step5="Select a profile to Copy "
+
+/>
+
+<TradingSteps
+        step1="Sign up for a
+        Tradex.io account"
+        step2='Login to 
+        Tradex.io'
+        step3="Select Copy Trading"
+        step4="Review  Profile Stats"
+        step5="Select a profile to Copy "
 
 />
 
