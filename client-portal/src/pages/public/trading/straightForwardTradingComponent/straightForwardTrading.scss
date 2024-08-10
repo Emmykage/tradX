@@ -1,9 +1,13 @@
 
-.tradingWrapper{
+.tradingWrapper.straightForwardWrap{
     display: flex;
+    
     margin-top: -90px;
-    // border: 1px solid red;
-    .textWrapper{
+    @media (max-width: 720px) {
+        flex-direction: column;
+        
+    }
+        .textWrapper{
         padding: 42px 0;
         flex: 1;
 
@@ -24,9 +28,8 @@
         position: relative;
         text-align: right;
         flex: 1;
-        // background-color: blue;
         img.mainImg{
-            width: 490px;
+          max-width: 490px;
         }
 
         .icon-1{

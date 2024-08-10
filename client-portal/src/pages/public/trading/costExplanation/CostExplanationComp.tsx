@@ -8,7 +8,7 @@ const CostExplanation = () => {
  },
  {title: "Spread",
     text: "A spread is the difference between the Bid price (selling price) and the Ask price (buying price). Our spreads are variable or can be subject to a minimum.",
-    icon: "/trading-images/graphs.png"
+    icon: "/trading-images/graph-vector-icon.png"
  },
  {
     title: "Overnight swap",

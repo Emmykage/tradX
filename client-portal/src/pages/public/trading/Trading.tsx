@@ -30,6 +30,7 @@ import MetaTrader4Landing from './metaTrader4/MetaTrader4'
 import MetaTrader5Landing from './metaTrader5/MetaTrader5'
 import TrackTrade from './trackTrade/TrackTrade'
 import TrackTradeLanding from './trackTradeLandingPage/TrackTradeLanding'
+import MetaTrading from './metaTrading/MetaTrading'
 const Trading = () => {
   return (
     <div className='tradingContainer' >
@@ -221,7 +222,11 @@ tradex.io offers a commodity calculator that does the job for you. You simply ne
     <div className="container">
       <TrackTrade/>
     </div>
-
+    <div className="container">
+      <MetaTrading title='Trade using MT4 with tradex.io'
+      body='You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms'
+      type= "mt5"/>
+    </div>
 
 
        

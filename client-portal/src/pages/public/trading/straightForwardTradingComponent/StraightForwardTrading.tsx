@@ -7,7 +7,7 @@ const StraightForwardTrading = () => {
   return (
     <div>
         
-        <div className='tradingWrapper'>
+        <div className='tradingWrapper straightForwardWrap'>
           <div className='textWrapper'>
             <h3>Straightforward Trading</h3>
             <p>
