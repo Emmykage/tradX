@@ -114,7 +114,7 @@ const WelcomeSteps = () => {
       if(step === 10){
         setStep(11)
       }
-    }, 60000);
+    }, 10000);
   },[step])
   return step && (
 
