@@ -19,6 +19,7 @@ const SignUpForm = () => {
   const {  signInTab } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
+  console.log(signInTab);
   const { handleSubmit, register, reset } = useForm<SignUpFormData>();
   const dispatch = useDispatch()
   const { mutate, isPending } = useRegister({
