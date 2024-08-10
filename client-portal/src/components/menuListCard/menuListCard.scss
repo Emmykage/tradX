@@ -70,3 +70,59 @@
     }
   }
 }
+
+.day.menuListCard {
+
+  &.danger {
+    box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+      0 0.063rem 0 0.063rem inset #f15131;
+  }
+
+  .cardLeftIcon {
+
+    color: #000000;
+
+    img,
+    svg {
+      width: 1rem;
+      path{
+        fill:#000000
+      }
+    }
+
+    &.disabled {
+      color: #616161;
+    }
+
+    &.textCenter {
+
+    }
+  }
+
+  .cardRightContent {
+    .menuListCardTitle {
+      color: #0e0d0d;
+      &.noMargin {
+      }
+
+      &.disabled {
+        color: #969798;
+      }
+
+      &.danger {
+        color: #f15131;
+      }
+
+      &.textCenter {
+
+      }
+    }
+    .menuListCardSubtitle {
+      color: #04209c99;
+
+      &.subTextCenter {
+
+      }
+    }
+  }
+}

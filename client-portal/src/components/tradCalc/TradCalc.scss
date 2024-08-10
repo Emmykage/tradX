@@ -1,0 +1,338 @@
+.tradCalcContainer {
+  width: 90%;
+  margin: 0 auto;
+  padding: 40px 0;
+
+  .mt-100 {
+    margin: 100px auto;
+  }
+
+  .mt-0 {
+    margin: 0px auto;
+  }
+
+  h3,
+  span,
+  p,
+  label,
+  button,
+  div {
+    font-family: "Poppins";
+    font-style: normal;
+    color: #ffffff;
+    font-weight: 400;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 18.9062px;
+    line-height: 27px;
+    @media (max-width: 878px) {
+      font-size: 12.82px;
+    }
+    @media (max-width: 478px) {
+      font-size: 18.91px;
+    }
+  }
+
+  label {
+    font-size: 12px;
+    line-height: 21px;
+    color: #999999;
+    @media (max-width: 878px) {
+      font-size: 9px;
+    }
+    @media (max-width: 478px) {
+      font-size: 11.33px;
+    }
+  }
+
+  .tradCalcMainBlock {
+    width: 80%;
+    background: linear-gradient(
+      180deg,
+      rgba(82, 93, 114, 0.7) 0%,
+      rgba(82, 93, 114, 0) 129.72%
+    );
+    border-radius: 16px;
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    @media (max-width: 1278px) {
+      width: 100%;
+    }
+    @media (max-width: 728px) {
+      flex-direction: column;
+    }
+  }
+
+  .tradCalcFirst {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    gap: 10px;
+    @media (max-width: 728px) {
+      width: 100%;
+    }
+
+    span {
+      font-size: 14px;
+      line-height: 24px;
+      color: rgba(255, 255, 255, 0.6);
+      @media (max-width: 878px) {
+        font-size: 9.49px;
+      }
+      @media (max-width: 478px) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .tradCalcItemsLine {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tradCalcItemAction,
+  .tradCalcItemQuantity,
+  .tradCalcItem {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 10px;
+    position: relative;
+  }
+
+  .tradCalcItemAction {
+    div {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      height: 56px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 21px;
+      color: #171a20;
+      background: #79859a;
+      border: 1px solid #79859a;
+      border-radius: 6px;
+      @media (max-width: 878px) {
+        font-size: 8.14px;
+      }
+      @media (max-width: 478px) {
+        font-size: 11.33px;
+      }
+
+      .tradCalcNotActive {
+        width: 50%;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .tradCalcActionActive {
+        background: #171a20;
+        border-radius: 6px;
+        height: 99%;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .tradCalcItemQuantity {
+    span {
+      text-align: center;
+      box-sizing: border-box;
+      background: #2f3541;
+      border: 1px solid #79859a;
+      border-radius: 6px;
+      padding: 15px;
+      font-weight: 700;
+      font-size: 19.6px;
+      color: #79859a;
+      @media (max-width: 878px) {
+        font-size: 13.29px;
+      }
+      @media (max-width: 478px) {
+        font-size: 18.5px;
+      }
+    }
+
+    .tradCalcMinus {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      cursor: pointer;
+    }
+
+    .tradCalcPlus {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      cursor: pointer;
+    }
+  }
+
+  .tradCalcItem {
+    button {
+      text-align: start;
+      box-sizing: border-box;
+      background: #2f3541;
+      border: 1px solid #79859a;
+      border-radius: 6px;
+      padding: 15px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 21px;
+      @media (max-width: 878px) {
+        font-size: 8.14px;
+      }
+      @media (max-width: 478px) {
+        font-size: 11.33px;
+      }
+    }
+
+    .tradCalcArrDown {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+    }
+  }
+
+  .tradCalcButtonSubmit {
+    margin-top: 40px;
+    width: 30%;
+    border: 1.04444px solid #ffffff;
+    border-radius: 8.35556px;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 14.3938px;
+    line-height: 22px;
+    color: #ffffff;
+    background: rgba(82, 93, 114, 0);
+    @media (max-width: 1078px) {
+      width: 50%;
+    }
+
+    @media (max-width: 778px) {
+      width: 100%;
+    }
+  }
+
+  .tradCalcSecond {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    gap: 20px;
+    @media (max-width: 728px) {
+      width: 100%;
+    }
+
+    button {
+      width: 30%;
+      padding: 15px;
+      background: #ff1802;
+      border-radius: 9.1702px;
+      font-weight: 600;
+      font-size: 15.1702px;
+      line-height: 24px;
+      color: #ffffff;
+      @media (max-width: 878px) {
+        width: 50%;
+      }
+
+      @media (max-width: 778px) {
+        width: 100%;
+      }
+
+      @media (max-width: 478px) {
+        font-size: 15.17px;
+      }
+    }
+
+    span {
+      font-size: 11.4375px;
+      line-height: 12px;
+      color: #969696;
+      @media (max-width: 878px) {
+        font-size: 7.76px;
+      }
+      @media (max-width: 478px) {
+        font-size: 11.44px;
+      }
+    }
+  }
+
+  .tradCalcEUR {
+    width: 100%;
+    text-align: end;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #ffffff;
+
+    img {
+      margin-left: 5px;
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  .tradCalcEuro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+
+    div {
+      width: 30%;
+      background: #2f3541;
+      border: 1px solid #79859a;
+      border-radius: 12px;
+      display: flex;
+      gap: 5px;
+      padding: 10px;
+      flex-direction: column;
+      justify-content: space-between;
+      @media (max-width: 378px) {
+        width: 45%;
+      }
+    }
+
+    span {
+      font-size: 12px;
+      line-height: 21px;
+      color: #999999;
+      @media (max-width: 878px) {
+        font-size: 9px;
+      }
+      @media (max-width: 478px) {
+        font-size: 8.92px;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 19px;
+      max-height: 19px;
+    }
+
+    p {
+      padding-left: 5px;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 18px;
+      color: #ffffff;
+    }
+  }
+}

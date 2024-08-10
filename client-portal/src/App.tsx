@@ -84,6 +84,8 @@ const App: React.FunctionComponent<AppProps> = () => {
 
 
   return (
+    <div data-theme={"dark"}>
+
     <HashRouter>
       <Suspense fallback={<Loading/>}>
       <Routes>
@@ -116,6 +118,8 @@ const App: React.FunctionComponent<AppProps> = () => {
       </Routes>
       </Suspense>
     </HashRouter>
+    </div>
+
   );
 };
 

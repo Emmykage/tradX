@@ -1,6 +1,7 @@
 import { InputHTMLAttributes } from "react";
 import MainItemCard from "../mainItemCard/MainItemCard";
 import "./input.scss";
+import { useAppSelector } from "@store/hooks";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id?: string;
@@ -34,8 +35,9 @@ const Input: React.FunctionComponent<InputProps> = ({
   value,
   ...rest
 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <div className="inputContainer">
+    <div className={`${themeSelect} inputContainer`}>
       <MainItemCard
         variant={variant}
         pointer={false}

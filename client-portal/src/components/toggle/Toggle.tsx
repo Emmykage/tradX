@@ -1,5 +1,6 @@
-import { Switch } from "antd";
+import Switch from "antd/es/switch";
 import "./toggle.scss";
+import { useAppSelector } from "@store/hooks";
 
 interface ToggleProps {
   label?: string;
@@ -18,8 +19,9 @@ const Toggle: React.FunctionComponent<ToggleProps> = ({
   infoText,
   onClickInfo,
 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <div className="customToggle">
+    <div className={`${themeSelect} customToggle`}>
       <div className="toggleContainer">
         <div className="toggleTextContainer">
           {label ? <p className="toggleLabel">{label}</p> : null}

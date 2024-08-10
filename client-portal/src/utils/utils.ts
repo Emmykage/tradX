@@ -244,11 +244,22 @@ export const replaceSpaceWithUnderScore = (str = '') =>
     str.split(' ').join('_');
 
 
-export const formatCurrency = (value: any, sign?: Boolean) => {
-    if (sign) {
-        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 3 }).format(value);
+/**
+ * Format a given number to a currency format
+ * NOTE: If we ever need to format for different currencies, this is be a good place to do that :)
+ * @param {Number} price The given price
+ * @returns {String} Formatted price
+ */
+export const formatMoney = (price: number, showCents = true) => {
+    if ((!price && price !== 0) || isNaN(price)) {
+        return '';
     }
-    return new Intl.NumberFormat('en-US').format(value).replace(' ', '.');
+   
+    return showCents
+        ? Number(price)
+              .toFixed(2)
+              .replace(/\d(?=(\d{3})+\.)/g, '$&,')
+        : price.toLocaleString();
 };
 
 
@@ -291,4 +302,97 @@ export const creditCardExpiresFormat= (string: string) => {
         /^([0-1]{1}[0-9]{1})([0-9]{1,2}).*/g, '$1/$2'
     );
 };
+
+export const timeScaleMenu = [
+    {
+        text: '5s',
+        id: 5,
+        type: 'seconds',
+        number: 5
+    },
+    {
+        text: '10s',
+        type: 'seconds',
+        number: 10,
+        id: 10
+    },
+    {
+        text: '15s',
+        type: 'seconds',
+        number: 15,
+        id: 15
+    },
+    {
+        text: '20s',
+        type: 'seconds',
+        number: 20,
+        id: 20
+    },
+    {
+        text: '30s',
+        type: 'seconds',
+        number: 30,
+        id: 30
+    },
+    {
+        text: '1m',
+        type: 'minutes',
+        number: 60,
+        id: 60
+    },
+    {
+        text: '2m',
+        type: 'minutes',
+        number: 120,
+        id: 120
+    },
+    {
+        text: '5m',
+        type: 'minutes',
+        number: 300,
+        id: 300
+    },
+    {
+        text: '10m',
+        type: 'minutes',
+        number: 600,
+        id: 600
+    },
+    {
+        text: '15m',
+        type: 'minutes',
+        number: 900,
+        id: 900
+    },
+    {
+        text: '30m',
+        type: 'minutes',
+        number: 1800,
+        id: 1800
+    },
+    {
+        text: '1h',
+        type: 'hours',
+        number: 3600,
+        id: 3600
+    },
+    {
+        text: '4h',
+        type: 'hours',
+        number: 14400,
+        id: 14400
+    },
+    {
+        text: '1d',
+        type: 'days',
+        number: 86400,
+        id: 86400
+    },
+    {
+        text: '7d',
+        type: 'days',
+        number: 604800,
+        id: 604800,
+    },
+];
   

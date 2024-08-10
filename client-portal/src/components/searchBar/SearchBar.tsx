@@ -14,6 +14,8 @@ const SearchBar: React.FunctionComponent<SearchBarProps> = ({
   className,
   extraSpacing,
 }) => {
+
+  console.log(className )
   return (
     <MainItemCard
       className={`searchBar ${className ? className : ""} ${

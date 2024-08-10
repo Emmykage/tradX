@@ -80,3 +80,63 @@
     }
   }
 }
+
+.day.inputContainer {
+  .mainItemCardv2 {
+  }
+  .input_main {
+
+    border: 0.125rem solid rgba(0, 0, 0, 0.3);
+
+    .inputIcon {
+      img,
+      svg {
+        width: 1rem;
+     path{
+         fill: black
+     }
+      }
+    }
+    input {
+    }
+
+    .suffixIcon {
+
+
+      img,
+      svg {
+        width: 1.5rem;
+        path{
+          // fill: black
+      }
+      }
+    }
+
+    .inputContainer {
+    }
+
+    label {
+      color: rgba(0, 0, 0, 0.6);
+      span {
+      }
+    }
+
+    input {
+
+      color: #000000;
+
+
+      &:focus {
+      }
+
+      &::placeholder {
+        color: #00000099;
+      }
+
+      &.ant-input-disabled {
+        background-color: transparent;
+        color: #000000;
+      }
+    }
+  }
+}

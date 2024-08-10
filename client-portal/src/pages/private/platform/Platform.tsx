@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Topbar from "../../../components/topbar/Topbar";
 import TradeForm from "../../../components/tradeForm/TradeForm";
 import "./platform.scss";
 import { Drawer } from "antd";
-import { ArrowLeftOS, CloseIcon } from "../../../assets/icons";
+import { AreaChartIcon, ArrowLeftOS, BarChartIcon, CandleStickIcon, CloseIcon, MainChartAnalysisIcon, MainChartChangeIcon, MainChartSignalsIcon, ZoomInChartIcon, ZoomOutChartIcon } from "../../../assets/icons";
 import WalkThrough from "./WalkThrough";
 
 import useQueryParamHandler from "./hooks/useQueryParamHandler";
@@ -32,6 +32,11 @@ import { initialCandleData } from "./MainChart/candleData";
 import { setAppearanceBackground } from "../../lib/utils";
 import { useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
+import { initialAreaData } from "./MainChart/areaData";
+import { AreaChart } from "./MainChart/AreaChart";
+import {  isArrayEmpty, timeScaleMenu } from "utils/utils";
+import DropdownMenu from "components/dropdownMenu/DropdownMenu";
+import BarChart from "./MainChart/BarChart";
 import { useNavigate } from "react-router-dom";
 
 interface PlatformProps {}
@@ -55,8 +60,14 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [mainSidebarWidth, setMainSidebarWidth] = useState(0);
   const [bottomSidebarHeight, setBottomSidebarHeight] = useState(0);
   const [chartInitialData, setChartInitialData] = useState<any>([]);
+  // Area and bar data
+  const [areaChartInitialData, setAreaChartInitialData] = useState<any>([]);
+  const [chartScale, setChartScale] = useState(6);
+  const [selectedChart, setSelectedChart] = useState('candlesticks');
+  const [selectedTimeScale, setSelectedTimeScale] = useState<any>(timeScaleMenu[8]);
   const storedScale = localStorage.getItem("scale");
 
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   useQueryParamHandler({
     setIsRightDrawerOpen,
     setIsRightDrawerContent,
@@ -69,13 +80,39 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   );
   const navigate = useNavigate();
 
-  
+  const formatAreaData = () => {
+    let datetime : any = initialAreaData.DateTime;
+    let price: any = initialAreaData.Price;
+    let size: any = initialAreaData.Size;
+    const chart_data = [];
+    const bar_data = [];
+    let lastDateTime = 0;
+    let step = 1;
+    for (var i in Object.keys(datetime)) {
+      var timestamp = datetime[i] / 1000;
+      if (datetime[i] === lastDateTime) {
+        timestamp = (datetime[i] + step) / 1000;
+        step++;
+      } else {
+        step = 1;
+        lastDateTime = datetime[i];
+      }
+      chart_data.push({ time: timestamp, value: price[i] });
+      bar_data.push({ time: timestamp, value: size[i] });
+
+      setAreaChartInitialData(chart_data);
+    };
+
+  };
+
+
   // candle series chart data formatting 
 
   const newCandleData= initialCandleData.map((d:any)=>{
     return {time: d[0]/1000, open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
   })
-  // console.log(newCandleData);
+  
+
 
   const isWalkthroughSkipped = user?.is_walkthrough ?? true;
 
@@ -90,6 +127,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   useEffect(() => {
     setChartInitialData(initialData);
+    formatAreaData();
   }, []);
 
   useEffect(() => {
@@ -157,23 +195,105 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       />
     );
   };
+  // Chart zoom logic
+
+  const handleZoomChartScale = (increase = true) => {
+    if(increase){
+      setChartScale(chartScale + 1);
+    }else{
+      setChartScale(chartScale > 1? chartScale - 1 : chartScale);
+    }
+  };
+  const handleChartSelectionClick = (type = "candlesticks") => {
+    setSelectedChart(type);
+  };
+
+  const renderSelectedChartType = () => {
+    switch (selectedChart) {
+      case  "candlesticks":
+        return (<> <MainChart data={newCandleData} chartScale={chartScale} selectedTimeScale={selectedTimeScale}  /> </>)
+      case "area": 
+        return (<> {isArrayEmpty(areaChartInitialData)? <></>:<AreaChart chartData={areaChartInitialData} selectedTimeScale={selectedTimeScale}   chartScale={chartScale} />} </>)
+      case "bar": 
+        return (
+          <> 
+            <BarChart data={newCandleData}  selectedTimeScale={selectedTimeScale}   chartScale={chartScale}  /> 
+          </>
+        )
+      default:
+        return (
+          <> 
+            <MainChart data={newCandleData} selectedTimeScale={selectedTimeScale}   chartScale={chartScale}  /> 
+          </>
+        )
+    }
+  };
+  
+  const selectTimeScale = (timeScaleSelection = timeScaleMenu[0]) => {
+    setSelectedTimeScale(timeScaleSelection);
+  };
+
+  const renderTimeScaleOptions = () => (
+    <div className="grid-container"> 
+      {timeScaleMenu.map((datum:any, _i:number) => (
+        <button className="selected" onClick={()=> selectTimeScale(datum)}>{datum?.text}</button>
+      ))}
+    </div>
+  );
+
+  const chartOptionMenus = [
+    {
+      onClick: undefined,
+      icon: <MainChartChangeIcon />,
+      tooltipText: 'Chart types',
+      type: 'drop-down',
+      position: 'right',
+      menus: [
+        {
+          text: 'Area',
+          onclick: () => handleChartSelectionClick('area'),
+          icon: <AreaChartIcon />
+        },
+        {
+          text: 'Japanese candlesticks',
+          onclick: () => handleChartSelectionClick('candlesticks'),
+          icon: <CandleStickIcon />
+        },
+        {
+          text: 'Bars',
+          onclick: () => handleChartSelectionClick('bar'),
+          icon: <BarChartIcon />
+        }
+    ]
+    },
+    {
+      onClick: undefined,
+      icon: <MainChartAnalysisIcon />,
+      tooltipText: 'Technical Analysis'
+    },
+    {
+      onClick: undefined,
+      icon: <MainChartSignalsIcon />,
+      tooltipText: 'Signals'
+    },
+  ];
 
   return (
-    <div className="platformWrapper">
+    <div className="platformWrapper"  data-theme={themeSelect}>
       {windowWidth >= 768 ? (
         <MainSidebar id="main_sidebar" />
       ) : (
         <MainSidebar id="bottom_sidebar" />
       )}
-      <Drawer
+       <Drawer
         title={leftDarwerTitleHandler(currentDrawer)}
         placement="left"
         onClose={() => {
           setIsDrawerOpen(false);
         }}
         open={isDrawerOpen}
-        className="ml-106"
-        style={{ marginLeft: `${mainSidebarWidth}px` }}
+        className={`${themeSelect} ml-106 leftMainDrawer`}
+        style={{ marginLeft: `${mainSidebarWidth}px`}}    
         closeIcon={<CloseIcon />}
         mask={false}
         width={
@@ -202,8 +322,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           setIsLeftSubDrawerOpen(false);
         }}
         open={isLeftSubDrawerOpen}
-        className="ml-106 leftSubDrawer"
-        style={{ marginLeft: `${mainSidebarWidth}px` }}
+        className={`ml-106 leftSubDrawer ${themeSelect}`}
+        style={{ marginLeft: `${mainSidebarWidth}px`}}
         closeIcon={<CloseIcon />}
         mask={false}
         width={
@@ -220,7 +340,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           onClose={() => setIsRightDrawerOpen(false)}
           open={isRightDrawerOpen}
           closeIcon={<CloseIcon />}
-          className="rightDrawer"
+          className={`${themeSelect} rightDrawer`}
           width={
             windowWidth <= 768
               ? `calc(100% - ${mainSidebarWidth}px)`
@@ -248,7 +368,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           }}
           open={isRightSubDrawerOpen}
           closeIcon={<CloseIcon />}
-          className="rightDrawer rightSubDrawer"
+          className={`${themeSelect} rightDrawer rightSubDrawer`}
           maskClassName="rightSubDrawerMask"
           width={
             windowWidth <= 768
@@ -273,6 +393,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           setIsDrawerOpen={setIsDrawerOpen}
           setCurrentDrawer={setCurrentDrawer}
           currentDrawer={currentDrawer}
+          chartOptionMenus={chartOptionMenus}
         />
         
         <div
@@ -283,12 +404,39 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           <div className="trade-graph" id="tradeGraph">
             
             {chartInitialData ? (
-             <div style={{ height: "100%", marginLeft: "100px", color:"white" }}>
+             <div className="chart-container"  style={{ height: "100%", color:"white", position: 'relative' }}>
                {/* pass dummy data newCandleData */}
-              <MainChart data={newCandleData} />
+              {/* <MainChart data={newCandleData} chartScale={chartScale}  /> */}
+              {/* {isArrayEmpty(areaChartInitialData)? <></>:<AreaChart chartData={areaChartInitialData}  chartScale={chartScale} />} */}
+              {renderSelectedChartType()}
+              <div className="chart-options">
+                {chartOptionMenus.map((data, _i) => (
+                  <DropdownMenu key={_i} position={data.position} type={data?.type} menuItems={data.menus}>
+                    <div className="chart-option" onClick={data.onClick}>
+                        {data.icon}
+                    </div>
+                  </DropdownMenu>
+                ))}
+              </div>
+              <div className="chart-zoom-controls">
+                <div className="chart-control left-control" onClick={()=> handleZoomChartScale(false)}>
+                  <ZoomOutChartIcon />
+                </div>
+                <DropdownMenu position="top" type="drop-down" menuItems={<>{renderTimeScaleOptions()}</>} customMenuItem>
+                  <div className="chart-control center">
+                      <span>{selectedTimeScale?.text.toUpperCase()}</span>
+                  </div>
+                </DropdownMenu>
+                <div className="chart-control right-control" onClick={()=> handleZoomChartScale()}>
+                  <ZoomInChartIcon />
+                </div>
+              </div>
+              
              </div>
             ) : null}
+           
           </div>
+          
           <TradeForm bottomSidebarHeight={bottomSidebarHeight} />
         </div>
       </div>

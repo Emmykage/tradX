@@ -2,6 +2,7 @@ import { Col, Row } from "antd";
 import MainItemCard from "../mainItemCard/MainItemCard";
 import "./marketSubMenuCard.scss";
 import { StarRatingBlueIcon } from "../../assets/icons";
+import { useAppSelector } from "@store/hooks";
 
 const MarketSubMenuCard = ({
   img,
@@ -20,8 +21,9 @@ const MarketSubMenuCard = ({
   month?: boolean;
   white?: boolean;
 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <div className="marketSubMenuCard">
+    <div className={`${themeSelect} marketSubMenuCard`}>
       <MainItemCard variant={3} className="marketSubCard">
         <Row className="marketSubRow">
           <Col sm={2} md={6} className="marketSubCol1">

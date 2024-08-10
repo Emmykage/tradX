@@ -66,3 +66,36 @@ $background: linear-gradient(to bottom, #3c3d40, #2d2e32);
     }
   }
 }
+
+.day.backgroundImageSelector {
+  .selectorTitle {
+    color: #5f5f5f;
+
+  }
+
+  .imageList {
+    .imageContainer {
+   
+
+      &.active {
+        background: $gradientBorderColorPrimary;
+      }
+
+      &::before {
+
+        background-image: $background;
+
+      }
+
+      .cardInner {
+             img {
+ 
+        }
+      }
+
+      img {
+
+      }
+    }
+  }
+}

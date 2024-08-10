@@ -39,8 +39,10 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
   //   console.log(Object.keys(paymentMethodData));
   // }, []);
 
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   return (
-    <div>
+    <div className={themeSelect}>
       <div className="payment-methods-filter-btns">
         <ArrowsSlider>
           {filterListButtons.map((paymentType: string) => (

@@ -5,6 +5,7 @@ import "./supportMenu.scss";
 import { Col, Row } from "antd";
 import { useEffect } from "react";
 import { initializeLiveChat } from "api/livechat/liveChatBot";
+import { useAppSelector } from "@store/hooks";
 
 interface SupportMenuProps {}
 
@@ -16,6 +17,8 @@ const SupportMenu: React.FunctionComponent<SupportMenuProps> = () => {
       window.LiveChatWidget.call('maximize'); //call mazimize method on the LiveChat
     }
    }
+
+   const {themeSelect} = useAppSelector(state => state.themeBg)
   useEffect(()=> {
     initializeLiveChat()
 
@@ -24,7 +27,7 @@ const SupportMenu: React.FunctionComponent<SupportMenuProps> = () => {
     }
   }, [])
   return (
-    <div className="supportMenu">
+    <div className={`${themeSelect} supportMenu`}>
       <p className="supportSectionTitle">
         Support, want to get in touch? Here`s how you can reach us.
       </p>

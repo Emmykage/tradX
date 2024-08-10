@@ -1,6 +1,7 @@
 import { Col, Row } from "antd";
 import "./interfaceScale.scss";
 import { useEffect, useState } from "react";
+import { useAppSelector } from "@store/hooks";
 
 interface InterfaceScaleProps {}
 
@@ -21,8 +22,10 @@ const InterfaceScale: React.FunctionComponent<InterfaceScaleProps> = () => {
     localStorage.setItem("scale", scale.toString());
   };
 
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   return (
-    <div className="interfaceScale">
+    <div className={`interfaceScale ${themeSelect}`}>
       <p className="interfaceScaleTitle">Interface scale</p>
       <Row gutter={[2, 2]} justify="start">
         <Col span={8}>

@@ -17,6 +17,7 @@ import {
   TradingAdviceIcon,
 } from "../../../../../assets/icons";
 import "./educationMenu.scss";
+import { useAppSelector } from "@store/hooks";
 
 const EducationMenuList = [
   {
@@ -82,8 +83,9 @@ const EducationMenuList = [
 ];
 
 const EducationMenu = () => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <div className="educationMenu">
+    <div className={`${themeSelect} educationMenu`}>
       <SearchBar
         className="educationSearch"
         placeholder="Find the help you need"

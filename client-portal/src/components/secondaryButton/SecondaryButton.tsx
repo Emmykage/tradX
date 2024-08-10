@@ -1,3 +1,4 @@
+import { useAppSelector } from "@store/hooks";
 import "./secondaryButton.scss";
 
 const SecondaryButton = ({
@@ -13,9 +14,10 @@ const SecondaryButton = ({
   disabled?: boolean;
   icon?: React.ReactNode;
 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
     <div
-      className={`SecondaryButtonContainer ${
+      className={`${themeSelect} SecondaryButtonContainer ${
         disabled ? "disable" : ""
       } ${className}`}
       onClick={onClick}

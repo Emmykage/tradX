@@ -30,8 +30,30 @@
   }
 
   .infoIcon {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+
   }
 }
+.day.personalSettingsMenu {
+  .menuSectionTitle {
+    color: #000000;
+   
+  }
+
+  .settingsMenuItem {
+
+    .settingsMenuItemOverlay {
+
+
+      &.disabled {
+      }
+    }
+  }
+
+  .input_main {
+  }
+
+  .infoIcon {
+   
+  }
+}
+

@@ -6,6 +6,7 @@ import {
 } from "../../../../../assets/icons";
 import "./eventsMenu.scss";
 import { LeftSubDrawer } from "../../types";
+import { useAppSelector } from "@store/hooks";
 
 interface EventsMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
@@ -16,8 +17,9 @@ const EventsMenu: React.FunctionComponent<EventsMenuProps> = ({
   setLeftSubDrawer,
   setIsLeftSubDrawerOpen,
 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
-    <div>
+    <div className={themeSelect}>
       <div className="eventHistoryIcon" onClick={() => {}}>
         <HistoryIcon />
       </div>

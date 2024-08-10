@@ -5,7 +5,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #08090a;
+  background: var(--background-theme);
   justify-content: space-between;
   padding: 1.25rem 0rem;
   align-items: center;
@@ -56,13 +56,13 @@
       }
     }
     button {
-      color: #9cb0c2;
+      color: var(--text-theme);
       background-color: transparent;
       cursor: pointer;
 
       svg {
         width: 1.425rem;
-      }
+          }
       p {
         font-size: 0.75rem;
       }
@@ -84,21 +84,21 @@
       }
     }
     button:hover {
-      color: #fff;
+      color: var(--plain);
       transition: 0.3s ease-in;
       svg.trades {
         path {
-          stroke: #fff;
+          stroke: var(--plain);
           transition: 0.3s ease-in;
         }
         rect {
-          stroke: #fff;
+          stroke: var(--plain);
           transition: 0.3s ease-in;
         }
       }
       svg {
         path {
-          fill: #fff;
+          fill: var(--plain);
           transition: 0.3s ease-in;
         }
       }
@@ -130,7 +130,7 @@
       text-align: center;
 
       p.numberOnline {
-        color: #fff;
+        color: var(--plain);
         font-size: 0.875rem;
 
         @media (max-width: 991px) {
@@ -142,7 +142,7 @@
         }
       }
       p.onl {
-        color: #9cb0c2;
+        color:var(--text-theme);
 
         font-size: 0.75rem;
 

@@ -6,6 +6,7 @@ import { Col, Row } from "antd";
 import MarketSubMenuSlider from "../../../../../components/marketSubMenuSlider/MarketSubMenuSlider";
 import { Dispatch, SetStateAction } from "react";
 import { LeftSubDrawer } from "../../types";
+import { useAppSelector } from "@store/hooks";
 
 interface MarketMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
@@ -27,6 +28,10 @@ const MarketLink = ({
   text: string;
   onClick?: () => void;
 }) => {
+
+  
+
+
   // const navigate = useNavigate();
   return (
     <MainItemCard onClick={onClick} className="menufirstCard" variant={2}>
@@ -92,8 +97,10 @@ const MarketMenu: React.FunctionComponent<MarketMenuProps> = ({
   setLeftSubDrawer,
   setIsLeftSubDrawerOpen,
 }) => {
+  const {themeSelect} = useAppSelector(state => state.themeBg)
+
   return (
-    <div className="market-menu">
+    <div className={`${themeSelect} market-menu`}>
       <MarketLink
         onClick={() => {
           setLeftSubDrawer("barcode");

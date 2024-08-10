@@ -35,3 +35,32 @@
     }
   }
 }
+.day.educationMenu {
+.educationSearch {
+  .searchIcon {
+    svg {
+      width: 1.55rem;
+      height: 1.55rem;
+      path{
+        stroke: black;
+      }
+    }
+  }
+}
+.educationSectionTitle {
+
+  color: rgba(0, 148, 255, 1);
+}
+.educationItems {
+  .educationItem {
+
+    svg {
+
+    }
+    h2 {
+      color: rgb(0, 0, 0);
+
+    }
+  }
+}
+}

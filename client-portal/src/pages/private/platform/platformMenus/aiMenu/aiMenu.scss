@@ -103,3 +103,88 @@
     }
   }
 }
+
+.day.aiMenu {
+  .aiMenuHeader {
+    button {
+      border: 0.0625rem solid rgba(132, 91, 59, 1);
+      
+      color: rgb(0, 0, 0);
+     
+    }
+    .active {
+      background-color: rgba(203, 202, 199, 1);
+    }
+    button:hover {
+      background-color:  rgba(203, 202, 199, 1);
+    }
+  }
+  .aiSummary {
+    h2 {
+
+      color: rgb(0, 0, 0);
+    }
+    .aiSummaryBody {
+      :where(.css-dev-only-do-not-override-2rgkd4).ant-select
+        .ant-select-arrow {
+        color: rgb(0, 0, 0) !important;
+      }
+      .ant-select {
+
+        color: rgb(0, 0, 0);
+        .ant-select-selector {
+
+          border: 1px solid rgba(0, 0, 0, 0.3);
+  
+          color: rgb(0, 0, 0);
+         
+          input {
+            color: rgb(0, 0, 0);
+
+          }
+          .ant-select-selection-placeholder {
+            color: rgba(105, 106, 103, 1);
+          }
+        }
+        .ant-select-selector:hover {
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          outline: none;
+        }
+        .ant-select-selector:active {
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          outline: none;
+        }
+      }
+    }
+  }
+  .RespondBody {
+    .RespondSlider {
+      // background: rgba(26, 29, 33, 1);
+      background: rgba(199, 196, 192, 1);
+  
+      border-radius: 0.625rem;
+      h2 {
+        font-size: 0.625rem;
+        color: rgb(40, 40, 41);
+
+      }
+      svg{
+        path{
+          fill: rgba(19, 19, 19, 0.61);
+        }
+      }
+    }
+    .textArea {
+      border: 1px solid rgba(0, 0, 0, 0.3);   
+      color: rgb(0, 0, 0);
+
+    }
+    .textArea::placeholder {
+      color: rgb(78, 78, 78);
+
+    }
+    .lastBtn {
+
+    }
+  }
+}

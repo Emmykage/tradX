@@ -10,6 +10,7 @@ import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
 import "./newsMenu.scss";
 import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
 import { ClockIcon, Dot, NewsIcon, SearchIcon2 } from "../../../../../assets/icons";
+import { useAppSelector } from "@store/hooks";
 
 const filterListButtons = ["Forex", "Stock", "Commodities", "Crypto"];
 
@@ -36,13 +37,13 @@ const RenderTab = ({
   const [part1, part2] = description.split(" on ");
 
   return (
-    <div className="tradesMenuWrapper">
-      <p className="tradeHeading">{title}</p>
-      <div className="tradeIconWrapper">
+    <div className="newsMenuWrapper">
+      <p className="newsHeading">{title}</p>
+      <div className="newsIconWrapper">
         <NewsIcon />
       </div>
-      <p className="noTrade">{part1} on</p>
-      <p className="noTrade">{part2}</p>
+      <p className="noNews">{part1} on</p>
+      <p className="noNews">{part2}</p>
     </div>
   );
 };
@@ -124,6 +125,7 @@ interface NewsMenuProps {}
 const NewsMenu: React.FunctionComponent<NewsMenuProps> = () => {
   const [cookies] = useCookies(["access_token"]);
   const [selectedFeed, setSelectedFeed] = useState('all')
+  const {themeSelect} = useAppSelector(state => state.themeBg) 
   const {
     mutate: mutateNews,
     data,
@@ -132,7 +134,6 @@ const NewsMenu: React.FunctionComponent<NewsMenuProps> = () => {
     onSuccess: () => {},
     onError: () => {},
   });
-  console.log(data, isPending)
 
   const items = [{
     id: "1",
@@ -188,13 +189,13 @@ const NewsMenu: React.FunctionComponent<NewsMenuProps> = () => {
     return <Loading />;
   }
 
-  console.log(selectedFeed)
+
   return (
-    <div className="newsMenu">
+    <div className={`${themeSelect} newsMenu`}>
       <div className="payment-methods-filter-btns">
         <ArrowsSlider>
           {filterListButtons.map((feed: string) => (
-            <Button className="payment-methods-filter-btn" key={feed}
+            <Button className={`${selectedFeed == feed ?  "active" : ""} payment-methods-filter-btn`} key={feed}
             onClick={()=> setSelectedFeed(feed)}
             >
               {titleHandler(feed)}

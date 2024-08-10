@@ -70,3 +70,44 @@
     }
   }
 }
+
+
+.day.joinLeagues {
+  .leaguesHeader {
+    background: linear-gradient(227.45deg, #08090a 10.74%, #16171a 101.8%);
+    .coinsDiv {
+      .coinsImage {
+
+      }
+    }
+    .linesImage {
+    }
+  }
+  .linearGradient {
+    background: linear-gradient(
+      180deg,
+      rgba(31, 33, 36, 0) -1.31%,
+      #0b0c0d 40.7%,
+      rgba(11, 12, 13, 0) 89.68%
+    );
+
+  }
+  .leaguesBody {
+
+    h2 {
+      color: rgba(0, 148, 255, 1);
+
+    }
+    h1 {
+      color: rgb(255, 255, 255);
+
+    }
+    p {
+
+      color: rgb(83, 83, 83);
+    }
+    .btnPrime {
+ 
+    }
+  }
+}
