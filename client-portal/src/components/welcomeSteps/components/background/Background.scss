@@ -159,10 +159,12 @@
           font-size: 17px;
           line-height: 28px;
           color: rgba(255, 255, 255, 0.3);
+          
 
           @media (max-width: 834px) {
             height: 80vh;
             gap: 20px;
+            align-items: flex-start;
             justify-content: space-around;
             font-size: 20.65px;
           }

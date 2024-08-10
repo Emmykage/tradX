@@ -1,11 +1,39 @@
 import './categorySlider.scss';
-import OilImage from '../../../../../assets/categorySlider/oil.png'
-import GoldImage from '../../../../../assets/categorySlider/gold.png'
-import GasImage from '../../../../../assets/categorySlider/gas.png'
-import Slider from 'react-slick';
+
 import { ArrowLeftOS, ArrowRightOS } from 'assets/icons';
 import { useState } from 'react';
-const CategorySlider = () => {
+import Slider from 'react-slick';
+
+ interface CategorySliderProps {
+  allPairsData: Array<{
+    title: string
+    subtitle: string
+    category: string
+    value: string
+    change: string
+    image: string
+  }>,
+  topGainersData?: Array<{
+    title: string
+    subtitle: string
+    category: string
+    value: string
+    change: string
+    image: string
+  }>,
+  losginDownData?: Array<{
+    title: string
+    subtitle: string
+    category: string
+    value: string
+    change: string
+    image: string
+  }>,
+}
+
+
+
+const CategorySlider:React.FC<CategorySliderProps> = ({allPairsData,topGainersData,losginDownData}) => {
     const ArrowButtonPrevious:React.FC<{onClick: any}> = ({  onClick }) => {
         return (
           <button
@@ -31,135 +59,69 @@ const CategorySlider = () => {
           </button>
         );
       };
-    
-    const settings = {
+      const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
-        prevArrow: <ArrowButtonPrevious onClick={onclick}  />,
-        nextArrow: <ArrowButtonNext  onClick={onclick}/>,
-        
+        slidesToShow: 3,
+        prevArrow: <ArrowButtonPrevious onClick={onclick} />,
+        nextArrow: <ArrowButtonNext onClick={onclick} />,
         slidesToScroll: 1,
-         responsive: [
+        responsive: [
           {
-            breakPoint:900,
+            breakpoint: 900,
             settings: {
               centerMode: false,
-              slidesToShow: 3,
-              slidesToScroll:1,
-              
+              slidesToShow: 2,
+              slidesToScroll: 1,
             },
           },
           {
-          breakpoint: 600,
-          settings_1: {
-            dots: true,
-            centerMode: false,
-            slidesToShow: 1,
-            slidesToScroll:1,
-            arrows:false,
+            breakpoint: 600,
+            settings: {
+              dots: true,
+              centerMode: false,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows: false,
+            },
           },
-        },
-       
-      ]
+        ]
       };
-
-
-     
 
       
       const AllPairs = (
         <div className="categorySliderContainer">
           
         
-        <Slider {...settings}>
-        <div className="categorySliderCard" style={{backgroundColor:'pink'}}>
-          
-            {/* top */}
-            <div className="categorySliderTopContainer" >
-                {/* left */}
-                <div className="categorySliderTopLeftContainer">
-                    <h2>UKOIL</h2>
-                    <span>Brent Oil</span>
-                    <button>COMMODITIES</button>
-
-                </div>
-                {/* right */}
-                <div className="categorySliderTopRightContainer">
-                    <h2>80.90</h2>
-                    <span>-2.02%</span>
-
-                </div>
-
-            </div>
-            {/* middle */}
-            <div className="categorySliderMiddleContainer">
-                <img src={OilImage} alt="" />
-            </div>
-            {/* bottom */}
-            <div className="categorySliderBottomContainer">
-            <button>Trade</button>
-            </div>
-
+       <Slider {...settings}>
+  {allPairsData.map((card, index) => (
+    <div key={index} className={`categorySliderCard slider-card-${index + 1}`}>
+      {/* top */}
+      <div className="categorySliderTopContainer">
+        {/* left */}
+        <div className="categorySliderTopLeftContainer">
+          <h2>{card.title}</h2>
+          <span>{card.subtitle}</span>
+          <button>{card.category}</button>
         </div>
-        <div className="categorySliderCard">
-            {/* top */}
-            <div className="categorySliderTopContainer" >
-                {/* left */}
-                <div className="categorySliderTopLeftContainer">
-                    <h2>UKOIL</h2>
-                    <span>Brent Oil</span>
-                    <button>COMMODITIES</button>
-
-                </div>
-                {/* right */}
-                <div className="categorySliderTopRightContainer">
-                    <h2>80.90</h2>
-                    <span>-2.02%</span>
-
-                </div>
-
-            </div>
-            {/* middle */}
-            <div className="categorySliderMiddleContainer">
-                <img src={GoldImage} alt="" />
-            </div>
-            {/* bottom */}
-            <div className="categorySliderBottomContainer">
-            <button>Trade</button>
-            </div>
-
+        {/* right */}
+        <div className="categorySliderTopRightContainer">
+          <h2>{card.value}</h2>
+          <span>{card.change}</span>
         </div>
-        <div className="categorySliderCard">
-            {/* top */}
-            <div className="categorySliderTopContainer">
-                {/* left */}
-                <div className="categorySliderTopLeftContainer">
-                    <h2>UKOIL</h2>
-                    <span>Brent Oil</span>
-                    <button>COMMODITIES</button>
-
-                </div>
-                {/* right */}
-                <div className="categorySliderTopRightContainer">
-                    <h2>80.90</h2>
-                    <span>-2.02%</span>
-
-                </div>
-
-            </div>
-            {/* middle */}
-            <div className="categorySliderMiddleContainer">
-                <img src={GasImage} alt="" />
-            </div>
-            {/* bottom */}
-            <div className="categorySliderBottomContainer">
-            <button>Trade</button>
-            </div>
-
-        </div>
-        </Slider>
+      </div>
+      {/* middle */}
+      <div className="categorySliderMiddleContainer">
+        <img src={card.image} alt={card.title} />
+      </div>
+      {/* bottom */}
+      <div className="categorySliderBottomContainer">
+        <button>Trade</button>
+      </div>
+    </div>
+  ))}
+</Slider>
         </div>
       )
 

@@ -15,7 +15,7 @@ const SignInForm: React.FunctionComponent<SignInFormProps> = ({
   setForgotPasswordView,
 }) => {
   const navigate = useNavigate();
-  const [, setCookie] = useCookies(["access_token", "refresh_token"]);
+  const [, setCookie] = useCookies(["step","access_token", "refresh_token",]);
   const { user } = useAppSelector((state) => state.user);
   const { loading } = useAppSelector((state) => state.user);
   const { handleSubmit, register } = useForm<ISignInForm>();
@@ -24,9 +24,10 @@ const SignInForm: React.FunctionComponent<SignInFormProps> = ({
       const expirationInSeconds = 270;
       setCookie("access_token", data.access, { maxAge: expirationInSeconds });
       setCookie("refresh_token", data.refresh);
+      setCookie("step",'')
       console.log(user?.is_walkthrough);
      
-      navigate("/");
+      navigate("/welcome");
     },
     onError: () => {},
   });

@@ -116,8 +116,9 @@ const WelcomeSteps = () => {
       }
     }, 60000);
   },[step])
-  return (
-    <div className="welcomeSteps">
+  return step && (
+
+      <div className="welcomeSteps">
       {step === 10 && (
         <div className="info">
           <CountDown time={1} color="white"/>
@@ -134,8 +135,8 @@ const WelcomeSteps = () => {
     //   welcome-icons/w_backgroung_tablet.png 834w,
     //   welcome-icons/w_backgroung.png 1200w
     // "
-            alt=""
-          />
+    alt=""
+    />
         </div>
       )}
 
@@ -146,6 +147,7 @@ const WelcomeSteps = () => {
     </div>
     // <StepOne setStep={setStep}/>
   );
+
 };
 
 export default WelcomeSteps;

@@ -1,17 +1,55 @@
 import "./Crypto.scss";
 import { InfoBlockWithListData, NeedMoreInfoData } from "./data";
 
-import Navbar from "pages/public/home/navbar/Navbar";
 import InfoBlockWithList from "../components/infoBlockWithList/InfoBlockWithList";
 import JoinInThreeSteps from "../components/joinInThreeSteps/JoinInThreeSteps";
 import NeedMoreInfo from "../components/needMoteInfo/NeedMoreInfo";
 import RegisterBlock from "../components/registerBlock/RegisterBlock";
 import TradCalc from "../../../../components/tradCalc/TradCalc";
+import Navbar from "pages/public/home/commonComponents/navbar/Navbar";
+import HeadIntro from "pages/public/home/commonComponents/headIntro/HeadIntro";
+import CategorySlider from "pages/public/home/commonComponents/categorySlider/CategorySlider";
+
+import BitCoinImage from '../../../../assets/categorySlider/bitcoin.png'
+import EthereumImage from '../../../../assets/categorySlider/ethereum.png'
+import RippleImage from '../../../../assets/categorySlider/ripple.png'
 
 const Crypto = () => {
+  const title = 'Cryptocurrency CFDs'
+  const detail = "Take advantage of the volatility and trade CFD on cryptos with markets.com. Go long or short, trade on margin."
+  const buttonTitle = 'Trade Commodities'
+
+  const allPairsData =[
+    {
+      title: "BITCOIN",
+      subtitle: "BITCOIN",
+      category: "COMMODITIES",
+      value: "80.90",
+      change: "-2.02%",
+      image: BitCoinImage
+    },
+    {
+      title: "RIPPLE",
+      subtitle: "XRP",
+      category: "COMMODITIES",
+      value: "80.90",
+      change: "-2.02%",
+      image: RippleImage
+    },
+    {
+      title: "ETHEREUM",
+      subtitle: "ETH",
+      category: "COMMODITIES",
+      value: "1.579",
+      change: "-7.44%",
+      image: EthereumImage
+    }
+  ];
   return (
     <div className="cryptoContainer">
       <Navbar />
+      <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
+      <CategorySlider allPairsData={allPairsData}/>
       <InfoBlockWithList item={InfoBlockWithListData} />
       <div className="revertCompanents">
         <TradCalc />

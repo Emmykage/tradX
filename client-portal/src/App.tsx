@@ -27,6 +27,13 @@ import Loading from "components/loading";
 import { useCookies } from "react-cookie";
 import PrivacyPolicy from "pages/public/home/privacyPolicy/PrivacyPolicy";
 import Regulation from "pages/public/home/regulation/Regulation";
+import Commodities from "pages/public/markets/commodities/Commodities";
+import Shares from "pages/public/markets/shares/Shares";
+import Indices from "pages/public/markets/indices/Indices";
+import Etf from "pages/public/markets/etf/Etf";
+import Bonds from "pages/public/markets/bonds/Bonds";
+import { Ipo } from "pages/public/markets/ipo/Ipo";
+import Crypto from "pages/public/markets/crypto/Crypto";
 
 
 // Lazy load components
@@ -93,8 +100,8 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route element={<RequireAuth  />}>
           <Route path="/platform" element={<Platform />} />
           {/* Private route using PrivateRoute component */}
-          <Route path="/user" element={<PrivateRoute />}>
-              <Route path="/user/welcome" element={<Welcome />} />
+          <Route path="/welcome" element={<PrivateRoute />}>
+              <Route path="/welcome" element={<Welcome />} />
            </Route>
           <Route path="transactions" element={<Transactions />} />
           {/* <Route path="/loan/get-loan" element={<GetLoan />} /> */}
@@ -104,9 +111,16 @@ const App: React.FunctionComponent<AppProps> = () => {
           <Route path="/statusDetails" element={<StatusDetails />} />
         </Route>
         <Route path="/" element={<Home />} />
-        <Route path="/markets/regulations" element={<Regulation />} />
+        {/* <Route path="/markets/regulations" element={<Regulation />} />
         <Route path="/markets/cookieDisclosure" element={<CookieDisclosure />} />
-        <Route path="/markets/privacyPolciy" element={<PrivacyPolicy />} />
+        <Route path="/markets/privacyPolciy" element={<PrivacyPolicy />} /> */}
+        <Route path="/markets/Commodities" element={<Commodities />} /> 
+        <Route path="/markets/shares" element={<Shares />} /> 
+        <Route path="/markets/indices" element={<Indices />} /> 
+        <Route path="/markets/etfs" element={<Etf />} /> 
+        <Route path="/markets/bonds" element={<Bonds />} /> 
+        <Route path="/markets/ipos" element={<Ipo />} /> 
+        <Route path="/markets/cryptoCurrency" element={<Crypto />} /> 
         <Route path="/downloads" element={<Download />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />

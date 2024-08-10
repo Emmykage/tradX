@@ -9,11 +9,11 @@ import { ArrowLeftOS, ArrowRightOS } from 'assets/icons'
 
 const TradeTable = () => {
     const data = [
-        {  name: 'USA 30', sell: '399.53', buy: '400.23', change: '-2.04%', graph:Graph1Image },
-        {  name: 'UK 100 - Futures', sell: '399.53', buy: '400.23', change: '-1.66%', graph:Graph1Image },
-        {  name: 'France 40', sell: '80.90', buy: '80.95', change: '+2.02%', graph:Graph2Image },
-        {  name: 'France 40 - Futures', sell: '179.63', buy: '180.03', change: '-1.83%', graph:Graph3Image },
-        {  name: 'Swiss 20 - Futures', sell: '81.69', buy: '81.74', change: '+2.06%', graph:Graph4Image },
+        {  name: 'Crude Oil', sell: '399.53', buy: '400.23', change: '-2.04%', graph:Graph1Image },
+        {  name: 'Corn', sell: '399.53', buy: '400.23', change: '-1.66%', graph:Graph1Image },
+        {  name: 'Brent Oil', sell: '80.90', buy: '80.95', change: '+2.02%', graph:Graph2Image },
+        {  name: 'Coffee', sell: '179.63', buy: '180.03', change: '-1.83%', graph:Graph3Image },
+        {  name: 'Brent Oil Futures', sell: '81.69', buy: '81.74', change: '+2.06%', graph:Graph4Image },
       ];
   return (
     <div className="tradeTableContainer">
