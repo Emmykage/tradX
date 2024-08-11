@@ -5,7 +5,6 @@ import TradeForm from "../../../components/tradeForm/TradeForm";
 import "./platform.scss";
 import { Drawer } from "antd";
 import { AreaChartIcon, ArrowLeftOS, BarChartIcon, CandleStickIcon, CloseIcon, MainChartAnalysisIcon, MainChartChangeIcon, MainChartSignalsIcon, ZoomInChartIcon, ZoomOutChartIcon } from "../../../assets/icons";
-import WalkThrough from "./WalkThrough";
 
 import useQueryParamHandler from "./hooks/useQueryParamHandler";
 import {

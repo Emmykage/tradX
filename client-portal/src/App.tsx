@@ -25,9 +25,13 @@ import PrivateRoute from "utils/ProtectedRoute ";
 import Platform from "pages/private/platform/Platform";
 import Loading from "components/loading";
 import { useCookies } from "react-cookie";
-import PrivacyPolicy from "pages/public/home/privacyPolicy/PrivacyPolicy";
-import Regulation from "pages/public/home/regulation/Regulation";
 import NotFoundPage from "pages/private/platform/platformMenus/notFound/NotFoundPage";
+import Trading from "pages/public/trading/Trading";
+import ForexCalculator from "pages/public/trading/ForexProitCalculator/forexCalculator/ForexCalculator";
+import TradingConditions from "pages/public/trading/TradingConditions/Index";
+import CFDTrading from "pages/public/trading/cfdTrading";
+
+
 
 
 
@@ -40,6 +44,19 @@ const Indices = lazy(()=>import("pages/public/markets/indices/Indices"))
 const Shares = lazy(()=>import("pages/public/markets/shares/Shares"))
 const Ipo = lazy(()=>import("pages/public/markets/ipo/Ipo"))
 
+
+const TradingPlatform = lazy(()=>import("pages/public/trading/platform"))
+const MobileTrading = lazy(()=>import("pages/public/trading/tradingMobile"))
+const MetaTradingFour = lazy(()=>import("pages/public/trading/metaTrading4/Index"))
+const MetaTradingFive = lazy(()=>import("pages/public/trading/metaTrading5"))
+const CopyTrading = lazy(()=>import("pages/public/trading/trackTrades"))
+const CFDTradingCalculator = lazy(()=>import("pages/public/trading/CFDCalculator"))
+const CommoditiesProfitCalculator = lazy(()=>import("pages/public/trading/CommoditiesProfitCal/Index"))
+const ForexMarginCalculator = lazy(()=>import("pages/public/trading/forexMarginCalculator"))
+const EconomicCalendar = lazy(()=>import("pages/public/trading/economicCalendar/Index"))
+const CFDAssetList = lazy(()=>import("pages/public/trading/CFDAssetList/Index"))
+const ExpirationDates = lazy(()=>import("pages/public/trading/expirationDates/Index"))
+
 // Lazy load components
 const Lender = lazy(() => import("./pages/private/lender/Lender"));
 const SignIn = lazy(() => import("./pages/public/signIn/SignIn"));
@@ -51,6 +68,7 @@ const ResetPassword = lazy(() => import("pages/public/resetPassword/ResetPasswor
 const Home = lazy(() => import("pages/public/home/main/Home"));
 const StatusDetails = lazy(() => import("./pages/public/statusDetails/StatusDetails"));
 const CookieDisclosure = lazy(() => import("pages/public/home/cookieDisclosure/CookieDisclosure"));
+
 
 
 
@@ -126,6 +144,26 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/markets/bonds" element={<Bonds />} /> 
         <Route path="/markets/ipos" element={<Ipo />} /> 
         <Route path="/markets/crypto" element={<Crypto />} /> 
+
+
+        <Route path="/trading/tradingPlatform" element={<TradingPlatform />} /> 
+        <Route path="/trading/MobileTrading" element={<MobileTrading />} /> 
+        <Route path="/trading/metaTradingFour" element={<MetaTradingFour />} /> 
+        <Route path="/trading/metaTradingFive" element={<MetaTradingFive />} /> 
+        <Route path="/trading/copyTrading" element={<CopyTrading />} /> 
+        <Route path="/trading/cfdTradingCalculator" element={<CFDTradingCalculator />} /> 
+        <Route path="/trading/commoditesProfitCalculator" element={<CommoditiesProfitCalculator />} /> 
+        <Route path="/trading/forexProfitCalculator" element={<ForexCalculator />} /> 
+        <Route path="/trading/forexMarginCalculator" element={<ForexMarginCalculator />} /> 
+        <Route path="/trading/economicCalendar" element={<EconomicCalendar />} /> 
+        <Route path="/trading/cfdAssetList" element={<CFDAssetList />} /> 
+        <Route path="/trading/tradingConditions" element={<TradingConditions />} /> 
+        <Route path="/trading/expirationDate" element={<ExpirationDates />} />  
+        <Route path="/trading/cfdTrading" element={<CFDTrading />} />  
+
+
+
+        <Route path="/trading" element={<Trading />} /> 
         <Route path="/downloads" element={<Download />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
