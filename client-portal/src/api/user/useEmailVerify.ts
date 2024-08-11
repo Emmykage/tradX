@@ -29,7 +29,7 @@ export async function fetchEmailVerify(data: EmailVerificationVariables) {
     const response = await fetch(
       `${BASE_URL}/user/verify_email/${data.uidb64}/${data.token}/`,
       {
-        method: "POST",
+        method: "GET",
       }
     );
     const result = await response.json();

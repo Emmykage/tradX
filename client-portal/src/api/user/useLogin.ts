@@ -1,4 +1,4 @@
-import { ISignInForm } from "@interfaces";
+import { ISignInForm, IUser } from "@interfaces";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import getEnv from "utils/env";
@@ -16,6 +16,8 @@ export async function fethLogin(data: ISignInForm): Promise<boolean> {
     });
     const result = await response.json();
 
+    console.log(response);
+
     if (!response.ok) {
       toast.error(result.detail);
       throw new Error(`${result}`);
@@ -29,6 +31,7 @@ export async function fethLogin(data: ISignInForm): Promise<boolean> {
 interface LoginSuccess {
   access: string;
   refresh: string;
+  user: IUser
 }
 
 type useLoginProps = {

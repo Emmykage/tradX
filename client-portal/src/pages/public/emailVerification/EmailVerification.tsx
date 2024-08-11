@@ -39,6 +39,7 @@ const EmailVerification: React.FunctionComponent<
 
     mutate({ uidb64, token });
   }, [mutate]);
+  
 
   return (
     <div className="emailVerificationContainer">

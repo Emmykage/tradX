@@ -44,7 +44,7 @@ const SignIn: React.FunctionComponent<SignInProps> = () => {
         ) : (
           <Tabs
             centered
-            defaultActiveKey={signInTab}
+            activeKey={signInTab}
             items={items}
             indicatorSize={150}
             tabBarGutter={100}
