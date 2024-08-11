@@ -1,5 +1,5 @@
 import React from 'react'
-import './straightforwardTrading.scss'
+import './straightForwardTrading.scss'
 import backdropImg from "../../../../../assets/trading/working-trader.png"
 
 import primeIcon from '../../../../../assets/trading/primeIcon.png'
