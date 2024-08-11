@@ -1,4 +1,4 @@
-import "./UsingOurCfd.scss";
+import "./usingOurCfd.scss";
 import usingOurCfd1Svg from "../../../../../assets/markets/tradingPage/usingOurCfd1.svg";
 import usingOurCfd2Svg from "../../../../../assets/markets/tradingPage/usingOurCfd2.svg";
 import usingOurCfd3Svg from "../../../../../assets/markets/tradingPage/usingOurCfd3.svg";
