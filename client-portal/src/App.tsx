@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Route, Routes, HashRouter, BrowserRouter } from "react-router-dom";
+import { Route, Routes, HashRouter, BrowserRouter as Router } from "react-router-dom";
 
 
 
@@ -30,6 +30,7 @@ import Trading from "pages/public/trading/Trading";
 import ForexCalculator from "pages/public/trading/ForexProitCalculator/forexCalculator/ForexCalculator";
 import TradingConditions from "pages/public/trading/TradingConditions/Index";
 import CFDTrading from "pages/public/trading/cfdTrading";
+import EmailVerification from "pages/public/emailVerification/EmailVerification";
 
 
 
@@ -63,7 +64,7 @@ const SignIn = lazy(() => import("./pages/public/signIn/SignIn"));
 const Welcome = lazy(() => import("./pages/public/welcome/Welcome"));
 const Download = lazy(() => import("./pages/public/downloads/Download"));
 const Transactions = lazy(() => import("./pages/private/transactions/Transactions"));
-const EmailVerification = lazy(() => import("pages/public/emailVerification/EmailVerification"));
+// const EmailVerification = lazy(() => import("pages/public/emailVerification/EmailVerification"));
 const ResetPassword = lazy(() => import("pages/public/resetPassword/ResetPassword"));
 const Home = lazy(() => import("pages/public/home/main/Home"));
 const StatusDetails = lazy(() => import("./pages/public/statusDetails/StatusDetails"));
@@ -115,8 +116,10 @@ const App: React.FunctionComponent<AppProps> = () => {
   return (
     <div data-theme={"dark"}>
 
-    <HashRouter>
+    {/* <HashRouter> */}
       <Suspense fallback={<div className="fullLoadingBackground"><Loading/></div>}>
+      <Router>
+
       <Routes>
         {/* turned of the auth require */}
         <Route element={<RequireAuth  />}>
@@ -162,7 +165,6 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/trading/cfdTrading" element={<CFDTrading />} />  
 
 
-
         <Route path="/trading" element={<Trading />} /> 
         <Route path="/downloads" element={<Download />} />
         <Route path="/signIn" element={<SignIn />} />
@@ -174,8 +176,9 @@ const App: React.FunctionComponent<AppProps> = () => {
         
       <Route path="*" element={<NotFoundPage/>} />
       </Routes>
+      </Router>
       </Suspense>
-    </HashRouter>
+    {/* </HashRouter> */}
     </div>
 
   );
