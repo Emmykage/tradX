@@ -1,0 +1,12 @@
+.navRouting{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: #96969696;
+    width: 90%;
+    svg{
+        path{
+            stroke: #96969696;
+        }
+    }
+}

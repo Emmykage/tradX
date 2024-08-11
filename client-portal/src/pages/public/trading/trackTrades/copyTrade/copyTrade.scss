@@ -7,7 +7,8 @@
     position: relative;
     justify-content: space-between;
     display: flex;
-    width: 100%;
+    width: 90%;
+    margin: auto;
     @media (max-width: 920px) {
         flex-direction: column;
     }

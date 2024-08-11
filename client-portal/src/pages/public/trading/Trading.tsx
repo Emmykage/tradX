@@ -22,7 +22,6 @@ import TradeAnalyzer from './CommoditiesProfitCal/tradeAnalyzer/TradeAnalyzer'
 import UkIFlag from '../../../assets/trading/UK.png'
 import StraightForwardTrading from './platform/straightForwardTradingComponent/StraightForwardTrading'
 // import LandingPageMobile from './LandingPageMobileTrading/LandingPageMobile'
-import imageBgAdam from '../../../assets/trading/adam-nowakowski-phone.png'
 import imageBgEve from '../../../assets/trading/eve-nowakowski-D4LDw5eXhgg.png'
 import imageBgAdamLp from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash.png'
 import TrackTrade from './trackTrades/trackTrade/TrackTrade'
@@ -32,6 +31,7 @@ import TrackTradeLanding from './trackTrades/trackTrade/TrackTrade'
 import MetaTrader4Landing from './metaTrading4/metaTrader4Landing/MetaTrader4'
 import MetaTrader5Landing from './metaTrading5/metaTrader5/MetaTrader5Landing'
 import Navbar from '../home/commonComponents/navbar/Navbar'
+
 const Trading = () => {
   return (
     <div className='tradingContainer' >

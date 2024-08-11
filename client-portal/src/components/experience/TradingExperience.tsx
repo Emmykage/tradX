@@ -1,32 +1,15 @@
-import React from 'react'
 import './tradingExperience.scss'
-import graphVector from '../../assets/trading/Vector.png'
-import { GraphIcon, TheGraphFlag } from 'assets/icons'
+// import mainBg 
 const TradingExperience = ({image, title, text, button} : {image?: string, title?: string, text?: string, button?: boolean }) => {
   return (
     <div className='trading-experience'>
         <div className='exp-info'>
             <h3>{title}</h3>
-            <p>
-                {text} </p>
-
-
+            <p> {text} </p>
             {button && (<button>Join Now</button>)}
-            
-
         </div>
         <div className='exp-graph'> 
             <img src={image} alt="user image" className='user' />
-
-            <div className='graph-bg'>
-                <GraphIcon/>
-
-            </div>
-
-            <img src={graphVector} alt="" className='vect'  />
-
-
-
 
         </div>
         

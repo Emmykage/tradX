@@ -1,33 +1,17 @@
 .metaTradingWrapper{
     color: white;
+    width: 90%;
+    margin:18px auto;
+    justify-content: space-between;
     display: flex;
     align-items: center;
     @media (max-width: 720px){
         flex-direction: column;
     }
     .graphicWrapper{
-        margin: 20px auto;
-        position: relative;
-        width:  40%;
-        background-image: url("/trading-images/candleStickBg34.png"), url('/trading-images/bg-graph.png');
-        height: 320px;
-        background-repeat: no-repeat;
-        background-size: 150px,  190px ;
-        background-color: rgba(0, 0, 0, 0.007);
-        background-position: left 10px, center 0px;
-        @media (max-width: 720px){
-            height: 300px;
-            width: 100%;
-            background-position: 100px 10px, center 0px;
-            display: none;
-        }
+       
         img{
-            margin-bottom: auto;
-            margin: auto;
-            display: block;
-            position: absolute;
-            bottom: 100px;
-            right: 30%;
+            width: 100%;
             @media (max-width: 720px){
                 bottom: 50px;
             }
@@ -35,8 +19,7 @@
         }
     }
     .textWrapper{
-        padding: 12px;
-        margin: 20px;
+        margin: 20px auto;
         flex-basis: 50%;
         h3{
             font-size: 34px;

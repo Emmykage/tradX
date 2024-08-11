@@ -10,12 +10,24 @@ import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreI
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
 import { NeedMoreInfoData } from './data'
+import NavRoute from 'components/tradingNavIndicator/NavRoute'
 
+import traderBg from "../../../../assets/trading/busy-trader.png"
+import ForexCalculator from 'components/forexCalculator/ForexCalculator'
 
 const CommoditiesProfitCalc = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
+      <NavRoute location='Commodities Profit Calculator'/>
+
+        <ForexCalculator mainImg={traderBg} 
+
+          title='What is a Commodities Profit Calculator?' 
+          text1='A Commodity Profit Calculator is a tool that helps traders and investors in the commodity market to calculate their potential profits or losses based on various input parameters. The calculator can provide an estimate of the profit or loss that would be realized if the commodity were bought and sold at the current market price. Commodity Profit Calculators can be a useful tool for traders and investors to make informed decisions about buying or selling commodities.'
+
+
+          text2='markets.com offers a commodities calculator right on the platform to help traders make more informed decisions as they trade.'/>
     
       
 
@@ -32,9 +44,8 @@ const CommoditiesProfitCalc = () => {
         </div>
 
 
-        <div className="container">
-            <TradeAnalyzer/>
-        </div>
+        <TradeAnalyzer/>
+  
 
         <NeedMoreInfo items={NeedMoreInfoData}/>
         <RegisterBlock/>

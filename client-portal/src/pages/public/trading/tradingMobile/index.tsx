@@ -13,14 +13,12 @@ const TradingOnTheGo = () => {
         <Navbar/>
         <LandingPageMobile/>
 
-        <div className="container">
-        <TradingExperience  
-        image={imageBgAdam} 
-        title={"Where intuition meets functionality"} 
-        text={"The markets.com app offers a streamlined interface that executes orders quickly and reliably. Trade the markets your way. With sleek, uncluttered and powerful technology."}
-        button={false}
+        <TradingExperience
+          image={imageBgAdam} 
+          title={"Where intuition meets functionality"} 
+          text={"The markets.com app offers a streamlined interface that executes orders quickly and reliably. Trade the markets your way. With sleek, uncluttered and powerful technology."}
+          button={false}
         />
-        </div>
         <JoinInThreeSteps/>
         <NeedMoreInfo items={NeedMoreInfoData} />
         <RegisterBlock/>

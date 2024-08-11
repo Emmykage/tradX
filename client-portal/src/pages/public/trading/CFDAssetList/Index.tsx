@@ -7,11 +7,13 @@ import React from 'react'
 import { NeedMoreInfoData } from './data'
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
+import NavRoute from 'components/tradingNavIndicator/NavRoute'
 
 const CFDAssetList = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
+      <NavRoute location=' CFD Asset List' />
       <TradeTable/>
       <TradCalc/>
       <UsingOurCfd/>

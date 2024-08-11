@@ -1,6 +1,9 @@
 
 .tradingWrapper.straightForwardWrap{
     display: flex;
+    width: 90%;
+    margin: auto;
+    align-items: center;
     
     margin-top: -90px;
     @media (max-width: 720px) {
@@ -28,23 +31,9 @@
         position: relative;
         text-align: right;
         flex: 1;
-        @media (max-width: 720px) {
-            display: none;
-            
-        }
-        img.mainImg{
-          max-width: 490px;
-        }
-
-        .icon-1{
-            position: absolute;
-            top: 80px;
-            right: 440px;
-        }
-        .icon-2{
-            position: absolute;
-            top: 270px;
-            right: 480px;
+        
+        img{
+          max-width: 100%;
         }
 
     }

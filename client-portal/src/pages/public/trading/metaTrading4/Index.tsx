@@ -29,14 +29,12 @@ const MetaTrading4 = () => {
   return (
     <div className='tradingContainer'>
         <MetaTrader4Landing/>
-        <div className="container">
         <TradingExperience  
         image={imageBgEve} 
         title={"Use MT4 to trade with tradex.io"} 
         text={"If you already have a tradex.io account, you are all set. Now you can simply install MT4 and add a trading account via your desktop markets.com platform. For more information on how to add MetaTrader trading account please click here. If you don’t have a markets.com account yet, don’t worry – registering is easy and fast."}
         button={true}
         />
-        </div>
         <div className='container'>
 
             <h2>Benefits of MT4</h2>

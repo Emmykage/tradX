@@ -6,18 +6,19 @@ import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreI
 import { NeedMoreInfoData } from './data'
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
+import NavRoute from 'components/tradingNavIndicator/NavRoute'
+import GetStarted from './getStartedTrading/GetStarted'
 const CFDCalculatr = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
+      <NavRoute  location="CDF Trading Calculator"/>
       <TradCalc/>
-        <div className="container">
-            <CostExplanation/>
-        </div>
-
-        <NeedMoreInfo items={NeedMoreInfoData}/>
-        <RegisterBlock/>
-        <Footer/>
+      <GetStarted />
+      <CostExplanation/>
+      <NeedMoreInfo items={NeedMoreInfoData}/>
+      <RegisterBlock/>
+      <Footer/>
 
         
     </div>

@@ -30,6 +30,7 @@ import Trading from "pages/public/trading/Trading";
 import ForexCalculator from "pages/public/trading/ForexProitCalculator/forexCalculator/ForexCalculator";
 import TradingConditions from "pages/public/trading/TradingConditions/Index";
 import CFDTrading from "pages/public/trading/cfdTrading";
+import ForexProfitCalculator from "pages/public/trading/ForexProitCalculator";
 
 
 
@@ -153,7 +154,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/trading/copyTrading" element={<CopyTrading />} /> 
         <Route path="/trading/cfdTradingCalculator" element={<CFDTradingCalculator />} /> 
         <Route path="/trading/commoditesProfitCalculator" element={<CommoditiesProfitCalculator />} /> 
-        <Route path="/trading/forexProfitCalculator" element={<ForexCalculator />} /> 
+        <Route path="/trading/forexProfitCalculator" element={<ForexProfitCalculator />} />
         <Route path="/trading/forexMarginCalculator" element={<ForexMarginCalculator />} /> 
         <Route path="/trading/economicCalendar" element={<EconomicCalendar />} /> 
         <Route path="/trading/cfdAssetList" element={<CFDAssetList />} /> 

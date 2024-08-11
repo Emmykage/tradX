@@ -32,14 +32,9 @@ const TradingPlatform = () => {
     <div className='tradingContainer'>
         <Navbar/>
         <Landing/>
-
-        <div className='container'>
-            <StraightForwardTrading/>
-
-        </div>
+        <StraightForwardTrading/>
         
-        
-        <div className="container cardWrapper">
+        <div className="cardWrapper">
             {items.map(item => (
                 <TradingCardInfo 
                 cardTitle={item.title}

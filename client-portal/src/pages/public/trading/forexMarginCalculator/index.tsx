@@ -14,11 +14,23 @@ import { NeedMoreInfoData } from '../platform/data'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
+import NavRoute from 'components/tradingNavIndicator/NavRoute'
+import ForexCalculator from 'components/forexCalculator/ForexCalculator'
+import calculator from '../../../../assets/trading/adam-calculator.png'
+import MarginCall from './marginCall/MarginCall'
+
 const ForexMarginCalculator = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
+      <NavRoute location='Forex Margin Calculator'/>
         <TradCalc/>
+
+        <ForexCalculator 
+        mainImg={calculator}
+        title='What is a Forex Margin Calculator?'
+        text1='Required margin is percentage of the full value of a position that you need to possess in order to enter a position.
+        Our forex margin calculator is a tool designed to calculate the approximate required margin for the desired by your position size and direction.'/>
         <CostExplanation/>
 
         <div className='container'>
@@ -31,21 +43,8 @@ const ForexMarginCalculator = () => {
           icon2={CanIcon}/>
         </div>
 
-        <div className="container">
-      <ProfitMarginGuide
-        title="How is Profit Calculated in ForexTrading?"
-        text1='Profit in forex trading is calculated by subtracting the entry price from the exit price of a trade. This can be in either a positive or negative value depending on whether the trade resulted in a loss or gain. Forex traders will look to open a trade at a lower price and close it at a higher price, in order to turn a profit'
-        text2="However, you don't need to do these calculations manually as
-tradex.io offers a commodity calculator that does the job for you. You simply need to input the necessary information, and the calculator will provide you with the estimate profit or loss amount. This makes the process simple and convenient, allowing you to focus on making informed trading decisions."
-        icon1={Leaflet}
-        image={BgImage}
-        icon2={UkIFlag}
-        />
-    </div>
-
-        <div className="container">
-            <TradeAnalyzer/>
-        </div>
+        <MarginCall/>
+        <TradeAnalyzer/>
         <NeedMoreInfo items={NeedMoreInfoData}/>
         <RegisterBlock/>
         <Footer/>

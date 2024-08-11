@@ -5,11 +5,14 @@ import RegisterBlock from "pages/public/markets/components/registerBlock/Registe
 import CfdTradMuchMore from "pages/public/markets/tradingPage/cfdTradMuchMore/CfdTradMuchMore"
 import CfdTradWhyTrade from "pages/public/markets/tradingPage/cfdTradWhyTrade/CfdTradWhyTrade"
 import { NeedMoreInfoData } from "./data"
+import NavRoute from "components/tradingNavIndicator/NavRoute"
 
 const CFDTrading = () => {
   return (
     <div className='tradingContainer'>
     <Navbar/>
+    <NavRoute location='CFD Trading'/>
+
     <CfdTradWhyTrade/>
     <CfdTradMuchMore/>
     <NeedMoreInfo items={NeedMoreInfoData}/>
