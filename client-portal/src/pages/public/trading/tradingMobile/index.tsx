@@ -1,6 +1,6 @@
 import LandingPageMobile from './LandingPageMobileTrading/LandingPageMobile'
 import TradingExperience from '../../../../components/experience/TradingExperience'
-import imageBgAdam from '../../../../assets/trading/adam-nowakowski-phone.png'
+import imageBgAdam from '../../../../assets/trading/tradeOnTheGoAdamImg.png'
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 import JoinInThreeSteps from 'pages/public/markets/components/joinInThreeSteps/JoinInThreeSteps'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'

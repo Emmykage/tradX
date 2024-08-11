@@ -6,21 +6,18 @@ import './marginCall.scss'
 import { CheckIcon2 } from 'assets/icons'
 const MarginCall = () => {
   return (
-         <div className='marginCallWrapper'>
-       
+    <div className='marginCallWrapper'>
+    
        
        <div className='imageBackdrop'>
            <div>         
-           <img src={BgImage} alt="background image" /> 
-           <img src={Leaflet} alt="" className='icon-1' />
-           <img src={UkIFlag} alt="" className='icon-2' />
+            <img src={BgImage} alt="background image" /> 
+       
 
            </div>
        </div>
        <div className='textWrapper'>
-           <h3>
-What is a Margin Call, How Can I Avoid It?
-</h3>
+          <h3>What is a Margin Call, How Can I Avoid It?</h3>
            <ul>
 
             <li><div className='checkBg'><CheckIcon2/></div>  <p>In order to maintain your open positions 50% margin level is the minimum level. Should your margin level fall below the minimum, we reserve the right to liquidate any open position, until your accounts margin level rises above the 50%.</p></li>
@@ -28,7 +25,8 @@ What is a Margin Call, How Can I Avoid It?
             <li><div className='checkBg'><CheckIcon2/></div> <p>In the event that your margin level reaches 70%, we will send you a margin call, meaning an email and/or any other notification. This notification acts as an early warning of the performance of your open positions with us.</p></li>
            </ul>
 
-       </div>
+       </div>   
+ 
    </div>
   )
 }

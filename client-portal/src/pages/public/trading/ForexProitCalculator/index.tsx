@@ -12,12 +12,18 @@ import Calculator from '../../../../assets/trading/adam-calculator.png'
 import NavRoute from 'components/tradingNavIndicator/NavRoute'
 import ForexCalculator from 'components/forexCalculator/ForexCalculator'
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
+import TradCalc from 'components/tradCalc/TradCalc'
+import { NeedMoreInfoData } from '../platform/data'
+import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
+import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
+import Footer from 'pages/public/home/main/footer/Footer'
 const ForexProfitCalculator = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
       <NavRoute location='Forex Profit Calculator'/>
-      
+      <TradCalc/>
+
       <ForexCalculator mainImg={Calculator} 
           title='What is a Forex Profit Calculator?' 
           text1='A forex profit calculator is a tool used by forex traders to calculate the profit or loss from a particular trade. This calculator factors in a trader’s entry and exit price, the currency pair being traded, the number of units, the cost of spread and rollover, as well as any applicable commissions. It helps traders accurately calculate potential profits or losses in advance and understand the risks of the trade. Forex profit calculators also provide a helpful way to compare potential profits across different currency pairs, or to check the performance of a single currency pair over time.
@@ -44,6 +50,9 @@ const ForexProfitCalculator = () => {
         icon2={UkIFlag}
         />
          <TradeAnalyzer />
+         <NeedMoreInfo items={NeedMoreInfoData}/>
+        <RegisterBlock/>
+        <Footer/>
 
 
     </div>

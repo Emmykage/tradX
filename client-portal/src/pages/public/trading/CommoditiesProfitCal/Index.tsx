@@ -14,12 +14,15 @@ import NavRoute from 'components/tradingNavIndicator/NavRoute'
 
 import traderBg from "../../../../assets/trading/busy-trader.png"
 import ForexCalculator from 'components/forexCalculator/ForexCalculator'
+import TradCalc from 'components/tradCalc/TradCalc'
 
 const CommoditiesProfitCalc = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
       <NavRoute location='Commodities Profit Calculator'/>
+      <TradCalc/>
+
 
         <ForexCalculator mainImg={traderBg} 
 

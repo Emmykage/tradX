@@ -11,7 +11,6 @@ import TradingSteps from '../../../components/tradingSteps/TradingSteps'
 import TradingExperience from '../../../components/experience/TradingExperience'
 import user from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash 2.png'
 import CopyTrade from './trackTrades/copyTrade/CopyTrade'
-import ForexCalculator from './ForexProitCalculator/forexCalculator/ForexCalculator'
 import CostExplanation from '../../../components/tradingCostExplanation/CostExplanationComp'
 import TradingProfitCalculator from '../../../components/tradingProfitCalculator/TradingProfitCalculator'
 import USUKICon from '../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
@@ -31,6 +30,7 @@ import TrackTradeLanding from './trackTrades/trackTrade/TrackTrade'
 import MetaTrader4Landing from './metaTrading4/metaTrader4Landing/MetaTrader4'
 import MetaTrader5Landing from './metaTrading5/metaTrader5/MetaTrader5Landing'
 import Navbar from '../home/commonComponents/navbar/Navbar'
+import ForexCalculator from 'components/forexCalculator/ForexCalculator'
 
 const Trading = () => {
   return (
@@ -191,7 +191,7 @@ const Trading = () => {
         </div>
 
         <div className="container">
-          <ForexCalculator />
+          {/* <ForexCalculator /> */}
         </div>
 
 

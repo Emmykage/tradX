@@ -2,30 +2,34 @@
     display: flex;
     padding: 12px;
     color: white;
-    gap: 10px;
+    gap: 50px;
     width: 90%;
     margin: auto;
+    justify-content: space-between;
 
     @media (max-width:720px) {
     flex-direction: column;
-    .imageBackdrop{
-        display: none;
-    }
-        
+ 
     }
     .imageBackdrop{
         flex-basis: 50%;
+        @media (max-width:729px) {
+
+            order: 2;
+
+        }
 
         div{
-            // background-color: red;
             position: relative;
-            max-width: 500px;
-            margin-right: auto;
+            max-width: 450px;
+            width: 100%;
+          
             img{
-                max-width: 450px;
-                height: 350px;
+                // max-width: 450px;
+                max-height: 450px;
+                width: 100%;
                 border-radius: 14px;
-    
+                margin-left: 20px;
             }
             .icon-1{
                 position: absolute;

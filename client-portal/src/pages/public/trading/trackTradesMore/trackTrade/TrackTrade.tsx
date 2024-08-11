@@ -23,6 +23,7 @@ const TrackTradeLanding = () => {
         </div>
         <div className='graphBackdrop'>
             <div>
+
                 <img src={piCard1} alt="" className='card-2'/>
                 <img src={piCard2} alt=""  className='card-1' />
                 <img src={piCard3} alt=""  className='card-3' />
@@ -32,13 +33,19 @@ const TrackTradeLanding = () => {
 
                 </div>
 
-                <div className='text-box'>           
-                    <span>  <CheckIcon1/> </span>
-                    <p>Successful Copy Trade!</p>
+            <div className='text-box'>           
+                <span>  <CheckIcon1/> </span>
+                <p>Successful Copy Trade!</p>
 
-                </div>
+            </div>
 
-            </div> 
+        </div>
+
+   
+
+
+
+  
 
         </div>
     </div>

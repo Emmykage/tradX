@@ -22,8 +22,7 @@ const TradingProfitCalculator: React.FC<TradingprofitPrps> = ({title, text1, tex
         <div className='imageBackdrop'>
             <div>         
             <img src={image} alt="background image" /> 
-            <img src={icon1} alt="" className='icon-1' />
-            <img src={icon2} alt="" className='icon-2' />
+        
 
             </div>
         </div>

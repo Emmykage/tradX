@@ -7,15 +7,16 @@ import ProfilePic from '../../../../../assets/trading/profile-pic.jpeg'
 const CopyTrade = () => {
   return (
     <div className='copyTrade-wrapper'>
+
         <div className='copy-graph'> 
-            <img src={flagIcon} className='flag-icon' alt="pic" />
-            <img src={groupIcon} alt="pic"  className='group-icon' />
-        
-            <ImageCard  avatar={ProfilePic} name="Lana" profit="+6,103" ROI="+89"
-            />
+        <img src={flagIcon} className='flag-icon' alt="pic" />
+        <img src={groupIcon} alt="pic"  className='group-icon' />
+       
+        <ImageCard  avatar={ProfilePic} name="Lana" profit="+6,103" ROI="+89"
+        />
 
 
-                <img src={user} alt="" className='user'  />
+            <img src={user} alt="" className='user'  />
 
 
         

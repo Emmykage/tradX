@@ -1,6 +1,6 @@
 import MetaTrader5Landing from './metaTrader5/MetaTrader5Landing'
 import TradingExperience from '../../../../components/experience/TradingExperience'
-import imageBgAdamLp from '../../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash.png'
+import imageBgAdamLp from '../../../../assets/trading/adam-meta-trader-5.png'
 import PerksCard from 'components/perksCard/PerksCard'
 import MetaTradingComponent from '../../../../components/metaTrading/MetaTrading'
 import CTABanner from '../../../../components/call-to-action/CTABanner'
@@ -10,6 +10,7 @@ import RegisterBlock from 'pages/public/markets/components/registerBlock/Registe
 import Footer from 'pages/public/home/main/footer/Footer'
 
 import {NeedMoreInfoData} from './data'
+import NavRoute from 'components/tradingNavIndicator/NavRoute'
 
 const MetaTrading5 = () => {
     const items = [{
@@ -30,17 +31,16 @@ const MetaTrading5 = () => {
   return (
     <div className='tradingContainer'>
         <Navbar/>
-    <MetaTrader5Landing/>
-      <div className="container">
+        <NavRoute location="Meta-Trader 5"/>
+        <MetaTrader5Landing/>
         <TradingExperience  
             image={imageBgAdamLp} 
             title={"Elevate your trading experience with MetaTrader 5"} 
             text={"Use your markets.com account to seamlessly install MT5 and start trading right away in your desktop markets.com platform. The video tutorial above can walk you through the process. Explore here step-by-step instructions on adding a MetaTrader 5 trading account. Don't have a markets.com account yet? No worries, visit the markets.com Sign Up page and provide the required information to quickly complete full registration. "}
             button={true}
             />
-        </div>
-        <div className='container'>
 
+        <h2>Benefits of MT5</h2>
 
         <div className="cardWrapper">
             {items.map(item => (
@@ -54,15 +54,11 @@ const MetaTrading5 = () => {
 
         </div>
 
-        <div className='container'>
-            
-            <MetaTradingComponent title='Trade using MT4 with tradex.io'
-                body='You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms'
-                type= "mt5"
-            />
-        </div>
+        <MetaTradingComponent title='Trade using MT4 with tradex.io'
+            body='You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms'
+            type= "mt5"
+        />
         <CTABanner/>
-        </div>
         <NeedMoreInfo items={
             NeedMoreInfoData
         } />

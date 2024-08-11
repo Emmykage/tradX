@@ -2,25 +2,25 @@
     display: flex;
     padding: 12px;
     color: white;
-    // background-color: red;
+    width: 90%;
+    gap: 50px;
+    margin: auto;
     @media (max-width:720px) {
     flex-direction: column;
-    .imageBackdrop{
-        display: none;
-    }
-        
+    
     }
     .imageBackdrop{
-        flex-basis: 50%;
+        flex: 1;
 
         div{
-            // background-color: red;
             position: relative;
-            max-width: 500px;
-            margin-left: auto;
+            width: 100%;
+            text-align: right;
+
+
             img{
-                width: 350px;
-                height: 350px;
+                max-width: 450px;
+                width: 100%;
                 border-radius: 14px;
     
             }

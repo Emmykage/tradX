@@ -1,10 +1,17 @@
 .metaTradingWrapper{
+    width: 100%;
+    background: #131B2E;
+
+   > div{
     color: white;
-    width: 90%;
+        width: 90%;
+
     margin:18px auto;
     justify-content: space-between;
     display: flex;
     align-items: center;
+
+
     @media (max-width: 720px){
         flex-direction: column;
     }
@@ -32,4 +39,5 @@
 
         }
     }
+}
 }
