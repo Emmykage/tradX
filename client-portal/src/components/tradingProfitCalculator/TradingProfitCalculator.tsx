@@ -1,5 +1,5 @@
 import React from 'react'
-import './TradingProfitCalculator.scss'
+import './tradingProfitCalculator.scss'
 
 
 interface TradingprofitPrps{
