@@ -1,9 +1,33 @@
    .copyTradingWrapper{
+
+    .activityContainer{
+        .btnWrapper{
+
+  
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        button{
+            padding: 12px 42px;
+            border-radius: 29px;
+            background-color: transparent;
+            color: red;
+            border: 1px solid #E6E6EF
+
+        }
+        &.active{
+            border: none;
+        }
+    }
+    }
     h2{
         color: white;
         text-align: center;
         font-size: 34px;
-        margin: 14px auto;
+        margin: 34px auto;
     }
 
     .benefitCardWrapper{

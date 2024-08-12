@@ -7,13 +7,11 @@ import RegisterBlock from 'pages/public/markets/components/registerBlock/Registe
 import UsingOurCfd from 'pages/public/markets/tradingPage/usingOurCfd/UsingOurCfd'
 import React from 'react'
 import { NeedMoreInfoData } from './data'
-import NavRoute from 'components/tradingNavIndicator/NavRoute'
 
 const ExpirationDates = () => {
   return (
     <div className='tradingContainer'>
     <Navbar/>
-    <NavRoute location="Expiration Date"/>
     <TradeTable/>
     <TradCalc/>
     <UsingOurCfd/>

@@ -10,7 +10,6 @@ import { NeedMoreInfoData } from '../platform/data'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
-import NavRoute from 'components/tradingNavIndicator/NavRoute'
 import ForexCalculator from 'components/forexCalculator/ForexCalculator'
 import calculator from '../../../../assets/trading/adam-calculator.png'
 import MarginCall from './marginCall/MarginCall'
@@ -20,7 +19,6 @@ const ForexMarginCalculator = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
-      <NavRoute location='Forex Margin Calculator'/>
         <TradCalc/>
 
         <ForexCalculator 

@@ -1,7 +1,6 @@
 import MetaTrader4Landing from './metaTrader4Landing/MetaTrader4'
 import TradingExperience from '../../../../components/experience/TradingExperience'
 import imageBgEve from '../../../../assets/trading/meta-trader-4-eve-img.png'
-import PerksCard from 'components/perksCard/PerksCard'
 import MetaTradingComponent from '../../../../components/metaTrading/MetaTrading'
 import CTABanner from '../../../../components/call-to-action/CTABanner'
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'

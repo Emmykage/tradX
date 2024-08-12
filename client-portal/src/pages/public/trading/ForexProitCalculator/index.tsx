@@ -9,7 +9,6 @@ import UkIFlag from '../../../../assets/trading/UK.png'
 import TradeAnalyzer from '../CommoditiesProfitCal/tradeAnalyzer/TradeAnalyzer'
 import '../trading.scss'
 import Calculator from '../../../../assets/trading/adam-calculator.png'
-import NavRoute from 'components/tradingNavIndicator/NavRoute'
 import ForexCalculator from 'components/forexCalculator/ForexCalculator'
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 import TradCalc from 'components/tradCalc/TradCalc'
@@ -21,7 +20,6 @@ const ForexProfitCalculator = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
-      <NavRoute location='Forex Profit Calculator'/>
       <TradCalc/>
 
       <ForexCalculator mainImg={Calculator} 

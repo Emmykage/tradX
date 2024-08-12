@@ -10,7 +10,6 @@ import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreI
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
 import { NeedMoreInfoData } from './data'
-import NavRoute from 'components/tradingNavIndicator/NavRoute'
 
 import traderBg from "../../../../assets/trading/busy-trader.png"
 import ForexCalculator from 'components/forexCalculator/ForexCalculator'
@@ -20,9 +19,7 @@ const CommoditiesProfitCalc = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
-      <NavRoute location='Commodities Profit Calculator'/>
       <TradCalc/>
-
 
         <ForexCalculator mainImg={traderBg} 
 

@@ -10,7 +10,6 @@ import RegisterBlock from 'pages/public/markets/components/registerBlock/Registe
 import Footer from 'pages/public/home/main/footer/Footer'
 
 import {NeedMoreInfoData} from './data'
-import NavRoute from 'components/tradingNavIndicator/NavRoute'
 import TradingCardInfo from 'components/tradingCardInfo/TradingCardInfo'
 
 const MetaTrading5 = () => {
@@ -32,7 +31,6 @@ const MetaTrading5 = () => {
   return (
     <div className='tradingContainer'>
         <Navbar/>
-        <NavRoute location="Meta-Trader 5"/>
         <MetaTrader5Landing/>
         <TradingExperience  
             image={imageBgAdamLp} 

@@ -8,36 +8,14 @@ import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
 import Footer from 'pages/public/home/main/footer/Footer'
 import { NeedMoreInfoData } from './data'
-import NavRoute from 'components/tradingNavIndicator/NavRoute'
 import BenefitList from './tradeBenefits/BenefitCard'
 import './trackTrade.scss'
+import { useState } from 'react'
+import Follower from './followers/Follower'
+import CopyTrader from './copyTraders/CopyTrader'
 
 const TrackTrades = () => {
-    const  items=[{
-        title: "Savvy Traders Automation",
-        text: "Get instant trading signals and follow trades to access potential market opportunities.",
-        icon: "/trading-images/automation-icon.png"
-    },{
-        title: "Portfolio Diversification",
-        text: "Get instant trading signals and follow trades to access potential market opportunities.",
-        icon: "/trading-images/Graphs.png"
-    },{
-        title: "Real-Time Signals",
-        text: "Explore different approaches to trading for a more balanced experience with top performing strategies.",
-        icon: "/trading-images/podcast-icon.png"
-    },{
-        title: "Real-Time Signals",
-        text: "Explore different approaches to trading for a more balanced experience with top performing strategies.",
-        icon: "/trading-images/podcast-icon.png"
-    },{
-        title: "Real-Time Signals",
-        text: "Explore different approaches to trading for a more balanced experience with top performing strategies.",
-        icon: "/trading-images/briefcase-icon.png"
-    },{
-        title: "Wide Variety of Markets",
-        text: "Explore potential trading opportunities through CFDs on Forex, Shares, Crypto, and more.",
-        icon: "/trading-images/Market.png"
-    },]
+    
 
     
     const benefits = [{
@@ -58,24 +36,35 @@ const TrackTrades = () => {
             },
             {     title: "Global Markets Access",
                 text: "Trade a variety of instruments anytime."}]
+
+    const [activity, setActivity] = useState("follower")
+    const [active, SetActive] = useState('')
+    const handleClick = (btn: string) => {
+      setActivity(btn)
+    }
   return (
     <div className='tradingContainer copyTradingWrapper'>
         <Navbar/>
-        <NavRoute location='Copy Trading'/>
         <TrackTrade />
         <CopyTrade />
-            <h2>Follower Perks</h2>
-            <div className="cardWrapper">
-                {items.map(item => (
-                        <PerksCard 
-                        icon={item.icon}
-                        cardTitle={item.title}
-                        type='follower'
-                        cardText={item.text}
-                      />
-                ))}
 
+
+        <div className='activityContainer'>
+            <div className='btnWrapper'>           
+                <button onClick={()=> handleClick("follower")} className={active}> follow</button>
+                <button onClick={()=> handleClick("copy-trader")} className={active}>copy Trader </button>
             </div>
+
+            {activity == "follower" ? (<>
+            <Follower/>
+                
+            </>) : (<>
+            <CopyTrader/>
+            </>)}     
+
+
+        </div>
+           
         <TradingSteps
         step1="Sign up for a
         Tradex.io account"
