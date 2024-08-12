@@ -475,15 +475,8 @@ const MainChart: React.FunctionComponent<any>  = forwardRef(({ data: newData,col
   useEffect(() => {
     // @ts-ignore
     if(!isObjectEmpty(socketData)){
-      let newPrice = Math.random() * (110 - 100) + 100;
-      newPrice = Math.ceil(newPrice);
-      let x = Math.random() * 100;
-
-      const data = {
-        ...newData[newPrice],
-        time: newData[newPrice].time + Math.ceil(x)
-      };
-      // seriesRef.current.update(data);
+      
+      seriesRef.current.update(socketData);
     };
     
   }, [socketData]);
