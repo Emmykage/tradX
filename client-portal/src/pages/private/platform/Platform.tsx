@@ -35,7 +35,7 @@ import { UserSliceState } from "@store/slices/user";
 import { AreaChart } from "./MainChart/AreaChart";
 import {  isArrayEmpty, isObjectEmpty, timeScaleMenu } from "utils/utils";
 import DropdownMenu from "components/dropdownMenu/DropdownMenu";
-import BarChart from "./MainChart/BarChart";
+// import BarChart from "./MainChart/BarChart";
 import { useNavigate } from "react-router-dom";
 import { ColorType, createChart, CrosshairMode, IChartApi, LineStyle, UTCTimestamp } from "lightweight-charts";
 import useSocketConnect from "hooks/useSocketConnect";
@@ -69,14 +69,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const storedScale = localStorage.getItem("scale");
   const { wsTicket } = useAppSelector((state) => state.user);
   // Chart refs and constants
-  const chartContainerRef = useRef<HTMLDivElement>(null);
-  const chartRef = useRef<IChartApi>();
-  const seriesRef = useRef(null);
-
-  // Bar chart
-  const barChartContainerRef = useRef<HTMLDivElement>(null);
-  const barChartRef = useRef<IChartApi>();
-  const barChartseriesRef = useRef(null);
+  let chartContainerRef = useRef<HTMLDivElement>(null);
+  let chartRef = useRef<IChartApi>();
+  let seriesRef = useRef(null);
 
   const { data: socketData, socket } = useSocketConnect(wsTicket as string);
   const colors = {
@@ -159,17 +154,23 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       width: chartContainer?.clientWidth,
       height: 300,
     });
- 
+    let candlestickSeries = null;
     //  candle series 
-    // let barChart = JSON.parse(JSON.stringify(chart));
-    const candlestickSeries = chart.addCandlestickSeries({
-      upColor: 'green',
-      downColor: 'red',
-      borderDownColor: 'red',
-      borderUpColor: 'green',
-      wickDownColor: 'red',
-      wickUpColor: 'green',
-    });
+    if(selectedChart == 'candlesticks'){
+      candlestickSeries = chart.addCandlestickSeries({
+        upColor: 'green',
+        downColor: 'red',
+        borderDownColor: 'red',
+        borderUpColor: 'green',
+        wickDownColor: 'red',
+        wickUpColor: 'green',
+      });
+    }else{
+      candlestickSeries = chart.addBarSeries({
+        upColor: 'green',
+        downColor: 'red'
+      });
+    }
 
     // @ts-ignore
     seriesRef.current = candlestickSeries;  
@@ -212,18 +213,16 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       );
       resizeObserver.disconnect();
       chartRef.current?.remove();
-      barChartRef?.current?.remove();
     };
  
-  }, []);
+  }, [selectedChart]);
 
   useEffect(() => {
         // @ts-ignore
     if(!isObjectEmpty(socketData)){
       // @ts-ignore
       seriesRef?.current?.update(socketData);
-      // @ts-ignore
-      barChartseriesRef?.current?.update(socketData);
+
     };
     
   }, [socketData]);
