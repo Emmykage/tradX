@@ -53,13 +53,15 @@
             display: flex;
             gap: 10px;
             margin: 10px;
+            align-items: center ;
+
             padding: 8px;
             span{
                 width: 27px;
                 flex-shrink: 0;
                 height: 27px;
                 border-radius: 100%;
-                background-color: red;
+                background: linear-gradient(180deg, #FF1802 -21.25%, rgba(255, 24, 2, 0) 130%);
                 display: flex;
                 justify-content: center;
                 align-items: center;

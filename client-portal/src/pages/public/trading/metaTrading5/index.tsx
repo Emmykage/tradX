@@ -8,7 +8,7 @@ import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
-
+import "./meta-5.scss"
 import {NeedMoreInfoData} from './data'
 import TradingCardInfo from 'components/tradingCardInfo/TradingCardInfo'
 
@@ -29,7 +29,7 @@ const MetaTrading5 = () => {
         icon: "/trading-images/meta-icon-3-bg.png"
     }]
   return (
-    <div className='tradingContainer'>
+    <div className='tradingContainer meta-5'>
         <Navbar/>
         <MetaTrader5Landing/>
         <TradingExperience  

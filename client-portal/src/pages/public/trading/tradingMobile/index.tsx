@@ -7,6 +7,7 @@ import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreI
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import {NeedMoreInfoData} from './data'
 import Footer from 'pages/public/home/main/footer/Footer'
+import UserExp from './UserXp/UserXp'
 const TradingOnTheGo = () => {
   return (
     <div className='tradingContainer'>
@@ -19,6 +20,7 @@ const TradingOnTheGo = () => {
           text={"The markets.com app offers a streamlined interface that executes orders quickly and reliably. Trade the markets your way. With sleek, uncluttered and powerful technology."}
           button={false}
         />
+        <UserExp />
         <JoinInThreeSteps/>
         <NeedMoreInfo items={NeedMoreInfoData} />
         <RegisterBlock/>

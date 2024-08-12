@@ -6,7 +6,7 @@ import CTABanner from '../../../../components/call-to-action/CTABanner'
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
-
+import './meta-4.scss'
 import {NeedMoreInfoData} from './data'
 import TradingCardInfo from 'components/tradingCardInfo/TradingCardInfo'
 
@@ -27,7 +27,7 @@ const MetaTrading4 = () => {
         icon: "/trading-images/meta-icon-3-bg.png"
     }]
   return (
-    <div className='tradingContainer'>
+    <div className='tradingContainer meta-4'>
         <MetaTrader4Landing/>
         <TradingExperience  
         image={imageBgEve} 

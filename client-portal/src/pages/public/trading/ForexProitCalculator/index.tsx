@@ -4,6 +4,7 @@ import TradingProfitCalculator from '../../../../components/tradingProfitCalcula
 import USUKICon from '../../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
 import CanIcon from '../../../../assets/trading/canadaflagicon.png'
 import BgImage from '../../../../assets/trading/adam-tradingProfit.png'
+import BgImageHandleGraph from '../../../../assets/trading/adam-nowakowski-hand-graph-unsplash 2.png'
 import ProfitMarginGuide from '../profitMarginGuide/ProfitMarginGuide'
 import UkIFlag from '../../../../assets/trading/UK.png'
 import TradeAnalyzer from '../CommoditiesProfitCal/tradeAnalyzer/TradeAnalyzer'
@@ -37,6 +38,7 @@ const ForexProfitCalculator = () => {
              icon1={USUKICon}
              image={BgImage}
              icon2={CanIcon}/>
+             
 
 
       <ProfitMarginGuide
@@ -44,7 +46,7 @@ const ForexProfitCalculator = () => {
         text1='Profit in forex trading is calculated by subtracting the entry price from the exit price of a trade. This can be in either a positive or negative value depending on whether the trade resulted in a loss or gain. Forex traders will look to open a trade at a lower price and close it at a higher price, in order to turn a profit'
         text2="However, you don't need to do these calculations manually as tradex.io offers a commodity calculator that does the job for you. You simply need to input the necessary information, and the calculator will provide you with the estimate profit or loss amount. This makes the process simple and convenient, allowing you to focus on making informed trading decisions."
         icon1={USUKICon}
-        image={BgImage}
+        image={BgImageHandleGraph}
         icon2={UkIFlag}
         />
          <TradeAnalyzer />

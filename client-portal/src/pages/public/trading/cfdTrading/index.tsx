@@ -5,6 +5,7 @@ import RegisterBlock from "pages/public/markets/components/registerBlock/Registe
 import CfdTradMuchMore from "pages/public/markets/tradingPage/cfdTradMuchMore/CfdTradMuchMore"
 import CfdTradWhyTrade from "pages/public/markets/tradingPage/cfdTradWhyTrade/CfdTradWhyTrade"
 import { NeedMoreInfoData } from "./data"
+import JoinInThreeSteps from "pages/public/markets/components/joinInThreeSteps/JoinInThreeSteps"
 
 const CFDTrading = () => {
   return (
@@ -12,6 +13,8 @@ const CFDTrading = () => {
     <Navbar/>
     <CfdTradWhyTrade/>
     <CfdTradMuchMore/>
+    <JoinInThreeSteps/>
+
     <NeedMoreInfo items={NeedMoreInfoData}/>
     <RegisterBlock/>
     <Footer/>
