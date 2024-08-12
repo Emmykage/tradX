@@ -7,7 +7,8 @@ const PrivateRoute = () => {
   //   is_walkthrough: false, 
   // };
   // console.log(user);
-  return !user?.is_walkthrough ? <Outlet /> : <Navigate to="/platform" replace />;
+  // return !user?.is_walkthrough ? <Outlet /> : <Navigate to="/platform" replace />;
+   return <Outlet />;
 };
 
 export default PrivateRoute;

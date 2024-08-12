@@ -108,10 +108,14 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   // candle series chart data formatting 
 
-  const newCandleData= initialCandleData.map((d:any)=>{
-    return {time: d[0]/1000, open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
+  const newCandleData= initialCandleData.map((d:any, _i: number)=>{
+    var t = new Date();
+    t.setSeconds(t.getSeconds() + _i);
+    // return {time: d[0]/1000, open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
+    return {time: Date.parse(t), open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
   })
-  
+
+
 
 
   const isWalkthroughSkipped = user?.is_walkthrough ?? true;

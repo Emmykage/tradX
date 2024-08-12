@@ -47,9 +47,9 @@ const WelcomeSteps = () => {
 
   useEffect(() => {
     const savedStep = cookies.step;
-    if (savedStep) {
-      setStep(Number(savedStep));
-    }
+    // if (savedStep) {
+    //   setStep(Number(savedStep));
+    // }
   }, []);
 
   useEffect(() => {
