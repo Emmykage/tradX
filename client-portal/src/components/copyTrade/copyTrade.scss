@@ -16,6 +16,7 @@
     
   
     .copyTrade-info{
+
         flex-basis: 60%;
         padding: 20px 0;
         div{
@@ -42,13 +43,18 @@
         }
     }
     @media (max-width: 920px) {
+        order: 1;
         div{
             margin: auto;
         }
     }
 
+
     }
    .copy-graph{
+    @media (max-width: 920px) {
+        order: 2;
+        }
 
     .group-icon{
         top: 60%;
@@ -82,12 +88,16 @@
         top: 5%;
         left: 200px;
         position: absolute;
-        background: linear-gradient(deg(180), #2871FE, #2871FE)
-        ;
+        background: linear-gradient(deg(180), #2871FE, #2871FE);
         font-size: 10px;
  
         width: 36px;
         height: 36px;
+        @media (max-width: 720px) {
+        
+            left: 145px;
+    }
+        
 
 
 
@@ -98,13 +108,7 @@
     padding: 80px 0 ;
 
     text-align: left;
-    
-    // @media (max-width: 720px) {
-    //     display: none;;
-    // }
-
-    img.user{
-        // position: absolute;
+     img.user{
         border-radius: 20px;
         height: 100%;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -126,6 +130,9 @@
     @media (max-width: 720px) {
         
         left: 245px;
+}
+@media (max-width: 520px) {        
+    left: 210px;
 }
     .pic-wrapper{
         margin: auto;

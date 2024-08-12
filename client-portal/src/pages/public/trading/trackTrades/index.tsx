@@ -2,7 +2,7 @@ import TrackTrade from './trackTrade/TrackTrade'
 import PerksCard from 'components/perksCard/PerksCard'
 import TradingSteps from '../../../../components/tradingSteps/TradingSteps'
 import ProfileCard from './profileCard/ProfileCard'
-import CopyTrade from './copyTrade/CopyTrade'
+import CopyTrade from '../../../../components/copyTrade/CopyTrade'
 import '../trading.scss'
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
@@ -64,7 +64,6 @@ const TrackTrades = () => {
         <NavRoute location='Copy Trading'/>
         <TrackTrade />
         <CopyTrade />
-        {/* <div className="container"> */}
             <h2>Follower Perks</h2>
             <div className="cardWrapper">
                 {items.map(item => (
@@ -77,7 +76,6 @@ const TrackTrades = () => {
                 ))}
 
             </div>
-        {/* </div> */}
         <TradingSteps
         step1="Sign up for a
         Tradex.io account"

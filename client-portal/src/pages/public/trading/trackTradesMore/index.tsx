@@ -3,13 +3,15 @@ import TrackTrade from './trackTrade/TrackTrade'
 import PerksCard from 'components/perksCard/PerksCard'
 import TradingSteps from '../../../../components/tradingSteps/TradingSteps'
 import ProfileCard from './profileCard/ProfileCard'
-import CopyTrade from './copyTrade/CopyTrade'
 import '../trading.scss'
 import './trackTrade.scss'
 import BenefitList from './tradeBenefits/BenefitCard'
-import { HomeIcon, RightArrowIcon1 } from 'assets/icons'
 import NavRoute from 'components/tradingNavIndicator/NavRoute'
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
+import CopyTrade from 'components/copyTrade/CopyTrade'
+import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
+import Footer from 'pages/public/home/main/footer/Footer'
+import { NeedMoreInfoData } from './data'
 
 const CopyTradingMore = () => {
     const  items=[{
@@ -96,6 +98,8 @@ const CopyTradingMore = () => {
 
             </div>
         </div>
+        <NeedMoreInfo items={NeedMoreInfoData}/>
+        <Footer/>
     </div>
   )
 }

@@ -1,22 +1,21 @@
 import React from 'react'
 import './copyTrade.scss'
-import user from '../../../../../assets/trading/adam-nowakowski-D4LDw5eXhgg.png'
-import flagIcon from '../../../../../assets/trading/flagIcon.png'
-import groupIcon from '../../../../../assets/trading/Group_3539.png'
-import ProfilePic from '../../../../../assets/trading/profile-pic.jpeg'
+import user from '../../assets/trading/adam-nowakowski-D4LDw5eXhgg.png'
+import flagIcon from '../../assets/trading/flagIcon.png'
+import groupIcon from '../../assets/trading/Group_3539.png'
+import ProfilePic from '../../assets/trading/profile-pic.jpeg'
 const CopyTrade = () => {
   return (
     <div className='copyTrade-wrapper'>
-
         <div className='copy-graph'> 
-        <img src={flagIcon} className='flag-icon' alt="pic" />
-        <img src={groupIcon} alt="pic"  className='group-icon' />
-       
-        <ImageCard  avatar={ProfilePic} name="Lana" profit="+6,103" ROI="+89"
-        />
+            <img src={flagIcon} className='flag-icon' alt="pic" />
+            <img src={groupIcon} alt="pic"  className='group-icon' />
+        
+            <ImageCard  avatar={ProfilePic} name="Lana" profit="+6,103" ROI="+89"
+            />
 
 
-            <img src={user} alt="" className='user'  />
+                <img src={user} alt="" className='user'  />
 
 
         
