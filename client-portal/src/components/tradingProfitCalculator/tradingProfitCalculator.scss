@@ -11,12 +11,24 @@
     }
     .imageBackdrop{
         flex: 1;
+        @media (max-width: 720px) {
+           margin-right: auto !important; 
+        }
 
-        div{
+       > div{
             position: relative;
-            width: 100%;
-            text-align: right;
+            width: 80%;
+            // text-align: right;
+            max-width: 400px;
+            // margin-left: auto;
+            margin-right: auto !important; 
 
+            @media (max-width: 720px) {
+                // order: 2;
+               margin-right: auto !important; 
+            }
+
+            
 
             img{
                 max-width: 450px;
@@ -26,11 +38,10 @@
             }
             .icon-1{
                 position: absolute;
-                top: 0px;
-                transform: translate(-50%, -50%);
-                left: 350px;
-                width: 90px;
-                height: 90px;
+                top: -10%;
+                right: -40px;
+                // width: 90px;
+                width: 22%;
                 z-index: 1;
 
 
@@ -38,10 +49,10 @@
 
             .icon-2{
                 position: absolute;
-                top: 30px;
-                left: 400px;
-                width: 70px;
-                height: 70px;
+                top: 18%;
+                right: -25%;
+                width: 16%;
+                // height: 70px;
                 transform: translate(-50%, -50%);
 
 

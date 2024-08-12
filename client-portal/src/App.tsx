@@ -27,10 +27,11 @@ import Loading from "components/loading";
 import { useCookies } from "react-cookie";
 import NotFoundPage from "pages/private/platform/platformMenus/notFound/NotFoundPage";
 import Trading from "pages/public/trading/Trading";
-import ForexCalculator from "pages/public/trading/ForexProitCalculator/forexCalculator/ForexCalculator";
+// import ForexCalculator from "pages/public/trading/ForexProitCalculator/forexCalculator/ForexCalculator";
 import TradingConditions from "pages/public/trading/TradingConditions/Index";
 import CFDTrading from "pages/public/trading/cfdTrading";
 import ForexProfitCalculator from "pages/public/trading/ForexProitCalculator";
+import CopyTradingMore from "pages/public/trading/trackTradesMore";
 
 
 
@@ -152,6 +153,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/trading/metaTradingFour" element={<MetaTradingFour />} /> 
         <Route path="/trading/metaTradingFive" element={<MetaTradingFive />} /> 
         <Route path="/trading/copyTrading" element={<CopyTrading />} /> 
+        <Route path="/trading/copyTradingMore" element={<CopyTradingMore />} /> 
         <Route path="/trading/cfdTradingCalculator" element={<CFDTradingCalculator />} /> 
         <Route path="/trading/commoditesProfitCalculator" element={<CommoditiesProfitCalculator />} /> 
         <Route path="/trading/forexProfitCalculator" element={<ForexProfitCalculator />} />

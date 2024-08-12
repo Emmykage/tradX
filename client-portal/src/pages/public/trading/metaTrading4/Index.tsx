@@ -9,23 +9,23 @@ import Footer from 'pages/public/home/main/footer/Footer'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
 
 import {NeedMoreInfoData} from './data'
-import NavRoute from 'components/tradingNavIndicator/NavRoute'
+import TradingCardInfo from 'components/tradingCardInfo/TradingCardInfo'
 
 const MetaTrading4 = () => {
     const items = [{
         title: "Algorithmic Trading",
         text: "Automate your trading with Expert Advisors that you can plug-in to the platform",
-        icon: "/trading-images/Arrow.png"
+        icon: "/trading-images/meta-icon-1-bg.png"
     },
     {
         title: "Fast Execution, Low Spreads",
         text: "Execute trades fast and with low costs based on our pricing and trade infrastructure",
-        icon: "/trading-images/Clock.png"
+        icon: "/trading-images/meta-icon-2-bg.png"
     },
     {
         title: "Intuitive Charts",
         text: "Fully customisable charts and a range of technical indicators",
-        icon: "/trading-images/Eye.png"
+        icon: "/trading-images/meta-icon-3-bg.png"
     }]
   return (
     <div className='tradingContainer'>
@@ -41,11 +41,11 @@ const MetaTrading4 = () => {
             <h2>Benefits of MT4</h2>
             <div className="cardWrapper">
                 {items.map(item => (
-                    <PerksCard 
+                    <TradingCardInfo 
                     icon={item.icon}
                     cardTitle={item.title}
                     cardText={item.text}
-                    type='trade'
+                    // type='trade'
                     />
                 ))}
             </div>

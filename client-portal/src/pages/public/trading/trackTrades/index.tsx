@@ -59,12 +59,12 @@ const TrackTrades = () => {
             {     title: "Global Markets Access",
                 text: "Trade a variety of instruments anytime."}]
   return (
-    <div className='tradingContainer'>
+    <div className='tradingContainer copyTradingWrapper'>
         <Navbar/>
         <NavRoute location='Copy Trading'/>
         <TrackTrade />
         <CopyTrade />
-        <div className="container">
+        {/* <div className="container"> */}
             <h2>Follower Perks</h2>
             <div className="cardWrapper">
                 {items.map(item => (
@@ -77,7 +77,7 @@ const TrackTrades = () => {
                 ))}
 
             </div>
-        </div>
+        {/* </div> */}
         <TradingSteps
         step1="Sign up for a
         Tradex.io account"

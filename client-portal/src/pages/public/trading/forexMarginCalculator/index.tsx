@@ -2,12 +2,8 @@ import CostExplanation from '../../../../components/tradingCostExplanation/CostE
 import TradeAnalyzer from '../CommoditiesProfitCal/tradeAnalyzer/TradeAnalyzer'
 import USUKICon from '../../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
 import CanIcon from '../../../../assets/trading/canadaflagicon.png'
-import BgImage from '../../../../assets/trading/dark-arrow.png'
 import GraphBg from '../../../../assets/trading/graphBg.png'
 import TradingProfitCalculator from '../../../../components/tradingProfitCalculator/TradingProfitCalculator'
-import UkIFlag from '../../../../assets/trading/UK.png'
-import ProfitMarginGuide from '../profitMarginGuide/ProfitMarginGuide'
-import Leaflet from '../../../../assets/trading/leaflet.png'
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 import TradCalc from 'components/tradCalc/TradCalc'
 import { NeedMoreInfoData } from '../platform/data'
@@ -18,6 +14,7 @@ import NavRoute from 'components/tradingNavIndicator/NavRoute'
 import ForexCalculator from 'components/forexCalculator/ForexCalculator'
 import calculator from '../../../../assets/trading/adam-calculator.png'
 import MarginCall from './marginCall/MarginCall'
+import HowIsMarginCal from './howIsForexMarginCal/HowIsMarginCal'
 
 const ForexMarginCalculator = () => {
   return (
@@ -44,6 +41,7 @@ const ForexMarginCalculator = () => {
         </div>
 
         <MarginCall/>
+        <HowIsMarginCal/>
         <TradeAnalyzer/>
         <NeedMoreInfo items={NeedMoreInfoData}/>
         <RegisterBlock/>

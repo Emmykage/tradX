@@ -12,6 +12,9 @@ const MarginCall = () => {
        <div className='imageBackdrop'>
            <div>         
             <img src={BgImage} alt="background image" /> 
+            <img src={UkIFlag} alt="" className='icon-2' />
+            <img src={Leaflet} alt="" className='icon-1' />
+
        
 
            </div>

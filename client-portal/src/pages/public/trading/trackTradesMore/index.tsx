@@ -4,14 +4,14 @@ import PerksCard from 'components/perksCard/PerksCard'
 import TradingSteps from '../../../../components/tradingSteps/TradingSteps'
 import ProfileCard from './profileCard/ProfileCard'
 import CopyTrade from './copyTrade/CopyTrade'
-import Navbar from 'pages/public/home/navbar/Navbar'
 import '../trading.scss'
 import './trackTrade.scss'
 import BenefitList from './tradeBenefits/BenefitCard'
 import { HomeIcon, RightArrowIcon1 } from 'assets/icons'
 import NavRoute from 'components/tradingNavIndicator/NavRoute'
+import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 
-const TrackTradesExt = () => {
+const CopyTradingMore = () => {
     const  items=[{
         text: "Earn potential income as a top signal provider.",
         icon: "/trading-images/wallet-icon.png"
@@ -20,7 +20,7 @@ const TrackTradesExt = () => {
         text: "Receive up to 50% profit from followers' trades.",
         icon: "/trading-images/People.png"
     },{
-        text: "Explore different approaches to trading for a more balanced experience with top performing strategies.",
+        text: "Flexibility to set your own performance fees.",
         icon: "/trading-images/commission-discounts-icon.png"
     },{
         text: "Automated monthly payments for potentially profitable followers' trades.",
@@ -65,7 +65,6 @@ const TrackTradesExt = () => {
                 {items.map(item => (
                         <PerksCard 
                         icon={item.icon}
-                        // cardTitle={item.title}
                         type='trade'
             
                         cardText={item.text}
@@ -101,4 +100,4 @@ const TrackTradesExt = () => {
   )
 }
 
-export default TrackTradesExt
+export default CopyTradingMore

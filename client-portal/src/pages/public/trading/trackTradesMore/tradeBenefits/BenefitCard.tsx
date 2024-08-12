@@ -4,8 +4,6 @@ import "./benefitCard.scss"
 const BenefitList = ({title, text} : {title: string , text: string}) => {
   return (
     <div className='benefitList'>
-        {/* <ul> */}
-            {/* <li> */}
                 <div>
 
                     <CheckIcon2/>
@@ -13,8 +11,6 @@ const BenefitList = ({title, text} : {title: string , text: string}) => {
 
                     <h3>{title}</h3>
                     <p>{text}</p>
-            {/* </li> */}
-        {/* </ul> */}
     </div>
   )
 }
