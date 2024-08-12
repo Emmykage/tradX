@@ -10,6 +10,7 @@ import {
   } from "./data";
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
+import SimpleTrade from './simpleTrade/SimpleTrade'
 
 const TradingPlatform = () => {
     const items = [{
@@ -42,6 +43,10 @@ const TradingPlatform = () => {
                 icon={item.icon} /> 
             ))}
         </div>
+
+        <SimpleTrade/>
+        
+
         <JoinInThreeSteps/>
         <NeedMoreInfo items={NeedMoreInfoData} />
         <RegisterBlock/>
