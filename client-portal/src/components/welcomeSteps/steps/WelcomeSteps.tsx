@@ -124,7 +124,7 @@ const WelcomeSteps = () => {
           
         </div>
       )}
-      {step > 2 && (
+      {/* {step > 2 && (
         <div className="image_slide">
           <img
             className="image"
@@ -137,9 +137,9 @@ const WelcomeSteps = () => {
             alt=""
           />
         </div>
-      )}
+      )} */}
 
-      <div className="content">
+      <div className="content relative">
         <WelcomeHeader step={step} setStep={setStep} />
         {renderStep()}
       </div>

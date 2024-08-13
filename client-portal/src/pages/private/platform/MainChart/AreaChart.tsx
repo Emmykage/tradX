@@ -46,6 +46,31 @@ export const AreaChart = ({chartData,  chartScale, selectedTimeScale }: any) => 
             lineWidth: 1
         });
         areaSeries.setData(chartData);
+
+        // const myMarkers = [{ 
+        //   time: chartData[chartData.length - 40].time, 
+        //   position: 'aboveBar', 
+        //   color: '#f68410', 
+        //   shape: 'circle', 
+        //   text: 'A'
+        //  }, /* more series markers... */
+        // ];
+        
+        
+        // // ... some time later
+        
+        // // create another marker data point
+        // const myNewMarker = {
+        //   time: chartData[chartData.length - 20].time,
+        //   position: 'onsBar',
+        //   color: '#f68410',
+        //   shape: 'circle',
+        //   text: 'B'
+        // };
+        
+        // // Create a new array with the existing markers and the new marker
+        // // and use it within setMarkers
+        // areaSeries.setMarkers([...myMarkers, myNewMarker]);
     }, 
     []);
 
@@ -63,28 +88,29 @@ export const AreaChart = ({chartData,  chartScale, selectedTimeScale }: any) => 
     //     return () => resizeObserver.current.disconnect();
     //   }, []);
 
-    useEffect(() => {
-        chartRef.current.timeScale().applyOptions({
-            barSpacing: chartScale,
+    // useEffect(() => {
+    //     chartRef.current.timeScale().applyOptions({
+    //         barSpacing: chartScale,
             
-        });
+    //     });
           
-    }, [chartScale]);
+    // }, [chartScale]);
 
-    useEffect(() => {
-        let time = new Date();
-        const to = new Date();
-        time.setSeconds(time.getSeconds() - selectedTimeScale?.number);
-        // chartRef.current.timeScale().setVisibleRange({
-        //     from: +time,
-        //     to: +to
-        // });
-        chartRef.current.timeScale().resetTimeScale({
-            from: +time,
-            to: +to
-        })
+    // useEffect(() => {
+    //     let time = new Date();
+    //     const to = new Date();
+    //     time.setSeconds(time.getSeconds() - selectedTimeScale?.number);
+    //     // chartRef.current.timeScale().setVisibleRange({
+    //     //     from: +time,
+    //     //     to: +to
+    //     // });
+    //     chartRef.current.timeScale().resetTimeScale({
+    //         from: +time,
+    //         to: +to
+    //     })
           
-    }, [selectedTimeScale]);
+    // }, [selectedTimeScale]);
+ 
 
     return(
         <div style={{ position: 'relative', height: '100%' }}>
