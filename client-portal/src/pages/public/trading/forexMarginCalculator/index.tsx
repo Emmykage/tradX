@@ -19,7 +19,7 @@ const ForexMarginCalculator = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
-        <TradCalc/>
+        <TradCalc withRoute titleHeader='Forex Margin Calculator'/>
 
         <ForexCalculator 
         mainImg={calculator}

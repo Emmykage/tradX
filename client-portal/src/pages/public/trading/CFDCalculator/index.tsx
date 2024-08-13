@@ -11,7 +11,7 @@ const CFDCalculatr = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
-      <TradCalc/>
+      <TradCalc withRoute />
       <GetStarted />
       <CostExplanation/>
       <NeedMoreInfo items={NeedMoreInfoData}/>

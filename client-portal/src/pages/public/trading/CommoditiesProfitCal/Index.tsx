@@ -20,7 +20,7 @@ const CommoditiesProfitCalc = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
-      <TradCalc/>
+      <TradCalc withRoute titleHeader='Commodities Profit Calculator'/>
 
         <ForexCalculator mainImg={traderBg}
 

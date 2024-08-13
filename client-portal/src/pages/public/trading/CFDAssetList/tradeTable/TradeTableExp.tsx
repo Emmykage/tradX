@@ -41,8 +41,6 @@ const TradeTableAsset = () => {
             ))}
         </div>
 
-        <h2>Stay informed when weekly expiration dates are near</h2>
-
         <TradeTable/>
 
     </div>
