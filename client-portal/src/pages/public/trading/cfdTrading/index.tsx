@@ -6,11 +6,13 @@ import CfdTradMuchMore from "pages/public/markets/tradingPage/cfdTradMuchMore/Cf
 import CfdTradWhyTrade from "pages/public/markets/tradingPage/cfdTradWhyTrade/CfdTradWhyTrade"
 import { NeedMoreInfoData } from "./data"
 import JoinInThreeSteps from "pages/public/markets/components/joinInThreeSteps/JoinInThreeSteps"
+import CfdTradingBlock from "./cfdTrading/CfdTrading"
 
 const CFDTrading = () => {
   return (
     <div className='tradingContainer'>
     <Navbar/>
+    <CfdTradingBlock/>
     <CfdTradWhyTrade/>
     <CfdTradMuchMore/>
     <JoinInThreeSteps/>

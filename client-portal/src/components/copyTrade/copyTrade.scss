@@ -2,7 +2,6 @@
     min-height: 300px;
     margin-top: 10px ;
     color: white;
-    // position: relative;
     padding-left: 20px;
     position: relative;
     justify-content: space-between;
@@ -45,7 +44,7 @@
     @media (max-width: 920px) {
         order: 1;
         div{
-            margin: auto;
+            margin: auto 0;
         }
     }
 
@@ -54,6 +53,7 @@
    .copy-graph{
     @media (max-width: 920px) {
         order: 2;
+
         }
 
     .group-icon{

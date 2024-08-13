@@ -3,6 +3,7 @@ import "./HeaderTradCalc.scss";
 
 interface HeaderTradCalcProps {
   titleHeader?: string;
+  withRoute?: boolean
 }
 
 const items = [
@@ -12,13 +13,13 @@ const items = [
   "Forex Margin Calculator",
 ];
 
-export const HeaderTradCalc: FC<HeaderTradCalcProps> = ({ titleHeader }) => {
+export const HeaderTradCalc: FC<HeaderTradCalcProps> = ({ titleHeader, withRoute }) => {
   return (
     <div className="headerTradCalcContainer">
-      {titleHeader ? (
+      {withRoute ? (
         <div className="headerTradCalcItems">
           <h2>{titleHeader}</h2>
-          <div>
+          <div className="headerTradCalcItem">
             {items.map((item, index) => (
               <span
                 className={titleHeader === item ? "headerTradActive" : ""}

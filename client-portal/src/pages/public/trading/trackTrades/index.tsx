@@ -38,7 +38,6 @@ const TrackTrades = () => {
                 text: "Trade a variety of instruments anytime."}]
 
     const [activity, setActivity] = useState("follower")
-    const [active, SetActive] = useState('')
     const handleClick = (btn: string) => {
       setActivity(btn)
     }
@@ -51,8 +50,8 @@ const TrackTrades = () => {
 
         <div className='activityContainer'>
             <div className='btnWrapper'>           
-                <button onClick={()=> handleClick("follower")} className={active}> follow</button>
-                <button onClick={()=> handleClick("copy-trader")} className={active}>copy Trader </button>
+                <button onClick={()=> handleClick("follower")} className={`${activity == "follower" && "active"}`}> Follow</button>
+                <button onClick={()=> handleClick("copy_trader")} className={`${activity == "copy_trader" && "active"}`}>Copy Trader </button>
             </div>
 
             {activity == "follower" ? (<>
