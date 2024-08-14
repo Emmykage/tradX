@@ -18,11 +18,13 @@ import StepOne from './stepOne/StepOne.tsx'
 import CountDown from "components/countDown/CountDown.tsx";
 import LastStep from "./lastStep/LastStep.tsx";
 import StepElevenDown from "./stepElevenDown/StepElevenDown.tsx";
+import { initialAreaData } from "pages/private/platform/MainChart/areaData.ts";
 
 const WelcomeSteps = () => {
   const { t } = useTranslation();
   const [time, setTime] = useState(20);
   const [displayTimer, setDisplayTimer] = useState(true);
+  const [areaChartInitialData, setAreaChartInitialData]: any = useState([]);
   const [step, setStep] = useState<number>(1);
   const [trade,setTrade] = useState<string>('down')
   const [cookies, setCookie] = useCookies(["step", "access_token"]);
@@ -56,6 +58,32 @@ const WelcomeSteps = () => {
     setCookie("step", step.toString(), { path: "/", maxAge: 604800 });
   }, [step, setCookie]);
 
+  const formatAreaData = () => {
+    let datetime : any = initialAreaData.DateTime;
+    let price: any = initialAreaData.Price;
+    let size: any = initialAreaData.Size;
+    const chart_data = [];
+    const bar_data = [];
+    let lastDateTime = 0;
+    let step = 1;
+    for (var i in Object.keys(datetime)) {
+      var timestamp = datetime[i] / 1000;
+      if (datetime[i] === lastDateTime) {
+        timestamp = (datetime[i] + step) / 1000;
+        step++;
+      } else {
+        step = 1;
+        lastDateTime = datetime[i];
+      }
+      chart_data.push({ time: timestamp, value: price[i] });
+      bar_data.push({ time: timestamp, value: size[i] });
+
+      setAreaChartInitialData(chart_data);
+    };
+
+  };
+  
+
   const renderStep = () => {
     switch (step) {
       case 1:
@@ -63,11 +91,11 @@ const WelcomeSteps = () => {
       case 2:
         return <StepTwo setStep={setStep} />;
       case 3:
-        return <StepThree setStep={setStep} step={step} />;
+        return <StepThree setStep={setStep} step={step} chartData={areaChartInitialData} />;
       case 4:
-        return <StepFour setStep={setStep} step={step} />;
+        return <StepFour setStep={setStep} step={step} chartData={areaChartInitialData}  />;
       case 5:
-        return <StepFive setStep={setStep} step={step} />;
+        return <StepFive setStep={setStep} step={step} chartData={areaChartInitialData} />;
       case 6:
         return <StepSix setStep={setStep} step={step} />;
       case 7:
@@ -109,13 +137,17 @@ const WelcomeSteps = () => {
   //   }
   // }, [displayTimer, time]);
 
+  useEffect(() => {
+    formatAreaData();
+  }, []);
+
   useEffect(()=>{
     setTimeout(() => {
       if(step === 10){
         setStep(11)
       }
     }, 60000);
-  },[step])
+  },[step]);
   return (
     <div className="welcomeSteps">
       {step === 10 && (

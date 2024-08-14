@@ -123,3 +123,23 @@
    }
   }
 }
+
+@keyframes blink {
+  100%,
+  0% {
+   opacity: 1;
+  }
+  60% {
+   opacity: 0.5;
+  }
+}
+
+@keyframes alternate-blink {
+  100%,
+  0% {
+   opacity: 0.5;
+  }
+  60% {
+   opacity: 1;
+  }
+}

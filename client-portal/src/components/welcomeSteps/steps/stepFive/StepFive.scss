@@ -1,45 +1,74 @@
-.welcomeStepFive {
-  width: 100%;
-  animation: slideInFromBottom 0.8s forwards;
+// .welcomeStepFive {
+//   width: 100%;
+//   animation: slideInFromBottom 0.8s forwards;
 
-  .info {
-    margin-top: -250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+//   .info {
+//     margin-top: -250px;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 20px;
 
-    .text {
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 18px;
-      margin-bottom: -15px;
-      color: #ffffff;
-      max-width: 70%;
-      text-align: center;
-      z-index: 101;
-      max-width: 55%;
-    }
+//     .text {
+//       font-family: "Roboto";
+//       font-style: normal;
+//       font-weight: 400;
+//       font-size: 18px;
+//       margin-bottom: -15px;
+//       color: #ffffff;
+//       max-width: 70%;
+//       text-align: center;
+//       z-index: 101;
+//       max-width: 55%;
+//     }
+//   }
+// }
+
+
+// @media (max-width: 834px) {
+//   .welcomeStepFive {
+//     .info {
+//       margin-top: 70px;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 428px) {
+//   .welcomeStepFive {
+//     .info {
+//       .text {
+//         font-size: 13.19px;
+//       }
+//     }
+//   }
+// }
+.welcomeStepFive{
+  
+  .step-three-content{
+    // animation: slideInFromBottom 0.8s forwards;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    bottom: 0%;
+ 
   }
-}
-
-
-@media (max-width: 834px) {
-  .welcomeStepFive {
-    .info {
-      margin-top: 70px;
-    }
+  .line-width::before{
+    content: url('../../../../assets/icons/welcomeIcons/step-5-green-blured-img.svg');
+    position: absolute;
+    bottom: -8px;
+    left: 0px;
+    width: 100%;
+    overflow-x: hidden;
+    animation: blink ease-in-out 2.5s infinite;
   }
-}
-
-@media screen and (max-width: 428px) {
-  .welcomeStepFive {
-    .info {
-      .text {
-        font-size: 13.19px;
-      }
-    }
+  .line-width::after{
+    content: url('../../../../assets/icons/welcomeIcons/step-5-red-blurred-img.svg');
+    position: absolute;
+    top: -2px;
+    left: 0px;
+    width: 100%;
+    overflow-x: hidden;
+    animation: alternate-blink  ease-in-out 2.5s infinite;
   }
+
 }
