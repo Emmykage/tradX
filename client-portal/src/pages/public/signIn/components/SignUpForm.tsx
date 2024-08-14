@@ -109,7 +109,7 @@ const SignUpForm = () => {
         <div className="liner"></div>
       </div>
       <div className="socialIcons">
-        <div className="topIcons">
+        <div className="topIcons flex">
           <img src="/social-icons/google-round.png" />
           <img src="/social-icons/facebook-round.png" />
         </div>

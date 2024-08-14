@@ -32,12 +32,13 @@ import { initialCandleData } from "./MainChart/candleData";
 import { setAppearanceBackground } from "../../lib/utils";
 import { useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
-import { initialAreaData } from "./MainChart/areaData";
 import { AreaChart } from "./MainChart/AreaChart";
-import {  isArrayEmpty, timeScaleMenu } from "utils/utils";
+import {  isArrayEmpty, isObjectEmpty, timeScaleMenu } from "utils/utils";
 import DropdownMenu from "components/dropdownMenu/DropdownMenu";
-import BarChart from "./MainChart/BarChart";
+// import BarChart from "./MainChart/BarChart";
 import { useNavigate } from "react-router-dom";
+import { ColorType, createChart, CrosshairMode, IChartApi, LineStyle, UTCTimestamp } from "lightweight-charts";
+import useSocketConnect from "hooks/useSocketConnect";
 
 interface PlatformProps {}
 
@@ -61,11 +62,26 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [bottomSidebarHeight, setBottomSidebarHeight] = useState(0);
   const [chartInitialData, setChartInitialData] = useState<any>([]);
   // Area and bar data
-  const [areaChartInitialData, setAreaChartInitialData] = useState<any>([]);
+
   const [chartScale, setChartScale] = useState(6);
   const [selectedChart, setSelectedChart] = useState('candlesticks');
   const [selectedTimeScale, setSelectedTimeScale] = useState<any>(timeScaleMenu[8]);
   const storedScale = localStorage.getItem("scale");
+  const { wsTicket } = useAppSelector((state) => state.user);
+  // Chart refs and constants
+  let chartContainerRef = useRef<HTMLDivElement>(null);
+  let chartRef = useRef<IChartApi>();
+  let seriesRef = useRef(null);
+
+  const { data: socketData, socket } = useSocketConnect(wsTicket as string);
+  const colors = {
+    backgroundColor: "transparent",
+    lineColor: "#0094FF",
+    textColor: "#70808C",
+    areaTopColor: "rgba(11, 166, 238, 0.2)",
+    areaBottomColor: "rgba(11, 166, 238, 0)",
+    gridLines: "#ffccff"
+  };
 
   const {themeSelect} = useAppSelector(state => state.themeBg)
   useQueryParamHandler({
@@ -79,32 +95,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     (state: { user: UserSliceState }) => state.user
   );
   const navigate = useNavigate();
-
-  const formatAreaData = () => {
-    let datetime : any = initialAreaData.DateTime;
-    let price: any = initialAreaData.Price;
-    let size: any = initialAreaData.Size;
-    const chart_data = [];
-    const bar_data = [];
-    let lastDateTime = 0;
-    let step = 1;
-    for (var i in Object.keys(datetime)) {
-      var timestamp = datetime[i] / 1000;
-      if (datetime[i] === lastDateTime) {
-        timestamp = (datetime[i] + step) / 1000;
-        step++;
-      } else {
-        step = 1;
-        lastDateTime = datetime[i];
-      }
-      chart_data.push({ time: timestamp, value: price[i] });
-      bar_data.push({ time: timestamp, value: size[i] });
-
-      setAreaChartInitialData(chart_data);
-    };
-
-  };
-
 
   // candle series chart data formatting 
 
@@ -129,10 +119,117 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   //   }
   // }, [user, navigate]);
 
+  // useEffect(() => {
+  //   setChartInitialData(initialData);
+
+  // }, []);
+
+  // Chart logic
   useEffect(() => {
-    setChartInitialData(initialData);
-    formatAreaData();
-  }, []);
+
+    const chartContainer = chartContainerRef.current!;
+
+    const chart = createChart(chartContainer, {
+      layout: {
+        background: { type: ColorType.Solid, color: colors?.backgroundColor },
+        // 'white',
+      },
+      grid: {
+        vertLines: {
+          color: themeSelect == "night" ? "#16171a" : "#b9b9b9",
+          visible: true,
+        },
+        horzLines: {
+          color: themeSelect == "night" ? "#16171a" : "#b9b9b9",
+          visible: true,
+        },
+      },
+      rightPriceScale: {
+        borderVisible: false,
+        textColor: "#868788",
+      },
+      timeScale: {
+        borderVisible: false,
+        timeVisible: true,
+        secondsVisible: true,
+        rightOffset: 30,
+        allowShiftVisibleRangeOnWhitespaceReplacement: true,
+      },
+      width: chartContainer?.clientWidth,
+      height: 300,
+    });
+    let candlestickSeries = null;
+    //  candle series 
+    if(selectedChart == 'candlesticks'){
+      candlestickSeries = chart.addCandlestickSeries({
+        upColor: 'green',
+        downColor: 'red',
+        borderDownColor: 'red',
+        borderUpColor: 'green',
+        wickDownColor: 'red',
+        wickUpColor: 'green',
+      });
+    }else{
+      candlestickSeries = chart.addBarSeries({
+        upColor: 'green',
+        downColor: 'red'
+      });
+    }
+
+    // @ts-ignore
+    seriesRef.current = candlestickSeries;  
+
+    candlestickSeries.setData([]);
+
+    chartRef.current = chart;
+    chart.applyOptions({
+        crosshair: {
+          mode: CrosshairMode.Normal,
+          vertLine: {
+            width: 1,
+            color: "#48494b",
+            style: LineStyle.Dashed,
+            labelBackgroundColor: "#48494b",
+          },
+          horzLine: {
+            width: 1,
+            color: "#48494b",
+            style: LineStyle.Dashed,
+            labelBackgroundColor: "#48494b",
+          },
+          
+        },
+      });
+
+      const handleResize = (entries: ResizeObserverEntry[]) => {
+        const newRect = entries[0].contentRect;
+        chart.applyOptions({ height: newRect.height, width: newRect.width });
+      };
+
+      const resizeObserver = new ResizeObserver(handleResize);
+      resizeObserver.observe(chartContainer);
+
+ 
+    return () => {
+      window.removeEventListener(
+        "resize",
+        handleResize as unknown as EventListener
+      );
+      resizeObserver.disconnect();
+      chartRef.current?.remove();
+    };
+ 
+  }, [selectedChart]);
+
+  useEffect(() => {
+        // @ts-ignore
+    if(!isObjectEmpty(socketData)){
+      // @ts-ignore
+      seriesRef?.current?.update(socketData);
+
+    };
+    
+  }, [socketData]);
 
   useEffect(() => {
     const topbarElement = document.getElementById("topbarContainer");
@@ -214,20 +311,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   const renderSelectedChartType = () => {
     switch (selectedChart) {
-      case  "candlesticks":
-        return (<> <MainChart data={newCandleData} chartScale={chartScale} selectedTimeScale={selectedTimeScale}  /> </>)
-      case "area": 
-        return (<> {isArrayEmpty(areaChartInitialData)? <></>:<AreaChart chartData={areaChartInitialData} selectedTimeScale={selectedTimeScale}   chartScale={chartScale} />} </>)
-      case "bar": 
-        return (
-          <> 
-            <BarChart data={newCandleData}  selectedTimeScale={selectedTimeScale}   chartScale={chartScale}  /> 
-          </>
-        )
+     
       default:
         return (
           <> 
-            <MainChart data={newCandleData} selectedTimeScale={selectedTimeScale}   chartScale={chartScale}  /> 
+            <MainChart data={newCandleData} selectedTimeScale={selectedTimeScale}  refs={{chartContainerRef, chartRef, seriesRef}}  chartScale={chartScale}  />
           </>
         )
     }
@@ -253,11 +341,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       type: 'drop-down',
       position: 'right',
       menus: [
-        {
-          text: 'Area',
-          onclick: () => handleChartSelectionClick('area'),
-          icon: <AreaChartIcon />
-        },
+        // {
+        //   text: 'Area',
+        //   onclick: () => handleChartSelectionClick('area'),
+        //   icon: <AreaChartIcon />
+        // },
         {
           text: 'Japanese candlesticks',
           onclick: () => handleChartSelectionClick('candlesticks'),
@@ -411,7 +499,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
              <div className="chart-container"  style={{ height: "100%", color:"white", position: 'relative' }}>
                {/* pass dummy data newCandleData */}
               {/* <MainChart data={newCandleData} chartScale={chartScale}  /> */}
-              {/* {isArrayEmpty(areaChartInitialData)? <></>:<AreaChart chartData={areaChartInitialData}  chartScale={chartScale} />} */}
               {renderSelectedChartType()}
               <div className="chart-options">
                 {chartOptionMenus.map((data, _i) => (

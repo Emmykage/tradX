@@ -79,11 +79,11 @@ const SignInForm: React.FunctionComponent<SignInFormProps> = ({
 
       <div className="continueWithText">
         <div className="liner"></div>
-        <p>Or Continue With</p>
+        <p className="text-nowrap">Or Continue With</p>
         <div className="liner"></div>
       </div>
       <div className="socialIcons">
-        <div className="topIcons">
+        <div className="topIcons flex">
           <img src="/social-icons/google-round.png" alt="Google" />
           <img src="/social-icons/facebook-round.png" alt="Facebook" />
         </div>

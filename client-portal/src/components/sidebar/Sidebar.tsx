@@ -59,7 +59,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
           onClick={() => onSelect("trades")}
           className={isDrawerOpen && currentDrawer === "trades" ? "active" : ""}
         >
-          <div className="icon">
+          <div className="icon flex justify-center">
             <TradesIcon />
           </div>
           <p className="text">Trades</p>
@@ -68,7 +68,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
           onClick={() => onSelect("market")}
           className={isDrawerOpen && currentDrawer === "market" ? "active" : ""}
         >
-          <div className="icon">
+          <div className="icon flex justify-center">
             <MarketIcon />
           </div>
           <p className="text">Market</p>
@@ -77,7 +77,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
           onClick={() => onSelect("events")}
           className={isDrawerOpen && currentDrawer === "events" ? "active" : ""}
         >
-          <div className="icon">
+          <div className="icon flex justify-center">
             <EventsIcon />
           </div>
           <p className="text">Events</p>
@@ -86,7 +86,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
           onClick={() => onSelect("help")}
           className={isDrawerOpen && currentDrawer === "help" ? "active" : ""}
         >
-          <div className="icon">
+          <div className="icon flex justify-center">
             <HelpIcon />
           </div>
           <p className="text">Help</p>
@@ -95,7 +95,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
           onClick={() => onSelect("news")}
           className={isDrawerOpen && currentDrawer === "news" ? "active" : ""}
         >
-          <div className="icon">
+          <div className="icon flex justify-center">
             <NewsIcon />
           </div>
           <p className="text">News</p>
@@ -104,7 +104,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
           onClick={() => onSelect("ai")}
           className={isDrawerOpen && currentDrawer === "ai" ? "active" : ""}
         >
-          <div className="icon">
+          <div className="icon flex justify-center">
             <AiIcon />
           </div>
           <p className="text">AI</p>
