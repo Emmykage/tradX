@@ -120,7 +120,7 @@ const App: React.FunctionComponent<AppProps> = () => {
       <Suspense fallback={<div className="fullLoadingBackground"><Loading/></div>}>
       <Routes>
         {/* turned of the auth require */}
-        <Route element={<RequireAuth  />}>
+        {/* <Route element={<RequireAuth  />}> */}
           <Route path="/platform" element={<Platform />} />
           {/* Private route using PrivateRoute component */}
           <Route path="/welcome" element={<PrivateRoute />}>
@@ -132,7 +132,7 @@ const App: React.FunctionComponent<AppProps> = () => {
           {/* <Route path="/loan" element={<Loan />} /> */}
           {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
           <Route path="/statusDetails" element={<StatusDetails />} />
-        </Route>
+        {/* </Route> */}
         
         {/* <Route path="/markets/regulations" element={<Regulation />} />
         <Route path="/markets/cookieDisclosure" element={<CookieDisclosure />} />

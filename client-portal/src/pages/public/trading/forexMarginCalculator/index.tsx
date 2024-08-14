@@ -1,5 +1,5 @@
 import CostExplanation from '../../../../components/tradingCostExplanation/CostExplanationComp'
-import TradeAnalyzer from '../CommoditiesProfitCal/tradeAnalyzer/TradeAnalyzer'
+import TradeAnalyzer from '../../../../components/tradeAnalyzer/TradeAnalyzer'
 import USUKICon from '../../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
 import CanIcon from '../../../../assets/trading/canadaflagicon.png'
 import GraphBg from '../../../../assets/trading/graphBg.png'

@@ -1,7 +1,7 @@
 import React from 'react'
 import Leaflet from '../../../../../assets/trading/leaflet.png'
 import BgImage from '../../../../../assets/trading/dark-arrow.png'
-import UkIFlag from '../../../../../assets/trading/UK.png'
+import UkIFlag from '../../../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
 import './marginCall.scss'
 import { CheckIcon2 } from 'assets/icons'
 const MarginCall = () => {

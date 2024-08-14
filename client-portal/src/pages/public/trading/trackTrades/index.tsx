@@ -1,4 +1,4 @@
-import TrackTrade from './trackTrade/TrackTrade'
+import TrackTrade from './trackTradeHeader/TrackTrade'
 import PerksCard from 'components/perksCard/PerksCard'
 import TradingSteps from '../../../../components/tradingSteps/TradingSteps'
 import ProfileCard from './profileCard/ProfileCard'

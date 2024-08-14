@@ -1,5 +1,5 @@
 import CostExplanation from '../../../../components/tradingCostExplanation/CostExplanationComp'
-import TradeAnalyzer from './tradeAnalyzer/TradeAnalyzer'
+import TradeAnalyzer from '../../../../components/tradeAnalyzer/TradeAnalyzer'
 import "../trading.scss"
 import comIcon from '../../../../assets/trading/commIcon.png'
 import CanIcon from '../../../../assets/trading/canadaflagicon.png'
