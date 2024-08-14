@@ -4,6 +4,10 @@ export const languages = [
     label: "English (United States)",
   },
   {
+    value: "en",
+    label: "English",
+  },
+  {
     value: "ar",
     label: "Arabic",
   },

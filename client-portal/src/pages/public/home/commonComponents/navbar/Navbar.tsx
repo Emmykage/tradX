@@ -5,6 +5,8 @@ import { MouseEvent } from 'react';
 import { ArrowDownOS, MenuBar, MenuCloseIcon, SearchIcon } from 'assets/icons'
 import { useEffect, useRef, useState } from 'react'
 import { localFlagHandler } from 'i18n/helpers'
+import i18n from "../../../../../i18n";
+import { languages } from "../../../../../constants";
 import { Spin } from 'antd'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
@@ -17,7 +19,7 @@ interface NavbarProps {
 const Navbar= () => {
     const [ipAddress, setIpAddress] = useState('');
     const [geoInfo, setGeoInfo] = useState<{countryCode:string}>()
-    const [countryCode, setCountryCode] = useState('EN')
+    const [countryCode, setCountryCode] = useState(i18n.language ? i18n.language.toLocaleUpperCase() : 'EN')
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
@@ -73,7 +75,20 @@ const Navbar= () => {
         setToggleLanguageSelector(false);
       }
     };
-    
+
+    useEffect(() => {
+      const browserLanguage = navigator.language;
+      console.log("browserLanguage", browserLanguage)
+
+
+      const matchedLanguage = languages.find(language => language.value.toLowerCase() === countryCode.toLocaleLowerCase());
+      if (matchedLanguage) {
+        i18n.changeLanguage(countryCode.toLocaleLowerCase());
+      } else {
+        setCountryCode('EN')
+        i18n.changeLanguage("en");
+      }
+    }, [countryCode])    
     
       useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);

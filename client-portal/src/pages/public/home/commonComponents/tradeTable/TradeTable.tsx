@@ -5,6 +5,7 @@ import Graph2Image from '../../../../../assets/home/graph2.png'
 import Graph3Image from '../../../../../assets/home/graph3.png'
 import Graph4Image from '../../../../../assets/home/graph4.png'
 import { ArrowLeftOS, ArrowRightOS } from 'assets/icons'
+import { useTranslation } from 'react-i18next'
 
 
 interface TradeTableProps{
@@ -17,12 +18,13 @@ interface TradeTableProps{
   }>
 }
 const TradeTable:React.FC<TradeTableProps> = ({data}) => {
+  const { t } = useTranslation()
   const defaultData = [
-    {  name: 'Crude Oil', sell: '399.53', buy: '400.23', change: '-2.04%', graph:Graph1Image },
-    {  name: 'Corn', sell: '399.53', buy: '400.23', change: '-1.66%', graph:Graph1Image },
-    {  name: 'Brent Oil', sell: '80.90', buy: '80.95', change: '+2.02%', graph:Graph2Image },
-    {  name: 'Coffee', sell: '179.63', buy: '180.03', change: '-1.83%', graph:Graph3Image },
-    {  name: 'Brent Oil Futures', sell: '81.69', buy: '81.74', change: '+2.06%', graph:Graph4Image },
+    {  name: 'crudeOil', sell: '399.53', buy: '400.23', change: '-2.04%', graph:Graph1Image },
+    {  name: 'corn', sell: '399.53', buy: '400.23', change: '-1.66%', graph:Graph1Image },
+    {  name: 'brentOil', sell: '80.90', buy: '80.95', change: '+2.02%', graph:Graph2Image },
+    {  name: 'coffee', sell: '179.63', buy: '180.03', change: '-1.83%', graph:Graph3Image },
+    {  name: 'brentOilFutures', sell: '81.69', buy: '81.74', change: '+2.06%', graph:Graph4Image },
   ];
 
   const tableData = data || defaultData;
@@ -32,10 +34,10 @@ const TradeTable:React.FC<TradeTableProps> = ({data}) => {
         <div className='tradeTableContainer'>
         <div className="trade-table-container">
       <div className="trade-table-header">
-        <div>Asset</div>
-        <div>Sell</div>
-        <div>Buy</div>
-        <div>Change (%)</div>
+        <div>{t("asset")}</div>
+        <div>{t("sell")}</div>
+        <div>{t("buy")}</div>
+        <div>{t("change")} (%)</div>
       </div>
       { tableData.map((item, index) => (
         <div className="trade-table-row" key={index}>
@@ -43,7 +45,7 @@ const TradeTable:React.FC<TradeTableProps> = ({data}) => {
           <div className='circleIcon'>
 
           </div>
-            <span>{item.name}</span>
+            <span>{t(item.name ? item.name : "")}</span>
           </div>
           <div className={`sell ${item.change.startsWith('-') ? 'negative' : 'positive'}`}>{item.sell}</div>
           <div className={`buy ${item.change.startsWith('-') ? 'negative' : 'positive'}`}>{item.buy}</div>
@@ -55,7 +57,7 @@ const TradeTable:React.FC<TradeTableProps> = ({data}) => {
       ))}
     </div>
         <div className='tradeTableBottomTitle'>
-        <h2>View full Commodities CFDs list </h2>
+        <h2>{t("viewFullCommoditiesCFDslist")}</h2>
         <ArrowRightOS stroke='#FF1802'/>
 
 

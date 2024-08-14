@@ -20,31 +20,31 @@ import GoldImage from '../../../../assets/categorySlider/gold.png'
 import GasImage from '../../../../assets/categorySlider/gas.png'
 
 const Commodities = () => {
-    const title = 'Commodities'
-    const detail = "Speculate on the raw materials driving the global economy. Sign up to trade CFDs on energy markets like Oil and Gas, metals like gold and silver, and soft commodities like corn and cocoa."
-    const buttonTitle = 'Trade Commodities'
+    const title = "commodities"
+    const detail = "subCommodities"
+    const buttonTitle = "tradeCommodities"
 
     const allPairsData =[
       {
-        title: "UKOIL",
-        subtitle: "Brent Oil",
-        category: "COMMODITIES",
+        title: "ukoil",
+        subtitle: "brentOil",
+        category: "commodities",
         value: "80.90",
         change: "-2.02%",
         image: OilImage
       },
       {
-        title: "Gold",
-        subtitle: "Gold",
-        category: "COMMODITIES",
+        title: "gold",
+        subtitle: "gold",
+        category: "commodities",
         value: "1930.50",
         change: "+0.75%",
         image: GoldImage
       },
       {
-        title: "Natural Gas",
-        subtitle: "Natural Gas",
-        category: "COMMODITIES",
+        title: "naturalGas",
+        subtitle: "naturalGas",
+        category: "commodities",
         value: "2.585",
         change: "-1.15%",
         image: GasImage
