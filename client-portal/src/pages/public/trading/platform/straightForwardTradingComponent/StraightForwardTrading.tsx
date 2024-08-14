@@ -1,9 +1,7 @@
 import React from 'react'
 import './straightforwardTrading.scss'
-import backdropImg from "../../../../../assets/trading/working-trader.png"
+import backdropImg from "../../../../../assets/trading/straightforwardTradingImg.png"
 
-import primeIcon from '../../../../../assets/trading/primeIcon.png'
-import TickedIcon from '../../../../../assets/trading/tickBox.png'
 const StraightForwardTrading = () => {
   return (
     <div>
@@ -19,9 +17,7 @@ const StraightForwardTrading = () => {
           </div>
           <div className='backdropImage'>
             <img src={backdropImg} alt="working man image" className='mainImg' />
-            <img src={primeIcon} alt="amazon prime icon" className='icon-1' />
-            <img src={TickedIcon} alt="amazon prime icon" className='icon-2' />
-          </div>
+           </div>
         </div>
     </div>
   )

@@ -1,8 +1,13 @@
 .costContainer{
     background: #131B2E;
+    margin: 12px auto;
+    padding: 24px;
+    width: 100%;
+
     div{
-        width: 80%;
+        max-width: 1600px;
         margin: auto;
+        // margin: auto;
         
 
 
@@ -13,25 +18,23 @@
         margin: 19px;
     }
     .costExp-Wrapper{
-        color: white;
-
+        color: white;     
+        display: grid;
+        width: 100%;
+        column-gap: 10px;
+        grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 720px) {
+            grid-template-columns: 1fr;
+            row-gap: 10px;                
+        }
         
-        ul{
-            display: grid;
-            width: 100%;
-            column-gap: 10px;
-            grid-template-columns: repeat(2, 1fr);
-            @media (max-width: 720px) {
-                grid-template-columns: 1fr;
-                row-gap: 10px;                
-            }
-            
-            li{
-                display: flex;
-                column-gap: 10px;
+           > div{
                 line-height: 29px;
+                margin: 10px;
+                display: flex;
+                gap: 10px;
                 
-                .icon-bg{
+                span{
                     height: 40px;
                     border-radius: 100%;
                    background: linear-gradient(230deg, #0094FF 0%, rgba(0, 0, 0, 0.541) 100%);
@@ -42,21 +45,22 @@
                     padding: 0;
                     flex-shrink: 0;
                 }
-                // .text{                
+                div{
+                    flex: 1;
+                    margin-top: 0;
+                    strong{
+                        font-weight: 600;
+                        font-size: 16px;
+                    }
+                    p{
+                        font-weight: 400;
+                        color: #999999;
+                    }
+                }
 
-                strong{
-                    font-weight: 600;
-                    font-size: 16px;
-                }
-                p{
-                    font-weight: 400;
-                    color: #999999;
-                }
-            // }
+               
             }
-            flex: 1;
-
-        }
+       
 
     }
 }

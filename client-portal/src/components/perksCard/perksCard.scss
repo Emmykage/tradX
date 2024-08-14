@@ -1,7 +1,8 @@
 .perkCard{
-    padding: 20px;
-    max-width: 401px;
-    min-width: 350px;
+    padding:30px 20px;
+    max-width: 461px;
+    min-width: 340px;
+    flex: 1 1 30%;
     width: 100%;
     color: #fff;
 
@@ -12,18 +13,20 @@
    
     background: linear-gradient(#2854a58c, rgba(0,0,0,0.4));
 
-    .perkCardIcon{
-        background: linear-gradient(#1A237B, #081F50 ) ;
-    }
+        .perkCardIcon{
+            background: linear-gradient(#1A237B, #081F50 ) ;
+        }
     }
     &.follower{
         
-    border: 1px solid linear-gradient(#ff17029f, rgba(0,0,0,0.4));
-   
-    background: linear-gradient(#ff17029f, rgba(0,0,0,0.4));
-    .perkCardIcon{
-        background: #ff17029f ;
-    }
+  
+    border: 1px solid;
+    border-image-source: linear-gradient(180deg, #FF1802 6.1%, rgba(255, 24, 2, 0.5) 100%);
+    background: linear-gradient(180deg, rgba(255, 24, 2, 0.24) 0%, rgba(255, 24, 2, 0) 100%);
+
+        .perkCardIcon{
+            background: #ff17029f ;
+        }
     }
     border-radius: 12px;
     text-align: center;
@@ -35,7 +38,6 @@
         padding: 10px;
         display: flex;
         justify-content: center;
-        // align-items: center;
 
     }
     h3{
@@ -47,9 +49,4 @@
         margin-top: 12px;
         line-height: 27px;
     }
-
-    // .perkCardIcon{
-    //     display: block;
-    //     margin: auto;
-    // }
 }

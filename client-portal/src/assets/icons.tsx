@@ -11468,3 +11468,11 @@ export const HomeIcon = () => (
 </svg>
 
 )
+
+ export const DropdownIcon1 = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.0506 10.918L14.2606 18.7079L6.4707 10.918" stroke="#969696" stroke-width="2.22569" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+)
