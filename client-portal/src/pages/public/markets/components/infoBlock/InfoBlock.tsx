@@ -38,6 +38,4 @@ const InfoBlock: FC<InfoBlockProps> = ({ item }) => {
   );
 };
 
-// export default InfoBlock;
 export default withTranslation()(InfoBlock);
-
