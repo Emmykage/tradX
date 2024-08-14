@@ -7,7 +7,7 @@ export async function webSocketTicketFetcher(
   try {
     const response = await fetch(
       `${getEnv("VITE_API_BASE_URL")}/user/websocket_ticket`,
-      {
+        {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

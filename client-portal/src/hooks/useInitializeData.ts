@@ -68,6 +68,7 @@ const useInitializeData = () => {
       console.error("fetching notification list error", error);
     },
   });
+  
 
   // Effect to fetch user data on login initialization
   useEffect(() => {
