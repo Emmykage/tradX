@@ -29,9 +29,9 @@ const ForexMarginCalculator = () => {
         <CostExplanation/>
 
           <TradingProfitCalculator 
-          title="How Does a Forex Profit Calculator Work?"
-          text1='You might find yourself asking, ‘How Can I Calculate Profit in Forex?’, or ‘How do you calculate profit or loss in forex trading?’. Well fortunately for you, the markets.com forex profit calculator makes things easy.'
-          text2="The calculator is designed to help you calculate potential gains and losses on each currency trade. Simply input the values requested: the currency pair being traded, the position size, entry price, and the exit price to accurately determine potential gains or losses. The markets.com calculators already include spreads when determining the outcome and the 0% commission we offer on the platform. With this information, the calculator can quickly and accurately determine how much you would hypothetically make or lose on a trade."
+          title="What is leveraged trading, why it is important?"
+          text1='Trading on leveraged capital means that you can trade amounts significantly higher than the funds you invest, which only serve as the margin. High leverage can significantly increase the potential return, but it can also significantly increase potential losses. As our client, you can trade with amounts many times higher than you could invest in a particular CFD without the margin we provide.'
+          text2="Sometimes leverage is expressed in percentage terms – and referred to as Margin Requirement. For example, a leverage of 1:30 is a margin requirement of 3.34%."
           icon1={USUKICon}
           image={GraphBg}
           icon2={CanIcon}/>

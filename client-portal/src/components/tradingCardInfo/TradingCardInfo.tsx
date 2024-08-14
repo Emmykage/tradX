@@ -14,7 +14,7 @@ const TradingCardInfo: React.FC<TradingCardInfoProps>  = ({cardTitle, cardText, 
         <div  className='tradeCardIcon'>
             <img src={icon} alt='card icon' />
         </div>
-        <h3>{cardTitle}</h3>
+        <h5>{cardTitle}</h5>
 
         <p>{cardText}</p>
 

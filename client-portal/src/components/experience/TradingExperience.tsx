@@ -1,5 +1,5 @@
 import './tradingExperience.scss'
-// import mainBg 
+import plus from '../../assets/trading/+.png'
 const TradingExperience = ({image, title, text, button} : {image?: string, title?: string, text?: string, button?: boolean }) => {
   return (
     <div className='trading-experience'>
@@ -10,7 +10,7 @@ const TradingExperience = ({image, title, text, button} : {image?: string, title
         </div>
         <div className='exp-graph'> 
             <img src={image} alt="user image" className='user' />
-
+            <img src={plus} alt="dot background image" className='dot' />
         </div>
         
     </div>

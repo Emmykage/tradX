@@ -37,7 +37,7 @@ const MetaTrading4 = () => {
         />
     
 
-            <h2>Benefits of MT4</h2>
+            <h3>Benefits of MT4</h3>
             <div className="cardWrapper">
                 {items.map(item => (
                     <TradingCardInfo 
@@ -48,13 +48,17 @@ const MetaTrading4 = () => {
                     />
                 ))}
             </div>
-            
-            <MetaTradingComponent title='Trade using MT4 with tradex.io'
-                body='You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms'
-                type= "mt4"
-            />
 
-            <CTABanner/>
+            <div className='bg-theme'>            
+                <MetaTradingComponent title='Trade using MT4 with tradex.io'
+                    body='You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms'
+                    type= "mt4"
+                />
+
+                <CTABanner/>
+
+            </div>
+
    
         <NeedMoreInfo items={NeedMoreInfoData} />
         <RegisterBlock/>

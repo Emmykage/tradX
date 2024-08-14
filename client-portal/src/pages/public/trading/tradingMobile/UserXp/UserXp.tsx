@@ -70,7 +70,7 @@ const UserExp = () => {
             </div>
 
             <div className='currencyInfo'>
-                <img src={currencyCard} alt="" />
+                <img src={currencyCard} alt="dummy card info" />
             </div>
           </div>
 

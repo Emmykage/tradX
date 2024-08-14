@@ -9,16 +9,16 @@ const CopyTrade = () => {
     <div className='copyTrade-wrapper'>
         <div className='copy-graph'> 
             <img src={flagIcon} className='flag-icon' alt="pic" />
-            <img src={groupIcon} alt="pic"  className='group-icon' />
-        
-            <ImageCard  avatar={ProfilePic} name="Lana" profit="+6,103" ROI="+89"
-            />
-
+            <div>
+                <ImageCard  
+                avatar={ProfilePic} 
+                name="Lana" 
+                profit="+6,103" ROI="+89"
+                />
+                <img src={groupIcon} alt="pic"  className='group-icon' />
 
                 <img src={user} alt="" className='user'  />
-
-
-        
+            </div>   
 
         </div>
         <div className='copyTrade-info'>

@@ -1,3 +1,4 @@
+import Navbar from "pages/public/home/commonComponents/navbar/Navbar"
 import "./metaTrader5.scss"
 
 
@@ -5,6 +6,8 @@ const MetaTrader5Landing = () => {
   return (
     <div>
     <div className='meta5 landingContainer'>
+    <Navbar/>
+
         
         <h1>Meta Trader 5</h1>
         <p>

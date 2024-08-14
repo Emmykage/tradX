@@ -59,7 +59,7 @@
     .group-icon{
         top: 60%;
         z-index: 0;
-        left: 320px;
+        right: 0;
         position: absolute;
         border-radius: 36px;
         background: linear-gradient(deg(180), #2871FE, #2871FE)
@@ -72,7 +72,14 @@
         align-items: center;
         justify-content: center;
         @media (max-width:1020px) {
-            left: 30px;
+            right: 0;
+           
+        }
+        @media (max-width:420px) {
+            right: -10px;
+            top: 70%;
+            width: 80px;
+            height: 80px;
            
         }
 
@@ -97,6 +104,9 @@
         
             left: 145px;
     }
+    @media (max-width:420px) {
+        left: 40px;       
+    }
         
 
 
@@ -106,15 +116,22 @@
     flex-basis: 40%;
     position: relative;
     padding: 80px 0 ;
-
     text-align: left;
-     img.user{
+
+    > div{
+        position: relative;
+        // background-color: red;
+        max-width: 500px;
+
+         img.user{
         border-radius: 20px;
-        height: 100%;
+        width: 80%;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        height: 300px;
+        height: 100%;
+        max-height: 400px;
       
     }
+}
     }
 }
 
@@ -123,22 +140,25 @@
     background-color: #3C475B;
     padding: 15px 20px;
     position: absolute;
-    top: 0;
-    left: 299px;
+    top: 0px;
+    right: 20px;
     border-radius: 14px;
+    width: 100px;
     overflow: hidden;
+    transform: translateY(-20%);
     @media (max-width: 720px) {
-        
-        left: 245px;
+        padding: 5px 10px;
+
+        right: 20px;
 }
 @media (max-width: 520px) {        
-    left: 210px;
+    right: 20px;
 }
     .pic-wrapper{
         margin: auto;
-        width: 78px;
+        width: 70px;
         border-radius: 100%;
-        height: 78px;
+        height: 70px;
         overflow: hidden;
         img{
             width: 100%;
@@ -146,7 +166,7 @@
     }
     .pic-info{
         text-align: center;
-        margin: 19px auto;
+        margin: 10px auto;
         .name{
             font-size: 13px;
             
@@ -158,12 +178,16 @@
         }
         .ROI{
             span{color: #00B67A;}
+            font-size: 10px;
         }
         button{
             background-color: #13121B ;
             border-radius: 14px;
             color: white;
-            padding: 5px 24px;
+            font-size: 10px;
+            padding: 3px 4px;
+            display: block;
+            width: 100%;
             margin: 19px auto ;
         }
     }

@@ -21,12 +21,12 @@ const TradingPlatform = () => {
     {
         title: "Multi-Asset Platform",
         text: "Upgraded platform rich with features & thousands of assets to speculate on.",
-        icon: "/trading-images/wheelIcon.png"
+        icon: "/trading-images/starshield.png"
     },
     {
         title: "Multi-Asset Platform",
         text: "Upgraded platform rich with features & thousands of assets to speculate on.",
-        icon: "/trading-images/wheelIcon.png"
+        icon: "/trading-images/fastExecution.png"
     }]
 
   return (

@@ -6,20 +6,20 @@ const CostExplanation = () => {
     text: "We do not charge any commisions.",
     icon: "/trading-images/commission-discounts-icon.png"
  },
- {title: "Spread",
-    text: "A spread is the difference between the Bid price (selling price) and the Ask price (buying price). Our spreads are variable or can be subject to a minimum.",
-    icon: "/trading-images/graph-vector-icon.png"
- },
+
  {
     title: "Overnight swap",
     text: "An overnight swap is when we charge or credit you with overnight fees for facilitating you to maintain an open Buy or Sell position on CFDs.",
     icon: "/trading-images/exchange-money-icon.png"
  },
- {title: "P/L",
-    text: "The profit/loss ratio is a measure of performance in trading, calculated by comparing the average amount of money gained on winning trades to the average amount of money lost on losing trades, over a specific period of time.",
-    icon: "/trading-images/commission-discounts-icon.png"
-
- }
+ {title: "Spread",
+   text: "A spread is the difference between the Bid price (selling price) and the Ask price (buying price). Our spreads are variable or can be subject to a minimum.",
+   icon: "/trading-images/graph-vector-icon.png"
+}
+,
+ {title: "Conversion fee",
+    text: "A conversion fee will apply only when your current account currency is different than the quoted currency of the underlying asset being traded. The fee will be reflected as a percentage of the conversation rate used.",
+    icon: "/trading-images/wallet-icon.png" }
  ,
  {
     title: "Margin requirement",
@@ -27,9 +27,11 @@ const CostExplanation = () => {
     icon: "/trading-images/wallet-icon.png" 
 
  },
- {title: "Conversion fee",
-    text: "A conversion fee will apply only when your current account currency is different than the quoted currency of the underlying asset being traded. The fee will be reflected as a percentage of the conversation rate used.",
-    icon: "/trading-images/wallet-icon.png" },
+ {title: "P/L",
+    text: "The profit/loss ratio is a measure of performance in trading, calculated by comparing the average amount of money gained on winning trades to the average amount of money lost on losing trades, over a specific period of time.",
+    icon: "/trading-images/commission-discounts-icon.png"
+
+ }
  
  ]
   return (

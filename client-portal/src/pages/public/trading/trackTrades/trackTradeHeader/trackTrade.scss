@@ -3,13 +3,13 @@
     display: flex;
     align-items: center;
     width: 90%;
-    margin: auto;
+    margin: auto ;
     @media(max-width: 900px){
         flex-direction: column;
     }
 .textWrapper{
         flex: 1;
-        h3{
+        h1{
             font-size: 60px;
             line-height: 72px;
             margin: 12px 0;
@@ -18,8 +18,13 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            p{
+
+            
             font-size: 15px;
+            margin: 24px 0;
             color: #999999;
+            }
         }
         button{
             padding: 12px 52px;
@@ -28,6 +33,11 @@
             font-size: 16px;
             color: #fff;
             margin-top: 12px;
+            @media (max-width: 480px) {
+            width: 100%;                
+            }
+
+
         }
 
     }
@@ -40,7 +50,7 @@
         margin-left: auto;
         
         position: relative;
-        height: 450px;
+        height: 400px;
         max-width: 650px;
         background: url('../../../../assets/trading/graph-vector.png');
         background-repeat: no-repeat;
@@ -125,6 +135,10 @@
                 right: 40%;
                 top: 340px;
             }
+            @media (max-width:620px) {
+                right: 20%;
+            }
+
 
 
             span{

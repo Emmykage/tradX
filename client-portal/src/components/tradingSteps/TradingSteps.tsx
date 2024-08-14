@@ -12,8 +12,7 @@ interface tradingStepsProp  {
 const TradingSteps: React.FC<tradingStepsProp>  = ({step1, step2, step3, step4, step5} ) => {
   return (
     <div className='getting-started-steps'>
-      <h2>How to start social trading?
-      </h2>
+      <h2>How to start social trading?</h2>
         
         <div className='getting-started-wrapper'>
         <hr />

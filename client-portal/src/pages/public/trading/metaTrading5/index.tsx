@@ -30,7 +30,6 @@ const MetaTrading5 = () => {
     }]
   return (
     <div className='tradingContainer meta-5'>
-        <Navbar/>
         <MetaTrader5Landing/>
         <TradingExperience  
             image={imageBgAdamLp} 
@@ -39,7 +38,7 @@ const MetaTrading5 = () => {
             button={true}
             />
 
-        <h2>Benefits of MT5</h2>
+        <h3>Benefits of MT5</h3>
 
         <div className="cardWrapper">
             {items.map(item => (
@@ -51,12 +50,15 @@ const MetaTrading5 = () => {
             ))}
 
         </div>
+        <div className='bg-theme'>            
 
         <MetaTradingComponent title='Trade using MT4 with tradex.io'
             body='You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms'
             type= "mt5"
         />
         <CTABanner/>
+        </div>
+        
         <NeedMoreInfo items={
             NeedMoreInfoData
         } />

@@ -11,7 +11,7 @@ const TrackTradeLanding = () => {
   return (
     <div className='trackTradeWrapper'>
         <div className='textWrapper'> 
-            <h3>Follow Trades from  Top Traders</h3>
+            <h1>Follow Trades from  Top Traders</h1>
 
             <div className='subText'>
                 <img src={graphycon} alt="graph icon" />
