@@ -1,4 +1,4 @@
-import "./CFDTrading.scss";
+import "./CfdTrading.scss";
 import MainImg from "./main.png";
 
 const CfdTradingBlock = () => {
