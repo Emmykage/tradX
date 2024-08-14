@@ -27,10 +27,11 @@ import Loading from "components/loading";
 import { useCookies } from "react-cookie";
 import NotFoundPage from "pages/private/platform/platformMenus/notFound/NotFoundPage";
 import Trading from "pages/public/trading/Trading";
-import ForexCalculator from "pages/public/trading/ForexProitCalculator/forexCalculator/ForexCalculator";
+// import ForexCalculator from "pages/public/trading/ForexProitCalculator/forexCalculator/ForexCalculator";
 import TradingConditions from "pages/public/trading/TradingConditions/Index";
 import CFDTrading from "pages/public/trading/cfdTrading";
 import EmailVerification from "pages/public/emailVerification/EmailVerification";
+import ForexProfitCalculator from "pages/public/trading/ForexProitCalculator";
 
 
 
@@ -122,7 +123,7 @@ const App: React.FunctionComponent<AppProps> = () => {
 
       <Routes>
         {/* turned of the auth require */}
-        <Route element={<RequireAuth  />}>
+        {/* <Route element={<RequireAuth  />}> */}
           <Route path="/platform" element={<Platform />} />
           {/* Private route using PrivateRoute component */}
           <Route path="/welcome" element={<PrivateRoute />}>
@@ -134,7 +135,7 @@ const App: React.FunctionComponent<AppProps> = () => {
           {/* <Route path="/loan" element={<Loan />} /> */}
           {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
           <Route path="/statusDetails" element={<StatusDetails />} />
-        </Route>
+        {/* </Route> */}
         
         {/* <Route path="/markets/regulations" element={<Regulation />} />
         <Route path="/markets/cookieDisclosure" element={<CookieDisclosure />} />
@@ -156,7 +157,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/trading/copyTrading" element={<CopyTrading />} /> 
         <Route path="/trading/cfdTradingCalculator" element={<CFDTradingCalculator />} /> 
         <Route path="/trading/commoditesProfitCalculator" element={<CommoditiesProfitCalculator />} /> 
-        <Route path="/trading/forexProfitCalculator" element={<ForexCalculator />} /> 
+        <Route path="/trading/forexProfitCalculator" element={<ForexProfitCalculator />} />
         <Route path="/trading/forexMarginCalculator" element={<ForexMarginCalculator />} /> 
         <Route path="/trading/economicCalendar" element={<EconomicCalendar />} /> 
         <Route path="/trading/cfdAssetList" element={<CFDAssetList />} /> 

@@ -10,28 +10,28 @@ import PerksCard from '../../../components/perksCard/PerksCard'
 import TradingSteps from '../../../components/tradingSteps/TradingSteps'
 import TradingExperience from '../../../components/experience/TradingExperience'
 import user from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash 2.png'
-import CopyTrade from './trackTrades/copyTrade/CopyTrade'
-import ForexCalculator from './ForexProitCalculator/forexCalculator/ForexCalculator'
+import CopyTrade from '../../../components/copyTrade/CopyTrade'
 import CostExplanation from '../../../components/tradingCostExplanation/CostExplanationComp'
 import TradingProfitCalculator from '../../../components/tradingProfitCalculator/TradingProfitCalculator'
 import USUKICon from '../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
 import CanIcon from '../../../assets/trading/canadaflagicon.png'
 import BgImage from '../../../assets/trading/adam-tradingProfit.png'
 import ProfitMarginGuide from './profitMarginGuide/ProfitMarginGuide'
-import TradeAnalyzer from './CommoditiesProfitCal/tradeAnalyzer/TradeAnalyzer'
+import TradeAnalyzer from '../../../components/tradeAnalyzer/TradeAnalyzer'
 import UkIFlag from '../../../assets/trading/UK.png'
 import StraightForwardTrading from './platform/straightForwardTradingComponent/StraightForwardTrading'
 // import LandingPageMobile from './LandingPageMobileTrading/LandingPageMobile'
-import imageBgAdam from '../../../assets/trading/adam-nowakowski-phone.png'
 import imageBgEve from '../../../assets/trading/eve-nowakowski-D4LDw5eXhgg.png'
 import imageBgAdamLp from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash.png'
-import TrackTrade from './trackTrades/trackTrade/TrackTrade'
+import TrackTrade from './trackTrades/trackTradeHeader/TrackTrade'
 import MetaTrading from '../../../components/metaTrading/MetaTrading'
 import LandingPageMobile from './tradingMobile/LandingPageMobileTrading/LandingPageMobile'
-import TrackTradeLanding from './trackTrades/trackTrade/TrackTrade'
+import TrackTradeLanding from './trackTrades/trackTradeHeader/TrackTrade'
 import MetaTrader4Landing from './metaTrading4/metaTrader4Landing/MetaTrader4'
 import MetaTrader5Landing from './metaTrading5/metaTrader5/MetaTrader5Landing'
 import Navbar from '../home/commonComponents/navbar/Navbar'
+import ForexCalculator from 'components/forexCalculator/ForexCalculator'
+
 const Trading = () => {
   return (
     <div className='tradingContainer' >
@@ -191,7 +191,7 @@ const Trading = () => {
         </div>
 
         <div className="container">
-          <ForexCalculator />
+          {/* <ForexCalculator /> */}
         </div>
 
 

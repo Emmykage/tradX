@@ -2,35 +2,42 @@
     display: flex;
     padding: 12px;
     color: white;
-    // background-color: red;
+    width: 90%;
+    gap: 50px;
+    margin:50px auto;
     @media (max-width:720px) {
     flex-direction: column;
-    .imageBackdrop{
-        display: none;
-    }
-        
+    
     }
     .imageBackdrop{
-        flex-basis: 50%;
+        flex: 1;
+        @media (max-width: 720px) {
+           margin-right: auto !important; 
+        }
 
-        div{
-            // background-color: red;
+       > div{
             position: relative;
-            max-width: 500px;
-            margin-left: auto;
+            width: 80%;
+            max-width: 400px;
+            margin-right: auto !important; 
+
+            @media (max-width: 720px) {
+               margin-right: auto !important; 
+            }
+
+            
+
             img{
-                width: 350px;
-                height: 350px;
+                max-width: 450px;
+                width: 100%;
                 border-radius: 14px;
     
             }
             .icon-1{
                 position: absolute;
-                top: 0px;
-                transform: translate(-50%, -50%);
-                left: 350px;
-                width: 90px;
-                height: 90px;
+                top: -10%;
+                right: -40px;
+                width: 20%;
                 z-index: 1;
 
 
@@ -38,12 +45,20 @@
 
             .icon-2{
                 position: absolute;
-                top: 30px;
-                left: 400px;
-                width: 70px;
-                height: 70px;
+                top: 11%;
+                right: -29%;
+                width: 17%;
+                z-index: 1;
                 transform: translate(-50%, -50%);
 
+
+            }
+            .calc-icon{
+                position: absolute;
+                bottom: 40%;
+                right: 0%;
+                width: 31%;
+                transform: translate(50%, 50%);
 
             }
     

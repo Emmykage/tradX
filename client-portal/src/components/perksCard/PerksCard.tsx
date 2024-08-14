@@ -2,7 +2,7 @@ import React from 'react'
 import './perksCard.scss'
 
 interface TradingCardInfoProps {
-    cardTitle: string,
+    cardTitle?: string,
     cardText: string,
     icon: string
     type: "trade" | "follower"

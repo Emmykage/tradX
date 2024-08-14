@@ -7,12 +7,15 @@ import RegisterBlock from 'pages/public/markets/components/registerBlock/Registe
 import UsingOurCfd from 'pages/public/markets/tradingPage/usingOurCfd/UsingOurCfd'
 import React from 'react'
 import { NeedMoreInfoData } from './data'
+import Header from './expDateHeader/Header'
+import TradeTableExp from './tradeTable/TradeTableExp'
 
 const ExpirationDates = () => {
   return (
-    <div className='tradingContainer'>
+    <div className='tradingContainer expirationDate'>
     <Navbar/>
-    <TradeTable/>
+    <Header/>
+    <TradeTableExp/>
     <TradCalc/>
     <UsingOurCfd/>
     <NeedMoreInfo items={NeedMoreInfoData}/>

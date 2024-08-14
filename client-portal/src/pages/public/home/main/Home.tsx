@@ -12,15 +12,12 @@ import ExecutiveBonuses from './executiveBounuses/ExecutiveBonuses';
 import Footer from './footer/Footer';
 
 
+
 const Home = () => {
 
-
-
-  
   return (
     <div className='homeContainer'>
         <Navbar/>
-        {/* <h1>{geoInfo.country}</h1> */}
         <Landing/>
         <CheckCurrency/>
         <LeadPlatform/>

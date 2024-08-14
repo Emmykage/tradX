@@ -1,15 +1,9 @@
 .tradingContainer{
     background-color: #0E0F12;
-    display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    .tradingCardContainer{
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-        padding: 0 12px;
+  
         
     
         @media(max-width: 767px) {
@@ -17,7 +11,5 @@
             width: fit-content;
             flex-wrap: wrap;
           }
-        
-        }
     
     }
