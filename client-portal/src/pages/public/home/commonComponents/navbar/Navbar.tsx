@@ -2,7 +2,7 @@ import './navbar.scss'
 import TradxLogo from '../../../../../assets/home/tradxlogo.png'
 
 import { MouseEvent } from 'react';
-import { ArrowDownOS, MenuBar, MenuCloseIcon, SearchIcon } from 'assets/icons'
+import { ArrowDownOS, ArrowRightOS, MenuBar, MenuCloseIcon, SearchIcon } from 'assets/icons'
 import { useEffect, useRef, useState } from 'react'
 import { localFlagHandler } from 'i18n/helpers'
 import i18n from "../../../../../i18n";
@@ -11,11 +11,7 @@ import { Spin } from 'antd'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { setSignInTab } from '@store/slices/global'
-interface NavbarProps {
-    countryCode: string;
-    setCountryCode: (prevCountryCode:string)=>void;
-    loading: boolean;
-}
+
 const Navbar= () => {
     const [ipAddress, setIpAddress] = useState('');
     const [geoInfo, setGeoInfo] = useState<{countryCode:string}>()
@@ -104,9 +100,87 @@ const Navbar= () => {
             <img src={TradxLogo} alt="" />
           </Link>
             <div className='navContent'>
+              <div className='navDropDownContainer '>
                 <span>Markets</span>
+                <ArrowDownOS height='16' width='12'/>
+                <div className='navDropDownNav'>
+                  <div className='leftNavDropDown'>
+                    <Link to='/markets/Commodities'>
+                     <p>Commodities</p>
+                    </Link>
+                    <Link to='/markets/shares'>
+                    <p>Shares</p>
+                    </Link>
+                    <Link to='/markets/crypto'>
+                    <p>Crypto</p>
+                    </Link>
+                    <Link to='/markets/bonds'>
+                    <p>Bonds</p>
+                    </Link>
+                  </div>
+                  <div className='rightNavDropDown'>
+                    <Link to='/markets/indices'>
+                    <p>Indices</p>
+                    </Link>
+                    <Link to='/markets/etfs'>
+                    <p>ETFs</p>
+                    </Link>
+                    <Link to='/markets/ipos'>
+                    <p>Ipos</p>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <div className='navDropDownContainer '>
                 <span>Trading</span>
-                <span>Learn</span>
+                <ArrowDownOS height='16' width='12'/>
+                <div className='navDropDownNav'>
+                  <div className='firstNavDropDown'>
+                    <Link to='/trading/tradingPlatform'>
+                    <p>Trading Platform</p>
+                    </Link>
+                    <Link to='/trading/MobileTrading'>
+                    <p>Mobile Trading</p>
+                    </Link>
+                    <Link to='/trading/metaTradingFour'>
+                    <p>Meta Trader 4</p>
+                    </Link>
+                    <Link to='/trading/metaTradingFive'>
+                    <p>Meta Trader 5</p>
+                    </Link>
+                    <Link to='/trading/copyTrading'>
+                    <p>Copy Trading</p>
+                    </Link>
+                    <Link to='/trading/cfdTrading'>
+                    <p>CFD Trading</p>
+                    </Link>
+                  </div>
+                  <div className='secondNavDropDown'>
+                    <Link to='/trading/cfdTradingCalculator'>
+                    <p>CFD Trading Calculator</p>
+                    </Link>
+                    <Link to='/trading/economicCalendar'>
+                     <p>Economic Calendar</p>
+                    </Link>
+                    <Link to='/trading/cfdAssetList'>
+                    <p>CFD Asset List</p>
+                    </Link>
+                    <Link to='/trading/tradingConditions'>
+                    <p>Trading Conditions</p>
+                    </Link>
+                    <Link to='/trading/expirationDate'>
+                    <p>Expiration Dates</p>
+                    </Link>
+                    
+                  </div>
+                 
+                </div>
+              </div>
+              
+             
+              <div className='navDropDownContainer'>
+                <span >Learn</span>
+              </div>
             </div>
         </div>
         {/* right side navbar */}
@@ -121,18 +195,18 @@ const Navbar= () => {
             {/* language selector */}
             <div className='languageSelectorContainer'>
                 {loading ? (
-                    <div>
+                    <div style={{marginRight: '10px'}}>
                     <Spin/>
                     </div>
                 ): (
-                    <div className='languageButton' onClick={()=>setToggleLanguageSelector(!toggleLanguageSelector)}>
+                    <div ref={languageSelectorRef}  className='languageButton' onClick={()=>setToggleLanguageSelector(!toggleLanguageSelector)}>
                     <img src={localFlagHandler(countryCode.toLocaleLowerCase())} alt="" />
                     <h2>{countryCode}</h2>
                     <ArrowDownOS height="15" width="10"/>
                 </div>
                 )}
                 
-                <div ref={languageSelectorRef} className={`languageDropDownMenu ${toggleLanguageSelector ? 'showLanguageDropDown': 'closeLanguageDropDown'}`}>
+                <div className={`languageDropDownMenu ${toggleLanguageSelector ? 'showLanguageDropDown': 'closeLanguageDropDown'}`}>
                     <div className='languageValue' onClick={()=>{
                         setCountryCode('EN')
                         setToggleLanguageSelector(false)

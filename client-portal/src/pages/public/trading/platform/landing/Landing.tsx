@@ -1,9 +1,5 @@
 import React from 'react'
 import "./landing.scss"
-import TradingCardInfo from '../../../../../components/tradingCardInfo/TradingCardInfo'
-import IconShield from '../../../../assets/trading/cardIconStarShield.png'
-import IconWave from '../../../../assets/trading/cardIconWaves.png'
-
 
 const Landing = () => {
   return (

@@ -25,6 +25,7 @@ import Graph1Image from '../../../../assets/home/graph1.png'
 import Graph2Image from '../../../../assets/home/graph2.png'
 import Graph3Image from '../../../../assets/home/graph3.png'
 import Graph4Image from '../../../../assets/home/graph4.png'
+import NavigationRoute from "pages/public/home/commonComponents/NavigationRoute/NavigationRoute";
 
 const Bonds = () => {
   const title = 'Bonds CFDs'
@@ -68,6 +69,8 @@ const Bonds = () => {
   return (
     <div className="bondsContainer">
       <Navbar />
+      <NavigationRoute/>
+      
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
       <CategorySlider allPairsData={allPairsData}/>
       <TradeTable data={data}/>

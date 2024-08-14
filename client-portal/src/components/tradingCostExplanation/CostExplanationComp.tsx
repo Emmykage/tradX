@@ -35,32 +35,26 @@ const CostExplanation = () => {
   return (
     <div className='costContainer'>
         <div>
+            <h3>Our cost and charges explained</h3>
+            <div className='costExp-Wrapper'>
+                    {items.map(item => (
+                        <div>
+                            <span>
+                                
+                                <img src={item.icon} alt='icon' />
+                            </span>
+                            <div>
+                            <strong>{item.title}</strong>
+                            
+                            <p>{item.text}</p>
+                            </div>
 
+                        </div>
 
-        <h3>Our cost and charges explained</h3>
-        <div className='costExp-Wrapper'>
-            <ul>
-                {items.map(item => (
-                    <>
-                    <li className=''>
-                    <div className='icon-bg'>
-                        <img src={item.icon} alt='icon' />
-                    </div>
-                    <div>
-                        <strong>{item.title}</strong>
-                        
-                        <p>{item.text}</p>
-                    </div>
-
-                </li>
-                </>
-
-                ))}
-                              
-                
-            </ul>
-            
-        </div>
+                    ))}
+                                
+                                
+            </div>
         </div>
     </div>
   )

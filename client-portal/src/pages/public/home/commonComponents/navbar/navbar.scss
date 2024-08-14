@@ -22,21 +22,104 @@
         }
         .navContent{
             margin-right: 1rem;
+            display: flex;
             @media (max-width: 730px) {
                 background-color: yellow;
                 display: none;
               }
-
-            span{
-                padding: 0rem 2rem;
-                font-family: "Poppins", sans-serif;
-                font-size: 13px;
+              .navDropDownContainer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0rem 1rem;
                 cursor: pointer;
-                font-weight: 500;
-                @media (max-width: 878px) {
-                    padding: 0rem 1rem;
-                  }
+                position: relative;
+            
+                svg {
+                    // margin-top: 4px;
+                    transition: all 0.3s ease;
+                    margin-bottom: 0.4rem;
+                }
+            
+                span {
+                    padding: 0rem 1rem 0.5rem 0.5rem;
+                    font-family: "Poppins", sans-serif;
+                    font-size: 13px;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    @media (max-width: 878px) {
+                        padding: 0rem 1rem;
+                    }
+                }
+            
+                &:hover {
+                    svg, span {
+                        color: red;
+                    }
+                }
+            
+                .navDropDownNav {
+                    background-color: #1d263c;
+                    border: 1.3px solid white;
+                    display: flex;
+                    position: absolute;
+                    top: 2rem;
+                    left: 1rem;
+                    padding: 1rem 1rem;
+                    z-index: 100;
+                    border-radius: 15px;
+                    opacity: 0;
+                    visibility: hidden;
+                    // transform: translateY(-10px);
+                    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+
+                    
+                    .firstNavDropDown{
+                        // background-color: blue;
+                        min-width: 145px;
+                    }
+                    .secondNavDropDown{
+                        // background-color: red;
+                        margin-left: 1rem;
+                        min-width: 185px;
+                        
+                    }
+                    .thirdNavDropDown{
+                        // background-color: red;
+                        margin-left: 1rem;
+                        min-width: 185px;
+                    }
+                   
+                    a{
+                        text-decoration: none;
+                        transition: transform 0.3s ease-in-out;
+                    }
+                    p {
+                        font-family: "Poppins", sans-serif;
+                        font-size: 13px;
+                        transition: transform 0.3s ease-in-out;
+                        padding: 0.5rem 1rem;
+                        width: 100%;
+                        text-decoration: none !important;
+                        color: white;
+                        
+                        &:hover {
+                            color: red;
+                            text-decoration: none;
+                            transform: scale(1.08)
+                        }
+                    }
+                }
+            
+                &:hover .navDropDownNav,
+                .navDropDownNav:hover {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
             }
+            
+          
         }
     }
     .rightSideNav{
