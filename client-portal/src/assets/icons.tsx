@@ -956,6 +956,7 @@ export const ArrowDownOS:React.FC<{height?:string,width?:string}>  = ({height,wi
       width={width || "32"}
       height={height || "19"}
       viewBox="0 0 32 19"
+      rotate='40%'
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

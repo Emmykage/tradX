@@ -10,13 +10,14 @@ import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreI
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
 import { NeedMoreInfoData } from './data'
+import NavigationRoute from 'pages/public/home/commonComponents/NavigationRoute/NavigationRoute'
 
 
 const CommoditiesProfitCalc = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
-    
+      <NavigationRoute/>
       
 
         <CostExplanation/>
