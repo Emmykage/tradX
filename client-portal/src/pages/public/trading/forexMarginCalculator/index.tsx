@@ -1,7 +1,7 @@
 import CostExplanation from '../../../../components/tradingCostExplanation/CostExplanationComp'
 import TradeAnalyzer from '../../../../components/tradeAnalyzer/TradeAnalyzer'
-import USUKICon from '../../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
-import CanIcon from '../../../../assets/trading/canadaflagicon.png'
+import USUKICon from '../../../../assets/trading/uk-circle-2.png'
+import CanIcon from '../../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
 import GraphBg from '../../../../assets/trading/graphBg.png'
 import TradingProfitCalculator from '../../../../components/tradingProfitCalculator/TradingProfitCalculator'
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
@@ -28,7 +28,6 @@ const ForexMarginCalculator = () => {
         Our forex margin calculator is a tool designed to calculate the approximate required margin for the desired by your position size and direction.'/>
         <CostExplanation/>
 
-        <div className='container'>
           <TradingProfitCalculator 
           title="How Does a Forex Profit Calculator Work?"
           text1='You might find yourself asking, ‘How Can I Calculate Profit in Forex?’, or ‘How do you calculate profit or loss in forex trading?’. Well fortunately for you, the markets.com forex profit calculator makes things easy.'
@@ -36,7 +35,6 @@ const ForexMarginCalculator = () => {
           icon1={USUKICon}
           image={GraphBg}
           icon2={CanIcon}/>
-        </div>
 
         <MarginCall/>
         <HowIsMarginCal/>
