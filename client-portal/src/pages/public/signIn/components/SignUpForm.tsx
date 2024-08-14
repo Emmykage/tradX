@@ -86,7 +86,7 @@ const SignUpForm = () => {
       >
         <input
           className="loginInput"
-          type="tel"
+          type="password"
           id="phone_number"
           placeholder="Phone number"
           {...register("phone_number")}
