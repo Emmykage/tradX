@@ -10,24 +10,19 @@ import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreI
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
 import { NeedMoreInfoData } from './data'
-<<<<<<< HEAD
 import NavigationRoute from 'pages/public/home/commonComponents/NavigationRoute/NavigationRoute'
 
-=======
 import traderBg from "../../../../assets/trading/busy-trader.png"
 import ForexCalculator from 'components/forexCalculator/ForexCalculator'
 import TradCalc from 'components/tradCalc/TradCalc'
 import CommodityCalculator from './commodityCalculator/CommodityProfitCalculator'
 import ProfitLossCal from './commodityCalculator/ProfitLossCalculator'
->>>>>>> 824dce340416704608e27846c05c245f2ce0e8e0
 
 const CommoditiesProfitCalc = () => {
   return (
     <div className='tradingContainer'>
       <Navbar/>
-<<<<<<< HEAD
       <NavigationRoute/>
-=======
       <TradCalc withRoute titleHeader='Commodities Profit Calculator'/>
 
         <ForexCalculator mainImg={traderBg}
@@ -38,7 +33,6 @@ const CommoditiesProfitCalc = () => {
 
           text2='markets.com offers a commodities calculator right on the platform to help traders make more informed decisions as they trade.'/>
     
->>>>>>> 824dce340416704608e27846c05c245f2ce0e8e0
       
 
         <CostExplanation/>
