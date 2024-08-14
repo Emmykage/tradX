@@ -11,22 +11,24 @@ import {
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
 import SimpleTrade from './simpleTrade/SimpleTrade'
-
+import wheel from '../../../../assets/trading/cardWheel1.svg'
+import starIcon from "../../../../assets/trading/starshield.png"
+import fastExecIcon from "../../../../assets/trading/fastExecution.png"
 const TradingPlatform = () => {
     const items = [{
         title: "Multi-Asset Platform",
         text: "Upgraded platform rich with features & thousands of assets to speculate on.",
-        icon: "/trading-images/wheelIcon.png"
+        icon: wheel
     },
     {
         title: "Multi-Asset Platform",
         text: "Upgraded platform rich with features & thousands of assets to speculate on.",
-        icon: "/trading-images/starshield.png"
+        icon: starIcon
     },
     {
         title: "Multi-Asset Platform",
         text: "Upgraded platform rich with features & thousands of assets to speculate on.",
-        icon: "/trading-images/fastExecution.png"
+        icon: fastExecIcon
     }]
 
   return (
@@ -45,7 +47,7 @@ const TradingPlatform = () => {
         </div>
 
         <SimpleTrade/>
-        
+  
 
         <JoinInThreeSteps/>
         <NeedMoreInfo items={NeedMoreInfoData} />

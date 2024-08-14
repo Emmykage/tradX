@@ -1,7 +1,7 @@
 import React from 'react'
 import { CheckIcon2 } from 'assets/icons'
-import graphBg from '/trading-images/graph-bg.png'
-import candleSTick from '/trading-images/candleStickBg.png'
+import graphBg from '../../../../../assets/trading/graph-bg.png'
+import candleSTick from '../../../../../assets/trading/candleStickBg.png'
 import perc from '../../../../../assets/trading/90perc.png'
 import './simpleTrade.scss'
 const SimpleTrade = () => {

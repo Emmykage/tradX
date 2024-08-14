@@ -1,26 +1,31 @@
 import PerksCard from 'components/perksCard/PerksCard'
 import React from 'react'
-
+import walletIcon from '../../../../../assets/trading/wallet-icon.png'
+import people from '../../../../../assets/trading/people-icon.png'
+import commissionIcon from "../../../../../assets/trading/commission-discounts-icon.png"
+import chartIcon from "../../../../../assets/trading/chart.png"
+import peopleIon from "../../../../../assets/trading/people-icon.png"
+import charUpIcon from "../../../../../assets/trading/chart-arrow-up-icon.png"
 const CopyTrader = () => {
     const  items=[{
         text: "Earn potential income as a top signal provider.",
-        icon: "/trading-images/wallet-icon.png"
+        icon: walletIcon
     },{
 
         text: "Receive up to 50% profit from followers' trades.",
-        icon: "/trading-images/People.png"
+        icon: people
     },{
         text: "Flexibility to set your own performance fees.",
-        icon: "/trading-images/commission-discounts-icon.png"
+        icon: commissionIcon
     },{
         text: "Automated monthly payments for potentially profitable followers' trades.",
-        icon: "/trading-images/chart.png"
+        icon: chartIcon
     },{
         text: "Access to a wide community of potential followers.",
-        icon: "/trading-images/people-icon.png"
+        icon: peopleIon
     },{
         text: "Benefit from all the advantages without any upfront costs.",
-        icon: "/trading-images/chart-arrow-up-icon.png"
+        icon: commissionIcon
     },]
   return (
     <div>

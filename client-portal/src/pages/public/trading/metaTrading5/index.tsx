@@ -11,22 +11,24 @@ import Footer from 'pages/public/home/main/footer/Footer'
 import "./meta-5.scss"
 import {NeedMoreInfoData} from './data'
 import TradingCardInfo from 'components/tradingCardInfo/TradingCardInfo'
-
+import mgmtIcon from '../../../../assets/trading/meta-icon-1-bg.png'
+import algoIcon from '../../../../assets/trading/meta-icon-2-bg.png'
+import moreIcon from '../../../../assets/trading/meta-icon-3-bg.png'
 const MetaTrading5 = () => {
     const items = [{
+        title: "Improved Trade Management",
+        text: "Traders can net as well as hedge their positions to manage their exposure and take better control of their risk management",
+        icon: mgmtIcon
+    },
+    {
         title: "Algorithmic Trading",
-        text: "Automate your trading with Expert Advisors that you can plug-in to the platform",
-        icon: "/trading-images/meta-icon-1-bg.png"
+        text: "Automate your trading with Expert Advisors to make the most of market moves without having to do a thing, by plugging-in your EA to the platform",
+        icon: algoIcon
     },
     {
-        title: "Fast Execution, Low Spreads",
-        text: "Execute trades fast and with low costs based on our pricing and trade infrastructure",
-        icon: "/trading-images/meta-icon-2-bg.png"
-    },
-    {
-        title: "Intuitive Charts",
-        text: "Fully customisable charts and a range of technical indicators",
-        icon: "/trading-images/meta-icon-3-bg.png"
+        title: "Trade More Assets",
+        text: "Designed for trading more assets and offering more technical indicators than MT4, it’s the most complete MetaTrader platform to date",
+        icon: moreIcon
     }]
   return (
     <div className='tradingContainer meta-5'>
@@ -58,7 +60,7 @@ const MetaTrading5 = () => {
         />
         <CTABanner/>
         </div>
-        
+
         <NeedMoreInfo items={
             NeedMoreInfoData
         } />

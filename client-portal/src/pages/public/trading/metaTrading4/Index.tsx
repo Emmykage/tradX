@@ -9,22 +9,25 @@ import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreI
 import './meta-4.scss'
 import {NeedMoreInfoData} from './data'
 import TradingCardInfo from 'components/tradingCardInfo/TradingCardInfo'
-
+import fastExIcon from  '../../../../assets/trading/meta-icon-2-bg.png'
+import intuitiveIcon from '../../../../assets/trading/meta-icon-3-bg.png'
+import algoIcon from "../../../../assets/trading/meta-icon-1-bg.png"
+// import 
 const MetaTrading4 = () => {
     const items = [{
         title: "Algorithmic Trading",
         text: "Automate your trading with Expert Advisors that you can plug-in to the platform",
-        icon: "/trading-images/meta-icon-1-bg.png"
+        icon: algoIcon
     },
     {
         title: "Fast Execution, Low Spreads",
         text: "Execute trades fast and with low costs based on our pricing and trade infrastructure",
-        icon: "/trading-images/meta-icon-2-bg.png"
+        icon: fastExIcon
     },
     {
         title: "Intuitive Charts",
         text: "Fully customisable charts and a range of technical indicators",
-        icon: "/trading-images/meta-icon-3-bg.png"
+        icon: intuitiveIcon
     }]
   return (
     <div className='tradingContainer meta-4'>
