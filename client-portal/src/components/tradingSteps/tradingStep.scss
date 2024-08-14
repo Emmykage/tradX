@@ -19,7 +19,7 @@
         width: 100%;
         margin: auto;
         padding: 0 0px;
-        @media (max-width:480px) {
+        @media (max-width:768px) {
             width: 300px;
            min-height: 400px;
             display: flex;
@@ -33,7 +33,7 @@
       
         div{
             position: relative;
-            @media (max-width:480px) {  
+            @media (max-width:768px) {  
                 display: flex;
                 justify-content: center;
                 gap: 29px;
@@ -68,11 +68,10 @@
                 color: aliceblue;
                 position: absolute;
                 top: 120%;
-                width: 120px;
+                width: 100px;
                 line-height: 20px;
-                // background-color: blue;
 
-             @media (max-width:480px) {  
+             @media (max-width:768px) {  
                 position: static;
 
                 width: 220px;
@@ -105,7 +104,7 @@
                 left: 10px;
                 right: 10px;
             }
-            @media(max-width: 480px) {
+            @media(max-width: 768px) {
                 left: 22.50px;
                 right: 10px;
                 top: 30px;
