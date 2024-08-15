@@ -7,6 +7,7 @@ import peopleIon from "../../../../../assets/trading/people-icon.png"
 import peopleIcon from "../../../../../assets/trading/People.png"
 import charUpIcon from "../../../../../assets/trading/chart-arrow-up-icon.png"
 import { useTranslation } from 'react-i18next'
+import TradingSteps from 'components/tradingSteps/TradingSteps'
 const CopyTrader = () => {
     const {t} = useTranslation()
 
@@ -43,6 +44,14 @@ const CopyTrader = () => {
                 ))}
 
             </div>
+
+            <TradingSteps
+        step1={t("step1")}
+        step2={t("step2")}
+        step3={t("step3")}
+        step4={t("step4")}
+
+        />
     </div>
   )
 }

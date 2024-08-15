@@ -388,10 +388,9 @@
 "tradingConditions": "Trading Conditions",
 "tradingConditinsTxt": "You can trade a wide range of CFD instruments, in numerous asset classes, at markets.com, the home of online CFD trading. Trade with our easy-to-use, customisable platform and discover a world of opportunities.",
 
-"expDate": "Expiration Date",
-"expDateTxt": "Futures instruments will be rolled over on the expiration dates as per the table below.",
+"expirationDate": "Expiration Date",
+"expirationDateTxt": "Futures instruments will be rolled over on the expiration dates as per the table below.",
 "stayImformHeader": "Stay informed when weekly expiration dates are near",
-
 
 "costExplained" : "Our cost and charges explained",
 "costExplainTitle1": "commissioner",
@@ -410,8 +409,13 @@
 "costExplainTxt5": "A margin requirement indicates the amount you need to possess at the time of opening a position. This amount also includes the cost that will occur due to the spread in addition to the Used Margin. Used Margin: margin being used by your current open position.",
 
 "costExplainTitle6": "P/L",
-"costExplainTxt6": "The profit/loss ratio is a measure of performance in trading, calculated by comparing the average amount of money gained on winning trades to the average amount of money lost on losing trades, over a specific period of time."
+"costExplainTxt6": "The profit/loss ratio is a measure of performance in trading, calculated by comparing the average amount of money gained on winning trades to the average amount of money lost on losing trades, over a specific period of time.",
 
+
+"expirationBtn": "Expiration Dates",
+"tradingConditionsBtn": "Trading Conditions",
+"holdiadysBtn": "Holidays",
+"tradingScheduleBtn": "Trading Schedules"
 
 
 }

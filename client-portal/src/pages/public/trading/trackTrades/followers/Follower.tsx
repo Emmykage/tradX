@@ -7,6 +7,7 @@ import briefcase from '../../../../../assets/trading/briefcase-icon.png'
 import marketIcon from '../../../../../assets/trading/Market.png'
 import eyeSightIcon from "../../../../../assets/trading/Eye.png"
 import { useTranslation } from 'react-i18next'
+import TradingSteps from 'components/tradingSteps/TradingSteps'
 const Follower = () => {
     const {t} = useTranslation()
     const  items=[{
@@ -51,6 +52,15 @@ const Follower = () => {
                 ))}
 
             </div>
+
+            <TradingSteps
+        step1={t("step1")}
+        step2={t("step2")}
+        step3={t("step3")}
+        step4={t("step4")}
+        step5= {t("step5")}
+
+        />
     </div>
   )
 }

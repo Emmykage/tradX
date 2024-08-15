@@ -68,14 +68,7 @@ const TrackTrades = () => {
 
         </div>
            
-        <TradingSteps
-        step1={t("step1")}
-        step2={t("step2")}
-        step3={t("step3")}
-        step4={t("step4")}
-        step5= {t("step5")}
-
-        />
+     
        <div className="container benefitWrapper">
             <div className='profileCardInfo'>
                 <ProfileCard/>

@@ -1,26 +1,28 @@
 import TradeTable from 'pages/public/home/commonComponents/tradeTable/TradeTable'
 import React, { useState } from 'react'
 import "./tradeTable.scss"
+import { useTranslation } from 'react-i18next'
 
 const TradeTableExp = () => {
+    const {t} = useTranslation()
     const [selectTable, setSelectedTable] = useState("exppiration_date")
 
     const navItems = [
         {
             name: "exppiration_date",
-            label: "Expiration Dates"
+            label: t("expirationBtn")
         },
         {
             name: "trading_condition",
-            label: "Trading Conditions"
+            label: t("tradingConditionsBtn")
         },
         {
             name: "holiday",
-            label: "Holidays"
+            label: t("holdiadysBtn")
         },
         {
             name: "trading_schedules",
-            label: "Trading Schedules"
+            label: t("tradingScheduleBtn")
         }
 ]
   return (
@@ -33,7 +35,7 @@ const TradeTableExp = () => {
             ))}
         </div>
 
-        <h2>Stay informed when weekly expiration dates are near</h2>
+        <h2>{t("stayImformHeader")}</h2>
 
               <TradeTable/>
 
