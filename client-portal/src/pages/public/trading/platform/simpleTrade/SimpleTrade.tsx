@@ -4,7 +4,9 @@ import graphBg from '../../../../../assets/trading/graph-bg.png'
 import candleSTick from '../../../../../assets/trading/candleStickBg.png'
 import perc from '../../../../../assets/trading/90perc.png'
 import './simpleTrade.scss'
+import { useTranslation } from 'react-i18next'
 const SimpleTrade = () => {
+  const {t} = useTranslation()
   return (
     <div className='simpleTrade'>
         <div className='imagery'>
@@ -15,12 +17,12 @@ const SimpleTrade = () => {
     </div>
        
         <div className='simpleTradeTextList'>
-            <h3>Simply Trade With Us</h3>
+            <h3>{t("simpleTrading")}</h3>
             <ul>
-                <li><span><CheckIcon2/></span> <p>Market-leading analysis tools with Analyst Recommendations, Insiders and more</p></li>
-                <li> <span><CheckIcon2/></span><p>Watch our expert tips on XRay with several shows a day</p></li>
-                <li><span><CheckIcon2/></span><p>News and Analysis with a live stream for market-moving updates</p></li>
-                <li><span><CheckIcon2/></span><p>Pro-level charting tools with TradingView</p></li>
+                <li><span><CheckIcon2/></span> <p>{t("simpleTrading1")}</p></li>
+                <li> <span><CheckIcon2/></span><p>{t("simpleTrading2")}</p></li>
+                <li><span><CheckIcon2/></span><p>{t("simpleTrading3")}</p></li>
+                <li><span><CheckIcon2/></span><p>{t("simpleTrading4")}</p></li>
             </ul>
         </div>
         

@@ -8,6 +8,8 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    ns: ["trading", "translation"], 
+    defaultNS: "translation",
     fallbackLng: "en",
     debug: true,     
     interpolation: {

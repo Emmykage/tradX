@@ -7,17 +7,19 @@ import piCard2  from '../../../../../assets/trading/Frame2.png'
 import piCard3  from '../../../../../assets/trading/Frame3.png'
 import TGlobe  from '../../../../../assets/trading/T-globe.png'
 import graphycon from '../../../../../assets/trading/graphycon.png'
+import { useTranslation } from 'react-i18next'
 const TrackTradeLanding = () => {
+    const {t} = useTranslation()
   return (
     <div className='trackTradeWrapper'>
         <div className='textWrapper'> 
-            <h1>Follow Trades from  Top Traders</h1>
+            <h1>{t("copyTrade")}</h1>
 
             <div className='subText'>
                 <img src={graphycon} alt="graph icon" />
-                <p>Trade alongside the signal providers with proven track records!</p>
+                <p>{t("copyTradeText")}</p>
             </div>
-            <button>Copy Trading</button>
+            <button>{t("copyTrdBtn")}</button>
 
 
         </div>
@@ -34,7 +36,7 @@ const TrackTradeLanding = () => {
 
                 <div className='text-box'>           
                     <span>  <CheckIcon1/> </span>
-                    <p>Successful Copy Trade!</p>
+                    <p>{t("succesCopy")}</p>
 
                 </div>
 

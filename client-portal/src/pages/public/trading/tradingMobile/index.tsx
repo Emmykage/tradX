@@ -8,7 +8,9 @@ import RegisterBlock from 'pages/public/markets/components/registerBlock/Registe
 import {NeedMoreInfoData} from './data'
 import Footer from 'pages/public/home/main/footer/Footer'
 import UserExp from './UserXp/UserXp'
+import { useTranslation } from 'react-i18next'
 const TradingOnTheGo = () => {
+  const {t} = useTranslation()
   return (
     <div className='tradingContainer'>
         <Navbar/>
@@ -16,8 +18,8 @@ const TradingOnTheGo = () => {
 
         <TradingExperience
           image={imageBgAdam} 
-          title={"Where intuition meets functionality"} 
-          text={"The markets.com app offers a streamlined interface that executes orders quickly and reliably. Trade the markets your way. With sleek, uncluttered and powerful technology."}
+          title={t("expIntro")} 
+          text={t("expText")}
           button={false}
         />
         <UserExp />

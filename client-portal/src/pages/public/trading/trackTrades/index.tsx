@@ -13,29 +13,33 @@ import './trackTrade.scss'
 import { useState } from 'react'
 import Follower from './followers/Follower'
 import CopyTrader from './copyTraders/CopyTrader'
+import { useTranslation } from 'react-i18next'
 
 const TrackTrades = () => {
+    const {t} = useTranslation()
     
 
     
     const benefits = [{
-        title: "Real-time Trade",
-        text: "Follow top signal providers' moves instantly."
+        title: t("benefitTitle1"),
+        text: t("benefitTxt1")
+    },{
+        title: t("benefitTitle2"),
+        text: t("benefitTxt2")
+    },{
+        title: t("benefitTitle3"),
+        text: t("benefitTxt13")
+    },{
+        title: t("benefitTitle4"),
+        text: t("benefitTxt14")
+    },{
+        title: t("benefitTitle5"),
+        text: t("benefitTxt5")
+    },{
+        title: t("benefitTitle6"),
+        text: t("benefitTxt6")
     },
-    {     title: "Flexible Trade Size",
-        text: "Choose a trade size that aligns with your individual trading strategy."},
-        {
-            title: "Top Expert Rankings",
-            text: "Follow top signal providers' moves instantly."
-        },
-        {     title: "Community Interaction",
-            text: "Join trader groups to share insights, discuss markets"},
-            {
-                title: "Intuitive Interface",
-                text: "User-friendly design suitable for all trader levels."
-            },
-            {     title: "Global Markets Access",
-                text: "Trade a variety of instruments anytime."}]
+   ]
 
     const [activity, setActivity] = useState("follower")
     const handleClick = (btn: string) => {
@@ -50,8 +54,8 @@ const TrackTrades = () => {
 
         <div className='activityContainer'>
             <div className='btnWrapper'>           
-                <button onClick={()=> handleClick("follower")} className={`${activity == "follower" && "active"}`}> Follow</button>
-                <button onClick={()=> handleClick("copy_trader")} className={`${activity == "copy_trader" && "active"}`}>Copy Trader </button>
+                <button onClick={()=> handleClick("follower")} className={`${activity == "follower" && "active"}`}> {t("followerBtn")}</button>
+                <button onClick={()=> handleClick("copy_trader")} className={`${activity == "copy_trader" && "active"}`}>{t("copyTraderBtn")} </button>
             </div>
 
             {activity == "follower" ? (<>
@@ -65,13 +69,11 @@ const TrackTrades = () => {
         </div>
            
         <TradingSteps
-        step1="Sign up for a
-        Tradex.io account"
-        step2='Login to 
-        Tradex.io'
-        step3="Select Copy Trading"
-        step4="Review  Profile Stats"
-        step5= "Select a profile to Copy"
+        step1={t("step1")}
+        step2={t("step2")}
+        step3={t("step3")}
+        step4={t("step4")}
+        step5= {t("step5")}
 
         />
        <div className="container benefitWrapper">

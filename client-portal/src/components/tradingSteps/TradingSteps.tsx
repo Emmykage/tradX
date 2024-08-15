@@ -1,5 +1,6 @@
 import React from 'react'
 import './tradingStep.scss'
+import { useTranslation } from 'react-i18next'
 
 interface tradingStepsProp  {
     step1: string,
@@ -10,9 +11,11 @@ interface tradingStepsProp  {
 }
 
 const TradingSteps: React.FC<tradingStepsProp>  = ({step1, step2, step3, step4, step5} ) => {
+  const {t} = useTranslation()
+
   return (
     <div className='getting-started-steps'>
-      <h2>How to start social trading?</h2>
+      <h2>{t("SocialTradeStep")}</h2>
         
         <div className='getting-started-wrapper'>
         <hr />

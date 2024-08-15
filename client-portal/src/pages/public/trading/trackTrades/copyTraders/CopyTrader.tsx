@@ -1,35 +1,38 @@
 import PerksCard from 'components/perksCard/PerksCard'
-import React from 'react'
 import walletIcon from '../../../../../assets/trading/wallet-icon.png'
 import people from '../../../../../assets/trading/people-icon.png'
 import commissionIcon from "../../../../../assets/trading/commission-discounts-icon.png"
 import chartIcon from "../../../../../assets/trading/chart.png"
 import peopleIon from "../../../../../assets/trading/people-icon.png"
+import peopleIcon from "../../../../../assets/trading/People.png"
 import charUpIcon from "../../../../../assets/trading/chart-arrow-up-icon.png"
+import { useTranslation } from 'react-i18next'
 const CopyTrader = () => {
+    const {t} = useTranslation()
+
     const  items=[{
-        text: "Earn potential income as a top signal provider.",
+        text: t("copyTradeBenefitTxt1"),
         icon: walletIcon
     },{
 
-        text: "Receive up to 50% profit from followers' trades.",
-        icon: people
+        text: t("copyTradeBenefitTxt2"),
+        icon: peopleIcon
     },{
-        text: "Flexibility to set your own performance fees.",
+        text: t("copyTradeBenefitTxt3"),
         icon: commissionIcon
     },{
-        text: "Automated monthly payments for potentially profitable followers' trades.",
+        text: t("copyTradeBenefitTxt4"),
         icon: chartIcon
     },{
-        text: "Access to a wide community of potential followers.",
+        text: t("copyTradeBenefitTxt5"),
         icon: peopleIon
     },{
-        text: "Benefit from all the advantages without any upfront costs.",
+        text: t("copyTradeBenefitTxt6"),
         icon: commissionIcon
     },]
   return (
     <div>
-         <h2>Copy Traders Perks</h2>
+         <h2>{t("copyTraderPerks")}</h2>
                 <div className="cardWrapper">
                 {items.map(item => (
                         <PerksCard 

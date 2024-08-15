@@ -38,5 +38,101 @@
   "understand": "J'ai compris",
   "walkthroughChooseTrade": "Attendre le résultat du trade ({{time}}).",
   "walkthroughChooseTradeSubText": "Félicitations ! Votre trade a été un succès. En investissant 100 $, vous avez gagné 85 $ - un retour de 85% en seulement 1 minute.",
-  "finishTrading": "Félicitations! Votre transaction a été un succès. En investissant 100 $, vous avez gagné 85 $ - un rendement de 85% en seulement 1 minute."
+  "finishTrading": "Félicitations! Votre transaction a été un succès. En investissant 100 $, vous avez gagné 85 $ - un rendement de 85% en seulement 1 minute.",
+
+
+
+
+  "tradingIntro": "Passez au niveau supérieur de votre trading avec la plateforme puissante, riche en fonctionnalités et avantages de markets.com, offrant des graphiques de haute qualité, des outils d'analyse uniques et des alertes personnalisables.",
+  "straightForward": "Trading Direct",
+  "staightForwardText": "Notre plateforme la plus complète à ce jour – tout ce dont vous avez besoin pour trader. La plateforme de trading multi-actifs de markets.com vous place aux commandes de chaque transaction. La plateforme de trading est dotée de fonctionnalités telles que des actualités et des analyses, ainsi qu'une suite d'outils puissants pour le Sentiment, les Fondamentaux et les Techniques afin de prendre des décisions plus éclairées. Vous pourrez également regarder nos sessions vidéo en direct d'Actualités et d'Analyses, où nos experts internes et invités partagent leur profonde connaissance des marchés financiers exclusivement avec les traders de markets.com.",
+  "simpleTrading": "Tradez Simplement avec Nous",
+  "createYourAccount": "Créez votre compte",
+  "fundAcount": "Approvisionnez votre compte",
+  "startTrading": "Commencez à trader immédiatement",
+  "NeedInfo": "Besoin de plus d'informations ?",
+
+  "tradeOnTheGo": "Tradez en Déplacement",
+  "introText": "Notre application de trading puissante et accessible vous permet de saisir chaque opportunité de trading. Peu importe où vous vous trouvez.",
+  "expIntro": "Là où l'intuition rencontre la fonctionnalité",
+  "expText": "L'application markets.com offre une interface épurée qui exécute les ordres rapidement et de manière fiable. Tradez les marchés à votre manière. Avec une technologie élégante, épurée et puissante.",
+  "userXpEng": "Conviviale et engageante",
+  "userXpEntText": "L'application markets.com offre une expérience fluide et stable qui nous distingue. Tradez des CFD sans encombrement, vous permettant de vous concentrer sur votre stratégie.",
+  "userXpRes": "Actualités et analyses réactives",
+  "userXpResText": "Exécutez les ordres aux côtés de vos graphiques. Accédez aux statistiques pour alimenter vos stratégies.",
+  "userXpInfo": "Informations rapides, claires et réactives",
+  "userXpInfoText": "Avec des actualités financières intégrées, des commentaires d'experts et des informations dynamiques sur les marchés, notre plateforme offre une expérience de trading puissante et épurée.",
+
+  "metaTrader4": "Meta Trader 4",
+  "metaTrader4Text": "MetaTrader 4 reste l'une des plateformes de trading les plus populaires et faciles à utiliser. Avec des conseillers experts, des micro-lots, une couverture et un trading en un clic, l'offre MT4 de tradex.io est tout ce que vous attendiez d'une plateforme et bien plus encore. Alimenté par la tarification, la réglementation et l'infrastructure de markets.com, vous pouvez trader en toute confiance en sachant que vos ordres seront exécutés rapidement, avec des spreads faibles et avec le soutien de markets.com.",
+  "expMeta4Intro": "Utilisez MT4 pour trader avec tradex.io",
+  "expMeta4IntroText": "Si vous avez déjà un compte tradex.io, vous êtes prêt. Vous pouvez maintenant simplement installer MT4 et ajouter un compte de trading via votre plateforme desktop markets.com. Pour plus d'informations sur la façon d'ajouter un compte de trading MetaTrader, veuillez cliquer ici. Si vous n'avez pas encore de compte markets.com, ne vous inquiétez pas – l'inscription est facile et rapide.",
+  "tradeUsing4": "Tradez avec MT4 avec tradex.io",
+  "tradeUsing4Text": "Vous pouvez accéder à la plateforme de trading web populaire et facile à utiliser MetaTrader 4 avec votre compte markets.com. Une liste complète de nos conditions de trading pour le trading via les plateformes MetaTrader",
+
+  "metaTrader5": "Meta Trader 5",
+  "metaTrader5Text": "MetaTrader 5 reste l'une des plateformes de trading les plus populaires et faciles à utiliser. Avec des conseillers experts, des micro-lots, une couverture et un trading en un clic, l'offre MT5 de tradex.io est tout ce que vous attendiez d'une plateforme et bien plus encore. Alimenté par la tarification, la réglementation et l'infrastructure de markets.com, vous pouvez trader en toute confiance en sachant que vos ordres seront exécutés rapidement, avec des spreads faibles et avec le soutien de markets.com.",
+  "expMeta5Intro": "Utilisez MT5 pour trader avec tradex.io",
+  "expMeta5IntroText": "Si vous avez déjà un compte tradex.io, vous êtes prêt. Vous pouvez maintenant simplement installer MT5 et ajouter un compte de trading via votre plateforme desktop markets.com. Pour plus d'informations sur la façon d'ajouter un compte de trading MetaTrader, veuillez cliquer ici. Si vous n'avez pas encore de compte markets.com, ne vous inquiétez pas – l'inscription est facile et rapide.",
+  "tradeUsing45": "Tradez avec MT5 avec tradex.io",
+  "tradeUsing5Text": "Vous pouvez accéder à la plateforme de trading web populaire et facile à utiliser MetaTrader 5 avec votre compte markets.com. Une liste complète de nos conditions de trading pour le trading via les plateformes MetaTrader",
+
+  "copyTrade": "Suivez les Trades des Meilleurs Traders",
+  "copyTradeText": "Tradez aux côtés des fournisseurs de signaux ayant des antécédents éprouvés !",
+  "whatIsCopyTrade": "Qu'est-ce que le copy trading ?",
+  "whatIsCopTradeText": "Découvrez le mélange d'interaction sociale et d'apprentissage avec le Trading Social de Tradex. Suivez les meilleurs traders, reproduisez leurs stratégies et obtenez des aperçus, idéal pour les nouveaux traders comme pour les traders expérimentés.",
+  "whatIsCopyTradeNote": "*Le trading comporte un risque considérable de perte de capital. Veuillez trader judicieusement.",
+  "followerPerk": "Avantages pour les abonnés",
+
+  "CFDTradeCal": "Calculateur de Trading CFD",
+  "getStarted": "Comment puis-je commencer à trader ?",
+  "getStartedList": "Comment puis-je commencer à trader ?",
+
+  "CommProfitCal": "Calculateur de Profit des Commodités",
+  "whatIsComCal": "Qu'est-ce qu'un Calculateur de Profit des Commodités ?",
+  "whatIsComCalText": "Un Calculateur de Profit des Commodités est un outil qui aide les traders et les investisseurs sur le marché des matières premières à calculer leurs profits ou pertes potentiels en fonction de divers paramètres. Le calculateur peut fournir une estimation du profit ou de la perte qui serait réalisée si la marchandise était achetée et vendue au prix actuel du marché. Les calculateurs de profit des matières premières peuvent être un outil utile pour les traders et les investisseurs afin de prendre des décisions éclairées sur l'achat ou la vente de matières premières.",
+  "whatIsComCalText2": "markets.com propose un calculateur de matières premières directement sur la plateforme pour aider les traders à prendre des décisions plus éclairées lorsqu'ils trade.",
+  "HowComWork": "Comment fonctionne un Calculateur de Profit des Commodités ?",
+  "howComWorkText": "Un Calculateur de Profit des Commodités fonctionne en prenant en compte divers paramètres tels que le prix du marché actuel, la quantité et les frais de transaction. Le calculateur calcule les revenus estimés générés par la vente de la marchandise et soustrait le coût total de la transaction, y compris les frais associés, pour arriver au profit ou à la perte estimé. ",
+  "howComWorkCalWork2": "La valeur calculée aide les traders et les investisseurs à prendre des décisions éclairées sur l'achat ou la vente de matières premières. En fournissant des estimations rapides et précises des profits/pertes, le calculateur de matières premières tradex.com rend la tâche complexe de gestion des risques beaucoup plus digeste et il est donc conseillé aux traders de l'utiliser avant de décider d'engager leur capital.",
+  "howCalP&LCom": "Comment calculer le Profit et la Perte dans le Trading de Commodités ?",
+  "howCalP&LComTxt": "Calculer le profit et la perte dans le trading de matières premières nécessite de connaître le prix auquel vous avez acheté et vendu la marchandise, ainsi que les coûts associés tels que les commissions et les frais. Pour calculer le profit, soustrayez le coût total d'achat de la marchandise du revenu total reçu de sa vente. Pour calculer la perte, soustrayez le revenu total reçu de la vente de la marchandise du coût total d'achat.",
+  "howCalP&LComTxt2": "Cependant, vous n'avez pas besoin de faire ces calculs manuellement, car les courtiers en ligne comme markets.com offrent un calculateur de matières premières qui fait le travail pour vous. Vous devez simplement entrer les informations nécessaires, et le calculateur vous fournira le montant estimé du profit ou de la perte. Cela rend le processus simple et pratique, vous permettant de vous concentrer sur la prise de décisions éclairées en matière de trading.",
+
+  "anlyzerComp": "Exemple de calcul P/L",
+  "anlyzerTxt": "Vous avez acheté 200 barils de pétrole brut à un prix de 79,08. Vous avez clôturé la même position dans la même journée à un prix de 80,97. Votre P/L réglé est de 372 USD.",
+  "analyzerFootNote": "Le P/L est calculé avec la formule suivante : ((prix de sortie-prix d'entrée)*quantité) + frais et charges",
+
+  "foxPrCal": "Calculateur de Profit Forex",
+  "WhatISFoxProfitCal": "Qu'est-ce qu'un Calculateur de Profit Forex ?",
+  "whatIsFoxProfitTxt": "Un calculateur de profit Forex est un outil utilisé par les traders Forex pour calculer le profit ou la perte d'un trade particulier. Ce calculateur prend en compte le prix d'entrée et de sortie d'un trader, la paire de devises échangée, le nombre d'unités, le coût du spread et du rollover, ainsi que toutes les commissions applicables. Il aide les traders à calculer avec précision les profits ou les pertes potentiels à l'avance et à comprendre les risques du trade. Les calculateurs de profit Forex fournissent également un moyen utile de comparer les profits potentiels entre différentes paires de devises, ou de vérifier la performance d'une paire de devises unique au fil du temps.",
+  "whatIsFoxProfitTxt2": "markets.com propose un calculateur de profit Forex directement sur la plateforme pour aider les traders à prendre des décisions plus éclairées lorsqu'ils trade.",
+  "howFoxProfitCalWork": "Comment fonctionne un Calculateur de Profit Forex ?",
+  "howFoxProfitCalWorkTxt": "Vous pourriez vous demander, 'Comment puis-je calculer le profit en Forex ?', ou 'Comment calculez-vous le profit ou la perte dans le trading Forex ?'. Heureusement pour vous, le calculateur de profit Forex de markets.com simplifie les choses.",
+  "howFoxProfitCalWorkTxt2": "Le calculateur est conçu pour vous aider à calculer les gains et les pertes potentiels sur chaque trade de devise. Il suffit d'entrer les valeurs demandées : la paire de devises échangée, la taille de la position, le prix d'entrée et le prix de sortie pour déterminer avec précision les gains ou les pertes potentiels. Les calculateurs markets.com incluent déjà les spreads lors de la détermination du résultat et les 0 % de commission que nous proposons sur la plateforme. Avec ces informations, le calculateur peut rapidement et précisément déterminer combien vous gagneriez ou perdriez hypothétiquement sur un trade.",
+  "howSProfitCalFoxTrd": "Comment est calculé le profit dans le trading Forex ?",
+  "howSProfitCalFoxTrdTxt": "Le profit dans le trading Forex est calculé en soustrayant le prix d'entrée du prix de sortie d'un trade. Cela peut être une valeur positive ou négative en fonction de si le trade a entraîné une perte ou un gain. Les traders Forex cherchent à ouvrir un trade à un prix plus bas et à le clôturer à un prix plus élevé, afin de réaliser un profit.",
+  "howSProfitCalFoxTrdTxt2": "Cependant, vous n'avez pas besoin de faire ces calculs manuellement, car tradex.io propose un calculateur de matières premières qui fait le travail pour vous. Vous devez simplement entrer les informations nécessaires, et le calculateur vous fournira le montant estimé du profit ou de la perte. Cela rend le processus simple et pratique, vous permettant de vous concentrer sur la prise de décisions éclairées en matière de trading.",
+
+  "foxMargCal": "Calculateur de Marge Forex",
+  "whatFoxMarCal": "Qu'est-ce qu'un Calculateur de Marge Forex ?",
+  "whatIsFoxMarCalTxt": "La marge requise est un pourcentage de la valeur totale d'une position que vous devez posséder pour entrer dans une position. Notre calculateur de marge Forex est un outil conçu pour calculer la marge approximative requise pour la taille et la direction de votre position souhaitées.",
+  "whatLevTrd": "Qu'est-ce que le trading avec effet de levier, pourquoi est-ce important ?",
+  "whatLevTrdTxt": "Le trading avec un capital à effet de levier signifie que vous pouvez trader des montants considérablement plus élevés que les fonds que vous investissez, qui ne servent que de marge. Un fort effet de levier peut augmenter considérablement le rendement potentiel, mais il peut également augmenter considérablement les pertes potentielles. En tant que client, vous pouvez trader avec des montants bien supérieurs à ce que vous pourriez investir dans un CFD particulier sans la marge que nous fournissons.",
+  "whatLevTrdTxt2": "Parfois, l'effet de levier est exprimé en pourcentage – et appelé Exigence de Marge. Par exemple, un effet de levier de 1:30 correspond à une exigence de marge de 3,34%.",
+  "howToAvoidCan": "Qu'est-ce qu'un appel de marge, comment puis-je l'éviter ?",
+
+  "ecoCaldr": "Calendrier Économique",
+
+  "cfdTrd": "Trading CFD",
+  "cfdTrdTxt": "Prenez position sur des milliers de marchés mondiaux en tradant des CFD sur actions, indices, forex, matières premières, obligations et cryptomonnaies. Rejoignez-nous pour une expérience de trading totale avec une plateforme multi-actifs puissante, des coûts réduits et un soutien expert.",
+  "whyTrdCfd": "Pourquoi trader des CFD avec nous",
+  "cfdMore": "Et bien plus encore",
+
+  "cfdAsset": "Liste des Actifs CFD",
+  "cfDAssetTxt": "Vous pouvez trader une large gamme d'instruments CFD, dans de nombreuses classes d'actifs, sur markets.com, la maison du trading CFD en ligne. Tradez avec notre plateforme facile à utiliser et personnalisable et découvrez un monde d'opportunités.",
+
+  "expDate": "Date d'Expiration",
+  "expDateTxt": "Les instruments à terme seront roulés aux dates d'expiration selon le tableau ci-dessous.",
+  "stayImformHeader": "Restez informé lorsque les dates d'expiration hebdomadaires approchent"
 }

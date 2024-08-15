@@ -14,20 +14,22 @@ import TradingCardInfo from 'components/tradingCardInfo/TradingCardInfo'
 import mgmtIcon from '../../../../assets/trading/meta-icon-1-bg.png'
 import algoIcon from '../../../../assets/trading/meta-icon-2-bg.png'
 import moreIcon from '../../../../assets/trading/meta-icon-3-bg.png'
+import { useTranslation } from 'react-i18next'
 const MetaTrading5 = () => {
+    const {t} = useTranslation()
     const items = [{
-        title: "Improved Trade Management",
-        text: "Traders can net as well as hedge their positions to manage their exposure and take better control of their risk management",
+        title: t("m5benefitTitle1"),
+        text: t("m5benefitTxt1"),
         icon: mgmtIcon
     },
     {
-        title: "Algorithmic Trading",
-        text: "Automate your trading with Expert Advisors to make the most of market moves without having to do a thing, by plugging-in your EA to the platform",
+        title: t("m5benefitTitle2"),
+        text:  t("m5benefitTxt2"),
         icon: algoIcon
     },
     {
-        title: "Trade More Assets",
-        text: "Designed for trading more assets and offering more technical indicators than MT4, it’s the most complete MetaTrader platform to date",
+        title: t("m5benefitTitle3"),
+        text: t("m5benefitTxt3"),
         icon: moreIcon
     }]
   return (
@@ -35,12 +37,12 @@ const MetaTrading5 = () => {
         <MetaTrader5Landing/>
         <TradingExperience  
             image={imageBgAdamLp} 
-            title={"Elevate your trading experience with MetaTrader 5"} 
-            text={"Use your markets.com account to seamlessly install MT5 and start trading right away in your desktop markets.com platform. The video tutorial above can walk you through the process. Explore here step-by-step instructions on adding a MetaTrader 5 trading account. Don't have a markets.com account yet? No worries, visit the markets.com Sign Up page and provide the required information to quickly complete full registration. "}
+            title={t("expMeta5Intro")} 
+            text={t("expMeta5IntroText")}
             button={true}
             />
 
-        <h3>Benefits of MT5</h3>
+        <h3>{t("benefiitM5")}</h3>
 
         <div className="cardWrapper">
             {items.map(item => (
@@ -54,8 +56,8 @@ const MetaTrading5 = () => {
         </div>
         <div className='bg-theme'>            
 
-        <MetaTradingComponent title='Trade using MT4 with tradex.io'
-            body='You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms'
+        <MetaTradingComponent title={t("tradeUsing5")}
+            body={t("tradeUsing5txt")}
             type= "mt5"
         />
         <CTABanner/>
