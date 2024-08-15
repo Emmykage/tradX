@@ -1,0 +1,105 @@
+{
+    
+  "tradingIntro": "Take your trading to the next level with the markets.com powerful, feature & benefit rich platform, featuring high grade charting, unique analytic tools and customisable alerts.",
+  "straightForward": "Straightforward Trading",
+  "staightForwardText": "Our most complete platform yet – everything you need to trade. The markets.com multi-asset trading platform places you in control of every trade. The trading platform is packed with features like News & Analysis as well as a suite of powerful Sentiment, Fundamental and Technical tools for making more informed decisions. You'll also be able to watch our live News & Analysis video sessions, where our in-house experts and guests share their deep knowledge of the financial markets exclusively with markets.com traders.",
+  "simpleTrading": "Simply Trade with Us",
+  "createYourAccount": "Create your account",
+  "fundAcount": "Fund your account",
+  "startTrading": "Start trading straight away",
+  "NeedInfo": "Need more information?",
+
+  "tradeOnTheGo": "Trade on the Go",
+  "introText": "Our powerful and accessible trading app allows you to seize every trading opportunity. Wherever you are.",
+  "expIntro": "Where intuition meets functionality",
+  "expText": "The markets.com app offers a streamlined interface that executes orders quickly and reliably. Trade the markets your way. With sleek, uncluttered and powerful technology.",
+  "userXpEng": "User friendly and engaging",
+  "userXpEntText": "The market.com app offers a streamlined and stable experience that sets us apart. Trade CFDs without the clutter, allowing you to focus on your strategy.",
+  "userXpRes": "Responsive news and analysis",
+  "userXpResText": "Execute orders alongside your charts. Access statistics to power your strategies ",
+  "userXpInfo": "Swift, clear and responsive information",
+  "userXpInfoText": "With integrated financial news, expert commentary, and dynamic market information, our platform offers a powerful and streamlined trading experience.",
+
+
+  "metaTrader4": "Meta Trader 4",
+  "metaTrader4Text": "MetaTrader 4 remains one of the most popular and easy-to-use trading platforms. Boasting Expert Advisors, micro-lots, hedging and one-click trading, the tradex.io MT4 offering is everything you would expect from a platform and much more. Powered by markets.com pricing, regulation and infrastructure, you can trade with the confidence that your orders will be executed quickly, with low spreads and with the markets.com support.",
+  "expMeta4Intro": "Use MT4 to trade with tradex.io" ,
+  "expMeta4IntroText": "If you already have a tradex.io account, you are all set. Now you can simply install MT4 and add a trading account via your desktop markets.com platform. For more information on how to add MetaTrader trading account please click here. If you don’t have a markets.com account yet, don’t worry – registering is easy and fast.",
+  "tradeUsing4": "Trade using MT4 with tradex.io",
+  "tradeUsing4Text": "You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms",
+
+
+
+  "metaTrader5": "Meta Trader 4",
+  "metaTrader5Text": "MetaTrader 4 remains one of the most popular and easy-to-use trading platforms. Boasting Expert Advisors, micro-lots, hedging and one-click trading, the tradex.io MT4 offering is everything you would expect from a platform and much more. Powered by markets.com pricing, regulation and infrastructure, you can trade with the confidence that your orders will be executed quickly, with low spreads and with the markets.com support.",
+  "expMeta5Intro": "Use MT4 to trade with tradex.io" ,
+  "expMeta5IntroText": "If you already have a tradex.io account, you are all set. Now you can simply install MT4 and add a trading account via your desktop markets.com platform. For more information on how to add MetaTrader trading account please click here. If you don’t have a markets.com account yet, don’t worry – registering is easy and fast.",
+  "tradeUsing45": "Trade using MT4 with tradex.io",
+  "tradeUsing5Text": "You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms",
+
+ "copyTrade": "Follow Trades from Top Traders",
+ "copyTradeText": "Trade alongside the signal providers with proven track records!",
+ "whatIsCopyTrade": "What is copy trading?",
+ "whatIsCopTradeText": "Experience the mix of social interaction and learning with Tradex Social Trading. Follow top traders, replicate their strategies, and gain insights, ideal for both new and seasoned traders.",
+ "whatIsCopyTradeNote": "*Trading carries a considerable risk of capital loss. Please trade wisely.",
+ "followerPerk": "follower Perks",
+
+ "CFDTradeCal":  "CFD trading Calculator",
+ "getStarted": "How can I get started with Trading?",
+ "getStartedList": "How can I get started with Trading?",
+    
+
+ "CommProfitCal": "Commodities Profit Calculator",
+ "whatIsComCal": "What is a Commodities Profit Calculator?",
+ "whatIsComCalText" : "A Commodity Profit Calculator is a tool that helps traders and investors in the commodity market to calculate their potential profits or losses based on various input parameters. The calculator can provide an estimate of the profit or loss that would be realized if the commodity were bought and sold at the current market price. Commodity Profit Calculators can be a useful tool for traders and investors to make informed decisions about buying or selling commodities.",
+ "whatIsComCalText2": "markets.com offers a commodities calculator right on the platform to help traders make more informed decisions as they trade.",
+ "HowComWork": "How Does a Commodities Profit Calculator Work?",
+ "howComWorkText": "A Commodity Profit Calculator works by taking into account various input parameters such as the current market price, quantity, and transaction fees. The calculator calculates the estimated revenue generated by selling the commodity and subtracts the total cost of the transaction, including any associated fees, to arrive at the estimated profit or loss. ",
+ "howComWorkCalWork2": "The calculated value helps traders and investors in making informed decisions about buying or selling commodities. By providing quick and accurate profit/loss estimates. The tradex.com commodity calculator makes the complex task of risk management much more digestible and so traders are advised to use it before they decide to put their capital at risk.",
+ "howCalP&LCom": "How to Calculate Profit and Loss in Commodity Trading?",
+ "howCalP&LComTxt": "Calculating profit and loss in commodity trading requires knowing the price at which you bought and sold the commodity, as well as any associated costs such as commissions and fees. To calculate profit, subtract the total cost of purchasing the commodity from the total revenue received from selling it. To calculate loss, subtract the total revenue received from selling the commodity from the total cost of purchasing it.",
+ "howCalP&LComTxt2": " However, you don't need to do these calculations manually as online brokers like markets.com offer a commodity calculator that does the job for you. You simply need to input the necessary information, and the calculator will provide you with the estimated profit or loss amount. This makes the process simple and convenient, allowing you to focus on making informed trading decisions.",
+
+ "anlyzerComp": "P/L Calculation example",
+ "anlyzerTxt": "You bought 200 barrels of Crude Oil position at the price of 79.08. You closed the same position within the same day at the price of 80.97. Your settled P/L is 372 USD.",
+ "analyzerFootNote": "P/L is calculated with the following formula: ((exit price-entry price)*quantity) + fees & charges",
+
+ "foxPrCal": "Forex Profit Calculator",
+ "WhatISFoxProfitCal": "What is a Forex Profit Calculator?",
+ "whatIsFoxProfitTxt": "A forex profit calculator is a tool used by forex traders to calculate the profit or loss from a particular trade. This calculator factors in a trader’s entry and exit price, the currency pair being traded, the number of units, the cost of spread and rollover, as well as any applicable commissions. It helps traders accurately calculate potential profits or losses in advance and understand the risks of the trade. Forex profit calculators also provide a helpful way to compare potential profits across different currency pairs, or to check the performance of a single currency pair over time.",
+ "whatIsFoxProfitTxt2": "markets.com offers a forex profit calculator right on the platform to help traders make more informed decisions as they trade.",
+ "howFoxProfitCalWork": "How Does a Forex Profit Calculator Work?",
+ "howFoxProfitCalWorkTxt": "You might find yourself asking, ‘How Can I Calculate Profit in Forex?’, or ‘How do you calculate profit or loss in forex trading?’. Well fortunately for you, the markets.com forex profit calculator makes things easy.",
+ "howFoxProfitCalWorkTxt2": "The calculator is designed to help you calculate potential gains and losses on each currency trade. Simply input the values requested: the currency pair being traded, the position size, entry price, and the exit price to accurately determine potential gains or losses. The markets.com calculators already include spreads when determining the outcome and the 0% commission we offer on the platform. With this information, the calculator can quickly and accurately determine how much you would hypothetically make or lose on a trade.",
+ "howSProfitCalFoxTrd": "How is Profit Calculated in Forex Trading?",
+ "howSProfitCalFoxTrdTxt": "Profit in forex trading is calculated by subtracting the entry price from the exit price of a trade. This can be in either a positive or negative value depending on whether the trade resulted in a loss or gain. Forex traders will look to open a trade at a lower price and close it at a higher price, in order to turn a profit",
+ "howSProfitCalFoxTrdTxt2": "However, you don't need to do these calculations manually as tradex.io offers a commodity calculator that does the job for you. You simply need to input the necessary information, and the calculator will provide you with the estimate profit or loss amount. This makes the process simple and convenient, allowing you to focus on making informed trading decisions.",
+
+ "foxMargCal": "Forex Margin Calculator",
+ "whatFoxMarCal": "What is a Forex Margin Calculator?",
+ "whatIsFoxMarCalTxt": "Required margin is percentage of the full value of a position that you need to possess in order to enter a position. Our forex margin calculator is a tool designed to calculate the approximate required margin for the desired by your position size and direction.",
+ "whatLevTrd": "What is leveraged trading, why it is important?",
+ "whatLevTrdTxt": "Trading on leveraged capital means that you can trade amounts significantly higher than the funds you invest, which only serve as the margin. High leverage can significantly increase the potential return, but it can also significantly increase potential losses. As our client, you can trade with amounts many times higher than you could invest in a particular CFD without the margin we provide.",
+ "whatLevTrdTxt2": "Sometimes leverage is expressed in percentage terms – and referred to as Margin Requirement. For example, a leverage of 1:30 is a margin requirement of 3.34%.",
+ "howToAvoidCan" : "What is a Margin Call, How Can I Avoid It?",
+
+ "ecoCaldr" : "Economic Calendar",
+ 
+ "cfdTrd": "CFD Trading",
+ "cfdTrdTxt": "Take a position on thousands of global markets by trading CFDs on shares, indices, forex, commodities, bonds and cryptocurrencies. Join us for a total trading experience with a powerful multi-asset platform, low costs and expert support.",
+ "whyTrdCfd": "Why Trade CFDs with us",
+ "cfdMore": "And much more",
+
+ "cfdAsset": "CFD Asset List",
+ "cfDAssetTxt": "You can trade a wide range of CFD instruments, in numerous asset classes, at markets.com, the home of online CFD trading. Trade with our easy-to-use, customisable platform and discover a world of opportunities.",
+
+"expDate": "Expiration Date",
+"expDateTxt": "Futures instruments will be rolled over on the expiration dates as per the table below.",
+"stayImformHeader": "Stay informed when weekly expiration dates are near"
+
+
+
+
+
+
+}
