@@ -1,5 +1,6 @@
 import MyButton from "components/UI/buttons/MyButton";
 import "./StepOne.scss";
+import welcomeIcon from 'assets/icons/welcomeIcons/thumbsup.svg';
 import { useTranslation } from "react-i18next";
 import { FC } from "react";
 
@@ -15,15 +16,15 @@ const StepOne: FC<StepOneProps> = ({ setStep }) => {
   };
 
   return (
-    <div className="stepOneContainer">
-        <img src="welcome-icons/big_like.png" />
-          <div className="stepOneHeader">
-              <h2>{t("welcome")}</h2>
-              <span>{t("walkthroughWelcomeSubText")}</span>
-          <div className="stepOneButton">
-           <MyButton text="startTraining" handleClick={handleClick} />
-          </div>
+    <div className="stepOneContainer welcome-steps-bg flex justify-end flex-col">
+      <div className="stepOneHeader w-[273px] md:w-full  xl:w-[904px] max-w-[904px] mx-auto">
+        <img src={welcomeIcon} className="w-[184px] md:w-auto mx-auto object-cover" />
+        <h2 className="text-white text-[27px] text-center font-bold">{t("welcome")}</h2>
+        <p className="text-[21px] text-center text-white mt-3.5">{t("walkthroughWelcomeSubText")}</p>
+        <div className="stepOneButton mt-9 mb-12 md:mb-16 lg:mb-16 mx-auto max-w-[182px] md:max-w-[360px]">
+          <MyButton text="startTraining" handleClick={handleClick} />
         </div>
+      </div>
     </div>
   );
 };

@@ -3,13 +3,15 @@ import "./StepFour.scss";
 import { useTranslation } from "react-i18next";
 import { FC } from "react";
 import Background from "components/welcomeSteps/components/background/Background";
+import { AreaChart } from "pages/private/platform/MainChart/AreaChart";
 
 interface StepFourProps {
   setStep: (step: number | ((prevStep: number) => number)) => void;
   step: number;
+  chartData: any;
 }
 
-const StepFour: FC<StepFourProps> = ({ setStep, step }) => {
+const StepFour: FC<StepFourProps> = ({ setStep, step, chartData }) => {
   const { t } = useTranslation();
 
   const handleClick = () => {
@@ -17,17 +19,17 @@ const StepFour: FC<StepFourProps> = ({ setStep, step }) => {
   };
 
   return (
-    <div className="welcomeStepFour">
-      <div className="background">
-        <Background step={step} />
-      </div>
-      <div className="stepBottomInfo">
-        <h2>{t("walkthroughForeCastSubText")}</h2>
-        <div className="stepBottomButton">
-          <MyButton text="next" handleClick={handleClick} />
+    <>
+      <div className="welcomeStepFour overflow-hidden relative">
+        <AreaChart chartData={chartData} />
+        <div className="mt-6 lg:mt-[179px] w-[95%] md:w-full  step-three-content xl:w-[904px] max-w-[904px] mx-auto  z-[10] absolute">
+          <h2 className="text-[21px] text-center text-white ">{t("walkthroughForeCastSubText")}</h2>
+          <div className="mt-9 mb-12 md:mb-16 lg:mb-16 mx-auto max-w-[182px] md:max-w-[360px]">
+            <MyButton text="next" handleClick={handleClick} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

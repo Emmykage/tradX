@@ -1,4 +1,4 @@
-  export const createCustomMarker1 = (price:string) => {
+  export const createCustomMarker1 = (price:string, lineWidth = 307) => {
     const marker = document.createElement('div');
     marker.id= 'textElement1'
     marker.style.display = 'flex';
@@ -6,9 +6,13 @@
     marker.style.zIndex = '10';
   
     const diamondContainer = document.createElement('div');
+    diamondContainer.className = "diamond-container";
+    diamondContainer.style.position = 'relative';
     diamondContainer.style.display = 'flex';
     diamondContainer.style.justifyContent = 'center';
     diamondContainer.style.alignItems = 'center';
+    diamondContainer.dataset.width = `${lineWidth}px`; 
+ 
   
     const diamond = document.createElement('div');
     diamond.style.width = '14px';
@@ -18,8 +22,10 @@
     diamond.style.display = 'flex';
     diamond.style.justifyContent = 'center';
     diamond.style.alignItems = 'center';
+    diamond.style.zIndex = '10';
   
     const innerDiamond = document.createElement('div');
+    innerDiamond.className = "diamond";
     innerDiamond.style.width = '6px';
     innerDiamond.style.height = '6px';
     innerDiamond.style.backgroundColor = 'white';
@@ -35,9 +41,11 @@
     lineContainer.style.marginLeft = '-8px'; 
   
     const line = document.createElement('div');
+    line.className = "line-width relative";
     line.style.backgroundColor = 'white';
     line.style.height = '1px';
-    line.style.width = '162px'; 
+    line.style.width = `${lineWidth}px`; 
+
   
     lineContainer.appendChild(line);
   
@@ -46,17 +54,17 @@
     textContainer.style.justifyContent = 'center';
     textContainer.style.alignItems = 'center';
   
-    const text = document.createElement('h1');
+    const text = document.createElement('span');
     text.style.backgroundColor = 'white';
     text.style.color = "black"
-    text.style.fontSize = "13px"
+    text.style.fontSize = "12px"
     text.style.borderRadius = '9999px'; 
-    text.style.padding = '3px 10px'; 
+    text.style.padding = '3px 7px'; 
     text.style.fontWeight = '600';
     text.textContent = price;
   
     textContainer.appendChild(text);
-  
+    // marker.appendChild(diamondContainer);
     marker.appendChild(diamondContainer);
     marker.appendChild(lineContainer);
     marker.appendChild(textContainer);

@@ -26,10 +26,10 @@ const SignUpForm = () => {
     onSuccess: () => {
       reset();
       toast.success(
-        "You have successfully registered your account, Login Now!"
+        "Success! An email has been sent to your account. Please verify your email to complete the registration process."
       );
       console.log(`before dispach ${signInTab}`);
-      dispatch(setSignInTab("1"))
+      // dispatch(setSignInTab("1"))
       console.log(`before dispach ${signInTab}`);
       
     },
@@ -121,7 +121,7 @@ const SignUpForm = () => {
         <div className="liner"></div>
       </div>
       <div className="socialIcons">
-        <div className="topIcons">
+        <div className="topIcons flex">
           <img src="/social-icons/google-round.png" />
           <img src="/social-icons/facebook-round.png" />
         </div>

@@ -1,10 +1,12 @@
+import { setSocketData } from "@store/slices/trade";
 import { useEffect, useState } from "react";
+import { formatDate, isObjectEmpty } from "utils/utils";
 
 interface Data {
-  value: string;
-  time: number;
-  symbol: string;
-  timestamp: number;
+  value?: string;
+  time?: string | number;
+  symbol?: string;
+  timestamp?: number;
   open?: number;
   high?: number;
   low?: number;
@@ -29,19 +31,18 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
   useEffect(() => {
     if (wsTicket){
       const webSocket = new WebSocket(
-        `wss://tradx.io/ws/external-api/?ws_ticket=${wsTicket}`
+         `wss://xtradx.com/ws/external-api/?ws_ticket=${wsTicket}`
       );
+      // ws://xtradx.com/ws/external-api/?ws_ticket={your_ticket}
       
     webSocket.onerror = function (event) {
-      console.error(event);
-      console.log('error');
       throw Error("Websocket connection error");
     }
 
     webSocket.onopen = () => {
       console.log('opened');
       webSocket.send(
-        JSON.stringify({ type: "join_room", room_name: "BTC_USD" })
+        JSON.stringify({ type: "join_room", room_name: "TEST" })
       );
       return setSocket(webSocket);
     };
@@ -49,17 +50,20 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
     webSocket.onmessage = (event) => {
       const receivedData = JSON.parse(event.data);
       if (
-        receivedData?.type === "quote_data" &&
-        receivedData?.data?.bid_price &&
-        receivedData?.data?.timestamp
+        receivedData?.type === "bars_data" &&
+        !isObjectEmpty(receivedData?.data?.TEST)
         ) {
+          const socketData = receivedData?.data?.TEST;
           const value = {
-            time: receivedData?.data?.timestamp,
-            value: receivedData?.data?.bid_price,
-            symbol: receivedData?.data?.symbol,
-            timestamp: receivedData?.data?.timestamp,
-          };
-
+            open: socketData?.open,
+            high:socketData?.high,
+            low: socketData?.low,
+            close: socketData?.close,
+            timestamp: new Date(socketData?.t).getTime(),
+            value: socketData?.v,
+            vwap: socketData?.vw,
+            time:  Date.parse(`${new Date()}`),
+          };   
         setData(value);
       }
     };
@@ -72,6 +76,11 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
       }
     };
   }, [wsTicket]);
+
+  useEffect(() => {
+
+    setSocketData(data);
+  }, [data])
 
   const extraAction = (
     callback: (data: Data | null, socket: WebSocket | null) => void

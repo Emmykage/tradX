@@ -22,7 +22,7 @@ const EmailVerification: React.FunctionComponent<
       setStatusMsg(data.detail);
       setLoading(false);
       setTimeout(() => {
-        navigate("/platform");
+        navigate("/signIn");
       }, 2000);
     },
     onError: () => {

@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation, withTranslation } from "react-i18next";
 import "./InfoBlock.scss";
 import checkSvg from "../../../../../assets/markets/redCheckbox.svg";
 import { FC } from "react";
@@ -38,4 +38,4 @@ const InfoBlock: FC<InfoBlockProps> = ({ item }) => {
   );
 };
 
-export default InfoBlock;
+export default withTranslation()(InfoBlock);

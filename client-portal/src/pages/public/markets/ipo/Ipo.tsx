@@ -18,7 +18,7 @@ import HeadIntro from "pages/public/home/commonComponents/headIntro/HeadIntro";
   const detail = "Trade on the hottest companies going public with our IPO markets."
   const buttonTitle = 'Trade IPOs'
   return (
-    <div className="bondsContainer">
+    <div className="ipoContainer">
       <Navbar />
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
     

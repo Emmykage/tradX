@@ -11,17 +11,17 @@ import RightDownSvg from "../../../../../assets/markets/commodities/arrowRightDo
 
 const data = [
   {
-    title: "Setup Order",
+    title: "setupOrder",
     image: TimeSvg,
     background: "#1A1D21",
   },
   {
-    title: "Up",
+    title: "up",
     image: RightUpSvg,
     background: "#1FBF75",
   },
   {
-    title: "Down",
+    title: "down",
     image: RightDownSvg,
     background: "#F15131",
   },
@@ -49,7 +49,7 @@ const CommoditiesUpDown = () => {
                 style={{ backgroundColor: item.background }}
                 key={index + item.title}
               >
-                <span>{item.title}</span>
+                <span>{t(item.title)}</span>
                 <img
                   style={{
                     width: index === 0 ? "24.65px" : "14.78px",
