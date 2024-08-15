@@ -1,26 +1,31 @@
 import "./CfdTradMuchMore.scss";
 import checkSvg from "../../../../../assets/markets/redCheckbox.svg";
 import MainImg from "../../../../../assets/markets/tradingPage/cfdTradingWhyTrade2.png";
+import { useTranslation } from "react-i18next";
 
-const data = [
-  "Multi-asset trading platform with Informative, customisable charts and alerts",
-  "Go long or short on thousands of financial instruments",
-  "Saving the best for last — Lower Spreads, Speedy Execution",
-  "Trade with leverage* to make your capital go further ",
-];
 
 const CfdTradMuchMore = () => {
+  const {t} = useTranslation()
+
+  const data = [
+    t("cfdMoreList1"),
+    t("cfdMoreList2"),
+    t("cfdMoreList3"),
+    t("cfdMoreList4"),
+    
+  
+  ];
 
   return (
     <div className={`cfdTradMuchMoreContainer`}>
       <div>
-        <h2>And much more</h2>
+        <h2>{t("cfdMore")}</h2>
         {data.map((item, index) => (
           <span key={index}>
             <img src={checkSvg} alt="" /> {item}
           </span>
         ))}
-        <p>* Leverage magnifies both profits and losses</p>
+        <p>{t("CFDMoreExtra")}</p>
       </div>
 
       <div>

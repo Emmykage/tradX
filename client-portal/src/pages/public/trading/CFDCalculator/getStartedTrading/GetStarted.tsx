@@ -13,7 +13,7 @@ const GetStarted = () => {
               </div>
             </div>
             <div className='textWrapper'>
-              <h3> {t("How can I get started with Trading?")}</h3>
+              <h3> {t("HowTogetStarted")}</h3>
               <p>{t("getStartedNote")}.</p>
               <ul>
 

@@ -14,8 +14,10 @@ import ForexCalculator from 'components/forexCalculator/ForexCalculator'
 import calculator from '../../../../assets/trading/adam-calculator.png'
 import MarginCall from './marginCall/MarginCall'
 import HowIsMarginCal from './howIsForexMarginCal/HowIsMarginCal'
+import { useTranslation } from 'react-i18next'
 
 const ForexMarginCalculator = () => {
+  const {t} = useTranslation()
   return (
     <div className='tradingContainer'>
       <Navbar/>
@@ -23,22 +25,25 @@ const ForexMarginCalculator = () => {
 
         <ForexCalculator 
         mainImg={calculator}
-        title='What is a Forex Margin Calculator?'
-        text1='Required margin is percentage of the full value of a position that you need to possess in order to enter a position.
-        Our forex margin calculator is a tool designed to calculate the approximate required margin for the desired by your position size and direction.'/>
+        title={t("whatIsForexMarginCalc")}
+        text1={t("whatForexMarginCalcTxt")}/>
         <CostExplanation/>
 
           <TradingProfitCalculator 
-          title="What is leveraged trading, why it is important?"
-          text1='Trading on leveraged capital means that you can trade amounts significantly higher than the funds you invest, which only serve as the margin. High leverage can significantly increase the potential return, but it can also significantly increase potential losses. As our client, you can trade with amounts many times higher than you could invest in a particular CFD without the margin we provide.'
-          text2="Sometimes leverage is expressed in percentage terms – and referred to as Margin Requirement. For example, a leverage of 1:30 is a margin requirement of 3.34%."
+          title={t("whatLeverageTrd")}
+          text1={t("whatLeverageTrdTxt")}
+          text2={t("whatLeverageTrdTxt2")}
           icon1={USUKICon}
           image={GraphBg}
           icon2={CanIcon}/>
 
         <MarginCall/>
         <HowIsMarginCal/>
-        <TradeAnalyzer/>
+        <TradeAnalyzer
+        header={t("reqMarginCallAnalyzerHeader")}
+        text={t("reqMarginCallAnalyzerTxt")}
+        footer={t("reqMarginCallAnalyzerFooter")}
+        />
         <NeedMoreInfo items={NeedMoreInfoData}/>
         <RegisterBlock/>
         <Footer/>

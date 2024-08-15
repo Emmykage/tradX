@@ -38,7 +38,7 @@ const CostExplanation = () => {
  {   
    title: t("costExplainTitle6"),
    text: t("costExplainTxt6"),
-   icon: commission
+   icon: exchangeMonIcon
 
  }
  

@@ -6,35 +6,39 @@ import usingOurCfd4Svg from "../../../../../assets/markets/tradingPage/usingOurC
 import usingOurCfd5Svg from "../../../../../assets/markets/tradingPage/usingOurCfd5.svg";
 import arrowRightSvg from "../../../../../assets/markets/tradingPage/arrowRightRed.svg";
 import MainImg from "../../../../../assets/markets/tradingPage/usingOurCfd.png";
+import useTransactions from "api/wallet/useTransactions";
+import { useTranslation } from "react-i18next";
 
-const data = [
-  {
-    text: "Undestand MT4&5 Trading Conditions",
-    icon: usingOurCfd1Svg,
-  },
-  {
-    text: "Trading hours by asset",
-    icon: usingOurCfd2Svg,
-  },
-  {
-    text: "Weekly Expiration of Futures",
-    icon: usingOurCfd3Svg,
-  },
-  {
-    text: "Know expiration dates of future rollovers",
-    icon: usingOurCfd4Svg,
-  },
-  {
-    text: "Discover Trading Holidays",
-    icon: usingOurCfd5Svg,
-  },
-];
+
 
 const UsingOurCfd = () => {
+  const {t} = useTranslation()
+  const data = [
+    {
+      text:  t("usingOurCFD1"),
+      icon: usingOurCfd1Svg,
+    },
+    {
+      text:  t("usingOurCFD2"),
+      icon: usingOurCfd2Svg,
+    },
+    {
+      text:  t("usingOurCFD3"),
+      icon: usingOurCfd3Svg,
+    },
+    {
+      text: t("usingOurCFD4"),
+      icon: usingOurCfd4Svg,
+    },
+    {
+      text: t("usingOurCFD5"),
+      icon: usingOurCfd5Svg,
+    },
+  ];
   return (
     <div className={`usingOurCfdContainer`}>
       <div>
-        <h2>Using Our CFDs</h2>
+        <h2>{t("usingOurCFD")}</h2>
         {data.map((item, index) => (
           <p key={index}>
             <span>
