@@ -31,7 +31,7 @@ import Trading from "pages/public/trading/Trading";
 import TradingConditions from "pages/public/trading/TradingConditions/Index";
 
 import CFDTrading from "pages/public/trading/CFDTrading";
-import EmailVerification from "pages/public/emailVerification/EmailVerification";
+// import EmailVerification from "pages/public/emailVerification/EmailVerification";
 import ForexProfitCalculator from "pages/public/trading/ForexProfitCalculator";
 
 
@@ -123,7 +123,7 @@ const App: React.FunctionComponent<AppProps> = () => {
 
     <HashRouter>
       <Suspense fallback={<div className="fullLoadingBackground"><Loading/></div>}>
-      <Router>
+      {/* <Router> */}
 
       <Routes>
         {/* turned of the auth require */}
@@ -182,7 +182,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         
       <Route path="*" element={<NotFoundPage/>} />
       </Routes>
-      </Router>
+      {/* </Router> */}
       </Suspense>
     </HashRouter>
     </div>
