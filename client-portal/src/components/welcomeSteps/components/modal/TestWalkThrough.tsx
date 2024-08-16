@@ -8,6 +8,7 @@ import {
   SubtractIcon,
 } from "assets/icons";
 import { FC, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface FormData {
   duration: number;
@@ -22,6 +23,7 @@ interface TestWalkThroughProps {
 }
 
 const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrade }) => {
+  const { t } = useTranslation();
   const [tradeForm, setFormData] = useState<FormData>({
     duration: 2,
     amount: 90,
@@ -53,10 +55,10 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
         <div className="walkThroughTopBarInputs">
 
         <div className="amountInputContainer">
-        <Tooltip
+          <Tooltip
               rootClassName="walkthroughTooltip amountTooltip"
               placement={getWidthStyle()}
-              title="Set the investment amount at $100. Don’t worry, this is training money."
+              title={t("trainingInvestmentMoneyTooltip")}
               color="#1973FA"
               open={step == 7}
               >
@@ -64,14 +66,14 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
                 className="walkthroughInputContent"
                 style={{ backgroundColor: "#283645" }}
               >
-                <label htmlFor="amount">Amount , $</label>
+                <label htmlFor="amount" className="text-[#ffffff66]">{t('amount')} , $</label>
                 <input
                   type="number"
                   value={tradeForm.amount}
                   disabled={step !== 7}
                   />
               </div>
-              </Tooltip>
+          </Tooltip>
               <div className="walkThroughButtonsContainer">
               <div className="walkThroughButtons">
                 <button
@@ -88,6 +90,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
                 //     });
                 //   }
                 // }}
+                className="flex justify-center"
                 >
                   <SubtractIcon />
                 </button>
@@ -96,8 +99,8 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
               <div className="walkThroughButtons">
                 <button
                   style={{ backgroundColor: `${step === 7 ? "#0094FF" : ""}` }}
+                  className="flex justify-center"
                   onClick={() => {
-                    console.log(tradeForm.amount);
                     
                     if (step === 7) {
                       // if (tradeForm.amount + 1 == 100) {
@@ -129,12 +132,12 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
         <Tooltip
               rootClassName="walkthroughTooltip amountTooltip"
               placement={getWidthStyle()}
-              title="Select 1 minute as the duration of the trade"
+              title={t("trainingInvestmentTimeTooltip")}
               color="#1973FA"
               open={step == 8}
               >
               <div className="walkthroughInputContent">
-                <label htmlFor="amount">Duration</label>
+                <label htmlFor="amount">{t("duration")}</label>
                 <input type="text" value={`${tradeForm.duration} min`} />
               </div>
             </Tooltip>
@@ -142,6 +145,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
               <div className="walkThroughButtons">
                 <button
                   style={{ backgroundColor: `${step === 8 ? "#0094FF" : ""}` }}
+                  className="flex justify-center"
                   onClick={() => {
                     console.log(tradeForm.duration);
                     
@@ -186,6 +190,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
                 //     });
                 //   }
                 // }}
+                className="flex justify-center"
                 >
                   <PlusIcon />
                 </button>
@@ -203,7 +208,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
     <Tooltip
       rootClassName="walkthroughTooltip amountTooltip"
       placement={getWidthDownStyle()}
-      title="Look at the chart and decide where it will go next: Up or Down"
+      title={t("trainingInvestmentButtonTooltip")}
       color="#1973FA"
       
       open={step == 9}
@@ -216,17 +221,15 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
             }`,
           }}
           onClick={() => {
-            console.log(step);
             if (step == 9 && setTrade) {
               setStep((prevStep) => prevStep + 1);
               setTrade('up')
-              console.log('up is clicked');
             }}
           }
         >
           <div className="walkThroughupNdownTitle">
-            <h2>Up</h2>
-            <span>+82%</span>
+            <h2 className="font-semibold text-lg md:text-2xl">{t("up")}</h2>
+            <span className="font-semibold text-sm md:text-lg">+82%</span>
           </div>
 
           <div className="walkThroughBUttonIcon">
@@ -252,13 +255,12 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
            if (step == 9 && setTrade) {
           setStep((prevStep) => prevStep + 1);
           setTrade('down')
-          console.log('down is clicked');
         }}
         }
       >
         <div className="walkThroughupNdownTitle">
-          <h2>Down</h2>
-          <span>+82%</span>
+          <h2 className="font-semibold text-lg md:text-2xl">{t("down")}</h2>
+          <span className="font-semibold text-sm md:text-lg">+82%</span>
         </div>
 
         <div className="walkThroughBUttonIcon">

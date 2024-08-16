@@ -8,6 +8,7 @@ export interface TradeStates {
   trade: string | null;
   finished: boolean;
   socketData: any;
+  socketInstance:any;
 }
 
 // Define the initial state using that type
@@ -16,7 +17,8 @@ const initialState: TradeStates = {
   amount: 90,
   trade: null,
   finished:false,
-  socketData: {}
+  socketData: {},
+  socketInstance:null
   
 };
 
@@ -40,7 +42,10 @@ export const tradeStateSlice = createSlice({
       }
       return state;
     },
-    
+    setSocketInstance: (state, action: PayloadAction<any>) => {
+      state.amount = action.payload;
+      return state;
+    },
     setAmount: (state, action: PayloadAction<number>) => {
       state.amount = action.payload;
       return state;
@@ -60,11 +65,12 @@ export const tradeStateSlice = createSlice({
     setSocketData:  (state, action: PayloadAction<any>) => {
       console.log(action.payload, 'payloadzz');
       state.socketData = action.payload;
+      
       return state;
     },
   },
 });
 
-export const { setAmount, SetDuration,setTrade,setFinished,changeAmount,changeDuration, setSocketData } = tradeStateSlice.actions;
+export const { setAmount, SetDuration,setTrade,setFinished,changeAmount,changeDuration, setSocketData,setSocketInstance } = tradeStateSlice.actions;
 
 export default tradeStateSlice.reducer;

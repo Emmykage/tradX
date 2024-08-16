@@ -15,6 +15,8 @@ import { Spin } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import i18n from "../../../../../i18n";
 import { languages } from "../../../../../constants";
+import { useDispatch } from "react-redux";
+import { setSignInTab } from "@store/slices/global";
 
 const Navbar= () => {
     const [ipAddress, setIpAddress] = useState('');
@@ -29,6 +31,7 @@ const Navbar= () => {
     };
 
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const getVisitorIp = async()=>{
     setLoading(true)
@@ -293,7 +296,7 @@ const Navbar= () => {
         <button
           className="primaryButton"
           onClick={() => {
-            // dispatch(setSignInTab('1'))
+            dispatch(setSignInTab('1'))
             navigate("/signIn");
           }}
         >
@@ -302,7 +305,7 @@ const Navbar= () => {
         <button
           className="secondaryButton"
           onClick={() => {
-            // dispatch(setSignInTab('2'))
+            dispatch(setSignInTab('2'))
             navigate("/signIn");
           }}
         >

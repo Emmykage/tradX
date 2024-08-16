@@ -37,6 +37,20 @@
   "toolTipContent": "Les actifs FTT varient en rentabilité. Dans ce cas, vous recevrez 82% de profit si, à l'expiration du trade, le graphique continue de se déplacer dans la bonne direction.",
   "understand": "J'ai compris",
   "walkthroughChooseTrade": "Attendre le résultat du trade ({{time}}).",
-  "walkthroughChooseTradeSubText": "Félicitations ! Votre trade a été un succès. En investissant 100 $, vous avez gagné 85 $ - un retour de 85% en seulement 1 minute.",
-  "finishTrading": "Félicitations! Votre transaction a été un succès. En investissant 100 $, vous avez gagné 85 $ - un rendement de 85% en seulement 1 minute."
+  "walkthroughChooseTradeSubText": "Félicitations! Votre échange a réussi. En investissant 90 $, vous avez gagné 85 $, soit un rendement de 76,5 % en seulement 20 secondes.",
+  "finishTrading": "Félicitations! Votre transaction a été un succès. En investissant 100 $, vous avez gagné 85 $ - un rendement de 85% en seulement 1 minute.",
+  "waitForTradeResult": "Attendez le résultat de l'échange",
+  "walkthroughFixedDurationOffer": "es transactions à durée fixe qui offrent un bénéfice fixe sont connues sous le nom de transactions à durée fixe ou FTT.",
+  "doYouWantToFinishTraining": "Vous souhaitez terminer une formation ?",
+  "resumeTrainingInHelpSection": "Vous pourrez reprendre votre formation plus tard dans la section Aide.",
+  "completeTraining": "Formation complète",
+  "up": "en haut",
+  "down": "vers le bas",
+  "duration": "durée",
+  "amount": "Montant",
+  "finish": "Finition",
+  "cancel": "Annuler",
+  "trainingInvestmentMoneyTooltip": "Fixez le montant de l'investissement à 90 $. Ne vous inquiétez pas, c'est de l'argent pour la formation.",
+  "trainingInvestmentTimeTooltip": "Sélectionnez 20 secondes comme durée de la transaction",
+  "trainingInvestmentButtonTooltip": "Regardez le graphique et décidez où il ira ensuite : vers le haut ou vers le bas"
 }

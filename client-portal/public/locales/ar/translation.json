@@ -198,5 +198,20 @@
   "byCreatingAccountAgree": "من خلال إنشاء حساب، أنت توافق على",
   "byCreatingAccountAgreeContinues": "وتلقي رسائل تسويقية عبر البريد الإلكتروني. يمكن إدارة الاشتراكات تحت إعدادات الإشعارات في حسابك.",
   "privacyPolicy": "سياسة الخصوصية",
-  "cookiePolicy": "سياسة الكوكيز"
+  "cookiePolicy": "سياسة الكوكيز",
+  "walkthroughChooseTradeSubTexts": "تهانينا! لقد كانت تجارتك ناجحة. من خلال استثمار 90 دولارًا، حصلت على 85 دولارًا - أي عائد بنسبة 76.5% خلال 20 ثانية فقط.",
+  "finishTradings": "تهانينا! لقد كانت تجارتك ناجحة. من خلال استثمار 100 دولار، ربحت 85 دولارًا - عائد بنسبة 85% في دقيقة واحدة فقط.",
+  "waitForTradeResult": "انتظر نتيجة التجارة",
+  "walkthroughFixedDurationOffers": "تُعرف الصفقات ذات المدة الثابتة التي تقدم ربحًا ثابتًا باسم Fixed Time Trades أو FTT.",
+  "doYouWantToFinishTraining": "هل تريد إنهاء التدريب؟",
+  "resumeTrainingInHelpSection": "يمكنك استئناف تدريبك لاحقًا في قسم المساعدة.",
+  "completeTraining": "التدريب الكامل",
+
+  "duration": "مدة",
+  "amount": "كمية",
+  "finish": "ينهي",
+  "cancel": "يلغي",
+  "trainingInvestmentMoneyTooltip": "حدد مبلغ الاستثمار عند 90 دولارًا. لا تقلق، هذا هو المال للتدريب.",
+  "trainingInvestmentTimeTooltip": "حدد 20 ثانية كمدة للتداول",
+  "trainingInvestmentButtonTooltip": "انظر إلى الرسم البياني وقرر أين سيتجه بعد ذلك: لأعلى أو لأسفل"
 }
