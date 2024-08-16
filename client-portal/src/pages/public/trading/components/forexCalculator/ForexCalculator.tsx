@@ -1,7 +1,7 @@
 import React from 'react'
 import './forexCalculator.scss'
-import Droplet from '../../assets/trading/red-droplet.png'
-import CornBg from '../../assets/trading/corn_with-gray-bg (1).png'
+import Droplet from '../../../../../assets/trading/red-droplet.png'
+import CornBg from '../../../../../assets/trading/corn_with-gray-bg (1).png'
 
 interface forexCalcProps{
 

@@ -94,7 +94,7 @@ const App: React.FunctionComponent<AppProps> = () => {
   useInitializeData();
 
   useEffect(() => {
-    i18n.changeLanguage('ja');
+    // i18n.changeLanguage('ja');
     const storedScale = localStorage.getItem("scale");
 
     if (storedScale) {

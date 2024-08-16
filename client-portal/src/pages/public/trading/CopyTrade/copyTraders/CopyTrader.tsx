@@ -1,4 +1,4 @@
-import PerksCard from 'components/perksCard/PerksCard'
+import PerksCard from 'pages/public/trading/components/perksCard/PerksCard'
 import walletIcon from '../../../../../assets/trading/wallet-icon.png'
 import people from '../../../../../assets/trading/people-icon.png'
 import commissionIcon from "../../../../../assets/trading/commission-discounts-icon.png"
@@ -7,7 +7,7 @@ import peopleIon from "../../../../../assets/trading/people-icon.png"
 import peopleIcon from "../../../../../assets/trading/People.png"
 import charUpIcon from "../../../../../assets/trading/chart-arrow-up-icon.png"
 import { useTranslation } from 'react-i18next'
-import TradingSteps from 'components/tradingSteps/TradingSteps'
+import TradingSteps from 'pages/public/trading/components/tradingSteps/TradingSteps'
 const CopyTrader = () => {
     const {t} = useTranslation()
 

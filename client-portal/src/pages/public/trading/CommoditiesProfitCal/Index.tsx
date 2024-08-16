@@ -1,5 +1,5 @@
-import CostExplanation from '../../../../components/tradingCostExplanation/CostExplanationComp'
-import TradeAnalyzer from '../../../../components/tradeAnalyzer/TradeAnalyzer'
+import CostExplanation from '../components/tradingCostExplanation/CostExplanationComp'
+import TradeAnalyzer from '../components/tradeAnalyzer/TradeAnalyzer'
 import "../trading.scss"
 import comIcon from '../../../../assets/trading/commIcon.png'
 import CanIcon from '../../../../assets/trading/canadaflagicon.png'
@@ -11,7 +11,7 @@ import RegisterBlock from 'pages/public/markets/components/registerBlock/Registe
 import Footer from 'pages/public/home/main/footer/Footer'
 import { NeedMoreInfoData } from './data'
 import traderBg from "../../../../assets/trading/busy-trader.png"
-import ForexCalculator from 'components/forexCalculator/ForexCalculator'
+import ForexCalculator from 'pages/public/trading/components/forexCalculator/ForexCalculator'
 import TradCalc from 'components/tradCalc/TradCalc'
 import CommodityCalculator from './commodityCalculator/CommodityProfitCalculator'
 import ProfitLossCal from './commodityCalculator/ProfitLossCalculator'

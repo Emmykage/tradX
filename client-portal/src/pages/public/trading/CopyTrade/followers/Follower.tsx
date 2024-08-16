@@ -1,4 +1,4 @@
-import PerksCard from 'components/perksCard/PerksCard'
+import PerksCard from 'pages/public/trading/components/perksCard/PerksCard'
 import React from 'react'
 import  savyIcon from '../../../../../assets/trading/automation-icon.png'
 import graph from '../../../../../assets/trading/Graphs.png'
@@ -7,7 +7,7 @@ import briefcase from '../../../../../assets/trading/briefcase-icon.png'
 import marketIcon from '../../../../../assets/trading/Market.png'
 import eyeSightIcon from "../../../../../assets/trading/Eye.png"
 import { useTranslation } from 'react-i18next'
-import TradingSteps from 'components/tradingSteps/TradingSteps'
+import TradingSteps from 'pages/public/trading/components/tradingSteps/TradingSteps'
 const Follower = () => {
     const {t} = useTranslation()
     const  items=[{

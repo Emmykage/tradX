@@ -1,5 +1,5 @@
 import './tradingExperience.scss'
-import plus from '../../assets/trading/+.png'
+import plus from '../../../../../assets/trading/+.png'
 const TradingExperience = ({image, title, text, button} : {image?: string, title?: string, text?: string, button?: boolean }) => {
   return (
     <div className='trading-experience'>

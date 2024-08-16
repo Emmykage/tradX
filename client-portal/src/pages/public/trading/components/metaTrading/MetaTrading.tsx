@@ -1,8 +1,8 @@
 import React from 'react'
 import "./metaTrading.scss"
 
-import MT4 from "../../assets/trading/MacBook Pro 16-inch Space Black Left.png"
-import MT5 from '../../assets/trading/MacBook Pro 16-inch Space Black-5.png'
+import MT4 from "../../../../../assets/trading/MacBook Pro 16-inch Space Black Left.png"
+import MT5 from '../../../../../assets/trading/MacBook Pro 16-inch Space Black-5.png'
 
 
 

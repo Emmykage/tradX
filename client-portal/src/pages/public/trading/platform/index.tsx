@@ -1,6 +1,6 @@
 import Landing from './landing/Landing'
 import StraightForwardTrading from './straightForwardTradingComponent/StraightForwardTrading'
-import TradingCardInfo from '../../../../components/tradingCardInfo/TradingCardInfo'
+import TradingCardInfo from '../components/tradingCardInfo/TradingCardInfo'
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 import JoinInThreeSteps from 'pages/public/markets/components/joinInThreeSteps/JoinInThreeSteps'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'

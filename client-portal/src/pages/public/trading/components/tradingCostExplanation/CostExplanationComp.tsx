@@ -1,8 +1,8 @@
 import React from 'react'
-import commission from "../../assets/trading/commission-discounts-icon.png"
-import exchangeMonIcon from "../../assets/trading/exchange-money-icon.png"
-import graphVector from "../../assets/trading/graph-vector-icon.png"
-import wallet from "../../assets/trading/wallet-icon.png"
+import commission from "../../../../../assets/trading/commission-discounts-icon.png"
+import exchangeMonIcon from "../../../../../assets/trading/exchange-money-icon.png"
+import graphVector from "../../../../../assets/trading/graph-vector-icon.png"
+import wallet from "../../../../../assets/trading/wallet-icon.png"
 // import
 import './costExplanation.scss'
 import { useTranslation } from 'react-i18next'
