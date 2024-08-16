@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Route, Routes, HashRouter, BrowserRouter } from "react-router-dom";
+import { Route, Routes, HashRouter, BrowserRouter as Router } from "react-router-dom";
 
 
 
@@ -29,7 +29,9 @@ import NotFoundPage from "pages/private/platform/platformMenus/notFound/NotFound
 import Trading from "pages/public/trading/Trading";
 // import ForexCalculator from "pages/public/trading/ForexProitCalculator/forexCalculator/ForexCalculator";
 import TradingConditions from "pages/public/trading/TradingConditions/Index";
+
 import CFDTrading from "pages/public/trading/CFDTrading";
+import EmailVerification from "pages/public/emailVerification/EmailVerification";
 import ForexProfitCalculator from "pages/public/trading/ForexProfitCalculator";
 
 
@@ -121,6 +123,8 @@ const App: React.FunctionComponent<AppProps> = () => {
 
     <HashRouter>
       <Suspense fallback={<div className="fullLoadingBackground"><Loading/></div>}>
+      <Router>
+
       <Routes>
         {/* turned of the auth require */}
         <Route element={<RequireAuth  />}>
@@ -178,6 +182,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         
       <Route path="*" element={<NotFoundPage/>} />
       </Routes>
+      </Router>
       </Suspense>
     </HashRouter>
     </div>
