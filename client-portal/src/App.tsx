@@ -117,7 +117,6 @@ const App: React.FunctionComponent<AppProps> = () => {
   return (
     <div data-theme={"dark"}>
 
-    {/* <HashRouter> */}
       <Suspense fallback={<div className="fullLoadingBackground"><Loading/></div>}>
       <Router>
 
@@ -173,13 +172,11 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/password-reset" element={<ResetPassword />} />
        
         
-        {/* <Route path="/welcome" element={<WalkThrough tradeFormHeight={2} />} /> */}
         
       <Route path="*" element={<NotFoundPage/>} />
       </Routes>
       </Router>
       </Suspense>
-    {/* </HashRouter> */}
     </div>
 
   );
