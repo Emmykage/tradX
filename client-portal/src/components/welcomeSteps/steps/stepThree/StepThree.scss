@@ -32,11 +32,12 @@
 //   }
 // }
 .welcomeStepThree{
+  animation: slideInFromTop 0.8s forwards !important;
   .step-three-content{
     left: 50%;
     transform: translate(-50%, 0%);
     bottom: 0%;
- 
+   
   }
   .line-width::before{
     content: url('../../../../assets/icons/welcomeIcons/green-line.svg');

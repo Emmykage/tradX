@@ -27,12 +27,10 @@
 
   .header_right {
     display: flex;
-    // min-width: 134px;
-    // min-height: 78px;
     height: 100%;
     justify-content: center;
     align-items: center;
-    padding: 5px 15px;
+    padding: 10px 15px;
     gap: 10px;
     background: #172331;
     border-radius: 10px;
@@ -87,7 +85,7 @@
     letter-spacing: -0.02em;
     color: #ffffff;
     @media screen and (max-width: 730px) {
-      margin-top: 10px;
+      // margin-top: 10px;
    }
    
     h2{
@@ -115,7 +113,7 @@
       border-radius: 66px;
       font-family: "Poppins", sans-serif;
     
-      font-size: 13px;
+      // font-size: 13px;
       letter-spacing: -0.02em;
       color: rgba(255, 255, 255, 0.95);
     }
@@ -141,7 +139,7 @@
       color: white
     }
     .header_image {
-      width: 42px;
+      width: 41px;
       height: 32px;
 
       img {
@@ -166,46 +164,54 @@
       color: rgba(255, 255, 255, 0.95);
     }
 
-    .info_block {
-      position: absolute;
-      top: 100px;
-      left: 0;
-      gap: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 25px;
-      background: #1973fa;
-      border-radius: 12px;
-      width: 395px;
-      @media screen and (max-width: 730px) {
-        width: 70vw;
-     }
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 21px;
-      color: rgba(255, 255, 255, 0.95);
+  }
+}
 
-      .triangle {
-        position: absolute;
-        left: 90px;
-        top: -20px;
-      }
-      h2{
-        font-size: 15px;
-        font-family: "Poppins", sans-serif;
-        font-weight: 400;
+.info_block {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  background: #1973fa;
+  border-radius: 12px;
+  min-width: 395px;
+  width: 100%;
 
-      }
-    }
+  @media screen and (max-width: 730px) {
+    min-width: auto;
+    width: 70vw;
+    font-family: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+
+ }
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  color: rgba(255, 255, 255, 0.95);
+
+  .triangle {
+    position: absolute;
+    left: 90px;
+    top: -20px;
+  }
+  h2{
+    // font-size: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+
   }
 }
 
 @media screen and (max-width: 834px) {
   .welcomeHeader {
-    padding: 10px 20px;
+    padding: 20px 20px;
 
   }
 }
@@ -225,7 +231,6 @@
         gap: 8.58px;
         border-radius: 5.14945px;
         font-size: 11.16px;
-
         .triangle {
           position: absolute;
           left: 70px;
@@ -271,4 +276,16 @@
       }
     }
   }
+}
+.languageDropDownMenu{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: #0E0F12;
+  
+  margin-top: 12px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+
 }

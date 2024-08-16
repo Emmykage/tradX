@@ -41,6 +41,7 @@
 //   }
 // }
 .welcomeStepFour{
+  animation: slideInFromLeft 0.8s forwards;
   .step-three-content{
     left: 50%;
     transform: translate(-50%, 0%);

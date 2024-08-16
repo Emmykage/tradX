@@ -1,52 +1,8 @@
-// .welcomeStepFive {
-//   width: 100%;
-//   animation: slideInFromBottom 0.8s forwards;
 
-//   .info {
-//     margin-top: -250px;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 20px;
-
-//     .text {
-//       font-family: "Roboto";
-//       font-style: normal;
-//       font-weight: 400;
-//       font-size: 18px;
-//       margin-bottom: -15px;
-//       color: #ffffff;
-//       max-width: 70%;
-//       text-align: center;
-//       z-index: 101;
-//       max-width: 55%;
-//     }
-//   }
-// }
-
-
-// @media (max-width: 834px) {
-//   .welcomeStepFive {
-//     .info {
-//       margin-top: 70px;
-//     }
-//   }
-// }
-
-// @media screen and (max-width: 428px) {
-//   .welcomeStepFive {
-//     .info {
-//       .text {
-//         font-size: 13.19px;
-//       }
-//     }
-//   }
-// }
 .welcomeStepFive{
-  
+  // animation: zoom-in-zoom-out 0.2s ease-out ;
+
   .step-three-content{
-    // animation: slideInFromBottom 0.8s forwards;
     left: 50%;
     transform: translate(-50%, 0%);
     bottom: 0%;
@@ -71,4 +27,19 @@
     animation: alternate-blink  ease-in-out 2.5s infinite;
   }
 
+}
+
+// .zoom-in {
+//   animation: zoom-in-zoom-out 0.2s ease-out ;
+// }
+// .zoom-in-2 {
+//   animation: zoom-in-zoom-out 0.4s ease-out ;
+// }
+@keyframes zoom-in-zoom-out {
+  from{
+    transform: scale(1, 1);
+  }
+  to{
+    transform: scale(1, 1);
+  }
 }

@@ -1,42 +1,17 @@
-.welcomeStepSeven {
-  width: 100%;
-  display: flex;
-  animation: fadeIn 0.8s forwards;
- 
-  .modal {
-    margin-top: 20px;
-    margin-left: 20px;
-  }
+.welcomeStepTen {
+  // animation: fadeIn 0.8s forwards;
 }
-
-@media (max-width: 834px) {
-  .welcomeStepSeven {
-    flex-direction: column;
-    align-items: center;
-
-    .modalTenContainer {
-      margin-bottom: 20%;
-      background-color: yellow;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
-    }
-
-    .modal {
-      
-      margin-left: 0px;
-      width: 100%;
-    }
-  }
+.zoom-in {
+  animation: zoom-in-zoom-out 0.9s ease-out ;
 }
-
-@media screen and (max-width: 428px) {
-  .welcomeStepSeven {
-    .info {
-      .text {
-        font-size: 13.19px;
-      }
-    }
+.zoom-in-2 {
+  animation: zoom-in-zoom-out 0.4s ease-out ;
+}
+@keyframes zoom-in-zoom-out {
+  from{
+    transform: scale(0.5, 0.5);
+  }
+  to{
+    transform: scale(1, 1);
   }
 }

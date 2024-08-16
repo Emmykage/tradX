@@ -1,6 +1,6 @@
 import { setSocketData } from "@store/slices/trade";
 import { useEffect, useState } from "react";
-import { formatDate, isObjectEmpty } from "utils/utils";
+import { formatDate, isArrayEmpty, isObjectEmpty } from "utils/utils";
 
 interface Data {
   value?: string;
@@ -40,9 +40,11 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
     }
 
     webSocket.onopen = () => {
-      console.log('opened');
       webSocket.send(
-        JSON.stringify({ type: "join_room", room_name: "TEST" })
+        JSON.stringify({
+          group_name: "TEST",
+          type: "join_group"
+        })
       );
       return setSocket(webSocket);
     };
@@ -50,19 +52,19 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
     webSocket.onmessage = (event) => {
       const receivedData = JSON.parse(event.data);
       if (
-        receivedData?.type === "bars_data" &&
-        !isObjectEmpty(receivedData?.data?.TEST)
+        receivedData?.type === "send_message" &&
+        !isArrayEmpty(receivedData?.d)
         ) {
-          const socketData = receivedData?.data?.TEST;
+          const socketData = receivedData?.d[0];
           const value = {
-            open: socketData?.open,
-            high:socketData?.high,
-            low: socketData?.low,
-            close: socketData?.close,
+            open: socketData?.o,
+            high:socketData?.h,
+            low: socketData?.l,
+            close: socketData?.c,
             timestamp: new Date(socketData?.t).getTime(),
-            value: socketData?.v,
-            vwap: socketData?.vw,
-            time:  Date.parse(`${new Date()}`),
+            // value: socketData?.v,
+            // vwap: socketData?.vw,
+            time:  Date.parse(`${new Date(socketData?.t)}`),
           };   
         setData(value);
       }

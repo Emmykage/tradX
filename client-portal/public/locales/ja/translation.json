@@ -37,6 +37,21 @@
   "toolTipContent": "FTTアセットの利益率は異なります。この場合、取引が期限切れになったときに、チャートが正しい方向に動き続けている場合、利益の82％を受け取ります。",
   "understand": "理解しました",
   "walkthroughChooseTrade": "取引の結果を待ちます（{{time}}）。",
-  "walkthroughChooseTradeSubText": "おめでとうございます！ あなたの取引は成功しました。100ドルを投資することで、わずか1分で85ドルの収益を上げました。",
-  "finishTrading": "おめでとうございます！取引が成功しました。100ドルを投資して、85ドルを稼ぎました - わずか1分で85％のリターンです。"
+  "walkthroughChooseTradeSubText": "おめでとう！あなたの取引は成功しました。 90 ドルを投資すると、わずか 20 秒で 85 ドルの利益が得られ、76.5% の収益が得られます。",
+  "finishTrading": "おめでとうございます！取引が成功しました。100ドルを投資して、85ドルを稼ぎました - わずか1分で85％のリターンです。",
+  "waitForTradeResult": "取引結果を待ちます",
+  "walkthroughFixedDurationOffer": "一定の利益をもたらす固定期間の取引は、固定時間取引または FTT として知られています。",
+  "doYouWantToFinishTraining": "トレーニングを終了しますか?",
+  "resumeTrainingInHelpSection": "後からヘルプ セクションでトレーニングを再開できます。",
+  "completeTraining": "トレーニングを完了する",
+  "up": "上",
+  "down": "下",
+  "duration": "間隔",
+  "amount": "額",
+  "finish": "仕上げる",
+  "cancel": "キャンセル",
+  "trainingInvestmentMoneyTooltip": "投資額を 90 ドルに設定します。心配しないでください、これはトレーニングのお金です。",
+  "trainingInvestmentTimeTooltip": "取引期間として 20 秒を選択します",
+  "trainingInvestmentButtonTooltip": "チャートを見て、次にどこに行くかを決定します: 上昇または下降"
+  
 }

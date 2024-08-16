@@ -37,6 +37,20 @@
   "toolTipContent": "Los activos FTT varían en rentabilidad. En este caso, recibirás el 82% de beneficio si, al expirar la operación, el gráfico sigue moviéndose en la dirección correcta.",
   "understand": "Entendido",
   "walkthroughChooseTrade": "Espera el resultado de la operación ({{time}}).",
-  "walkthroughChooseTradeSubText": "¡Felicidades! Tu operación fue exitosa. Al invertir $100, has ganado $85, un retorno del 85% en solo 1 minuto.",
-  "finishTrading": "¡Felicidades! Tu operación fue exitosa. Al invertir $100, has ganado $85, una rentabilidad del 85% en solo 1 minuto."
+  "walkthroughChooseTradeSubText": "¡Felicidades! Su operación fue exitosa. Al invertir $90, habrá ganado $85: un rendimiento del 76,5 % en sólo 20 segundos.",
+  "finishTrading": "¡Felicidades! Tu operación fue exitosa. Al invertir $100, has ganado $85, una rentabilidad del 85% en solo 1 minuto.",
+  "waitForTradeResult": "Espere el resultado de la operación",
+  "walkthroughFixedDurationOffer": "Las operaciones de duración fija que ofrecen un beneficio fijo se conocen como operaciones de tiempo fijo o FTT.",
+  "doYouWantToFinishTraining": "¿Quieres terminar de entrenar?",
+  "resumeTrainingInHelpSection": "Podrás retomar tu entrenamiento más tarde en la sección de Ayuda.",
+  "completeTraining": "formación completa",
+  "up": "arriba",
+  "down": "abajo",
+  "duration": "duración",
+  "amount": "Cantidad",
+  "finish": "Finalizar",
+  "cancel": "Cancelar",
+  "trainingInvestmentMoneyTooltip": "Establezca el monto de la inversión en $90. No te preocupes, esto es dinero para formación.",
+  "trainingInvestmentTimeTooltip": "Seleccione 20 segundos como duración de la operación.",
+  "trainingInvestmentButtonTooltip": "Mire el gráfico y decida hacia dónde irá a continuación: arriba o abajo."
 }

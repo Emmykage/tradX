@@ -29,10 +29,8 @@ const Navbar= () => {
       try {
         const response = await fetch('https://api.ipify.org')
         const data   = await response.text()
-        console.log(data);
         setIpAddress(data)
       } catch (error) {
-        console.log(error);
         setLoading(false)
       }
     }
@@ -44,8 +42,7 @@ const Navbar= () => {
         setGeoInfo(data)
         setLoading(false)
       } catch (error) {
-        setCountryCode('EN')
-        console.log(error);
+        setCountryCode('EN');
         setLoading(false)
       }
     }
@@ -56,16 +53,12 @@ const Navbar= () => {
     useEffect(()=>{
       fetchIpInfo()
       if(geoInfo){
-        console.log(geoInfo?.countryCode);
         setCountryCode(geoInfo?.countryCode)
       }
-      console.log(geoInfo);
     },[ipAddress])
 
     const [toggleLanguageSelector,setToggleLanguageSelector] = useState(false)
     const [toggleMobileNav,setToggleMobileNav] = useState(false)
-    console.log(localFlagHandler(countryCode.toLocaleLowerCase()))
-    console.log(countryCode.toLocaleLowerCase());
     const languageSelectorRef = useRef()
 
     const handleClickOutside = (event: MouseEvent<Document>) => {
