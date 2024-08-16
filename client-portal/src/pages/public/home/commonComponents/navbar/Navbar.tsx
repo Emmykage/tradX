@@ -90,18 +90,18 @@ const Navbar= () => {
     };
   }, []);
 
-  useEffect(() => {
-    const matchedLanguage = languages.filter(
-      (language) => language.value.toLowerCase() === countryCode.toLowerCase()
-    );
+  // useEffect(() => {
+  //   const matchedLanguage = languages.filter(
+  //     (language) => language.value.toLowerCase() === countryCode.toLowerCase()
+  //   );
   
-    if (matchedLanguage.length > 0) {
-      i18n.changeLanguage(matchedLanguage[0].languageKey);
-    } else {
-      setCountryCode('EN');
-      i18n.changeLanguage('en');
-    }
-  }, [countryCode]);
+  //   if (matchedLanguage.length > 0) {
+  //     i18n.changeLanguage(matchedLanguage[0].languageKey);
+  //   } else {
+  //     setCountryCode('EN');
+  //     i18n.changeLanguage('en');
+  //   }
+  // }, [countryCode]);
 
   useEffect(() => {
     const browserLanguage = navigator.language;
