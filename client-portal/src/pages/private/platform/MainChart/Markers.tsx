@@ -56,6 +56,7 @@
   
     const text = document.createElement('span');
     text.style.backgroundColor = 'white';
+    text.id = "price-text";
     text.style.color = "black"
     text.style.fontSize = "12px"
     text.style.borderRadius = '9999px'; 
@@ -95,7 +96,7 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     labelInner.style.height = '20.5px';
     labelInner.style.width = '62px';
     labelInner.style.borderRadius = '6px';
-    labelInner.style.padding = '1.5px 3.5px 0px 0px';
+    labelInner.style.padding = '1.5px 3.5px 1.5px 0px';
     labelInner.style.position = 'absolute';
     labelInner.style.left = '-248px';
     labelInner.style.top = '-7px';
@@ -107,8 +108,8 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     span.textContent = `$${price}`;
     span.style.color = 'white';
     span.style.paddingLeft = '8px';
-    span.style.paddingRight = '4px';
-    span.style.fontSize = '13px';
+    span.style.paddingRight = '8px';
+    span.style.fontSize = '12px';
     span.style.paddingTop = '2px';
     span.style.paddingBottom = '0';
 

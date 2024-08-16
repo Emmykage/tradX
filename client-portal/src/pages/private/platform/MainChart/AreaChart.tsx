@@ -1,18 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import { ColorType, createChart,  CrosshairMode,  PriceScaleMode, UTCTimestamp } from "lightweight-charts";
 import { createCustomMarker1, createCustomMarker2, createCustomMarker3 } from "./Markers";
+import { tradeDownSelection, tradeUpSelection } from "./areaData";
 
-export const AreaChart = ({chartData }: any) => {
+export const AreaChart = ({chartData, liveLoading = false, tradeType="up" }: any) => {
 
     const resizeObserver: any = useRef();
     const chartContainerRef: any = useRef(null);
-    const chartRef: any = useRef();
+    const seriesRef: any = useRef();
 
     useEffect(() => {
       const chartContainer = chartContainerRef.current!;
       const chart = createChart(chartContainer, {
           // width: window.innerWidth ,
-          height: window.innerHeight  - 120,
+          height: window.innerHeight,
           rightPriceScale: {
             scaleMargins: {
               top: 0.3,
@@ -61,53 +62,109 @@ export const AreaChart = ({chartData }: any) => {
           lineColor: "#1973FA",
           lineWidth: 1
       });
-
-      
+      seriesRef.current = areaSeries;
       areaSeries.setData(chartData);
-
+   
       chart.timeScale().applyOptions({
-          barSpacing: 10,
+          barSpacing: 6,
       });
-      const textElement1 = createCustomMarker1(`${chartData[chartData.length - 1].value}`)
+        const lastData = chartData[chartData.length - 1];
 
-      const updatePosition1 = () => {
-        const priceCoordinate = areaSeries.priceToCoordinate(chartData[chartData.length - 1].value);
-        const lineWidthChild = textElement1.querySelector('.line-width');
-        let timeCoordinate = chart.timeScale().timeToCoordinate(chartData[chartData.length - 1].time  as UTCTimestamp);
-      if (timeCoordinate === null) {
-        const visibleRange = chart.timeScale().getVisibleRange();
-        if (visibleRange) {
-          timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+        const textElement1 =  createCustomMarker1(`${chartData[chartData.length - 1].value}`)
+        const textElement2 = createCustomMarker2(`${chartData[chartData.length - 1].value}`, tradeType);
+
+        const updatePosition1 = (data: null) => {
+            const currentData = data? data :  chartData[chartData.length - 1];
+            const priceCoordinate = areaSeries.priceToCoordinate(currentData.value);
+            const lastPriceCoordinate = areaSeries.priceToCoordinate(lastData.value);
+            const lineWidthChild = textElement1.querySelector('.line-width');
+            const getText = document.getElementById('price-text');
+            let timeCoordinate = chart.timeScale().timeToCoordinate(currentData.time  as UTCTimestamp);
+            if (timeCoordinate === null) {
+              const visibleRange = chart.timeScale().getVisibleRange();
+              if (visibleRange) {
+                timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+              }
+            }
+
+            if (priceCoordinate && timeCoordinate) {
+                textElement1.style.top = `${(priceCoordinate - textElement1.offsetHeight  / 2) + 0}px`;
+                // @ts-ignore
+                textElement2.style.top = `${(lastPriceCoordinate  - textElement2.offsetHeight  / 2) + 0}px`;
+                textElement1.style.left = `${timeCoordinate + 0}px`;
+                let containerWidth = document.getElementById("chart-container")?.clientWidth;
+                // @ts-ignore
+                let getDistance = containerWidth - timeCoordinate;
+                // @ts-ignore
+                lineWidthChild.style.width = `${getDistance - 65}px`; 
+                // @ts-ignore
+                getText.innerHTML = currentData?.value;
+
+            }
+        };
+        
+        const updatePosition2 = (data: null) => {
+          const currentData = data? data :  chartData[chartData.length - 1];
+          const priceCoordinate = areaSeries.priceToCoordinate(currentData.value);
+          const lineWidthChild = textElement2.querySelector('.line-width');
+          let timeCoordinate = chart.timeScale().timeToCoordinate(currentData.time  as UTCTimestamp);
+          if (timeCoordinate === null) {
+            const visibleRange = chart.timeScale().getVisibleRange();
+            if (visibleRange) {
+              timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+            }
+          }
+
+          if (priceCoordinate && timeCoordinate) {
+              textElement2.style.top = `${(priceCoordinate - textElement1.offsetHeight  / 2) + 0}px`;
+              textElement2.style.left = `${timeCoordinate + 0}px`;
+              let containerWidth = document.getElementById("chart-container")?.clientWidth;
+              // @ts-ignore
+              let getDistance = containerWidth - timeCoordinate;
+              // @ts-ignore
+              lineWidthChild.style.width = `${getDistance - 65}px`; 
+
+          }
+      };
+        chartContainer.appendChild(textElement1);
+        if(liveLoading){
+          chartContainer.appendChild(textElement2);
         }
-      }
-
-      if (priceCoordinate && timeCoordinate) {
-          textElement1.style.top = `${(priceCoordinate - textElement1.offsetHeight  / 2) + 0}px`;
-          textElement1.style.left = `${timeCoordinate + 0}px`;
-          let getDistance = window.innerWidth - timeCoordinate;
-          // @ts-ignore
-          lineWidthChild.style.width = `${getDistance - 60}px`; 
-
-      }
-    };
-    
-    chartContainer.appendChild(textElement1);
-  
-    const ensureChartReady = () => {
-      setTimeout(() => {
-        chart.subscribeCrosshairMove(updatePosition1);
-        updatePosition1();
       
-      }, 100);  // Short delay to ensure chart is rendered
-    };
-    ensureChartReady();
+        const ensureChartReady = () => {
+          setTimeout(() => {
+            chart.subscribeCrosshairMove(updatePosition1);
+            updatePosition1();
+            updatePosition2();
+          
+          }, 100);  // Short delay to ensure chart is rendered
+        };
+        ensureChartReady();
+  
 
+      if(liveLoading){
+        let c = 1;
+        let selectedData = tradeType === "up"? [...tradeUpSelection] : [...tradeDownSelection];
+        // Simulate real-time data update every second
+        const interval = setInterval(() => {
+          seriesRef.current.update(selectedData[c]);
+          chart.subscribeCrosshairMove(updatePosition1);
+          updatePosition1(selectedData[c]);
+          c += 1;
+    
+        }, 1000);
+  
+        return () => clearInterval(interval);
+      }
    
   },[]);
 
+
+
   return(
-    <div style={{ position: 'relative', height: '90%' }}>
-      <div ref={chartContainerRef}  id="container" style={{ height: '100%' }} />
+    <div id="chart-container" style={{ position: 'relative', height: '100%' }}>
+      
+      <div ref={chartContainerRef}  id="container"  style={{ height: '100%' }} />
     </div>
   )
 };

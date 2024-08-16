@@ -5,23 +5,21 @@ import { useAppDispatch, useAppSelector } from '@store/hooks';
 
 import { useCookies } from 'react-cookie';
 import { updateWalkthrough } from '@store/slices/user';
+import { useTranslation } from 'react-i18next';
 
 const LastStep = () => {
 
   const dispatch = useAppDispatch();
   const [cookies] = useCookies(["access_token"]);
+  const { t } = useTranslation();
   const { user } = useAppSelector((state) => state.user);
   const navigate = useNavigate()
   const { mutate, isPending } = useDisableWalkThrough({
     onSuccess: (data) => {
-      console.log(data);
       dispatch(updateWalkthrough());
       navigate('/platform')
     },
-    onError: (error) => {
-      console.log('error not disabled');
-      console.log(error);
-     },
+    onError: (error) => {},
   });
 
 
@@ -37,13 +35,13 @@ const LastStep = () => {
     <div className='lastStepContainer'>
        <div className='lastStepModal'>
         <div className='lastStepModalHeader'>
-            <h2>Do you want to finish training ?</h2>
-            <span>You can resume your training later in the Help section.</span>
+            <h2>{t("doYouWantToFinishTraining")}</h2>
+            <span>{t("resumeTrainingInHelpSection")}</span>
         </div>
         <div className='lastStepModalButtonContainer'>
-            <button className='lastStepCancelButton'>Cancel</button>
+            <button className='lastStepCancelButton'>{t("cancel")}</button>
             <Link to={'/platform'}>
-            <button className='lastStepFinishButton' onClick={()=>handleFinishWalkThrough()}>Finish</button>
+            <button className='lastStepFinishButton' onClick={()=>handleFinishWalkThrough()}>{t("finish")}</button>
             </Link>
         </div>
        </div>
