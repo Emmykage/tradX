@@ -121,9 +121,9 @@ const App: React.FunctionComponent<AppProps> = () => {
   return (
     <div data-theme={"dark"}>
 
-    <HashRouter>
+    {/* <HashRouter> */}
       <Suspense fallback={<div className="fullLoadingBackground"><Loading/></div>}>
-      {/* <Router> */}
+      <Router>
 
       <Routes>
         {/* turned of the auth require */}
@@ -182,9 +182,9 @@ const App: React.FunctionComponent<AppProps> = () => {
         
       <Route path="*" element={<NotFoundPage/>} />
       </Routes>
-      {/* </Router> */}
+      </Router>
       </Suspense>
-    </HashRouter>
+    {/* </HashRouter> */}
     </div>
 
   );
