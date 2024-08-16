@@ -222,7 +222,6 @@ tradex.io offers a commodity calculator that does the job for you. You simply ne
     </div>
 
     <div className="container">
-      <TradeAnalyzer/>
     </div>
     <div className="container">
       <TrackTrade/>

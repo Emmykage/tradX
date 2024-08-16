@@ -35,7 +35,7 @@ const TradeTableExp = () => {
             ))}
         </div>
 
-        <h2>{t("stayImformHeader")}</h2>
+        <h2>{t("stayInformHeader")}</h2>
 
               <TradeTable/>
 
