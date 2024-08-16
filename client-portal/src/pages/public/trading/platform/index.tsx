@@ -14,20 +14,22 @@ import SimpleTrade from './simpleTrade/SimpleTrade'
 import wheel from '../../../../assets/trading/cardWheel1.svg'
 import starIcon from "../../../../assets/trading/starshield.png"
 import fastExecIcon from "../../../../assets/trading/fastExecution.png"
+import { useTranslation } from 'react-i18next'
 const TradingPlatform = () => {
+    const {t} = useTranslation()
     const items = [{
-        title: "Multi-Asset Platform",
-        text: "Upgraded platform rich with features & thousands of assets to speculate on.",
+        title: t("multiAssetPlatform"),
+        text: t("multiAssetText"),
         icon: wheel
     },
     {
-        title: "Multi-Asset Platform",
-        text: "Upgraded platform rich with features & thousands of assets to speculate on.",
+        title:  t("worldClassTradingTool"),
+        text:  t("worldClassTradingToolText"),
         icon: starIcon
     },
     {
-        title: "Multi-Asset Platform",
-        text: "Upgraded platform rich with features & thousands of assets to speculate on.",
+        title:  t("LowSpreadsFastExecution"),
+        text:  t("LowSpreadsFastExecutionText"),
         icon: fastExecIcon
     }]
 

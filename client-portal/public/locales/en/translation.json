@@ -162,10 +162,17 @@
   "subWhyTradeCryptoTwo": "No need for a crypto wallet or to own the underlying asset – simply trade the price action",
   "subWhyTradeCryptoThree": "Institutional-grade liquidity provides access to narrower spreads and reduced slippage",
 
-    
+  "tradingHeader": "Trading Platform",
   "tradingIntro": "Take your trading to the next level with the markets.com powerful, feature & benefit rich platform, featuring high grade charting, unique analytic tools and customisable alerts.",
   "straightForward": "Straightforward Trading",
   "staightForwardText": "Our most complete platform yet – everything you need to trade. The markets.com multi-asset trading platform places you in control of every trade. The trading platform is packed with features like News & Analysis as well as a suite of powerful Sentiment, Fundamental and Technical tools for making more informed decisions. You'll also be able to watch our live News & Analysis video sessions, where our in-house experts and guests share their deep knowledge of the financial markets exclusively with markets.com traders.",
+  "multiAssetPlatform": "Multi-Asset Platform",
+  "multiAssetText": "Upgraded platform rich with features & thousands of assets to speculate on.",
+  "worldClassTradingTool":"World-Class Trading Tools",
+  "worldClassTradingToolText":"Market-leading fundamental, technical and sentiment tools.",
+  "LowSpreadsFastExecution": "Low Spreads, Fast Execution",
+  "LowSpreadsFastExecutionText": "Institutional liquidity, fast execution.",
+   
   "simpleTrading": "Simply Trade with Us",
   "simpleTrading1":  "Market-leading analysis tools with Analyst Recommendations, Insiders and more",
   "simpleTrading2":  "Watch our expert tips on XRay with several shows a day",

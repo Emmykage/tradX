@@ -8,7 +8,7 @@ const Landing = () => {
     <div className='landingContainer'>
         <div className='navRouting'>
         </div>
-        <h1>Trading Platform</h1>
+        <h1>{t("tradingHeader")}</h1>
         <p>{t("tradingIntro")}</p>
      </div>
 

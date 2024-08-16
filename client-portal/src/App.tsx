@@ -85,6 +85,8 @@ const App: React.FunctionComponent<AppProps> = () => {
   const { i18n } = useTranslation();
   document.body.dir = i18n.dir();
 
+  console.log(i18n)
+
   console.log(
     "Envrionment Variable: VITE_API_BASE_URL => ",
     getEnv("VITE_API_BASE_URL")
@@ -92,6 +94,7 @@ const App: React.FunctionComponent<AppProps> = () => {
   useInitializeData();
 
   useEffect(() => {
+    i18n.changeLanguage('ja');
     const storedScale = localStorage.getItem("scale");
 
     if (storedScale) {
@@ -120,7 +123,7 @@ const App: React.FunctionComponent<AppProps> = () => {
       <Suspense fallback={<div className="fullLoadingBackground"><Loading/></div>}>
       <Routes>
         {/* turned of the auth require */}
-        {/* <Route element={<RequireAuth  />}> */}
+        <Route element={<RequireAuth  />}>
           <Route path="/platform" element={<Platform />} />
           {/* Private route using PrivateRoute component */}
           <Route path="/welcome" element={<PrivateRoute />}>
@@ -132,7 +135,7 @@ const App: React.FunctionComponent<AppProps> = () => {
           {/* <Route path="/loan" element={<Loan />} /> */}
           {/* <Route path="/loan/microlenders" element={<LoanMicroLenders />} /> */}
           <Route path="/statusDetails" element={<StatusDetails />} />
-        {/* </Route> */}
+        </Route>
         
         {/* <Route path="/markets/regulations" element={<Regulation />} />
         <Route path="/markets/cookieDisclosure" element={<CookieDisclosure />} />
