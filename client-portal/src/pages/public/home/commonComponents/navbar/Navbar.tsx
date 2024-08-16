@@ -91,14 +91,17 @@ const Navbar= () => {
   }, []);
 
   useEffect(() => {
-    const matchedLanguage = languages.filter(language => language.value.toLowerCase() === countryCode.toLocaleLowerCase());
-    if (matchedLanguage) {
+    const matchedLanguage = languages.filter(
+      (language) => language.value.toLowerCase() === countryCode.toLowerCase()
+    );
+  
+    if (matchedLanguage.length > 0) {
       i18n.changeLanguage(matchedLanguage[0].languageKey);
     } else {
-      setCountryCode('EN')
-      i18n.changeLanguage("en");
+      setCountryCode('EN');
+      i18n.changeLanguage('en');
     }
-  }, [countryCode])
+  }, [countryCode]);
 
   useEffect(() => {
     const browserLanguage = navigator.language;
