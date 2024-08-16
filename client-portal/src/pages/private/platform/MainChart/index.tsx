@@ -41,7 +41,7 @@ const MainChart: React.FunctionComponent<any>  = forwardRef(({ data: newData,col
   useEffect(() => {
     getClockMutate(cookies.access_token);
   }, []);
-
+  
 
   useEffect(() => {
     if (clockData) {
@@ -128,7 +128,6 @@ const MainChart: React.FunctionComponent<any>  = forwardRef(({ data: newData,col
   //   // }
    
   // }, [socketData, crypto]);
- 
 
   useEffect(()=>{
     console.log('object');
@@ -147,7 +146,7 @@ const MainChart: React.FunctionComponent<any>  = forwardRef(({ data: newData,col
 
 
   // TODO - Lazy loading the charts
-  return  <div style={{ position: 'relative', height: '100%' }}>
+  return   <div style={{ position: 'relative', height: '100%' }}>
       <div ref={chartContainerRef} style={{ height: '100%' }} />
       <div style={{
         position: 'absolute',

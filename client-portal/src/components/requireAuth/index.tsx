@@ -13,6 +13,7 @@ import Modal from "components/modal/Modal";
 import WarningIcon from "assets/icons/WarningIcon";
 
 import "./styles.scss";
+import { setSocketData } from "@store/slices/trade";
 
 const RequireAuth = () => {
   let location = useLocation();
