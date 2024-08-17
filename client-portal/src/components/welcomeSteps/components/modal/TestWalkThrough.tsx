@@ -114,7 +114,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
                         ) {
                           return {
                             ...prevAmount,
-                            amount: prevAmount.amount + 10,
+                            amount: prevAmount.amount ,
                           };
                         }
                         return prevAmount;
@@ -138,7 +138,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
               >
               <div className="walkthroughInputContent">
                 <label htmlFor="amount">{t("duration")}</label>
-                <input type="text" value={`${tradeForm.duration} min`} />
+                <input type="text" value={`${tradeForm.duration} sec`} />
               </div>
             </Tooltip>
             <div className="walkThroughButtonsContainer">
@@ -147,7 +147,6 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
                   style={{ backgroundColor: `${step === 8 ? "#0094FF" : ""}` }}
                   className="flex justify-center"
                   onClick={() => {
-                    console.log(tradeForm.duration);
                     
                     if (step == 8) {
                       if (tradeForm.duration - 1 == 1) {
@@ -160,7 +159,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
                         ) {
                           return {
                             ...prevDuration,
-                            duration: prevDuration.duration - 1,
+                            duration: prevDuration.duration,
                           };
                         }
                         return prevDuration;

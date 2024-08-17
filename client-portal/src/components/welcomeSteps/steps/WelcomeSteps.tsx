@@ -42,16 +42,16 @@ const WelcomeSteps = () => {
     setStep(0);
   };
 
-  useEffect(() => {
-    const savedStep = cookies.step;
-    if (savedStep) {
-      setStep(Number(savedStep));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedStep = cookies.step;
+  //   if (savedStep) {
+  //     setStep(Number(savedStep));
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    setCookie("step", step.toString(), { path: "/", maxAge: 604800 });
-  }, [step, setCookie]);
+  // useEffect(() => {
+  //   setCookie("step", step.toString(), { path: "/", maxAge: 604800 });
+  // }, [step, setCookie]);
 
   const renderStep = () => {
     switch (step) {
