@@ -1,4 +1,4 @@
-import "./cfdTradWhyTrade.scss";
+import "./CfdTradWhyTrade.scss";
 import whyTrade1Svg from "../../../../../assets/markets/tradingPage/whyTrade1.svg";
 import whyTrade2Svg from "../../../../../assets/markets/tradingPage/whyTrade2.svg";
 import whyTrade3Svg from "../../../../../assets/markets/tradingPage/whyTrade3.svg";

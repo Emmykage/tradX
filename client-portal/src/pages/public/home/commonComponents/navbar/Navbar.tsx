@@ -1,228 +1,418 @@
-import './navbar.scss'
-import TradxLogo from '../../../../../assets/home/tradxlogo.png'
+import "./navbar.scss";
+import TradxLogo from "../../../../../assets/home/tradxlogo.png";
 
-import { MouseEvent } from 'react';
-import { ArrowDownOS, MenuBar, MenuCloseIcon, SearchIcon } from 'assets/icons'
-import { useEffect, useRef, useState } from 'react'
-import { localFlagHandler } from 'i18n/helpers'
-import { Spin } from 'antd'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { setSignInTab } from '@store/slices/global'
-interface NavbarProps {
-    countryCode: string;
-    setCountryCode: (prevCountryCode:string)=>void;
-    loading: boolean;
-}
+import { MouseEvent } from "react";
+import {
+  ArrowDownOS,
+  ArrowRightOS,
+  MenuBar,
+  MenuCloseIcon,
+  SearchIcon,
+} from "assets/icons";
+import { useEffect, useRef, useState } from "react";
+import { localFlagHandler } from "i18n/helpers";
+import { Spin } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import i18n from "../../../../../i18n";
+import { languages } from "../../../../../constants";
+import { useDispatch } from "react-redux";
+import { setSignInTab } from "@store/slices/global";
+
 const Navbar= () => {
     const [ipAddress, setIpAddress] = useState('');
     const [geoInfo, setGeoInfo] = useState<{countryCode:string}>()
-    const [countryCode, setCountryCode] = useState('EN')
     const [loading, setLoading] = useState(false)
-
-    const navigate = useNavigate()
-
-    const dispatch = useDispatch()
-  
-    const getVisitorIp = async()=>{
-      setLoading(true)
-      try {
-        const response = await fetch('https://api.ipify.org')
-        const data   = await response.text()
-        setIpAddress(data)
-      } catch (error) {
-        setLoading(false)
-      }
-    }
-  
-    const fetchIpInfo = async ()=>{
-      try {
-        const response = await fetch(`http://ip-api.com/json/${ipAddress}`)
-        const data = await response.json()
-        setGeoInfo(data)
-        setLoading(false)
-      } catch (error) {
-        setCountryCode('EN');
-        setLoading(false)
-      }
-    }
-    useEffect(()=>{
-      getVisitorIp()
-    },[])
-  
-    useEffect(()=>{
-      fetchIpInfo()
-      if(geoInfo){
-        setCountryCode(geoInfo?.countryCode)
-      }
-    },[ipAddress])
-
-    const [toggleLanguageSelector,setToggleLanguageSelector] = useState(false)
-    const [toggleMobileNav,setToggleMobileNav] = useState(false)
-    const languageSelectorRef = useRef()
-
-    const handleClickOutside = (event: MouseEvent<Document>) => {
-      if (languageSelectorRef.current && !languageSelectorRef.current.contains(event.target as Node)) {
-        setToggleLanguageSelector(false);
-      }
+    const [activeMobileMenu, setActiveMobileMenu] = useState(null);
+    const [countryCode, setCountryCode] = useState(i18n.language ? i18n.language.toLocaleUpperCase() : 'EN')
+    
+    const toggleMenu = (menu:any) => {
+      
+      setActiveMobileMenu(activeMobileMenu === menu ? null : menu);
     };
-    
-    
-      useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-          document.removeEventListener('mousedown', handleClickOutside);
-        };
-      }, []);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+
+  const getVisitorIp = async()=>{
+    // setLoading(true)
+    try {
+      const response = await fetch('https://api.ipify.org')
+      const data   = await response.text()
+      console.log(data);
+      setIpAddress(data)
+    } catch (error) {
+      console.log(error);
+      setLoading(false)
+    }
+  }
+
+  const fetchIpInfo = async ()=>{
+    try {
+      const response = await fetch(`http://ip-api.com/json/${ipAddress}`)
+      const data = await response.json()
+      setGeoInfo(data)
+      // setLoading(false)
+    } catch (error) {
+      // setCountryCode('EN')
+      console.log(error);
+      // setLoading(false)
+    }
+  }
+  useEffect(()=>{
+    getVisitorIp()
+  },[])
+
+  useEffect(()=>{
+    fetchIpInfo()
+    if(geoInfo){
+      console.log(geoInfo?.countryCode);
+      // setCountryCode(geoInfo?.countryCode)
+    }
+    console.log(geoInfo);
+  },[ipAddress])
+
+  const [toggleLanguageSelector, setToggleLanguageSelector] = useState(false);
+  const [toggleMobileNav, setToggleMobileNav] = useState(false);
+  console.log(localFlagHandler(countryCode.toLocaleLowerCase()));
+  console.log(countryCode.toLocaleLowerCase());
+  const languageSelectorRef = useRef();
+
+  const handleClickOutside = (event: MouseEvent<Document>) => {
+    if (
+      languageSelectorRef.current &&
+      !languageSelectorRef.current.contains(event.target as Node)
+    ) {
+      setToggleLanguageSelector(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   const matchedLanguage = languages.filter(
+  //     (language) => language.value.toLowerCase() === countryCode.toLowerCase()
+  //   );
+  
+  //   if (matchedLanguage.length > 0) {
+  //     i18n.changeLanguage(matchedLanguage[0].languageKey);
+  //   } else {
+  //     setCountryCode('EN');
+  //     i18n.changeLanguage('en');
+  //   }
+  // }, [countryCode]);
+
+  useEffect(() => {
+    setLoading(true)
+    const browserLanguage = navigator.language;
+    const matchedLanguage = languages.find(language => language.languageKey.toLowerCase() === browserLanguage.toLocaleLowerCase());
+    console.log(browserLanguage);
+
+    console.log(languages);
+    if (matchedLanguage) {
+      setCountryCode(browserLanguage)
+      i18n.changeLanguage(countryCode.toLocaleLowerCase());
+      setLoading(false)
+    } else {
+      setCountryCode('EN')
+      i18n.changeLanguage("en");
+      setLoading(false)
+    }
+  }, [])
+
   return (
-    <div className='navbarContainer'>
-        {/* left side nav */}
-        <div className='leftSideNav'>
-            <img src={TradxLogo} alt="" />
-            <div className='navContent'>
-                <span>Markets</span>
-                <span>Trading</span>
-                <span>Learn</span>
+    <div className="navbarContainer">
+      {/* left side nav */}
+      <div className="leftSideNav">
+        <Link to="/">
+          <img src={TradxLogo} alt="" />
+        </Link>
+        <div className="navContent">
+          <div className="navDropDownContainer ">
+            <span>Markets</span>
+            <ArrowDownOS height="16" width="12" />
+            <div className="navDropDownNav">
+              <div className="leftNavDropDown">
+                <Link to="/markets/Commodities">
+                  <p>Commodities</p>
+                </Link>
+                <Link to="/markets/shares">
+                  <p>Shares</p>
+                </Link>
+                <Link to="/markets/crypto">
+                  <p>Crypto</p>
+                </Link>
+                <Link to="/markets/bonds">
+                  <p>Bonds</p>
+                </Link>
+              </div>
+              <div className="rightNavDropDown">
+                <Link to="/markets/indices">
+                  <p>Indices</p>
+                </Link>
+                <Link to="/markets/etfs">
+                  <p>ETFs</p>
+                </Link>
+                <Link to="/markets/ipos">
+                  <p>Ipos</p>
+                </Link>
+              </div>
             </div>
-        </div>
-        {/* right side navbar */}
-        <div className='rightSideNav'>
-            {/* search */}
-            <div className='navSearchContainer'>
-            <SearchIcon height="16" width="16"/>
-            <input type="text" placeholder='Search'/>
+          </div>
+          <div className="navDropDownContainer ">
+            <span>Trading</span>
+            <ArrowDownOS height="16" width="12" />
+            <div className="navDropDownNav">
+              <div className="firstNavDropDown">
+                <Link to="/trading/tradingPlatform">
+                  <p>Trading Platform</p>
+                </Link>
+                <Link to="/trading/MobileTrading">
+                  <p>Mobile Trading</p>
+                </Link>
+                <Link to="/trading/metaTradingFour">
+                  <p>Meta Trader 4</p>
+                </Link>
+                <Link to="/trading/metaTradingFive">
+                  <p>Meta Trader 5</p>
+                </Link>
+                <Link to="/trading/copyTrading">
+                  <p>Copy Trading</p>
+                </Link>
+                <Link to="/trading/cfdTrading">
+                  <p>CFD Trading</p>
+                </Link>
+              </div>
+              <div className="secondNavDropDown">
+                <Link to="/trading/cfdTradingCalculator">
+                  <p>CFD Trading Calculator</p>
+                </Link>
+                <Link to="/trading/economicCalendar">
+                  <p>Economic Calendar</p>
+                </Link>
+                <Link to="/trading/cfdAssetList">
+                  <p>CFD Asset List</p>
+                </Link>
+                <Link to="/trading/tradingConditions">
+                  <p>Trading Conditions</p>
+                </Link>
+                <Link to="/trading/expirationDate">
+                  <p>Expiration Dates</p>
+                </Link>
+              </div>
             </div>
+          </div>
 
-           
+          <div className="navDropDownContainer">
+            <span>Learn</span>
+          </div>
+        </div>
+      </div>
+      {/* right side navbar */}
+      <div className="rightSideNav">
+        {/* search */}
+        <div className="navSearchContainer">
+          <SearchIcon height="16" width="16" />
+          <input type="text" placeholder="Search" />
+        </div>
+
+        {/* language selector */}
+        <div ref={languageSelectorRef} className="languageSelectorContainer">
+          {loading ? (
+            <div style={{ marginRight: "10px" }}>
+              <Spin />
+            </div>
+          ) : (
+            <div
+              
+              className="languageButton"
+              onClick={() => setToggleLanguageSelector(!toggleLanguageSelector)}
+            >
+              <img
+                src={localFlagHandler(countryCode.toLocaleLowerCase())}
+                alt=""
+              />
+              <h2>{countryCode}</h2>
+              <ArrowDownOS height="15" width="10" />
+            </div>
+          )}
+
+          <div
+            className={`languageDropDownMenu ${
+              toggleLanguageSelector
+                ? "showLanguageDropDown"
+                : "closeLanguageDropDown"
+            }`}
+          >
+            <div
+              className="languageValue"
+              onClick={() => {
+                setCountryCode("en");
+                setToggleLanguageSelector(false);
+              }}
+            >
+              <img src={localFlagHandler("en")} alt="" />
+              <h2>English</h2>
+            </div>
+            <div
+              className="languageValue"
+              onClick={() => {
+                setCountryCode("es");
+                setToggleLanguageSelector(false);
+              }}
+            >
+              <img src={localFlagHandler("es")} alt="" />
+              <h2>Spanish</h2>
+            </div>
+            <div
+              className="languageValue"
+              onClick={() => {
+                setCountryCode("ja");
+                setToggleLanguageSelector(false);
+              }}
+            >
+              <img src={localFlagHandler("ja")} alt="" />
+              <h2>Japanese</h2>
+            </div>
+            <div
+              className="languageValue"
+              onClick={() => {
+                setCountryCode("AR");
+                setToggleLanguageSelector(false);
+              }}
+            >
+              <img src={localFlagHandler("ar")} alt="" />
+              <h2>Arabic</h2>
+            </div>
+            <div
+              className="languageValue"
+              onClick={() => {
+                setCountryCode("HI");
+                setToggleLanguageSelector(false);
+              }}
+            >
+              <img src={localFlagHandler("hi")} alt="" />
+              <h2>India</h2>
+            </div>
+          </div>
+        </div>
+        <button
+          className="primaryButton"
+          onClick={() => {
+            dispatch(setSignInTab('1'))
+            navigate("/signIn");
+          }}
+        >
+          Login
+        </button>
+        <button
+          className="secondaryButton"
+          onClick={() => {
+            dispatch(setSignInTab('2'))
+            navigate("/signIn");
+          }}
+        >
+          Sign Up
+        </button>
+      </div>
+      <div className="menuBarButton" onClick={() => setToggleMobileNav(true)}>
+        <MenuBar height="30px" width="30px" />
+      </div>
+      <div
+        className={`${toggleMobileNav ? "mobileNavOpen" : "mobileNavClose"}`}
+      >
+        <div
+          className="menuCloseIcon"
+          onClick={() => setToggleMobileNav(false)}
+        >
+          <MenuCloseIcon />
+        </div>
+        <div className="mobileNavLogo">
+          <img src={TradxLogo} alt="" />
+        </div>
+
+        <div className="mobileNavContent">
+          {/* search */}
+          <div className="navSearchMoblieContainer">
+            <SearchIcon height="13" width="13" />
+            <input id="search" name="search" type="text" placeholder="Search" />
+          </div>
+          <span>Markets</span>
+          <span>Trading</span>
+          <span>Learn</span>
+          <div className="mobileBottomNav">
             {/* language selector */}
-            <div className='languageSelectorContainer'>
-                {loading ? (
-                    <div>
-                    <Spin/>
-                    </div>
-                ): (
-                    <div className='languageButton' onClick={()=>setToggleLanguageSelector(!toggleLanguageSelector)}>
-                    <img src={localFlagHandler(countryCode.toLocaleLowerCase())} alt="" />
-                    <h2>{countryCode}</h2>
-                    <ArrowDownOS height="15" width="10"/>
+            <div className="languageSelectorContainer">
+              <div
+                className="languageButton"
+                onClick={() =>
+                  setToggleLanguageSelector(!toggleLanguageSelector)
+                }
+              >
+                <img src={localFlagHandler("en")} alt="" />
+                <h2>En</h2>
+                <ArrowDownOS height="15" width="10" />
+              </div>
+              <div
+                className={`languageDropDownMenu ${
+                  toggleLanguageSelector
+                    ? "showLanguageDropDown"
+                    : "closeLanguageDropDown"
+                }`}
+              >
+                <div className="languageValue">
+                  <img src={localFlagHandler("en")} alt="" />
+                  <h2>English</h2>
                 </div>
-                )}
-                
-                <div ref={languageSelectorRef} className={`languageDropDownMenu ${toggleLanguageSelector ? 'showLanguageDropDown': 'closeLanguageDropDown'}`}>
-                    <div className='languageValue' onClick={()=>{
-                        setCountryCode('EN')
-                        setToggleLanguageSelector(false)
-                        }}>
-                    <img src={localFlagHandler('en')} alt="" />
-                    <h2>English</h2> 
-                    </div>
-                    <div className='languageValue' onClick={()=>{
-                        setCountryCode('ES')
-                        setToggleLanguageSelector(false)
-                        }}>
-                    <img src={localFlagHandler('es')} alt="" />
-                    <h2>Spanish</h2> 
-                    </div>
-                    <div className='languageValue' onClick={()=>{
-                        setCountryCode('JP')
-                        setToggleLanguageSelector(false)
-
-                    }}>
-                    <img src={localFlagHandler('jp')} alt="" />
-                    <h2>Japanese</h2> 
-                    </div>
-                    <div className='languageValue' onClick={()=>{
-                        setCountryCode('AR')
-                        setToggleLanguageSelector(false)
-                        }}>
-                    <img src={localFlagHandler('ar')} alt="" />
-                    <h2>Arabic</h2> 
-                    </div>
-                    <div className='languageValue' onClick={()=>{
-                        setCountryCode('HI')
-                        setToggleLanguageSelector(false)
-                        }}>
-                    <img src={localFlagHandler('hi')} alt="" />
-                    <h2>India</h2> 
-                    </div>
+                <div className="languageValue">
+                  <img src={localFlagHandler("es")} alt="" />
+                  <h2>Spanich</h2>
                 </div>
-            </div>
-            <button className='primaryButton'  onClick={()=>{
-              dispatch(setSignInTab('1'))
-              navigate('/signIn')
-            }}>Login</button>
-            <button className='secondaryButton'  onClick={()=>{
-              dispatch(setSignInTab('2'))
-              navigate('/signIn')
-            }}>Sign Up</button>
-        </div>
-        <div className='menuBarButton' onClick={()=>setToggleMobileNav(true)}>
-            <MenuBar height="30px" width="30px"/>
-        </div>
-        <div className={`${toggleMobileNav ? 'mobileNavOpen':'mobileNavClose'}`}>
-            <div className='menuCloseIcon'  onClick={()=>setToggleMobileNav(false)}>
-                <MenuCloseIcon/>
-            </div>
-            <div className='mobileNavLogo'>
-             <img src={TradxLogo} alt="" />
-            </div>
-
-             <div className='mobileNavContent'>
-                <span>Markets</span>
-                <span>Trading</span>
-                <span>Learn</span>
-            <div className='mobileBottomNav'>
-            {/* search */}
-            <div className='navSearchContainer'>
-            <SearchIcon height="13" width="13"/>
-            <input type="text" placeholder='Search'/>
-            </div>
-            {/* language selector */}
-            <div className='languageSelectorContainer'>
-                <div className='languageButton' onClick={()=>setToggleLanguageSelector(!toggleLanguageSelector)}>
-                    <img src={localFlagHandler('en')} alt="" />
-                    <h2>En</h2>
-                    <ArrowDownOS height="15" width="10"/>
+                <div className="languageValue">
+                  <img src={localFlagHandler("ar")} alt="" />
+                  <h2>Arabic</h2>
                 </div>
-                <div className={`languageDropDownMenu ${toggleLanguageSelector ? 'showLanguageDropDown': 'closeLanguageDropDown'}`}>
-                    <div className='languageValue'>
-                    <img src={localFlagHandler('en')} alt="" />
-                    <h2>English</h2> 
-                    </div>
-                    <div className='languageValue'>
-                    <img src={localFlagHandler('es')} alt="" />
-                    <h2>Spanich</h2> 
-                    </div>
-                    <div className='languageValue'>
-                    <img src={localFlagHandler('ar')} alt="" />
-                    <h2>Arabic</h2> 
-                    </div>
-                    <div className='languageValue'>
-                    <img src={localFlagHandler('jp')} alt="" />
-                    <h2>Japanese</h2> 
-                    </div>
-                    <div className='languageValue'>
-                    <img src={localFlagHandler('hi')} alt="" />
-                    <h2>Mandarin</h2> 
-                    </div>
+                <div className="languageValue">
+                  <img src={localFlagHandler("jp")} alt="" />
+                  <h2>Japanese</h2>
                 </div>
+                <div className="languageValue">
+                  <img src={localFlagHandler("hi")} alt="" />
+                  <h2>Mandarin</h2>
+                </div>
+              </div>
             </div>
-            <button className='primaryButton' onClick={()=>{
-              dispatch(setSignInTab('1'))
-              navigate('/signIn')
-              setToggleMobileNav(false)
-            }}>Login</button>
-            <button className='secondaryButton' onClick={()=>{
-              dispatch(setSignInTab('2'))
-              navigate('/signIn')
-              setToggleMobileNav(false)
-
-            }}>Sign Up</button>
-        </div>
+            <div>
+              <button
+                className="primaryButton"
+                onClick={() => {
+                  // dispatch(setSignInTab('1'))
+                  navigate("/signIn");
+                  setToggleMobileNav(false);
+                }}
+              >
+                Login
+              </button>
+              <button
+                className="secondaryButton"
+                onClick={() => {
+                  // dispatch(setSignInTab('2'))
+                  navigate("/signIn");
+                  setToggleMobileNav(false);
+                }}
+              >
+                Sign Up
+              </button>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

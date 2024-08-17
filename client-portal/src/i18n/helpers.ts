@@ -5,17 +5,17 @@ export function localFlagHandler(countryCode: string) {
     case "en-UK":
       return "/menu-images/uk-flag.png";
     case "ar":
-      return "/public/menu-images/svgs/uae.svg";
+      return "/menu-images/svgs/uae.svg";
     case "fr":
-      return "/public/menu-images/svgs/france.svg";
+      return "/menu-images/svgs/france.svg";
     case "de":
-      return "/public/menu-images/svgs/germany.svg";
-    case "jp":
-      return "/public/menu-images/svgs/japan.svg";
+      return "/menu-images/svgs/germany.svg";
+    case "ja":
+      return "/menu-images/svgs/japan.svg";
     case "es":
-      return "/public/menu-images/svgs/spain.svg";
+      return "/menu-images/svgs/spain.svg";
     case "id":
-      return "/public/menu-images/svgs/IndonesiaFlag.svg";
+      return "/menu-images/svgs/IndonesiaFlag.svg";
     case "vi":
       return "/menu-images/svgs/VietnamFlag.svg";
     case "hi":

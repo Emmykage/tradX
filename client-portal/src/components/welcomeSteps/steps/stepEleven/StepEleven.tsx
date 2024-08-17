@@ -1,5 +1,5 @@
 import React from 'react';
-import './StepEleven.scss'
+import './stepEleven.scss'
 import TestWalkThrough from 'components/welcomeSteps/components/modal/TestWalkThrough';
 import CustomMarkerOne from 'components/welcomeSteps/components/customMarkerOne/CustomMarkerOne';
 import CustomMarkerTwo from 'components/welcomeSteps/components/customMarkerTwo/CustomMarkerTwo';
@@ -71,7 +71,7 @@ const StepEleven: React.FC<StepElevenProps> = ({
            <TestWalkThrough setStep={setStep} step={step}/>
      </div>
      <div className="stepElevenmain_infoDown">
-     <h2>{t("finishTrading")}</h2>
+     <h2>{t("finishTradings")}</h2>
      <div className="stepElevenButtonDown">
        <MyButton text="Complete Training" handleClick={handleClick} />
      </div>

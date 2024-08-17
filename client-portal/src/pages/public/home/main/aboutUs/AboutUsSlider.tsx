@@ -69,13 +69,13 @@ const ArrowButtonNext:React.FC<{onClick: any}>  = ({onClick }) => {
                     <div className='aboutUsUpperQuoteImage'>
                       <img src={RightQuoteIcon} alt="" />
                     </div>
-                   <p>I was completely new to trading, and Tradex made it easy to learn the ropes. The educational resources were fantastic, and the user interface is so intuitive. </p>
+                   <p>I've been using different platforms for years, but  Tradex is the best by far, due to its advanced charting tools and technical indicators. </p>
                     <div className='aboutUsLowerQuoteImage'>
                       <img src={LeftQuoteIcon} alt="" />
                     </div>
                   </div>
                   <div className='aboutUsSliderCardInfo'>
-                    <span>Sarah</span>
+                    <span>John</span>
                     <div className='aboutUsRatingStarCard'>
                       <img src={RatingStarIcon} alt="" />
                       <img src={RatingStarIcon} alt="" />
@@ -92,13 +92,13 @@ const ArrowButtonNext:React.FC<{onClick: any}>  = ({onClick }) => {
                     <div className='aboutUsUpperQuoteImage'>
                       <img src={RightQuoteIcon} alt="" />
                     </div>
-                   <p>I was completely new to trading, and Tradex made it easy to learn the ropes. The educational resources were fantastic, and the user interface is so intuitive. </p>
+                   <p>Tradex is hands down the best platform I've used. The advanced charting tools and technical indicators are top-notch, making trading seamless and efficient."</p>
                     <div className='aboutUsLowerQuoteImage'>
                       <img src={LeftQuoteIcon} alt="" />
                     </div>
                   </div>
                   <div className='aboutUsSliderCardInfo'>
-                    <span>Sarah</span>
+                    <span>Emma</span>
                     <div className='aboutUsRatingStarCard'>
                       <img src={RatingStarIcon} alt="" />
                       <img src={RatingStarIcon} alt="" />

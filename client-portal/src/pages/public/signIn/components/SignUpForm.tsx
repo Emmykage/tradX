@@ -3,6 +3,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import useRegister from "api/user/useRegister";
 import { toast } from "react-toastify";
+import { GlobalStates, setSignInTab } from "@store/slices/global";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "@store/hooks";
 
 interface SignUpFormData {
   email: string;
@@ -13,13 +16,22 @@ interface SignUpFormData {
 }
 
 const SignUpForm = () => {
+  const {  signInTab } = useAppSelector(
+    (state: { global: GlobalStates }) => state.global
+  );
+  console.log(signInTab);
   const { handleSubmit, register, reset } = useForm<SignUpFormData>();
+  const dispatch = useDispatch()
   const { mutate, isPending } = useRegister({
     onSuccess: () => {
       reset();
       toast.success(
-        "You have successfully registered your account, Login Now!"
+        "Success! An email has been sent to your account. Please verify your email to complete the registration process."
       );
+      console.log(`before dispach ${signInTab}`);
+      // dispatch(setSignInTab("1"))
+      console.log(`before dispach ${signInTab}`);
+      
     },
   });
 
@@ -74,7 +86,7 @@ const SignUpForm = () => {
       >
         <input
           className="loginInput"
-          type="tel"
+          type="password"
           id="phone_number"
           placeholder="Phone number"
           {...register("phone_number")}

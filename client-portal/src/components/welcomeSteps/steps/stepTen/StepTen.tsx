@@ -71,7 +71,7 @@ const formatTimeHIS = (seconds: number, { short = false } = {})  => {
             <AreaChart chartData={chartData} liveLoading={true}  tradeType={trade} />
             <div className=" w-[100%] md:w-full xl:w-[904px] max-w-[904px] mx-auto bottom-0  z-[30] absolute">
                 <div className={`mt-6 lg:mt-[179px] md:w-[70%]   mx-auto ${tradeFinished? 'zoom-in': 'hidden'} `}>
-                  <h2 className="text-[18px] md:text-[21px] text-center text-white px-2">{t("walkthroughChooseTradeSubText")}</h2>
+                  <h2 className="text-[18px] md:text-[21px] text-center text-white px-2">{t("walkthroughChooseTradeSubTexts")}</h2>
                   <div className="mt-4 md:mt-9 mb-12 md:mb-16 lg:mb-16 mx-auto max-w-[250px] md:max-w-[360px]">
                     <MyButton text={t("completeTraining")} handleClick={()=> setStep(12)} />
                   </div>

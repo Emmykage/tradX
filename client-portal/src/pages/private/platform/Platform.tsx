@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Topbar from "../../../components/topbar/Topbar";
 import TradeForm from "../../../components/tradeForm/TradeForm";
 import "./platform.scss";
 import { Drawer } from "antd";
 import { AreaChartIcon, ArrowLeftOS, BarChartIcon, CandleStickIcon, CloseIcon, MainChartAnalysisIcon, MainChartChangeIcon, MainChartSignalsIcon, ZoomInChartIcon, ZoomOutChartIcon } from "../../../assets/icons";
-import WalkThrough from "./WalkThrough";
 
 import useQueryParamHandler from "./hooks/useQueryParamHandler";
 import {
@@ -73,7 +72,13 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   let chartRef = useRef<IChartApi>();
   let seriesRef = useRef(null);
 
-  const { data: socketData, socket } = useSocketConnect(wsTicket as string);
+  
+
+  const { data: socketData,oldData, socket } = useSocketConnect(wsTicket as string);
+  console.log('socket data' + socketData?.barchart);
+  console.log('object');
+  // console.log('socket data' + socketData?.onlinetraders?.count);
+  // console.log(socket);
   const colors = {
     backgroundColor: "transparent",
     lineColor: "#0094FF",
@@ -111,7 +116,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const isWalkthroughSkipped = user?.is_walkthrough ?? true;
 
 
-  console.log(user);
+  // console.log(user);
 
   // useEffect(() => {
   //   if (user?.is_walkthrough_completed) {
@@ -159,6 +164,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       height: 300,
     });
     let candlestickSeries = null;
+
+    const initialCandleData = [
+      { time: 1628164800, open: 30, high: 35, low: 25, close: 32 },
+      { time: 1628251200, open: 32, high: 38, low: 31, close: 36 },
+      // more data...
+    ];
     //  candle series 
     if(selectedChart == 'candlesticks'){
       candlestickSeries = chart.addCandlestickSeries({
@@ -169,6 +180,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         wickDownColor: 'red',
         wickUpColor: 'green',
       });
+     
     }else{
       candlestickSeries = chart.addBarSeries({
         upColor: 'green',
@@ -178,10 +190,27 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
     // @ts-ignore
     seriesRef.current = candlestickSeries;  
-
-    candlestickSeries.setData([]);
+    console.log(oldData);
+    if(oldData){
+      const removeDuplicates = (data: any[]) => {
+        const seen = new Set<number>();
+        return data.filter(item => {
+          if (!seen.has(item.time)) {
+            seen.add(item.time);
+            return true;
+          }
+          return false;
+        });
+      };
+      // console.log(oldData);
+      const sortedAndUniqueData = removeDuplicates(oldData.sort((a, b) => a.time - b.time));
+      
+      // console.log(sortedAndUniqueData);
+      candlestickSeries.setData(sortedAndUniqueData);
+    }
 
     chartRef.current = chart;
+    
     chart.applyOptions({
         crosshair: {
           mode: CrosshairMode.Normal,
@@ -219,17 +248,18 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       chartRef.current?.remove();
     };
  
-  }, [selectedChart]);
+  }, [selectedChart,oldData]);
 
+ 
   useEffect(() => {
         // @ts-ignore
-    if(!isObjectEmpty(socketData)){
+    if(!isObjectEmpty(socketData?.barchart)){
       // @ts-ignore
-      seriesRef?.current?.update(socketData);
+      seriesRef?.current?.update(socketData?.barchart);
 
     };
     
-  }, [socketData]);
+  }, [socketData,initialData]);
 
   useEffect(() => {
     const topbarElement = document.getElementById("topbarContainer");
@@ -286,6 +316,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const MainSidebar = ({ id }: { id?: string }) => {
     return (
       <Sidebar
+        onlineTraders ={socketData?.onlinetraders?.count}
         setIsDrawerOpen={setIsDrawerOpen}
         isDrawerOpen={isDrawerOpen}
         setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen}
@@ -309,13 +340,16 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     setSelectedChart(type);
   };
 
+  
   const renderSelectedChartType = () => {
     switch (selectedChart) {
      
       default:
+        
         return (
+          
           <> 
-            <MainChart data={newCandleData} selectedTimeScale={selectedTimeScale}  refs={{chartContainerRef, chartRef, seriesRef}}  chartScale={chartScale}  />
+            <MainChart data={oldData} selectedTimeScale={selectedTimeScale}  refs={{chartContainerRef, chartRef, seriesRef}}  chartScale={chartScale}  />
           </>
         )
     }
@@ -494,7 +528,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           style={{ height: calculateTradeContentHeight() }}
         >
           <div className="trade-graph" id="tradeGraph">
-            
+    
             {chartInitialData ? (
              <div className="chart-container"  style={{ height: "100%", color:"white", position: 'relative' }}>
                {/* pass dummy data newCandleData */}

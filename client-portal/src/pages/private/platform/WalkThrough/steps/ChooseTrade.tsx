@@ -81,11 +81,11 @@ const ChooseTrade: React.FC<ChooseTradeProps> = ({
 
         <div className={`tradingCompleted ${tradingCompleted ? "active" : ""}`}>
           <p className="walkthroughSubtext">
-            {t("walkthroughChooseTradeSubText")}
+            {t("walkthroughChooseTradeSubTexts")}
           </p>
 
           <button className="walkthroughButton" onClick={onSkipWalkthrough}>
-           {t("finishTrading")}
+           {t("finishTradings")}
           </button>
         </div>
       </div>

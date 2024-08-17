@@ -104,6 +104,7 @@ const WelcomeSteps = () => {
         </div>
     </div>
   );
+
 };
 
 export default WelcomeSteps;

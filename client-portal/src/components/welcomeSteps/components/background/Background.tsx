@@ -45,7 +45,7 @@ const Background: FC<BackgroundProps> = ({ step }) => {
     if (windowWidth > 834 && step >= 7) {
       return "0px";
     }
-    return step >= 7 ? "-10px" : "100px";
+    return step >= 7 ? "-10px" : "40px";
   };
 
   return (

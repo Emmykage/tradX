@@ -79,3 +79,13 @@ html.theme-dark .chart-controls-bar {
 .walkthroughTooltip .ant-tooltip-inner{
   font-size: 16px;
 }
+
+
+.fullLoadingBackground{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0E1422;
+}

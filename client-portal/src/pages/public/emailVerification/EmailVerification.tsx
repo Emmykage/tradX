@@ -22,7 +22,7 @@ const EmailVerification: React.FunctionComponent<
       setStatusMsg(data.detail);
       setLoading(false);
       setTimeout(() => {
-        navigate("/platform");
+        navigate("/signIn");
       }, 2000);
     },
     onError: () => {
@@ -39,6 +39,7 @@ const EmailVerification: React.FunctionComponent<
 
     mutate({ uidb64, token });
   }, [mutate]);
+  
 
   return (
     <div className="emailVerificationContainer">

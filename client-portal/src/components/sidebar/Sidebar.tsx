@@ -1,3 +1,4 @@
+import Loading from "components/loading";
 import {
   AiIcon,
   EventsIcon,
@@ -8,6 +9,7 @@ import {
   TradesIcon,
 } from "../../assets/icons";
 import "./sidebar.scss";
+import { Spin } from "antd";
 
 type DrawerType =
   | "trades"
@@ -25,6 +27,7 @@ interface SidebarProps {
   setIsLeftSubDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isLeftSubDrawerOpen: boolean;
   id?: string;
+  onlineTraders?:number;
   currentDrawer: DrawerType;
   setCurrentDrawer: React.Dispatch<React.SetStateAction<DrawerType>>;
 }
@@ -36,6 +39,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
   isLeftSubDrawerOpen,
   currentDrawer,
   setCurrentDrawer,
+  onlineTraders,
   id,
 }) => {
   const onSelect = (activeDrawer: DrawerType) => {
@@ -48,6 +52,8 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
     }
     setCurrentDrawer(activeDrawer);
   };
+
+
 
   return (
     <div className="sidebar" id={id ? id : ""}>
@@ -112,7 +118,14 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
       </div>
       <div className="bottom">
         <div className="online">
-          <p className="numberOnline">7722</p>
+          {
+            onlineTraders ? (
+              <p className="numberOnline">{onlineTraders || 'loading'}</p>
+
+            ): (
+              <Spin />
+            )
+          }
           <p className="onl">Online</p>
         </div>
       </div>

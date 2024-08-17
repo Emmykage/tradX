@@ -1,10 +1,11 @@
-import { ISignInForm } from "@interfaces";
+import { ISignInForm, IUser } from "@interfaces";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import getEnv from "utils/env";
 
 export async function fethLogin(data: ISignInForm): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
+  console.log(getEnv("VITE_API_BASE_URL"), BASE_URL, 'Here');
   try {
     const response = await fetch(`${BASE_URL}/user/token/`, {
       method: "POST",
@@ -29,6 +30,7 @@ export async function fethLogin(data: ISignInForm): Promise<boolean> {
 interface LoginSuccess {
   access: string;
   refresh: string;
+  user: IUser
 }
 
 type useLoginProps = {
