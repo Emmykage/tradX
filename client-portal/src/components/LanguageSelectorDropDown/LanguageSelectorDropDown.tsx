@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import './languageSelectorDropDown.scss';
 import { useTranslation } from 'react-i18next';
 
+import {languages} from '../../constants'
+
 interface NavbarProps {
     countryCode: string;
     setCountryCode: (prevCountryCode:string)=>void;
@@ -24,39 +26,59 @@ const LanguageSelectorDropDown = () => {
 
     const dispatch = useDispatch()
   
-    const getVisitorIp = async()=>{
-      setLoading(true)
-      try {
-        const response = await fetch('https://api.ipify.org')
-        const data   = await response.text()
-        setIpAddress(data)
-      } catch (error) {
-        setLoading(false)
-      }
-    }
+    // const getVisitorIp = async()=>{
+    //   setLoading(true)
+    //   try {
+    //     const response = await fetch('https://api.ipify.org')
+    //     const data   = await response.text()
+    //     setIpAddress(data)
+    //   } catch (error) {
+    //     setLoading(false)
+    //   }
+    // }
   
-    const fetchIpInfo = async ()=>{
-      try {
-        const response = await fetch(`http://ip-api.com/json/${ipAddress}`)
-        const data = await response.json()
-        setGeoInfo(data)
-        setLoading(false)
-      } catch (error) {
-        setCountryCode('EN');
-        setLoading(false)
-      }
-    }
-    useEffect(()=>{
-      getVisitorIp()
-    },[])
+    // const fetchIpInfo = async ()=>{
+    //   try {
+    //     const response = await fetch(`http://ip-api.com/json/${ipAddress}`)
+    //     const data = await response.json()
+    //     setGeoInfo(data)
+    //     setLoading(false)
+    //   } catch (error) {
+    //     setCountryCode('EN');
+    //     setLoading(false)
+    //   }
+    // }
+    // useEffect(()=>{
+    //   getVisitorIp()
+    // },[])
   
-    useEffect(()=>{
-      fetchIpInfo()
-      if(geoInfo){
-        setCountryCode(geoInfo?.countryCode)
-      }
-    },[ipAddress])
+    // useEffect(()=>{
+    //   fetchIpInfo()
+    //   if(geoInfo){
+    //     setCountryCode(geoInfo?.countryCode)
+    //   }
+    // },[ipAddress])
 
+    useEffect(() => {
+      setLoading(true)
+      const browserLanguage = navigator.language;
+      const matchedLanguage = languages.find(language => language.languageKey.toLowerCase() === browserLanguage.toLocaleLowerCase());
+      console.log(browserLanguage);
+  
+      console.log(languages);
+      if (matchedLanguage) {
+        console.log(matchedLanguage);
+        setCountryCode(browserLanguage)
+        i18n.changeLanguage(matchedLanguage.languageKey.toLocaleLowerCase());
+        setLoading(false)
+      } else {
+        setCountryCode('EN')
+        i18n.changeLanguage("en");
+        setLoading(false)
+      }
+    }, [])
+
+    
     const [toggleLanguageSelector,setToggleLanguageSelector] = useState(false)
     const languageSelectorRef = useRef()
 
@@ -88,39 +110,39 @@ const LanguageSelectorDropDown = () => {
             ): (
                 <div className='languageButton' onClick={()=>setToggleLanguageSelector(!toggleLanguageSelector)}>
                 <img src={localFlagHandler(countryCode.toLocaleLowerCase())} alt="" />
-                <h2 className="text-white">{countryCode}</h2>
+                <h2 className="text-white">{countryCode.toLocaleUpperCase()}</h2>
                 <ArrowDownOS height="15" width="10"/>
             </div>
             )}
             
             <div ref={languageSelectorRef} className={`languageDropDownMenu ${toggleLanguageSelector ? 'showLanguageDropDown': 'closeLanguageDropDown'}`}>
                 <div className='languageValue' onClick={()=>{
-                    onLanguageChange('EN')
+                    onLanguageChange('en')
                     }}>
                 <img src={localFlagHandler('en')} alt="" />
                 <h2>English</h2> 
                 </div>
                 <div className='languageValue' onClick={()=>{
-                    onLanguageChange('ES')
+                    onLanguageChange('es')
                     }}>
                 <img src={localFlagHandler('es')} alt="" />
                 <h2>Spanish</h2> 
                 </div>
                 <div className='languageValue' onClick={()=>{
-                    onLanguageChange('JA')
+                    onLanguageChange('ja')
 
                 }}>
-                    <img src={localFlagHandler('jp')} alt="" />
+                    <img src={localFlagHandler('ja')} alt="" />
                     <h2>Japanese</h2> 
                 </div>
                 <div className='languageValue' onClick={()=>{
-                    onLanguageChange('AR')
+                    onLanguageChange('ar')
                 }}>
                     <img src={localFlagHandler('ar')} alt="" />
                     <h2>Arabic</h2> 
                 </div>
                 <div className='languageValue' onClick={()=>{
-                    onLanguageChange('HI')
+                    onLanguageChange('hi')
                 }}>
                 <img src={localFlagHandler('hi')} alt="" />
                 <h2>India</h2> 

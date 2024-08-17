@@ -203,6 +203,8 @@
   "doYouWantToFinishTraining": "Do you want to finish training ?",
   "resumeTrainingInHelpSection": "You can resume your training later in the Help section.",
   "completeTraining": "Complete training",
+  "walkthroughChooseTradeSubTexts": "Congratulations! Your trade was successful. By Investing $90, you’ve earned $85 - a 76.5% return in just 20 seconds.",
+  "walkthroughFixedDurationOffers": "Trades of fixed duration that offer a fixed profit are known as Fixed Time Trades or FTT.",
 
   "duration": "Duration",
   "amount": "Amount",

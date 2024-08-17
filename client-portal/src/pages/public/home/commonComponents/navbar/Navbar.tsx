@@ -34,7 +34,7 @@ const Navbar= () => {
   const dispatch = useDispatch()
 
   const getVisitorIp = async()=>{
-    setLoading(true)
+    // setLoading(true)
     try {
       const response = await fetch('https://api.ipify.org')
       const data   = await response.text()
@@ -51,11 +51,11 @@ const Navbar= () => {
       const response = await fetch(`http://ip-api.com/json/${ipAddress}`)
       const data = await response.json()
       setGeoInfo(data)
-      setLoading(false)
+      // setLoading(false)
     } catch (error) {
       // setCountryCode('EN')
       console.log(error);
-      setLoading(false)
+      // setLoading(false)
     }
   }
   useEffect(()=>{
@@ -107,13 +107,20 @@ const Navbar= () => {
   // }, [countryCode]);
 
   useEffect(() => {
+    setLoading(true)
     const browserLanguage = navigator.language;
-    const matchedLanguage = languages.find(language => language.value.toLowerCase() === browserLanguage.toLocaleLowerCase());
+    const matchedLanguage = languages.find(language => language.languageKey.toLowerCase() === browserLanguage.toLocaleLowerCase());
+    console.log(browserLanguage);
+
+    console.log(languages);
     if (matchedLanguage) {
+      setCountryCode(browserLanguage)
       i18n.changeLanguage(countryCode.toLocaleLowerCase());
+      setLoading(false)
     } else {
       setCountryCode('EN')
       i18n.changeLanguage("en");
+      setLoading(false)
     }
   }, [])
 
@@ -244,7 +251,7 @@ const Navbar= () => {
             <div
               className="languageValue"
               onClick={() => {
-                setCountryCode("EN");
+                setCountryCode("en");
                 setToggleLanguageSelector(false);
               }}
             >
@@ -254,7 +261,7 @@ const Navbar= () => {
             <div
               className="languageValue"
               onClick={() => {
-                setCountryCode("ES");
+                setCountryCode("es");
                 setToggleLanguageSelector(false);
               }}
             >
@@ -264,11 +271,11 @@ const Navbar= () => {
             <div
               className="languageValue"
               onClick={() => {
-                setCountryCode("JP");
+                setCountryCode("ja");
                 setToggleLanguageSelector(false);
               }}
             >
-              <img src={localFlagHandler("jp")} alt="" />
+              <img src={localFlagHandler("ja")} alt="" />
               <h2>Japanese</h2>
             </div>
             <div
