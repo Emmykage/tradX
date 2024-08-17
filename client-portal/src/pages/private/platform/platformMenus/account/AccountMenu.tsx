@@ -26,9 +26,10 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  const { wallets, walletsLoading, selectedWallet } = useAppSelector(
+  const { wallets, walletTypes,walletsLoading, selectedWallet } = useAppSelector(
     (state: { wallet: WalletSliceState }) => state.wallet
   );
+  console.log(wallets);
 
   if (walletsLoading) {
     return <Loading size="large" />;
@@ -46,25 +47,14 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
         <AddIcon />
       </div>
       <div className="accountsContainer">
-        <AccountCard
-          icon={<GlobeIcon />}
-          accountType="Demo Account"
-          secAmount=""
-          amount="D9,999.00"
-          suffixIcon={<ReloadIcon />}
-          onClick={() => dispatch(setSelectedWallet(undefined))}
-          selectedCard={null}
-          selected={selectedWallet?.id ? false : true}
-          setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
-          setIsRightSubDrawerContent={setIsRightSubDrawerContent}
-        />
+    
         {wallets.map((account) => (
           <AccountCard
             key={account.id}
             onClick={() => dispatch(setSelectedWallet(account))}
             icon={<IocnPlaceholder />} // To be replaced when backend add images to wallets
-            // accountType={account.name}
-            // amount={account.available_balance.toString()}
+            accountType={account.name}
+            amount={account.balance}
             // secAmount={account.account_type__symbol}
             accountData={account}
             suffixIcon={<ThreeDotsMenu />}

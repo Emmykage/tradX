@@ -31,6 +31,7 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
   const [pinnedAccount, setPinnedAccount] = useState<IWalletType | null>(null);
 
   const dispatch = useAppDispatch();
+  const [selectedCurrency,setSelectedCurrency] = useState<number | null>(null)
   const [cookies] = useCookies(["access_token"]);
   const { walletTypes, createWalletData } = useAppSelector(
     (state: { wallet: WalletSliceState  }) => state.wallet
@@ -53,10 +54,19 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
   };
 
   const onSelectAccountType = (type: number) => {
-    setIsRightSubDrawerOpen(true);
-    setIsRightSubDrawerContent("add-account-name");
-    dispatch(setCreateWalletData({ account_type: type }));
+    setSelectedCurrency(type)
+    console.log(type);
+    
   };
+
+  const handleNext = ()=>{
+    if(selectedCurrency !== null){
+      console.log(selectedCurrency);
+      setIsRightSubDrawerOpen(true);
+      setIsRightSubDrawerContent("add-account-name");
+      dispatch(setCreateWalletData({ currency : selectedCurrency  }));
+    }
+}
 
   useEffect(() => {
     if (walletTypes.length <= 0) {
@@ -88,22 +98,28 @@ const AddAccountMenu: React.FunctionComponent<AddAccountMenuProps> = ({
   if (isPending) {
     return <Loading size="large" />;
   }
+
+  console.log(walletTypes);
   return (
     <div className="addAccount">
-      <div className="searchAccount">
+      {/* <div className="searchAccount">
         <SearchIcon />
         <input type="text" value={searchTerm} onChange={handleSearch} />
-      </div>
+      </div> */}
+      <h2 className="addAccountTitle">Select a currency for your account</h2>
+
       {walletTypes.map((item) => (
           <div
             className="account-types"
             key={item?.id}
           >
-            <RadioInput label={item.name} id={`${item?.id}`} checked={createWalletData?.account_type === item?.id}  onChange={() => onSelectAccountType(item.id)} />
+            <RadioInput label={item.name} walletTypeData={item} checked={ selectedCurrency == item.id}  onChange={() => onSelectAccountType(item.id)} />
           </div>
        
       ))}
 
+      <button className="addAccountTypeButton" onClick={handleNext}  disabled={selectedCurrency == null}>Next</button>
+     
       {/* {pinnedAccount ? (
         <MainItemCard className="AccountPinned" variant={2}>
           <div

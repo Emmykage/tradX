@@ -1,4 +1,23 @@
 .addAccount {
+  .addAccountTitle{
+   color: rgb(210, 207, 207);
+   font-size: 18px;
+  }
+
+  .addAccountTypeButton{
+    background-color: #0094ff;
+    width: 100%;
+    padding: 0.7rem 0rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+
+    &:disabled{
+      cursor: not-allowed;
+    }
+  }
   .searchAccount {
     display: flex;
     margin-bottom: 2rem;

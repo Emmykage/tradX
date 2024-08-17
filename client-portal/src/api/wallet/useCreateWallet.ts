@@ -15,10 +15,11 @@ type WalletData = {
 };
 
 export async function fetchCreateWallet(
-  data: WalletData,
+  data: IWallet[],
   token: string
 ): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
+  console.log(data);
   try {
     const response = await fetch(`${BASE_URL}/wallet/wallets/`, {
       method: "POST",
@@ -28,7 +29,9 @@ export async function fetchCreateWallet(
       },
       body: JSON.stringify(data),
     });
+    console.log(response);
     const result = await response.json();
+    console.log(result);
 
     if (!response.ok) {
       Object.keys(result).forEach((field) => {

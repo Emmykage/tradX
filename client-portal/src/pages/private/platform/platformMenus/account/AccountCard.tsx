@@ -15,8 +15,8 @@ import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import { Col, Row } from "antd";
 import SecondaryButton from "../../../../../components/secondaryButton/SecondaryButton";
-import { setEditableWallet } from "@store/slices/wallet";
-import { useAppDispatch } from "@store/hooks";
+import { setEditableWallet, WalletSliceState } from "@store/slices/wallet";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { formatMoney } from "utils/utils";
 
 interface AccountCardProps {
@@ -24,7 +24,8 @@ interface AccountCardProps {
   suffixIcon: React.ReactNode;
   accountType?: string;
   accountData?: any;
-  amount?: string;
+  currency?:any;
+  amount?: number;
   secAmount?: string;
   selected?: boolean;
   tag?: string;
@@ -40,6 +41,7 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
   amount,
   secAmount,
   suffixIcon,
+  currency,
   selected,
   selectedCard,
   tag,
@@ -49,6 +51,9 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
   setIsRightSubDrawerContent,
 }) => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const {  selectedWallet } = useAppSelector(
+    (state: { wallet: WalletSliceState }) => state.wallet
+  );
   const dropdownRef = useRef(null);
 
   const navigate = useNavigate();
@@ -70,7 +75,7 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
         window.removeEventListener('click', handler);
     };
   });
-
+ console.log(accountData.currency?.image);
   return (
     <div
       onClick={onClick}
@@ -87,15 +92,20 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
         <div className="selected-account-card">
           <div className="leftSide-card">
             <div className="leftSide">
-              <div className="icon">{icon}</div>
+
+              <div className="icon">
+                <img src={accountData.currency?.image} alt="" />
+              </div>
               <div className="accountDeets">
-                <div className="accountType">{accountData?.name}</div>
-                 <div className="amount">{formatMoney(accountData?.available_balance || 0)}</div> 
+                <div className="accountType">{accountData.currency?.longer_name} {accountData?.name}</div>
+                 <div className="amount">{accountData.currency?.symbol} {formatMoney(accountData.balance || 0)}</div> 
                 <div className="secAmount">{secAmount}</div>
               </div>
             </div>
+
             <div
               className="suffixIcon"
+              style={{display: accountData.id === 3 ? 'none': 'block'}}
               ref={dropdownRef}
               onBlur={() => setDropdownVisible(false)}
               onClick={handleSuffixIconClick}
@@ -188,9 +198,14 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
               )}
             </div>
           </div>
+
+          <div  style={{ display: accountData.id === selectedWallet?.id && accountData.id !== 3 ? '' : 'none' }}>
+            {/* <h1>{accountData.id}</h1>
+            <h1>{selectedWallet?.id }</h1> */}
           <Row gutter={10} className="buttons">
             <Col span={11}>
               <SecondaryButton
+              backgroundColor="grey"
                 className="buttons-1"
                 Title="Withdraw"
                 onClick={() => {
@@ -203,29 +218,159 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
               <PrimaryButton
                 className="buttons-2"
                 Title="Deposit"
+                backgroundColor="#0094ff"
                 onClick={() => {
                   setIsRightSubDrawerOpen(true);
                   setIsRightSubDrawerContent("payments-deposit");
                 }}
-              />
+                />
             </Col>
           </Row>
+          </div>
         {/* </MainItemCard> */}
         </div>
       ) : (
         <>
-          <div className="leftSide">
-            <div className="icon">{icon}</div>
-            <div className="accountDeets">
-              <div className="accountType">{accountData?.name}</div>
-              <div className="amount">{accountData?.available_balance || 0}</div>
-              <div className="secAmount">{secAmount}</div>
+         <div className="selected-account-card">
+          <div className="leftSide-card">
+            <div className="leftSide">
+
+              <div className="icon">
+                <img src={accountData.currency?.image} alt="" />
+              </div>
+              <div className="accountDeets">
+                <div className="accountType">{accountData.currency?.longer_name} {accountData?.name}</div>
+                 <div className="amount">{accountData.currency?.symbol} {formatMoney(accountData.balance || 0)}</div> 
+                <div className="secAmount">{secAmount}</div>
+              </div>
+            </div>
+
+            <div
+              className="suffixIcon"
+              style={{display: accountData.id === 3 ? 'none': 'block'}}
+              ref={dropdownRef}
+              onBlur={() => setDropdownVisible(false)}
+              onClick={handleSuffixIconClick}
+            >
+              {tag ? <div className="tag">{tag}</div> : null}
+
+              {suffixIcon}
+              {isDropdownVisible && (
+                <div className="dropdownMenu">
+                  <div
+                    onClick={() => {
+                      setIsRightSubDrawerOpen(true);
+                      setIsRightSubDrawerContent("payments-deposit");
+                    }}
+                    className="dropdownMenuContent"
+                  >
+                    <div className="dropdownMenuIcon">
+                      <DepositsIcon2 />
+                    </div>
+                    <div className="dropdownMenuItem">Deposit</div>
+                  </div>
+                  <div
+                    onClick={() => {
+                      setIsRightSubDrawerOpen(true);
+                      setIsRightSubDrawerContent("withdraw");
+                    }}
+                    className="dropdownMenuContent"
+                  >
+                    <div className="dropdownMenuIcon">
+                      <WithdrawIcon2 />
+                    </div>
+                    <div
+                      className="dropdownMenuItem"
+                      onClick={() => {
+                        setIsRightSubDrawerOpen(true);
+                        setIsRightSubDrawerContent("withdraw");
+                      }}
+                    >
+                      Withdraw
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => {
+                      setIsRightSubDrawerOpen(true);
+                      setIsRightSubDrawerContent("transfer");
+                    }}
+                    className="dropdownMenuContent"
+                  >
+                    <div className="dropdownMenuIcon">
+                      <TransactionIcon2 />
+                    </div>
+                    <div className="dropdownMenuItem">Transfer</div>
+                  </div>
+                  <div
+                    onClick={() => navigate("/transactions")}
+                    className="dropdownMenuContent"
+                  >
+                    <div className="dropdownMenuIcon">
+                      <HistoryIcon />
+                    </div>
+                    <div className="dropdownMenuItem">Transactions</div>
+                  </div>
+                  <div
+                    onClick={() => {
+                      dispatch(setEditableWallet(accountData));
+                      setIsRightSubDrawerOpen(true);
+                      setIsRightSubDrawerContent("account-rename");
+                    }}
+                    className="dropdownMenuContent"
+                  >
+                    <div className="dropdownMenuIcon">
+                      <RenameIcon />
+                    </div>
+                    <div className="dropdownMenuItem">Rename</div>
+                  </div>
+                  <div
+                    onClick={() => {
+                      dispatch(setEditableWallet(accountData));
+                      setIsRightSubDrawerOpen(true);
+                      setIsRightSubDrawerContent("account-archive-menu");
+                    }}
+                    className="dropdownMenuContent"
+                  >
+                    <div className="dropdownMenuIcon">
+                      <ArchiveIcon />
+                    </div>
+                    <div className="dropdownMenuItem">Archive</div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-          <div className="suffixIcon" onClick={handleSuffixIconClick}>
-            {tag ? <div className="tag">{tag}</div> : null}
-            {selected ? <ReloadIcon /> : suffixIcon}
+
+          <div  style={{ display: accountData.id === selectedWallet?.id && accountData.id !== 3 ? '' : 'none' }}>
+            {/* <h1>{accountData.id}</h1>
+            <h1>{selectedWallet?.id }</h1> */}
+          <Row gutter={10} className="buttons">
+            <Col span={11}>
+              <SecondaryButton
+              backgroundColor="grey"
+                className="buttons-1"
+                Title="Withdraw"
+                onClick={() => {
+                  setIsRightSubDrawerOpen(true);
+                  setIsRightSubDrawerContent("withdraw");
+                }}
+              />
+            </Col>
+            <Col span={11}>
+              <PrimaryButton
+                className="buttons-2"
+                Title="Deposit"
+                backgroundColor="#0094ff"
+                onClick={() => {
+                  setIsRightSubDrawerOpen(true);
+                  setIsRightSubDrawerContent("payments-deposit");
+                }}
+                />
+            </Col>
+          </Row>
           </div>
+        {/* </MainItemCard> */}
+        </div>
         </>
       )}
     </div>

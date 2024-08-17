@@ -23,6 +23,7 @@ import { CryptoSliceState } from "@store/slices/markets/types";
 import AssetSelectionContainer from "components/assetSelectionContainer/AssetSelectionContainer";
 import { ITradeAssets } from "@interfaces";
 import DropdownMenu from "components/dropdownMenu/DropdownMenu";
+import { formatMoney } from "utils/utils";
 
 interface TopbarProps {
   isDrawerOpen: boolean;
@@ -89,13 +90,17 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
         setIsRightDrawerContent("account");
       }}
     >
-      <span className="dem">{selectedWallet?.name || "Demo Account"}</span>
+      <div className="dem">
+
+      <span className="">{selectedWallet?.name || "Demo Account"}</span>
+      <CaretDownIcon />
+      </div>
+
       <div className="amount">
         <p className="value">
-          {selectedWallet?.account_type__symbol || "D"}{" "}
-          {selectedWallet?.available_balance || "9,999.00"}
+          {selectedWallet?.currency?.symbol || "D"}{" "}
+          {formatMoney(selectedWallet?.balance) || "9,999.00"}
         </p>
-        <CaretDownIcon />
       </div>
     </div>
   );

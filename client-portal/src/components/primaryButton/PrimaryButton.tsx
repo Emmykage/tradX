@@ -9,6 +9,7 @@ const PrimaryButton = ({
   icon,
   htmlType,
   loading,
+  backgroundColor,
 }: {
   Title: string;
   onClick?: () => void;
@@ -17,6 +18,7 @@ const PrimaryButton = ({
   icon?: React.ReactNode;
   htmlType?: "button" | "submit" | "reset";
   loading?: boolean;
+  backgroundColor?:string;
 }) => {
   const buttonType = htmlType || "button";
 
@@ -25,6 +27,7 @@ const PrimaryButton = ({
       type={buttonType}
       className={`ButtonContainer ${disabled ? "disable" : ""} ${className}`}
       onClick={onClick}
+      style={{backgroundColor: backgroundColor}}
     >
       {icon}
       {Title}
