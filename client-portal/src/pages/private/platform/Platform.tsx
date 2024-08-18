@@ -38,6 +38,7 @@ import DropdownMenu from "components/dropdownMenu/DropdownMenu";
 import { useNavigate } from "react-router-dom";
 import { ColorType, createChart, CrosshairMode, IChartApi, LineStyle, UTCTimestamp } from "lightweight-charts";
 import useSocketConnect from "hooks/useSocketConnect";
+import { createCustomMarker1 } from "./MainChart/Markers";
 
 interface PlatformProps {}
 
@@ -116,23 +117,14 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const isWalkthroughSkipped = user?.is_walkthrough ?? true;
 
 
-  // console.log(user);
+  let candlestickSeries = null;
+  const textElement1 =  createCustomMarker1(`${socketData?.barchart?.high}`)
 
-  // useEffect(() => {
-  //   if (user?.is_walkthrough_completed) {
-  //     navigate('/welcome');
-  //   }
-  // }, [user, navigate]);
-
-  // useEffect(() => {
-  //   setChartInitialData(initialData);
-
-  // }, []);
 
   // Chart logic
   useEffect(() => {
-
     const chartContainer = chartContainerRef.current!;
+
 
     const chart = createChart(chartContainer, {
       layout: {
@@ -163,14 +155,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       width: chartContainer?.clientWidth,
       height: 300,
     });
-    let candlestickSeries = null;
 
-    const initialCandleData = [
-      { time: 1628164800, open: 30, high: 35, low: 25, close: 32 },
-      { time: 1628251200, open: 32, high: 38, low: 31, close: 36 },
-      // more data...
-    ];
-    //  candle series 
+   
     if(selectedChart == 'candlesticks'){
       candlestickSeries = chart.addCandlestickSeries({
         upColor: 'green',
@@ -181,15 +167,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         wickUpColor: 'green',
       });
 
-    //   .ant-drawer-content.night.rightDrawer, .ant-drawer .ant-drawer-content.night {
-    //     background-color: #0e0f12;
-    // }
      
     }else{
-      candlestickSeries = chart.addBarSeries({
-        upColor: 'green',
-        downColor: 'red'
-      });
+      // candlestickSeries = chart.addBarSeries({
+      //   upColor: 'green',
+      //   downColor: 'red'
+      // });
     }
 
     // @ts-ignore
@@ -214,6 +197,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     }
 
     chartRef.current = chart;
+
+   
     
     chart.applyOptions({
         crosshair: {
@@ -234,6 +219,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         },
       });
 
+      // chartContainer.appendChild(textElement1);
+
+    
+
       const handleResize = (entries: ResizeObserverEntry[]) => {
         const newRect = entries[0].contentRect;
         chart.applyOptions({ height: newRect.height, width: newRect.width });
@@ -253,6 +242,54 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     };
  
   }, [selectedChart,oldData]);
+
+ 
+    
+  const updatePosition1 = (data: any = null) => {
+    const currentData = data ? data : socketData?.barchart;
+    if (!currentData || !candlestickSeries || !chartRef.current) {
+      return; // Ensure that data and required objects are available
+    }
+  
+    // Convert the timestamp to seconds if necessary
+    const timestampInSeconds = Math.floor(currentData?.timestamp / 1000);
+  
+    const priceCoordinate = candlestickSeries.priceToCoordinate(currentData?.high);
+    let timeCoordinate = chartRef.current.timeScale().timeToCoordinate(timestampInSeconds as UTCTimestamp);
+  
+    if (timeCoordinate === null) {
+      const visibleRange = chartRef.current.timeScale().getVisibleRange();
+      if (visibleRange) {
+        timeCoordinate = chartRef.current.timeScale().timeToCoordinate(visibleRange.from);
+      }
+    }
+  
+    if (priceCoordinate && timeCoordinate) {
+      textElement1.style.top = `${(priceCoordinate - textElement1.offsetHeight / 2) + 0}px`;
+      textElement1.style.left = `${timeCoordinate + 0}px`;
+  
+      const containerWidth = document.getElementById("chart-container")?.clientWidth;
+      const getDistance = containerWidth - timeCoordinate;
+      const lineWidthChild = textElement1.querySelector('.line-width');
+  
+      if (lineWidthChild) {
+        lineWidthChild.style.width = `${getDistance - 65}px`;
+      }
+  
+      const getText = document.getElementById('price-text');
+      if (getText) {
+        getText.innerHTML = currentData?.value;
+      }
+    }
+  };
+  
+
+
+
+  useEffect(()=>{
+    updatePosition1()
+    
+  },[socketData?.barchart])
 
  
   useEffect(() => {

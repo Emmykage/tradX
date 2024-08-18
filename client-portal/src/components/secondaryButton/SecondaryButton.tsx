@@ -19,7 +19,7 @@ const SecondaryButton = ({
   const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
     <div
-    style={{backgroundColor:backgroundColor}}
+    style={{backgroundColor:backgroundColor, borderColor:backgroundColor}}
       className={`${themeSelect} SecondaryButtonContainer ${
         disabled ? "disable" : ""
       } ${className}`}

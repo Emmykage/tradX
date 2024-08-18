@@ -204,17 +204,6 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
             <h1>{selectedWallet?.id }</h1> */}
           <Row gutter={10} className="buttons">
             <Col span={11}>
-              <SecondaryButton
-              backgroundColor="grey"
-                className="buttons-1"
-                Title="Withdraw"
-                onClick={() => {
-                  setIsRightSubDrawerOpen(true);
-                  setIsRightSubDrawerContent("withdraw");
-                }}
-              />
-            </Col>
-            <Col span={11}>
               <PrimaryButton
                 className="buttons-2"
                 Title="Deposit"
@@ -224,6 +213,17 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
                   setIsRightSubDrawerContent("payments-deposit");
                 }}
                 />
+            </Col>
+            <Col span={11}>
+              <SecondaryButton
+              backgroundColor="red"
+                className="buttons-1"
+                Title="Withdraw"
+                onClick={() => {
+                  setIsRightSubDrawerOpen(true);
+                  setIsRightSubDrawerContent("withdraw");
+                }}
+              />
             </Col>
           </Row>
           </div>

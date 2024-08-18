@@ -90,7 +90,10 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
         setIsRightDrawerContent("account");
       }}
     >
-      <div className="dem">
+      {
+        selectedWallet?.name ? (
+          <>
+          <div className="dem">
 
       <span className="">{selectedWallet?.name || "Demo Account"}</span>
       <CaretDownIcon />
@@ -102,7 +105,13 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
           {formatMoney(selectedWallet?.balance) || "9,999.00"}
         </p>
       </div>
-    </div>
+          </>
+        ): (
+          <h1>loading</h1>
+        )
+      }
+      
+      </div>
   );
 
   return (
