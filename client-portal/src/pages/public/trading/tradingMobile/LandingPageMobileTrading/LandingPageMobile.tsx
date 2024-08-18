@@ -1,11 +1,14 @@
 import React from 'react'
 import "./landingPageMobile.scss"
+import useTransactions from 'api/wallet/useTransactions'
+import { useTranslation } from 'react-i18next'
 
 const LandingPageMobile = () => {
+  const {t} = useTranslation()
   return (
     <div className='mobile landingContainer'>
-     <h1>Trade on the Go</h1>
-     <p>Our powerful and accessible trading app allows you to seize every trading opportunity. Wherever you are.</p>
+     <h1>{t("tradeOnTheGo")}</h1>
+     <p>{t("introText")}</p>
   
  </div>
 

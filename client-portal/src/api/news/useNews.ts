@@ -2,7 +2,12 @@ import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { INews } from "@interfaces";
 import getEnv from "utils/env";
 
-type NewsResponse = { news: INews[]; next_page_token: string };
+interface NewsResponse {
+  status: string,
+  totalResults: number,
+  results: INews[]
+
+}
 
 type NewsQueryParams = {
   symbol?: string;
@@ -11,7 +16,7 @@ type NewsQueryParams = {
   sort?: "asc" | "desc";
   include_content?: string;
   exclude_contentless?: string;
-  limit?: string;
+  size?: string;
 };
 
 type useNewsProps = {
@@ -42,7 +47,7 @@ export async function fetchNews(data: {
         ).toString()
       : "";
 
-    const response = await fetch(`${BASE_URL}/get-news/?${queryParams}`, {
+      const response = await fetch(`${BASE_URL}/news/?${queryParams}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${data.token}`,
@@ -74,11 +79,7 @@ export const useNews = (
     ...rest
   } = props || ({} as useNewsProps);
 
-  return useMutation<
-    NewsResponse,
-    unknown,
-    { token: string; queryParams?: NewsQueryParams }
-  >({
+  return useMutation<NewsResponse,unknown,{ token: string; queryParams?: NewsQueryParams }>({
     mutationFn: (data) => fetchNews(data),
     onSuccess: (data, variables, context) => {
       if (onSuccessOverride) {
