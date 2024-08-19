@@ -31,10 +31,10 @@
 
   &.selected {
     padding: 0.8rem 1.1rem 0.8rem 0.8rem;
-    box-shadow: 0rem 0.125rem 0rem 0.125rem rgba(0, 0, 0, 0.05),
-      0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.26);
+    // box-shadow: 0rem 0.125rem 0rem 0.125rem rgba(0, 0, 0, 0.05),
+    //   0rem 0.0625rem 0rem 0.0625rem inset rgba(39, 162, 255, 0.26);
     .accountType {
-      color: #f9b42b !important;
+      font-size: 40px ;
     }
     .amount {
       color: #ffffff !important;
@@ -43,30 +43,42 @@
       color: #ffffff !important;
     }
   }
-  .leftSide {
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    gap: 0.5rem;
-    margin-left: 0.5rem;
+  .leftSide-card{
+    align-items: start;
+    .leftSide {
+      display: flex;
+      cursor: pointer;
+      align-items: center ;
+      gap: 0.7rem;
+      // margin-left: 0.5rem;
+      
+    
     .icon {
       display: flex;
       align-items: center;
+      img{
+        width: 30px;
+      }
     }
+   
     .accountDeets {
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      line-height: 20px;
+      padding: 0rem 0rem;
+      
+      // gap: 0.25rem;
       .accountType {
         color: #fff;
-        font-size: 1rem;
-        font-weight: 500;
+        font-size: 17px;
+        font-weight: 400;
+
       }
       .amount {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.675rem;
+        color: white;
+        font-size: 16px;
         font-style: normal;
-        font-weight: 700;
+        font-weight: 600;
       }
       .secAmount {
         color: var(--white-white-50, rgba(255, 255, 255, 0.5));
@@ -74,6 +86,7 @@
         font-weight: 400;
       }
     }
+  }
   }
   .suffixIcon {
     display: flex;
@@ -106,7 +119,7 @@
       flex-direction: column;
       gap: 0.25rem;
       .accountType {
-        color: #fff;
+        color: #e60000;
         font-size: 1rem;
         font-weight: 500;
       }
@@ -196,7 +209,7 @@
   width: 100%;
   padding: 0.8rem 1.1rem 0.8rem 0.8rem;
   .buttons{
-    padding-top: 1.8rem;
+    padding-top: 0.5rem;
   }
 }
 .selected-account-card::after{
@@ -205,7 +218,8 @@
   inset: 0;
   border-radius: 10px;
   padding: 1.5px;
-  background: linear-gradient(to bottom,  rgba(39,161,255,0.49), rgba(39,161,255,0.49), rgba(255,255,255,0) ) ;
+  // background: linear-gradient(to bottom,  rgba(39,161,255,0.49), rgba(39,161,255,0.49), rgba(255,255,255,0) ) ;
+  border: 1px solid rgb(185, 180, 180);
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);

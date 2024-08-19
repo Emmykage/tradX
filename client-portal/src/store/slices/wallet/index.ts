@@ -8,6 +8,7 @@ export interface WalletData {
   name?: string;
   user?: number;
   updated_at?: string;
+  currency?:any;
   is_archived?: boolean;
   id?: number;
   created_at?: string;
@@ -83,7 +84,7 @@ export const walletSlice = createSlice({
     setCreateWalletData: (state, action: PayloadAction<WalletData>) => {
       return {
         ...state,
-        createWalletData: { ...state.createWalletData, account_type: action.payload?.account_type }
+        createWalletData: { ...state.createWalletData, currency: action.payload?.currency }
       };
     },
   },

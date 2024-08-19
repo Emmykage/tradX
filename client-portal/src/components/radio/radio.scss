@@ -1,7 +1,11 @@
-.customRadio {
+.custom-radio-container{
+    // background-color: yellow;
     display: flex;
-    gap: 0.5rem;
-    align-items: center;
+    justify-content: space-between;
+    .customRadioLeft {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
     .radio-label{
         font-weight: 400;
         font-size: 1rem;
@@ -36,5 +40,15 @@
             border: 2px solid #0094ff;
         }   
     }
-  }
-  
+}
+.customRadioRight{
+    color: white;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    h2{
+        font-size: 20px;
+    }
+}
+
+}

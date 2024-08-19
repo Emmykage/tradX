@@ -82,25 +82,35 @@
     }
 
     .demo {
-      height: 2.813rem;
-      padding: 0 0.625rem;
+      // height: 2.813rem;
+      // padding: 0 0.625rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       cursor: pointer;
+      padding: 0.2rem 0.6rem;
+      margin-right: 10px;
+    
       p.value {
         color: #fff;
-        font-size: 0.875rem;
-        margin-right: 0.625rem;
+        font-size: 14px;
+        margin-right: 0.225rem;
+        
       }
       .amount {
-        margin-top: 0.313rem;
+        // margin-top: 0.313rem;
         display: flex;
         align-items: center;
       }
-      span.dem {
-        color: #0094ff;
-        font-size: 0.75rem;
+      .dem {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        span{
+          color: #0094ff;
+          font-size: 16px
+        }
       }
     }
     .demo:hover {

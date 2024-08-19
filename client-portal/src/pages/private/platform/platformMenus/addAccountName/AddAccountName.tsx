@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useCookies } from "react-cookie";
 import { WalletSliceState, setWallets } from "@store/slices/wallet";
 import useCreateWallet from "api/wallet/useCreateWallet";
+import { IWallet } from "@interfaces";
 
 interface AddAccountNameProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -21,15 +22,23 @@ const AddAccountName: React.FunctionComponent<AddAccountNameProps> = ({
   const [cookies] = useCookies(["access_token"]);
   const [name, setName] = useState("");
 
-  const { wallets, createWalletData } = useAppSelector(
+  const { wallets,walletTypes, createWalletData } = useAppSelector(
     (state: { wallet: WalletSliceState }) => state.wallet
   );
 
   const { mutate, isPending } = useCreateWallet({
-    onSuccess: (data) => {
+    onSuccess: (data:any) => {
       setIsRightSubDrawerOpen(false);
       setIsRightDrawerContent("account");
-      dispatch(setWallets([...wallets, data]));
+      console.log(wallets,data);
+      console.log(walletTypes);
+      console.log(walletTypes.filter((item)=>item.id == data.currency));
+      console.log();
+      const updatedWalletData = {
+        ...data,  
+        currency: walletTypes.find((item)=>item.id == data.currency)  // Update the currency attribute
+      };
+      dispatch(setWallets([ updatedWalletData,...wallets]));
     },
     onError: (error) => {
       console.log("fetching wallets error", error);
@@ -38,7 +47,7 @@ const AddAccountName: React.FunctionComponent<AddAccountNameProps> = ({
 
   const onCreateWallet = () => {
     mutate({
-      data: { ...createWalletData, name },
+      data: { ...createWalletData, name  },
       token: cookies.access_token,
     });
   };
@@ -66,9 +75,11 @@ const AddAccountName: React.FunctionComponent<AddAccountNameProps> = ({
         </Form.Item>
         
         <PrimaryButton
-          Title="Confirm"
+          Title="Create Account"
           htmlType="submit"
+          backgroundColor="#0094ff"
           // onClick={onCreateWallet}
+          loading={isPending}
           disabled={isPending}
         />
       </Form>

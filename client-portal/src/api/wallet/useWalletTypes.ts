@@ -22,7 +22,7 @@ type useWalletTypesProps = {
 export async function fetchWalletTypes(token: string): Promise<WalletTypeResponse> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   try {
-    const response = await fetch(`${BASE_URL}/wallet/account_types/`, {
+    const response = await fetch(`${BASE_URL}/wallet/currencies/`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

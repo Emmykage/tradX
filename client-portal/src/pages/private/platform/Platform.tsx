@@ -158,6 +158,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         wickDownColor: 'red',
         wickUpColor: 'green',
       });
+
+    //   .ant-drawer-content.night.rightDrawer, .ant-drawer .ant-drawer-content.night {
+    //     background-color: #0e0f12;
+    // }
      
     }else{
       candlestickSeries = chart.addBarSeries({
