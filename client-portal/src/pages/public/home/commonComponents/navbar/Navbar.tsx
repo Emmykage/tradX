@@ -236,7 +236,7 @@ const Navbar= () => {
                 src={localFlagHandler(countryCode.toLocaleLowerCase())}
                 alt=""
               />
-              <h2>{countryCode}</h2>
+              <h2>{countryCode.toUpperCase()}</h2>
               <ArrowDownOS height="15" width="10" />
             </div>
           )}

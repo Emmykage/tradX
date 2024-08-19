@@ -38,6 +38,9 @@ import DropdownMenu from "components/dropdownMenu/DropdownMenu";
 import { useNavigate } from "react-router-dom";
 import { ColorType, createChart, CrosshairMode, IChartApi, LineStyle, UTCTimestamp } from "lightweight-charts";
 import useSocketConnect from "hooks/useSocketConnect";
+import { createCustomMarker1, createCustomMarker2, FinishedTradeMarker } from "./MainChart/Markers";
+import { TradeStates } from "@store/slices/trade";
+import Loading from "components/loading";
 
 interface PlatformProps {}
 
@@ -71,9 +74,16 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   let chartContainerRef = useRef<HTMLDivElement>(null);
   let chartRef = useRef<IChartApi>();
   let seriesRef = useRef(null);
+  let chart = undefined
+  let chartContainer = null
+  let candlestickSeries = null;
 
   
 
+  
+  const {duration, trade,tradeData } = useAppSelector(
+    (state: { trades: TradeStates }) => state.trades
+  );
   const { data: socketData,oldData, socket } = useSocketConnect(wsTicket as string);
   console.log('socket data' + socketData?.barchart);
   console.log('object');
@@ -99,7 +109,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const { user, loading } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
-  const navigate = useNavigate();
 
   // candle series chart data formatting 
 
@@ -116,25 +125,15 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const isWalkthroughSkipped = user?.is_walkthrough ?? true;
 
 
-  // console.log(user);
-
-  // useEffect(() => {
-  //   if (user?.is_walkthrough_completed) {
-  //     navigate('/welcome');
-  //   }
-  // }, [user, navigate]);
-
-  // useEffect(() => {
-  //   setChartInitialData(initialData);
-
-  // }, []);
+ 
 
   // Chart logic
   useEffect(() => {
+    if (!chartContainerRef.current) return;
 
-    const chartContainer = chartContainerRef.current!;
+     chartContainer = chartContainerRef.current!;
 
-    const chart = createChart(chartContainer, {
+     chart = createChart(chartContainer, {
       layout: {
         background: { type: ColorType.Solid, color: colors?.backgroundColor },
         // 'white',
@@ -157,13 +156,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         borderVisible: false,
         timeVisible: true,
         secondsVisible: true,
-        rightOffset: 30,
+        rightOffset: 70,
         allowShiftVisibleRangeOnWhitespaceReplacement: true,
       },
       width: chartContainer?.clientWidth,
       height: 300,
     });
-    let candlestickSeries = null;
 
     const initialCandleData = [
       { time: 1628164800, open: 30, high: 35, low: 25, close: 32 },
@@ -171,29 +169,25 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       // more data...
     ];
     //  candle series 
-    if(selectedChart == 'candlesticks'){
-      candlestickSeries = chart.addCandlestickSeries({
+    const series = selectedChart === 'candlesticks' 
+    ? chart.addCandlestickSeries({
         upColor: 'green',
         downColor: 'red',
         borderDownColor: 'red',
         borderUpColor: 'green',
         wickDownColor: 'red',
         wickUpColor: 'green',
-      });
-
-    //   .ant-drawer-content.night.rightDrawer, .ant-drawer .ant-drawer-content.night {
-    //     background-color: #0e0f12;
-    // }
-     
-    }else{
-      candlestickSeries = chart.addBarSeries({
+      })
+    : chart.addBarSeries({
         upColor: 'green',
         downColor: 'red'
       });
-    }
+
+  chartRef.current = chart;
+  seriesRef.current = series;
+ 
 
     // @ts-ignore
-    seriesRef.current = candlestickSeries;  
     console.log(oldData);
     if(oldData){
       const removeDuplicates = (data: any[]) => {
@@ -210,10 +204,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       const sortedAndUniqueData = removeDuplicates(oldData.sort((a, b) => a.time - b.time));
       
       // console.log(sortedAndUniqueData);
-      candlestickSeries.setData(sortedAndUniqueData);
+      series.setData(sortedAndUniqueData);
     }
 
-    chartRef.current = chart;
     
     chart.applyOptions({
         crosshair: {
@@ -253,6 +246,207 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     };
  
   }, [selectedChart,oldData]);
+  useEffect(() => {
+    if (!chartRef.current || !seriesRef.current || !socketData?.barchart) return;
+  
+    const chart = chartRef.current;
+    const series = seriesRef.current;
+  
+    const createOrUpdateMarker = () => {
+      let marker = document.getElementById('textElement1');
+      if (!marker) {
+        marker = createCustomMarker1(socketData.barchart?.open);
+        marker.id = 'textElement1';
+        chartContainerRef.current?.appendChild(marker);
+        console.log('Marker created and appended');
+      }
+  
+  
+      const updateMarkerPosition = () => {
+        if (!marker) return;
+
+
+        // Update the marker content with the latest value
+        const newValue = socketData.barchart?.open;
+        const priceTextElement = marker.querySelector('#price-text'); // Select the nested span
+    
+        if (priceTextElement && newValue !== undefined) {
+          priceTextElement.textContent = newValue.toString(); // Update the nested span's text content
+        }
+  
+        
+        const priceCoordinate = series.priceToCoordinate(socketData?.barchart?.close);
+        
+        let timeCoordinate = chart.timeScale().timeToCoordinate(socketData?.barchart?.timestamp);
+        
+      // if (timeCoordinate === null) {
+
+      //   // If the specified time is not found use the first visible time
+      //   const visibleRange = chart.timeScale().getVisibleRange();
+      //   if (visibleRange) {
+      //     timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+      //   }
+      // }
+      
+      if (priceCoordinate && timeCoordinate) {
+        marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
+        marker.style.left = `${timeCoordinate + 0}px`;
+        // console.log('Text position updated');
+      }else{
+        // console.log('failed to get coordinates');
+      }
+    }
+  
+    requestAnimationFrame(updateMarkerPosition);
+      chart.subscribeCrosshairMove(updateMarkerPosition);
+    };
+    createOrUpdateMarker();
+  
+  
+    // Update chart data
+    series.update(socketData.barchart);
+  
+    return () => {
+      chart.unsubscribeCrosshairMove(createOrUpdateMarker);
+    };
+  }, [socketData?.barchart]);
+
+  // second custom chart 
+
+  // useEffect(() => {
+  //   if (!chartRef.current || !seriesRef.current || !socketData?.barchart) return;
+  
+  //   const chart = chartRef.current;
+  //   const series = seriesRef.current;
+  //   console.log(trade,tradeData?.open);
+  
+  //   const createOrUpdateMarker = () => {
+  //     let marker = document.getElementById('textElement2');
+  //     if (!marker) {
+  //       marker = createCustomMarker2(tradeData?.open,trade);
+  //       console.log('called');
+  //       marker.id = 'textElement2';
+  //       chartContainerRef.current?.appendChild(marker);
+  //       console.log('Marker created and appended');
+  //     }else{
+  //       marker = createCustomMarker2(tradeData?.open,trade);
+  //       marker.id = 'textElement2';
+  //       chartContainerRef.current?.appendChild(marker);
+  //     }
+  
+  
+  //     const updateMarkerPosition = () => {
+  //       if (!marker) return;
+
+
+  //       // Update the marker content with the latest value
+  //       // const newValue = socketData.barchart?.open;
+  //       // const priceTextElement = marker.querySelector('#price-text'); // Select the nested span
+    
+  //       // if (priceTextElement && newValue !== undefined) {
+  //       //   priceTextElement.textContent = newValue.toString(); // Update the nested span's text content
+  //       // }
+  
+        
+  //       const priceCoordinate = series.priceToCoordinate(tradeData?.close);
+        
+  //       let timeCoordinate = chart.timeScale().timeToCoordinate(tradeData?.timestamp);
+        
+    
+      
+  //     if (priceCoordinate && timeCoordinate) {
+  //       marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
+  //       marker.style.left = `${timeCoordinate + 0}px`;
+  //       // console.log('Text position updated');
+  //     }else{
+  //       // console.log('failed to get coordinates');
+  //     }
+  //     requestAnimationFrame(updateMarkerPosition);
+
+  //     setTimeout(() => {
+  //     marker.remove()
+  //     }, duration * 60000);
+  //   }
+  
+  //   updateMarkerPosition()
+  //   };
+  //   requestAnimationFrame(createOrUpdateMarker);
+
+    
+  
+  
+  //   // Update chart data
+  //   series.update(socketData.barchart);
+  
+  //   return () => {
+  //     chart.unsubscribeCrosshairMove(createOrUpdateMarker);
+  //   };
+  // }, [tradeData,trade]);
+
+  // finished trade custom indiciator
+
+  useEffect(() => {
+    if (!chartRef.current || !seriesRef.current || !socketData?.barchart) return;
+  
+    const chart = chartRef.current;
+    const series = seriesRef.current;
+    console.log(trade,tradeData?.open);
+  
+    const createOrUpdateMarker = () => {
+      let marker = document.getElementById('textElement4');
+      console.log(marker);
+      if (!marker) {
+        marker = FinishedTradeMarker(tradeData?.open,'won');
+        console.log('called');
+        marker.id = 'textElement4';
+        chartContainerRef.current?.appendChild(marker);
+        console.log('Marker created and appended');
+      }else{
+        marker = FinishedTradeMarker(tradeData?.open,'won');
+        marker.id = 'textElement4';
+        chartContainerRef.current?.appendChild(marker);
+        console.log('called here too');
+      }
+  
+  
+      const updateMarkerPosition = () => {
+        if (!marker) return;
+
+        
+        const priceCoordinate = series.priceToCoordinate(tradeData?.close);
+        
+        let timeCoordinate = chart.timeScale().timeToCoordinate(tradeData?.timestamp);
+        
+    
+      
+      if (priceCoordinate && timeCoordinate) {
+        marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
+        marker.style.left = `${timeCoordinate - 130}px`;
+        // console.log('Text position updated');
+      }else{
+        // console.log('failed to get coordinates');
+      }
+      requestAnimationFrame(updateMarkerPosition);
+
+      setTimeout(() => {
+      marker.remove()
+      }, duration * 60000);
+    }
+  
+    updateMarkerPosition()
+    };
+    requestAnimationFrame(createOrUpdateMarker);
+
+    
+  
+  
+    // Update chart data
+    series.update(socketData.barchart);
+  
+    return () => {
+      chart.unsubscribeCrosshairMove(createOrUpdateMarker);
+    };
+  }, [tradeData,trade]);
 
  
   useEffect(() => {
@@ -346,16 +540,26 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   
   const renderSelectedChartType = () => {
+    if (!oldData) {
+      return (
+        <Loading/>
+      );
+    }
+
     switch (selectedChart) {
-     
+      // Case for other charts can go here if needed
+      
       default:
-        
         return (
-          
           <> 
-            <MainChart data={oldData} selectedTimeScale={selectedTimeScale}  refs={{chartContainerRef, chartRef, seriesRef}}  chartScale={chartScale}  />
+            <MainChart 
+              data={oldData} 
+              selectedTimeScale={selectedTimeScale}  
+              refs={{ chartContainerRef, chartRef, seriesRef }}  
+              chartScale={chartScale}  
+            />
           </>
-        )
+        );
     }
   };
   
@@ -537,7 +741,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
              <div className="chart-container"  style={{ height: "100%", color:"white", position: 'relative' }}>
                {/* pass dummy data newCandleData */}
               {/* <MainChart data={newCandleData} chartScale={chartScale}  /> */}
-              {renderSelectedChartType()}
+              {  renderSelectedChartType() }
               <div className="chart-options">
                 {chartOptionMenus.map((data, _i) => (
                   <DropdownMenu key={_i} position={data.position} type={data?.type} menuItems={data.menus}>
@@ -566,7 +770,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
            
           </div>
           
-          <TradeForm bottomSidebarHeight={bottomSidebarHeight} />
+          <TradeForm bottomSidebarHeight={bottomSidebarHeight}  socketData={socketData?.barchart}/>
         </div>
       </div>
 

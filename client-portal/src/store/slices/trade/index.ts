@@ -6,6 +6,7 @@ export interface TradeStates {
   duration: number;
   amount: number;
   trade: string | null;
+  tradeData: any;
   finished: boolean;
   socketData: any;
   socketInstance:any;
@@ -16,6 +17,7 @@ const initialState: TradeStates = {
   duration: 2,
   amount: 90,
   trade: null,
+  tradeData: null,
   finished:false,
   socketData: {},
   socketInstance:null
@@ -58,6 +60,10 @@ export const tradeStateSlice = createSlice({
       state.trade = action.payload;
       return state;
     },
+    setTradeData: (state, action: PayloadAction<any>) => {
+      state.tradeData = action.payload;
+      return state;
+    },
     setFinished: (state, action: PayloadAction<boolean>) => {
       state.finished = action.payload;
       return state;
@@ -71,6 +77,6 @@ export const tradeStateSlice = createSlice({
   },
 });
 
-export const { setAmount, SetDuration,setTrade,setFinished,changeAmount,changeDuration, setSocketData,setSocketInstance } = tradeStateSlice.actions;
+export const { setAmount, SetDuration,setTrade,setFinished,changeAmount,changeDuration, setSocketData,setSocketInstance ,setTradeData} = tradeStateSlice.actions;
 
 export default tradeStateSlice.reducer;

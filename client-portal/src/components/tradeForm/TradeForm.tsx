@@ -11,8 +11,10 @@ import {
 } from "../../assets/icons";
 import "./tradeform.scss";
 import { useAppSelector } from "@store/hooks";
-import { changeAmount, changeDuration, setAmount, SetDuration, setTrade, TradeStates } from "@store/slices/trade";
+import { changeAmount, changeDuration, setAmount, SetDuration, setTrade, setTradeData, TradeStates } from "@store/slices/trade";
 import { useDispatch } from "react-redux";
+import { WalletSliceState } from "@store/slices/wallet";
+import useSocketConnect from "hooks/useSocketConnect";
 
 interface TradeFormProps {
   bottomSidebarHeight?: number;
@@ -35,6 +37,7 @@ interface TradeFormProps {
   amountTooltipPlacement?: TooltipPlacement;
   durationTooltipPlacement?: TooltipPlacement;
   hintTradesTooltipPlacement?: TooltipPlacement;
+  socketData?:any;
 }
 
 const TradeForm: React.FunctionComponent<TradeFormProps> = ({
@@ -58,23 +61,46 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   amountTooltipPlacement = "left",
   durationTooltipPlacement = "left",
   hintTradesTooltipPlacement = "left",
+  socketData,
 }) => {
 
   const { duration,finished,amount,trade } = useAppSelector(
     (state: { trades: TradeStates }) => state.trades
   );
+
+  const { selectedWallet } = useAppSelector(
+    (state: { wallet: WalletSliceState }) => state.wallet
+  );
+
+
   const dispatch = useDispatch();
 
 
 
   const handleInputUp = ()=>{
 
-    
+    const {name, balance,currency} =selectedWallet
+    const {id} = currency
     dispatch(setTrade('up'))
+    dispatch(SetDuration(duration))
+    dispatch(setAmount(amount))
+    console.log(duration);
+    console.log(amount);
+    dispatch(setTradeData(socketData))
+    console.log('up');
+    console.log(name,balance,id);
+    console.log(socketData);
+    
 
   }
   const handleInputDown = ()=>{
+    const {name, balance,currency} =selectedWallet
+    const {id} = currency
     dispatch(setTrade('down'))
+    dispatch(setTradeData(socketData))
+    console.log('down');
+    console.log(name,balance,id);
+    console.log(socketData);
   }
 
   const handleIncreaseDuration = ()=>{
@@ -217,7 +243,6 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             ) : null}
             <button
               onClick={handleInputUp}
-              disabled={trade !==null && !finished }
               className={`up ${hintTrades ? "hint" : ""}`}
             >
               <div className="textContainerBtns">
@@ -232,7 +257,6 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             </button>
             <button
               onClick={handleInputDown}
-              disabled={trade !==null && !finished }
               className={`down ${hintTrades ? "hint" : ""}`}
             >
               <div className="textContainerBtns">
