@@ -183,10 +183,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           return false;
         });
       };
-      // console.log(oldData);
       const sortedAndUniqueData = removeDuplicates(oldData.sort((a, b) => a.time - b.time));
-      
-      // console.log(sortedAndUniqueData);
+
       candlestickSeries.setData(sortedAndUniqueData);
     }
 
