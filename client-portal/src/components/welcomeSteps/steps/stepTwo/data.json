@@ -5,16 +5,44 @@
       "image": "/welcome-icons/step_two/caterpillar.svg"
     },
     {
+      "name": "Ripple",
+      "image": "/welcome-icons/step_two/ripple.svg"
+    },
+    {
       "name": "GBP/CAD",
       "image": "/welcome-icons/step_two/gbp_cad.svg"
+    },
+    {
+      "name": "Toncoin",
+      "image": "/welcome-icons/step_two/toncoin.svg"
+    },
+    {
+      "name": "Tether USDt",
+      "image": "/welcome-icons/step_two/usdt.svg"
     },
     {
       "name": "Copper",
       "image": "/welcome-icons/step_two/copper.svg"
     },
     {
+      "name": "Bitcoin",
+      "image": "/welcome-icons/step_two/bitcoin.svg"
+    },
+    {
       "name": "AUD/CHF",
       "image": "/welcome-icons/step_two/aud_chf.svg"
+    },
+    {
+      "name": "Ethereum",
+      "image": "/welcome-icons/step_two/ethereum.svg"
+    },
+    {
+      "name": "Litecoin",
+      "image": "/welcome-icons/step_two/litecoin.svg"
+    },
+    {
+      "name": "Tron",
+      "image": "/welcome-icons/step_two/tron.svg"
     },
     {
       "name": "Nike",
@@ -23,6 +51,10 @@
     {
       "name": "BMW",
       "image": "/welcome-icons/step_two/bmw.svg"
+    },
+    {
+      "name": "Chainlink",
+      "image": "/welcome-icons/step_two/chainlink.svg"
     },
     {
       "name": "Tesla",

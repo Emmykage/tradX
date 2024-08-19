@@ -9,9 +9,24 @@ interface StepSevenProps {
   setTrade?: (trade: string | ((prevTrade: string) => string)) => void;
   trade?: string;
   chartData: any;
+  bidDuration: number;
+  bidAmount: number;
+  setBidDuration: Function;
+  setBidAmount: Function;
 }
 
-const StepSeven: FC<StepSevenProps> = ({ step, setStep,trade,setTrade, chartData }) => {
+const StepSeven: FC<StepSevenProps> = ({ 
+  step, 
+  setStep,
+  trade,
+  setTrade, 
+  chartData,
+  bidAmount, 
+  bidDuration, 
+  setBidAmount, 
+  setBidDuration
+}) => {
+ 
   const { t } = useTranslation();
   return (
     <div className="">
@@ -23,7 +38,16 @@ const StepSeven: FC<StepSevenProps> = ({ step, setStep,trade,setTrade, chartData
           </div>
           <div className="modal flex justify-end col-span-8 sm:col-span-8 lg:col-span-2">
             <div className="lg:max-w-[315px] w-full  px-5">
-              <TestWalkThrough setStep={setStep} step={step} trade={trade} setTrade={setTrade} />
+              <TestWalkThrough 
+                setStep={setStep} 
+                step={step} 
+                trade={trade} 
+                setTrade={setTrade} 
+                bidAmount={bidAmount}
+                bidDuration={bidDuration}
+                setBidAmount={setBidAmount}
+                setBidDuration={setBidDuration}
+              />
             </div>
           </div>
         </div>

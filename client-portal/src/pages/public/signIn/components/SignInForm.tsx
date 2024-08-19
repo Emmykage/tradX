@@ -24,7 +24,6 @@ const SignInForm: React.FunctionComponent<SignInFormProps> = ({
       setCookie("access_token", data.access, { maxAge: expirationInSeconds });
       setCookie("refresh_token", data.refresh);
       setCookie("step",'')
-      console.log(data);
 
       data?.user.is_walkthrough ? navigate('/platform') : navigate("/welcome");
      

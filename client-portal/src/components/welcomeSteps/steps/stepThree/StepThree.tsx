@@ -19,7 +19,7 @@ const StepThree: FC<StepThreeProps> = ({ setStep, step, chartData }) => {
 
   return (
     <div className="welcomeStepThree overflow-hidden relative">
-      <AreaChart chartData={chartData} />
+      <AreaChart chartData={chartData} liveLoading />
     
 
       <div className="mt-6 lg:mt-[179px] w-[95%] md:w-full  step-three-content xl:w-[904px] max-w-[904px] mx-auto  z-[10] absolute">
