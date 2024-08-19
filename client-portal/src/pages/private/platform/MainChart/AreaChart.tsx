@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { ColorType, createChart,  CrosshairMode,  PriceScaleMode, UTCTimestamp } from "lightweight-charts";
 import { createCustomMarker1, createCustomMarker2, createCustomMarker3 } from "./Markers";
-import { tradeDownSelection, tradeUpSelection } from "./areaData";
+import { additionalDataArray, tradeDownData, tradeUpData } from "./areaData";
 
-export const AreaChart = ({chartData, liveLoading = false, tradeType="up" }: any) => {
+export const AreaChart = ({chartData, liveLoading = false, bidOngoing=false, time = 40, tradeType="up" }: any) => {
 
     const resizeObserver: any = useRef();
     const chartContainerRef: any = useRef(null);
@@ -70,7 +70,7 @@ export const AreaChart = ({chartData, liveLoading = false, tradeType="up" }: any
       });
         const lastData = chartData[chartData.length - 1];
 
-        const textElement1 =  createCustomMarker1(`${chartData[chartData.length - 1].value}`)
+        const textElement1 =  createCustomMarker1(`${chartData[chartData.length - 1].value}`);
         const textElement2 = createCustomMarker2(`${chartData[chartData.length - 1].value}`, tradeType);
 
         const updatePosition1 = (data: null) => {
@@ -127,7 +127,8 @@ export const AreaChart = ({chartData, liveLoading = false, tradeType="up" }: any
           }
       };
         chartContainer.appendChild(textElement1);
-        if(liveLoading){
+        console.log(bidOngoing);
+        if(bidOngoing){
           chartContainer.appendChild(textElement2);
         }
       
@@ -135,22 +136,30 @@ export const AreaChart = ({chartData, liveLoading = false, tradeType="up" }: any
           setTimeout(() => {
             chart.subscribeCrosshairMove(updatePosition1);
             updatePosition1();
-            updatePosition2();
-          
+            if(bidOngoing) updatePosition2();
+            
           }, 100);  // Short delay to ensure chart is rendered
         };
         ensureChartReady();
   
 
-      if(liveLoading){
+      if(liveLoading || bidOngoing){
+        const deletionObj = {20: 20, 30: 10, 40: 0 };
         let c = 1;
-        let selectedData = tradeType === "up"? [...tradeUpSelection] : [...tradeDownSelection];
+        if(time){
+          // @ts-ignore
+          additionalDataArray.splice(additionalDataArray.length - deletionObj[time], deletionObj[time]);
+        };
+        let selectedData = tradeType === "up"? [...additionalDataArray, ...tradeUpData] : [...additionalDataArray, ...tradeDownData];
         // Simulate real-time data update every second
         const interval = setInterval(() => {
           seriesRef.current.update(selectedData[c]);
           chart.subscribeCrosshairMove(updatePosition1);
           updatePosition1(selectedData[c]);
           c += 1;
+          if(!selectedData[c]){
+            clearInterval(interval);
+          }
     
         }, 1000);
   

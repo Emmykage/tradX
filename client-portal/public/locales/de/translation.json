@@ -37,8 +37,8 @@
   "toolTipContent": "Los activos FTT varían en rentabilidad. En este caso, recibirás el 82% de beneficio si, al expirar la operación, el gráfico sigue moviéndose en la dirección correcta.",
   "understand": "Entendido",
   "walkthroughChooseTrade": "Esperar el resultado de la operación ({{time}}).",
-  "walkthroughChooseTradeSubText": "Glückwunsch! Ihr Handel war erfolgreich. Wenn Sie 90 $ investieren, haben Sie 85 $ verdient – ​​eine Rendite von 76,5 % in nur 20 Sekunden.",
-  "finishTrading": "Herzlichen Glückwunsch! Ihr Handel war erfolgreich. Durch die Investition von 100 $, haben Sie 85 $ verdient - eine Rendite von 85% in nur einer Minute.",
+  "walkthroughChooseTradeSubTexts": "Herzlichen Glückwunsch! Ihr Handel war erfolgreich. Durch die Investition von {{tradeMoney}} $, haben Sie {{tradeReward}} $ verdient - eine Rendite von {{percentageReturn}} in nur {{duration}} Sekunden.",
+  "finishTrading": "Herzlichen Glückwunsch! Ihr Handel war erfolgreich. Durch die Investition von {{tradeMoney}} $, haben Sie {{tradeReward}} $ verdient - eine Rendite von {{percentageReturn}} in nur {{duration}} Sekunden.",
   "waitForTradeResult": "Warten Sie auf das Ergebnis des Handels",
   "walkthroughFixedDurationOffer": "Trades mit fester Laufzeit, die einen festen Gewinn bieten, werden als Fixed Time Trades oder FTT bezeichnet.",
   "doYouWantToFinishTraining": "Möchten Sie die Ausbildung beenden?",
@@ -50,7 +50,7 @@
   "amount": "Menge",
   "finish": "Beenden",
   "cancel": "Stornieren",
-  "trainingInvestmentMoneyTooltip": "Legen Sie den Investitionsbetrag auf 90 $ fest. Keine Sorge, das ist Ausbildungsgeld.",
+  "trainingInvestmentMoneyTooltip": "Legen Sie den Investitionsbetrag auf 100 $ fest. Keine Sorge, das ist Ausbildungsgeld.",
   "trainingInvestmentTimeTooltip": "Wählen Sie 20 Sekunden als Dauer des Handels",
   "trainingInvestmentButtonTooltip": "Schauen Sie sich das Diagramm an und entscheiden Sie, wohin es als nächstes gehen soll: Nach oben oder nach unten"
   

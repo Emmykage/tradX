@@ -27,7 +27,6 @@ import {
 } from "./types";
 import MainChart from "./MainChart";
 import { initialData } from "./MainChart/data";
-import { initialCandleData } from "./MainChart/candleData";
 import { setAppearanceBackground } from "../../lib/utils";
 import { useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
@@ -75,10 +74,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   
 
   const { data: socketData,oldData, socket } = useSocketConnect(wsTicket as string);
-  console.log('socket data' + socketData?.barchart);
-  console.log('object');
-  // console.log('socket data' + socketData?.onlinetraders?.count);
-  // console.log(socket);
   const colors = {
     backgroundColor: "transparent",
     lineColor: "#0094FF",
@@ -100,17 +95,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     (state: { user: UserSliceState }) => state.user
   );
   const navigate = useNavigate();
-
-  // candle series chart data formatting 
-
-  const newCandleData= initialCandleData.map((d:any, _i: number)=>{
-    var t = new Date();
-    t.setSeconds(t.getSeconds() + _i);
-    // return {time: d[0]/1000, open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
-    return {time: Date.parse(t), open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
-  })
-
-
 
 
   const isWalkthroughSkipped = user?.is_walkthrough ?? true;
@@ -164,12 +148,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       height: 300,
     });
     let candlestickSeries = null;
-
-    const initialCandleData = [
-      { time: 1628164800, open: 30, high: 35, low: 25, close: 32 },
-      { time: 1628251200, open: 32, high: 38, low: 31, close: 36 },
-      // more data...
-    ];
     //  candle series 
     if(selectedChart == 'candlesticks'){
       candlestickSeries = chart.addCandlestickSeries({
@@ -190,7 +168,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
     // @ts-ignore
     seriesRef.current = candlestickSeries;  
-    console.log(oldData);
     if(oldData){
       const removeDuplicates = (data: any[]) => {
         const seen = new Set<number>();
@@ -375,11 +352,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       type: 'drop-down',
       position: 'right',
       menus: [
-        // {
-        //   text: 'Area',
-        //   onclick: () => handleChartSelectionClick('area'),
-        //   icon: <AreaChartIcon />
-        // },
+        {
+          text: 'Area',
+          onclick: () => handleChartSelectionClick('area'),
+          icon: <AreaChartIcon />
+        },
         {
           text: 'Japanese candlesticks',
           onclick: () => handleChartSelectionClick('candlesticks'),

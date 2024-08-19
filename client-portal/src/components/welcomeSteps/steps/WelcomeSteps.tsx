@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "./WelcomeSteps.scss";
 import { useCookies } from "react-cookie";
 import StepTwo from "./stepTwo/StepTwo.tsx";
@@ -19,9 +19,12 @@ import { initialAreaData } from "pages/private/platform/MainChart/areaData.ts";
 
 const WelcomeSteps = () => {
   const { t } = useTranslation();
-  const [areaChartInitialData, setAreaChartInitialData]: any = useState(initialAreaData);
-  const [step, setStep] = useState<number>(1);
-  const [trade,setTrade] = useState<string>('down')
+  const [trade, setTrade] = useState('down');
+  const [step, setWelcomeStep] = useState(1);
+  const [duration, setDuration] = useState(30);
+  const [amount, setAmount] = useState(90);
+  const [tradeOngoing, setTradeOngoing] = useState(false);
+  const [areaChartInitialData, setAreaChartInitialData ] = useState(initialAreaData);
   const [cookies, setCookie] = useCookies(["step", "access_token"]);
 
   const dispatch = useAppDispatch();
@@ -31,6 +34,22 @@ const WelcomeSteps = () => {
       dispatch(setUser(data));
     },
   });
+  const setStep = () => {
+   let newStep = step + 1;
+    setWelcomeStep(newStep);
+    if(newStep === 10){
+      setTradeOngoing(true);
+    }
+  };
+
+  const editBidDuration = (bidDuration: number) => {
+    setDuration(bidDuration);
+  };
+
+  const editBidAmount = (bidAmount: number) => {
+      setAmount(bidAmount);
+  };
+
 
   const onSkipWalkthrough = () => {
     mutate({
@@ -39,19 +58,19 @@ const WelcomeSteps = () => {
       },
       token: cookies.access_token,
     });
-    setStep(0);
+   setWelcomeStep(0);
   };
 
-  // useEffect(() => {
-  //   const savedStep = cookies.step;
-  //   if (savedStep) {
-  //     setStep(Number(savedStep));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const savedStep = cookies.step;
+    if (savedStep) {
+      setWelcomeStep(Number(savedStep));
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   setCookie("step", step.toString(), { path: "/", maxAge: 604800 });
-  // }, [step, setCookie]);
+  useEffect(() => {
+    setCookie("step", step.toString(), { path: "/", maxAge: 604800 });
+  }, [step, setCookie]);
 
   const renderStep = () => {
     switch (step) {
@@ -68,19 +87,76 @@ const WelcomeSteps = () => {
       case 6:
         return <StepSix setStep={setStep} step={step}  chartData={areaChartInitialData} />;
       case 7:
-        return <StepSeven setStep={setStep} step={step} chartData={areaChartInitialData} />;
+        return (
+          <StepSeven 
+            setStep={setStep} 
+            step={step} 
+            chartData={areaChartInitialData} 
+            bidDuration={duration}
+            setBidDuration = {editBidDuration}
+            bidAmount = {amount}
+            setBidAmount = {editBidAmount}
+          />
+        );
       case 8:
-        return <StepSeven setStep={setStep} step={step} chartData={areaChartInitialData} />;
+        return (
+          <StepSeven 
+            setStep={setStep} 
+            step={step} 
+            chartData={areaChartInitialData} 
+            formInactive={tradeOngoing}
+            bidDuration={duration}
+            setBidDuration = {editBidDuration}
+            bidAmount = {amount}
+            setBidAmount = {editBidAmount}
+          />
+        );
       case 9:
-        return <StepSeven setStep={setStep} step={step} trade={trade} setTrade={setTrade} chartData={areaChartInitialData} />;
+        return (
+          <StepSeven 
+            setStep={setStep} 
+            step={step} 
+            trade={trade} 
+            setTrade={setTrade} 
+            formInactive={tradeOngoing}
+            chartData={areaChartInitialData} 
+            bidDuration={duration}
+            setBidDuration = {editBidDuration}
+            bidAmount = {amount}
+            setBidAmount = {editBidAmount}
+          />
+        );
       case 10:
-        return  <StepTen setStep={setStep} step={step} chartData={areaChartInitialData} trade={trade} />;
+        return  (
+          <StepTen 
+            setStep={setStep} 
+            step={step} 
+            chartData={areaChartInitialData} 
+            trade={trade} 
+            setTrade={setTrade} 
+            formInactive={tradeOngoing}
+            bidDuration={duration}
+            setBidDuration = {editBidDuration}
+            bidAmount = {amount}
+            setBidAmount = {editBidAmount}
+          />
+        );
       case 11:
-        if(trade && trade == 'up'){
-         return <StepTen setStep={setStep} handleClick={onSkipWalkthrough} step={step} chartData={areaChartInitialData} trade={trade} />;
-        }else if(trade && trade == 'down'){
-        return  <StepTen setStep={setStep} step={step} handleClick={onSkipWalkthrough}  chartData={areaChartInitialData} trade={trade} />;
-        }
+         return (
+            <StepTen 
+              setStep={setStep} 
+              handleClick={onSkipWalkthrough} 
+              step={step} 
+              chartData={areaChartInitialData} 
+              trade={trade} 
+              formInactive={tradeOngoing}
+              bidDuration={duration}
+              setBidDuration = {editBidDuration}
+              bidAmount = {amount}
+              setBidAmount = {editBidAmount}
+            />
+        );
+       
         
       case 12:
         return <LastStep/>;
@@ -89,13 +165,17 @@ const WelcomeSteps = () => {
     }
   };
 
-  useEffect(()=>{
-    setTimeout(() => {
-      if(step === 10){
-        setStep(11)
-      }
-    }, 20000);
-  },[step]);
+  // useEffect(()=>{
+  //   setTimeout(() => {
+  //     if(step === 10){
+  //       // setStep(11)
+  //       setState({
+  //         step: 11
+  //       })
+  //     }
+  //   }, 20000);
+  // },[step]);
+
   return (
     <div className="welcomeSteps relative">
        <WelcomeHeader step={step} setStep={setStep} />

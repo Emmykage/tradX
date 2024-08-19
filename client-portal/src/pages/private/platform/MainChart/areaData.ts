@@ -1001,7 +1001,7 @@ export const initialAreaData = [
   }
 ];
 
-const additionalDataArray = [{
+export const additionalDataArray = [{
   "time": 1654867808.015,
   "value": 137.39
 },
@@ -1060,53 +1060,130 @@ const additionalDataArray = [{
 {
   "time": 1654867808.029,
   "value": 137.8
-}];
-const tradeUpData =[
+},
+{
+  "time": 1654867808.03,
+  "value": 137.41
+},
+{
+  "time": 1654867808.031,
+  "value": 137.3301
+},
+{
+  "time": 1654867808.032,
+  "value": 137.37
+},
+{
+  "time": 1654867808.033,
+  "value": 137.35
+},
+{
+  "time": 1654867808.034,
+  "value": 137.33
+},
+{
+  "time": 1654867808.035,
+  "value": 137.33
+},
+{
+  "time": 1654867808.036,
+  "value": 137.33
+},
+{
+  "time": 1654867808.037,
+  "value": 137.33
+},
+{
+  "time": 1654867808.038,
+  "value": 137.33
+},
+{
+  "time": 1654867808.039,
+  "value": 137.33
+},
+{
+  "time": 1654867809,
+  "value": 137.3804
+},
+{
+  "time": 1654867809.001,
+  "value": 137.3055
+},
+{
+  "time": 1654867809.002,
+  "value": 137.8
+},
+{
+  "time": 1654867810,
+  "value": 137.2978
+},
+{
+  "time": 1654867810.001,
+  "value": 137.335
+},
+{
+  "time": 1654867810.002,
+  "value": 137.3038
+},
+{
+  "time": 1654867811,
+  "value": 137.12
+},
+{
+  "time": 1654867811.001,
+  "value": 137.8
+},
+{
+  "time": 1654867811.002,
+  "value": 137.27
+},
+{
+  "time": 1654867812,
+  "value": 137.3
+},
+];
+export const tradeUpData =[
   {
-    "time": 1654867808.035,
+    "time": 1654867812.035,
     "value": 138.1
   },
   {
-    "time": 1654867808.036,
+    "time": 1654867812.036,
     "value": 138.2
   },
   {
-    "time": 1654867808.037,
+    "time": 1654867812.037,
     "value": 138.5
   },
   {
-    "time": 1654867808.038,
+    "time": 1654867812.038,
     "value": 138.6
   },
   {
-    "time": 1654867808.039,
+    "time": 1654867812.039,
     "value": 139.8
   }
 ];
 
-const tradeDownData =[
+export const tradeDownData =[
   {
-    "time": 1654867808.035,
+    "time": 1654867812.035,
     "value": 137.39
   },
   {
-    "time": 1654867808.036,
+    "time": 1654867812.036,
     "value": 137.20
   },
   {
-    "time": 1654867808.037,
+    "time": 1654867812.037,
     "value": 137.15
   },
   {
-    "time": 1654867808.038,
+    "time": 1654867812.038,
     "value": 137.00
   },
   {
-    "time": 1654867808.039,
+    "time": 1654867812.039,
     "value": 136.30
   }
 ];
-
-export const tradeUpSelection = [...additionalDataArray, ...tradeUpData];
-
-export const tradeDownSelection = [...additionalDataArray, ...tradeDownData];
