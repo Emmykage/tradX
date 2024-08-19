@@ -62,7 +62,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   // Area and bar data
 
   const [chartScale, setChartScale] = useState(6);
-  const [selectedChart, setSelectedChart] = useState('candlesticks');
+  const [selectedChart, setSelectedChart] = useState('area');
   const [selectedTimeScale, setSelectedTimeScale] = useState<any>(timeScaleMenu[8]);
   const storedScale = localStorage.getItem("scale");
   const { wsTicket } = useAppSelector((state) => state.user);
@@ -149,25 +149,32 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     });
     let candlestickSeries = null;
     //  candle series 
-    if(selectedChart == 'candlesticks'){
-      candlestickSeries = chart.addCandlestickSeries({
-        upColor: 'green',
-        downColor: 'red',
-        borderDownColor: 'red',
-        borderUpColor: 'green',
-        wickDownColor: 'red',
-        wickUpColor: 'green',
-      });
-
-    //   .ant-drawer-content.night.rightDrawer, .ant-drawer .ant-drawer-content.night {
-    //     background-color: #0e0f12;
-    // }
-     
-    }else{
-      candlestickSeries = chart.addBarSeries({
-        upColor: 'green',
-        downColor: 'red'
-      });
+    switch (selectedChart) {
+      case 'area':
+        candlestickSeries = chart.addAreaSeries({
+          topColor: "#0c2c3b",
+          bottomColor: 'transparent',
+          lineColor: "#1973FA",
+          lineWidth: 1
+        });
+        break;
+      case 'bar':
+        candlestickSeries = chart.addBarSeries({
+          upColor: 'green',
+          downColor: 'red'
+        });
+        break;
+      case 'candlesticks':
+      default:
+        candlestickSeries = chart.addCandlestickSeries({
+          upColor: 'green',
+          downColor: 'red',
+          borderDownColor: 'red',
+          borderUpColor: 'green',
+          wickDownColor: 'red',
+          wickUpColor: 'green',
+        });
+        break;
     }
 
     // @ts-ignore
