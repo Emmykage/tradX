@@ -155,7 +155,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           topColor: "#0c2c3b",
           bottomColor: 'transparent',
           lineColor: "#1973FA",
-          lineWidth: 1
+          lineWidth: 2
         });
         break;
       case 'bar':
@@ -517,8 +517,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     
             {chartInitialData ? (
              <div className="chart-container"  style={{ height: "100%", color:"white", position: 'relative' }}>
-               {/* pass dummy data newCandleData */}
-              {/* <MainChart data={newCandleData} chartScale={chartScale}  /> */}
+
               {renderSelectedChartType()}
               <div className="chart-options">
                 {chartOptionMenus.map((data, _i) => (
