@@ -35,7 +35,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
         <p className="menuSectionTitle">Personal</p>
         <InputOverlay onClick={() => setIsRightSubDrawerContent("edit-name")}>
           <Input
-            placeholder="Eneter your name"
+            placeholder="Name"
             title="Name"
             defaultValue={user?.first_name}
             type="text"
@@ -53,7 +53,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
           onClick={() => setIsRightSubDrawerContent("confirm-email")}
         >
           <Input
-            placeholder="Enter your email"
+            placeholder="Email"
             title="Email"
             defaultValue={user?.blured_email}
             type="email"
@@ -70,7 +70,7 @@ const PersonalSettingsMenu: React.FunctionComponent<
           onClick={() => setIsRightSubDrawerContent("confirm-phone")}
         >
           <Input
-            placeholder="Enter your phonenumber"
+            placeholder="Phone number"
             title="Phone number"
             defaultValue={user?.blured_phone_number}
             type="phone"
