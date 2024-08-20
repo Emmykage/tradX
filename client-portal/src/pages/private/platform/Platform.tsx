@@ -39,8 +39,12 @@ import { useNavigate } from "react-router-dom";
 import { ColorType, createChart, CrosshairMode, IChartApi, LineStyle, UTCTimestamp } from "lightweight-charts";
 import useSocketConnect from "hooks/useSocketConnect";
 import { createCustomMarker1, createCustomMarker2, FinishedTradeMarker } from "./MainChart/Markers";
-import { TradeStates } from "@store/slices/trade";
+import { setForexData, TradeStates } from "@store/slices/trade";
 import Loading from "components/loading";
+import useTradeList from "api/wallet/useTradeList";
+import { setAssetPairs } from "@store/slices/pairs";
+import { useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
 
 interface PlatformProps {}
 
@@ -70,6 +74,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const [selectedTimeScale, setSelectedTimeScale] = useState<any>(timeScaleMenu[8]);
   const storedScale = localStorage.getItem("scale");
   const { wsTicket } = useAppSelector((state) => state.user);
+  const [cookies] = useCookies(["access_token"]);
+
   // Chart refs and constants
   let chartContainerRef = useRef<HTMLDivElement>(null);
   let chartRef = useRef<IChartApi>();
@@ -77,6 +83,27 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   let chart = undefined
   let chartContainer = null
   let candlestickSeries = null;
+
+  const dispatch = useDispatch()
+  const { mutate, isPending } = useTradeList({
+    onSuccess: (data:any) => {
+
+    console.log(data);
+      // dispatch(setWallets(updatedWallets))
+     dispatch(setForexData(data.results))
+     dispatch(setAssetPairs(data.results[0]))
+    },
+    onError: (error) => {
+      console.log("fetching wallets error", error);
+    },
+  })
+
+  useEffect(()=>{
+    
+    mutate({
+      token: cookies.access_token,
+    });
+  },[])
 
   
 
@@ -337,7 +364,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   }, [socketData?.barchart]);
 
   // second custom chart 
-  console.log(tradeTransaction);
   useEffect(() => {
     console.log(tradeTransaction);
     if (!chartRef.current || !seriesRef.current || !socketData?.barchart) return;
@@ -422,7 +448,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   useEffect(() => {
     if (!chartRef.current || !seriesRef.current || !socketData?.barchart) return;
-  
+   let displayed = false
     const chart = chartRef.current;
     const series = seriesRef.current;
     console.log(trade,tradeData?.open);
@@ -450,7 +476,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         
         const priceCoordinate = series.priceToCoordinate(socketData?.barchart?.close);
         
-        let timeCoordinate = chart.timeScale().timeToCoordinate(tradeData?.timestamp + 10 * 1000);
+        let timeCoordinate = chart.timeScale().timeToCoordinate(tradeData?.timestamp + 60 );
         
     
       
@@ -465,14 +491,19 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
       setTimeout(() => {
       marker.remove()
-      }, 10000);
+      }, 60000);
     }
   
     updateMarkerPosition()
     };
     setTimeout(() => {
-      requestAnimationFrame(createOrUpdateMarker);
-    }, 10000);
+      console.log('hellow');
+      if(!displayed){
+
+        requestAnimationFrame(createOrUpdateMarker);
+      }
+      displayed = true
+    }, duration * 1000);
 
     
   
