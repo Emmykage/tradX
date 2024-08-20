@@ -143,7 +143,7 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     solidLine.style.borderColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `;
     solidLine.style.position = 'absolute';
     solidLine.style.top = '3.1px';
-    solidLine.style.left = '4px';
+    solidLine.style.left = '8.5px';
   
     const dashedLine = document.createElement('div');
     dashedLine.style.width = '172px'; 
@@ -153,7 +153,7 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     dashedLine.style.borderColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `; 
     dashedLine.style.position = 'absolute';
     dashedLine.style.top = '3.1px';
-    dashedLine.style.right = '0px';
+    dashedLine.style.right = '8px';
 
     marker.appendChild(labelInner)
     labelInner.appendChild(span)

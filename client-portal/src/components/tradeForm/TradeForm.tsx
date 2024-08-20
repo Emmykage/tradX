@@ -14,11 +14,9 @@ import { useAppSelector } from "@store/hooks";
 import { changeAmount, changeDuration, setAmount, SetDuration, setTrade, setTradeData, setTradeTransaction, TradeStates } from "@store/slices/trade";
 import { useDispatch } from "react-redux";
 import { WalletSliceState } from "@store/slices/wallet";
-import useSocketConnect from "hooks/useSocketConnect";
 import { AssetPairSliceState } from "@store/slices/pairs";
 import useTrade from "api/wallet/useTrade";
 import { useCookies } from "react-cookie";
-import { data } from "pages/public/trading/EconomicCalendar/economicCalenderTableComp/data";
 
 interface TradeFormProps {
   bottomSidebarHeight?: number;
@@ -68,7 +66,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   socketData,
 }) => {
 
-  const {selectedForexTrade, duration,finished,amount,trade } = useAppSelector(
+  const {selectedForexTrade, duration,socket,amount,trade } = useAppSelector(
     (state: { trades: TradeStates }) => state.trades
   );
   const [cookies] = useCookies(["access_token"]);
@@ -76,14 +74,14 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   const  {assetPairs} = useAppSelector(
     (state: {assetPair: AssetPairSliceState }) => state.assetPair
   )
-
+ 
   const { selectedWallet } = useAppSelector(
     (state: { wallet: WalletSliceState }) => state.wallet
   );
 
   const { mutate, isPending } = useTrade({
     onSuccess: (data:any) => {
-    dispatch(setTradeTransaction('success'))
+    
     console.log(data);
       // dispatch(setWallets(updatedWallets))
 
@@ -106,7 +104,9 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
     dispatch(SetDuration(duration))
     dispatch(setAmount(amount))
     dispatch(setTradeData(socketData))
+    console.log(socketData);
 
+  
     const formattedData = {
       
         category: 'fixed',
@@ -116,7 +116,9 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
         is_active: true,
         duration: duration * 60,
         wallet: id.toString(),
-        asset: assetPairs[0]?.id.toString()
+        asset: assetPairs[0]?.id.toString(),
+        open: socketData.open,
+        close:socketData.close
       
     }
     mutate({
@@ -143,7 +145,9 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
       is_active: true,
       duration: duration * 60,
       wallet: id.toString(),
-      asset: assetPairs[0]?.id.toString()
+      asset: assetPairs[0]?.id.toString(),
+      open: socketData.open,
+      close:socketData.close
     
   }
   mutate({

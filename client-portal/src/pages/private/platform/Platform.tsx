@@ -36,7 +36,7 @@ import {  isArrayEmpty, isObjectEmpty, timeScaleMenu } from "utils/utils";
 import DropdownMenu from "components/dropdownMenu/DropdownMenu";
 // import BarChart from "./MainChart/BarChart";
 import { useNavigate } from "react-router-dom";
-import { ColorType, createChart, CrosshairMode, IChartApi, LineStyle, UTCTimestamp } from "lightweight-charts";
+import { ColorType, createChart, CrosshairMode, IChartApi, LineStyle, Time, UTCTimestamp } from "lightweight-charts";
 import useSocketConnect from "hooks/useSocketConnect";
 import { createCustomMarker1, createCustomMarker2, FinishedTradeMarker } from "./MainChart/Markers";
 import { setForexData, TradeStates } from "@store/slices/trade";
@@ -70,7 +70,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   // Area and bar data
 
   const [chartScale, setChartScale] = useState(6);
-  const [selectedChart, setSelectedChart] = useState('candlesticks');
+  const [selectedChart, setSelectedChart] = useState('area');
   const [selectedTimeScale, setSelectedTimeScale] = useState<any>(timeScaleMenu[8]);
   const storedScale = localStorage.getItem("scale");
   const { wsTicket } = useAppSelector((state) => state.user);
@@ -108,7 +108,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   
 
   
-  const {tradeTransaction,duration, trade,tradeData } = useAppSelector(
+  const {tradeTransaction,duration, trade,tradeData,tradeResult } = useAppSelector(
     (state: { trades: TradeStates }) => state.trades
   );
   const { data: socketData,oldData, socket } = useSocketConnect(wsTicket as string);
@@ -375,13 +375,13 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     const createOrUpdateMarker = () => {
       let marker = document.getElementById('textElement2');
       if (!marker) {
-        marker = createCustomMarker2(tradeData?.open,trade);
+        marker = createCustomMarker2(tradeTransaction?.price_per_unit,trade);
         console.log('called');
         marker.id = 'textElement2';
         chartContainerRef.current?.appendChild(marker);
         console.log('Marker created and appended');
       }else{
-        marker = createCustomMarker2(tradeData?.open,trade);
+        marker = createCustomMarker2(tradeTransaction?.price_per_unit,trade);
         marker.id = 'textElement2';
         chartContainerRef.current?.appendChild(marker);
       }
@@ -400,9 +400,21 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         // }
   
         
-        const priceCoordinate = series.priceToCoordinate(tradeData?.close);
+        const priceCoordinate = series.priceToCoordinate(tradeTransaction?.close);
+        const newTime = new Date(tradeTransaction?.created_at).getTime()
         
-        let timeCoordinate = chart.timeScale().timeToCoordinate(tradeData?.timestamp);
+        console.log(tradeTransaction?.close);
+        console.log(tradeData);
+        // console.log(utcTimestamp);
+        // console.log(tradeData.timestamp);
+        console.log(tradeTransaction.created_at);
+
+
+        console.log(tradeData.timestamp, 'local');
+        console.log(typeof newTime, 'socket');
+        
+        let timeCoordinate = chart.timeScale().timeToCoordinate(newTime);
+        console.log(timeCoordinate);
         
     
       
@@ -417,7 +429,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
       setTimeout(() => {
       marker.remove()
-      }, duration * 60000);
+      }, duration * 60 * 1000);
     }
   
     updateMarkerPosition()
@@ -456,14 +468,17 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     const createOrUpdateMarker = () => {
       let marker = document.getElementById('textElement4');
       console.log(marker);
+      console.log(tradeResult[0]?.price_per_unit);
       if (!marker) {
-        marker = FinishedTradeMarker(tradeData?.open,'won');
+        console.log(tradeResult[0]?.net);
+        console.log(tradeResult[0]?.net.startsWith('-') ? 'lose' : 'won');
+        marker = FinishedTradeMarker(parseInt(tradeResult[0]?.price_per_unit),tradeResult[0]?.net.startsWith('-') ? 'lose' : 'won');
         console.log('called');
         marker.id = 'textElement4';
         chartContainerRef.current?.appendChild(marker);
         console.log('Marker created and appended');
       }else{
-        marker = FinishedTradeMarker(tradeData?.open,'won');
+        marker = FinishedTradeMarker(parseInt(tradeResult[0]?.price_per_unit),'won');
         marker.id = 'textElement4';
         chartContainerRef.current?.appendChild(marker);
         console.log('called here too');
@@ -474,11 +489,14 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         if (!marker) return;
 
         
-        const priceCoordinate = series.priceToCoordinate(socketData?.barchart?.close);
+        const priceCoordinate = series.priceToCoordinate(tradeResult[0]?.close);
+        // console.log(tradeResult[0].created_at);
+        // console.log(tradeData.timestamp + 60 * 10000);
+        const resultTime = new Date(tradeResult[0]?.result_time).getTime()
+
+        let timeCoordinate = chart.timeScale().timeToCoordinate(resultTime as UTCTimestamp );
         
-        let timeCoordinate = chart.timeScale().timeToCoordinate(tradeData?.timestamp + 60 );
         
-    
       
       if (priceCoordinate && timeCoordinate) {
         marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
@@ -491,39 +509,29 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
       setTimeout(() => {
       marker.remove()
-      }, 60000);
+      }, 25000);
     }
   
     updateMarkerPosition()
     };
-    setTimeout(() => {
-      console.log('hellow');
-      if(!displayed){
-
-        requestAnimationFrame(createOrUpdateMarker);
-      }
-      displayed = true
-    }, duration * 1000);
-
+    requestAnimationFrame(createOrUpdateMarker);
     
-  
-  
     // Update chart data
     if(selectedChart === 'area'){
       series.update({
-        value: socketData.barchart.close,
-        time: socketData.barchart.time
+        value: socketData?.barchart?.close,
+        time: socketData?.barchart?.time
       });
 
     }else{
-      series.update(socketData.barchart);
+      series.update(socketData?.barchart);
 
     }
   
     return () => {
       chart.unsubscribeCrosshairMove(createOrUpdateMarker);
     };
-  }, [socketData?.barchart]);
+  }, [tradeResult]);
 
  
   useEffect(() => {
@@ -532,12 +540,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       // @ts-ignore
       if(selectedChart === 'area'){
         seriesRef.current?.update({
-          value: socketData.barchart.close,
-          time: socketData.barchart.time
+          value: socketData?.barchart?.close,
+          time: socketData?.barchart?.time
         });
   
       }else{
-        seriesRef.current?.update(socketData.barchart);
+        seriesRef.current?.update(socketData?.barchart);
   
       }
     

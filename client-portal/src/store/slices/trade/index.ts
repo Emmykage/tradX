@@ -13,6 +13,8 @@ export interface TradeStates {
   selectedForexTrade:any;
   tradeTransaction: any;
   forexData:any;
+  socket:any;
+  tradeResult:any;
 }
 
 // Define the initial state using that type
@@ -27,6 +29,8 @@ const initialState: TradeStates = {
   socketInstance:null,
   selectedForexTrade:null,
   tradeTransaction: 'error',
+  socket:null,
+  tradeResult:null,
   
 };
 
@@ -78,8 +82,13 @@ export const tradeStateSlice = createSlice({
       state.trade = action.payload;
       return state;
     },
+    
     setTradeData: (state, action: PayloadAction<any>) => {
       state.tradeData = action.payload;
+      return state;
+    },
+    setTradeResult: (state, action: PayloadAction<any>) => {
+      state.tradeResult = action.payload;
       return state;
     },
     setFinished: (state, action: PayloadAction<boolean>) => {
@@ -92,9 +101,15 @@ export const tradeStateSlice = createSlice({
       
       return state;
     },
+    setSocket:  (state, action: PayloadAction<any>) => {
+      console.log(action.payload, 'payloadzz');
+      state.socket = action.payload;
+      
+      return state;
+    },
   },
 });
 
-export const { setAmount, SetDuration,setTrade,setFinished,changeAmount,changeDuration, setSocketData,setSocketInstance ,setTradeData,setSelectedForexTrade,setTradeTransaction,setForexData} = tradeStateSlice.actions;
+export const { setAmount, SetDuration,setTrade,setFinished,changeAmount,changeDuration, setSocketData,setSocketInstance ,setTradeData,setSelectedForexTrade,setTradeTransaction,setForexData,setSocket,setTradeResult} = tradeStateSlice.actions;
 
 export default tradeStateSlice.reducer;
