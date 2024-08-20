@@ -11,7 +11,7 @@ interface Data {
 }
 
 interface BarChartData {
-  value?: string;
+  value?: number;
   time?: string | number;
   symbol?: string;
   timestamp?: number;
@@ -51,7 +51,6 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
       const webSocket = new WebSocket(
          `wss://xtradx.com/ws/external-api/?ws_ticket=${wsTicket}`
       );
-      // ws://xtradx.com/ws/external-api/?ws_ticket={your_ticket}
       
     webSocket.onerror = function (event) {
       throw Error("Websocket connection error");
@@ -84,17 +83,15 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
       const receivedData = JSON.parse(event.data);
     
       if (receivedData.m === 'init_bars_data'){
-        console.log(receivedData.d[0].TEST[0]);
         const initialData = receivedData.d[0].TEST.map((socketData: any) => ({
-        
           open: socketData?.o,
           high: socketData?.h,
           low: socketData?.l,
           close: socketData?.c,
           timestamp: new Date(socketData?.t).getTime(),
           time: Date.parse(socketData?.t),
+          value: (socketData?.o + socketData?.c)/2,
         }));
-        console.log(initialData);
         // initialData.forEach(item => {
         // console.log(item);  
         // setData(prevData => ({
@@ -106,7 +103,6 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
         setOldData(initialData)
         } else if (receivedData.m === 'b_d' && !isArrayEmpty(receivedData?.d)) {
           const socketData = receivedData.d[0];
-          console.log(socketData);
           const newData: BarChartData = {
             open: socketData?.o,
             high: socketData?.h,
@@ -114,9 +110,9 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
             close: socketData?.c,
             timestamp: new Date(socketData?.t).getTime(),
             time: Date.parse(socketData?.t),
+            value: (socketData?.o + socketData?.c)/2,
           };
-          console.log(newData);
-       
+     
           setData(prevData => {
             return {
               ...prevData,
@@ -126,7 +122,6 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
           
         } else if (receivedData?.type === "send_message") {
           if (receivedData.m === 'o_c') {
-           console.log(receivedData?.d);
            const onlineTradersData: OnlineTradersData = {
              count: receivedData.d,
            };

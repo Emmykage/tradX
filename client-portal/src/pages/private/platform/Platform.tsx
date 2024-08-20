@@ -27,7 +27,6 @@ import {
 } from "./types";
 import MainChart from "./MainChart";
 import { initialData } from "./MainChart/data";
-import { initialCandleData } from "./MainChart/candleData";
 import { setAppearanceBackground } from "../../lib/utils";
 import { useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
@@ -64,7 +63,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   // Area and bar data
 
   const [chartScale, setChartScale] = useState(6);
-  const [selectedChart, setSelectedChart] = useState('candlesticks');
+  const [selectedChart, setSelectedChart] = useState('area');
   const [selectedTimeScale, setSelectedTimeScale] = useState<any>(timeScaleMenu[8]);
   const storedScale = localStorage.getItem("scale");
   const { wsTicket } = useAppSelector((state) => state.user);
@@ -76,10 +75,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   
 
   const { data: socketData,oldData, socket } = useSocketConnect(wsTicket as string);
-  console.log('socket data' + socketData?.barchart);
-  console.log('object');
-  // console.log('socket data' + socketData?.onlinetraders?.count);
-  // console.log(socket);
   const colors = {
     backgroundColor: "transparent",
     lineColor: "#0094FF",
@@ -101,17 +96,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     (state: { user: UserSliceState }) => state.user
   );
   const navigate = useNavigate();
-
-  // candle series chart data formatting 
-
-  const newCandleData= initialCandleData.map((d:any, _i: number)=>{
-    var t = new Date();
-    t.setSeconds(t.getSeconds() + _i);
-    // return {time: d[0]/1000, open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
-    return {time: Date.parse(t), open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
-  })
-
-
 
 
   const isWalkthroughSkipped = user?.is_walkthrough ?? true;
@@ -155,6 +139,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       width: chartContainer?.clientWidth,
       height: 300,
     });
+<<<<<<< HEAD
 
    
     if(selectedChart == 'candlesticks'){
@@ -173,11 +158,40 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       //   upColor: 'green',
       //   downColor: 'red'
       // });
+=======
+    let candlestickSeries = null;
+    //  candle series 
+    switch (selectedChart) {
+      case 'area':
+        candlestickSeries = chart.addAreaSeries({
+          topColor: "#0c2c3b",
+          bottomColor: 'transparent',
+          lineColor: "#1973FA",
+          lineWidth: 1
+        });
+        break;
+      case 'bar':
+        candlestickSeries = chart.addBarSeries({
+          upColor: 'green',
+          downColor: 'red'
+        });
+        break;
+      case 'candlesticks':
+      default:
+        candlestickSeries = chart.addCandlestickSeries({
+          upColor: 'green',
+          downColor: 'red',
+          borderDownColor: 'red',
+          borderUpColor: 'green',
+          wickDownColor: 'red',
+          wickUpColor: 'green',
+        });
+        break;
+>>>>>>> 54cca67e0af3ab0580c394626fa7165f4e85124d
     }
 
     // @ts-ignore
     seriesRef.current = candlestickSeries;  
-    console.log(oldData);
     if(oldData){
       const removeDuplicates = (data: any[]) => {
         const seen = new Set<number>();
@@ -189,10 +203,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           return false;
         });
       };
-      // console.log(oldData);
       const sortedAndUniqueData = removeDuplicates(oldData.sort((a, b) => a.time - b.time));
-      
-      // console.log(sortedAndUniqueData);
+
       candlestickSeries.setData(sortedAndUniqueData);
     }
 
@@ -416,11 +428,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       type: 'drop-down',
       position: 'right',
       menus: [
-        // {
-        //   text: 'Area',
-        //   onclick: () => handleChartSelectionClick('area'),
-        //   icon: <AreaChartIcon />
-        // },
+        {
+          text: 'Area',
+          onclick: () => handleChartSelectionClick('area'),
+          icon: <AreaChartIcon />
+        },
         {
           text: 'Japanese candlesticks',
           onclick: () => handleChartSelectionClick('candlesticks'),

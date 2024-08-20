@@ -81,7 +81,7 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     marker.id= 'textElement2'
 
     marker.style.position = 'absolute';
-    marker.style.zIndex = '10';
+    marker.style.zIndex = '5';
   
     const circle = document.createElement('div');
     circle.style.backgroundColor = 'white';

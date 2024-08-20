@@ -13,23 +13,56 @@ import { useTranslation } from "react-i18next";
 interface FormData {
   duration: number;
   amount: number;
+  minimumBidAmount: number;
+  maximumBidAmount: number;
+  minimumBidDuration: number;
+  maximumBidDuration: number;
 }
 
 interface TestWalkThroughProps {
   step: number;
-  setStep: (step: number | ((prevStep: number) => number)) => void;
-  setTrade?: (trade: string | ((prevTrade: string) => string)) => void;
+  setStep: Function;
+  setTrade: Function
   trade?: string;
+  formInactive?: boolean;
+  bidDuration: number;
+  bidAmount: number;
+  setBidDuration: Function;
+  setBidAmount: Function;
 }
 
-const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrade }) => {
+
+const TestWalkThrough: FC<TestWalkThroughProps> = ({ 
+  step, 
+  setStep, 
+  trade, 
+  setTrade, 
+  formInactive= false,
+  bidAmount, 
+  bidDuration, 
+  setBidAmount, 
+  setBidDuration
+ }) => {
   const { t } = useTranslation();
   const [tradeForm, setFormData] = useState<FormData>({
-    duration: 2,
-    amount: 90,
+    duration: bidDuration,
+    amount: bidAmount,
+    minimumBidAmount: 50,
+    maximumBidAmount: 120,
+    minimumBidDuration: 20,
+    maximumBidDuration: 40,
   });
+  const [formDisabled, setFormDisabled] = useState(false);
 
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const {
+    duration,
+    amount, 
+    minimumBidAmount,
+    maximumBidAmount,
+    minimumBidDuration,
+    maximumBidDuration
+  }: any = tradeForm;
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,6 +75,10 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
     };
   }, []);
 
+  useEffect(() => {
+    setFormDisabled(formInactive)
+  }, [formInactive]);
+
   const getWidthStyle = () => {
     return windowWidth < 834 && step >= 7 ? "topLeft" : "left";
   };
@@ -50,6 +87,60 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
     return windowWidth < 834 && step >= 7 ? "bottomLeft" : "left";
   };
 
+  const handleBidAmountChange = (addition = true) => {
+    let newAmount = amount;
+    if((newAmount > minimumBidAmount) && (!addition)){
+      newAmount = newAmount - 10;
+    }
+    if((newAmount < maximumBidAmount) && (addition)){
+      newAmount = newAmount + 10;
+    }
+    setFormData(
+     {
+      ...tradeForm,
+      amount: newAmount
+    });
+    setBidAmount(newAmount);
+
+    if(step <= 7){
+      setStep((prevStep: number) => prevStep + 1);
+    }
+  };
+  
+  const handleBidDurationChange = (addition = true) => {
+    let newDuration = duration;
+    if((newDuration > minimumBidDuration) && (!addition)){
+      newDuration = newDuration - 10;
+    }
+    if((newDuration < maximumBidDuration) && (addition)){
+      newDuration = newDuration + 10;
+    }
+    setFormData(
+     {
+      ...tradeForm,
+      duration: newDuration
+    });
+    setBidDuration(newDuration);
+    if(step <= 8){
+      setStep((prevStep: number) => prevStep + 1);
+    }
+  };
+
+  const handleTradeButtonClick = (type= "up") => {
+    setTrade(type);
+    setTimeout(() => {
+      setStep();
+    }, 100);  
+  };
+
+  useEffect(( )=> {
+   
+    setFormData({
+      ...tradeForm,
+      amount: bidAmount,
+      duration: bidDuration
+    })
+  }, [])
   return (
       <div className="walkThroughSidebarContainer">
         <div className="walkThroughTopBarInputs">
@@ -77,20 +168,9 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
               <div className="walkThroughButtonsContainer">
               <div className="walkThroughButtons">
                 <button
-                // onClick={() => {
-                  //   if (step === 7) {
-                    //     setFormData((prevAmount) => {
-                      //       if (
-                        //         prevAmount.amount !== undefined &&
-                        //         prevAmount.amount > 1
-                        //       ) {
-                          //         return { ...prevAmount, amount: prevAmount.amount - 1 };
-                          //       }
-                //       return prevAmount;
-                //     });
-                //   }
-                // }}
-                className="flex justify-center"
+                  onClick={() => handleBidAmountChange(false)}
+                  disabled = {step < 7 || formDisabled || amount <= minimumBidAmount }
+                  className={`flex justify-center`}
                 >
                   <SubtractIcon />
                 </button>
@@ -98,29 +178,9 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
 
               <div className="walkThroughButtons">
                 <button
-                  style={{ backgroundColor: `${step === 7 ? "#0094FF" : ""}` }}
+                  disabled = {step < 7 || formDisabled || amount >= maximumBidAmount }
                   className="flex justify-center"
-                  onClick={() => {
-                    
-                    if (step === 7) {
-                      // if (tradeForm.amount + 1 == 100) {
-                        //   setStep((prevStep) => prevStep + 1);
-                        // }
-                        setStep((prevStep) => prevStep + 1);
-                        setFormData((prevAmount) => {
-                          if (
-                          prevAmount.amount !== undefined &&
-                          prevAmount.amount > 0
-                        ) {
-                          return {
-                            ...prevAmount,
-                            amount: prevAmount.amount + 10,
-                          };
-                        }
-                        return prevAmount;
-                      });
-                    }
-                  }}
+                  onClick={() => handleBidAmountChange(true)}
                 >
                   <PlusIcon />
                 </button>
@@ -138,35 +198,15 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
               >
               <div className="walkthroughInputContent">
                 <label htmlFor="amount">{t("duration")}</label>
-                <input type="text" value={`${tradeForm.duration} min`} />
+                <input type="text" value={`${tradeForm.duration} sec`} />
               </div>
             </Tooltip>
             <div className="walkThroughButtonsContainer">
               <div className="walkThroughButtons">
                 <button
-                  style={{ backgroundColor: `${step === 8 ? "#0094FF" : ""}` }}
+                  disabled = {step < 8 || formDisabled || duration <= minimumBidDuration}
                   className="flex justify-center"
-                  onClick={() => {
-                    console.log(tradeForm.duration);
-                    
-                    if (step == 8) {
-                      if (tradeForm.duration - 1 == 1) {
-                        setStep((prevStep) => prevStep + 1);
-                      }
-                      setFormData((prevDuration) => {
-                        if (
-                          prevDuration.duration !== undefined &&
-                          prevDuration.duration > 1
-                        ) {
-                          return {
-                            ...prevDuration,
-                            duration: prevDuration.duration - 1,
-                          };
-                        }
-                        return prevDuration;
-                      });
-                    }
-                  }}
+                  onClick={() => handleBidDurationChange(false)}
                 >
                   <SubtractIcon />
                 </button>
@@ -174,23 +214,9 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
 
               <div className="walkThroughButtons">
                 <button
-                // onClick={() => {
-                  //   if (step === 8) {
-                    //     setFormData((prevDuration) => {
-                      //       if (
-                        //         prevDuration.duration !== undefined &&
-                        //         prevDuration.duration > 0
-                        //       ) {
-                          //         return {
-                            //           ...prevDuration,
-                            //           duration: prevDuration.duration + 1,
-                //         };
-                //       }
-                //       return prevDuration;
-                //     });
-                //   }
-                // }}
-                className="flex justify-center"
+                  onClick={() => handleBidDurationChange()}
+                  className="flex justify-center"
+                  disabled = {step < 8 || formDisabled || duration >= maximumBidDuration}
                 >
                   <PlusIcon />
                 </button>
@@ -214,18 +240,10 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
       open={step == 9}
     >
         <button
-          disabled={step !== 9 && step !== 10 && step !== 11}
-          style={{
-            backgroundColor: `${
-              step == 9 || step == 11 ? "#00AB1B" : ""
-            }`,
-          }}
-          onClick={() => {
-            if (step == 9 && setTrade) {
-              setStep((prevStep) => prevStep + 1);
-              setTrade('up')
-            }}
-          }
+          disabled={step < 9 || formDisabled}
+          className={`up ${step >= 9 || formDisabled ? "up-enabled" : ""}`}
+          onClick={()=>{handleTradeButtonClick('up')}}
+         
         >
           <div className="walkThroughupNdownTitle">
             <h2 className="font-semibold text-lg md:text-2xl">{t("up")}</h2>
@@ -246,17 +264,10 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
       </div>
     <div className="walkThroughupNdown">
       <button
-        disabled={step !== 9 && step !== 10 && step !== 11}
-        style={{
-          backgroundColor: `${step == 9 || step == 11 ? "#F15131" : ""}`,
-          color: `${step == 10 ? "#ffffff" : ""}`,
-        }}
-        onClick={()=>{
-           if (step == 9 && setTrade) {
-          setStep((prevStep) => prevStep + 1);
-          setTrade('down')
-        }}
-        }
+        disabled={step < 9 || formDisabled}
+        className={`down ${step >= 9 || formDisabled ? "down-enabled" : ""}`}
+
+        onClick={()=>{handleTradeButtonClick('down')}}
       >
         <div className="walkThroughupNdownTitle">
           <h2 className="font-semibold text-lg md:text-2xl">{t("down")}</h2>
@@ -282,228 +293,3 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({ step, setStep,trade,setTrad
 };
 
 export default TestWalkThrough;
-
-
-
-{/* <div className="testContainer">
-      <div className="walkThroughSidbarContainer">
-      <div className="walkThroughSidbarTwoBlocks">
-          <div className="walkThroughSidbarItems">
-            <div  className="sidebarUpperInput">
-
-            <Tooltip
-              rootClassName="walkthroughTooltip amountTooltip"
-              placement={getWidthStyle()}
-              title="Set the investment amount at $100. Don’t worry, this is training money."
-              color="#1973FA"
-              open={step == 7}
-              >
-              <div
-                className="walkthroughInputContent"
-                style={{ backgroundColor: "#283645" }}
-              >
-                <label htmlFor="amount">Amount , $</label>
-                <input
-                  type="number"
-                  value={tradeForm.amount}
-                  disabled={step !== 7}
-                />
-              </div>
-            </Tooltip>
-            <div className="walkThroughButtonsContainer">
-              <div className="walkThroughButtons">
-                <button
-                // onClick={() => {
-                //   if (step === 7) {
-                //     setFormData((prevAmount) => {
-                //       if (
-                //         prevAmount.amount !== undefined &&
-                //         prevAmount.amount > 1
-                //       ) {
-                //         return { ...prevAmount, amount: prevAmount.amount - 1 };
-                //       }
-                //       return prevAmount;
-                //     });
-                //   }
-                // }}
-                >
-                  <SubtractIcon />
-                </button>
-              </div>
-
-              <div className="walkThroughButtons">
-                <button
-                  style={{ backgroundColor: `${step === 7 ? "#0094FF" : ""}` }}
-                  onClick={() => {
-                    console.log(tradeForm.amount);
-
-                    if (step === 7) {
-                      // if (tradeForm.amount + 1 == 100) {
-                      //   setStep((prevStep) => prevStep + 1);
-                      // }
-                      setStep((prevStep) => prevStep + 1);
-                      setFormData((prevAmount) => {
-                        if (
-                          prevAmount.amount !== undefined &&
-                          prevAmount.amount > 0
-                        ) {
-                          return {
-                            ...prevAmount,
-                            amount: prevAmount.amount + 10,
-                          };
-                        }
-                        return prevAmount;
-                      });
-                    }
-                  }}
-                >
-                  <PlusIcon />
-                </button>
-              </div>
-                      </div>
-            </div>
-          </div>
-          <div className="sidebarLowerInput">
-
-          <div className="walkThroughSidbarItems">
-            <Tooltip
-              rootClassName="walkthroughTooltip amountTooltip"
-              placement={"left"}
-              title="Select 1 minute as the duration of the trade"
-              color="#1973FA"
-              open={step == 8}
-              >
-              <div className="walkthroughInputContent">
-                <label htmlFor="amount">Duration</label>
-                <input type="text" value={`${tradeForm.duration} min`} />
-              </div>
-            </Tooltip>
-            <div className="walkThroughButtonsContainer">
-              <div className="walkThroughButtons">
-                <button
-                  style={{ backgroundColor: `${step === 8 ? "#0094FF" : ""}` }}
-                  onClick={() => {
-                    console.log(tradeForm.duration);
-                    
-                    if (step == 8) {
-                      if (tradeForm.duration - 1 == 1) {
-                        setStep((prevStep) => prevStep + 1);
-                      }
-                      setFormData((prevDuration) => {
-                        if (
-                          prevDuration.duration !== undefined &&
-                          prevDuration.duration > 1
-                        ) {
-                          return {
-                            ...prevDuration,
-                            duration: prevDuration.duration - 1,
-                          };
-                        }
-                        return prevDuration;
-                      });
-                    }
-                  }}
-                >
-                  <SubtractIcon />
-                </button>
-              </div>
-
-              <div className="walkThroughButtons">
-                <button
-                // onClick={() => {
-                  //   if (step === 8) {
-                    //     setFormData((prevDuration) => {
-                      //       if (
-                        //         prevDuration.duration !== undefined &&
-                        //         prevDuration.duration > 0
-                        //       ) {
-                          //         return {
-                            //           ...prevDuration,
-                            //           duration: prevDuration.duration + 1,
-                //         };
-                //       }
-                //       return prevDuration;
-                //     });
-                //   }
-                // }}
-                >
-                  <PlusIcon />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-                </div>
-
-                <div className="bottomButtonNDownContainer">
-
-
-        <div className="walkThroughSidbarUpDown">
-            <div className="walkThroughupNdown">
-          <Tooltip
-            rootClassName="walkthroughTooltip amountTooltip"
-            placement={getWidthDownStyle()}
-            title="Look at the chart and decide where it will go next: Up or Down"
-            color="#1973FA"
-            
-            open={step == 9}
-          >
-              <button
-                disabled={step !== 9 && step !== 10 && step !== 11}
-                style={{
-                  backgroundColor: `${
-                    step == 9 || step == 11 ? "#00AB1B" : ""
-                  }`,
-                }}
-                onClick={() => {
-                  console.log(step);
-                  if (step == 9) {
-                    setStep((prevStep) => prevStep + 1);
-                  }
-                }}
-              >
-                <div className="walkThroughupNdownTitle">
-                  <h2>Up</h2>
-                  <span>+82%</span>
-                </div>
-
-                <div className="walkThroughBUttonIcon">
-                  <ArrowUpRightIconColor
-                    color={
-                      step !== 9 && step !== 10 && step !== 11
-                        ? " #ffffff5e"
-                        : " #ffffff"
-                      }
-                  />
-                </div>
-              </button>
-          </Tooltip>
-            </div>
-          <div className="walkThroughupNdown">
-            <button
-              disabled={step !== 9 && step !== 10 && step !== 11}
-              style={{
-                backgroundColor: `${step == 9 || step == 11 ? "#F15131" : ""}`,
-                color: `${step == 10 ? "#ffffff" : ""}`,
-              }}
-            >
-              <div className="walkThroughupNdownTitle">
-                <h2>Down</h2>
-                <span>+82%</span>
-              </div>
-
-              <div className="walkThroughBUttonIcon">
-                <ArrowDownRightIconColor
-                  color={
-                    step !== 9 && step !== 10 && step !== 11
-                    ? " #ffffff5e"
-                      : " #ffffff"
-                    }
-                    />
-              </div>
-            </button>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div> */}

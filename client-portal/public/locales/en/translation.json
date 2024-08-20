@@ -38,7 +38,6 @@
   "toolTipContent": "FTT assets vary in profitability. In this case, you will receive 82% of profit if, when the trade expires, the chart will still be moving in the correct direction.",
   "understand": "I Understand",
   "walkthroughChooseTrade": "Wait for the result of the trade ({{time}}).",
-  "walkthroughChooseTradeSubText": "Congratulations! Your trade was successful. By Investing $90, you’ve earned $85 - a 76.5% return in just 20 seconds.",
   "commodities": "Commodities",
   "subCommodities": "Speculate on the raw materials driving the global economy. Sign up to trade CFDs on energy markets like Oil and Gas, metals like gold and silver, and soft commodities like corn and cocoa.",
   "tradeCommodities": "Trade Commodities",
@@ -203,14 +202,14 @@
   "doYouWantToFinishTraining": "Do you want to finish training ?",
   "resumeTrainingInHelpSection": "You can resume your training later in the Help section.",
   "completeTraining": "Complete training",
-  "walkthroughChooseTradeSubTexts": "Congratulations! Your trade was successful. By Investing $90, you’ve earned $85 - a 76.5% return in just 20 seconds.",
+  "walkthroughChooseTradeSubTexts": "Congratulations! Your trade was successful. By Investing ${{tradeMoney}}, you’ve earned {{tradeReward}} - a {{percentageReturn}} return in just {{duration}} seconds.",
   "walkthroughFixedDurationOffers": "Trades of fixed duration that offer a fixed profit are known as Fixed Time Trades or FTT.",
 
   "duration": "Duration",
   "amount": "Amount",
   "finish": "Finish",
   "cancel": "Cancel",
-  "trainingInvestmentMoneyTooltip": "Set the investment amount at $90. Don’t worry, this is training money.",
+  "trainingInvestmentMoneyTooltip": "Set the investment amount at $100. Don’t worry, this is training money.",
   "trainingInvestmentTimeTooltip": "Select 20 seconds as the duration of the trade",
   "trainingInvestmentButtonTooltip": "Look at the chart and decide where it will go next: Up or Down"
 }
