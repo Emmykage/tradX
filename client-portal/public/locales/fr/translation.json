@@ -42,6 +42,7 @@
   "doYouWantToFinishTraining": "Vous souhaitez terminer une formation ?",
   "resumeTrainingInHelpSection": "Vous pourrez reprendre votre formation plus tard dans la section Aide.",
   "completeTraining": "Formation complète",
+  "walkthroughChooseTradeSubTexts": "Félicitations! Votre échange a réussi. En investissant {{tradeMoney}} $, vous avez gagné {{tradeReward}}, soit un retour de {{percentageReturn}} en seulement {{duration}} secondes.Félicitations! Votre échange a réussi. En investissant {{tradeMoney}} $, vous avez gagné {{tradeReward}}, soit un retour de {{percentageReturn}} en seulement {{duration}} secondes.",
   "up": "en haut",
   "down": "vers le bas",
   "duration": "durée",
