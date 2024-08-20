@@ -19,7 +19,7 @@ export interface TradeStates {
 
 // Define the initial state using that type
 const initialState: TradeStates = {
-  duration: 1,
+  duration: 10,
   amount: 100,
   trade: null,
   tradeData: null,
@@ -48,9 +48,9 @@ export const tradeStateSlice = createSlice({
     },
     changeDuration: (state, action: PayloadAction<string>) => {
       if(action.payload == 'increase'){
-          state.duration += 1 
+          state.duration += 10
       }else{
-        state.duration -= 1 
+        state.duration -= 10
       }
       return state;
     },

@@ -114,7 +114,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
         price_per_unit: amount,
         trade_type: 'up',
         is_active: true,
-        duration: duration * 60,
+        duration: duration,
         wallet: id.toString(),
         asset: assetPairs[0]?.id.toString(),
         open: socketData.open,
@@ -143,7 +143,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
       price_per_unit: amount,
       trade_type: 'down',
       is_active: true,
-      duration: duration * 60,
+      duration: duration,
       wallet: id.toString(),
       asset: assetPairs[0]?.id.toString(),
       open: socketData.open,
@@ -162,7 +162,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   }
   const handleDecreaseDuration = ()=>{
     console.log('decrease duration');
-    if(duration > 1){
+    if(duration > 10){
   
       dispatch(changeDuration('decrease'))
     }
@@ -253,7 +253,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
                 type={disabled ? "text" : "text"}
                 name="duration"
                 id="duration"
-                value={`${duration} min`}
+                value={`${duration} sec`}
                 // onChange={(e)=>SetDuration(e.target.value)}
                 disabled={disabled}
                 defaultValue={defaultDuration}
@@ -263,7 +263,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
 
           <div className="mathButtons">
             <button
-              disabled={ duration == 1}
+              disabled={ duration == 10}
               className={`${hintDuration ? "hint" : ""}`}
               onClick={handleDecreaseDuration}
             >

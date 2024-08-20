@@ -504,7 +504,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
       setTimeout(() => {
       marker.remove()
-      }, 25000);
+      }, 20000);
     }
   
     updateMarkerPosition()
