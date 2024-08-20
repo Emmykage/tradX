@@ -53,8 +53,11 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
     (state: { trades: TradeStates }) => state.trades
   );
   const {  wallets } = useAppSelector(
-    (state: { wallet: WalletSliceState }) => state.wallet
+    (state: { wallet: WalletSliceState,  }) => state.wallet
   );
+  const  { selectedAsset } = useAppSelector(
+    (state: {assetPair: AssetPairSliceState }) => state.assetPair
+);
 
 
   useEffect(() => {
@@ -105,8 +108,8 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
         }));
         setOldData(initialData)
         } else if (receivedData.m === 'b_d' && !isArrayEmpty(receivedData?.d)) {
+
           const socketData = receivedData.d[0];
-          console.log(receivedData);
           const newData: BarChartData = {
             open: socketData?.o,
             high: socketData?.h,
@@ -126,7 +129,6 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
           
         } else if (receivedData.m === 'o_c') {
            
-           console.log(receivedData?.d);
            const onlineTradersData: OnlineTradersData = {
              count: receivedData.d,
            };

@@ -202,7 +202,7 @@
   "doYouWantToFinishTraining": "¿Quieres terminar de entrenar?",
   "resumeTrainingInHelpSection": "Podrás retomar tu entrenamiento más tarde en la sección de Ayuda.",
   "completeTraining": "formación completa",
-
+  "walkthroughChooseTradeSubTexts" :"¡Felicidades! Su operación fue exitosa. Al invertir ${{tradeMoney}}, ha obtenido {{tradeReward}}: un retorno de {{percentageReturn}} en solo {{duration}} segundos.",
   "duration": "duración",
   "amount": "Cantidad",
   "finish": "Finalizar",

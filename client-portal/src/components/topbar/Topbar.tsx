@@ -59,7 +59,6 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   const  {assetPairs} = useAppSelector(
     (state: {assetPair: AssetPairSliceState }) => state.assetPair
 
-
   )  
   const dispatch = useAppDispatch()
 

@@ -202,7 +202,7 @@
   "doYouWantToFinishTraining": "トレーニングを終了しますか?",
   "resumeTrainingInHelpSection": "後からヘルプ セクションでトレーニングを再開できます。",
   "completeTraining": "トレーニングを完了する",
-
+  "walkthroughChooseTradeSubTexts": "おめでとう！あなたの取引は成功しました。 ${{tradeMoney}} を投資することで、わずか {{duration}} 秒で {{tradeReward}}、つまり {{percentageReturn}} の収益を獲得しました。",
   "duration": "間隔",
   "amount": "額",
   "finish": "仕上げる",

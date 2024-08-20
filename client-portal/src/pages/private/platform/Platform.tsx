@@ -42,7 +42,7 @@ import { createCustomMarker1, createCustomMarker2, FinishedTradeMarker } from ".
 import { setForexData, TradeStates } from "@store/slices/trade";
 import Loading from "components/loading";
 import useTradeList from "api/wallet/useTradeList";
-import { setAssetPairs } from "@store/slices/pairs";
+import { setAssetPairs, setSelectedAssetPair } from "@store/slices/pairs";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 
@@ -87,11 +87,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const dispatch = useDispatch()
   const { mutate, isPending } = useTradeList({
     onSuccess: (data:any) => {
-
-    console.log(data);
       // dispatch(setWallets(updatedWallets))
      dispatch(setForexData(data.results))
      dispatch(setAssetPairs(data.results[0]))
+     dispatch(setSelectedAssetPair(data.results[0]));
     },
     onError: (error) => {
       console.log("fetching wallets error", error);
@@ -220,7 +219,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
  
 
     // @ts-ignore
-    console.log(oldData);
+
     if(oldData){
       const removeDuplicates = (data: any[]) => {
         const seen = new Set<number>();
@@ -365,12 +364,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   // second custom chart 
   useEffect(() => {
-    console.log(tradeTransaction);
     if (!chartRef.current || !seriesRef.current || !socketData?.barchart) return;
   
     const chart = chartRef.current;
     const series = seriesRef.current;
-    console.log(trade,tradeData?.open);
   
     const createOrUpdateMarker = () => {
       let marker = document.getElementById('textElement2');
@@ -463,8 +460,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
    let displayed = false
     const chart = chartRef.current;
     const series = seriesRef.current;
-    console.log(trade,tradeData?.open);
-  
     const createOrUpdateMarker = () => {
       let marker = document.getElementById('textElement4');
       console.log(marker);
@@ -481,7 +476,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         marker = FinishedTradeMarker(parseInt(tradeResult[0]?.price_per_unit),'won');
         marker.id = 'textElement4';
         chartContainerRef.current?.appendChild(marker);
-        console.log('called here too');
+
       }
   
   
@@ -678,13 +673,13 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       type: 'drop-down',
       position: 'right',
       menus: [
-        // {
-        //   text: 'Area',
-        //   onclick: () => handleChartSelectionClick('area'),
-        //   icon: <AreaChartIcon />
-        // },
         {
-          text: 'Japanese candlesticks',
+          text: 'Area Chart',
+          onclick: () => handleChartSelectionClick('area'),
+          icon: <AreaChartIcon />
+        },
+        {
+          text: 'Candlesticks',
           onclick: () => handleChartSelectionClick('candlesticks'),
           icon: <CandleStickIcon />
         },
@@ -692,12 +687,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           text: 'Bars',
           onclick: () => handleChartSelectionClick('bar'),
           icon: <BarChartIcon />
-        },
-        {
-          text: 'AreaChart',
-          onclick: () => handleChartSelectionClick('area'),
-          icon: <AreaChartIcon />
         }
+        
     ]
     },
     {
@@ -839,8 +830,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     
             {chartInitialData ? (
              <div className="chart-container"  style={{ height: "100%", color:"white", position: 'relative' }}>
-               {/* pass dummy data newCandleData */}
-              {/* <MainChart data={newCandleData} chartScale={chartScale}  /> */}
               {  renderSelectedChartType() }
               <div className="chart-options">
                 {chartOptionMenus.map((data, _i) => (
