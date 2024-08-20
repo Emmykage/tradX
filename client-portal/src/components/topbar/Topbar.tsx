@@ -66,6 +66,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   const { symbol,assets } = useAppSelector((state: {markets: CryptoSliceState }) => state.markets);
   console.log(symbol);
   console.log(assets);
+  console.log(assetPairs)
   const ProfileImage = () => {
     if (loading) {
       return <Loading size="small" />;
@@ -120,11 +121,16 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
         <div className="conversionDiv">
           <ArrowsSlider>
             <div className="asset-pair-container">
-              {assetPairs.map((assetPair: ITradeAssets, _i: number) => (
-                <>
-                  <AssetSelectionContainer data={assetPair} key={_i}/>
-                </>
-              ))}
+             
+
+               
+          { 
+          assetPairs.length > 0 && (
+          assetPairs.map((assetPair: ITradeAssets, _i: number) => (
+            <AssetSelectionContainer data={assetPair} key={_i} />
+          ))
+        )}
+          
             </div>
           </ArrowsSlider>
           <div className="top-bar-chart-options">

@@ -10,7 +10,7 @@ export interface AssetPairSliceState {
 const defaultAssetPair: ITradeAssets = forex[0];
 
 const initialState: AssetPairSliceState = {
-    assetPairs: [defaultAssetPair],
+    assetPairs: [],
     selectedAsset: defaultAssetPair
 };
 

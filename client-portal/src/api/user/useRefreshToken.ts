@@ -28,7 +28,9 @@ type useRefreshTokenProps = {
 export async function fethRefreshToken(
   data: RefreshTokenVariables
 ): Promise<boolean> {
-  const BASE_URL = getEnv("VITE_API_BASE_URL");
+  // const BASE_URL = getEnv("VITE_API_BASE_URL");
+  const BASE_URL = "https://tradx.io/api"
+  console.log(BASE_URL)
   try {
     const response = await fetch(`${BASE_URL}/user/token/refresh/`, {
       method: "POST",

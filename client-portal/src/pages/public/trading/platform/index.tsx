@@ -1,6 +1,6 @@
 import Landing from './landing/Landing'
 import StraightForwardTrading from './straightForwardTradingComponent/StraightForwardTrading'
-import TradingCardInfo from '../../../../components/tradingCardInfo/TradingCardInfo'
+import TradingCardInfo from '../components/tradingCardInfo/TradingCardInfo'
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 import JoinInThreeSteps from 'pages/public/markets/components/joinInThreeSteps/JoinInThreeSteps'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
@@ -11,22 +11,26 @@ import {
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
 import SimpleTrade from './simpleTrade/SimpleTrade'
-
+import wheel from '../../../../assets/trading/cardWheel1.svg'
+import starIcon from "../../../../assets/trading/starshield.png"
+import fastExecIcon from "../../../../assets/trading/fastExecution.png"
+import { useTranslation } from 'react-i18next'
 const TradingPlatform = () => {
+    const {t} = useTranslation()
     const items = [{
-        title: "Multi-Asset Platform",
-        text: "Upgraded platform rich with features & thousands of assets to speculate on.",
-        icon: "/trading-images/wheelIcon.png"
+        title: t("multiAssetPlatform"),
+        text: t("multiAssetText"),
+        icon: wheel
     },
     {
-        title: "Multi-Asset Platform",
-        text: "Upgraded platform rich with features & thousands of assets to speculate on.",
-        icon: "/trading-images/wheelIcon.png"
+        title:  t("worldClassTradingTool"),
+        text:  t("worldClassTradingToolText"),
+        icon: starIcon
     },
     {
-        title: "Multi-Asset Platform",
-        text: "Upgraded platform rich with features & thousands of assets to speculate on.",
-        icon: "/trading-images/wheelIcon.png"
+        title:  t("LowSpreadsFastExecution"),
+        text:  t("LowSpreadsFastExecutionText"),
+        icon: fastExecIcon
     }]
 
   return (
@@ -45,7 +49,7 @@ const TradingPlatform = () => {
         </div>
 
         <SimpleTrade/>
-        
+  
 
         <JoinInThreeSteps/>
         <NeedMoreInfo items={NeedMoreInfoData} />

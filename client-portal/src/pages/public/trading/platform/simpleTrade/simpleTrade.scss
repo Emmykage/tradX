@@ -16,7 +16,7 @@
         position: relative;
         @media (max-width: 720px) {
 
-            flex-basis: 300px;
+            flex-basis: 200px;
 
         }
 
@@ -24,7 +24,7 @@
 
     .bg-1{
         width: 16%;
-        top: 15%;
+        top: 10%;
         position: absolute;
         
     }
@@ -34,7 +34,15 @@
         height: 60%;
         width: 40%;
         left: 30%;
-        top: 20%;
+        top: 39%;
+        min-width: 00px;
+
+    }
+    .bg-3{
+        position: absolute;
+        height: 20%;
+        left: 30%;
+        top: 10%;
         min-width: 00px;
 
     }
@@ -47,15 +55,18 @@
 
     h3{
         font-size: 34px;
+        @media (max-width: 480px) {
+            text-align: center;
+            
+        }
     }
     ul{
         li{
             display: flex;
             gap: 10px;
-            margin: 10px;
-            align-items: center ;
-
-            padding: 8px;
+            margin: 10px 0;
+            align-items: center;
+            padding: 8px 0;
             span{
                 width: 27px;
                 flex-shrink: 0;

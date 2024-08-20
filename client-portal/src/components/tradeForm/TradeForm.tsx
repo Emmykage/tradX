@@ -11,8 +11,14 @@ import {
 } from "../../assets/icons";
 import "./tradeform.scss";
 import { useAppSelector } from "@store/hooks";
-import { changeAmount, changeDuration, setAmount, SetDuration, setTrade, TradeStates } from "@store/slices/trade";
+import { changeAmount, changeDuration, setAmount, SetDuration, setTrade, setTradeData, setTradeTransaction, TradeStates } from "@store/slices/trade";
 import { useDispatch } from "react-redux";
+import { WalletSliceState } from "@store/slices/wallet";
+import useSocketConnect from "hooks/useSocketConnect";
+import { AssetPairSliceState } from "@store/slices/pairs";
+import useTrade from "api/wallet/useTrade";
+import { useCookies } from "react-cookie";
+import { data } from "pages/public/trading/EconomicCalendar/economicCalenderTableComp/data";
 
 interface TradeFormProps {
   bottomSidebarHeight?: number;
@@ -35,6 +41,7 @@ interface TradeFormProps {
   amountTooltipPlacement?: TooltipPlacement;
   durationTooltipPlacement?: TooltipPlacement;
   hintTradesTooltipPlacement?: TooltipPlacement;
+  socketData?:any;
 }
 
 const TradeForm: React.FunctionComponent<TradeFormProps> = ({
@@ -58,23 +65,91 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   amountTooltipPlacement = "left",
   durationTooltipPlacement = "left",
   hintTradesTooltipPlacement = "left",
+  socketData,
 }) => {
 
-  const { duration,finished,amount,trade } = useAppSelector(
+  const {selectedForexTrade, duration,finished,amount,trade } = useAppSelector(
     (state: { trades: TradeStates }) => state.trades
   );
+  const [cookies] = useCookies(["access_token"]);
+
+  const  {assetPairs} = useAppSelector(
+    (state: {assetPair: AssetPairSliceState }) => state.assetPair
+  )
+
+  const { selectedWallet } = useAppSelector(
+    (state: { wallet: WalletSliceState }) => state.wallet
+  );
+
+  const { mutate, isPending } = useTrade({
+    onSuccess: (data:any) => {
+    dispatch(setTradeTransaction('success'))
+    console.log(data);
+      // dispatch(setWallets(updatedWallets))
+
+    },
+    onError: (error) => {
+      console.log("fetching wallets error", error);
+    },
+  })
+
+
   const dispatch = useDispatch();
 
 
 
   const handleInputUp = ()=>{
 
-    
+    const {id,name, balance,currency} =selectedWallet
+    // const {id} = currency
     dispatch(setTrade('up'))
+    dispatch(SetDuration(duration))
+    dispatch(setAmount(amount))
+    dispatch(setTradeData(socketData))
+
+    const formattedData = {
+      
+        category: 'fixed',
+        quantity: '1',
+        price_per_unit: amount,
+        trade_type: 'up',
+        is_active: true,
+        duration: duration * 60,
+        wallet: id.toString(),
+        asset: assetPairs[0]?.id.toString()
+      
+    }
+    mutate({
+      data:formattedData,
+      token: cookies.access_token,
+    });
+    
+    
 
   }
   const handleInputDown = ()=>{
+    const {id} =selectedWallet
     dispatch(setTrade('down'))
+    dispatch(SetDuration(duration))
+    dispatch(setAmount(amount))
+    dispatch(setTradeData(socketData))
+    
+    const formattedData = {
+      
+      category: 'fixed',
+      quantity: '1',
+      price_per_unit: amount,
+      trade_type: 'down',
+      is_active: true,
+      duration: duration * 60,
+      wallet: id.toString(),
+      asset: assetPairs[0]?.id.toString()
+    
+  }
+  mutate({
+    data:formattedData,
+    token: cookies.access_token,
+  });
   }
 
   const handleIncreaseDuration = ()=>{
@@ -217,7 +292,6 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             ) : null}
             <button
               onClick={handleInputUp}
-              disabled={trade !==null && !finished }
               className={`up ${hintTrades ? "hint" : ""}`}
             >
               <div className="textContainerBtns">
@@ -232,7 +306,6 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             </button>
             <button
               onClick={handleInputDown}
-              disabled={trade !==null && !finished }
               className={`down ${hintTrades ? "hint" : ""}`}
             >
               <div className="textContainerBtns">

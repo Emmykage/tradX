@@ -1,36 +1,36 @@
 import React from 'react'
 import './trading.scss'
 import Landing from './platform/landing/Landing'
-import CTABanner from '../../../components/call-to-action/CTABanner'
-import ProfileCard from './trackTrades/profileCard/ProfileCard'
-import TradingCardInfo from '../../../components/tradingCardInfo/TradingCardInfo'
+import CTABanner from './components/call-to-action/CTABanner'
+import ProfileCard from './CopyTrade/profileCard/ProfileCard'
+import TradingCardInfo from './components/tradingCardInfo/TradingCardInfo'
 import IconShield from '../../../assets/trading/cardIconStarShield.png'
 import IconWave from '../../../assets/trading/cardIconWaves.png'
-import PerksCard from '../../../components/perksCard/PerksCard'
-import TradingSteps from '../../../components/tradingSteps/TradingSteps'
-import TradingExperience from '../../../components/experience/TradingExperience'
+import PerksCard from './components/perksCard/PerksCard'
+import TradingSteps from './components/tradingSteps/TradingSteps'
+import TradingExperience from './components/experience/TradingExperience'
 import user from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash 2.png'
-import CopyTrade from '../../../components/copyTrade/CopyTrade'
-import CostExplanation from '../../../components/tradingCostExplanation/CostExplanationComp'
+import CopyTrade from './components/copyTrade/CopyTrade'
+import CostExplanation from './components/tradingCostExplanation/CostExplanationComp'
 import TradingProfitCalculator from '../../../components/tradingProfitCalculator/TradingProfitCalculator'
 import USUKICon from '../../../assets/trading/UKUS_Oil_2_48e9f9e285.svg fill.png'
 import CanIcon from '../../../assets/trading/canadaflagicon.png'
 import BgImage from '../../../assets/trading/adam-tradingProfit.png'
 import ProfitMarginGuide from './profitMarginGuide/ProfitMarginGuide'
-import TradeAnalyzer from '../../../components/tradeAnalyzer/TradeAnalyzer'
+import TradeAnalyzer from './components/tradeAnalyzer/TradeAnalyzer'
 import UkIFlag from '../../../assets/trading/UK.png'
 import StraightForwardTrading from './platform/straightForwardTradingComponent/StraightForwardTrading'
 // import LandingPageMobile from './LandingPageMobileTrading/LandingPageMobile'
 import imageBgEve from '../../../assets/trading/eve-nowakowski-D4LDw5eXhgg.png'
 import imageBgAdamLp from '../../../assets/trading/adam-nowakowski-D4LDw5eXhgg-unsplash.png'
-import TrackTrade from './trackTrades/trackTradeHeader/TrackTrade'
-import MetaTrading from '../../../components/metaTrading/MetaTrading'
+import TrackTrade from './CopyTrade/trackTradeHeader/TrackTrade'
+import MetaTrading from './components/metaTrading/MetaTrading'
 import LandingPageMobile from './tradingMobile/LandingPageMobileTrading/LandingPageMobile'
-import TrackTradeLanding from './trackTrades/trackTradeHeader/TrackTrade'
+import TrackTradeLanding from './CopyTrade/trackTradeHeader/TrackTrade'
 import MetaTrader4Landing from './metaTrading4/metaTrader4Landing/MetaTrader4'
 import MetaTrader5Landing from './metaTrading5/metaTrader5/MetaTrader5Landing'
 import Navbar from '../home/commonComponents/navbar/Navbar'
-import ForexCalculator from 'components/forexCalculator/ForexCalculator'
+import ForexCalculator from 'pages/public/trading/components/forexCalculator/ForexCalculator'
 
 const Trading = () => {
   return (
@@ -222,7 +222,6 @@ tradex.io offers a commodity calculator that does the job for you. You simply ne
     </div>
 
     <div className="container">
-      <TradeAnalyzer/>
     </div>
     <div className="container">
       <TrackTrade/>

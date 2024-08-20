@@ -161,10 +161,10 @@ const MainChart: React.FunctionComponent<any>  = forwardRef(({ data: newData,col
         fontSize: '14px',
         pointerEvents: 'none' // This ensures the text doesn't interfere with chart interaction
       }}>
-      {
+      {/* {
         trade !== null  && 
         <CountDown time={duration}/>
-      }
+      } */}
       </div>
     </div>
   

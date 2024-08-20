@@ -45,7 +45,7 @@ const formatTime = () => {
     return `Wait for the result of the trade (${mins} : ${secs < 10 ? '0' : ''}${secs})`;
 };
   return (
-    <div className="bg-gray-800 h-screen w-screen flex justify-center items-center absolute top-0">
+    <div className="bg-red-800 h-screen w-screen flex justify-center items-center absolute top-0">
         <div style={{color: colorProps ? colorProps : 'black'}}>
             {finished ? '': <p>{formatTime()}</p>}
         </div>
