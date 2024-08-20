@@ -1,6 +1,13 @@
 .kycWrapper{
     height: 100vh;
     background: #152338;
+    .signOptions{
+        button{
+            border: 1px solid #00599A;
+            // border: 1px solid white !important;
+        }
+    
+      }
 
 }
 
@@ -78,5 +85,7 @@
     width: 100%;
     height: 49px;
   }
+
+
 
 }

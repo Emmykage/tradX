@@ -16,6 +16,7 @@ interface SignUpFormData {
   first_name: string;
   last_name: string;
   password: string;
+  confirm_password: string
 }
 
 const CreateAccount = () => {
@@ -125,7 +126,7 @@ const CreateAccount = () => {
           type="password"
           id="confirm Password"
           placeholder="confirm Password"
-          {...register("last_name")}
+          {...register("confirm_password")}
         />
       </Form.Item>
 
