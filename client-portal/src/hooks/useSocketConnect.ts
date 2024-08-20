@@ -1,4 +1,5 @@
 import { useAppSelector } from "@store/hooks";
+import { AssetPairSliceState } from "@store/slices/pairs";
 import { setSocketData, setSocketInstance } from "@store/slices/trade";
 import { setSelectedWallet, setWallets, WalletSliceState } from "@store/slices/wallet";
 import { useEffect, useState } from "react";
@@ -43,12 +44,14 @@ interface SocketConnectReturn {
 const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
   const [data, setData] = useState<Data | null>(null);
   const [oldData, setOldData] = useState<any>(null);
-  // const { socket } = useAppSelector((state) => state);
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const dispatch = useDispatch()
   const {  wallets } = useAppSelector(
-    (state: { wallet: WalletSliceState }) => state.wallet
+    (state: { wallet: WalletSliceState,  }) => state.wallet
   );
+  const  { selectedAsset } = useAppSelector(
+    (state: {assetPair: AssetPairSliceState }) => state.assetPair
+);
 
   useEffect(() => {
     if (wsTicket){
@@ -88,7 +91,7 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
       
     
       if (receivedData.m === 'init_bars_data'){
-        const initialData = receivedData?.d[0]?.BTC?.map((socketData: any) => ({
+        const initialData = receivedData?.d[0]?.[selectedAsset?.symbol]?.map((socketData: any) => ({
           open: socketData?.o,
           high: socketData?.h,
           low: socketData?.l,

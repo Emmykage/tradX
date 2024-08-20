@@ -42,7 +42,7 @@ import { createCustomMarker1, createCustomMarker2, FinishedTradeMarker } from ".
 import { setForexData, TradeStates } from "@store/slices/trade";
 import Loading from "components/loading";
 import useTradeList from "api/wallet/useTradeList";
-import { setAssetPairs } from "@store/slices/pairs";
+import { setAssetPairs, setSelectedAssetPair } from "@store/slices/pairs";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 
@@ -87,11 +87,10 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const dispatch = useDispatch()
   const { mutate, isPending } = useTradeList({
     onSuccess: (data:any) => {
-
-    console.log(data);
       // dispatch(setWallets(updatedWallets))
      dispatch(setForexData(data.results))
      dispatch(setAssetPairs(data.results[0]))
+     dispatch(setSelectedAssetPair(data.results[0]));
     },
     onError: (error) => {
       console.log("fetching wallets error", error);
