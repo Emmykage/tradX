@@ -30,7 +30,7 @@ import Trading from "pages/public/trading/Trading";
 // import ForexCalculator from "pages/public/trading/ForexProitCalculator/forexCalculator/ForexCalculator";
 import TradingConditions from "pages/public/trading/TradingConditions/Index";
 
-import CFDTrading from "pages/public/trading/CFDTrading";
+import CFDTrading from "pages/public/trading/cfdTrading";
 // import EmailVerification from "pages/public/emailVerification/EmailVerification";
 import ForexProfitCalculator from "pages/public/trading/ForexProfitCalculator";
 
@@ -48,17 +48,17 @@ const Shares = lazy(()=>import("pages/public/markets/shares/Shares"))
 const Ipo = lazy(()=>import("pages/public/markets/ipo/Ipo"))
 
 
-const TradingPlatform = lazy(()=>import("pages/public/trading/Platform"))
-const MobileTrading = lazy(()=>import("pages/public/trading/TradingMobile"))
-const MetaTradingFour = lazy(()=>import("pages/public/trading/MetaTrading4/Index"))
-const MetaTradingFive = lazy(()=>import("pages/public/trading/MetaTrading5"))
+const TradingPlatform = lazy(()=>import("pages/public/trading/platform"))
+const MobileTrading = lazy(()=>import("pages/public/trading/tradingMobile"))
+const MetaTradingFour = lazy(()=>import("pages/public/trading/metaTrading4/Index"))
+const MetaTradingFive = lazy(()=>import("pages/public/trading/metaTrading5"))
 const CopyTrading = lazy(()=>import("pages/public/trading/CopyTrade"))
 const CFDTradingCalculator = lazy(()=>import("pages/public/trading/CFDCalculator"))
 const CommoditiesProfitCalculator = lazy(()=>import("pages/public/trading/CommoditiesProfitCal/Index"))
-const ForexMarginCalculator = lazy(()=>import("pages/public/trading/ForexMarginCalculator"))
-const EconomicCalendar = lazy(()=>import("pages/public/trading/EconomicCalendar/Index"))
+const ForexMarginCalculator = lazy(()=>import("pages/public/trading/forexMarginCalculator"))
+const EconomicCalendar = lazy(()=>import("pages/public/trading/economicCalendar/Index"))
 const CFDAssetList = lazy(()=>import("pages/public/trading/CFDAssetList/Index"))
-const ExpirationDates = lazy(()=>import("pages/public/trading/ExpirationDates/Index"))
+const ExpirationDates = lazy(()=>import("pages/public/trading/expirationDates/Index"))
 
 // Lazy load components
 const Lender = lazy(() => import("./pages/private/lender/Lender"));
