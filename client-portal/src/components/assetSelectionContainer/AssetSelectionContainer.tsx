@@ -36,14 +36,14 @@ const AssetSelectionContainer: React.FunctionComponent<AssetSelectionContainerPr
                 >
                     <div className="convImg">
                     <img
-                        src={data.image}
+                        src={"https://cfcdn.olymptrade.com/assets1/instrument/vector/CRYPTO_X.499cebb9147e3cb84b40da3583890048.svg"}
                         alt="conv"
                     />
                     </div>
                     <div className="convDetails">
                         <div className="topConv">
-                            <span className="currency">{data.value}</span>
-                            <span className="percent">{data.profit}</span>
+                            <span className="currency">{data?.symbol}</span>
+                            <span className="percent">-0.06</span>
                         </div>
                     </div>
                     
