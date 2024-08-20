@@ -1,5 +1,6 @@
 import { useAppSelector } from "@store/hooks";
 import { setSocketData, setSocketInstance } from "@store/slices/trade";
+import { setSelectedWallet, setWallets, WalletSliceState } from "@store/slices/wallet";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { formatDate, isArrayEmpty, isObjectEmpty } from "utils/utils";
@@ -45,6 +46,9 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
   // const { socket } = useAppSelector((state) => state);
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const dispatch = useDispatch()
+  const {  wallets } = useAppSelector(
+    (state: { wallet: WalletSliceState }) => state.wallet
+  );
 
   useEffect(() => {
     if (wsTicket){
@@ -81,9 +85,10 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
 
     webSocket.onmessage = (event) => {
       const receivedData = JSON.parse(event.data);
+      
     
       if (receivedData.m === 'init_bars_data'){
-        const initialData = receivedData.d[0].TEST.map((socketData: any) => ({
+        const initialData = receivedData?.d[0]?.BTC?.map((socketData: any) => ({
           open: socketData?.o,
           high: socketData?.h,
           low: socketData?.l,
@@ -92,16 +97,10 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
           time: Date.parse(socketData?.t),
           value: (socketData?.o + socketData?.c)/2,
         }));
-        // initialData.forEach(item => {
-        // console.log(item);  
-        // setData(prevData => ({
-        //   ...prevData,
-        //   barchart:  item,
-        // }));
-        
-        // });
+
         setOldData(initialData)
         } else if (receivedData.m === 'b_d' && !isArrayEmpty(receivedData?.d)) {
+
           const socketData = receivedData.d[0];
           const newData: BarChartData = {
             open: socketData?.o,
@@ -120,13 +119,22 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
             };
           });
           
-        } else if (receivedData?.type === "send_message") {
-          if (receivedData.m === 'o_c') {
+        } else if (receivedData.m === 'o_c') {
+           
            const onlineTradersData: OnlineTradersData = {
              count: receivedData.d,
            };
            setData(prevData => ({ ...prevData, onlinetraders: onlineTradersData }));
-         }
+         
+      } else if( receivedData.m === 'wt'){
+        const updatedWallets = wallets.map((item)=>{
+          if(item.id == receivedData.d[0].id){
+            return {...item , balance:receivedData.d[0].balance}
+          }
+          return item
+        })
+        dispatch(setWallets(updatedWallets))
+        dispatch(setSelectedWallet(receivedData.d[0]))
       }
     };
 

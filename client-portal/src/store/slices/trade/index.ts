@@ -6,19 +6,27 @@ export interface TradeStates {
   duration: number;
   amount: number;
   trade: string | null;
+  tradeData: any;
   finished: boolean;
   socketData: any;
   socketInstance:any;
+  selectedForexTrade:any;
+  tradeTransaction: any;
+  forexData:any;
 }
 
 // Define the initial state using that type
 const initialState: TradeStates = {
-  duration: 2,
-  amount: 90,
+  duration: 1,
+  amount: 100,
   trade: null,
+  tradeData: null,
   finished:false,
   socketData: {},
-  socketInstance:null
+  forexData:null,
+  socketInstance:null,
+  selectedForexTrade:null,
+  tradeTransaction: 'error',
   
 };
 
@@ -46,6 +54,18 @@ export const tradeStateSlice = createSlice({
       state.amount = action.payload;
       return state;
     },
+    setTradeTransaction: (state, action: PayloadAction<any>) => {
+      state.tradeTransaction = action.payload;
+      return state;
+    },
+    setForexData: (state, action: PayloadAction<any>) => {
+      state.forexData = action.payload;
+      return state;
+    },
+    setSelectedForexTrade: (state, action: PayloadAction<any>) => {
+      state.selectedForexTrade = action.payload;
+      return state;
+    },
     setAmount: (state, action: PayloadAction<number>) => {
       state.amount = action.payload;
       return state;
@@ -56,6 +76,10 @@ export const tradeStateSlice = createSlice({
     },
     setTrade: (state, action: PayloadAction<string | null>) => {
       state.trade = action.payload;
+      return state;
+    },
+    setTradeData: (state, action: PayloadAction<any>) => {
+      state.tradeData = action.payload;
       return state;
     },
     setFinished: (state, action: PayloadAction<boolean>) => {
@@ -71,6 +95,6 @@ export const tradeStateSlice = createSlice({
   },
 });
 
-export const { setAmount, SetDuration,setTrade,setFinished,changeAmount,changeDuration, setSocketData,setSocketInstance } = tradeStateSlice.actions;
+export const { setAmount, SetDuration,setTrade,setFinished,changeAmount,changeDuration, setSocketData,setSocketInstance ,setTradeData,setSelectedForexTrade,setTradeTransaction,setForexData} = tradeStateSlice.actions;
 
 export default tradeStateSlice.reducer;

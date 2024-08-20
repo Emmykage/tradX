@@ -3,9 +3,11 @@ import "./header.scss"
 import { Select } from 'antd'
 import { DropdownIcon1 } from 'assets/icons'
 import SearchBar from 'components/searchBar/SearchBar'
+import { useTranslation } from 'react-i18next'
 // import { DropdownIcon } from 'assets/icons'
 
 const Header = () => {
+  const {t} = useTranslation()
   const handleChange = () => {
 
   }
@@ -13,10 +15,10 @@ const Header = () => {
     <div className='expDateHeader'>
       <div>
 
-        <h1>Expiration Dates</h1>
+        <h1>{t("expirationDate")}</h1>
      
-        <p>Futures instruments will be rolled over on the expiration dates as per the table below.</p>
-        <span>Total Assets: 491</span>
+        <p>{t("expirationDateTxt")}</p>
+        <span>{t("cfd_total_asset")}: 491</span>
       </div>
       
 

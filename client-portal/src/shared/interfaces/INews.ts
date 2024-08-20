@@ -1,13 +1,17 @@
+
 export default interface INews {
-  author: string;
-  content: string;
-  created_at: number;
-  headline: string;
-  id: number;
-  images: { size: string; url: string }[];
-  source: string;
-  summary?: string;
-  symbols: string[] | [];
-  updated_at: number;
-  url: string;
+  title: string;
+  link: string;
+  keywords: string[];
+  creator: string[];
+  video_url: string | null;
+  description: string;
+  content: string | null;
+  pubDate: string;
+  full_description: string;
+  image_url: string | null;
+  source_id: string;
+  country: string[];
+  category: string[];
+  language: string;
 }

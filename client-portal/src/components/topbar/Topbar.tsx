@@ -66,6 +66,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   const { symbol,assets } = useAppSelector((state: {markets: CryptoSliceState }) => state.markets);
   console.log(symbol);
   console.log(assets);
+  console.log(assetPairs)
   const ProfileImage = () => {
     if (loading) {
       return <Loading size="small" />;
@@ -90,7 +91,10 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
         setIsRightDrawerContent("account");
       }}
     >
-      <div className="dem">
+      {
+        selectedWallet?.name ? (
+          <>
+          <div className="dem">
 
       <span className="">{selectedWallet?.name || "Demo Account"}</span>
       <CaretDownIcon />
@@ -102,7 +106,13 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
           {formatMoney(selectedWallet?.balance) || "9,999.00"}
         </p>
       </div>
-    </div>
+          </>
+        ): (
+          <h1>loading</h1>
+        )
+      }
+      
+      </div>
   );
 
   return (
@@ -111,11 +121,16 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
         <div className="conversionDiv">
           <ArrowsSlider>
             <div className="asset-pair-container">
-              {assetPairs.map((assetPair: ITradeAssets, _i: number) => (
-                <>
-                  <AssetSelectionContainer data={assetPair} key={_i}/>
-                </>
-              ))}
+             
+
+               
+          { 
+          assetPairs.length > 0 && (
+          assetPairs.map((assetPair: ITradeAssets, _i: number) => (
+            <AssetSelectionContainer data={assetPair} key={_i} />
+          ))
+        )}
+          
             </div>
           </ArrowsSlider>
           <div className="top-bar-chart-options">

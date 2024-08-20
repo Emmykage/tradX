@@ -1,5 +1,5 @@
 import TradCalc from 'components/tradCalc/TradCalc'
-import CostExplanation from '../../../../components/tradingCostExplanation/CostExplanationComp'
+import CostExplanation from '../components/tradingCostExplanation/CostExplanationComp'
 import './cfdcalulator.scss' 
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'

@@ -106,6 +106,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+ .demoReloadIcon{
+ margin-top: 10px;
+ margin-right: 3px;
+ cursor: pointer;
+ padding: 6px 7px;
+ border-radius: 5px;
+ transition: all ease 0.1s;
+ &:hover{
+ background-color: rgba(139, 137, 137, 0.107);
+
+ }
+ svg{
+  margin-right: 1px;
+ }
+ }
   .leftSide {
     display: flex;
     align-items: center;

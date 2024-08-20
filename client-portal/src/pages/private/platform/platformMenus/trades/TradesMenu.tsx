@@ -7,14 +7,17 @@ import {
 } from "../../../../../assets/icons";
 import "./tradesMenu.scss";
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import { Col, Row, Select } from "antd";
 import SearchBar from "../../../../../components/searchBar/SearchBar";
 import { forex } from "../assets/assetsData";
 import { Dispatch, SetStateAction } from "react";
 import { LeftSubDrawer } from "../../types";
-import {  setAssetPairs } from "@store/slices/pairs";
+import {  setAssetPairs, setSelectedAssetPair } from "@store/slices/pairs";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
+import useTradeList from "api/wallet/useTradeList";
+import { useCookies } from "react-cookie";
+import { TradeStates } from "@store/slices/trade";
 
 interface TradesMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
@@ -50,19 +53,24 @@ const RenderData: React.FunctionComponent = (props: any) => {
 
   const {handleMenuClick} = props;
   const dispatch = useAppDispatch();
+  const [cookies] = useCookies(["access_token"]);
 
 
-  const [forexData] = useState(forex);
-  const [selectedForex, setSelectedForex] = useState(null);
+  
+  const {selectedForexTrade,forexData } = useAppSelector(
+    (state: { trades: TradeStates }) => state.trades
+  );
 
+  
 
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
     // setIsLeftSubDrawerOpen(false)
   };
   const handleSelectedForex =(item: any) => {
-    setSelectedForex(item);
+    console.log(item);
     dispatch(setAssetPairs(item))
+    dispatch(selectedForexTrade(item))
   };
   const style = {
     color: themeSelect == "night" ?  "#fff" : "#000",
@@ -119,16 +127,16 @@ const RenderData: React.FunctionComponent = (props: any) => {
           <p className="assetsListColTitle">24-hr changes</p>
         </Col>
 
-        {forexData.map((item, index) => (
+        {forexData?.map((item, index) => (
           <Col span={24} key={`assetListItem ${item.value + "_" + index}`}>
             <div
               className={`assetsListItem ${themeSelect}  ${
-                selectedForex === item.value ? "active" : ""
+                selectedForexTrade === item.value ? "active" : ""
               }`}
               onClick={() => handleSelectedForex(item)}
             >
               <div className="contentLeft">
-                <img src={item.image} />
+                <img src={"https://cfcdn.olymptrade.com/assets1/instrument/vector/CRYPTO_X.499cebb9147e3cb84b40da3583890048.svg"} />
                 <p className="itemTitle">{item.name}</p>
               </div>
               <div className="contentRight">
@@ -137,7 +145,7 @@ const RenderData: React.FunctionComponent = (props: any) => {
                     item?.inProfit ? "success" : "danger"
                   }`}
                 >
-                  {item.profit}%
+                  {3.5}%
                 </p>
                 <QuestionMarkIcon />
               </div>
@@ -279,6 +287,7 @@ const TradesMenu: React.FunctionComponent<TradesMenuProps> = ({
         {items.map((item) => {
           if (item.label === selectedTab) {
             const TabComponent = item.component;
+          
             return(
               <>
                {item.component}

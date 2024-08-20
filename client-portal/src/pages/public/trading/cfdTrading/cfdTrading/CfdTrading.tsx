@@ -1,18 +1,17 @@
+import { useTranslation } from "react-i18next";
 import "./CfdTrading.scss";
 import MainImg from "./main.png";
 
 const CfdTradingBlock = () => {
+  const {t} = useTranslation()
   return (
     <div className="cfdTradingContainer">
       <div>
-        <h2>CFD Trading</h2>
+        <h2>{t("CFDTrade")}</h2>
         <span>
-          Take a position on thousands of global markets by trading CFDs on
-          shares, indices, forex, commodities, bonds and cryptocurrencies. Join
-          us for a total trading experience with a powerful multi-asset
-          platform, low costs and expert support.
+          {t("CFDTradeTxt")}
         </span>
-        <button>Start Trading</button>
+        <button>{t("startTrade")}</button>
       </div>
       <img src={MainImg} alt="" />
     </div>
