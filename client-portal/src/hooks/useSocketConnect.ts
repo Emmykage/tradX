@@ -85,10 +85,10 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
 
     webSocket.onmessage = (event) => {
       const receivedData = JSON.parse(event.data);
-      console.log(receivedData.m);
+      
     
       if (receivedData.m === 'init_bars_data'){
-        const initialData = receivedData.d[0].TEST.map((socketData: any) => ({
+        const initialData = receivedData?.d[0]?.BTC?.map((socketData: any) => ({
           open: socketData?.o,
           high: socketData?.h,
           low: socketData?.l,
@@ -97,18 +97,11 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
           time: Date.parse(socketData?.t),
           value: (socketData?.o + socketData?.c)/2,
         }));
-        // initialData.forEach(item => {
-        // console.log(item);  
-        // setData(prevData => ({
-        //   ...prevData,
-        //   barchart:  item,
-        // }));
-        
-        // });
+
         setOldData(initialData)
         } else if (receivedData.m === 'b_d' && !isArrayEmpty(receivedData?.d)) {
+
           const socketData = receivedData.d[0];
-          console.log(receivedData);
           const newData: BarChartData = {
             open: socketData?.o,
             high: socketData?.h,
@@ -128,22 +121,18 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
           
         } else if (receivedData.m === 'o_c') {
            
-           console.log(receivedData?.d);
            const onlineTradersData: OnlineTradersData = {
              count: receivedData.d,
            };
            setData(prevData => ({ ...prevData, onlinetraders: onlineTradersData }));
          
       } else if( receivedData.m === 'wt'){
-        console.log(receivedData);
-        console.log('here');
         const updatedWallets = wallets.map((item)=>{
           if(item.id == receivedData.d[0].id){
             return {...item , balance:receivedData.d[0].balance}
           }
           return item
         })
-        console.log(updatedWallets);
         dispatch(setWallets(updatedWallets))
         dispatch(setSelectedWallet(receivedData.d[0]))
       }

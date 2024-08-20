@@ -89,7 +89,7 @@ const formatTimeHIS = (seconds: number, { short = false } = {})  => {
                     {t("walkthroughChooseTradeSubTexts",  
                       { tradeMoney: bidAmount, 
                         tradeReward: '$85' ,
-                        percentageReturn: `${(85*100)/bidAmount}%`,
+                        percentageReturn: `${Math.round((85*100)/bidAmount)}%`,
                         duration: bidDuration
                       }
                     )}

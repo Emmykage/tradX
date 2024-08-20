@@ -70,7 +70,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   // Area and bar data
 
   const [chartScale, setChartScale] = useState(6);
-  const [selectedChart, setSelectedChart] = useState('candlesticks');
+  const [selectedChart, setSelectedChart] = useState('area');
   const [selectedTimeScale, setSelectedTimeScale] = useState<any>(timeScaleMenu[8]);
   const storedScale = localStorage.getItem("scale");
   const { wsTicket } = useAppSelector((state) => state.user);
@@ -209,7 +209,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       topColor: "#0c2c3b",
       bottomColor: 'transparent',
       lineColor: "#1973FA",
-      lineWidth: 1
+      lineWidth: 2
       }) :chart.addBarSeries({
         upColor: 'green',
         downColor: 'red'
@@ -220,7 +220,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
  
 
     // @ts-ignore
-    console.log(oldData);
+
     if(oldData){
       const removeDuplicates = (data: any[]) => {
         const seen = new Set<number>();
@@ -365,18 +365,16 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   // second custom chart 
   useEffect(() => {
-    console.log(tradeTransaction);
     if (!chartRef.current || !seriesRef.current || !socketData?.barchart) return;
   
     const chart = chartRef.current;
     const series = seriesRef.current;
-    console.log(trade,tradeData?.open);
   
     const createOrUpdateMarker = () => {
       let marker = document.getElementById('textElement2');
       if (!marker) {
         marker = createCustomMarker2(tradeData?.open,trade);
-        console.log('called');
+
         marker.id = 'textElement2';
         chartContainerRef.current?.appendChild(marker);
         console.log('Marker created and appended');
@@ -451,14 +449,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
    let displayed = false
     const chart = chartRef.current;
     const series = seriesRef.current;
-    console.log(trade,tradeData?.open);
-  
     const createOrUpdateMarker = () => {
       let marker = document.getElementById('textElement4');
-      console.log(marker);
+
       if (!marker) {
         marker = FinishedTradeMarker(tradeData?.open,'won');
-        console.log('called');
+
         marker.id = 'textElement4';
         chartContainerRef.current?.appendChild(marker);
         console.log('Marker created and appended');
@@ -466,7 +462,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         marker = FinishedTradeMarker(tradeData?.open,'won');
         marker.id = 'textElement4';
         chartContainerRef.current?.appendChild(marker);
-        console.log('called here too');
+
       }
   
   
@@ -497,7 +493,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     updateMarkerPosition()
     };
     setTimeout(() => {
-      console.log('hellow');
       if(!displayed){
 
         requestAnimationFrame(createOrUpdateMarker);
@@ -670,13 +665,13 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       type: 'drop-down',
       position: 'right',
       menus: [
-        // {
-        //   text: 'Area',
-        //   onclick: () => handleChartSelectionClick('area'),
-        //   icon: <AreaChartIcon />
-        // },
         {
-          text: 'Japanese candlesticks',
+          text: 'Area Chart',
+          onclick: () => handleChartSelectionClick('area'),
+          icon: <AreaChartIcon />
+        },
+        {
+          text: 'Candlesticks',
           onclick: () => handleChartSelectionClick('candlesticks'),
           icon: <CandleStickIcon />
         },
@@ -684,12 +679,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           text: 'Bars',
           onclick: () => handleChartSelectionClick('bar'),
           icon: <BarChartIcon />
-        },
-        {
-          text: 'AreaChart',
-          onclick: () => handleChartSelectionClick('area'),
-          icon: <AreaChartIcon />
         }
+        
     ]
     },
     {
@@ -831,8 +822,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     
             {chartInitialData ? (
              <div className="chart-container"  style={{ height: "100%", color:"white", position: 'relative' }}>
-               {/* pass dummy data newCandleData */}
-              {/* <MainChart data={newCandleData} chartScale={chartScale}  /> */}
               {  renderSelectedChartType() }
               <div className="chart-options">
                 {chartOptionMenus.map((data, _i) => (
