@@ -209,7 +209,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       topColor: "#0c2c3b",
       bottomColor: 'transparent',
       lineColor: "#1973FA",
-      lineWidth: 1
+      lineWidth: 2
       }) :chart.addBarSeries({
         upColor: 'green',
         downColor: 'red'
