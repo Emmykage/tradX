@@ -36,15 +36,18 @@ const CreateAccount: React.FC = (props) => {
     phone_number: ''
   })
   const { mutate, isPending } = useRegister({
-    onSuccess: () => {
+    onSuccess: (data) => {
       reset();
       toast.success(
         "Success! An email has been sent to your account. Please verify your email to complete the registration process."
       );
     },
+    onError: (error) => {
+      // console.log(error, 'here');
+    },
   });
 
-  const onSubmit: SubmitHandler<SignUpFormData> = (formData) => {
+  const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
     mutate(formData);
   };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {

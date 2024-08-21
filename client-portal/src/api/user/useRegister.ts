@@ -14,7 +14,6 @@ export async function fethRegister(data: any): Promise<boolean> {
       body: JSON.stringify(data),
     });
     const result = await response.json();
-    console.log("sign up response:" , result)
 
     if (!response.ok) {
       // Object.keys(result).forEach((field) => {
@@ -54,6 +53,7 @@ export const useRegister = (props: useRegisterProps) => {
     },
     onError: (error, variables, context) => {
       if (onErrorOverride) {
+        console.log(error, 'occured')
         onErrorOverride(error, variables, context);
       }
     },
