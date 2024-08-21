@@ -17,10 +17,11 @@ import useLogin from 'api/user/useLogin';
 
 interface SignInFormProps {
     setForgotPasswordView: React.Dispatch<React.SetStateAction<boolean>>;
+    handleNext: () => void
   }
   
 
-const EmailSignInForm: React.FC = () => {
+const EmailSignInForm: React.FC<SignInFormProps> = ({handleNext}) => {
   const {  signInTab } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
@@ -28,15 +29,17 @@ const EmailSignInForm: React.FC = () => {
   const [, setCookie] = useCookies(["step","access_token", "refresh_token",]);
   const navigate = useNavigate();
 
-  const { handleSubmit, register } = useForm<ISignInForm>();
+  const { handleSubmit, register, formState: {errors} } = useForm<ISignInForm>();
   const { mutate, isPending } = useLogin({
     onSuccess: (data) => {
       const expirationInSeconds = 270;
       setCookie("access_token", data.access, { maxAge: expirationInSeconds });
       setCookie("refresh_token", data.refresh);
       setCookie("step",'')
+      handleNext()
 
-      data?.user.is_walkthrough ? navigate('/platform') : navigate("/welcome");
+
+      // data?.user.is_walkthrough ? navigate('/platform') : navigate("/welcome");
      
       
     },
@@ -48,6 +51,7 @@ const EmailSignInForm: React.FC = () => {
 
 
   const onSubmit: SubmitHandler<ISignInForm> = (data) => {
+    console.log(data)
     mutate(data);
   };
 
@@ -70,7 +74,8 @@ const EmailSignInForm: React.FC = () => {
             <div className="flex-1">          
                 <Form.Item
                 name="email"
-                rules={[{ required: true, message: "Email is required" }]}
+                validateStatus={errors.email ? "error" : ""}
+                help={errors.email?.message}
             >
                 <label htmlFor="" className="text-base text-white">Email Address</label>
                 <input
@@ -78,7 +83,10 @@ const EmailSignInForm: React.FC = () => {
                 type="email"
                 id="email"
                 placeholder="Email you email address"
-                {...register("email")}
+                {...register("email", {
+                  required: "Email is required" }
+                
+                )}
                 />
             </Form.Item>
             </div>
@@ -89,8 +97,11 @@ const EmailSignInForm: React.FC = () => {
                 <div className="flex-1">
                 <Form.Item
                     name="password"
-                    rules={[{ required: true, message: "Password is required" }]}
-                >
+                    validateStatus={errors.password ? "error" : ""}
+                    help={errors.email?.message}
+
+
+                    >
                     <label htmlFor="password" className="text-white">Password</label>
                     <div className="relative">
                     <input
@@ -98,7 +109,9 @@ const EmailSignInForm: React.FC = () => {
                     type= {reveal ? "text" : "password"}
                     id="password"
                     placeholder="Enter your password"
-                    {...register("password")}
+                    {...register("password", {
+                      required: "your passwod is required"
+                    })}
                     />
                     <span onClick={()=> setReveal(prev => !prev) } className="absolute top-1/2 -translate-y-1/2 right-2">
                     {reveal ? <UnSee/> : <See/>}

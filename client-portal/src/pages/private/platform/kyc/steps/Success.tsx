@@ -1,7 +1,13 @@
 import React from 'react'
 import successIcon from '../../../../../assets/icons/kyc/Illustration.svg'
+import { useNavigate } from 'react-router-dom'
 
 const SuccessView = () => {
+  const navigate = useNavigate()
+  const handleNav = () => {
+    navigate('/platform') 
+
+  }
   return (
     <div className='max-w-md w-full successWrapper formContainer '>
         <span className=' m-auto block text-center w-max'>
@@ -13,7 +19,7 @@ const SuccessView = () => {
         Go to your dashboard
         </h4>
         
-        <button className='w-full py-6 my-10 '>Go to dashboard </button>
+        <button onClick={handleNav} className='w-full py-6 my-10 '>Go to dashboard </button>
     </div>
   )
 }

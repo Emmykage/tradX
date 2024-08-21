@@ -18,7 +18,11 @@ interface SignUpFormData {
   confirm_password: string;
 }
 
-const CreateAccount: React.FC = ({}) => {
+interface createAccountProps {
+   handleNext: () => void
+}
+
+const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
   const { signInTab } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
@@ -31,6 +35,7 @@ const CreateAccount: React.FC = ({}) => {
       toast.success(
         "Success! An email has been sent to your account. Please verify your email to complete the registration process."
       );
+      handleNext()
     },
   });
 

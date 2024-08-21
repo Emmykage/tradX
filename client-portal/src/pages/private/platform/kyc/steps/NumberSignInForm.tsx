@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import { GlobalStates, setSignInTab } from "@store/slices/global";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@store/hooks";
-import useRegister from "api/user/useRegister";
 import { ExclaimIcon, See, UnSee } from "assets/icons";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -17,10 +16,12 @@ import useLogin from 'api/user/useLogin';
 
 interface PhoneInFormProps {
     setForgotPasswordView: React.Dispatch<React.SetStateAction<boolean>>;
+    handleNext: () => void
+
   }
   
 
-const PhoneSignInForm: React.FC = () => {
+const PhoneSignInForm: React.FC<PhoneInFormProps> = ({handleNext}) => {
   const {  signInTab } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
@@ -28,7 +29,7 @@ const PhoneSignInForm: React.FC = () => {
   const [, setCookie] = useCookies(["step","access_token", "refresh_token",]);
   const navigate = useNavigate();
 
-  const { handleSubmit, register } = useForm<ISignInForm>();
+  const { handleSubmit, register, formState: {errors} } = useForm<ISignInForm>();
   const { mutate, isPending } = useLogin({
     onSuccess: (data) => {
       const expirationInSeconds = 270;
@@ -37,7 +38,7 @@ const PhoneSignInForm: React.FC = () => {
       setCookie("step",'')
 
       data?.user.is_walkthrough ? navigate('/platform') : navigate("/welcome");
-     
+      handleNext()
       
     },
     onError: () => {},
@@ -70,15 +71,19 @@ const PhoneSignInForm: React.FC = () => {
             <div className="flex-1">          
                 <Form.Item
                 name="phone_number"
-                rules={[{ required: true, message: "Email is required" }]}
-            >
-                <label htmlFor="" className="text-base text-white">Phine Number</label>
+                validateStatus={errors.phone_number ? "error" : ""}
+                help={errors.phone_number?.message}
+
+                >
+                <label htmlFor="" className="text-base text-white">Phone Number</label>
                 <input
                 className="w-full py-3 px-4 bg-transparent"
                 type="text"
                 id="pone_number"
                 placeholder="Enter your phone Number"
-                {...register("phone_number")}
+                {...register("phone_number", {
+                    required: "Phone Number is required"
+                })}
                 />
             </Form.Item>
             </div>
@@ -89,8 +94,10 @@ const PhoneSignInForm: React.FC = () => {
                 <div className="flex-1">
                 <Form.Item
                     name="password"
-                    rules={[{ required: true, message: "Password is required" }]}
-                >
+                    validateStatus={errors.password ? "error" : ""}
+                    help={errors.password?.message}
+
+                    >
                     <label htmlFor="password" className="text-white">Password</label>
                     <div className="relative">
                     <input
@@ -98,7 +105,9 @@ const PhoneSignInForm: React.FC = () => {
                     type= {reveal ? "text" : "password"}
                     id="password"
                     placeholder="Enter your password"
-                    {...register("password")}
+                    {...register("password", {
+                        required: "Password is required"
+                    })}
                     />
                     <span onClick={()=> setReveal(prev => !prev) } className="absolute top-1/2 -translate-y-1/2 right-2">
                     {reveal ? <UnSee/> : <See/>}

@@ -14,8 +14,10 @@ import SuccessView from './steps/Success'
 import DocumnetUpload from './steps/DocumentUpload'
 
 const KYC = () => {
-  const [step, setStep] = useState(1)
-  const [signInProcess, setSignInProcess] = useState("email")
+  const [step, setStep] = useState(4)
+  const [forgotPasswordView, setForgotPasswordView] = useState(false);
+
+  const [signInProcess, setSignInProcess] = useState<string>("email")
   const handleNextPage = () => {
     if(step == 5 ){
       setStep(1)
@@ -31,17 +33,30 @@ const KYC = () => {
     switch (step) {
       case 1:
       return <CreateAccount
-
+          handleNext={handleNextPage }
       />
         
       case 2:
-      return <SignInOptions/>
+      return <SignInOptions
+      handleNext={handleNextPage }
+      setSignInProcess={setSignInProcess}
+      />
           
       case 3:
-       return  signInProcess=="email" ?  <SignInForm/>  : <PhoneSignInForm/>
+       return  signInProcess=="email" ?  
+       <SignInForm
+       handleNext={handleNextPage }
+       setForgotPasswordView={setForgotPasswordView}
+
+       />  : <PhoneSignInForm
+       handleNext={handleNextPage }
+       setForgotPasswordView={setForgotPasswordView}
+
+      />
             
       case 4:
-        return  <OTP/>
+        return  <OTP
+        handleNext={handleNextPage}/>
       
       case 5:
         return <SuccessView/>
