@@ -15,7 +15,7 @@ import DocumentReviewApprove from './steps/DocumentReviewApproved'
 import DocumentReviewRejected from './steps/DocumentReviewRejected'
 
 const KYC = () => {
-  const [step, setStep] = useState(7)
+  const [step, setStep] = useState(6)
   const [forgotPasswordView, setForgotPasswordView] = useState(false);
 
   const [signInProcess, setSignInProcess] = useState<string>("email")

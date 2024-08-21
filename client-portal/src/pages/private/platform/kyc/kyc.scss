@@ -21,6 +21,15 @@
 
 
 .formContainer{
+    button{            
+        position: relative;
+
+        border-radius: 10px;
+        background: linear-gradient(269deg, rgba(0, 148, 255, 0.36) 2.39%, rgba(0, 148, 255, 0) 107.19%);
+        box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+        color: #fff;
+    }
+
     input{
         border: 1px solid #90ACC1;
         border-radius: 6px;
@@ -125,7 +134,8 @@
         }
 
         .ant-select-selector{
-            padding: 24px;
+            padding: 22px  24px;
+            height: 24px;
             background: none;
             color: white;
             .ant-select-selection-placeholder{
@@ -251,3 +261,12 @@
     }
   }
   
+
+  .ant-picker .ant-picker-input >input {
+    color: #ffffff;
+  }
+
+
+  .bioDetails .date-input input::placeholder{
+    color: white;
+  }
