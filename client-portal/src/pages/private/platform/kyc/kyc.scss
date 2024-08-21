@@ -16,13 +16,6 @@
     }
 }
 
-.kyc-document{
-    background: #152338;
-    font-family: "Inter", sans-serif;
-
-
-}
-
 .formContainer{
     input{
         border: 1px solid #90ACC1;
@@ -213,6 +206,18 @@
             }
         }
       
+    }
+
+    &.kyc-document{
+        max-width: 700px;
+        font-family: "Inter", sans-serif;
+
+        button{
+            width: max-content;
+            padding:12px 50px;
+        }
+    
+    
     }
 
 

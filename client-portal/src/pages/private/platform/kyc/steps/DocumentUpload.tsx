@@ -13,8 +13,8 @@ const DocumnetUpload = () => {
 
   console.log(data, "uploaded")
   return (
-    <div className='bg-[#152338]  kyc-document flex justify-center items-center'>
-      <div className='m-auto max-w-2xl border border-gray-900 bg-black-100'>
+    <div className='bg-[#152338] formContainer  kyc-document flex justify-center items-center'>
+      <div className='m-auto w-full border border-gray-900 bg-black-100'>
         <h3 className='text-gray-100 text-2xl leading-6 my-2'> Enter you KYC document </h3>
         <p className='text-[#A3A8B0] my-4'>You can upload passport, national ID, or driver's licence</p>
 

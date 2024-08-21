@@ -14,7 +14,8 @@ const FileInput: React.FC<FileInputProps> = ({ handleChange }) => {
   const [uploadProgress, setUploadProgress] = useState<number | null>(null); 
   const [isSizeLimitExceeded, setIsSizeLimitExceeded] = useState(false);
   const [fileInfo, setFileInfo] = useState<{ name: string, size: number } | null>(null);
-console.log(uploadProgress)
+
+  console.log(uploadProgress)
   const props: UploadProps = {
     name: 'file',
     multiple: false,
@@ -22,7 +23,7 @@ console.log(uploadProgress)
     
     beforeUpload(file) {
       const fileSizeMB = file.size / 1024 / 1024; 
-      if (fileSizeMB > 3) {
+      if (fileSizeMB > 2) {
         setIsSizeLimitExceeded(true);
         message.error(`File size exceeds 3MB. File size: ${Math.round(fileSizeMB)}MB`);
         return false; 
@@ -38,17 +39,24 @@ console.log(uploadProgress)
       return false; 
     },
     
-    onRemove: () => {
-      setFileInfo(null); // Clear file info on removal
-    }
+    
   };
+
+  const onRemove = () => {
+    handleChange(new FormData);
+    setFileInfo(null); 
+    setUploadProgress(0);
+    console.log(uploadProgress, "remove")
+
+    
+  }
 
   const simulatedUpload = (file: File) => {
     const fileSizeKB = Math.round(file.size / 1024);
     console.log("Starting simulated upload");
 
     const totalSize = fileSizeKB;
-    const uploadSpeed = 600; 
+    const uploadSpeed = 1000; 
     const updateIntervals = 100; // ms
 
     let progress = 0;
@@ -106,7 +114,7 @@ console.log(uploadProgress)
             Change File
 
             </span>
-            <span className='text-[#E03137]'  onClick={() => setFileInfo(null)}>
+            <span className='text-[#E03137]'  onClick={onRemove}>
               Remove file
             </span>
           </div>
