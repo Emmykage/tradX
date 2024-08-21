@@ -48,7 +48,7 @@ const CreateAccount: React.FC = ({}) => {
       </p>
 
       <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
-        <div className="flex gap-10 justify-between  ">
+        <div className="flex flex-col md:flex-row md:gap-10 justify-between">
           <div className="flex-1">
             <Form.Item
                 name="email"
@@ -87,7 +87,7 @@ const CreateAccount: React.FC = ({}) => {
         </div>
 
 
-        <div className="flex gap-10">
+        <div className="flex flex-col md:flex-row md:gap-10">
           <div className="flex-1">
             <Form.Item
             validateStatus={errors.password ? "error" : ""}

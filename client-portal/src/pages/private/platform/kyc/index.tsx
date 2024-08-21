@@ -60,7 +60,7 @@ const KYC = () => {
         
     </span>
 
-    <button onClick={handleNextPage}> Next page </button>
+    {/* <button onClick={handleNextPage}> Next page </button> */}
 
     {renderPage()}
 
