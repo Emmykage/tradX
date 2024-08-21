@@ -25,14 +25,10 @@ const KYC = () => {
     }
   }
 
-  console.log(step)
-
   const renderPage = () => {
     switch (step) {
       case 1:
-      return <CreateAccount
-
-      />
+      return <CreateAccount/>
         
       case 2:
       return <SignInOptions/>
@@ -50,34 +46,33 @@ const KYC = () => {
   }
 }
   return(
-    <div className='kycWrapper relative'>
+    <div className="kycWrapper  relative">
       <KYCHeader />
+      <div className='max-w-[620px] flex justify-center items-center min-h-[100vh]  h-full pt-24 lg:pt-16  w-full mx-auto '>
+        <div className="w-full">
+        <span className=' p-0 absolute bottom-0 right-10'>
+          <img src={HelpButton} alt="" className=''/>
+        </span>
 
-      <div className='flex justify-center items-center' style={{height: `calc(100vh - 80px)`}}>
-      <span className=' p-0 absolute bottom-0 right-10'>
-    <img src={HelpButton} alt="" className=''/>
+      {/* <button onClick={handleNextPage}> Next page </button> */}
 
-        
-    </span>
-
-    {/* <button onClick={handleNextPage}> Next page </button> */}
-
-    {renderPage()}
+      {renderPage()}
 
 
-      {/* <CreateAccount/> */}
-      {/* <SignInOptions/> */}
-      {/* <SignInForm/> */}
-      {/* <PhoneSignInForm/> */}
-      {/* <OTP/> */}
-      {/* <SuccessView/> */}
+        {/* <CreateAccount/> */}
+        {/* <SignInOptions/> */}
+        {/* <SignInForm/> */}
+        {/* <PhoneSignInForm/> */}
+        {/* <OTP/> */}
+        {/* <SuccessView/> */}
+
+
+        </div>
+
+        {/* <DocumnetUpload/> */}
 
 
       </div>
-
-      {/* <DocumnetUpload/> */}
-
-
     </div>
   )
 }

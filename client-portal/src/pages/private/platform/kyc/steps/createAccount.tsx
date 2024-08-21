@@ -9,6 +9,8 @@ import useRegister from "api/user/useRegister";
 import { ExclaimIcon, See, UnSee } from "assets/icons";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import FormInput from "../components/FormInput";
+import KYCButton from "../components/Button";
 
 interface SignUpFormData {
   email: string;
@@ -18,13 +20,21 @@ interface SignUpFormData {
   confirm_password: string;
 }
 
-const CreateAccount: React.FC = ({}) => {
+const CreateAccount: React.FC = (props) => {
+
   const { signInTab } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
   const { handleSubmit, register, reset, watch,  formState: {errors} } = useForm<SignUpFormData>();
   const dispatch = useDispatch();
   const [reveal, setReveal] = useState(false);
+  const [revealConfirmation, setRevealConfirmation] = useState(false);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    confirm_password: '',
+    phone_number: ''
+  })
   const { mutate, isPending } = useRegister({
     onSuccess: () => {
       reset();
@@ -34,83 +44,97 @@ const CreateAccount: React.FC = ({}) => {
     },
   });
 
-  const password = watch("password")
-  const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
-    console.log(data);
-    mutate(data);
+  const onSubmit: SubmitHandler<SignUpFormData> = (formData) => {
+    mutate(formData);
+  };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    })
   };
 
   return (
-    <div className="max-w-4xl w-full formContainer px-5">
-      <h5 className="text-white text-2xl font-semibold my-4">Create an account</h5>
-      <p className="text-white text-base font-medium my-6">
+    <div className="w-full formContainer px-5">
+      <h5 className="text-white text-2xl font-semibold mb-4">Create an account</h5>
+      <p className="text-white text-base font-medium mb-6">
         Create an account now and enjoy trading and many more!
       </p>
 
       <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
-        <div className="flex flex-col md:flex-row md:gap-10 justify-between">
+        <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
           <div className="flex-1">
             <Form.Item
                 name="email"
                 validateStatus={errors.email ? "error" : ""}
                 help={errors.email?.message}
-
+                rules={[
+                  {
+                    type: 'email',
+                    message: 'The input is not valid E-mail!',
+                  },
+                  { required: true, message: "Email is required" }
+                ]}
             >
-              <label htmlFor="email" className="text-base text-white">Email Address</label>
-              <input
-                className="w-full py-3 px-4 bg-transparent border bordergra"
+              
+              <FormInput
+                label="Email Address"
                 type="email"
                 id="email"
+                inputName="email"
                 placeholder="Email"
-                {...register("email", { required: "Email is required" })}     
-                         />
+                onChange={handleInputChange} 
+              />
             </Form.Item>
           </div>
 
-          <div className="flex-1">
+          <div className="flex-1 ">
             <Form.Item
-            validateStatus={errors.phone_number ? "error" : ""}
-            help={errors.phone_number?.message}
+              name="phone_number" 
+              validateStatus={errors.phone_number ? "error" : ""}
+              help={errors.phone_number?.message}
+              rules={[{ required: true, message:  "Phone Number is required" }]}
             >
-
-              <label htmlFor="phone_number" className="text-base text-white">Mobile Phone Number</label>
-              <input
-                className="loginInput w-full py-4"
+              <FormInput
+                label="Mobile Phone Number"
                 type="text"
                 id="phone_number"
                 placeholder="Phone number"
-                {...register("phone_number", { required: "Phone Number is so required" })}     
-                
+                inputName="phone_number" 
+                onChange={handleInputChange}  
               />
             </Form.Item>
           </div>
         </div>
 
 
-        <div className="flex flex-col md:flex-row md:gap-10">
+        <div className="flex flex-col md:flex-row gap-1 md:gap-4 mb-5">
           <div className="flex-1">
             <Form.Item
-            validateStatus={errors.password ? "error" : ""}
-            help={errors.password?.message}
-           
-           >
-              <label htmlFor="password" className="text-white">Password</label>
-              <div className="relative">
-                <input
-                  className="loginInput"
-                  type={reveal ? "text" : "password"}
-                  id="password"
-                  placeholder="Password"
-                  {...register("password", { required: "password is required" })}     
-                  />
-                <span onClick={() => setReveal(prev => !prev)} className="absolute top-1/2 -translate-y-1/2 right-2">
-                  {reveal ? <UnSee /> : <See />}
-                </span>
-              </div>
-              <p className="flex text-xs text-white gap-4 items-center my-3 mr-5">
-                <ExclaimIcon /> Password should be at least 8 characters long
-              </p>
+              name="password"
+              validateStatus={errors.password ? "error" : ""}
+              help={errors.password?.message}
+              rules={[{ required: true, message: "password is required" }]}
+            >
+             <FormInput
+                label="Password"
+                type={reveal? "text": "password"}
+                id="password"
+                placeholder="Password"
+                inputName="password"
+                icon={<> 
+                     <span onClick={() => setReveal(prev => !prev)}>
+                      {reveal ? <UnSee /> : <See />}
+                    </span>
+                </>} 
+                onChange={handleInputChange} 
+              />
+          
             </Form.Item>
+            <span className="flex text-[11.5px] mt-0 text-white gap-x-2 items-center  text-[#C1C1C3]">
+              <ExclaimIcon /> Password should be at least 8 characters long
+            </span>
           </div>
 
           <div className="flex-1">
@@ -118,24 +142,33 @@ const CreateAccount: React.FC = ({}) => {
               name="confirm_password"
               validateStatus={errors.confirm_password ? "error" :""}
               help={errors.confirm_password?.message}
-            >
-              <label htmlFor="confirm_password" className="text-white">Confirm Password</label>
-              <div className="relative">
-                <input
-                  className="loginInput"
-                  type={reveal ? "text" : "password"}
-                  id="confirm_password"
-                  placeholder="Confirm Password"
-                  {...register("confirm_password", 
-                    {required:  "confirm Password required",
-                    validate: value => value === password || "Passwords do not match"
+              rules={[
+                {required:  true, message: 'Please confirm your password'},
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue('password') === value) {
+                      return Promise.resolve();
                     }
-                  )}
-                />
-                <span onClick={() => setReveal(prev => !prev)} className="absolute top-1/2 -translate-y-1/2 right-2">
-                  {reveal ? <UnSee /> : <See />}
-                </span>
-              </div>
+                    return Promise.reject(new Error('The password that you entered do not match!'));
+                  },
+                }),
+              
+              ]}
+            >
+              
+              <FormInput
+                label="Confirm Password"
+                type={revealConfirmation? "text": "password"}
+                id="confirm_password"
+                inputName="confirm_password"
+                placeholder="Confirm Password"
+                icon={<> 
+                     <span onClick={() => setRevealConfirmation(prev => !prev)}>
+                      {revealConfirmation ? <UnSee /> : <See />}
+                    </span>
+                </>}
+                onChange={handleInputChange} 
+              />
             </Form.Item>
           </div>
         </div>
@@ -144,18 +177,16 @@ const CreateAccount: React.FC = ({}) => {
           <Checkbox className="custom-checkbox">I agree to the <a className="text-[#0094FF]">terms and Conditions</a></Checkbox>
         </Form.Item>
 
-        <Form.Item name="notice" valuePropName="checked">
+        <Form.Item name="notice" valuePropName="checked" className="">
           <Checkbox className="custom-checkbox">I accept messages, calls and emails.</Checkbox>
         </Form.Item>
-
-        <Button
-          type="primary"
-          htmlType="submit"
-          className="login"
-          loading={isPending}
-        >
-          Register
-        </Button>
+          <KYCButton
+            text="Register"
+            isLoading={isPending}
+            disable={isPending}
+            type="submit"
+            className="text-base font-semibold"
+          />
       </Form>
 
       <p className="text-base my-6 text-[#C1C1C3]">
