@@ -12,9 +12,10 @@ import OTP from './steps/OTP'
 import { SuccessIcon } from 'assets/icons'
 import SuccessView from './steps/Success'
 import DocumnetUpload from './steps/DocumentUpload'
+import BioDetails from './steps/BioDetails'
 
 const KYC = () => {
-  const [step, setStep] = useState(4)
+  const [step, setStep] = useState(6)
   const [forgotPasswordView, setForgotPasswordView] = useState(false);
 
   const [signInProcess, setSignInProcess] = useState<string>("email")
@@ -62,6 +63,8 @@ const KYC = () => {
         return <SuccessView/>
 
         case 6: 
+        return <BioDetails/>
+        case 7: 
         return <DocumnetUpload/>
 
       default:

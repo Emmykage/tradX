@@ -120,4 +120,37 @@
     }
 
 
+    &.bioDetails{
+        button{
+            width: max-content;
+            width: max-content;
+            border-radius: 12px;
+            padding: 0 80px;
+            height: 49px;
+
+          
+        }
+        .ant-form-item-control-input{
+            .ant-form-item-control-input-content{
+                .ant-picker{
+                    padding: 12px;
+                    background: none;
+                }
+            }
+         
+        }
+
+        .ant-select-selector{
+            padding: 24px;
+            background: none;
+            color: white;
+            .ant-select-selection-placeholder{
+                color: white;
+            }
+        }
+    
+
+    }
+
+
 }
