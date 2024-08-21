@@ -15,8 +15,10 @@ const SignInOptions: React.FC<signInOptionProps> = ({handleNext, setSignInProces
     }
   return (
     <div className='px-5 max-w-4xl w-full signOptions'>
-        <h5 className='text-2xl text-white font-semibold my-2'>Sign in to your account</h5>
-        <p className='text-base font-medium text-white my-6'>Welcome back! Sign in to your account and enjoy your trading!</p>
+        {/* <h5 className='text-2xl text-white font-semibold my-2'>Sign in to your account</h5>
+        <p className='text-base font-medium text-white my-6'>Welcome back! Sign in to your account and enjoy your trading!</p> */}
+        <h5 className="text-white text-2xl font-semibold mb-4">Sign in to your account</h5>
+        <p className="text-white text-base font-medium mb-6">Welcome back! Sign in to your account and enjoy your trading!</p>
 
         <div>
             <button onClick={()=> handleProceed("email")} className='w-full bg-[#17273E] text-[#C1C1C3]  hover:bg-[#17273e94] py-7 my-5 rounded-xl font-medium text-base text-center border border-[#00599A] cursor-pointer'>

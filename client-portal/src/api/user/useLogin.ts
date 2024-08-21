@@ -7,6 +7,7 @@ export async function fethLogin(data: ISignInForm): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
   console.log(getEnv("VITE_API_BASE_URL"), BASE_URL, 'Here');
   try {
+    console.log(data)
     const response = await fetch(`${BASE_URL}/user/token/`, {
       method: "POST",
       headers: {
@@ -16,6 +17,8 @@ export async function fethLogin(data: ISignInForm): Promise<boolean> {
       body: JSON.stringify(data),
     });
     const result = await response.json();
+
+    console.log(result);
 
     if (!response.ok) {
       toast.error(result.detail);

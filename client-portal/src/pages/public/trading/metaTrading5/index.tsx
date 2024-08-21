@@ -1,45 +1,48 @@
 import MetaTrader5Landing from './metaTrader5/MetaTrader5Landing'
-import TradingExperience from '../../../../components/experience/TradingExperience'
+import TradingExperience from '../components/experience/TradingExperience'
 import imageBgAdamLp from '../../../../assets/trading/adam-meta-trader-5.png'
-import PerksCard from 'components/perksCard/PerksCard'
-import MetaTradingComponent from '../../../../components/metaTrading/MetaTrading'
-import CTABanner from '../../../../components/call-to-action/CTABanner'
+import PerksCard from 'pages/public/trading/components/perksCard/PerksCard'
+import MetaTradingComponent from '../components/metaTrading/MetaTrading'
+import CTABanner from '../components/call-to-action/CTABanner'
 import Navbar from 'pages/public/home/commonComponents/navbar/Navbar'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
 import "./meta-5.scss"
 import {NeedMoreInfoData} from './data'
-import TradingCardInfo from 'components/tradingCardInfo/TradingCardInfo'
-
+import TradingCardInfo from 'pages/public/trading/components/tradingCardInfo/TradingCardInfo'
+import mgmtIcon from '../../../../assets/trading/meta-icon-1-bg.png'
+import algoIcon from '../../../../assets/trading/meta-icon-2-bg.png'
+import moreIcon from '../../../../assets/trading/meta-icon-3-bg.png'
+import { useTranslation } from 'react-i18next'
 const MetaTrading5 = () => {
+    const {t} = useTranslation()
     const items = [{
-        title: "Algorithmic Trading",
-        text: "Automate your trading with Expert Advisors that you can plug-in to the platform",
-        icon: "/trading-images/meta-icon-1-bg.png"
+        title: t("m5benefitTitle1"),
+        text: t("m5benefitTxt1"),
+        icon: mgmtIcon
     },
     {
-        title: "Fast Execution, Low Spreads",
-        text: "Execute trades fast and with low costs based on our pricing and trade infrastructure",
-        icon: "/trading-images/meta-icon-2-bg.png"
+        title: t("m5benefitTitle2"),
+        text:  t("m5benefitTxt2"),
+        icon: algoIcon
     },
     {
-        title: "Intuitive Charts",
-        text: "Fully customisable charts and a range of technical indicators",
-        icon: "/trading-images/meta-icon-3-bg.png"
+        title: t("m5benefitTitle3"),
+        text: t("m5benefitTxt3"),
+        icon: moreIcon
     }]
   return (
     <div className='tradingContainer meta-5'>
-        <Navbar/>
         <MetaTrader5Landing/>
         <TradingExperience  
             image={imageBgAdamLp} 
-            title={"Elevate your trading experience with MetaTrader 5"} 
-            text={"Use your markets.com account to seamlessly install MT5 and start trading right away in your desktop markets.com platform. The video tutorial above can walk you through the process. Explore here step-by-step instructions on adding a MetaTrader 5 trading account. Don't have a markets.com account yet? No worries, visit the markets.com Sign Up page and provide the required information to quickly complete full registration. "}
+            title={t("expMeta5Intro")} 
+            text={t("expMeta5IntroText")}
             button={true}
             />
 
-        <h2>Benefits of MT5</h2>
+        <h3>{t("benefiitM5")}</h3>
 
         <div className="cardWrapper">
             {items.map(item => (
@@ -51,12 +54,15 @@ const MetaTrading5 = () => {
             ))}
 
         </div>
+        <div className='bg-theme'>            
 
-        <MetaTradingComponent title='Trade using MT4 with tradex.io'
-            body='You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms'
+        <MetaTradingComponent title={t("tradeUsing5")}
+            body={t("tradeUsing5txt")}
             type= "mt5"
         />
         <CTABanner/>
+        </div>
+
         <NeedMoreInfo items={
             NeedMoreInfoData
         } />

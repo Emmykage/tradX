@@ -3,4 +3,5 @@ export default interface ITradeAssets {
     image?: string;
     value?: string;
     profit?: string;
+    symbol?: string
 };

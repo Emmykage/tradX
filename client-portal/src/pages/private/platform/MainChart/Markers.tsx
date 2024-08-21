@@ -1,4 +1,4 @@
-  export const createCustomMarker1 = (price:string, lineWidth = 307) => {
+  export const createCustomMarker1 = (price:string, lineWidth = 170) => {
     const marker = document.createElement('div');
     marker.id= 'textElement1'
     marker.style.display = 'flex';
@@ -94,7 +94,7 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     labelInner.style.display = 'flex';
     labelInner.style.backgroundColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `;
     labelInner.style.height = '20.5px';
-    labelInner.style.width = '62px';
+    labelInner.style.width = '87px';
     labelInner.style.borderRadius = '6px';
     labelInner.style.padding = '1.5px 3.5px 1.5px 0px';
     labelInner.style.position = 'absolute';
@@ -108,14 +108,14 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     span.textContent = `$${price}`;
     span.style.color = 'white';
     span.style.paddingLeft = '8px';
-    span.style.paddingRight = '8px';
+    span.style.paddingRight = '0px';
     span.style.fontSize = '12px';
     span.style.paddingTop = '2px';
     span.style.paddingBottom = '0';
 
     const svgContainer = document.createElement('div');
     svgContainer.style.marginTop = `${trade === 'down' ? '-2.1px' : '-5.3px'}`;
-    svgContainer.style.marginLeft = '-4px';
+    svgContainer.style.marginLeft = '0px';
 
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('width', '22px');
@@ -143,17 +143,17 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     solidLine.style.borderColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `;
     solidLine.style.position = 'absolute';
     solidLine.style.top = '3.1px';
-    solidLine.style.left = '8px';
+    solidLine.style.left = '4px';
   
     const dashedLine = document.createElement('div');
-    dashedLine.style.width = '185px'; 
+    dashedLine.style.width = '172px'; 
     dashedLine.style.height = '0.1px';
     dashedLine.style.borderWidth = '0.1px';
     dashedLine.style.borderStyle = 'dashed';
     dashedLine.style.borderColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `; 
     dashedLine.style.position = 'absolute';
     dashedLine.style.top = '3.1px';
-    dashedLine.style.right = '8px';
+    dashedLine.style.right = '0px';
 
     marker.appendChild(labelInner)
     labelInner.appendChild(span)
@@ -185,4 +185,40 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     marker.appendChild(span)
 
     return marker
+  }
+
+
+  export const FinishedTradeMarker = (price:number, trade:string)=>{
+    const marker = document.createElement('div');
+    marker.style.backgroundColor = `${trade == 'won' ? 'green' : 'red'}`;
+    marker.id= 'textElement4'
+    marker.style.color = 'white';
+    marker.style.width = '130px'
+    marker.style.zIndex = '10'
+    marker.style.padding = '0.25rem 0.75rem';
+    marker.style.position = 'absolute';
+    marker.style.clipPath = 'polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%)';
+
+    const resultHeading = document.createElement('h2');
+    resultHeading.textContent = 'Result';
+    resultHeading.style.fontWeight = 'bold';
+    marker.appendChild(resultHeading);
+
+    const priceContainer = document.createElement('div');
+    priceContainer.style.display = 'flex';
+
+    const dollarSign = document.createElement('h2');
+    dollarSign.textContent = '$';
+    dollarSign.style.fontWeight = 'bold';
+    priceContainer.appendChild(dollarSign);
+
+    const priceValue = document.createElement('h2');
+    priceValue.textContent = price.toFixed(2);
+    priceValue.style.fontWeight = 'bold';
+    priceContainer.appendChild(priceValue);
+
+    marker.appendChild(priceContainer);
+
+    return marker;
+
   }

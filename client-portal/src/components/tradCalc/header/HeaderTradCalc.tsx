@@ -1,16 +1,27 @@
 import { FC } from "react";
 import "./HeaderTradCalc.scss";
+import { NavLink } from "react-router-dom";
 
 interface HeaderTradCalcProps {
   titleHeader?: string;
   withRoute?: boolean
 }
 
-const items = [
-  "CFD Trading Calculator",
-  "Commodities Profit Calculator",
-  "Forex Profit Calculator",
-  "Forex Margin Calculator",
+const items = [{
+  label: "CFD Trading Calculator",
+  route: "/trading/cfdTradingCalculator"
+},
+{
+  label: "Commodities Profit Calculator",
+  route: "/trading/commoditesProfitCalculator"
+},
+{
+  label: "Forex Profit Calculator",
+  route: "/trading/forexProfitCalculator"
+},
+{label:  "Forex Margin Calculator",
+  route: "/trading/forexMarginCalculator"
+}
 ];
 
 export const HeaderTradCalc: FC<HeaderTradCalcProps> = ({ titleHeader, withRoute }) => {
@@ -21,12 +32,12 @@ export const HeaderTradCalc: FC<HeaderTradCalcProps> = ({ titleHeader, withRoute
           <h2>{titleHeader}</h2>
           <div className="headerTradCalcItem">
             {items.map((item, index) => (
-              <span
-                className={titleHeader === item ? "headerTradActive" : ""}
-                key={index + item}
+              <NavLink to={item.route}
+                className={titleHeader === item.label ? "headerTradActive" : ""}
+                key={index + item.label}
               >
-                {item}
-              </span>
+                {item.label}
+              </NavLink>
             ))}
           </div>
         </div>

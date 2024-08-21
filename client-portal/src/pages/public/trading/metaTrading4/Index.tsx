@@ -1,43 +1,48 @@
 import MetaTrader4Landing from './metaTrader4Landing/MetaTrader4'
-import TradingExperience from '../../../../components/experience/TradingExperience'
+import TradingExperience from '../components/experience/TradingExperience'
 import imageBgEve from '../../../../assets/trading/meta-trader-4-eve-img.png'
-import MetaTradingComponent from '../../../../components/metaTrading/MetaTrading'
-import CTABanner from '../../../../components/call-to-action/CTABanner'
+import MetaTradingComponent from '../components/metaTrading/MetaTrading'
+import CTABanner from '../components/call-to-action/CTABanner'
 import RegisterBlock from 'pages/public/markets/components/registerBlock/RegisterBlock'
 import Footer from 'pages/public/home/main/footer/Footer'
 import NeedMoreInfo from 'pages/public/markets/components/needMoteInfo/NeedMoreInfo'
 import './meta-4.scss'
 import {NeedMoreInfoData} from './data'
-import TradingCardInfo from 'components/tradingCardInfo/TradingCardInfo'
-
+import TradingCardInfo from 'pages/public/trading/components/tradingCardInfo/TradingCardInfo'
+import fastExIcon from  '../../../../assets/trading/meta-icon-2-bg.png'
+import intuitiveIcon from '../../../../assets/trading/meta-icon-3-bg.png'
+import algoIcon from "../../../../assets/trading/meta-icon-1-bg.png"
+import { useTranslation } from 'react-i18next'
+// import 
 const MetaTrading4 = () => {
+    const {t} = useTranslation()
     const items = [{
-        title: "Algorithmic Trading",
-        text: "Automate your trading with Expert Advisors that you can plug-in to the platform",
-        icon: "/trading-images/meta-icon-1-bg.png"
+        title: t("benefitTitle1"),
+        text: t("benefitTxt1"),
+        icon: algoIcon
     },
     {
-        title: "Fast Execution, Low Spreads",
-        text: "Execute trades fast and with low costs based on our pricing and trade infrastructure",
-        icon: "/trading-images/meta-icon-2-bg.png"
+        title: (t("benefitTitle2")),
+        text: (t("benefitTxt2")),
+        icon: fastExIcon
     },
     {
-        title: "Intuitive Charts",
-        text: "Fully customisable charts and a range of technical indicators",
-        icon: "/trading-images/meta-icon-3-bg.png"
+        title: t("benefitTitle3"),
+        text: t("benefitTxt3"),
+        icon: intuitiveIcon
     }]
   return (
     <div className='tradingContainer meta-4'>
         <MetaTrader4Landing/>
         <TradingExperience  
         image={imageBgEve} 
-        title={"Use MT4 to trade with tradex.io"} 
-        text={"If you already have a tradex.io account, you are all set. Now you can simply install MT4 and add a trading account via your desktop markets.com platform. For more information on how to add MetaTrader trading account please click here. If you don’t have a markets.com account yet, don’t worry – registering is easy and fast."}
+        title={t("expMeta4Intro")} 
+        text={t("expMeta4IntroText")}
         button={true}
         />
     
 
-            <h2>Benefits of MT4</h2>
+            <h3>{t("benefitsMT4")}</h3>
             <div className="cardWrapper">
                 {items.map(item => (
                     <TradingCardInfo 
@@ -48,13 +53,17 @@ const MetaTrading4 = () => {
                     />
                 ))}
             </div>
-            
-            <MetaTradingComponent title='Trade using MT4 with tradex.io'
-                body='You can access popular and easy-to-use web trading platform MetaTrader 4 with your markets.com account. A complete listing of our trading conditions for trading via MetaTrader platforms'
-                type= "mt4"
-            />
 
-            <CTABanner/>
+            <div className='bg-theme'>            
+                <MetaTradingComponent title={t("tradeUsing4")}
+                    body={t("tradeUsing4Text")}
+                    type= "mt4"
+                />
+
+                <CTABanner/>
+
+            </div>
+
    
         <NeedMoreInfo items={NeedMoreInfoData} />
         <RegisterBlock/>

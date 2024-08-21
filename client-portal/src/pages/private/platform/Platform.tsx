@@ -27,6 +27,7 @@ import {
 } from "./types";
 import MainChart from "./MainChart";
 import { initialData } from "./MainChart/data";
+import { initialCandleData } from "./MainChart/candleData";
 import { setAppearanceBackground } from "../../lib/utils";
 import { useAppSelector } from "@store/hooks";
 import { UserSliceState } from "@store/slices/user";
@@ -37,6 +38,13 @@ import DropdownMenu from "components/dropdownMenu/DropdownMenu";
 import { useNavigate } from "react-router-dom";
 import { ColorType, createChart, CrosshairMode, IChartApi, LineStyle, UTCTimestamp } from "lightweight-charts";
 import useSocketConnect from "hooks/useSocketConnect";
+import { createCustomMarker1, createCustomMarker2, FinishedTradeMarker } from "./MainChart/Markers";
+import { setForexData, TradeStates } from "@store/slices/trade";
+import Loading from "components/loading";
+import useTradeList from "api/wallet/useTradeList";
+import { setAssetPairs, setSelectedAssetPair } from "@store/slices/pairs";
+import { useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
 
 interface PlatformProps {}
 
@@ -62,18 +70,51 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   // Area and bar data
 
   const [chartScale, setChartScale] = useState(6);
-  const [selectedChart, setSelectedChart] = useState('candlesticks');
+  const [selectedChart, setSelectedChart] = useState('area');
   const [selectedTimeScale, setSelectedTimeScale] = useState<any>(timeScaleMenu[8]);
   const storedScale = localStorage.getItem("scale");
   const { wsTicket } = useAppSelector((state) => state.user);
+  const [cookies] = useCookies(["access_token"]);
+
   // Chart refs and constants
   let chartContainerRef = useRef<HTMLDivElement>(null);
   let chartRef = useRef<IChartApi>();
   let seriesRef = useRef(null);
+  let chart = undefined
+  let chartContainer = null
+  let candlestickSeries = null;
+
+  const dispatch = useDispatch()
+  const { mutate, isPending } = useTradeList({
+    onSuccess: (data:any) => {
+      // dispatch(setWallets(updatedWallets))
+     dispatch(setForexData(data.results))
+     dispatch(setAssetPairs(data.results[0]))
+     dispatch(setSelectedAssetPair(data.results[0]));
+    },
+    onError: (error) => {
+      console.log("fetching wallets error", error);
+    },
+  })
+
+  useEffect(()=>{
+    
+    mutate({
+      token: cookies.access_token,
+    });
+  },[])
 
   
 
+  
+  const {tradeTransaction,duration, trade,tradeData } = useAppSelector(
+    (state: { trades: TradeStates }) => state.trades
+  );
   const { data: socketData,oldData, socket } = useSocketConnect(wsTicket as string);
+  console.log('socket data' + socketData?.barchart);
+  console.log('object');
+  // console.log('socket data' + socketData?.onlinetraders?.count);
+  // console.log(socket);
   const colors = {
     backgroundColor: "transparent",
     lineColor: "#0094FF",
@@ -94,31 +135,31 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const { user, loading } = useAppSelector(
     (state: { user: UserSliceState }) => state.user
   );
-  const navigate = useNavigate();
+
+  // candle series chart data formatting 
+
+  const newCandleData= initialCandleData.map((d:any, _i: number)=>{
+    var t = new Date();
+    t.setSeconds(t.getSeconds() + _i);
+    // return {time: d[0]/1000, open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
+    return {time: Date.parse(t), open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
+  })
+
+
 
 
   const isWalkthroughSkipped = user?.is_walkthrough ?? true;
 
 
-  // console.log(user);
-
-  // useEffect(() => {
-  //   if (user?.is_walkthrough_completed) {
-  //     navigate('/welcome');
-  //   }
-  // }, [user, navigate]);
-
-  // useEffect(() => {
-  //   setChartInitialData(initialData);
-
-  // }, []);
+ 
 
   // Chart logic
   useEffect(() => {
+    if (!chartContainerRef.current) return;
 
-    const chartContainer = chartContainerRef.current!;
+     chartContainer = chartContainerRef.current!;
 
-    const chart = createChart(chartContainer, {
+     chart = createChart(chartContainer, {
       layout: {
         background: { type: ColorType.Solid, color: colors?.backgroundColor },
         // 'white',
@@ -141,37 +182,44 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         borderVisible: false,
         timeVisible: true,
         secondsVisible: true,
-        rightOffset: 30,
+        rightOffset: 70,
         allowShiftVisibleRangeOnWhitespaceReplacement: true,
       },
       width: chartContainer?.clientWidth,
       height: 300,
     });
-    let candlestickSeries = null;
+
+    const initialCandleData = [
+      { time: 1628164800, open: 30, high: 35, low: 25, close: 32 },
+      { time: 1628251200, open: 32, high: 38, low: 31, close: 36 },
+      // more data...
+    ];
     //  candle series 
-    if(selectedChart == 'candlesticks'){
-      candlestickSeries = chart.addCandlestickSeries({
+    const series = selectedChart === 'candlesticks' 
+    ? chart.addCandlestickSeries({
         upColor: 'green',
         downColor: 'red',
         borderDownColor: 'red',
         borderUpColor: 'green',
         wickDownColor: 'red',
         wickUpColor: 'green',
-      });
-
-    //   .ant-drawer-content.night.rightDrawer, .ant-drawer .ant-drawer-content.night {
-    //     background-color: #0e0f12;
-    // }
-     
-    }else{
-      candlestickSeries = chart.addBarSeries({
+      })
+    : selectedChart === 'area'? chart.addAreaSeries({
+      topColor: "#0c2c3b",
+      bottomColor: 'transparent',
+      lineColor: "#1973FA",
+      lineWidth: 2
+      }) :chart.addBarSeries({
         upColor: 'green',
         downColor: 'red'
-      });
-    }
+      })
+
+  chartRef.current = chart;
+  seriesRef.current = series;
+ 
 
     // @ts-ignore
-    seriesRef.current = candlestickSeries;  
+
     if(oldData){
       const removeDuplicates = (data: any[]) => {
         const seen = new Set<number>();
@@ -183,12 +231,24 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           return false;
         });
       };
+      // console.log(oldData);
       const sortedAndUniqueData = removeDuplicates(oldData.sort((a, b) => a.time - b.time));
+      
+        // Reformat data if the selected chart type is 'AreaSeries'
+  if (selectedChart === 'area') {
+    const reformattedData = sortedAndUniqueData.map(item => ({
+      time: item.time,     // Keep the time as is
+      value: item.close,   // Use 'close' as the 'value' for AreaSeries
+    }));
 
-      candlestickSeries.setData(sortedAndUniqueData);
+    // Set the reformatted data for AreaSeries
+    series.setData(reformattedData);
+  } else {
+    // For other chart types, use the sorted and unique data as is
+    series.setData(sortedAndUniqueData);
+  }
     }
 
-    chartRef.current = chart;
     
     chart.applyOptions({
         crosshair: {
@@ -228,13 +288,253 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     };
  
   }, [selectedChart,oldData]);
+  useEffect(() => {
+    if (!chartRef.current || !seriesRef.current || !socketData?.barchart) return;
+  
+    const chart = chartRef.current;
+    const series = seriesRef.current;
+  
+    const createOrUpdateMarker = () => {
+      let marker = document.getElementById('textElement1');
+      if (!marker) {
+        marker = createCustomMarker1(socketData.barchart?.open);
+        marker.id = 'textElement1';
+        chartContainerRef.current?.appendChild(marker);
+        console.log('Marker created and appended');
+      }
+  
+  
+      const updateMarkerPosition = () => {
+        if (!marker) return;
+
+
+        // Update the marker content with the latest value
+        const newValue = socketData.barchart?.open;
+        const priceTextElement = marker.querySelector('#price-text'); // Select the nested span
+    
+        if (priceTextElement && newValue !== undefined) {
+          priceTextElement.textContent = newValue.toString(); // Update the nested span's text content
+        }
+  
+        
+        const priceCoordinate = series.priceToCoordinate(socketData?.barchart?.close);
+        
+        let timeCoordinate = chart.timeScale().timeToCoordinate(socketData?.barchart?.timestamp);
+        
+      // if (timeCoordinate === null) {
+
+      //   // If the specified time is not found use the first visible time
+      //   const visibleRange = chart.timeScale().getVisibleRange();
+      //   if (visibleRange) {
+      //     timeCoordinate = chart.timeScale().timeToCoordinate(visibleRange.from);
+      //   }
+      // }
+      
+      if (priceCoordinate && timeCoordinate) {
+        marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
+        marker.style.left = `${timeCoordinate + 0}px`;
+        // console.log('Text position updated');
+      }else{
+        // console.log('failed to get coordinates');
+      }
+    }
+  
+    requestAnimationFrame(updateMarkerPosition);
+      chart.subscribeCrosshairMove(updateMarkerPosition);
+    };
+    createOrUpdateMarker();
+  
+  
+    // Update chart data
+    if(selectedChart === 'area'){
+      series.update({
+        value: socketData.barchart.close,
+        time: socketData.barchart.time
+      });
+
+    }else{
+      series.update(socketData.barchart);
+
+    }
+  
+    return () => {
+      chart.unsubscribeCrosshairMove(createOrUpdateMarker);
+    };
+  }, [socketData?.barchart]);
+
+  // second custom chart 
+  useEffect(() => {
+    if (!chartRef.current || !seriesRef.current || !socketData?.barchart) return;
+  
+    const chart = chartRef.current;
+    const series = seriesRef.current;
+  
+    const createOrUpdateMarker = () => {
+      let marker = document.getElementById('textElement2');
+      if (!marker) {
+        marker = createCustomMarker2(tradeData?.open,trade);
+
+        marker.id = 'textElement2';
+        chartContainerRef.current?.appendChild(marker);
+        console.log('Marker created and appended');
+      }else{
+        marker = createCustomMarker2(tradeData?.open,trade);
+        marker.id = 'textElement2';
+        chartContainerRef.current?.appendChild(marker);
+      }
+  
+  
+      const updateMarkerPosition = () => {
+        if (!marker) return;
+
+
+        // Update the marker content with the latest value
+        // const newValue = socketData.barchart?.open;
+        // const priceTextElement = marker.querySelector('#price-text'); // Select the nested span
+    
+        // if (priceTextElement && newValue !== undefined) {
+        //   priceTextElement.textContent = newValue.toString(); // Update the nested span's text content
+        // }
+  
+        
+        const priceCoordinate = series.priceToCoordinate(tradeData?.close);
+        
+        let timeCoordinate = chart.timeScale().timeToCoordinate(tradeData?.timestamp);
+        
+    
+      
+      if (priceCoordinate && timeCoordinate) {
+        marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
+        marker.style.left = `${timeCoordinate + 0}px`;
+        // console.log('Text position updated');
+      }else{
+        // console.log('failed to get coordinates');
+      }
+      requestAnimationFrame(updateMarkerPosition);
+
+      setTimeout(() => {
+      marker.remove()
+      }, duration * 60000);
+    }
+  
+    updateMarkerPosition()
+    };
+    requestAnimationFrame(createOrUpdateMarker);
+
+    
+  
+  
+    // Update chart data
+    if(selectedChart === 'area'){
+    series.update({
+      value: socketData.barchart.close,
+      time: socketData.barchart.time
+    });
+
+  }else{
+    series.update(socketData.barchart);
+
+  }
+  
+    return () => {
+      chart.unsubscribeCrosshairMove(createOrUpdateMarker);
+    };
+  }, [tradeTransaction]);
+
+  // finished trade custom indiciator
+
+  useEffect(() => {
+    if (!chartRef.current || !seriesRef.current || !socketData?.barchart) return;
+   let displayed = false
+    const chart = chartRef.current;
+    const series = seriesRef.current;
+    const createOrUpdateMarker = () => {
+      let marker = document.getElementById('textElement4');
+
+      if (!marker) {
+        marker = FinishedTradeMarker(tradeData?.open,'won');
+
+        marker.id = 'textElement4';
+        chartContainerRef.current?.appendChild(marker);
+        console.log('Marker created and appended');
+      }else{
+        marker = FinishedTradeMarker(tradeData?.open,'won');
+        marker.id = 'textElement4';
+        chartContainerRef.current?.appendChild(marker);
+
+      }
+  
+  
+      const updateMarkerPosition = () => {
+        if (!marker) return;
+
+        
+        const priceCoordinate = series.priceToCoordinate(socketData?.barchart?.close);
+        
+        let timeCoordinate = chart.timeScale().timeToCoordinate(tradeData?.timestamp + 60 );
+        
+    
+      
+      if (priceCoordinate && timeCoordinate) {
+        marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
+        marker.style.left = `${timeCoordinate - 130}px`;
+        // console.log('Text position updated');
+      }else{
+        // console.log('failed to get coordinates');
+      }
+      requestAnimationFrame(updateMarkerPosition);
+
+      setTimeout(() => {
+      marker.remove()
+      }, 60000);
+    }
+  
+    updateMarkerPosition()
+    };
+    setTimeout(() => {
+      if(!displayed){
+
+        requestAnimationFrame(createOrUpdateMarker);
+      }
+      displayed = true
+    }, duration * 1000);
+
+    
+  
+  
+    // Update chart data
+    if(selectedChart === 'area'){
+      series.update({
+        value: socketData.barchart.close,
+        time: socketData.barchart.time
+      });
+
+    }else{
+      series.update(socketData.barchart);
+
+    }
+  
+    return () => {
+      chart.unsubscribeCrosshairMove(createOrUpdateMarker);
+    };
+  }, [socketData?.barchart]);
 
  
   useEffect(() => {
         // @ts-ignore
     if(!isObjectEmpty(socketData?.barchart)){
       // @ts-ignore
-      seriesRef?.current?.update(socketData?.barchart);
+      if(selectedChart === 'area'){
+        seriesRef.current?.update({
+          value: socketData.barchart.close,
+          time: socketData.barchart.time
+        });
+  
+      }else{
+        seriesRef.current?.update(socketData.barchart);
+  
+      }
+    
 
     };
     
@@ -321,16 +621,26 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   
   const renderSelectedChartType = () => {
+    if (!oldData) {
+      return (
+        <Loading/>
+      );
+    }
+
     switch (selectedChart) {
-     
+      // Case for other charts can go here if needed
+      
       default:
-        
         return (
-          
           <> 
-            <MainChart data={oldData} selectedTimeScale={selectedTimeScale}  refs={{chartContainerRef, chartRef, seriesRef}}  chartScale={chartScale}  />
+            <MainChart 
+              data={oldData} 
+              selectedTimeScale={selectedTimeScale}  
+              refs={{ chartContainerRef, chartRef, seriesRef }}  
+              chartScale={chartScale}  
+            />
           </>
-        )
+        );
     }
   };
   
@@ -355,12 +665,12 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       position: 'right',
       menus: [
         {
-          text: 'Area',
+          text: 'Area Chart',
           onclick: () => handleChartSelectionClick('area'),
           icon: <AreaChartIcon />
         },
         {
-          text: 'Japanese candlesticks',
+          text: 'Candlesticks',
           onclick: () => handleChartSelectionClick('candlesticks'),
           icon: <CandleStickIcon />
         },
@@ -369,6 +679,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           onclick: () => handleChartSelectionClick('bar'),
           icon: <BarChartIcon />
         }
+        
     ]
     },
     {
@@ -510,9 +821,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     
             {chartInitialData ? (
              <div className="chart-container"  style={{ height: "100%", color:"white", position: 'relative' }}>
-               {/* pass dummy data newCandleData */}
-              {/* <MainChart data={newCandleData} chartScale={chartScale}  /> */}
-              {renderSelectedChartType()}
+              {  renderSelectedChartType() }
               <div className="chart-options">
                 {chartOptionMenus.map((data, _i) => (
                   <DropdownMenu key={_i} position={data.position} type={data?.type} menuItems={data.menus}>
@@ -541,7 +850,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
            
           </div>
           
-          <TradeForm bottomSidebarHeight={bottomSidebarHeight} />
+          <TradeForm bottomSidebarHeight={bottomSidebarHeight}  socketData={socketData?.barchart}/>
         </div>
       </div>
 

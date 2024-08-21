@@ -15,9 +15,11 @@ import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import { Col, Row } from "antd";
 import SecondaryButton from "../../../../../components/secondaryButton/SecondaryButton";
-import { setEditableWallet, WalletSliceState } from "@store/slices/wallet";
+import { setEditableWallet, setSelectedWallet, setWallets, WalletSliceState } from "@store/slices/wallet";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { formatMoney } from "utils/utils";
+import useWalletRefill from "api/wallet/useWalletReload";
+import { useCookies } from "react-cookie";
 
 interface AccountCardProps {
   icon: React.ReactNode;
@@ -51,9 +53,29 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
   setIsRightSubDrawerContent,
 }) => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const {  selectedWallet } = useAppSelector(
+  const [cookies] = useCookies(["access_token"]);
+
+  const {  wallets,selectedWallet } = useAppSelector(
     (state: { wallet: WalletSliceState }) => state.wallet
   );
+  
+  const {mutate, isPending} = useWalletRefill({
+    onSuccess: (data:any) => {
+
+      const updatedWallets = wallets.map((item)=>{
+        if(item.id == data.id){
+          return {...item , balance:data.balance}
+        }
+        return item
+      })
+      dispatch(setWallets(updatedWallets))
+      dispatch(setSelectedWallet(data))
+     
+    },
+    onError: (error) => {
+      console.log("fetching wallets error", error);
+    },
+  })
   const dropdownRef = useRef(null);
 
   const navigate = useNavigate();
@@ -62,6 +84,15 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
     event.stopPropagation();
     setDropdownVisible(!isDropdownVisible);
   };
+
+
+  const handleReload = ()=>{
+    console.log('reload');
+    mutate({
+      id: 3,
+      token: cookies.access_token,
+    });
+  }
 
   useEffect(() => {
     const handler = (e: any) => {
@@ -103,6 +134,12 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
               </div>
             </div>
 
+            <div className="demoReloadIcon"
+             onClick={handleReload} 
+             style={{display: accountData.id === 3 ? 'block': 'none'}}>
+              <ReloadIcon/>
+            </div>
+
             <div
               className="suffixIcon"
               style={{display: accountData.id === 3 ? 'none': 'block'}}
@@ -113,6 +150,7 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
               {tag ? <div className="tag">{tag}</div> : null}
 
               {suffixIcon}
+              
               {isDropdownVisible && (
                 <div className="dropdownMenu">
                   <div
@@ -204,17 +242,6 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
             <h1>{selectedWallet?.id }</h1> */}
           <Row gutter={10} className="buttons">
             <Col span={11}>
-              <SecondaryButton
-              backgroundColor="grey"
-                className="buttons-1"
-                Title="Withdraw"
-                onClick={() => {
-                  setIsRightSubDrawerOpen(true);
-                  setIsRightSubDrawerContent("withdraw");
-                }}
-              />
-            </Col>
-            <Col span={11}>
               <PrimaryButton
                 className="buttons-2"
                 Title="Deposit"
@@ -224,6 +251,17 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
                   setIsRightSubDrawerContent("payments-deposit");
                 }}
                 />
+            </Col>
+            <Col span={11}>
+              <SecondaryButton
+              backgroundColor="red"
+                className="buttons-1"
+                Title="Withdraw"
+                onClick={() => {
+                  setIsRightSubDrawerOpen(true);
+                  setIsRightSubDrawerContent("withdraw");
+                }}
+              />
             </Col>
           </Row>
           </div>
@@ -244,7 +282,12 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
                 <div className="secAmount">{secAmount}</div>
               </div>
             </div>
-
+            
+            <div className="demoReloadIcon"
+             onClick={handleReload} 
+             style={{display: accountData.id === 3 ? 'block': 'none'}}>
+              <ReloadIcon/>
+            </div>
             <div
               className="suffixIcon"
               style={{display: accountData.id === 3 ? 'none': 'block'}}
@@ -255,6 +298,7 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
               {tag ? <div className="tag">{tag}</div> : null}
 
               {suffixIcon}
+
               {isDropdownVisible && (
                 <div className="dropdownMenu">
                   <div
@@ -340,7 +384,7 @@ const AccountCard: React.FunctionComponent<AccountCardProps> = ({
               )}
             </div>
           </div>
-
+          
           <div  style={{ display: accountData.id === selectedWallet?.id && accountData.id !== 3 ? '' : 'none' }}>
             {/* <h1>{accountData.id}</h1>
             <h1>{selectedWallet?.id }</h1> */}

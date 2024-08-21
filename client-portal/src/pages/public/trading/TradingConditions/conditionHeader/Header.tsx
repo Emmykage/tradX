@@ -3,9 +3,11 @@ import "./header.scss"
 import { Select } from 'antd'
 import { DropdownIcon1 } from 'assets/icons'
 import SearchBar from 'components/searchBar/SearchBar'
+import { useTranslation } from 'react-i18next'
 // import { DropdownIcon } from 'assets/icons'
 
 const Header = () => {
+  const {t} = useTranslation()
   const handleChange = () => {
 
   }
@@ -13,9 +15,9 @@ const Header = () => {
     <div className='conditionHeader'>
       <div>
 
-        <h1>Trading Conditions</h1>
+        <h1>{t("tradingConditions")}</h1>
      
-        <p>You can trade a wide range of CFD instruments, in numerous asset classes, at markets.com, the home of online CFD trading. Trade with our easy-to-use, customisable platform and discover a world of opportunities.</p>
+        <p>{t("tradingConditinsTxt")}</p>
       </div>
       <div className='dropdown'>
         <Select 

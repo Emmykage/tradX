@@ -15,7 +15,7 @@ import DocumnetUpload from './steps/DocumentUpload'
 import BioDetails from './steps/BioDetails'
 
 const KYC = () => {
-  const [step, setStep] = useState(7)
+  const [step, setStep] = useState(6)
   const [forgotPasswordView, setForgotPasswordView] = useState(false);
 
   const [signInProcess, setSignInProcess] = useState<string>("email")
@@ -27,8 +27,6 @@ const KYC = () => {
 
     }
   }
-
-  console.log(step)
 
   const renderPage = () => {
     switch (step) {
@@ -74,15 +72,33 @@ const KYC = () => {
   }
 }
   return(
-    <div className='kycWrapper relative'>
+    <div className="kycWrapper  relative">
       <KYCHeader />
-      <div className='flex justify-center items-center' style={{height: `calc(100vh - 80px)`}}>
-      <span className=' p-0 absolute bottom-0 right-10'>
-        <img src={HelpButton} alt="" className=''/>
-      </span>
-       {renderPage()}
-      </div>
+      <div className='max-w-[620px] flex justify-center items-center min-h-[100vh]  h-full pt-24 lg:pt-16  w-full mx-auto '>
+        <div className="w-full">
+        <span className=' p-0 absolute bottom-0 right-10'>
+          <img src={HelpButton} alt="" className=''/>
+        </span>
 
+      {/* <button onClick={handleNextPage}> Next page </button> */}
+
+      {renderPage()}
+
+
+        {/* <CreateAccount/> */}
+        {/* <SignInOptions/> */}
+        {/* <SignInForm/> */}
+        {/* <PhoneSignInForm/> */}
+        {/* <OTP/> */}
+        {/* <SuccessView/> */}
+
+
+        </div>
+
+        {/* <DocumnetUpload/> */}
+
+
+      </div>
     </div>
   )
 }

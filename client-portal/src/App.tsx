@@ -29,9 +29,9 @@ import NotFoundPage from "pages/private/platform/platformMenus/notFound/NotFound
 import Trading from "pages/public/trading/Trading";
 // import ForexCalculator from "pages/public/trading/ForexProitCalculator/forexCalculator/ForexCalculator";
 import TradingConditions from "pages/public/trading/TradingConditions/Index";
+
 import CFDTrading from "pages/public/trading/cfdTrading";
-import EmailVerification from "pages/public/emailVerification/EmailVerification";
-import ForexProfitCalculator from "pages/public/trading/ForexProitCalculator";
+import ForexProfitCalculator from "pages/public/trading/ForexProfitCalculator";
 import KYC from "pages/private/platform/kyc";
 
 
@@ -48,11 +48,12 @@ const Shares = lazy(()=>import("pages/public/markets/shares/Shares"))
 const Ipo = lazy(()=>import("pages/public/markets/ipo/Ipo"))
 
 
+
 const TradingPlatform = lazy(()=>import("pages/public/trading/platform"))
 const MobileTrading = lazy(()=>import("pages/public/trading/tradingMobile"))
 const MetaTradingFour = lazy(()=>import("pages/public/trading/metaTrading4/Index"))
 const MetaTradingFive = lazy(()=>import("pages/public/trading/metaTrading5"))
-const CopyTrading = lazy(()=>import("pages/public/trading/trackTrades"))
+const CopyTrading = lazy(()=>import("pages/public/trading/CopyTrade"))
 const CFDTradingCalculator = lazy(()=>import("pages/public/trading/CFDCalculator"))
 const CommoditiesProfitCalculator = lazy(()=>import("pages/public/trading/CommoditiesProfitCal/Index"))
 const ForexMarginCalculator = lazy(()=>import("pages/public/trading/forexMarginCalculator"))
@@ -66,7 +67,7 @@ const SignIn = lazy(() => import("./pages/public/signIn/SignIn"));
 const Welcome = lazy(() => import("./pages/public/welcome/Welcome"));
 const Download = lazy(() => import("./pages/public/downloads/Download"));
 const Transactions = lazy(() => import("./pages/private/transactions/Transactions"));
-// const EmailVerification = lazy(() => import("pages/public/emailVerification/EmailVerification"));
+const EmailVerification = lazy(() => import("pages/public/emailVerification/EmailVerification"));
 const ResetPassword = lazy(() => import("pages/public/resetPassword/ResetPassword"));
 const Home = lazy(() => import("pages/public/home/main/Home"));
 const StatusDetails = lazy(() => import("./pages/public/statusDetails/StatusDetails"));
@@ -87,6 +88,8 @@ const App: React.FunctionComponent<AppProps> = () => {
   const { i18n } = useTranslation();
   document.body.dir = i18n.dir();
 
+  console.log(i18n)
+
   console.log(
     "Envrionment Variable: VITE_API_BASE_URL => ",
     getEnv("VITE_API_BASE_URL")
@@ -94,6 +97,7 @@ const App: React.FunctionComponent<AppProps> = () => {
   useInitializeData();
 
   useEffect(() => {
+    i18n.changeLanguage('en');
     const storedScale = localStorage.getItem("scale");
 
     if (storedScale) {
@@ -164,6 +168,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/trading/tradingConditions" element={<TradingConditions />} /> 
         <Route path="/trading/expirationDate" element={<ExpirationDates />} />  
         <Route path="/trading/cfdTrading" element={<CFDTrading />} />  
+
 
 
         <Route path="/trading" element={<Trading />} /> 
