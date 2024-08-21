@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Form, Input, Button, message } from 'antd';
 import { useForm } from 'react-hook-form';
 import { register } from 'module';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import useOTPVerification from 'api/user/useOTPVerication';
+import KYCButton from '../components/Button';
 
 
 interface OTPInputProps{
@@ -22,12 +23,11 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
 
   const navigate = useNavigate();
   const [, setCookie] = useCookies(["step","access_token", "refresh_token",]);
-
-
-
-
-
   const { handleSubmit, register, reset, formState: {errors} } = useForm<OTPInputProps>();
+
+  const [otp, setOtp] = useState(["", "", "", ""]);
+  const inputRef:any = [useRef(), useRef(), useRef(), useRef()];
+
   const { mutate, isPending } = useOTPVerification({
     onSuccess: (data) => {
       const expirationInSeconds = 270;
@@ -51,10 +51,38 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
 
   const onSubmit = handleSubmit((data) => mutate(data));
 
+  const handleInputChange = (i: number, e: any) => {
+    if (e <= "9" && e >= "0") {
+      setOtp((otp) => {
+        let temp = [...otp];
+        temp[i] = e;
+        return temp;
+      });
+      if (i < otp.length - 1) {
+        inputRef[i + 1].current.focus();
+      }
+    } else {
+      if (e == "Backspace") {
+        console.log(otp[i]);
+        if (otp[i] == "") {
+          if (i > 0) {
+            inputRef[i - 1].current.focus();
+          }
+        } else {
+          setOtp((otp) => {
+            let temp = [...otp];
+            temp[i] = "";
+            return temp;
+          });
+        }
+      }
+    }
+  }
+
   return (
-    <div className='px-5 max-w-4xl w-full formContainer otpForm'>
-      <h5 className='text-2xl text-white my-2'>OTP Verification</h5>
-      <p className='text-base font-medium my-6 text-[#F7F7F7]'>
+    <div className='w-full formContainer px-5 max-w-[520px] mx-auto'>
+      <h5 className="text-white text-2xl font-semibold my-4">OTP Verification</h5>
+      <p className='text-white text-base font-medium my-6'>
         We have sent a verification code to your email (or phone number). You can resend the code after 1 minute.
       </p>
       <a className='text-[#0094FF] block my-10' href="">
@@ -62,91 +90,27 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
       </a>
 
       <Form layout="vertical" onFinish={onSubmit} >
-        <div className='grid grid-cols-4 gap-6'>
-          <Form.Item 
-           name="otp1"
-           validateStatus={errors.otp1 ? "error" : ""}           
-           help={errors.otp1?.message}
-
-           >
-           <input 
-           id='otp1'
-           type="number"
-           className='py-8 rounded-xl' maxLength={1}
-           {...register("otp1", {
-            required: "field required"
-           })}
-           
-           />
-
-          </Form.Item>
-          <Form.Item 
-           name="otp2"
-           validateStatus={errors.otp2 ? "error" : ""}           
-           help={errors.otp1?.message}
-
-           >
-           <input 
-           id='otp2'
-           type="number"
-           className='py-8 rounded-xl' maxLength={1}
-           {...register("otp2", {
-            required: "field required"
-           })}
-           
-           />
-
-          </Form.Item>
-          <Form.Item 
-           name="otp3"
-           validateStatus={errors.otp3 ? "error" : ""}           
-           help={errors.otp1?.message}
-
-           >
-           <input 
-           id='otp3'
-           type="number"
-           className='py-8 rounded-xl' maxLength={1}
-           {...register("otp3", {
-            required: "field required"
-           })}
-           
-           />
-
-          </Form.Item>
-          <Form.Item 
-           name="otp4"
-           validateStatus={errors.otp4 ? "error" : ""}           
-           help={errors.otp1?.message}
-
-           >
-           <input 
-           id='otp4'
-           type="number"
-           className='py-8 rounded-xl' maxLength={1}
-           {...register("otp4", {
-            required: "field required"
-           })}
-           
-           />
-
-          </Form.Item>
+        <div className='grid grid-cols-4 gap-6 my-10'>
+          {otp.map((value, index) => (
+            <input
+              key={index}
+              type="number"
+              name={`${index}`}
+              ref={inputRef[index]}
+              value={value}
+              onKeyDown={(e) => handleInputChange(index, e.key)}
+              className=" px-5 py-6 flex justify-center items-center text-center font-semibold text-4xl block w-full 4 form-input  text-sm  rounded-xl focus:ring-0"
+            />
+          ))}
           
         </div>
-
-        {/* <Form.Item>
-          <Button type="primary" htmlType="submit" className='py-6 font-semibold text-white w-full my-10'>
-            Submit
-          </Button>
-        </Form.Item> */}
-        <Button
-        type="primary"
-        htmlType="submit"
-        className="login"
-        loading={isPending}
-      >
-        Sign In
-      </Button>
+      <KYCButton
+        text="Submit"
+        isLoading={isPending}
+        disable={isPending}
+        type="submit"
+        className="kyc-button text-base font-semibold"
+      />
       </Form>
     </div>
   );

@@ -18,7 +18,7 @@ const KYCButton = (props: any): JSX.Element => {
             // @ts-ignore
             type="button"
             onClick={action}
-            className={` ${className} ${disabled ? 'button-disabled' : ''} ${isLoading ? 'not-allowed' : ''}`}
+            className={`cursor-pointer ${className} ${disabled ? 'button-disabled' : ''} ${isLoading ? 'not-allowed' : ''}`}
             disabled={disabled}
             {...rest}
         >
