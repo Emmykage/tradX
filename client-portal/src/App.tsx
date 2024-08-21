@@ -31,8 +31,9 @@ import Trading from "pages/public/trading/Trading";
 import TradingConditions from "pages/public/trading/TradingConditions/Index";
 
 import CFDTrading from "pages/public/trading/cfdTrading";
-// import EmailVerification from "pages/public/emailVerification/EmailVerification";
-import ForexProfitCalculator from "pages/public/trading/ForexProfitCalculator";
+import EmailVerification from "pages/public/emailVerification/EmailVerification";
+import ForexProfitCalculator from "pages/public/trading/ForexProitCalculator";
+import KYC from "pages/private/platform/kyc";
 
 
 
@@ -175,6 +176,8 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
         <Route path="/password-reset" element={<ResetPassword />} />
+
+        <Route path="/kyc-document" element={<KYC/>}/>
        
         
         

@@ -1,0 +1,114 @@
+.kycWrapper{
+    height: 100vh;
+    background: #152338;
+    .signOptions{
+        button{
+            border: 1px solid #00599A;
+            // border: 1px solid white !important;
+        }
+    
+      }
+
+}
+
+.kyc-document{
+    background: #152338;
+
+
+    button{
+        border: 1px solid #A3A8B0;
+        color: #fff;
+
+    }
+    button.next{
+        background: linear-gradient(269.17deg, rgba(0, 148, 255, 0.36) 2.39%, rgba(0, 148, 255, 0) 107.19%);
+        
+    }
+
+
+}
+
+.formContainer{
+    input{
+        border: 1px solid #90ACC1;
+        border-radius: 6px;
+        background: none;
+        padding: 12px 16px;
+        width: 100%;
+        color: #fff;
+    }
+
+    .custom-checkbox .ant-form-item .agrree-terms{
+
+        margin-bottom: 0 !important;
+    }
+    .custom-checkbox .ant-checkbox-inner {
+        background-color: #f0f0f000; /* Custom background color */
+        border-radius: 4px; /* Custom border radius */
+        border: 1px solid #706E82;
+        height: 24px !important;
+        width: 24px !important;
+    }
+    
+    .custom-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+        background: #3a3a3a; /* Background color when checked */
+        border: 1px solid #706E82;
+        height: 18px ;
+        width: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .custom-checkbox .ant-checkbox-checked::after {
+        height: 18px !important;
+        width: 18px !important;
+        background: #3a3a3a; /* Background color when checked */
+
+        border-color: #fff; /* Color for the checkmark */
+    }
+
+
+
+    label {
+        cursor: pointer;
+        font-size: 14px;
+        color: #6b7280;
+
+        a {
+        color: #0094FF;
+        text-decoration: none;
+        }
+    }
+    .login{
+        background: linear-gradient(269.17deg, rgba(0, 148, 255, 0.36) 2.39%, rgba(0, 148, 255, 0) 107.19%);
+        width: 100%;
+        height: 49px;
+    }
+    &.otpForm{
+        input{
+
+            background: #152338;
+
+
+            border: 1px solid #D6DDEB;
+
+        }
+
+    }
+
+    button{
+        background: linear-gradient(269.17deg, rgba(0, 148, 255, 0.36) 2.39%, rgba(0, 148, 255, 0) 107.19%);
+        border: 1px solid;
+        border-image-source: linear-gradient(180deg, #27A2FF 0%, rgba(39, 162, 255, 0) 100%);
+
+    }
+
+    &.otpForm input{
+        padding: 15px 8px;
+        // background-color: red ;
+    }
+
+
+
+}
