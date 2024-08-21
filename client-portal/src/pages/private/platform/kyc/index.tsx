@@ -60,6 +60,10 @@ const KYC = () => {
       
       case 5:
         return <SuccessView/>
+
+        case 6: 
+        return <DocumnetUpload/>
+
       default:
       return null;
   }
@@ -67,31 +71,12 @@ const KYC = () => {
   return(
     <div className='kycWrapper relative'>
       <KYCHeader />
-
       <div className='flex justify-center items-center' style={{height: `calc(100vh - 80px)`}}>
       <span className=' p-0 absolute bottom-0 right-10'>
-    <img src={HelpButton} alt="" className=''/>
-
-        
-    </span>
-
-    {/* <button onClick={handleNextPage}> Next page </button> */}
-
-    {renderPage()}
-
-
-      {/* <CreateAccount/> */}
-      {/* <SignInOptions/> */}
-      {/* <SignInForm/> */}
-      {/* <PhoneSignInForm/> */}
-      {/* <OTP/> */}
-      {/* <SuccessView/> */}
-
-
+        <img src={HelpButton} alt="" className=''/>
+      </span>
+       {renderPage()}
       </div>
-
-      {/* <DocumnetUpload/> */}
-
 
     </div>
   )
