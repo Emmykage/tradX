@@ -38,10 +38,10 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
       // data?.user.is_walkthrough ? navigate('/platform') : navigate("/welcome");
 
 
-      data?.user.is_walkthrough ? navigate('/platform') : handleNext();
+      // data?.user.is_walkthrough ? navigate('/platform') : handleNext();
 
       
-      
+      handleNext();
 
      
       
@@ -81,16 +81,16 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
 
           </Form.Item>
           <Form.Item 
-           name="otp1"
-           validateStatus={errors.otp1 ? "error" : ""}           
+           name="otp2"
+           validateStatus={errors.otp2 ? "error" : ""}           
            help={errors.otp1?.message}
 
            >
            <input 
-           id='otp1'
+           id='otp2'
            type="number"
            className='py-8 rounded-xl' maxLength={1}
-           {...register("otp1", {
+           {...register("otp2", {
             required: "field required"
            })}
            
@@ -98,16 +98,16 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
 
           </Form.Item>
           <Form.Item 
-           name="otp1"
-           validateStatus={errors.otp1 ? "error" : ""}           
+           name="otp3"
+           validateStatus={errors.otp3 ? "error" : ""}           
            help={errors.otp1?.message}
 
            >
            <input 
-           id='otp1'
+           id='otp3'
            type="number"
            className='py-8 rounded-xl' maxLength={1}
-           {...register("otp1", {
+           {...register("otp3", {
             required: "field required"
            })}
            
@@ -115,16 +115,16 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
 
           </Form.Item>
           <Form.Item 
-           name="otp1"
-           validateStatus={errors.otp1 ? "error" : ""}           
+           name="otp4"
+           validateStatus={errors.otp4 ? "error" : ""}           
            help={errors.otp1?.message}
 
            >
            <input 
-           id='otp1'
+           id='otp4'
            type="number"
            className='py-8 rounded-xl' maxLength={1}
-           {...register("otp1", {
+           {...register("otp4", {
             required: "field required"
            })}
            
@@ -134,11 +134,19 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
           
         </div>
 
-        <Form.Item>
+        {/* <Form.Item>
           <Button type="primary" htmlType="submit" className='py-6 font-semibold text-white w-full my-10'>
             Submit
           </Button>
-        </Form.Item>
+        </Form.Item> */}
+        <Button
+        type="primary"
+        htmlType="submit"
+        className="login"
+        loading={isPending}
+      >
+        Sign In
+      </Button>
       </Form>
     </div>
   );
