@@ -104,21 +104,7 @@ const useInitializeData = () => {
     }
   }, [cookies.access_token, notificationListMutate]);
 
-  // GET the web-socket ticket for validation after the app running
-  const { mutate: webSocketTicketMutate } = useWebSocketTicket({
-    onSuccess: (data) => {
-      if (data?.ws_ticket) {
-        dispatch(setWSTicket(data?.ws_ticket));
-      }
-    },
-  });
 
-  useEffect(() => {
-    // Get the Web Socket Ticket Key
-    if (cookies.access_token) {
-      webSocketTicketMutate(cookies.access_token);
-    }
-  }, [cookies.access_token]);
 
   return { user, wallets };
 };

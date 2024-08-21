@@ -4,6 +4,7 @@ import SecondaryButton from "../../../../../components/secondaryButton/Secondary
 import "./cryptoPayments.scss";
 import QRCode from "react-qr-code";
 import { RightSubDrawerContent } from "../../types";
+import { useAppSelector } from "@store/hooks";
 
 interface CryptoPaymentsProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
@@ -12,6 +13,8 @@ interface CryptoPaymentsProps {
 const CryptoPayments: React.FunctionComponent<CryptoPaymentsProps> = ({
   setIsRightSubDrawerContent,
 }) => {
+  const { paymentMethodList,selectedPaymentMethod } = useAppSelector((state) => state.payment);
+console.log(selectedPaymentMethod);
   return (
     <div className="cryptoPayments">
       <div className="header">
@@ -26,12 +29,12 @@ const CryptoPayments: React.FunctionComponent<CryptoPaymentsProps> = ({
         <div className="address">
           <p className="depositAddress">Deposit Address:</p>
           <p className="depositAddressCode">
-            TR1iG5jcRL3Sd7pCtgMZVq2PDCSJNEwHkg
+            {selectedPaymentMethod?.account_id}
           </p>
         </div>
         <div className="address2">
           <p className="depositAddress">Network:</p>
-          <p className="depositAddressCode">TRC20</p>
+          <p className="depositAddressCode">{selectedPaymentMethod?.network}</p>
         </div>
         <p className="QRMessage">
           Scan the QR code with your mobile phone or copy the TRC20 address
@@ -44,7 +47,7 @@ const CryptoPayments: React.FunctionComponent<CryptoPaymentsProps> = ({
             className="QRCodeScan"
             size={56}
             style={{ height: "auto", maxWidth: "80%", width: "60%" }}
-            value="TR1iG5jcRL3Sd7pCtgMZVq2PDCSJNEwHkg"
+            value={selectedPaymentMethod?.account_id}
             viewBox={`0 0 56 56`}
           />
         </div>

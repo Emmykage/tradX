@@ -30,7 +30,7 @@ import { initialData } from "./MainChart/data";
 import { initialCandleData } from "./MainChart/candleData";
 import { setAppearanceBackground } from "../../lib/utils";
 import { useAppSelector } from "@store/hooks";
-import { UserSliceState } from "@store/slices/user";
+import { setWSTicket, UserSliceState } from "@store/slices/user";
 import { AreaChart } from "./MainChart/AreaChart";
 import {  isArrayEmpty, isObjectEmpty, timeScaleMenu } from "utils/utils";
 import DropdownMenu from "components/dropdownMenu/DropdownMenu";
@@ -45,6 +45,7 @@ import useTradeList from "api/wallet/useTradeList";
 import { setAssetPairs, setSelectedAssetPair } from "@store/slices/pairs";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
+import useWebSocketTicket from "api/user/useWebSocketTicket";
 
 interface PlatformProps {}
 
@@ -110,6 +111,22 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const {tradeTransaction,duration, trade,tradeData,tradeResult } = useAppSelector(
     (state: { trades: TradeStates }) => state.trades
   );
+    // GET the web-socket ticket for validation after the app running
+    const { mutate: webSocketTicketMutate } = useWebSocketTicket({
+      onSuccess: (data) => {
+        if (data?.ws_ticket) {
+          dispatch(setWSTicket(data?.ws_ticket));
+        }
+      },
+    });
+  
+    useEffect(() => {
+      // Get the Web Socket Ticket Key
+      if (cookies.access_token) {
+        webSocketTicketMutate(cookies.access_token);
+      }
+    }, [cookies.access_token]);
+    
   const { data: socketData,oldData, socket } = useSocketConnect(wsTicket as string);
   console.log('socket data' + socketData?.barchart);
   console.log('object');
@@ -372,7 +389,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     const createOrUpdateMarker = () => {
       let marker = document.getElementById('textElement2');
       if (!marker) {
-        marker = createCustomMarker2(tradeTransaction?.price_per_unit,trade);
+        console.log(tradeTransaction?.price_per_unit);
+        
+        const formatedPricePerUnit = tradeTransaction?.price_per_unit.replace(/00$/, "");
+        console.log(formatedPricePerUnit);
+        marker = createCustomMarker2(formatedPricePerUnit,trade);
         console.log('called');
         marker.id = 'textElement2';
         chartContainerRef.current?.appendChild(marker);
@@ -397,7 +418,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         // }
   
         
-        const priceCoordinate = series.priceToCoordinate(tradeTransaction?.close);
+        const tradePrice = (parseInt(socketData.barchart?.open) + parseInt(socketData?.barchart?.close))/2
+        const priceCoordinate = series.priceToCoordinate(tradePrice);
         const newTime = new Date(tradeTransaction?.created_at).getTime()
         
         console.log(tradeTransaction?.close);
@@ -417,7 +439,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       
       if (priceCoordinate && timeCoordinate) {
         marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
-        marker.style.left = `${timeCoordinate + 0}px`;
+        marker.style.left = `${timeCoordinate - 3}px`;
         // console.log('Text position updated');
       }else{
         // console.log('failed to get coordinates');
@@ -426,7 +448,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
       setTimeout(() => {
       marker.remove()
-      }, duration * 60 * 1000);
+      }, duration * 1000);
     }
   
     updateMarkerPosition()
@@ -483,8 +505,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       const updateMarkerPosition = () => {
         if (!marker) return;
 
-        
-        const priceCoordinate = series.priceToCoordinate(tradeResult[0]?.close);
+        console.log(tradeResult[0]?.close);
+        console.log(tradeTransaction?.close, tradeTransaction?.open);
+        const tradeResultPrice = (parseFloat(tradeTransaction?.close) + parseFloat(tradeTransaction?.open))/2
+        console.log(tradeResultPrice);
+        const priceCoordinate = series.priceToCoordinate(socketData.barchart?.open);
         // console.log(tradeResult[0].created_at);
         // console.log(tradeData.timestamp + 60 * 10000);
         const resultTime = new Date(tradeResult[0]?.result_time).getTime()
@@ -495,7 +520,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       
       if (priceCoordinate && timeCoordinate) {
         marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
-        marker.style.left = `${timeCoordinate - 130}px`;
+        marker.style.left = `${timeCoordinate - 85}px`;
         // console.log('Text position updated');
       }else{
         // console.log('failed to get coordinates');
@@ -624,8 +649,18 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       setChartScale(chartScale > 1? chartScale - 1 : chartScale);
     }
   };
+
+  const removeAllIndicators = ()=>{
+    const marker1 = document.getElementById('textElement2');
+    const marker2 = document.getElementById('textElement4');
+
+    marker1?.remove()
+    marker2?.remove()
+
+  }
   const handleChartSelectionClick = (type = "candlesticks") => {
     setSelectedChart(type);
+    removeAllIndicators()
   };
 
   
