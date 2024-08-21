@@ -7,3 +7,4 @@ export type { default as INotification } from "./INotification";
 export type { default as INews } from "./INews";
 export type { default as ITradeAssets } from "./ITradeAssets";
 export type { default as IBankCardPaymentForm } from "./IBankCardPaymentForm";
+export type { default as IOTPInputProps } from "./IOTPForm";
