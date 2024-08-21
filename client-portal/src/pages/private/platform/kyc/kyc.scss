@@ -20,16 +20,6 @@
     background: #152338;
     font-family: "Inter", sans-serif;
 
-    // button{
-    //     border: 1px solid #A3A8B0;
-    //     color: #fff;
-
-    // }
-    // button.next{
-    //     background: linear-gradient(269.17deg, rgba(0, 148, 255, 0.36) 2.39%, rgba(0, 148, 255, 0) 107.19%);
-        
-    // }
-
 
 }
 
@@ -178,6 +168,51 @@
         }
     
 
+    }
+
+
+
+    &.doc-review{
+        h5{
+            color: white;
+        }
+
+        button{            
+            position: relative;
+            width: 100%;
+            padding: 0.8rem 1.1rem 0.8rem 0.8rem;
+            border-radius: 10px;
+            background: linear-gradient(269deg, rgba(0, 148, 255, 0.36) 2.39%, rgba(0, 148, 255, 0) 107.19%);
+            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+            color: #fff;
+
+            // @media (max-width: 768px) {
+            //     width: 100%;
+                
+            // }
+        }
+
+        span{
+            &.rejected{
+                padding: 8px 16px;
+                border-radius: 8px;
+                color: #F97066;
+                background: #F044381F;
+
+        
+            }
+            &.approved{
+                padding: 8px 16px;
+                border-radius: 8px;
+                color: #B2FFA7;
+                ;
+                background: #B2FFA71F;
+                ;
+
+        
+            }
+        }
+      
     }
 
 

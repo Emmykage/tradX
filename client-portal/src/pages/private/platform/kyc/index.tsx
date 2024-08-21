@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import "./kyc.scss"
 import HelpButton from '../../../../assets/icons/kyc/Button.svg'
 
-import FileInput from 'components/fileInput/fileInput'
 import KYCHeader from './components/Header'
 import CreateAccount from './steps/createAccount'
 import SignInOptions from './steps/SignInOptions'
 import SignInForm from './steps/EmailSignIn'
 import PhoneSignInForm from './steps/NumberSignInForm'
 import OTP from './steps/OTP'
-import { SuccessIcon } from 'assets/icons'
 import SuccessView from './steps/Success'
 import DocumnetUpload from './steps/DocumentUpload'
 import BioDetails from './steps/BioDetails'
+import DocumentReviewApprove from './steps/DocumentReviewApproved'
+import DocumentReviewRejected from './steps/DocumentReviewRejected'
 
 const KYC = () => {
   const [step, setStep] = useState(7)
@@ -65,7 +65,14 @@ const KYC = () => {
         handleNext={handleNextPage}
         />
         case 7: 
-        return <DocumnetUpload/>
+        return <DocumnetUpload
+        handleNext={handleNextPage}
+        />
+
+        case 8:
+          return <DocumentReviewRejected/> 
+        case 9:
+          return <DocumentReviewApprove/>
 
       default:
       return null;

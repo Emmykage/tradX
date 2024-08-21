@@ -70,17 +70,17 @@ console.log(uploadProgress)
   };
 
   return (
-    <div className="fileInput max-w-md">
+    <div className="fileInput max-w-lg">
       {fileInfo && !isSizeLimitExceeded ? (
         <>
         <div className='progress-wrapper border-2 border-[#0094FF]'>
-          <div className='text-wrap flex gap-5 items-center'>
+          <div className='text-wrap bg-red-0 flex gap-5 items-center'>
             <p className="ant-upload-drag-icon">
               <FIleIcon />
             </p>
             <div>
               <p className='text-[#A3A8B0] flex-1 break-words text-wrap max-w-sm text-ellipsis whitespace-nowrap overflow-hidden'>
-                {fileInfo.name}
+                {fileInfo.name.substring(0, 70)}
               </p>
               <p className='text-[#A3A8B0]'>
                 {fileInfo.size}KB
@@ -144,7 +144,7 @@ console.log(uploadProgress)
               <FileAttatchment />
             </p>
             <div className="text-wrap">
-              <p className="ant-upload-text text-white text-left">
+              <p className="ant-upload-text font-medium text-base text-white text-left">
                 Attach or drag/drop your documents
               </p>
               <p className="ant-upload-hint text-white text-left">
