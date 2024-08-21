@@ -10,7 +10,8 @@ interface FileInputProps {
 }
 
 const FileInput: React.FC<FileInputProps> = ({ handleChange }) => {
-  const [uploadProgress, setUploadProgress] = useState<number | null>(null); // Initial value for demonstration
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null); 
+  const [isSizeLimitExceeded, setIsSizeLimitExceeded] = useState(false);
   const [fileInfo, setFileInfo] = useState<{ name: string, size: number } | null>(null);
 
   const simulatedUpload = (file: File) => {
@@ -19,16 +20,18 @@ const FileInput: React.FC<FileInputProps> = ({ handleChange }) => {
     console.log("Starting simulated upload");
 
     const totalSize = fileSizeKB;
-    const uploadSpeed = 50; // KB/s
+    const uploadSpeed = 600; // KB/s
     const totalUploadTimeMs = (totalSize / uploadSpeed) * 1000;
     const updateIntervals = 100; // ms
 
     let progress = 0;
 
-    if(fileSizeKB > 3000 ){
-      message.error("File size exceeds 3MB")
-      // onError?.("file size exceeds limit")
+    if (fileSizeKB > 3000) {
+      message.error("File size exceeds 3MB");
+      setIsSizeLimitExceeded(true);
+      return;
     }
+
     const interval = setInterval(() => {
       if (progress < 100) {
         progress += (uploadSpeed * (updateIntervals / 1000)) / totalSize * 100;
@@ -44,31 +47,28 @@ const FileInput: React.FC<FileInputProps> = ({ handleChange }) => {
   const props: UploadProps = {
     name: 'file',
     multiple: false,
-
+    showUploadList: false,
     beforeUpload(file) {
-
-      const fileSizeMB = file.size / 1024 / 1024; // Convert bytes to MB
-      if (fileSizeMB > 3) {
-        // File size exceeds 3MB
+      const fileSizeMB = file.size / 1024 / 1024; 
+      if (fileSizeMB > 2) {
+        setIsSizeLimitExceeded(true);
         message.error(`File size exceeds 3MB. File size: ${Math.round(fileSizeMB)}MB`);
         return false; 
       }
 
+      setIsSizeLimitExceeded(false); // Reset size limit flag if within limit
       simulatedUpload(file);
 
       const formData = new FormData();
-      
-      handleChange(formData);
       formData.append("file", file);
-
-      // Prevent the default upload behavior
-      return false;
+      handleChange(formData);
+      // return false;
     }
   };
 
   return (
     <div className="fileInput max-w-md">
-      {uploadProgress !== null ? (
+      {uploadProgress !== null && !isSizeLimitExceeded ? (
         <div className='progress-wrapper border-2 border-[#0094FF]'>
           <div className='text-wrap flex gap-5 items-center'>
             <p className="ant-upload-drag-icon">
@@ -93,21 +93,34 @@ const FileInput: React.FC<FileInputProps> = ({ handleChange }) => {
           </div>
         </div>
       ) : (
-        <Dragger {...props}>
-          <div>
-            <p className="ant-upload-drag-icon">
-              <FileAttatchment />
-            </p>
-            <div className="text-wrap">
-              <p className="ant-upload-text text-white text-left">
-                Attach or drag/drop your documents
+        <div>
+          <Dragger
+            style={{ border: isSizeLimitExceeded ? "1px dashed red" : undefined }}
+            className='fail'
+            {...props}
+          >
+            <div>
+              <p className="ant-upload-drag-icon">
+                <FileAttatchment />
               </p>
-              <p className="ant-upload-hint text-white text-left">
-                .PDF, .DOCX, PNG, JPG (max. 2mb)
-              </p>
+              <div className="text-wrap">
+                <p className="ant-upload-text text-white text-left">
+                  Attach or drag/drop your documents
+                </p>
+                <p className="ant-upload-hint text-white text-left">
+                  .PDF, .DOCX, PNG, JPG (max. 2mb)
+                </p>
+              </div>
             </div>
-          </div>
-        </Dragger>
+          </Dragger>
+
+          {/* Display error message if the file size is too big */}
+          {isSizeLimitExceeded && (
+            <p className="error-message pr-10 max-w-sm text-red-500">
+              The file size is too big. Please upload a file smaller than 3MB.
+            </p>
+          )}
+        </div>
       )}
     </div>
   );

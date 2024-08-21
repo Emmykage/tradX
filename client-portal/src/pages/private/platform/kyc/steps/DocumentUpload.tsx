@@ -13,7 +13,7 @@ const DocumnetUpload = () => {
 
   console.log(data, "uploaded")
   return (
-    <div className='bg-[#152338] h-screen kyc-document flex justify-center items-center'>
+    <div className='bg-[#152338]  kyc-document flex justify-center items-center'>
       <div className='m-auto max-w-2xl border border-gray-900 bg-black-100'>
         <h3 className='text-gray-100 text-2xl leading-6 my-2'> Enter you KYC document </h3>
         <p className='text-[#A3A8B0] my-4'>You can upload passport, national ID, or driver's licence</p>
@@ -23,7 +23,7 @@ const DocumnetUpload = () => {
         handleChange={(value: FormData) => setIdentityDoc(value)}        
         />
 
-        <h3 className='text-2xl text-white my-5'>Proof of Address</h3>
+        <h3 className='text-2xl text-white my-3'>Proof of Address</h3>
         <p className='text-[#A3A8B0] text-base font-normal'>Please upload utility bill or bank statement. Date shouldn’t be later than last 3 months.</p>
         
         <FileInput

@@ -15,7 +15,7 @@ import DocumnetUpload from './steps/DocumentUpload'
 import BioDetails from './steps/BioDetails'
 
 const KYC = () => {
-  const [step, setStep] = useState(6)
+  const [step, setStep] = useState(7)
   const [forgotPasswordView, setForgotPasswordView] = useState(false);
 
   const [signInProcess, setSignInProcess] = useState<string>("email")
@@ -63,8 +63,10 @@ const KYC = () => {
         return <SuccessView/>
 
         case 6: 
-        return <BioDetails/>
-        case 7: 
+        return <BioDetails
+        handleNext={handleNextPage}
+        />
+                case 7: 
         return <DocumnetUpload/>
 
       default:
