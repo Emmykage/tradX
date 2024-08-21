@@ -1,6 +1,7 @@
 import React from 'react'
 import successIcon from '../../../../../assets/icons/kyc/Illustration.svg'
 import { useNavigate } from 'react-router-dom'
+import KYCButton from '../components/Button'
 
 const SuccessView = () => {
   const navigate = useNavigate()
@@ -9,17 +10,22 @@ const SuccessView = () => {
 
   }
   return (
-    <div className='max-w-md w-full successWrapper formContainer '>
-        <span className=' m-auto block text-center w-max'>
-            <img src={successIcon} alt="" />
-
-        </span>
+    <div className='max-w-md w-full mx-auto formContainer px-5'>
+        <div className='flex justify-center items-center m-auto block text-center w-max success-illustration mb-10'>
+            <span className='img-container flex justify-center items-center'>
+            <img src={successIcon} alt=""  className=''/>
+            </span>
+        </div>
 
         <h4 className='text-center text-3xl leading-9 text-white font-bold'>Success! <br/>
         Go to your dashboard
         </h4>
-        
-        <button onClick={handleNav} className='w-full py-6 my-10 '>Go to dashboard </button>
+        <KYCButton
+          text="Go to dashboard"
+          onClick={handleNav}
+          type="submit"
+          className="kyc-button text-base font-semibold mt-8 py-4"
+        />
     </div>
   )
 }

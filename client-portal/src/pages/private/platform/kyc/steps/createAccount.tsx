@@ -114,8 +114,6 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
             </Form.Item>
           </div>
         </div>
-
-
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 mb-5">
           <div className="flex-1">
             <Form.Item
@@ -192,7 +190,7 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
             isLoading={isPending}
             disable={isPending}
             type="submit"
-            className="text-base font-semibold"
+            className="kyc-button text-base font-semibold"
           />
       </Form>
 

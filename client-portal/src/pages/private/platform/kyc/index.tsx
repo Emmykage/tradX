@@ -15,7 +15,7 @@ import DocumnetUpload from './steps/DocumentUpload'
 import BioDetails from './steps/BioDetails'
 
 const KYC = () => {
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(1)
   const [forgotPasswordView, setForgotPasswordView] = useState(false);
 
   const [signInProcess, setSignInProcess] = useState<string>("email")
@@ -72,7 +72,7 @@ const KYC = () => {
   return(
     <div className="kycWrapper  relative">
       <KYCHeader />
-      <div className='max-w-[620px] flex justify-center items-center min-h-[100vh]  h-full pt-24 lg:pt-16  w-full mx-auto '>
+      <div className='max-w-[620px] flex justify-center lg:items-center min-h-[100vh]  h-full pt-24 lg:pt-16  w-full mx-auto '>
         <div className="w-full">
         <span className=' p-0 absolute bottom-0 right-10'>
           <img src={HelpButton} alt="" className=''/>
