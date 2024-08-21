@@ -14,15 +14,16 @@ export async function fethRegister(data: any): Promise<boolean> {
       body: JSON.stringify(data),
     });
     const result = await response.json();
+    console.log("sign up response:" , result)
 
     if (!response.ok) {
-      Object.keys(result).forEach((field) => {
-        const errors = result[field];
-        errors.forEach((errorMessage: string) => {
-          toast.error(`${field}: ${errorMessage}`);
-        });
-      });
-      throw new Error(`${result}`);
+      // Object.keys(result).forEach((field) => {
+      //   const errors = result[field];
+      //   errors.forEach((errorMessage: string) => {
+      //     toast.error(`${field}: ${errorMessage}`);
+      //   });
+      // });
+      // throw new Error(`${result}`);
     }
     return result;
   } catch (error) {

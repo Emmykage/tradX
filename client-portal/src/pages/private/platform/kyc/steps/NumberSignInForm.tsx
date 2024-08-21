@@ -15,12 +15,12 @@ import { ISignInForm } from '@interfaces';
 import { useCookies } from 'react-cookie';
 import useLogin from 'api/user/useLogin';
 
-interface SignInFormProps {
+interface PhoneInFormProps {
     setForgotPasswordView: React.Dispatch<React.SetStateAction<boolean>>;
   }
   
 
-const SignInForm: React.FC = () => {
+const PhoneSignInForm: React.FC = () => {
   const {  signInTab } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
@@ -69,16 +69,16 @@ const SignInForm: React.FC = () => {
         <div className="flex gap-10 justify-between">
             <div className="flex-1">          
                 <Form.Item
-                name="email"
+                name="phone_number"
                 rules={[{ required: true, message: "Email is required" }]}
             >
-                <label htmlFor="" className="text-base text-white">Email Address</label>
+                <label htmlFor="" className="text-base text-white">Phine Number</label>
                 <input
-                className="w-full py-3 px-4 bg-transparent border bordergra"
-                type="email"
-                id="email"
-                placeholder="Email you email address"
-                {...register("email")}
+                className="w-full py-3 px-4 bg-transparent"
+                type="text"
+                id="pone_number"
+                placeholder="Enter your phone Number"
+                {...register("phone_number")}
                 />
             </Form.Item>
             </div>
@@ -141,4 +141,4 @@ const SignInForm: React.FC = () => {
   );
 };
 
-export default SignInForm;
+export default PhoneSignInForm;
