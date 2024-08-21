@@ -184,6 +184,16 @@
             width: max-content;
             padding:12px 50px;
         }
+        button{            
+            position: relative;
+            // width: 100%;
+            // padding: 0.8rem 1.1rem 0.8rem 0.8rem;
+            border-radius: 10px;
+            background: linear-gradient(269deg, rgba(0, 148, 255, 0.36) 2.39%, rgba(0, 148, 255, 0) 107.19%);
+            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+
     
     
     }
