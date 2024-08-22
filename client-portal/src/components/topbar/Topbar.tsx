@@ -24,6 +24,7 @@ import AssetSelectionContainer from "components/assetSelectionContainer/AssetSel
 import { ITradeAssets } from "@interfaces";
 import DropdownMenu from "components/dropdownMenu/DropdownMenu";
 import { formatMoney } from "utils/utils";
+import { Spin } from "antd";
 
 interface TopbarProps {
   isDrawerOpen: boolean;
@@ -91,6 +92,10 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
       }}
     >
       {
+
+        !loading ? (
+
+        
         selectedWallet?.name ? (
           <>
           <div className="dem">
@@ -107,8 +112,12 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
       </div>
           </>
         ): (
-          <h1>loading</h1>
+          <h1 style={{color: 'white'}}>No Account</h1>
         )
+      ):
+      (
+        <Spin/>
+      )
       }
       
       </div>

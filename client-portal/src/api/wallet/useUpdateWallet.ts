@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 
-import { IWallet } from "@interfaces";
 import getEnv from "utils/env";
 import { WalletData } from "@store/slices/wallet";
 
