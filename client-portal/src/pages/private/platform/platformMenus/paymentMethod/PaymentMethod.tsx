@@ -1,15 +1,11 @@
 import { Button, Typography } from "antd";
-import { FC, Dispatch, SetStateAction, useEffect, useState } from "react";
-import { paymentMethodData, filterListButtons } from "./constants";
+import { FC, Dispatch, SetStateAction, useState } from "react";
 import ArrowsSlider from "../../../../../components/arrowsSlider/ArrowsSlider";
 import "./PaymentMethod.scss";
 import { RightSubDrawerContent } from "../../types";
-import { PaymentMethodDataType } from "./types";
 import { useDispatch } from "react-redux";
-import { setPaymentMethod, setPaymentMethodList } from "@store/slices/payment";
+import { setPaymentMethod } from "@store/slices/payment";
 import { useAppSelector } from "@store/hooks";
-import useQRCodeList from "api/wallet/useQrCodeList";
-import { useCookies } from "react-cookie";
 
 interface PaymentMethodProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -23,19 +19,9 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
   const dispatch = useDispatch();
   const { paymentMethodList,selectedPaymentMethod } = useAppSelector((state) => state.payment);
   const [paymentType, setPaymentType] = useState<string>("all");
-  const [cookies] = useCookies(["access_token"]);
 
-    // GET the web-socket ticket for validation after the app running
-    const { mutate } = useQRCodeList({
-      onSuccess: (data) => {
-       dispatch(setPaymentMethodList(data.results))
-      },
-    });
-
-    useEffect(() => {
-      console.log('effect runned');
-        mutate(cookies.access_token);
-    }, []);
+   
+    
 
   const titleHandler = (titleKey: string) => {
     switch (titleKey) {
@@ -61,9 +47,23 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
     { type: "all" },
     ...(paymentMethodList || []),
   ];
-  const filteredPaymentMethods = paymentMethodList?.filter((method) => 
-    paymentType === "all" || method.type === paymentType
+  const allPaymentMethods = paymentMethodListWithAll?.filter(() => true);
+  const filteredPaymentMethods = paymentMethodListWithAll?.filter(
+    (method) => paymentType === "all" || method.type === paymentType
   );
+
+  // Group payment methods by their type
+  const groupedPaymentMethods = filteredPaymentMethods?.reduce<{ [type: string]: any[] }>(
+    (groups, item) => {
+      const group = groups[item.type] || [];
+      group.push(item);
+      groups[item.type] = group;
+      return groups;
+    },
+    {}
+  );
+
+ 
   console.log(filteredPaymentMethods);
   return (
     <div className={themeSelect}>
@@ -87,76 +87,66 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
       </div>
 
       <div>
-        {paymentType === "all" ? (
-          <>
-            {paymentMethodListWithAll?.map((method) => {
-            
-              if (method) {
-                return (
-                  <div key={method.type} className="payment-method-list">
-                    <Typography.Text className="payment-method-list-title">
-                      {titleHandler(method?.type).toUpperCase()}
-                    </Typography.Text>
-                    {filteredPaymentMethods
-  ?.filter(item => method.type === "all" || item.type === method.type)
-  .map((item, index: number) => (
-    <div
-      className={`payment-method-list-item ${selectedPaymentMethod?.name === item?.name ? 'active-payment-method-list-item' : ''}`}
-      key={`${index}-${item.name}`}
-      onClick={() => {
-        if (item?.type === "crypto") {
-          setIsRightSubDrawerOpen(true);
-          setIsRightSubDrawerContent("crypto-payment");
-          dispatch(setPaymentMethod(item));
-
-        } else {
-          setIsRightSubDrawerOpen(true);
-          setIsRightSubDrawerContent("payments-deposit");
-          dispatch(setPaymentMethod(item));
-        }
-      }}
-    >
-      <img src={item.icon} alt="" />
-      <Typography.Text>{item.name}</Typography.Text>
-    </div>
-  ))}
-
-                  </div>
-                );
-              }
-            })}
-          </>
-        ) : (
-          <div>
+      
+    <div>
+      {/* Display "All" category */}
+      {
+        paymentType === 'all' && (
+          
+      
+      <div className="payment-method-list">
+        <Typography.Text className="payment-method-list-title">
+          {titleHandler("all").toUpperCase()}
+        </Typography.Text>
+        {allPaymentMethods?.map((item, index) => (
+          <div
+            className={`payment-method-list-item ${
+              selectedPaymentMethod?.name === item?.name ? 'active-payment-method-list-item' : ''
+            }`}
+            key={`${index}-${item.name}`}
+            onClick={() => {
+              setIsRightSubDrawerOpen(true);
+              setIsRightSubDrawerContent(item.type === "crypto" ? "crypto-payment" : "payments-deposit");
+              dispatch(setPaymentMethod(item));
+            }}
+          >
+            <img src={item.icon} alt={item.name} />
+            <Typography.Text>{item.name}</Typography.Text>
+          </div>
+        ))}
+      </div>
+      ) 
+    }
+      {/* Display each type except "All" */}
+      {Object.entries(groupedPaymentMethods || {})
+        .filter(([type]) => type !== "all")
+        .map(([type, items]) => (
+          <div key={type} className="payment-method-list">
             <Typography.Text className="payment-method-list-title">
-              {titleHandler(paymentType).toUpperCase()}
+              {titleHandler(type).toUpperCase()}
             </Typography.Text>
-            {filteredPaymentMethods?.map((item, index: number) => (
+            {items.map((item, index) => (
               <div
-                className="payment-method-list-item"
-                key={index}
+                className={`payment-method-list-item ${
+                  selectedPaymentMethod?.name === item?.name ? 'active-payment-method-list-item' : ''
+                }`}
+                key={`${index}-${item.name}`}
                 onClick={() => {
-                  
-                  if (paymentType === "crypto") {
-                    setIsRightSubDrawerOpen(true);
-                    setIsRightSubDrawerContent("crypto-payment");
-                    dispatch(setPaymentMethod(item));
-
-                  } else {
-                    setIsRightSubDrawerOpen(true);
-                    setIsRightSubDrawerContent("payments-deposit");
-                    dispatch(setPaymentMethod(item));
-                  }
-                  
+                  setIsRightSubDrawerOpen(true);
+                  setIsRightSubDrawerContent(item.type === "crypto" ? "crypto-payment" : "payments-deposit");
+                  dispatch(setPaymentMethod(item));
                 }}
               >
-                <img src={item.icon} alt="" />
-                 <Typography.Text>{item.name}</Typography.Text>
+                <img src={item.icon} alt={item.name} />
+                <Typography.Text>{item.name}</Typography.Text>
               </div>
             ))}
           </div>
-        )}
-      </div>
+        ))}
+    </div>
+  
+
+           </div>
     </div>
   );
 };

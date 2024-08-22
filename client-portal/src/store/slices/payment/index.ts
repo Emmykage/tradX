@@ -1,7 +1,6 @@
 import IPaymentType from "@interfaces/IPaymentType";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { paymentMethodData } from "pages/private/platform/platformMenus/paymentMethod/constants";
 
 export interface WalletSliceState {
   amount: number;
