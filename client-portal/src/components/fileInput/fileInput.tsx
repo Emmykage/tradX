@@ -53,7 +53,6 @@ const FileInput: React.FC<FileInputProps> = ({ handleChange }) => {
 
   const simulatedUpload = (file: File) => {
     const fileSizeKB = Math.round(file.size / 1024);
-    console.log("Starting simulated upload");
 
     const totalSize = fileSizeKB;
     const uploadSpeed = 1000; 
