@@ -7,7 +7,7 @@ import { useCookies } from 'react-cookie';
 import { updateWalkthrough } from '@store/slices/user';
 import { useTranslation } from 'react-i18next';
 
-const LastStep = () => {
+const LastStep = ({onReset}: any) => {
 
   const dispatch = useAppDispatch();
   const [cookies] = useCookies(["access_token"]);
@@ -39,7 +39,7 @@ const LastStep = () => {
             <span>{t("resumeTrainingInHelpSection")}</span>
         </div>
         <div className='lastStepModalButtonContainer'>
-            <button className='lastStepCancelButton'>{t("cancel")}</button>
+            <button className='lastStepCancelButton' onClick={()=> onReset(1)}>{t("cancel")}</button>
             <Link to={'/platform'}>
             <button className='lastStepFinishButton' onClick={()=>handleFinishWalkThrough()}>{t("finish")}</button>
             </Link>

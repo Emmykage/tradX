@@ -31,7 +31,7 @@
         flex-direction: column;
         border-radius: 10px;
         // padding: 0.8rem 0.6rem;
-        padding: 14px 173px 14px 25px;
+        padding: 14px 17px 14px 25px;
         border: 1px solid #414c58;
         margin-top: 10px;
         margin: 10px 0px;
@@ -74,7 +74,8 @@
               .walkThroughButtons {
                 width: 100%;
                 button {
-                  background-color: #0094ff;
+                  // background-color: #dc362e;
+                  // background-color: #00AB1B;
                   width: 100%;
                   padding: 0.5rem 0rem;
                   border-radius: 4px;
@@ -84,6 +85,12 @@
                   &:disabled {
                     background-color: #283645;
                   }
+                }
+                .negative{
+                  background-color: #dc362e;
+                }
+                .positive{
+                  background-color: #00AB1B;
                 }
               }
             }

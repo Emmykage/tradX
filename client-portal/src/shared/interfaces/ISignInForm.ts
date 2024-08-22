@@ -1,4 +1,5 @@
 export default interface ISignInForm {
-  email: string;
+  email?: string;
+  phone_number: string,
   password: string;
 }
