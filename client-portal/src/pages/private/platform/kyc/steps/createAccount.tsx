@@ -11,6 +11,8 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import KYCButton from "../components/Button";
+import useVerification from "api/kyc/useVerification";
+import useKycRegistration from "api/kyc/useKycRegister";
 
 interface SignUpFormData {
   email: string;
@@ -21,7 +23,7 @@ interface SignUpFormData {
 }
 
 interface createAccountProps {
-   handleNext: () => void
+   handleNext: (dir: string) => void
 }
 
 const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
@@ -38,13 +40,13 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
     confirm_password: '',
     phone_number: ''
   })
-  const { mutate, isPending } = useRegister({
+  const { mutate, isPending } = useKycRegistration({
     onSuccess: (data) => {
       reset();
       toast.success(
         "Success! An email has been sent to your account. Please verify your email to complete the registration process."
       );
-      handleNext()
+      handleNext("next")
     },
     onError: (error) => {
       // console.log(error, 'here');
@@ -186,7 +188,7 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
           <Checkbox className="custom-checkbox">I accept messages, calls and emails.</Checkbox>
         </Form.Item>
           <KYCButton
-            text="Register"
+            text="Sign Up"
             isLoading={isPending}
             disable={isPending}
             type="submit"
