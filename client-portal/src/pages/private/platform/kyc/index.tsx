@@ -2,20 +2,20 @@ import React, { useState } from 'react'
 import "./kyc.scss"
 import HelpButton from '../../../../assets/icons/kyc/Button.svg'
 
-import FileInput from 'components/fileInput/fileInput'
 import KYCHeader from './components/Header'
 import CreateAccount from './steps/createAccount'
 import SignInOptions from './steps/SignInOptions'
 import SignInForm from './steps/EmailSignIn'
 import PhoneSignInForm from './steps/NumberSignInForm'
 import OTP from './steps/OTP'
-import { SuccessIcon } from 'assets/icons'
 import SuccessView from './steps/Success'
 import DocumnetUpload from './steps/DocumentUpload'
 import BioDetails from './steps/BioDetails'
+import DocumentReviewApprove from './steps/DocumentReviewApproved'
+import DocumentReviewRejected from './steps/DocumentReviewRejected'
 
 const KYC = () => {
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(6)
   const [forgotPasswordView, setForgotPasswordView] = useState(false);
 
   const [signInProcess, setSignInProcess] = useState<string>("email")
@@ -61,9 +61,18 @@ const KYC = () => {
         return <SuccessView/>
 
         case 6: 
-        return <BioDetails />
+        return <BioDetails
+        handleNext={handleNextPage}
+        />
         case 7: 
-        return <DocumnetUpload/>
+        return <DocumnetUpload
+        handleNext={handleNextPage}
+        />
+
+        case 8:
+          return <DocumentReviewRejected/> 
+        case 9:
+          return <DocumentReviewApprove/>
 
       default:
       return null;
@@ -74,28 +83,11 @@ const KYC = () => {
       <KYCHeader />
       <div className='max-w-[620px] flex justify-center lg:items-center min-h-[100vh]  h-full pt-24 lg:pt-16  w-full mx-auto '>
         <div className="w-full">
-        <span className=' p-0 absolute bottom-0 right-10'>
-          <img src={HelpButton} alt="" className=''/>
-        </span>
-
-      {/* <button onClick={handleNextPage}> Next page </button> */}
-
-      {renderPage()}
-
-
-        {/* <CreateAccount/> */}
-        {/* <SignInOptions/> */}
-        {/* <SignInForm/> */}
-        {/* <PhoneSignInForm/> */}
-        {/* <OTP/> */}
-        {/* <SuccessView/> */}
-
-
+          <span className=' p-0 absolute bottom-0 right-10'>
+            <img src={HelpButton} alt="" className=''/>
+          </span>
+        {renderPage()}
         </div>
-
-        {/* <DocumnetUpload/> */}
-
-
       </div>
     </div>
   )

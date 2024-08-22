@@ -6,9 +6,11 @@ import { GlobalStates, setSignInTab } from "@store/slices/global";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@store/hooks";
 import useRegister from "api/user/useRegister";
-import { ExclaimIcon, See, UnSee } from "assets/icons";
+import { DownArrowIcon, ExclaimIcon, HomeIcon, See, UnSee } from "assets/icons";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { countries } from "../data/countries";
+// import { Field } from "formik";
 
 interface SignUpFormData {
   full_name: string;
@@ -16,7 +18,7 @@ interface SignUpFormData {
   address: string;
   year: string;
   month: string;
-  date: string;
+  day: string;
 }
 
 interface bioDetailsProps {
@@ -29,7 +31,13 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
   const { signInTab } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
-  const { handleSubmit, register, reset,  formState: {errors} } = useForm<SignUpFormData>();
+  const { handleSubmit, register, reset, setValue,  formState: {errors} } = useForm<SignUpFormData>();
+
+  const handleDateChange = (date: any) => {
+    if (date) {
+      setValue('day', date.date()); // Extract just the day
+    }
+  };
   const dispatch = useDispatch();
   const [reveal, setReveal] = useState(false);
   const { mutate, isPending } = useRegister({
@@ -87,19 +95,13 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
             className="w-full"
             {...register("country", { required: "Country is required" })}
             >
-            <Option value="us">United States</Option>
-            <Option value="ca">Canada</Option>
-            <Option value="uk">United Kingdom</Option>
-            <Option value="au">Australia</Option>
-            <Option value="ng">Nigeria</Option>
-            <Option value="in">India</Option>
-            <Option value="cn">China</Option>
-            <Option value="jp">Japan</Option>
-            <Option value="de">Germany</Option>
-            <Option value="fr">France</Option>
-            <Option value="br">Brazil</Option>
-            <Option value="za">South Africa</Option>
-            {/* Add more country options as needed */}
+              {countries.map(country =>
+                (
+                  <Option key={country} value={country}>{country}</Option>
+
+                )
+              )}
+         
             </Select>
         </Form.Item>
           </div>
@@ -131,21 +133,22 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
 
         <div className="grid grid-cols-3 gap-4">
         <Form.Item
-        name="date"
-        validateStatus={errors.date ? "error" : ""}
-        help={errors.date?.message}
-      >
-        <label htmlFor="date" className="text-white">Date</label>
-        <DatePicker
-          id="date"
-          format="DD/MM/YYYY"
-          placeholder="Select Date"
-          style={{ width: '100%' }}
-          {...register("date", { required: "Date is required" })}
-        />
-      </Form.Item>
+      name="day"
+      validateStatus={errors.day ? "error" : ""}
+      help={errors.day?.message}
+    >
+      <label htmlFor="day" className="text-white">Day</label>
+      <DatePicker
+        id="day"
+        placeholder="Select day"
+        suffixIcon={<DownArrowIcon />} 
+        onChange={handleDateChange} 
+        className="date-input"
 
-      {/* Month Input */}
+        {...register("day", { required: "Day is required" })}
+      />
+    </Form.Item>
+
       <Form.Item
         name="month"
         validateStatus={errors.month ? "error" : ""}
@@ -155,7 +158,9 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
         <MonthPicker
           id="month"
           placeholder="Select Month"
+           className="date-input"
           style={{ width: '100%' }}
+          suffixIcon={<DownArrowIcon/>}
           {...register("month", { required: "Month is required" })}
         />
       </Form.Item>
@@ -170,6 +175,8 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
           id="year"
           picker="year"
           placeholder="Select Year"
+          className="date-input text-white"
+          suffixIcon={<DownArrowIcon/>}
           style={{ width: '100%' }}
           {...register("year", { required: "Year is required" })}
         />

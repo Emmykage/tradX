@@ -2,14 +2,9 @@
     max-width: 28rem;
     .progress-wrapper{
         border: 2px solid #0094FF;
-        padding: 24px;
+        height: 120px;
+        padding:18px 24px;
         border-radius: 8px ;
-        div{
-            // display: flex !important;
-            // justify-content: center;
-            // align-items: center;
-            // gap: 10px;
-        }
         .ant-progress {
             .ant-progress-inner{
                 background-color: white;
@@ -26,7 +21,9 @@
             border: 2px dashed #0094FF;
             width: 100%; 
             margin: 20px 0; 
-
+            overflow: hidden;
+            height: 120px ;
+       
             &.fail{
                 border: 2px solid  #E03137
 
@@ -74,7 +71,6 @@
                     align-items: center;
                     padding: 0 !important;
             
-                    // background-color: blue;
                 }
             }
            
