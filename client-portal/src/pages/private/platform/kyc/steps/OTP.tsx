@@ -97,9 +97,10 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
               type="number"
               name={`${index}`}
               ref={inputRef[index]}
+              placeholder='-'
               value={value}
               onKeyDown={(e) => handleInputChange(index, e.key)}
-              className=" px-5 py-6 flex justify-center items-center text-center font-semibold text-4xl block w-full 4 form-input  text-sm  rounded-xl focus:ring-0"
+              className=" px-5 py-6 flex justify-center items-center text-center font-semibold text-4xl block w-full  form-input  text-3xl rounded-xl focus:ring-0"
             />
           ))}
           
