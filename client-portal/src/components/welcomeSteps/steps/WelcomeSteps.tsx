@@ -65,12 +65,12 @@ const WelcomeSteps = () => {
     setWelcomeStep(resetStep);
   };
 
-  // useEffect(() => {
-  //   const savedStep = cookies.step;
-  //   if (savedStep) {
-  //     setWelcomeStep(Number(savedStep));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const savedStep = cookies.step;
+    if (savedStep) {
+      setWelcomeStep(Number(savedStep));
+    }
+  }, []);
 
   useEffect(() => {
     setCookie("step", step.toString(), { path: "/", maxAge: 604800 });
