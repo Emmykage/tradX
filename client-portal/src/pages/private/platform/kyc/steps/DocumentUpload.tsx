@@ -31,7 +31,7 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
         handleChange={(value: FormData) => setIdentityDoc(value)}        
         />
 
-        <h3 className='text-2xl text-white my-3'>Proof of Address</h3>
+        <h3 className='text-2xl font-semibold text-white my-3'>Proof of Address</h3>
         <p className='text-[#A3A8B0] text-base font-normal my-3'>Please upload utility bill or bank statement. Date shouldn’t be later than last 3 months.</p>
         
         <FileInput
@@ -42,7 +42,7 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
           <button
           onClick={()=> handleNext("prev")}
           
-          className='border back w-52 rounded-lg py-4 px-8'>
+          className='border back w-52 rounded-lg py-4 px-8 back'>
             back
           </button>
           <button

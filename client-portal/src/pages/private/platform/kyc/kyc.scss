@@ -29,6 +29,7 @@
         box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
         color: #fff;
     }
+    
 
     input{
         border: 1px solid #90ACC1;
@@ -210,6 +211,11 @@
             background: linear-gradient(269deg, rgba(0, 148, 255, 0.36) 2.39%, rgba(0, 148, 255, 0) 107.19%);
             box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
             color: #fff;
+
+            &.back{
+                background: transparent;
+                border: 1px solid rgba(255, 255, 255, 0.555);
+            }
         }
 
     
