@@ -106,6 +106,18 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({
       setStep((prevStep: number) => prevStep + 1);
     }
   };
+
+  const handleOnInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target;
+    setFormData(
+      {
+       ...tradeForm,
+       [name]: value
+    });
+    if(name === "amount")  setBidAmount(value);
+    else setBidDuration(value);
+    
+  };
   
   const handleBidDurationChange = (addition = true) => {
     let newDuration = duration;
@@ -155,13 +167,15 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({
               >
               <div
                 className="walkthroughInputContent"
-                style={{ backgroundColor: "#283645" }}
+                // style={{ backgroundColor: "#283645" }}
               >
                 <label htmlFor="amount" className="text-[#ffffff66]">{t('amount')} , $</label>
                 <input
                   type="number"
                   value={tradeForm.amount}
-                  disabled={step !== 7}
+                  name="amount"
+                  onChange={handleOnInputChange}
+                  // disabled={step !== 7}
                   />
               </div>
           </Tooltip>
@@ -170,7 +184,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({
                 <button
                   onClick={() => handleBidAmountChange(false)}
                   disabled = {step < 7 || formDisabled || amount <= minimumBidAmount }
-                  className={`flex justify-center`}
+                  className={`flex justify-center negative`}
                 >
                   <SubtractIcon />
                 </button>
@@ -179,7 +193,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({
               <div className="walkThroughButtons">
                 <button
                   disabled = {step < 7 || formDisabled || amount >= maximumBidAmount }
-                  className="flex justify-center"
+                  className="flex justify-center positive"
                   onClick={() => handleBidAmountChange(true)}
                 >
                   <PlusIcon />
@@ -197,15 +211,20 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({
               open={step == 8}
               >
               <div className="walkthroughInputContent">
-                <label htmlFor="amount">{t("duration")}</label>
-                <input type="text" value={`${tradeForm.duration} sec`} />
+                <label htmlFor="duration">{t("duration")}</label>
+                <input 
+                  type="text" 
+                  name="duration"
+                  onChange={handleOnInputChange} 
+                  value={`${tradeForm.duration}`} 
+                />
               </div>
             </Tooltip>
             <div className="walkThroughButtonsContainer">
               <div className="walkThroughButtons">
                 <button
                   disabled = {step < 8 || formDisabled || duration <= minimumBidDuration}
-                  className="flex justify-center"
+                  className="flex justify-center negative"
                   onClick={() => handleBidDurationChange(false)}
                 >
                   <SubtractIcon />
@@ -215,7 +234,7 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({
               <div className="walkThroughButtons">
                 <button
                   onClick={() => handleBidDurationChange()}
-                  className="flex justify-center"
+                  className="flex justify-center positive"
                   disabled = {step < 8 || formDisabled || duration >= maximumBidDuration}
                 >
                   <PlusIcon />
