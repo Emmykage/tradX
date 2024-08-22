@@ -153,7 +153,6 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/markets/ipos" element={<Ipo />} /> 
         <Route path="/markets/crypto" element={<Crypto />} /> 
 
-
         <Route path="/trading/tradingPlatform" element={<TradingPlatform />} /> 
         <Route path="/trading/MobileTrading" element={<MobileTrading />} /> 
         <Route path="/trading/metaTradingFour" element={<MetaTradingFour />} /> 
