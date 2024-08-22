@@ -112,10 +112,10 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({
     setFormData(
       {
        ...tradeForm,
-       [name]: value
+       [name]: Number(value)
     });
-    if(name === "amount")  setBidAmount(value);
-    else setBidDuration(value);
+    if(name === "amount")  setBidAmount(Number(value));
+    else setBidDuration(Number(value));
     
   };
   
@@ -173,9 +173,9 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({
                 <input
                   type="number"
                   value={tradeForm.amount}
+                  disabled={formDisabled}
                   name="amount"
                   onChange={handleOnInputChange}
-                  // disabled={step !== 7}
                   />
               </div>
           </Tooltip>
@@ -213,8 +213,9 @@ const TestWalkThrough: FC<TestWalkThroughProps> = ({
               <div className="walkthroughInputContent">
                 <label htmlFor="duration">{t("duration")}</label>
                 <input 
-                  type="text" 
+                  type="number" 
                   name="duration"
+                  disabled={formDisabled}
                   onChange={handleOnInputChange} 
                   value={`${tradeForm.duration}`} 
                 />

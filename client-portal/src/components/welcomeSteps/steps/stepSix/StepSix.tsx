@@ -11,7 +11,7 @@ interface StepSixProps {
 const StepSix: FC<StepSixProps> = ({ step, chartData }) => {
   return (
     <div className="welcomeStepSix">
-      <AreaChart chartData={chartData} liveLoading />
+      <AreaChart chartData={chartData} liveLoading  time={2000} />
     </div>
   );
 };

@@ -130,9 +130,9 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route element={<RequireAuth  />}>
           <Route path="/platform" element={<Platform />} />
           {/* Private route using PrivateRoute component */}
-          <Route path="/welcome" element={<PrivateRoute />}>
+          {/* <Route path="/welcome" element={<PrivateRoute />}>
               <Route path="/welcome" element={<Welcome />} />
-           </Route>
+           </Route> */}
           <Route path="transactions" element={<Transactions />} />
           {/* <Route path="/loan/get-loan" element={<GetLoan />} /> */}
           <Route path="/lender" element={<Lender />} />
@@ -152,7 +152,7 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/markets/bonds" element={<Bonds />} /> 
         <Route path="/markets/ipos" element={<Ipo />} /> 
         <Route path="/markets/crypto" element={<Crypto />} /> 
-
+        <Route path="/welcome" element={<Welcome />} />
 
         <Route path="/trading/tradingPlatform" element={<TradingPlatform />} /> 
         <Route path="/trading/MobileTrading" element={<MobileTrading />} /> 
