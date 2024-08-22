@@ -13,21 +13,34 @@ import DocumnetUpload from './steps/DocumentUpload'
 import BioDetails from './steps/BioDetails'
 import DocumentReviewApprove from './steps/DocumentReviewApproved'
 import DocumentReviewRejected from './steps/DocumentReviewRejected'
+import DocumentReviewPending from './steps/DocumentReviewPending'
 
 const KYC = () => {
-  const [step, setStep] = useState(6)
+  const [step, setStep] = useState(7)
   const [forgotPasswordView, setForgotPasswordView] = useState(false);
 
   const [signInProcess, setSignInProcess] = useState<string>("email")
-  const handleNextPage = () => {
-    if(step == 5 ){
-      setStep(1)
+  const handleNextPage = (dir: string) => {
+    if(step == 8 ){
+      // setStep(1)
+      return
     }else{
+      if(dir == "next")
+      {
       setStep(prev => prev + 1)
+      }
+
+      else{
+        setStep(prev => prev -1)
+
+      }
 
     }
   }
 
+
+
+  console.log(step)
   const renderPage = () => {
     switch (step) {
       case 1:
@@ -70,8 +83,10 @@ const KYC = () => {
         />
 
         case 8:
-          return <DocumentReviewRejected/> 
+          return <DocumentReviewPending/>    
         case 9:
+          return <DocumentReviewRejected/> 
+        case 10:
           return <DocumentReviewApprove/>
 
       default:
@@ -80,7 +95,7 @@ const KYC = () => {
 }
   return(
     <div className="kycWrapper  relative">
-      <KYCHeader />
+      <KYCHeader  step={step}/>
       <div className='max-w-[620px] flex justify-center lg:items-center min-h-[100vh]  h-full pt-24 lg:pt-16  w-full mx-auto '>
         <div className="w-full">
           <span className=' p-0 absolute bottom-0 right-10'>

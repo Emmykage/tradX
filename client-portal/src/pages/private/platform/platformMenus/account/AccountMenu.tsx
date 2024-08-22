@@ -14,6 +14,7 @@ import {
 import AccountCard from "./AccountCard";
 import "./account.scss";
 import { RightSubDrawerContent } from "../../types";
+import { useCookies } from "react-cookie";
 
 interface AccountMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -24,9 +25,10 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
   setIsRightSubDrawerOpen,
   setIsRightSubDrawerContent,
 }) => {
+  const [cookies, setCookie] = useCookies(["selectedAccount"]);
   const dispatch = useAppDispatch();
 
-  const { wallets, walletTypes,walletsLoading, selectedWallet } = useAppSelector(
+  const { wallets,walletsLoading, selectedWallet } = useAppSelector(
     (state: { wallet: WalletSliceState }) => state.wallet
   );
   console.log(wallets);
@@ -47,11 +49,14 @@ const AccountMenu: React.FunctionComponent<AccountMenuProps> = ({
         <AddIcon />
       </div>
       <div className="accountsContainer">
-    
-        {wallets.map((account) => (
+        
+        {wallets.slice().reverse().map((account) => (
           <AccountCard
             key={account.id}
-            onClick={() => dispatch(setSelectedWallet(account))}
+            onClick={() =>{
+              dispatch(setSelectedWallet(account))
+              setCookie('selectedAccount',account, { path: '/' })
+            } }
             icon={<IocnPlaceholder />} // To be replaced when backend add images to wallets
             accountType={account.name}
             amount={account.balance}

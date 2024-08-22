@@ -16,13 +16,13 @@ export async function fethRegister(data: any): Promise<boolean> {
     const result = await response.json();
 
     if (!response.ok) {
-      Object.keys(result).forEach((field) => {
-        const errors = result[field];
-        errors.forEach((errorMessage: string) => {
-          toast.error(`${field}: ${errorMessage}`);
-        });
-      });
-      throw new Error(`${result}`);
+      // Object.keys(result).forEach((field) => {
+      //   const errors = result[field];
+      //   errors.forEach((errorMessage: string) => {
+      //     toast.error(`${field}: ${errorMessage}`);
+      //   });
+      // });
+      // throw new Error(`${result}`);
     }
     return result;
   } catch (error) {
@@ -35,7 +35,7 @@ type useRegisterProps = {
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };
-export const useRegister = (props: useRegisterProps) => {
+ const useKycRegistration = (props: useRegisterProps) => {
   const receivedProps = props || ({} as useRegisterProps);
 
   const {
@@ -61,4 +61,4 @@ export const useRegister = (props: useRegisterProps) => {
   });
 };
 
-export default useRegister;
+export default useKycRegistration;

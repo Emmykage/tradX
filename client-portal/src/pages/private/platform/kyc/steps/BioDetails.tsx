@@ -14,6 +14,7 @@ import FormInput from "../components/FormInput";
 import FormSelect from "../components/FormSelect";
 import KYCButton from "../components/Button";
 import DateSelection from "../components/DateSelection";
+import useKycRegistration from "api/kyc/useKycRegister";
 // import { Field } from "formik";
 
 interface SignUpFormData {
@@ -26,7 +27,7 @@ interface SignUpFormData {
 }
 
 interface bioDetailsProps {
-   handleNext: () => void
+   handleNext: (dir: string) => void
 }
 
 const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
@@ -49,19 +50,21 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
   };
   const dispatch = useDispatch();
   const [reveal, setReveal] = useState(false);
-  const { mutate, isPending } = useRegister({
+  const { mutate, isPending } = useKycRegistration({
     onSuccess: () => {
       reset();
       toast.success(
         "Success! An email has been sent to your account. Please verify your email to complete the registration process."
       );
-      handleNext()
+      // handleNext()
     },
   });
 
   const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
     console.log(data);
-    mutate(data);
+    //  mutate(data);
+    handleNext("next")
+    // mutate(data);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {

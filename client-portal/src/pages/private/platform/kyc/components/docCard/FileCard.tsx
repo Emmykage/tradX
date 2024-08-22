@@ -5,7 +5,7 @@ import React from 'react'
 interface fileCardProps {
     fileName: string,
     fileSize: number,
-    status: string
+    status: "rejected" | "pending"| "approved"
 }
 
 const FileCard : React.FC<fileCardProps> = ({fileName, fileSize, status}) => {

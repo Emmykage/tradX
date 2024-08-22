@@ -17,7 +17,7 @@ interface OTPInputProps{
 }
 
 interface OTPProps {
-  handleNext: () => void
+  handleNext: (dir: string) => void
 }
 const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
 
@@ -41,7 +41,7 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
       // data?.user.is_walkthrough ? navigate('/platform') : handleNext();
 
       
-      handleNext();
+      handleNext("next");
 
      
       

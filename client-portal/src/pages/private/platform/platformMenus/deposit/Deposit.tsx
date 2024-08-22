@@ -2,7 +2,7 @@ import { Col, Row, Spin, Typography } from "antd";
 import "./Deposit.scss";
 import DepositCard from "../../../../../components/depositCard/DepositCard";
 import { PaymentIcon, PromoCodeIcon } from "../../../../../assets/icons";
-import { Dispatch, FC, SetStateAction, useCallback } from "react";
+import { Dispatch, FC, SetStateAction, useCallback, useEffect } from "react";
 import { RightSubDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import SecondaryButton from "../../../../../components/secondaryButton/SecondaryButton";
@@ -11,6 +11,9 @@ import { useAppSelector } from "@store/hooks";
 import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 import IocnPlaceholder from "assets/icons/IocnPlaceholder";
+import { useDispatch } from "react-redux";
+import useQRCodeList from "api/wallet/useQrCodeList";
+import { setPaymentMethod, setPaymentMethodList } from "@store/slices/payment";
 
 interface DepositProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -27,6 +30,25 @@ const Deposit: FC<DepositProps> = ({
   const { selectedWallet } = useAppSelector((state) => state.wallet);
 
   const [cookies] = useCookies(["access_token"]);
+  const dispatch = useDispatch()
+   // GET the web-socket ticket for validation after the app running
+   const { mutate } = useQRCodeList({
+    onSuccess: (data) => {
+     dispatch(setPaymentMethodList(data.results))
+     console.log(data.results[0]);
+     if(selectedPaymentMethod == null){
+
+       dispatch(setPaymentMethod(data.results[0]))
+      }
+     console.log(selectedPaymentMethod);
+
+    },
+  });
+
+  useEffect(() => {
+    console.log('effect runned');
+      mutate(cookies.access_token);
+  }, []);
 
   const checkoutHandler = useCallback(() => {
     // console.log(amount, 'here');

@@ -19,7 +19,7 @@ import KYCButton from '../components/Button';
 
 interface SignInFormProps {
     setForgotPasswordView: React.Dispatch<React.SetStateAction<boolean>>;
-    handleNext: () => void
+    handleNext: (dir: string) => void
   }
   
 
@@ -42,7 +42,7 @@ const EmailSignInForm: React.FC<SignInFormProps> = ({handleNext}) => {
       setCookie("access_token", data.access, { maxAge: expirationInSeconds });
       setCookie("refresh_token", data.refresh);
       setCookie("step",'')
-      handleNext()
+      handleNext("next")
       // data?.user.is_walkthrough ? navigate('/platform') : navigate("/welcome");
      
     },

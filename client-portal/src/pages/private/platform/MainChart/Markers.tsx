@@ -94,7 +94,7 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     labelInner.style.display = 'flex';
     labelInner.style.backgroundColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `;
     labelInner.style.height = '20.5px';
-    labelInner.style.width = '87px';
+    labelInner.style.width = '70px';
     labelInner.style.borderRadius = '6px';
     labelInner.style.padding = '1.5px 3.5px 1.5px 0px';
     labelInner.style.position = 'absolute';
@@ -143,17 +143,17 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     solidLine.style.borderColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `;
     solidLine.style.position = 'absolute';
     solidLine.style.top = '3.1px';
-    solidLine.style.left = '4px';
+    solidLine.style.left = '8.5px';
   
     const dashedLine = document.createElement('div');
-    dashedLine.style.width = '172px'; 
+    dashedLine.style.width = '182px'; 
     dashedLine.style.height = '0.1px';
     dashedLine.style.borderWidth = '0.1px';
     dashedLine.style.borderStyle = 'dashed';
     dashedLine.style.borderColor = `${trade === 'up' ? "rgb(22, 163, 74)" : trade === 'down'  ? "#FF0000" : null} `; 
     dashedLine.style.position = 'absolute';
     dashedLine.style.top = '3.1px';
-    dashedLine.style.right = '0px';
+    dashedLine.style.right = '8px';
 
     marker.appendChild(labelInner)
     labelInner.appendChild(span)
@@ -193,15 +193,16 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
     marker.style.backgroundColor = `${trade == 'won' ? 'green' : 'red'}`;
     marker.id= 'textElement4'
     marker.style.color = 'white';
-    marker.style.width = '130px'
+    marker.style.width = '85px'
     marker.style.zIndex = '10'
-    marker.style.padding = '0.25rem 0.75rem';
+    marker.style.padding = '0.15rem 0.35rem';
     marker.style.position = 'absolute';
-    marker.style.clipPath = 'polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%)';
+    marker.style.clipPath = 'polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%)';
 
     const resultHeading = document.createElement('h2');
     resultHeading.textContent = 'Result';
-    resultHeading.style.fontWeight = 'bold';
+    resultHeading.style.fontWeight = '400';
+    resultHeading.style.fontSize = '15px';
     marker.appendChild(resultHeading);
 
     const priceContainer = document.createElement('div');
@@ -209,12 +210,16 @@ export const createCustomMarker2 = ( price:string,trade:string) => {
 
     const dollarSign = document.createElement('h2');
     dollarSign.textContent = '$';
-    dollarSign.style.fontWeight = 'bold';
+    dollarSign.style.fontWeight = '400';
+    resultHeading.style.fontSize = '15px';
+
     priceContainer.appendChild(dollarSign);
 
     const priceValue = document.createElement('h2');
     priceValue.textContent = price.toFixed(2);
-    priceValue.style.fontWeight = 'bold';
+    priceValue.style.fontWeight = '400';
+    resultHeading.style.fontSize = '15px';
+
     priceContainer.appendChild(priceValue);
 
     marker.appendChild(priceContainer);

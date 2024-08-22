@@ -25,7 +25,7 @@ import useNotificationList from "api/notification/useNotificationList";
  */
 const useInitializeData = () => {
   const dispatch = useAppDispatch();
-  const [cookies] = useCookies(["access_token"]);
+  const [cookies] = useCookies(["access_token","selectedAccount"]);
 
   // Fetch user data
   const { user } = useAppSelector(
@@ -48,7 +48,17 @@ const useInitializeData = () => {
   const { mutate: walletMutate } = useWallet({
     onSuccess: (data) => {
       dispatch(setWallets(data.results));
-      dispatch(setSelectedWallet(data.results[0] || undefined));
+      const selectedAccountId = cookies.selectedAccount?.id; // Extract the ID from the cookies
+      console.log(selectedAccountId);
+      console.log(data.results);
+      // Find the wallet in the wallets array that matches the selectedAccountId
+      const selectedWalletFromCookies = data.results.find(wallet => wallet.id === selectedAccountId);
+
+      dispatch(
+        setSelectedWallet(
+          selectedWalletFromCookies ?? data.results[0] ?? undefined
+        )
+      );
     },
     onError: (error) => {
       console.error("fetching wallets error", error);
@@ -94,21 +104,7 @@ const useInitializeData = () => {
     }
   }, [cookies.access_token, notificationListMutate]);
 
-  // GET the web-socket ticket for validation after the app running
-  const { mutate: webSocketTicketMutate } = useWebSocketTicket({
-    onSuccess: (data) => {
-      if (data?.ws_ticket) {
-        dispatch(setWSTicket(data?.ws_ticket));
-      }
-    },
-  });
 
-  useEffect(() => {
-    // Get the Web Socket Ticket Key
-    if (cookies.access_token) {
-      webSocketTicketMutate(cookies.access_token);
-    }
-  }, [cookies.access_token]);
 
   return { user, wallets };
 };

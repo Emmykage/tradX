@@ -1,8 +1,8 @@
 import { useAppSelector } from "@store/hooks";
-import { AssetPairSliceState } from "@store/slices/pairs";
-import { setSocketData, setSocketInstance } from "@store/slices/trade";
+import { setSocket, setSocketData, setSocketInstance, setTradeResult, setTradeTransaction, TradeStates } from "@store/slices/trade";
 import { setSelectedWallet, setWallets, WalletSliceState } from "@store/slices/wallet";
-import { useEffect, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { formatDate, isArrayEmpty, isObjectEmpty } from "utils/utils";
 
@@ -39,19 +39,26 @@ interface SocketConnectReturn {
   extraAction: (
     callback: (data: Data | null, socket: WebSocket | null) => void
   ) => void;
+
 }
 
 const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
   const [data, setData] = useState<Data | null>(null);
   const [oldData, setOldData] = useState<any>(null);
-  const [socket, setSocket] = useState<WebSocket | null>(null);
+  // const { socket } = useAppSelector((state) => state);
+  // const [socket, setSocket] = useState<WebSocket | null>(null);
+
   const dispatch = useDispatch()
+  const {socket } = useAppSelector(
+    (state: { trades: TradeStates }) => state.trades
+  );
   const {  wallets } = useAppSelector(
     (state: { wallet: WalletSliceState,  }) => state.wallet
   );
   const  { selectedAsset } = useAppSelector(
     (state: {assetPair: AssetPairSliceState }) => state.assetPair
 );
+
 
   useEffect(() => {
     if (wsTicket){
@@ -66,7 +73,7 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
     webSocket.onopen = () => {
       webSocket.send(
         JSON.stringify({
-          group_name: "TEST",
+          group_name: "BTC",
           type: "join_group"
         })
       );
@@ -80,18 +87,17 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
       webSocket.send( 
         JSON.stringify({
           "type": "init_bars_data",
-          "group_name": "TEST"
+          "group_name": "BTC"
         }),
       );
-      return setSocket(webSocket);
+      return dispatch(setSocket(webSocket));
     };
 
     webSocket.onmessage = (event) => {
       const receivedData = JSON.parse(event.data);
-      
     
       if (receivedData.m === 'init_bars_data'){
-        const initialData = receivedData?.d[0]?.[selectedAsset?.symbol]?.map((socketData: any) => ({
+        const initialData = receivedData.d[0].BTC.map((socketData: any) => ({
           open: socketData?.o,
           high: socketData?.h,
           low: socketData?.l,
@@ -100,7 +106,6 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
           time: Date.parse(socketData?.t),
           value: (socketData?.o + socketData?.c)/2,
         }));
-
         setOldData(initialData)
         } else if (receivedData.m === 'b_d' && !isArrayEmpty(receivedData?.d)) {
 
@@ -130,6 +135,8 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
            setData(prevData => ({ ...prevData, onlinetraders: onlineTradersData }));
          
       } else if( receivedData.m === 'wt'){
+        console.log(receivedData);
+     
         const updatedWallets = wallets.map((item)=>{
           if(item.id == receivedData.d[0].id){
             return {...item , balance:receivedData.d[0].balance}
@@ -138,7 +145,24 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
         })
         dispatch(setWallets(updatedWallets))
         dispatch(setSelectedWallet(receivedData.d[0]))
+      }else if( receivedData.m === 'td'){
+       
+        if(receivedData.a === 'u'){
+          dispatch(setTradeResult(receivedData.d))
+        
+          
+
+         console.log('update trading data ' , receivedData);
+        }else if(receivedData.a === 'c'  ){
+            
+          console.log("create trading data", receivedData);
+         dispatch(setTradeTransaction(receivedData.d[0]))
+
+
+        }
       }
+        
+
     };
 
   }
@@ -161,8 +185,8 @@ const useSocketConnect = (wsTicket: string): SocketConnectReturn => {
   ) => {
     callback(data, socket);
   };
-
-  return { data, oldData,setData, socket, extraAction };
+  
+  return { data, oldData,setData, socket, extraAction  };
 };
 
 export default useSocketConnect;

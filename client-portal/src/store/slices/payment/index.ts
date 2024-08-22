@@ -1,19 +1,23 @@
+import IPaymentType from "@interfaces/IPaymentType";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { paymentMethodData } from "pages/private/platform/platformMenus/paymentMethod/constants";
 
 export interface WalletSliceState {
   amount: number;
   walletId: string | null;
   selectedTransactionId: string | null;
-  selectedPaymentMethod: {name: string, methodIcon: any} | null;
+  selectedPaymentMethod: IPaymentType | null;
+  paymentMethodList: IPaymentType[] | null,
+
 }
 
 const initialState: WalletSliceState = {
   amount: 0,
   walletId: null,
   selectedTransactionId: null,
-  selectedPaymentMethod: paymentMethodData?.bankCards[0]
+  paymentMethodList:null,
+  selectedPaymentMethod: null
+
 };
 
 export const paymentSlice = createSlice({
@@ -24,8 +28,12 @@ export const paymentSlice = createSlice({
       state.amount = action.payload;
       return state;
     },
-    setPaymentMethod: (state, action: PayloadAction< {name: string, methodIcon: any} | null>) => {
+    setPaymentMethod: (state, action: PayloadAction<IPaymentType | null>) => {
       state.selectedPaymentMethod = action.payload;
+      return state;
+    },
+    setPaymentMethodList: (state, action: PayloadAction<IPaymentType[] | null>) => {
+      state.paymentMethodList = action.payload;
       return state;
     },
     setWalletId: (state, action: PayloadAction<string>) => {
@@ -39,7 +47,7 @@ export const paymentSlice = createSlice({
   },
 });
 
-export const { setPaymentAmount, setWalletId, setTransactionId, setPaymentMethod } =
+export const { setPaymentAmount, setWalletId, setTransactionId, setPaymentMethod, setPaymentMethodList } =
   paymentSlice.actions;
 
 export default paymentSlice.reducer;

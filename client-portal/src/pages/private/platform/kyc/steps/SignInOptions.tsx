@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom'
 import KYCButton from '../components/Button';
 
 interface signInOptionProps {
-    handleNext: () => void,
+    handleNext: (dir: string) => void,
     setSignInProcess: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SignInOptions: React.FC<signInOptionProps> = ({handleNext, setSignInProcess}) => {
     const handleProceed = (option: string) => {
         setSignInProcess(option)
-        handleNext()
+        handleNext("next")
     }
   return (
     <div className='w-full formContainer px-5'>
