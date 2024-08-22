@@ -122,59 +122,7 @@ const EmailSignInForm: React.FC<SignInFormProps> = ({handleNext}) => {
           </Form.Item>
           <a className="flex text-base text-[#0094FF] gap-4 items-center mt-[-10px] "> Forgot password?</a>
         </div>
-      {/* <div className="flex gap-10 justify-between">
-        <div className="flex-1">          
-            <Form.Item
-            name="email"
-            validateStatus={errors.email ? "error" : ""}
-            help={errors.email?.message}
-        >
-            <label htmlFor="" className="text-base text-white">Email Address</label>
-            <input
-            className="w-full py-3 px-4 bg-transparent border bordergra"
-            type="email"
-            id="email"
-            placeholder="Email you email address"
-            {...register("email", {
-              required: "Email is required" }
-            
-            )}
-            />
-        </Form.Item>
-        </div>
-      </div>
-      <div className="flex gap-10">
-        <div className="flex-1">
-          <Form.Item
-              name="password"
-              validateStatus={errors.password ? "error" : ""}
-              help={errors.email?.message}
-
-
-              >
-              <label htmlFor="password" className="text-white">Password</label>
-              <div className="relative">
-              <input
-              className="loginInput"
-              type= {reveal ? "text" : "password"}
-              id="password"
-              placeholder="Enter your password"
-              {...register("password", {
-                required: "your passwod is required"
-              })}
-              />
-              <span onClick={()=> setReveal(prev => !prev) } className="absolute top-1/2 -translate-y-1/2 right-2">
-              {reveal ? <UnSee/> : <See/>}
-
-              </span>
-              </div>
-              
-              <a className="flex text-xs text-[#0094FF] gap-4 items-center my-3 mr-5"> Forgot password?</a>
-
-          </Form.Item>
-        </div>
-      </div> */}
-
+      
         <Form.Item name="fieldA" valuePropName="checked" className="agree-terms mt-8">
         <Checkbox className="custom-checkbox "> Remember Me</Checkbox>
         </Form.Item>

@@ -10,6 +10,10 @@ import { DownArrowIcon, ExclaimIcon, HomeIcon, See, UnSee } from "assets/icons";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { countries } from "../data/countries";
+import FormInput from "../components/FormInput";
+import FormSelect from "../components/FormSelect";
+import KYCButton from "../components/Button";
+import DateSelection from "../components/DateSelection";
 // import { Field } from "formik";
 
 interface SignUpFormData {
@@ -33,6 +37,11 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
   );
   const { handleSubmit, register, reset, setValue,  formState: {errors} } = useForm<SignUpFormData>();
 
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
+
   const handleDateChange = (date: any) => {
     if (date) {
       setValue('day', date.date()); // Extract just the day
@@ -55,45 +64,61 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
     mutate(data);
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  };
+
   return (
-    <div className="max-w-4xl w-full formContainer px-5 bioDetails">
-      <h5 className="text-white text-2xl font-semibold my-4">Enter your details</h5>
-    
+    <div className="w-full formContainer px-5">
+      <h5 className="text-white text-2xl font-semibold mb-4">Enter your details</h5>
 
       <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
-        <div className="flex flex-col md:flex-row md:gap-10 justify-between">
+        <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
           <div className="flex-1">
             <Form.Item
-                name="full_name"
-                validateStatus={errors.full_name ? "error" : ""}
-                help={errors.full_name?.message}
-
+              name="full_name" 
+              validateStatus={errors.full_name ? "error" : ""}
+              help={errors.full_name?.message}
+              rules={[{ required: true, message:  "Full name is required" }]}
             >
-              <label htmlFor="full_name" className="text-base text-white">Full name</label>
-              <input
-                className="w-full py-3 px-4 bg-transparent border bordergra"
+              <FormInput
+                label="Full name"
                 type="text"
                 id="full_name"
                 placeholder="Enter your name"
-                {...register("full_name", { required: "Full name required" })}     
-                         />
+                inputName="full_name" 
+                onChange={handleInputChange}  
+              />
             </Form.Item>
           </div>          
         </div>
 
 
-        <div className="flex flex-col md:flex-row md:gap-10">
+        <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
           <div className="flex-1">
           <Form.Item
             validateStatus={errors.country ? "error" : ""}
             help={errors.country?.message}
         >
-            <label htmlFor="country" className="text-white">Country</label>
-            <Select
-            id="country"
+          <FormSelect
+            data={countries}
+            label="Country"
             placeholder="Select your country"
             className="w-full"
-            {...register("country", { required: "Country is required" })}
+            id="country"
+            name="country"
+            // onSelect={handleInputChange}
+          />
+            {/* <label htmlFor="country" className="text-white">Country</label>
+            <Select
+              id="country"
+              placeholder="Select your country"
+              className="w-full"
+              {...register("country", { required: "Country is required" })}
             >
               {countries.map(country =>
                 (
@@ -102,7 +127,7 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
                 )
               )}
          
-            </Select>
+            </Select> */}
         </Form.Item>
           </div>
 
@@ -112,42 +137,37 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
               validateStatus={errors.address ? "error" :""}
               help={errors.address?.message}
             >
-              <label htmlFor="address" className="text-white">Address</label>
-              <div className="relative">
-                <input
-                  className="loginInput"
-                  type="text"
-                  id="address"
-                  placeholder="Enter Address"
-                  {...register("address", {required:  "Address is  required",
-                    }
-                  )}
-                />
-                
-              </div>
+              <FormInput
+                label="Address"
+                type="text"
+                id="address"
+                placeholder="Enter Address"
+                inputName="address" 
+                onChange={handleInputChange}  
+              />
             </Form.Item>
           </div>
         </div>
 
-        <h4 className="text-2xl mb-6 font-semibold text-[#F7F7F7]">Enter your date of birth</h4>
+        <h5 className="text-white text-2xl font-semibold mb-4">Enter your date of birth</h5>
 
-        <div className="grid grid-cols-3 gap-4">
+        {/* <div className="grid grid-cols-3 gap-4">
         <Form.Item
-      name="day"
-      validateStatus={errors.day ? "error" : ""}
-      help={errors.day?.message}
-    >
-      <label htmlFor="day" className="text-white">Day</label>
-      <DatePicker
-        id="day"
-        placeholder="Select day"
-        suffixIcon={<DownArrowIcon />} 
-        onChange={handleDateChange} 
-        className="date-input"
+          name="day"
+          validateStatus={errors.day ? "error" : ""}
+          help={errors.day?.message}
+        >
+          <label htmlFor="day" className="text-white">Day</label>
+          <DatePicker
+            id="day"
+            placeholder="Select day"
+            suffixIcon={<DownArrowIcon />} 
+            onChange={handleDateChange} 
+            className="date-input"
 
-        {...register("day", { required: "Day is required" })}
-      />
-    </Form.Item>
+            {...register("day", { required: "Day is required" })}
+          />
+        </Form.Item>
 
       <Form.Item
         name="month"
@@ -182,26 +202,30 @@ const BioDetails: React.FC<bioDetailsProps> = ({handleNext}) => {
         />
       </Form.Item>
 
-        </div>
+        </div> */}
+        <DateSelection />
         
-       <div className="flex my-8 justify-between">
-       <Button
-          type="primary"
-          htmlType="submit"
-          className=" back"
-          loading={isPending}
-        >
-          Back
-        </Button>
-        <Button
-          type="primary"
-          htmlType="submit"
-          className="next"
-          loading={isPending}
-        >
-          Next
-        </Button>
+       <div className="flex my-8 lg:gap-x-10 justify-between">
+       
+        <div className="flex-grow">
+          <KYCButton
+            text="Back"
+            isLoading={isPending}
+            disable={isPending}
+            type="submit"
+            className="kyc-button text-base font-semibold"
+          />
+        </div>
+        <div className="flex-grow">
+          <KYCButton
+            text="Next"
+            isLoading={isPending}
+            disable={isPending}
+            type="submit"
+            className="kyc-button text-base font-semibold"
+          />
 
+        </div>
        </div>
    
       </Form>

@@ -61,6 +61,10 @@ const WelcomeSteps = () => {
    setWelcomeStep(0);
   };
 
+  const onReset = (resetStep = 1) => {
+    setWelcomeStep(resetStep);
+  };
+
   useEffect(() => {
     const savedStep = cookies.step;
     if (savedStep) {
@@ -159,22 +163,12 @@ const WelcomeSteps = () => {
        
         
       case 12:
-        return <LastStep/>;
+        return <LastStep onReset={() => onReset()} />;
       default:
         return <StepOne setStep={setStep} />;
     }
   };
 
-  // useEffect(()=>{
-  //   setTimeout(() => {
-  //     if(step === 10){
-  //       // setStep(11)
-  //       setState({
-  //         step: 11
-  //       })
-  //     }
-  //   }, 20000);
-  // },[step]);
 
   return (
     <div className="welcomeSteps relative">
