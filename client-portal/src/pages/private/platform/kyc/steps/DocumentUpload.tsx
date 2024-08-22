@@ -43,12 +43,12 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
           onClick={()=> handleNext("prev")}
           
           className='border back w-52 rounded-lg py-4 px-8 back'>
-            back
+            Back
           </button>
           <button
           onClick={handleFileUpload} 
           className='border w-52 border-gray-500 py-4 px-8 text-base text-white rounded-lg next'>
-            next
+            Next
           </button>
         </div>
     
