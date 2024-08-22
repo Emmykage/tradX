@@ -31,8 +31,8 @@ import Trading from "pages/public/trading/Trading";
 import TradingConditions from "pages/public/trading/TradingConditions/Index";
 
 import CFDTrading from "pages/public/trading/cfdTrading";
-// import EmailVerification from "pages/public/emailVerification/EmailVerification";
 import ForexProfitCalculator from "pages/public/trading/ForexProfitCalculator";
+import KYC from "pages/private/platform/kyc";
 
 
 
@@ -46,6 +46,7 @@ const Bonds = lazy(()=>import("pages/public/markets/bonds/Bonds"))
 const Indices = lazy(()=>import("pages/public/markets/indices/Indices"))
 const Shares = lazy(()=>import("pages/public/markets/shares/Shares"))
 const Ipo = lazy(()=>import("pages/public/markets/ipo/Ipo"))
+
 
 
 const TradingPlatform = lazy(()=>import("pages/public/trading/platform"))
@@ -175,6 +176,8 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/verify-email" element={<EmailVerification />} />
         <Route path="/password-reset" element={<ResetPassword />} />
+
+        <Route path="/kyc-document" element={<KYC/>}/>
        
         
         
