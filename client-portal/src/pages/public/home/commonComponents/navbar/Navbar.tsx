@@ -4,7 +4,6 @@ import TradxLogo from "../../../../../assets/home/tradxlogo.png";
 import { MouseEvent } from "react";
 import {
   ArrowDownOS,
-  ArrowRightOS,
   MenuBar,
   MenuCloseIcon,
   SearchIcon,
@@ -15,8 +14,7 @@ import { Spin } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import i18n from "../../../../../i18n";
 import { languages } from "../../../../../constants";
-import { useDispatch } from "react-redux";
-import { setSignInTab } from "@store/slices/global";
+
 
 const Navbar= () => {
     const [ipAddress, setIpAddress] = useState('');
@@ -31,7 +29,6 @@ const Navbar= () => {
     };
 
   const navigate = useNavigate();
-  const dispatch = useDispatch()
 
   const getVisitorIp = async()=>{
     // setLoading(true)
@@ -93,34 +90,27 @@ const Navbar= () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const matchedLanguage = languages.filter(
-  //     (language) => language.value.toLowerCase() === countryCode.toLowerCase()
-  //   );
-  
-  //   if (matchedLanguage.length > 0) {
-  //     i18n.changeLanguage(matchedLanguage[0].languageKey);
-  //   } else {
-  //     setCountryCode('EN');
-  //     i18n.changeLanguage('en');
-  //   }
-  // }, [countryCode]);
 
   useEffect(() => {
-    setLoading(true)
-    const browserLanguage = navigator.language;
-    const matchedLanguage = languages.find(language => language.languageKey.toLowerCase() === browserLanguage.toLocaleLowerCase());
-    console.log(browserLanguage);
-
-    console.log(languages);
+    const matchedLanguage = languages.find(language => language.value.toLowerCase() === countryCode.toLowerCase());
+    
     if (matchedLanguage) {
-      setCountryCode(browserLanguage)
+      i18n.changeLanguage(matchedLanguage.languageKey);
+    } else {
+      setCountryCode('EN');
+      i18n.changeLanguage('en');
+    }
+  }, [countryCode]);
+
+
+  useEffect(() => {
+    const browserLanguage = navigator.language;
+    const matchedLanguage = languages.find(language => language.value.toLowerCase() === browserLanguage.toLocaleLowerCase());
+    if (matchedLanguage) {
       i18n.changeLanguage(countryCode.toLocaleLowerCase());
-      setLoading(false)
     } else {
       setCountryCode('EN')
       i18n.changeLanguage("en");
-      setLoading(false)
     }
   }, [])
 
@@ -271,11 +261,11 @@ const Navbar= () => {
             <div
               className="languageValue"
               onClick={() => {
-                setCountryCode("ja");
+                setCountryCode("jp");
                 setToggleLanguageSelector(false);
               }}
             >
-              <img src={localFlagHandler("ja")} alt="" />
+              <img src={localFlagHandler("jp")} alt="" />
               <h2>Japanese</h2>
             </div>
             <div
@@ -303,7 +293,7 @@ const Navbar= () => {
         <button
           className="primaryButton"
           onClick={() => {
-            dispatch(setSignInTab('1'))
+            // dispatch(setSignInTab('1'))
             navigate("/signIn");
           }}
         >
@@ -312,7 +302,7 @@ const Navbar= () => {
         <button
           className="secondaryButton"
           onClick={() => {
-            dispatch(setSignInTab('2'))
+            // dispatch(setSignInTab('2'))
             navigate("/signIn");
           }}
         >

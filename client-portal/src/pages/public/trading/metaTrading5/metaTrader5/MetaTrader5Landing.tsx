@@ -8,7 +8,6 @@ const MetaTrader5Landing = () => {
   return (
     <div>
     <div className='meta5 landingContainer'>
-    <Navbar/>
 
         
         <h1>{t("metaTrader5")}</h1>

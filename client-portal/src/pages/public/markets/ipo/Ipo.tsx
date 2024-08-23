@@ -12,6 +12,7 @@ import TradCalc from "../../../../components/tradCalc/TradCalc";
 import Navbar from "pages/public/home/commonComponents/navbar/Navbar";
 import Footer from "pages/public/home/main/footer/Footer";
 import HeadIntro from "pages/public/home/commonComponents/headIntro/HeadIntro";
+import NavigationRoute from "pages/public/home/commonComponents/NavigationRoute/NavigationRoute";
 
  const Ipo = () => {
   const title = 'IPOs CFDs'
@@ -19,7 +20,7 @@ import HeadIntro from "pages/public/home/commonComponents/headIntro/HeadIntro";
   const buttonTitle = 'Trade IPOs'
   return (
     <div className="ipoContainer">
-      <Navbar />
+      <NavigationRoute/>
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
     
       <InfoBlock item={WhyTradeIPOs} />

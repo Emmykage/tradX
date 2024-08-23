@@ -9,7 +9,6 @@ const Index = () => {
   
   return (
     <div className='tradingContainer'>
-      <Navbar/>
       <EconomicCalendarCom/>
       <NeedMoreInfo items={NeedMoreInfoData}/>
       <RegisterBlock/>

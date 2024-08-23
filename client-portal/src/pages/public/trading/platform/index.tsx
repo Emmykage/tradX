@@ -35,7 +35,6 @@ const TradingPlatform = () => {
 
   return (
     <div className='tradingContainer'>
-        <Navbar/>
         <Landing/>
         <StraightForwardTrading/>
         

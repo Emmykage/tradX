@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
 import './home.scss'
-import Navbar from '../commonComponents/navbar/Navbar';
 import Landing from './landing/Landing';
 import CheckCurrency from './checkCurrency/CheckCurrency';
 import LeadPlatform from './leadPlatform/LeadPlatform';
@@ -17,7 +16,6 @@ const Home = () => {
 
   return (
     <div className='homeContainer'>
-        <Navbar/>
         <Landing/>
         <CheckCurrency/>
         <LeadPlatform/>

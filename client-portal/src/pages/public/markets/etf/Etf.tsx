@@ -22,6 +22,7 @@ import Graph3Image from '../../../../assets/home/graph3.png'
 import Graph4Image from '../../../../assets/home/graph4.png'
 
 import EtfImage from '../../../../assets/categorySlider/ETF.png'
+import NavigationRoute from "pages/public/home/commonComponents/NavigationRoute/NavigationRoute";
 
 const Etf = () => {
   const title = 'ETFs'
@@ -63,7 +64,7 @@ const Etf = () => {
     ];
   return (
     <div className="etfContainer">
-      <Navbar />
+      <NavigationRoute/>
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
       <CategorySlider allPairsData={allPairsData}/>
       <TradeTable data={data}/>

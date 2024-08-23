@@ -7,6 +7,7 @@ import CustomerSupportIcon from '../../../../../assets/home/leadPlatform/custome
 import SecurityIcon from '../../../../../assets/home/leadPlatform/security.png'
 import TransparentIcon from '../../../../../assets/home/leadPlatform/transparent.png'
 import UnparallelIcon from '../../../../../assets/home/leadPlatform/unparallel.png'
+import { useTranslation } from 'react-i18next';
 
 interface LeadPlatformCardProps {
     title: string;
@@ -14,8 +15,6 @@ interface LeadPlatformCardProps {
 }
 
 export const LeadPlatformCard: React.FC<PropsWithChildren<LeadPlatformCardProps>> = ({ title, imgSrc }) => {
-
-    
     return (
       <div className="leadPlatformCard">
         <img src={imgSrc} alt="" />
@@ -25,35 +24,36 @@ export const LeadPlatformCard: React.FC<PropsWithChildren<LeadPlatformCardProps>
 }
 
 const LeadPlatform: React.FC = () => {
+    const {t} = useTranslation()
     const leadTradingPlatformData = [
         {
-            title:"Highly regulated & licensed",
+            title: t('higlyRegulated'),
             imgSrc:LicenceIcon
         },
         {
-            title:"Instant Deposit & Withdrawal",
+            title:t('instantDeposit'),
             imgSrc:BanksIcon
         },
         {
-            title:"4/7 Customer Support",
+            title:t("24/7customerSupport"),
             imgSrc:CustomerSupportIcon
         },
         {
-            title:"Transparent Fees",
+            title:t('transparentFees'),
             imgSrc:TransparentIcon
         },
         {
-            title:"Unparallel trading conditions",
+            title:t("unparallelTradingConditions"),
             imgSrc:UnparallelIcon
         },
         {
-            title:"End To end Security",
+            title:t('endToEndSecurity'),
             imgSrc:SecurityIcon
         },
     ]
   return (
     <div className='leadPlatformContainer'>
-        <h2>Lead with our Trading Platform</h2>
+        <h2>{t('leadWithOurPlatform')}</h2>
         <div className="leadPlatformCardContainer">
             {
                 leadTradingPlatformData.map((item)=>(

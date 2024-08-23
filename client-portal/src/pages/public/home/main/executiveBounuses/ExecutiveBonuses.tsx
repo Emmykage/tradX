@@ -4,6 +4,7 @@ import ExecutiveImage from '../../../../../assets/home/executiveBonusImage.png'
 import ExecutiveIcon1 from '../../../../../assets/home/executiveIcon1.png' 
 import ExecutiveIcon2 from '../../../../../assets/home/executiveIcon2.png' 
 import Slider from 'react-slick';
+import { useTranslation } from 'react-i18next';
 const ExecutiveBonuses = () => {
     const settings_3 = {
         dots: false,
@@ -26,6 +27,7 @@ const ExecutiveBonuses = () => {
           }
         }]
       };
+      const {t} = useTranslation()
   return (
     <div className='executiveBonusesContainer'>
 
@@ -40,25 +42,25 @@ const ExecutiveBonuses = () => {
                 <div className='executiveSliderInnerItem'>
                   <div className='leftSideExecutiveSliderContainer'>
                     <img src={ExecutiveIcon1} alt="" />
-                    <p>Club Membership Plan</p>
-                    <span>50% OFF</span>
-                    <button>Get Bonus</button>
+                    <p>{t("clubMembershipPlan")}</p>
+                    <span>50% {t("off")}</span>
+                    <button>{t("getBonus")}</button>
                   </div>
                   <div className='rightSideExecutiveSliderContainer'>
-                      <button>EXCLUSIVE</button>
-                  </div>
+                      <button>{t("exclusive")}</button>
+                  </div>  
                 </div>
             </div>
             <div className='executiveSliderItem'>
                 <div className='executiveSliderInnerItem'>
                   <div className='leftSideExecutiveSliderContainer'>
                     <img src={ExecutiveIcon2} alt="" />
-                    <p>First Trade Discount</p>
-                    <span>20% OFF</span>
-                    <button>Get Bonus</button>
+                    <p>{t("tradeDiscount")}</p>
+                    <span>20% {t("off")}</span>
+                    <button>{t("getBonus")}</button>
                   </div>
                   <div className='rightSideExecutiveSliderContainer'>
-                      <button>EXCLUSIVE</button>
+                      <button>{t("exclusive")}</button>
                   </div>
                 </div>
             </div>

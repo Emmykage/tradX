@@ -13,15 +13,16 @@
         margin: 18px auto;
         flex-wrap: wrap;
         span{
+           
+            padding: 10px 20px;
+            color: rgba(255, 255, 255, 0.678);
+            cursor: pointer;
             &.active{
                 color: #ff1802;
                 border: 1px solid #FFFFFF4D;
                 border-radius: 20px;
 
             }
-            padding: 7px 26px;
-            color: rgba(255, 255, 255, 0.678);
-            cursor: pointer;
 
             @media (max-width: 600px) {
                 padding: 8px 16px; 
