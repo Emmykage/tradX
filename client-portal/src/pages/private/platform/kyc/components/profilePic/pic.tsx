@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Image, Upload } from 'antd';
 import type { UploadFile, UploadProps } from 'antd';
@@ -15,15 +15,24 @@ const getBase64 = (file: FileType): Promise<string> =>
 
 type ProfilePicProps = {
   handleProfileImg: (file: File) => void;
+  profilePic: string;
 };
 
-const ProfilePic: React.FC<ProfilePicProps> = ({ handleProfileImg }) => {
+const ProfilePic: React.FC<ProfilePicProps> = ({ handleProfileImg, profilePic }) => {
   const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState('');
+  const [previewImage, setPreviewImage] = useState(profilePic || '');
   const [fileList, setFileList] = useState<UploadFile[]>([]);
+
+  useEffect(() => {
+    if (profilePic) {
+      setPreviewImage(profilePic);
+      setFileList([{ uid: '-1', url: profilePic,  name: 'profile-picture', }]); // Simulate an existing file in the list
+    }
+  }, [profilePic]);
 
   const handlePreview = async (file: UploadFile) => {
     if (!file.url && !file.preview) {
+        console.log(file.originFileObj) 
       file.preview = await getBase64(file.originFileObj as FileType);
     }
 
@@ -38,31 +47,32 @@ const ProfilePic: React.FC<ProfilePicProps> = ({ handleProfileImg }) => {
       const latestFile = newFileList[newFileList.length - 1];
       if (latestFile.originFileObj) {
         handleProfileImg(latestFile.originFileObj);
+        setPreviewImage(URL.createObjectURL(latestFile.originFileObj));
       }
     }
   };
 
   const uploadButton = (
     <div>
-      <PlusOutlined />
-      <div style={{ marginTop: 8 }}>Upload</div>
+      <PlusOutlined className='text-white' />
+      <div style={{ marginTop: 8, color: "white" }}>Upload</div>
     </div>
   );
 
   return (
     <>
       <Upload
-        // action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
         listType="picture-circle"
         fileList={fileList}
         onPreview={handlePreview}
         onChange={handleChange}
+        showUploadList={{ showPreviewIcon: true, showRemoveIcon: true }}
       >
         {fileList.length >= 1 ? null : uploadButton}
       </Upload>
       {previewImage && (
         <Image
-          wrapperStyle={{ display: 'none' }}
+        wrapperStyle={{ display: 'none' }}
           preview={{
             visible: previewOpen,
             onVisibleChange: (visible) => setPreviewOpen(visible),

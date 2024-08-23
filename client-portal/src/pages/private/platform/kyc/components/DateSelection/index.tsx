@@ -4,10 +4,13 @@ import FormSelect from '../FormSelect';
 
 interface dateSelectionProps {
     setFormData: any
-    formData: {}
+    formData: any
 }
 
 const DateSelection: React.FC<dateSelectionProps> = ({setFormData, formData}) => {
+    const fetchDate = formData.dob
+    const [year, month, day] = fetchDate?.split("-")
+    console.log("year", year)
     const [daysArray, setDaysArray] = useState([]);
     const initialState = {
         days: 31,
@@ -181,6 +184,8 @@ const DateSelection: React.FC<dateSelectionProps> = ({setFormData, formData}) =>
         }
     };
 
+    console.log("fuldate", day, month, year, monthsArray)
+
     return(
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
             <div className="flex-grow">
@@ -191,6 +196,7 @@ const DateSelection: React.FC<dateSelectionProps> = ({setFormData, formData}) =>
                     className="w-full "
                     id="month"
                     name="month"
+                    selectedId={month}
                     onSelect={handleMonthChange}
                 />
             </div>
@@ -202,6 +208,7 @@ const DateSelection: React.FC<dateSelectionProps> = ({setFormData, formData}) =>
                     className="w-full"
                     id="day"
                     name="day"
+                    selectedId={day}
                     onSelect={handleDayChange}
                 />
             </div>
@@ -211,6 +218,7 @@ const DateSelection: React.FC<dateSelectionProps> = ({setFormData, formData}) =>
                     label="Year"
                     placeholder="Select year"
                     className="w-full"
+                    selectedId={year}
                     id="year"
                     name="year"
                     onSelect={handleYearChange}

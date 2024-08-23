@@ -15,6 +15,7 @@ interface DropdownProps {
   id: string;
   label: string;
   placeholder?: string;
+  value?: string
   data: DropdownItem[];
   position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
   style?: string;
@@ -34,12 +35,15 @@ const FormSelect = ({
   name,
   style,
   selectedId,
+  value,
   onSelect,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<DropdownItem | undefined>(
     selectedId ? data?.find((item) => item.value === selectedId) : undefined
   );
+
+  console.log("selectedID for", label, selectedId)
 
   const handleChange = (item: DropdownItem) => {
     setSelectedItem(item);
@@ -50,6 +54,7 @@ const FormSelect = ({
   useEffect(() => {
     if (selectedId && data) {
       const newSelectedItem = data.find((item) => item.value === selectedId);
+      console.log("first item", newSelectedItem)
       newSelectedItem && setSelectedItem(newSelectedItem);
     } else {
       setSelectedItem(undefined);

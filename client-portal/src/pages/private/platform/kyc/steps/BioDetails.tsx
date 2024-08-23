@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
 import { GlobalStates } from "@store/slices/global";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { countries } from "../data/countries";
 import FormInput from "../components/FormInput";
 import FormSelect from "../components/FormSelect";
@@ -13,6 +13,9 @@ import useVerification from "api/kyc/useVerification";
 import { useCookies } from "react-cookie";
 import { KycProp, setUserKYC } from "@store/slices/userBio";
 import ProfilePic from "../components/profilePic/pic";
+import { IDType } from "../data/id_type";
+import useKyc from "api/kyc/useKyc";
+import { profile } from "console";
 
 interface SignUpFormData {
   full_name: string;
@@ -22,6 +25,9 @@ interface SignUpFormData {
   month: string;
   day: string;
   id_number: string;
+  id_type: string,
+  dob: string
+
   image: File | null;
 }
 
@@ -34,7 +40,8 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
   const dispatch = useAppDispatch()
   const [cookies] = useCookies(["access_token"]);
   const { handleSubmit, register, reset, setValue, formState: { errors } } = useForm<SignUpFormData>();
-
+  // console.log(cookies)
+  const [form] = Form.useForm()
   const [formData, setFormData] = useState<SignUpFormData>({
     full_name: userBio?.full_name || '',
     country: '',
@@ -43,17 +50,12 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
     month: '',
     day: '',
     id_number: "",
+    id_type: "",
+    dob: "",
+    
     image: null
   });
 
-  const handleDateChange = (date: any) => {
-    if (date) {
-      setFormData((prevData) => ({
-        ...prevData,
-        day: date.date().toString(),
-      }));
-    }
-  };
 
   const { mutate, isPending } = useVerification({
     onSuccess: (data) => {
@@ -66,7 +68,43 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
     },
   });
 
+  const { mutate: mutateKYCData } = useKyc({
+    onSuccess: (data) => {
+      console.log("pull key",data)
+      
+      if (data.results.length > 0) {
+        // Update local state with the fetched data
+        const updatedFormData = {
+          ...formData,
+          ...data.results[0],
+        };
+  
+        setFormData(updatedFormData);
+  
+        // Programmatically set form field values
+        form.setFieldsValue({
+          id_number: updatedFormData.id_number,
+          full_name: updatedFormData.full_name,
+          address: updatedFormData.address,
+          
+
+          
+
+        });
+      }
+
+      console.log( "veiwKYC", formData)
+     },
+  });
+
+
+  console.log(formData)
   const onSubmit: SubmitHandler<SignUpFormData> = () => {
+
+
+    // if(formData){
+    //   handleNext("next")
+    // }
     const formDataParse = new FormData();
     formDataParse.append("full_name", formData.full_name);
     formDataParse.append("country", formData.country);
@@ -76,6 +114,8 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
     formDataParse.append("selfie", formData.image as Blob);
     formDataParse.append("dob", `${formData.year}-${formData.month}-${formData.day}`);
     console.log(Object.fromEntries(formDataParse))
+
+    console.log("my token", cookies.access_token)
 
     mutate({
       token: cookies.access_token,
@@ -90,13 +130,18 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
       [name]: value,
     }));
   };
+  useEffect(()=>{
+    mutateKYCData({
+      token: cookies.access_token
+    })
+
+  }, [])
 
   return (
     <div className="w-full formContainer px-5">
-      <h5 className="text-white text-2xl font-semibold mb-4">Enter your details</h5>
-      {/* <input type="file" onChange={handleImage} /> */}
       <div className="m-auto w-max ">
       <ProfilePic 
+        profilePic={formData?.selfie}
           handleProfileImg={(file) => {
             setFormData((prevData) => ({
               ...prevData,
@@ -105,12 +150,16 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
           }} 
         />
 
+
       </div>
-      <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
+      <h5 className="text-white text-2xl font-semibold mb-4">Enter your details</h5>
+
+      <Form form={form} layout="vertical" onFinish={handleSubmit(onSubmit)}>
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
           <div className="flex-1">
             <Form.Item
               name="full_name"
+              initialValue={"full_name"}
               validateStatus={errors.full_name ? "error" : ""}
               help={errors.full_name?.message}
             >
@@ -126,6 +175,8 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
             </Form.Item>
           </div>
         </div>
+
+
 
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
           <div className="flex-1">
@@ -163,37 +214,63 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
             </Form.Item>
           </div>
 
+          
+        </div>
+        <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
+
+          <div className="flex-1">
+
+        <Form.Item
+              validateStatus={errors.id_type ? "error" : ""}
+              help={errors.id_type?.message}
+            >
+              <FormSelect
+
+                data={IDType}
+                label="id_type"
+                placeholder="Select ID Type"
+                className="w-full"
+                id="id_type"
+                name="id_type"
+
+                onSelect={(value) => setFormData({ ...formData, id_type: value })}
+              />
+            </Form.Item>
+            </div>
+
+
           <div className="flex-1">
             <Form.Item
               name="id_number"
+              // initialValue={"hsdsd"}
               validateStatus={errors.id_number ? "error" : ""}
               help={errors.id_number?.message}
             >
               <FormInput
-                label="Address"
+                label="ID Number"
                 type="text"
-                id="address"
-                value={formData.id_number}
-                placeholder="Enter Address"
+                id="id_number"
+                inputValue={"formData.id_number"}
+                placeholder="Enter ID Number"
                 inputName="id_number"
                 onChange={handleInputChange}
               />
             </Form.Item>
           </div>
-        </div>
+          </div>
 
         <h5 className="text-white text-2xl font-semibold mb-4">Enter your date of birth</h5>
 
         <DateSelection setFormData={setFormData} formData={formData} />
 
-        <div className="flex my-8 lg:gap-x-10 justify-between">
+        <div className="flex my-8 gap-5 lg:gap-x-10 justify-between">
           <div className="flex-grow">
             <KYCButton
               text="Back"
-              isLoading={isPending}
+              isLoading={false}
               disable={isPending}
               type="button"
-              className="kyc-button text-base font-semibold"
+              className="kyc-button text-base font-semibold back"
               onClick={() => handleNext("back")}
             />
           </div>

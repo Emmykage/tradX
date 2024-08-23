@@ -36,8 +36,7 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
   const { signInTab } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
-  const { handleSubmit, register, reset, watch,  formState: {errors} } = useForm<SignUpFormData>();
-  const dispatch = useDispatch();
+  const { handleSubmit, reset,  formState: {errors} } = useForm<SignUpFormData>();
   const [reveal, setReveal] = useState(false);
   const [revealConfirmation, setRevealConfirmation] = useState(false);
   const [formData, setFormData] = useState({
@@ -48,7 +47,7 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
     confirm_password: '',
     phone_number: ''
   })
-  const { mutate, isPending } = useKycRegistration({
+  const { mutate, isPending } = useRegister({
     onSuccess:  (data) => {
       reset();
       console.log("response data", data)
@@ -83,7 +82,7 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
       </p>
 
       <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
-        {/* <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
+        <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
           <div className="flex-1">
             <Form.Item
                 name="first_name"
@@ -120,7 +119,7 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
             </Form.Item>
             
           </div>
-        </div> */}
+        </div>
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
           <div className="flex-1">
             <Form.Item
