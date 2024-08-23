@@ -61,7 +61,7 @@ const RequireAuth = () => {
   };
 
   useEffect(() => {
-    if (cookies?.access_token && !isIdle) {
+    if (cookies?.access_token ) {
       const refreshInterval = 4 * 60 * 1000;
 
       const refresh = () => {
@@ -95,7 +95,7 @@ const RequireAuth = () => {
     }
   }, [cookies.access_token]);
 
-  if (!cookies.access_token && !isIdle) {
+  if (!cookies.access_token ) {
     return <Navigate to="/signIn" state={{ from: location }} />;
   }
 

@@ -112,9 +112,9 @@ const App: React.FunctionComponent<AppProps> = () => {
   };
 
   // hook that triggers a callback function when the user is inactuve for 5 minutes
-  useMouseIdle(() => {
-    dispatch(setIsIdle(true));
-  });
+  // useMouseIdle(() => {
+  //   dispatch(setIsIdle(true));
+  // });
 
  
 
@@ -152,7 +152,6 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/markets/bonds" element={<Bonds />} /> 
         <Route path="/markets/ipos" element={<Ipo />} /> 
         <Route path="/markets/crypto" element={<Crypto />} /> 
-
         <Route path="/trading/tradingPlatform" element={<TradingPlatform />} /> 
         <Route path="/trading/MobileTrading" element={<MobileTrading />} /> 
         <Route path="/trading/metaTradingFour" element={<MetaTradingFour />} /> 

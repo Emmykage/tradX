@@ -8,11 +8,12 @@ import LanguageSelectorDropDown from "components/LanguageSelectorDropDown/Langua
 interface WelcomeHeaderProps {
   step: number;
   setStep: (step: number | ((prevStep: number) => number)) => void;
+  onSkipWalkthrough: Function;
 }
 
 const STEPS_VALUE = 11;
 
-const WelcomeHeader: FC<WelcomeHeaderProps> = ({ step, setStep }) => {
+const WelcomeHeader: FC<WelcomeHeaderProps> = ({ step, setStep, onSkipWalkthrough }) => {
   const { t } = useTranslation();
 
   const handleClick = () => {
@@ -80,7 +81,7 @@ const WelcomeHeader: FC<WelcomeHeaderProps> = ({ step, setStep }) => {
               {step <= STEPS_VALUE ? step : STEPS_VALUE}/{STEPS_VALUE}
             </h2>
             <div className="line"></div>
-            <div className="close_img">
+            <div className="close_img cursor-pointer" onClick={() => onSkipWalkthrough()}>
               <img src="welcome-icons/close_grey.svg" />
             </div>
           </div>
