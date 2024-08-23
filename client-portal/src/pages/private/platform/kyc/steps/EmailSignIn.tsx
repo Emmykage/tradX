@@ -61,7 +61,7 @@ const EmailSignInForm: React.FC<SignInFormProps> = ({handleNext}) => {
     })
   };
   const onSubmit: SubmitHandler<ISignInForm> = (data) => {
-    mutate(formData);
+    mutate(formData as ISignInForm);
   };
 
   return (

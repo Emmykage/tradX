@@ -14,6 +14,7 @@ export async function fethRegister(data: any): Promise<boolean> {
       body: JSON.stringify(data),
     });
     const result = await response.json();
+    console.log("create user response:", result )
 
     if (!response.ok) {
       Object.keys(result).forEach((field) => {

@@ -7,3 +7,4 @@ export { default as paymentReducer } from "./payment";
 export { default as assetPairReducer } from "./pairs";
 export { default as themeBackgroundReducer } from "./theme";
 export { default as notificationReducer } from "./notification";
+export { default as userBioReducer } from "./userBio";

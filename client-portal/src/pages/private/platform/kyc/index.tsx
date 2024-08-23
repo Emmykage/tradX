@@ -16,13 +16,12 @@ import DocumentReviewRejected from './steps/DocumentReviewRejected'
 import DocumentReviewPending from './steps/DocumentReviewPending'
 
 const KYC = () => {
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(6)
   const [forgotPasswordView, setForgotPasswordView] = useState(false);
 
   const [signInProcess, setSignInProcess] = useState<string>("email")
   const handleNextPage = (dir: string) => {
     if(step == 8 ){
-      // setStep(1)
       return
     }else{
       if(dir == "next")
@@ -71,7 +70,9 @@ const KYC = () => {
         handleNext={handleNextPage}/>
       
       case 5:
-        return <SuccessView/>
+        return <SuccessView
+        handleNext={handleNextPage}
+        />
 
         case 6: 
         return <BioDetails

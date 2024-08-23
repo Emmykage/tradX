@@ -1,82 +1,34 @@
-// import { useMutation } from "@tanstack/react-query";
-// import getEnv from "utils/env";
-
-
-// const  fetchVerification = async(data: any) => {
-
-//     const BASE_URL = getEnv("VITE_API_BASE_URL")
-//     try {
-//         const response = await fetch(`${BASE_URL}`, {
-//             method: "POST",
-//             headers: {
-//                 Authorization: `Bearer ${data.token}`
-//             },          
-
-//         })
-//         const result =  response.json()
-
-//         if(!response.ok){
-//             // throw new Error(`${result}`)
-//         }
-
-//         return result;
-//     } catch (error) {
-//         throw new Error(error as string)
-        
-//     }
-// }
-// interface useVerificationProp {
-//     onSuccess: (data: unknown, variables: unknown, context: unknown) => void,
-//     onError: (data: unknown, variables: unknown, context: unknown) => void
-// }
-
-// const useVerification = (props: useVerificationProp ) => {
-//     const { onSuccess: onSuccessOverride,
-//         onError: onErrorOverride,
-//         ...rest
-//     } = props;
-
-//     return useMutation<any, unknown, any>({
-//         mutationFn: fetchVerification,
-//         onSuccess: (data, variables, context) =>{
-//             onSuccessOverride(data, variables, context)
-//         },
-//         onError: (error, variables, context) => {
-//             if(onErrorOverride) {
-//                 onErrorOverride(error, variables, context)
-//             }
-//         },
-//         ...rest
-//     })
-// }
-
-// export default useVerification
-
-
-import { ISignInForm, IUser } from "@interfaces";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import getEnv from "utils/env";
 
-export async function fethLogin(data: ISignInForm): Promise<boolean> {
+export async function fetchVerification(data: any): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
-  console.log(getEnv("VITE_API_BASE_URL"), BASE_URL, 'Here');
+  console.log("my data", data.formData)
+
+  for (let [key, value] of data.formData.entries()) {
+    console.log(key, value);
+  }
   try {
-    console.log(data)
-    const response = await fetch(`${BASE_URL}/user/token/`, {
+    const response = await fetch(`${BASE_URL}/user/kyc/`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        Authorization: `Bearer ${data.token}`,
+
       },
       referrerPolicy: "no-referrer",
-      body: JSON.stringify(data),
+      body: data.formData,
     });
     const result = await response.json();
-
-    console.log(result);
+    console.log("verification response:", response, result )
 
     if (!response.ok) {
-      toast.error(result.detail);
+      Object.keys(result).forEach((field) => {
+        const errors = result[field];
+        errors.forEach((errorMessage: string) => {
+          toast.error(`${field}: ${errorMessage}`);
+        });
+      });
       throw new Error(`${result}`);
     }
     return result;
@@ -85,22 +37,13 @@ export async function fethLogin(data: ISignInForm): Promise<boolean> {
   }
 }
 
-interface LoginSuccess {
-  access: string;
-  refresh: string;
-  user: IUser
-}
-
-type useLoginProps = {
-  onSuccess?: (
-    data: LoginSuccess,
-    variables: ISignInForm,
-    context: unknown
-  ) => void;
-  onError?: (error: unknown, variables: ISignInForm, context: unknown) => void;
+type useVerificationProps = {
+  onSuccess?: (data: unknown, variables: unknown, context: unknown) => void;
+  onError?: (error: unknown, variables: unknown, context: unknown) => void;
+  [index: string]: any;
 };
-export const useVerification = (props: useLoginProps) => {
-  const receivedProps = props || ({} as useLoginProps);
+export const useVerification = (props: useVerificationProps) => {
+  const receivedProps = props || ({} as useVerificationProps);
 
   const {
     onSuccess: onSuccessOverride,
@@ -108,16 +51,16 @@ export const useVerification = (props: useLoginProps) => {
     ...rest
   } = receivedProps;
 
-  return useMutation<any, unknown, ISignInForm>({
-    mutationFn: fethLogin,
+  return useMutation<any, unknown, any>({
+    mutationFn: fetchVerification,
     onSuccess: (data, variables, context) => {
-      /* Add On success actions here if needed */
       if (onSuccessOverride) {
         onSuccessOverride(data, variables, context);
       }
     },
     onError: (error, variables, context) => {
       if (onErrorOverride) {
+        console.log(error, 'occured')
         onErrorOverride(error, variables, context);
       }
     },

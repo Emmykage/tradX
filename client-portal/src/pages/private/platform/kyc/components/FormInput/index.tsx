@@ -21,6 +21,8 @@ const FormInput = forwardRef(
             placeholderIcon = '',
             required = false,
             onChange,
+            inputValue= '',
+            gold='',
             ...rest
         }: any,
         ref
@@ -34,6 +36,7 @@ const FormInput = forwardRef(
                     name={inputName}
                     type={inputType}
                     onChange={onChange}
+                    value={inputValue}
                     {...rest}
                 />
                 {icon && (

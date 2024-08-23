@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import "../kyc.scss"
 import FileInput from 'components/fileInput/fileInput'
-import { useNavigate } from 'react-router-dom'
+import { useAppSelector } from '@store/hooks'
+import { toast } from 'react-toastify'
+import useKycFilesPostForm from 'api/kyc/useKycFilesPost'
+import { useCookies } from 'react-cookie'
 interface documentProps {
   handleNext: (dir: string) => void
 }
@@ -10,14 +13,54 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
   const [data, setData] = useState<{identity: {name: string}, address: {name: string}} | {} > ({})
   const [identityDoc, setIdentityDoc] = useState<FormData | null>(null)
   const [addressDoc, setAddressDoc] = useState<FormData | null>(null)
-  const navigate = useNavigate()
+  const [cookies] = useCookies(["access_token"]);
+
+  const {kyc} = useAppSelector(state => state.userBio)
+  const {user} = useAppSelector(state => state.user)
+  // const navigate = useNavigate() 
+  console.log(kyc, "view user")
+
+
+  const { mutate, isPending } = useKycFilesPostForm({
+    onSuccess: () => {
+      toast.success(
+        "Your document have been uploaded successsfully."
+      );
+      handleNext("next")
+
+    },
+    onError: (error) => {
+      console.error("fetching add file Kyc error", error);
+    },
+    });
+
+
   const handleFileUpload = () => {
-    console.log(identityDoc?.get("file"), "retrieved doc")
-    console.log("first triggered")
-    handleNext("next")
-    // navigate('/platform') 
-    
-  }
+    if (!kyc) {
+      toast.error("KYC data is missing. Cannot upload files.");
+      return;
+    }
+    if (identityDoc && addressDoc) {
+      identityDoc.append("desc", "passport");
+      identityDoc.append("kyc", kyc.toString());
+  
+      addressDoc.append("desc", "address");
+      addressDoc.append("kyc", kyc.toString() );
+  
+      mutate({
+        token: cookies.access_token,
+        identityDoc,
+        addressDoc
+      });
+  
+      console.log(cookies.access_token);
+    }
+  };
+  
+ 
+
+
+  console.log("fetchedUser", user)
 
   console.log(data, "uploaded")
   return (

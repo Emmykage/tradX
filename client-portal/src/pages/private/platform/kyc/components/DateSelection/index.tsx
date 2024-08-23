@@ -2,7 +2,12 @@ import React, { useEffect, useReducer, useState } from 'react';
 import FormSelect from '../FormSelect';
 
 
-const DateSelection = () => {
+interface dateSelectionProps {
+    setFormData: any
+    formData: {}
+}
+
+const DateSelection: React.FC<dateSelectionProps> = ({setFormData, formData}) => {
     const [daysArray, setDaysArray] = useState([]);
     const initialState = {
         days: 31,
@@ -17,6 +22,8 @@ const DateSelection = () => {
         yearsArray: []
     };
     const [state, setState] = useReducer((state: any, newState: any) => ({ ...state, ...newState }), initialState);
+
+    console.log("state", state.dayValue)
     const{
         days,
         months,
@@ -131,6 +138,12 @@ const DateSelection = () => {
                 ...state,
                 monthValue: selectedMonth
             });
+
+            setFormData({
+                ...formData,
+                month: selectedMonth
+
+            })
         }
     };
 
@@ -140,7 +153,15 @@ const DateSelection = () => {
                 ...state,
                 dayValue: selectedDay
             })
+
+            setFormData({
+                ...formData,
+                day: selectedDay
+    
+            })
         }
+
+      
     };
 
     const handleYearChange = (selectedYear: string|number) => {
@@ -150,6 +171,13 @@ const DateSelection = () => {
                 ...state,
                 yearValue: selectedYear
             })
+
+            setFormData({
+                ...formData,
+                year: selectedYear
+    
+            })
+            console.log("selected year", selectedYear )
         }
     };
 
