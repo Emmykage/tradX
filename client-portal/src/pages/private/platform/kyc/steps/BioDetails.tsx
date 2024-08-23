@@ -15,7 +15,6 @@ import { KycProp, setUserKYC } from "@store/slices/userBio";
 import ProfilePic from "../components/profilePic/pic";
 import { IDType } from "../data/id_type";
 import useKyc from "api/kyc/useKyc";
-import { profile } from "console";
 
 interface SignUpFormData {
   full_name: string;
@@ -70,10 +69,9 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
 
   const { mutate: mutateKYCData } = useKyc({
     onSuccess: (data) => {
-      console.log("pull key",data)
+      // console.log("pull key",data)
       
       if (data.results.length > 0) {
-        // Update local state with the fetched data
         const updatedFormData = {
           ...formData,
           ...data.results[0],
@@ -81,7 +79,6 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
   
         setFormData(updatedFormData);
   
-        // Programmatically set form field values
         form.setFieldsValue({
           id_number: updatedFormData.id_number,
           full_name: updatedFormData.full_name,
@@ -93,7 +90,6 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
         });
       }
 
-      console.log( "veiwKYC", formData)
      },
   });
 
@@ -101,10 +97,6 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
   console.log(formData)
   const onSubmit: SubmitHandler<SignUpFormData> = () => {
 
-
-    // if(formData){
-    //   handleNext("next")
-    // }
     const formDataParse = new FormData();
     formDataParse.append("full_name", formData.full_name);
     formDataParse.append("country", formData.country);
@@ -115,7 +107,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
     formDataParse.append("dob", `${formData.year}-${formData.month}-${formData.day}`);
     console.log(Object.fromEntries(formDataParse))
 
-    console.log("my token", cookies.access_token)
+    // console.log("my token", cookies.access_token)
 
     mutate({
       token: cookies.access_token,
