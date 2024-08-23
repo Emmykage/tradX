@@ -19,12 +19,16 @@ const StepTwo: FC<StepTwoProps> = ({ setStep }) => {
   
   const getFirstStep = () => {
     const newArr = [...data?.assets];
-    return newArr.slice(0,10);
+    return newArr.slice(0,15);
   };
 
   const getSecondStep = () => {
     const newArr = [...data?.assets];
-    return newArr.slice(10,20);
+    return newArr.slice(15,30);
+  };
+  const getThirdStep = () => {
+    const newArr = [...data?.assets];
+    return newArr.slice(30,45);
   };
 
   const addAnimation = () => {
@@ -78,15 +82,31 @@ const StepTwo: FC<StepTwoProps> = ({ setStep }) => {
             ))}
           </div>
         </div>
+
+        <div className="scroller" data-direction="left" data-speed="slow">
+          <div className="scroller__inner">
+            {getThirdStep().map((item, index) => (
+              <div className="stepTwoItemCard md:min-w-fit flex items-center gap-x-3.5" key={index + item.name}>
+                  <div className="w-[35px] h-[35px] bg-[#2D3138] rounded-full flex items-center justify-center ">
+                    <img className="w-[24px] h-[24px]" src={item.image} alt="" /> 
+                  </div>
+                <h6 className="font-medium text-base md:text-[18px] lg:text-[24.593px] text-nowrap text-white">{item.name}</h6>
+              </div>
+            ))}
+          </div>
+        </div>
+        
         
       
-        <div className="mt-6 lg:mt-[179px] w-[95%] md:w-full  xl:w-[904px] max-w-[904px] mx-auto">
+        <div className="mt-6  w-[95%] md:w-full  xl:w-[904px] max-w-[904px] mx-auto">
           <h2 className="text-[18px] md:text-[21px]  text-center text-white ">{t("walkthroughStocksSubText")}</h2>
           <div className="mt-9 mb-12 md:mb-16 lg:mb-16 mx-auto max-w-[182px] md:max-w-[360px]">
             <MyButton text="next" handleClick={handleClick} />
           </div>
         </div>
       </div>
+
+      
     </div>
   );
 };

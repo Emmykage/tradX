@@ -127,7 +127,6 @@ export const AreaChart = ({chartData, liveLoading = false, bidOngoing=false, tim
           }
       };
         chartContainer.appendChild(textElement1);
-        console.log(bidOngoing);
         if(bidOngoing){
           chartContainer.appendChild(textElement2);
         }
@@ -141,25 +140,54 @@ export const AreaChart = ({chartData, liveLoading = false, bidOngoing=false, tim
           }, 100);  // Short delay to ensure chart is rendered
         };
         ensureChartReady();
-  
+
+      const determineDirectionOfChart = (constantVal: number, randomValue: number) => {
+        let returnValue = 0;
+        if(randomValue < 0.2){
+          returnValue = constantVal - 0.2;
+        }else if((randomValue > 0.2) && (randomValue < 0.8 )){
+          returnValue = constantVal + 0.0;
+        }else{
+          returnValue = constantVal + 0.2;
+        }
+        return returnValue;
+      };
 
       if(liveLoading || bidOngoing){
-        const deletionObj = {20: 20, 30: 10, 40: 0 };
         let c = 1;
-        if(time){
-          // @ts-ignore
-          additionalDataArray.splice(additionalDataArray.length - deletionObj[time], deletionObj[time]);
+        let secondaryCount = 0;
+        const storeLastData = chartData[chartData.length - 1];
+        const constantValue = storeLastData.value;
+        const getRandomValue = Number(`0.${Math.floor(Math.random() * 3)}`);
+        let newTime = Number((storeLastData?.time + 0.1).toFixed(3));
+        let newData = {
+          value:  Math.round((constantValue + getRandomValue) * 100) / 100,
+          time: newTime
         };
+       
         let selectedData = tradeType === "up"? [...additionalDataArray, ...tradeUpData] : [...additionalDataArray, ...tradeDownData];
         // Simulate real-time data update every second
+     
         const interval = setInterval(() => {
-          seriesRef.current.update(selectedData[c]);
+          
+          seriesRef.current.update(newData);
           chart.subscribeCrosshairMove(updatePosition1);
-          updatePosition1(selectedData[c]);
+          updatePosition1(newData);
           c += 1;
-          if(!selectedData[c]){
+          if(c === time){
             clearInterval(interval);
           }
+          const randNumber = Number(`0.${Math.floor(Math.random() * 9)}`);
+          let newDataValue =   Math.round((determineDirectionOfChart(constantValue, randNumber)) * 100)/100;
+          newData = {
+            value: secondaryCount > 0? selectedData[secondaryCount].value : newDataValue,
+            time: Number((newTime + 2).toFixed(3))
+          };
+          if((time - c) < 20){
+            secondaryCount  +=1;
+          }
+          newTime = Number((newTime + 2).toFixed(3))
+         
     
         }, 1000);
   
