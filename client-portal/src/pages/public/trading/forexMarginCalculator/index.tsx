@@ -20,7 +20,6 @@ const ForexMarginCalculator = () => {
   const {t} = useTranslation()
   return (
     <div className='tradingContainer'>
-      <Navbar/>
         <TradCalc withRoute titleHeader='Forex Margin Calculator'/>
 
         <ForexCalculator 

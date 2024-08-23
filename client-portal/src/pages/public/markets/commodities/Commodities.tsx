@@ -18,6 +18,7 @@ import TradeTable from "pages/public/home/commonComponents/tradeTable/TradeTable
 import OilImage from '../../../../assets/categorySlider/oil.png'
 import GoldImage from '../../../../assets/categorySlider/gold.png'
 import GasImage from '../../../../assets/categorySlider/gas.png'
+import NavigationRoute from "pages/public/home/commonComponents/NavigationRoute/NavigationRoute";
 
 const Commodities = () => {
     const title = "commodities"
@@ -52,10 +53,10 @@ const Commodities = () => {
     ];
   return (
     <div className="commoditiesContainer">
-      <Navbar />
       {/* <UsingOurCfd /> */}
       {/* <CfdTradWhyTrade /> */}
       {/* <CfdTradMuchMore /> */}
+      <NavigationRoute/>
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle}/>
       <CategorySlider allPairsData={allPairsData} />
       <TradeTable/>

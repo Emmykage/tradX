@@ -47,7 +47,6 @@ const TrackTrades = () => {
     }
   return (
     <div className='tradingContainer copyTradingWrapper'>
-        <Navbar/>
         <TrackTrade />
         <CopyTrade />
 

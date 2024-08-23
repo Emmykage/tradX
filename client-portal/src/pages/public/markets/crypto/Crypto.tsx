@@ -13,6 +13,7 @@ import CategorySlider from "pages/public/home/commonComponents/categorySlider/Ca
 import BitCoinImage from '../../../../assets/categorySlider/bitcoin.png'
 import EthereumImage from '../../../../assets/categorySlider/ethereum.png'
 import RippleImage from '../../../../assets/categorySlider/ripple.png'
+import NavigationRoute from "pages/public/home/commonComponents/NavigationRoute/NavigationRoute";
 
 const Crypto = () => {
   const title = 'Cryptocurrency CFDs'
@@ -47,7 +48,7 @@ const Crypto = () => {
   ];
   return (
     <div className="cryptoContainer">
-      <Navbar />
+      <NavigationRoute/>
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
       <CategorySlider allPairsData={allPairsData}/>
       <InfoBlockWithList item={InfoBlockWithListData} />

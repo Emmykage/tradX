@@ -1,4 +1,5 @@
-import './straightForwardTrading.scss'
+import React from 'react'
+import './straightforwardTrading.scss'
 import backdropImg from "../../../../../assets/trading/straightforwardTradingImg.png"
 import { useTranslation } from 'react-i18next'
 

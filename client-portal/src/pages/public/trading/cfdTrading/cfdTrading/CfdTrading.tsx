@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import "./CfdTrading.scss";
+import "./CFDTrading.scss";
 import MainImg from "./main.png";
 
 const CfdTradingBlock = () => {

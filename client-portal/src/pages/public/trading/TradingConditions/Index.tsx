@@ -6,7 +6,6 @@ import Header from './conditionHeader/Header'
 const TradingConditions = () => {
   return (
     <div className='tradingContainer'>
-    <Navbar/>
     <Header/>
     <TradeTable/>
     

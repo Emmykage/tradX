@@ -3,14 +3,17 @@ import HomeGraph from '../../../../../assets/home/homeGraph.png'
 import TradingFunctionality from '../../../../../assets/home/tradeFunctionality.png'
 import CustomMarker1 from '../Indicators/customMarker1/CustomMarker1'
 import CustomMarker2 from '../Indicators/customMarker2/CustomMarker2'
+import { useTranslation } from 'react-i18next'
 
 const Landing = () => {
+    const {t} = useTranslation()
+    console.log(t);
   return (
     <div>
         <div className="landingHeaderTitle">
-            <h2>Be The Master with Us</h2>
-            <span>Excel in trading and achieve your financial goals</span>
-            <button>Start Trading</button>
+            <h2>{t("beTheMasterWithUs")}</h2>
+            <span>{t("excelWithUs")}</span>
+            <button>{t("startTrading")}</button>
         </div>
         <div className='bottomGraphImageContainer'>
             <div className='homeGraphContainer'>

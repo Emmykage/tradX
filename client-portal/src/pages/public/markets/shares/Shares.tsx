@@ -16,6 +16,7 @@ import Footer from "pages/public/home/main/footer/Footer";
 import TeslaImage from '../../../../assets/categorySlider/tesla.png'
 import AmazonImage from '../../../../assets/categorySlider/amazon.png'
 import DeutchBankImage from '../../../../assets/categorySlider/deutchbank.png'
+import NavigationRoute from "pages/public/home/commonComponents/NavigationRoute/NavigationRoute";
 
 const Shares = () => {
   const title = 'Shares'
@@ -50,7 +51,7 @@ const Shares = () => {
     ];
   return (
     <div className="sharesContainer">
-      <Navbar />
+      <NavigationRoute/>
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
       <CategorySlider allPairsData={allPairsData}/>
       <InfoBlockWithList item={InfoBlockWithListData} />

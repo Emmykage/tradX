@@ -6,6 +6,7 @@ import './aboutUsSlider.scss'
 import RightQuoteIcon from '../../../../../assets/home/quoteRight.png'
 import LeftQuoteIcon from '../../../../../assets/home/quoteLeft.png'
 import RatingStarIcon from '../../../../../assets/home/ratingStar.png'
+import { useTranslation } from 'react-i18next';
 
 const AboutUsSlider = () => {
   const ArrowButtonPrevious:React.FC<{onClick: any}> = ({  onClick }) => {
@@ -55,10 +56,12 @@ const ArrowButtonNext:React.FC<{onClick: any}>  = ({onClick }) => {
         
       }
     }]
-  };
+  }
+
+  const {t} = useTranslation()
   return (
     <div className='aboutUsSliderContainer'>
-      <h2>What other Traders say about us</h2>
+      <h2>{t("whatTradersSaysAboutUs")}</h2>
       <div className="aboutUsSliders">
 
                       
@@ -69,13 +72,13 @@ const ArrowButtonNext:React.FC<{onClick: any}>  = ({onClick }) => {
                     <div className='aboutUsUpperQuoteImage'>
                       <img src={RightQuoteIcon} alt="" />
                     </div>
-                   <p>I've been using different platforms for years, but  Tradex is the best by far, due to its advanced charting tools and technical indicators. </p>
+                   <p>I was completely new to trading, and Tradex made it easy to learn the ropes. The educational resources were fantastic, and the user interface is so intuitive. </p>
                     <div className='aboutUsLowerQuoteImage'>
                       <img src={LeftQuoteIcon} alt="" />
                     </div>
                   </div>
                   <div className='aboutUsSliderCardInfo'>
-                    <span>John</span>
+                    <span>Sarah</span>
                     <div className='aboutUsRatingStarCard'>
                       <img src={RatingStarIcon} alt="" />
                       <img src={RatingStarIcon} alt="" />
@@ -92,13 +95,13 @@ const ArrowButtonNext:React.FC<{onClick: any}>  = ({onClick }) => {
                     <div className='aboutUsUpperQuoteImage'>
                       <img src={RightQuoteIcon} alt="" />
                     </div>
-                   <p>Tradex is hands down the best platform I've used. The advanced charting tools and technical indicators are top-notch, making trading seamless and efficient."</p>
+                   <p>I was completely new to trading, and Tradex made it easy to learn the ropes. The educational resources were fantastic, and the user interface is so intuitive. </p>
                     <div className='aboutUsLowerQuoteImage'>
                       <img src={LeftQuoteIcon} alt="" />
                     </div>
                   </div>
                   <div className='aboutUsSliderCardInfo'>
-                    <span>Emma</span>
+                    <span>Sarah</span>
                     <div className='aboutUsRatingStarCard'>
                       <img src={RatingStarIcon} alt="" />
                       <img src={RatingStarIcon} alt="" />

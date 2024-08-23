@@ -22,6 +22,7 @@ import VolumeNumberIcon from '../../../../../assets/home/checkCurrency/volumeNum
 
 
 import CheckCurrecnyCard from './CheckCurrecnyCard'
+import { useTranslation } from 'react-i18next'
 
 const CheckCurrency = () => {
   const firstLayerData = [
@@ -124,11 +125,13 @@ const CheckCurrency = () => {
       tradeColor:"#00B67A"
     },
   ]
+  const {t} = useTranslation()
+
   return (
     <div className="checkCurrencyContainer">
         <div className="checkCurrencyHeader">
-            <h2>Check our</h2>
-            <h2>Most Traded Currency Pairs </h2>
+            <h2>{t('checkOur')}</h2>
+            <h2>{t("mostTradedCurrencyPairs")} </h2>
         </div>
         <div className='checkCurrencyCardContainer'>
           {
@@ -144,13 +147,13 @@ const CheckCurrency = () => {
             
         </div>
         <div className='tradersNumber'>
-          <h2>4.7+ million traders who trust us!</h2>
+          <h2>{t("4.7MillionTraders")}</h2>
           <div className='traderCards'>
           {/* card */}
           <div className='tradeNumberCard'>
             <div className='tradeCardNumberHeader'>
               <img src={ProfileNumberIcon} alt="" />
-              <span>Active Traders</span>
+              <span>{t('activeTraders')}</span>
             </div>
             <h2>1,432,884</h2>
           </div>
@@ -158,7 +161,7 @@ const CheckCurrency = () => {
           <div className='tradeNumberCard'>
             <div className='tradeCardNumberHeader'>
               <img src={VolumeNumberIcon} alt="" />
-              <span>Total Volume</span>
+              <span>{t('totalVolume')}</span>
             </div>
             <h2>60,827,147,559</h2>
           </div>
@@ -166,7 +169,7 @@ const CheckCurrency = () => {
           <div className='tradeNumberCard'>
             <div className='tradeCardNumberHeader'>
               <img src={TradeNumberIcon} alt="" />
-              <span>Total Trades</span>
+              <span>{t('totalTrades')}</span>
             </div>
             <h2>1,432,884</h2>
           </div>
