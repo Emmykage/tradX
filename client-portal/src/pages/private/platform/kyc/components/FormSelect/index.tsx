@@ -64,7 +64,7 @@ const FormSelect = ({
   });
 
   const dropdownClass = classNames(
-    'absolute bg-gray-100 w-full max-h-52 overflow-y-auto bg-[#162840] py-3 rounded-lg shadow-md z-10',
+    'absolute  w-full max-h-52 overflow-y-auto bg-[#162840] py-3 rounded-lg shadow-md z-10',
     {
       'top-full right-0 mt-2': position === 'bottom-right',
       'top-full left-0 mt-2': position === 'bottom-left',

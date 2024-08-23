@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react';
 import FormSelect from '../FormSelect';
-
+import { isObjectEmpty, splitDateToDayMothYear } from 'utils/utils';
 
 const DateSelection = () => {
     const [daysArray, setDaysArray] = useState([]);
@@ -14,7 +14,8 @@ const DateSelection = () => {
         dayValue: 1,
         // daysArray: [],
         monthsArray: [],
-        yearsArray: []
+        yearsArray: [],
+        initialLoading: true,
     };
     const [state, setState] = useReducer((state: any, newState: any) => ({ ...state, ...newState }), initialState);
     const{
@@ -27,7 +28,8 @@ const DateSelection = () => {
         dayValue,
         // daysArray,
         monthsArray,
-        yearsArray
+        yearsArray,
+        initialLoading
     } = state;
 
     const formatInitialData = () => {
@@ -59,7 +61,6 @@ const DateSelection = () => {
     };
 
     const buildDays = (length: number) => {
-       
         let daysArry: any = [];
         let d = 1;
         while(d <= 31){
@@ -153,7 +154,27 @@ const DateSelection = () => {
         }
     };
 
+    const formatInitialDate = () => {
+        const dateObj: any =  splitDateToDayMothYear("2024-08-23");
+        if(!isObjectEmpty(dateObj)){
+            const {year, month, day} = dateObj;
+            checkMonth(`${month}`);
+            setState({
+                yearValue: year,
+                monthValue: month,
+                dayValue: day,
+                initialLoading: false
+            });
+        }
+
+    };
+
+    useEffect(() => {
+        formatInitialDate();
+    }, []);
+
     return(
+    
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
             <div className="flex-grow">
                 <FormSelect
@@ -163,6 +184,7 @@ const DateSelection = () => {
                     className="w-full "
                     id="month"
                     name="month"
+                    selectedId={monthValue}
                     onSelect={handleMonthChange}
                 />
             </div>
@@ -174,6 +196,7 @@ const DateSelection = () => {
                     className="w-full"
                     id="day"
                     name="day"
+                    selectedId={dayValue}
                     onSelect={handleDayChange}
                 />
             </div>
@@ -185,6 +208,7 @@ const DateSelection = () => {
                     className="w-full"
                     id="year"
                     name="year"
+                    selectedId={yearValue}
                     onSelect={handleYearChange}
                 />
             </div>
