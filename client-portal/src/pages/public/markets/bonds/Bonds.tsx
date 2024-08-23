@@ -68,6 +68,7 @@ const Bonds = () => {
   ];
   return (
     <div className="bondsContainer">
+    <Navbar/>
       <NavigationRoute/>
       
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />

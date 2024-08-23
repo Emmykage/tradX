@@ -10,6 +10,7 @@ const MetaTrader4Landing = () => {
   const {t} = useTranslation()
   return (
     <div className='meta4 landingContainer'>
+      <Navbar/>
         <h1> {t("metaTrader4")}</h1>
         <p>{t("metaTrader4Text")}</p>
 

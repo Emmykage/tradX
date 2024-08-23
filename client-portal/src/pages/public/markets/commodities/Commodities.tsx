@@ -56,6 +56,8 @@ const Commodities = () => {
       {/* <UsingOurCfd /> */}
       {/* <CfdTradWhyTrade /> */}
       {/* <CfdTradMuchMore /> */}
+      <Navbar/>
+
       <NavigationRoute/>
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle}/>
       <CategorySlider allPairsData={allPairsData} />

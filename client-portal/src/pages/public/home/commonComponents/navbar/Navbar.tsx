@@ -14,6 +14,7 @@ import { Spin } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import i18n from "../../../../../i18n";
 import { languages } from "../../../../../constants";
+import { useCookies } from "react-cookie";
 
 
 const Navbar= () => {
@@ -21,7 +22,12 @@ const Navbar= () => {
     const [geoInfo, setGeoInfo] = useState<{countryCode:string}>()
     const [loading, setLoading] = useState(false)
     const [activeMobileMenu, setActiveMobileMenu] = useState(null);
-    const [countryCode, setCountryCode] = useState(i18n.language ? i18n.language.toLocaleUpperCase() : 'EN')
+    const [cookies, setCookie] = useCookies(['language']);
+  
+    const [countryCode, setCountryCode] = useState(() => {
+      // Check if there's a language cookie, otherwise use i18n.language or default to 'EN'
+      return cookies.language || (i18n.language ? i18n.language.toUpperCase() : 'EN');
+    });
     
     const toggleMenu = (menu:any) => {
       
@@ -242,6 +248,7 @@ const Navbar= () => {
               className="languageValue"
               onClick={() => {
                 setCountryCode("en");
+                setCookie('language', "en", { path: '/' });
                 setToggleLanguageSelector(false);
               }}
             >
@@ -252,6 +259,8 @@ const Navbar= () => {
               className="languageValue"
               onClick={() => {
                 setCountryCode("es");
+                setCookie('language', "es", { path: '/' });
+
                 setToggleLanguageSelector(false);
               }}
             >
@@ -262,6 +271,8 @@ const Navbar= () => {
               className="languageValue"
               onClick={() => {
                 setCountryCode("jp");
+                setCookie('language', "jp", { path: '/' });
+
                 setToggleLanguageSelector(false);
               }}
             >
@@ -272,6 +283,8 @@ const Navbar= () => {
               className="languageValue"
               onClick={() => {
                 setCountryCode("AR");
+                setCookie('language', "AR", { path: '/' });
+
                 setToggleLanguageSelector(false);
               }}
             >
@@ -282,6 +295,8 @@ const Navbar= () => {
               className="languageValue"
               onClick={() => {
                 setCountryCode("HI");
+                setCookie('language', "HI", { path: '/' });
+
                 setToggleLanguageSelector(false);
               }}
             >

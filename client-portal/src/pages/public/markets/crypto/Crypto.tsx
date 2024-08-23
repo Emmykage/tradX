@@ -48,6 +48,7 @@ const Crypto = () => {
   ];
   return (
     <div className="cryptoContainer">
+      <Navbar/>
       <NavigationRoute/>
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
       <CategorySlider allPairsData={allPairsData}/>

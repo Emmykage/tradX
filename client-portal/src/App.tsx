@@ -33,6 +33,7 @@ import TradingConditions from "pages/public/trading/TradingConditions/Index";
 import CFDTrading from "pages/public/trading/cfdTrading";
 import ForexProfitCalculator from "pages/public/trading/ForexProfitCalculator";
 import KYC from "pages/private/platform/kyc";
+import Navbar from "pages/public/home/commonComponents/navbar/Navbar";
 
 
 
@@ -116,14 +117,14 @@ const App: React.FunctionComponent<AppProps> = () => {
   //   dispatch(setIsIdle(true));
   // });
 
- 
 
 
   return (
-    <div data-theme={"dark"}>
+    <div data-theme={"dark"} style={{backgroundColor:'#0e1422'}}>
 
       <Suspense fallback={<div className="fullLoadingBackground"><Loading/></div>}>
       <Router>
+      
 
       <Routes>
         {/* turned of the auth require */}

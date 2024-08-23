@@ -11,6 +11,7 @@ import CfdTradingBlock from "./cfdTrading/CfdTrading"
 const CFDTrading = () => {
   return (
     <div className='tradingContainer'>
+      <Navbar/>
     <CfdTradingBlock/>
     <CfdTradWhyTrade/>
     <CfdTradMuchMore/>
