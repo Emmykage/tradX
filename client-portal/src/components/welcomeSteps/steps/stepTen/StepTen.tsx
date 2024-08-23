@@ -47,7 +47,6 @@ const StepTen: React.FC<StepTenProps> = ({
     const timerId = setInterval(() => {
         const now = Math.floor(Date.now() / 1000);
         const remaining = endTime - now;
-
         if (remaining <= 0) {
             setTimeLeft(0);
             setTradeFinished(true);
@@ -108,7 +107,7 @@ const formatTimeHIS = (seconds: number, { short = false } = {})  => {
             </div>
           </div>
         
-          <div className="modal flex justify-end col-span-8 sm:col-span-8 lg:col-span-2">
+          <div className={`modal flex justify-end col-span-8 sm:col-span-8 lg:col-span-2 ${formInactive? 'hidden md:flex': ''}`}>
             <div className="max-w-[315px] w-full  px-5">
               <TestWalkThrough 
                 setStep={setStep} 

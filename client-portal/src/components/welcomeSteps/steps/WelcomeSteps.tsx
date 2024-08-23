@@ -16,6 +16,7 @@ import StepTen from "./stepTen/StepTen.tsx";
 import StepOne from './stepOne/StepOne.tsx';
 import LastStep from "./lastStep/LastStep.tsx";
 import { initialAreaData } from "pages/private/platform/MainChart/areaData.ts";
+import { useNavigate } from "react-router-dom";
 
 const WelcomeSteps = () => {
   const { t } = useTranslation();
@@ -26,6 +27,7 @@ const WelcomeSteps = () => {
   const [tradeOngoing, setTradeOngoing] = useState(false);
   const [areaChartInitialData, setAreaChartInitialData ] = useState(initialAreaData);
   const [cookies, setCookie] = useCookies(["step", "access_token"]);
+  const navigate =  useNavigate();
 
   const dispatch = useAppDispatch();
 
@@ -58,7 +60,9 @@ const WelcomeSteps = () => {
       },
       token: cookies.access_token,
     });
-   setWelcomeStep(0);
+    navigate('/platform');
+   
+  //  setWelcomeStep(0);
   };
 
   const onReset = (resetStep = 1) => {
@@ -172,7 +176,7 @@ const WelcomeSteps = () => {
 
   return (
     <div className="welcomeSteps relative">
-       <WelcomeHeader step={step} setStep={setStep} />
+       <WelcomeHeader step={step} setStep={setStep} onSkipWalkthrough={onSkipWalkthrough} />
         <div className="content relative">
           {renderStep()}
         </div>
