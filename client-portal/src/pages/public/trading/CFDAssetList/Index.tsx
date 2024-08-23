@@ -11,6 +11,7 @@ import Header from './cfdassetHeader/Header'
 const CFDAssetList = () => {
   return (
     <div className='tradingContainer'>
+      <Navbar/>
       <Header/>
       <TradeTableAsset/>
       <TradCalc/>

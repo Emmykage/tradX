@@ -10,6 +10,7 @@ import GetStarted from './getStartedTrading/GetStarted'
 const CFDCalculatr = () => {
   return (
     <div className='tradingContainer'>
+      <Navbar/>
       <TradCalc withRoute />
       <GetStarted />
       <CostExplanation/>

@@ -64,6 +64,7 @@ const Etf = () => {
     ];
   return (
     <div className="etfContainer">
+      <Navbar/>
       <NavigationRoute/>
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
       <CategorySlider allPairsData={allPairsData}/>

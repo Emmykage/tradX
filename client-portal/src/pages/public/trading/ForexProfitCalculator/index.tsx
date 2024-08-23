@@ -22,6 +22,7 @@ const ForexProfitCalculator = () => {
   const {t} = useTranslation()
   return (
     <div className='tradingContainer'>
+      <Navbar/>
       <TradCalc withRoute titleHeader='Forex Profit Calculator'/>
 
       <ForexCalculator mainImg={Calculator} 

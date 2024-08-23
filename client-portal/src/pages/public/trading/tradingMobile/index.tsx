@@ -13,6 +13,7 @@ const TradingOnTheGo = () => {
   const {t} = useTranslation()
   return (
     <div className='tradingContainer'>
+      <Navbar/>
         <LandingPageMobile/>
 
         <TradingExperience

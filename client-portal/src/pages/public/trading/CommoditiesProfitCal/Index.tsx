@@ -23,6 +23,7 @@ const CommoditiesProfitCalc = () => {
   const {t} = useTranslation()
   return (
     <div className='tradingContainer'>
+      <Navbar/>
       <TradCalc withRoute titleHeader='Commodities Profit Calculator'/>
 
         <ForexCalculator mainImg={traderBg}

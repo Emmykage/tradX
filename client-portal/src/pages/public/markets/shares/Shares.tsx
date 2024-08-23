@@ -51,6 +51,7 @@ const Shares = () => {
     ];
   return (
     <div className="sharesContainer">
+      <Navbar/>
       <NavigationRoute/>
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
       <CategorySlider allPairsData={allPairsData}/>

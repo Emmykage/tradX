@@ -20,6 +20,7 @@ import NavigationRoute from "pages/public/home/commonComponents/NavigationRoute/
   const buttonTitle = 'Trade IPOs'
   return (
     <div className="ipoContainer">
+      <Navbar/>
       <NavigationRoute/>
       <HeadIntro title={title} detail={detail} buttonTitle={buttonTitle} />
     
