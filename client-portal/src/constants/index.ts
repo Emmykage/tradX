@@ -26,7 +26,7 @@ export const languages = [
   },
   {
     value: "jp",
-    languageKey: "ja",
+    languageKey: "jp",
     label: "Japanese",
   },
   {

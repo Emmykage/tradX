@@ -450,5 +450,16 @@
   "expirationBtn": "期限日",
   "tradingConditionsBtn": "取引条件",
   "holdiadysBtn": "休日",
-  "tradingScheduleBtn": "取引スケジュール"
+  "tradingScheduleBtn": "取引スケジュール",
+  "walkthroughFixedDurationOffers": "一定の利益をもたらす固定期間の取引は、固定時間取引または FTT として知られています。",
+  "trainingInvestmentMoneyTooltip": "投資額を 100 ドルに設定します。心配しないでください、これはトレーニングのお金です。",
+  "trainingInvestmentTimeTooltip": "取引期間として 1 分を選択します。",
+  "trainingInvestmentButtonTooltip": "チャートを見て、次にどこに行くかを決定します: 上昇または下降",
+  "waitForTradeResult": "取引結果を待ちます",
+  "walkthroughChooseTradeSubTexts": "おめでとう！あなたの取引は成功しました。 100 ドルを投資すると、85 ドルを獲得したことになります。これは、わずか 1 分で 85% の収益になります。",
+  "completeTraining": "トレーニングを完了する",
+  "doYouWantToFinishTraining": "トレーニングを終了しますか?",
+  "resumeTrainingInHelpSection": "ヘルプセクションでトレーニングを再開する",
+  "cancel": "キャンセル",
+  "finish": "仕上げる"
 }

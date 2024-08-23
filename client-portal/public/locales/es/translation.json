@@ -458,5 +458,16 @@
   "expirationBtn": "Fechas de Expiración",
   "tradingConditionsBtn": "Condiciones de Trading",
   "holdiadysBtn": "Días Festivos",
-  "tradingScheduleBtn": "Horarios de Trading"
+  "tradingScheduleBtn": "Horarios de Trading",
+  "walkthroughFixedDurationOffers": "Las operaciones de duración fija que ofrecen un beneficio fijo se conocen como operaciones de tiempo fijo o FTT.",
+  "trainingInvestmentMoneyTooltip": "Establezca el monto de la inversión en $100. No te preocupes, esto es dinero para formación.",
+  "trainingInvestmentTimeTooltip": "Establezca el monto de la inversión en $100. No te preocupes, esto es dinero para formación.",
+  "trainingInvestmentButtonTooltip": "Mire el gráfico y decida hacia dónde irá a continuación: arriba o abajo.",
+  "waitForTradeResult": "Espere el resultado de la operación.",
+  "walkthroughChooseTradeSubTexts": "¡Felicidades! Su operación fue exitosa. Al invertir $100, habrá ganado $85: un rendimiento del 85 % en solo 1 minuto.",
+  "completeTraining": "Formación Completa",
+  "doYouWantToFinishTraining": "¿Quieres Terminar la Formación?",
+  "resumeTrainingInHelpSection": "Reanudar la formación en la sección de ayuda",
+  "cancel": "Cancelar",
+  "finish": "Finalizar"
 }
