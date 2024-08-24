@@ -15,7 +15,7 @@ const getBase64 = (file: FileType): Promise<string> =>
 
 type ProfilePicProps = {
   handleProfileImg: (file: File) => void;
-  profilePic: string;
+  profilePic: string | null;
 };
 
 const ProfilePic: React.FC<ProfilePicProps> = ({ handleProfileImg, profilePic }) => {

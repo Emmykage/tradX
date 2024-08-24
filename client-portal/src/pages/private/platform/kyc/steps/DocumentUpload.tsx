@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../kyc.scss"
 import FileInput from 'components/fileInput/fileInput'
 import { useAppSelector } from '@store/hooks'
 import { toast } from 'react-toastify'
 import useKycFilesPostForm from 'api/kyc/useKycFilesPost'
 import { useCookies } from 'react-cookie'
+import useKyc from 'api/kyc/useKycInfo'
 interface documentProps {
   handleNext: (dir: string) => void
 }
@@ -16,8 +17,8 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
   const [cookies] = useCookies(["access_token"]);
 
   const {kyc} = useAppSelector(state => state.userBio)
-  const {user} = useAppSelector(state => state.user)
-  // const navigate = useNavigate() 
+  const [kycId, setKycId] = useState(kyc || "")
+
   console.log(kyc, "view user")
 
 
@@ -35,17 +36,28 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
     });
 
 
+    const { mutate: mutateKYCData } = useKyc({
+      onSuccess: (data) => {
+        console.log("pull key",data)
+        setKycId(data.results[0].id)
+     
+        }
+  
+       },
+      )
+  
+
   const handleFileUpload = () => {
-    if (!kyc) {
+    if (!kyc && !kycId ) {
       toast.error("KYC data is missing. Cannot upload files.");
       return;
     }
     if (identityDoc && addressDoc) {
-      identityDoc.append("desc", "passport");
-      identityDoc.append("kyc", kyc.toString());
+      identityDoc.append("desc", "identity");
+      identityDoc.append("kyc", kyc?.toString() ?? kycId.toString());
   
-      addressDoc.append("desc", "address");
-      addressDoc.append("kyc", kyc.toString() );
+      addressDoc.append("desc", "proof_of_address");
+      addressDoc.append("kyc", kyc?.toString() || kycId.toString());
   
       mutate({
         token: cookies.access_token,
@@ -57,12 +69,12 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
     }
   };
   
- 
 
+  useEffect(()=> {
+    mutateKYCData({token: cookies.access_token})
 
-  console.log("fetchedUser", user)
-
-  console.log(data, "uploaded")
+    
+  }, [])
   return (
     <div className='bg-[#152338] formContainer px-5  kyc-document flex justify-center items-center'>
       <div className='m-auto w-full border border-gray-900 bg-black-100'>

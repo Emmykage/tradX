@@ -15,6 +15,7 @@ import { KycProp, setUserKYC } from "@store/slices/userBio";
 import ProfilePic from "../components/profilePic/pic";
 import { IDType } from "../data/id_type";
 import useKyc from "api/kyc/useKycInfo";
+import useVerificationUpdate from "api/kyc/useVerificationUpdate";
 
 interface SignUpFormData {
   full_name: string;
@@ -25,9 +26,10 @@ interface SignUpFormData {
   day: string;
   id_number: string;
   id_type: string,
-  dob: string
-
+  dob: string;
+  id?: number | null;
   image: File | null;
+  selfie: string | null
 }
 
 interface BioDetailsProps {
@@ -36,12 +38,14 @@ interface BioDetailsProps {
 
 const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
   const { userBio } = useAppSelector((state) => state.userBio);
+  const [doesKycExist, setDoesKycExist] = useState(false)
   const dispatch = useAppDispatch()
   const [cookies] = useCookies(["access_token"]);
   const { handleSubmit, register, reset, setValue, formState: { errors } } = useForm<SignUpFormData>();
   // console.log(cookies)
   const [form] = Form.useForm()
   const [formData, setFormData] = useState<SignUpFormData>({
+    id: null,
     full_name:  '',
     country: '',
     address: '',
@@ -51,7 +55,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
     id_number: "",
     id_type: "",
     dob: "",
-    
+    selfie: null,
     image: null
   });
 
@@ -76,43 +80,65 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
           ...formData,
           ...data.results[0],
         };
+        setDoesKycExist(true)
   
         setFormData(updatedFormData);
+        console.log(updatedFormData, formData)
   
         form.setFieldsValue({
           id_number: updatedFormData.id_number,
           full_name: updatedFormData.full_name,
-          address: updatedFormData.address,
-          
-
-          
+          address: updatedFormData.address,      
 
         });
       }
 
      },
   });
+  const {mutate: mutateUpdate} = useVerificationUpdate({
+    onSuccess: (data) => {
+
+      console.log("get data for KYC", data)
+      toast.success("Update was successful")
+      dispatch(setUserKYC( data as KycProp));
+      handleNext("next")
+    }
+  })
 
 
   console.log(formData)
   const onSubmit: SubmitHandler<SignUpFormData> = () => {
 
+    const dob = formData.dob ?? `${formData.year}-${formData.month}-${formData.day}`
+    const profileImage = formData.image ?? null
     const formDataParse = new FormData();
     formDataParse.append("full_name", formData.full_name);
     formDataParse.append("country", formData.country);
     formDataParse.append("address", formData.address);
-    formDataParse.append("id_type", "passport");
+    formDataParse.append("id_type", formData.id_type);
     formDataParse.append("id_number", formData.id_number);
-    formDataParse.append("selfie", formData.image as Blob);
-    formDataParse.append("dob", `${formData.year}-${formData.month}-${formData.day}`);
-    console.log(Object.fromEntries(formDataParse))
+    profileImage && formDataParse.append("selfie", profileImage as Blob);
+    formDataParse.append("dob", dob);
 
-    // console.log("my token", cookies.access_token)
+    if(doesKycExist){
+      mutateUpdate({
+        id: formData.id,
+        token: cookies.access_token,
+        formData: formDataParse
 
-    mutate({
-      token: cookies.access_token,
-      formData: formDataParse,
-    });
+      })
+
+    }
+    else{   
+
+         console.log(Object.fromEntries(formDataParse))
+       
+        mutate({
+          token: cookies.access_token,
+          formData: formDataParse,
+        });
+
+  }
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -219,11 +245,12 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
               <FormSelect
 
                 data={IDType}
-                label="id_type"
+                label="ID Type"
                 placeholder="Select ID Type"
                 className="w-full"
                 id="id_type"
                 name="id_type"
+                selectedId={formData.id_type}
 
                 onSelect={(value) => setFormData({ ...formData, id_type: value })}
               />
