@@ -72,9 +72,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
   });
 
   const { mutate: mutateKYCData } = useKyc({
-    onSuccess: (data) => {
-      console.log("pull key",data)
-      
+    onSuccess: (data) => {      
       if (data.results.length > 0) {
         const updatedFormData = {
           ...formData,
@@ -95,7 +93,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
 
      },
   });
-  const {mutate: mutateUpdate} = useVerificationUpdate({
+  const {mutate: mutateUpdate, isPending: isPendingUpdate} = useVerificationUpdate({
     onSuccess: (data) => {
 
       console.log("get data for KYC", data)
@@ -105,8 +103,6 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
     }
   })
 
-
-  console.log(formData)
   const onSubmit: SubmitHandler<SignUpFormData> = () => {
 
     const dob = formData.dob.trim() !== "" ? formData.dob : `${formData.year}-${formData.month}-${formData.day}`
@@ -295,7 +291,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
           <div className="flex-grow">
             <KYCButton
               text="Next"
-              isLoading={isPending}
+              isLoading={isPending || isPendingUpdate}
               disable={isPending}
               type="submit"
               className="kyc-button text-base font-semibold"
