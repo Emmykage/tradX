@@ -245,7 +245,7 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
       </Form>
 
       <p className="text-base my-6 text-[#C1C1C3]">
-        Already have an account? <NavLink to={'/signIn'} className="text-[#0094FF]"> Sign In</NavLink>
+        Already have an account? <NavLink to={"#"} onClick={() => handleNext("next")} className="text-[#0094FF]"> Sign In</NavLink>
       </p>
     </div>
   );
