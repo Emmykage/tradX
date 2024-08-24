@@ -56,7 +56,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
 
 
   return (
-    <div className="sidebar" id={id ? id : ""}>
+    <div className="sidebar" id={id ? id : ""} style={{zIndex:'900'}}>
       <div className="top">
         <div className="logo">
           <LogoIcon />
