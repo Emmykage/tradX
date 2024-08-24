@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import ChevronDown from 'assets/icons/kyc/chevron_down.svg';
 import './formSelect.scss';
 import useOutsideClick from 'hooks/useOutsideClick';
+import { cloneDeep } from 'lodash';
 // import useOutsideClick from '../hooks/useOutsideClick';
 
 interface DropdownItem {
@@ -15,6 +16,7 @@ interface DropdownProps {
   id: string;
   label: string;
   placeholder?: string;
+  value?: string
   data: DropdownItem[];
   position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
   style?: string;
@@ -34,12 +36,14 @@ const FormSelect = ({
   name,
   style,
   selectedId,
+  value,
   onSelect,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<DropdownItem | undefined>(
     selectedId ? data?.find((item) => item.value === selectedId) : undefined
   );
+
 
   const handleChange = (item: DropdownItem) => {
     setSelectedItem(item);
@@ -49,7 +53,7 @@ const FormSelect = ({
 
   useEffect(() => {
     if (selectedId && data) {
-      const newSelectedItem = data.find((item) => item.value === selectedId);
+      const newSelectedItem = data.find((item) => item.value == selectedId);
       newSelectedItem && setSelectedItem(newSelectedItem);
     } else {
       setSelectedItem(undefined);

@@ -30,16 +30,8 @@ const OTPVerification: React.FC<OTPProps> = ({ handleNext }) => {
 
   const { mutate, isPending } = useOTPVerification({
     onSuccess: (data) => {
-      const expirationInSeconds = 270;
-      setCookie("access_token", data.access, { maxAge: expirationInSeconds });
-      setCookie("refresh_token", data.refresh);
-      setCookie("step",'')
-
-      // data?.user.is_walkthrough ? navigate('/platform') : navigate("/welcome");
-
-
-      // data?.user.is_walkthrough ? navigate('/platform') : handleNext();
-
+      // const expirationInSeconds = 270;
+      
       
       handleNext("next");
 

@@ -13,8 +13,14 @@ import FormInput from "../components/FormInput";
 import KYCButton from "../components/Button";
 import useVerification from "api/kyc/useVerification";
 import useKycRegistration from "api/kyc/useKycRegister";
+import { emailProps, sendEmailVerification } from "api/kyc/sendEmailVerification";
 
 interface SignUpFormData {
+
+  //delete
+  first_name: string;
+  last_name: string;
+
   email: string;
   phone_number: string;
   username: string;
@@ -30,30 +36,34 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
   const { signInTab } = useAppSelector(
     (state: { global: GlobalStates }) => state.global
   );
-  const { handleSubmit, register, reset, watch,  formState: {errors} } = useForm<SignUpFormData>();
-  const dispatch = useDispatch();
+  const { handleSubmit, reset,  formState: {errors} } = useForm<SignUpFormData>();
   const [reveal, setReveal] = useState(false);
   const [revealConfirmation, setRevealConfirmation] = useState(false);
   const [formData, setFormData] = useState({
+    last_name: "jon",
+    first_name: "philips",
     email: '',
     password: '',
     confirm_password: '',
     phone_number: ''
   })
-  const { mutate, isPending } = useKycRegistration({
-    onSuccess: (data) => {
+  const { mutate, isPending } = useRegister({
+    onSuccess:  (data) => {
       reset();
+      console.log("response data", data)
       toast.success(
         "Success! An email has been sent to your account. Please verify your email to complete the registration process."
       );
-      handleNext("next")
+  
+      handleNext("next");
     },
     onError: (error) => {
       // console.log(error, 'here');
     },
   });
 
-  const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
+  const onSubmit: SubmitHandler<SignUpFormData> = () => {
+    console.log(formData)
     mutate(formData);
   };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -72,6 +82,44 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
       </p>
 
       <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
+        <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
+          <div className="flex-1">
+            <Form.Item
+                name="first_name"
+                rules={[{ required: true, message: "First Name is required" }
+                ]}
+            >
+              
+              <FormInput
+                label="First Name"
+                type="text"
+                id="first_name"
+                inputName="first_name"
+                placeholder="First name"
+                onChange={handleInputChange} 
+              />
+            </Form.Item>
+          </div>
+
+          <div className="flex-1 ">
+            <Form.Item
+            name="last_name"
+             rules={[{ required: true, message: "Last Name is required" }
+         ]}
+            >
+              
+              <FormInput
+                label="Last Name"
+                type="text"
+                id="last_name"
+                inputName="last_name"
+                placeholder="Last name"
+                onChange={handleInputChange} 
+              />
+            </Form.Item>
+            
+          </div>
+        </div>
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
           <div className="flex-1">
             <Form.Item
@@ -197,7 +245,7 @@ const CreateAccount: React.FC<createAccountProps> = ({handleNext}) => {
       </Form>
 
       <p className="text-base my-6 text-[#C1C1C3]">
-        Already have an account? <NavLink to={'/signIn'} className="text-[#0094FF]"> Sign In</NavLink>
+        Already have an account? <NavLink to={"#"} onClick={() => handleNext("next")} className="text-[#0094FF]"> Sign In</NavLink>
       </p>
     </div>
   );

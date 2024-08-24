@@ -2,7 +2,15 @@ import React, { useEffect, useReducer, useState } from 'react';
 import FormSelect from '../FormSelect';
 
 
-const DateSelection = () => {
+interface dateSelectionProps {
+    setFormData: any
+    formData: any
+}
+
+const DateSelection: React.FC<dateSelectionProps> = ({setFormData, formData}) => {
+    const fetchDate = formData?.dob
+    const [year, month, day] = fetchDate?.split("-")
+    console.log("year", year)
     const [daysArray, setDaysArray] = useState([]);
     const initialState = {
         days: 31,
@@ -17,6 +25,8 @@ const DateSelection = () => {
         yearsArray: []
     };
     const [state, setState] = useReducer((state: any, newState: any) => ({ ...state, ...newState }), initialState);
+
+    console.log("state", state.dayValue)
     const{
         days,
         months,
@@ -131,6 +141,12 @@ const DateSelection = () => {
                 ...state,
                 monthValue: selectedMonth
             });
+
+            setFormData({
+                ...formData,
+                month: selectedMonth
+
+            })
         }
     };
 
@@ -140,7 +156,15 @@ const DateSelection = () => {
                 ...state,
                 dayValue: selectedDay
             })
+
+            setFormData({
+                ...formData,
+                day: selectedDay
+    
+            })
         }
+
+      
     };
 
     const handleYearChange = (selectedYear: string|number) => {
@@ -150,8 +174,17 @@ const DateSelection = () => {
                 ...state,
                 yearValue: selectedYear
             })
+
+            setFormData({
+                ...formData,
+                year: selectedYear
+    
+            })
+            console.log("selected year", selectedYear )
         }
     };
+
+    console.log("fuldate", day, month, year, monthsArray)
 
     return(
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
@@ -163,6 +196,7 @@ const DateSelection = () => {
                     className="w-full "
                     id="month"
                     name="month"
+                    selectedId={month}
                     onSelect={handleMonthChange}
                 />
             </div>
@@ -174,6 +208,7 @@ const DateSelection = () => {
                     className="w-full"
                     id="day"
                     name="day"
+                    selectedId={day}
                     onSelect={handleDayChange}
                 />
             </div>
@@ -183,6 +218,7 @@ const DateSelection = () => {
                     label="Year"
                     placeholder="Select year"
                     className="w-full"
+                    selectedId={year}
                     id="year"
                     name="year"
                     onSelect={handleYearChange}

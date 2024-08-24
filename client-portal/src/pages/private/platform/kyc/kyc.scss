@@ -234,6 +234,10 @@
     background: linear-gradient(269deg, rgba(0, 148, 255, 0.36) 2.39%, rgba(0, 148, 255, 0.00) 107.19%);
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.20);
     color: #fff;
+
+    &.back{
+        background: transparent;
+    }
   }
 .kyc-button::after{
     content: "";
@@ -249,6 +253,7 @@
             mask-composite: exclude;
     pointer-events: none;
   }
+
  .img-container{
 
     border-radius: 50%;

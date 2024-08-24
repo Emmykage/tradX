@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../kyc.scss"
 import FileInput from 'components/fileInput/fileInput'
-import { useNavigate } from 'react-router-dom'
+import { useAppSelector } from '@store/hooks'
+import { toast } from 'react-toastify'
+import useKycFilesPostForm from 'api/kyc/useKycFilesPost'
+import { useCookies } from 'react-cookie'
+import useKyc from 'api/kyc/useKycInfo'
 interface documentProps {
   handleNext: (dir: string) => void
 }
@@ -10,16 +14,67 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
   const [data, setData] = useState<{identity: {name: string}, address: {name: string}} | {} > ({})
   const [identityDoc, setIdentityDoc] = useState<FormData | null>(null)
   const [addressDoc, setAddressDoc] = useState<FormData | null>(null)
-  const navigate = useNavigate()
-  const handleFileUpload = () => {
-    console.log(identityDoc?.get("file"), "retrieved doc")
-    console.log("first triggered")
-    handleNext("next")
-    // navigate('/platform') 
-    
-  }
+  const [cookies] = useCookies(["access_token"]);
 
-  console.log(data, "uploaded")
+  const {kyc} = useAppSelector(state => state.userBio)
+  const [kycId, setKycId] = useState(kyc || "")
+
+  console.log(kyc, "view user")
+
+
+  const { mutate, isPending } = useKycFilesPostForm({
+    onSuccess: () => {
+      toast.success(
+        "Your document have been uploaded successsfully."
+      );
+      handleNext("next")
+
+    },
+    onError: (error) => {
+      console.error("fetching add file Kyc error", error);
+    },
+    });
+
+
+    const { mutate: mutateKYCData } = useKyc({
+      onSuccess: (data) => {
+        console.log("pull key",data)
+        setKycId(data.results[0].id)
+     
+        }
+  
+       },
+      )
+  
+
+  const handleFileUpload = () => {
+    if (!kyc && !kycId ) {
+      toast.error("KYC data is missing. Cannot upload files.");
+      return;
+    }
+    if (identityDoc && addressDoc) {
+      identityDoc.append("desc", "identity");
+      identityDoc.append("kyc", kyc?.toString() ?? kycId.toString());
+  
+      addressDoc.append("desc", "proof_of_address");
+      addressDoc.append("kyc", kyc?.toString() || kycId.toString());
+  
+      mutate({
+        token: cookies.access_token,
+        identityDoc,
+        addressDoc
+      });
+  
+      console.log(cookies.access_token);
+    }
+  };
+  
+
+  useEffect(()=> {
+    mutateKYCData({token: cookies.access_token})
+
+    
+  }, [])
   return (
     <div className='bg-[#152338] formContainer px-5  kyc-document flex justify-center items-center'>
       <div className='m-auto w-full border border-gray-900 bg-black-100'>
@@ -43,12 +98,12 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
           onClick={()=> handleNext("prev")}
           
           className='border back w-52 rounded-lg py-4 px-8 back'>
-            back
+            Back
           </button>
           <button
           onClick={handleFileUpload} 
           className='border w-52 border-gray-500 py-4 px-8 text-base text-white rounded-lg next'>
-            next
+            Next
           </button>
         </div>
     

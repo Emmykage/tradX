@@ -16,7 +16,7 @@ const FileCard : React.FC<fileCardProps> = ({fileName, fileSize, status}) => {
             </p>
             <div className='bg-red max-w-[240px] flex-1'>
               <p className='text-[#A3A8B0] flex-1 break-words text-wrap max-w-sm text-ellipsis whitespace-nowrap overflow-hidden'>
-                {fileName.substring(0, 70)}
+                {fileName?.substring(0, 70)}
               </p>
               <p className='text-[#A3A8B0]'>
                 {fileSize}KB

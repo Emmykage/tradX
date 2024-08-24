@@ -2,19 +2,21 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import getEnv from "utils/env";
 
-export async function fethRegister(data: any): Promise<boolean> {
+export async function fetchVerificationUpdate(data: any): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
+  
   try {
-    const response = await fetch(`${BASE_URL}/user/create/`, {
-      method: "POST",
+    const response = await fetch(`${BASE_URL}/user/kyc/${data.id}`, {
+      method: "PATCH",
       headers: {
-        "Content-Type": "application/json",
+        Authorization: `Bearer ${data.token}`,
+
       },
       referrerPolicy: "no-referrer",
-      body: JSON.stringify(data),
+      body: data.formData,
     });
     const result = await response.json();
-    console.log("create user response:", result )
+    console.log("verification response:", response, result )
 
     if (!response.ok) {
       Object.keys(result).forEach((field) => {
@@ -31,13 +33,13 @@ export async function fethRegister(data: any): Promise<boolean> {
   }
 }
 
-type useRegisterProps = {
+type useVerificationProps = {
   onSuccess?: (data: unknown, variables: unknown, context: unknown) => void;
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };
-export const useRegister = (props: useRegisterProps) => {
-  const receivedProps = props || ({} as useRegisterProps);
+export const useVerificationUpdate = (props: useVerificationProps) => {
+  const receivedProps = props || ({} as useVerificationProps);
 
   const {
     onSuccess: onSuccessOverride,
@@ -46,7 +48,7 @@ export const useRegister = (props: useRegisterProps) => {
   } = receivedProps;
 
   return useMutation<any, unknown, any>({
-    mutationFn: fethRegister,
+    mutationFn: fetchVerificationUpdate,
     onSuccess: (data, variables, context) => {
       if (onSuccessOverride) {
         onSuccessOverride(data, variables, context);
@@ -62,4 +64,4 @@ export const useRegister = (props: useRegisterProps) => {
   });
 };
 
-export default useRegister;
+export default useVerificationUpdate;

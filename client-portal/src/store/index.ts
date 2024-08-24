@@ -10,6 +10,7 @@ import {
   themeBackgroundReducer,
   notificationReducer
 } from "@slices";
+import userBio from "./slices/userBio";
 
 
 export const store = configureStore({
@@ -22,7 +23,8 @@ export const store = configureStore({
     payment: paymentReducer,
     assetPair: assetPairReducer,
     themeBg: themeBackgroundReducer,
-    notification: notificationReducer
+    notification: notificationReducer,
+    userBio: userBio
   },
 });
 
