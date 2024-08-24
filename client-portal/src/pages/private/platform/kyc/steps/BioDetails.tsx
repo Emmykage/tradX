@@ -289,7 +289,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
               disable={isPending}
               type="button"
               className="kyc-button text-base font-semibold back"
-              onClick={() => handleNext("back")}
+              // onClick={() => handleNext("back")}
             />
           </div>
           <div className="flex-grow">
