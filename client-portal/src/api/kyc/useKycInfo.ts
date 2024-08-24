@@ -49,6 +49,7 @@ export async function fetchKYC(data: {
     });
 
     const result = await response.json();
+    console.log("get kyc", result)
 
     if (!response.ok) {
       throw new Error(`${result}`);

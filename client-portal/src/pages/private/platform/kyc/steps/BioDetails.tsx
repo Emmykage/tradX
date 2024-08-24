@@ -14,7 +14,7 @@ import { useCookies } from "react-cookie";
 import { KycProp, setUserKYC } from "@store/slices/userBio";
 import ProfilePic from "../components/profilePic/pic";
 import { IDType } from "../data/id_type";
-import useKyc from "api/kyc/useKyc";
+import useKyc from "api/kyc/useKycInfo";
 
 interface SignUpFormData {
   full_name: string;
@@ -42,7 +42,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
   // console.log(cookies)
   const [form] = Form.useForm()
   const [formData, setFormData] = useState<SignUpFormData>({
-    full_name: userBio?.full_name || '',
+    full_name:  '',
     country: '',
     address: '',
     year: '',
@@ -69,7 +69,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
 
   const { mutate: mutateKYCData } = useKyc({
     onSuccess: (data) => {
-      // console.log("pull key",data)
+      console.log("pull key",data)
       
       if (data.results.length > 0) {
         const updatedFormData = {
