@@ -8,7 +8,7 @@ interface dateSelectionProps {
 }
 
 const DateSelection: React.FC<dateSelectionProps> = ({setFormData, formData}) => {
-    const fetchDate = formData.dob
+    const fetchDate = formData?.dob
     const [year, month, day] = fetchDate?.split("-")
     console.log("year", year)
     const [daysArray, setDaysArray] = useState([]);

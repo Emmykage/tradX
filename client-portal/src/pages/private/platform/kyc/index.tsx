@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./kyc.scss"
 import HelpButton from '../../../../assets/icons/kyc/Button.svg'
 
@@ -17,9 +17,15 @@ import DocumentReviewPending from './steps/DocumentReviewPending'
 
 const KYC = () => {
   const [step, setStep] = useState(1)
+  const searchParams = new URLSearchParams(location.search);
+  const queryParam = searchParams.get("query");
   const [forgotPasswordView, setForgotPasswordView] = useState(false);
 
   const [signInProcess, setSignInProcess] = useState<string>("email")
+
+
+
+  console.log(queryParam)
   const handleNextPage = (dir: string) => {
     if(step == 8 ){
       return
@@ -94,6 +100,13 @@ const KYC = () => {
       return null;
   }
 }
+
+useEffect(()=> {
+  if(queryParam == "biodata-kyc"){
+    setStep(6)
+  }
+}
+,[])
   return(
     <div className="kycWrapper  relative">
       <KYCHeader  step={step}/>

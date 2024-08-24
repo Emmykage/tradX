@@ -5,6 +5,7 @@ import "./verificationMenu.scss";
 import { RightSubDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 import { useAppSelector } from "@store/hooks";
+import { useNavigate } from "react-router-dom";
 
 interface VerificationMenuProps {
   setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -16,6 +17,7 @@ const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = ({
   setIsRightSubDrawerContent,
 }) => {
   const {themeSelect} = useAppSelector(state => state.themeBg)
+  const navigate = useNavigate()
   return (
     <div className={`${themeSelect} verificationsContainer`}>
       <div className="verificationBadge">
@@ -45,6 +47,16 @@ const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = ({
           }}
           className="verificationLearnMore"
           Title="Learn More"
+        />
+      </div>
+
+      <div className="kycVerifyButton">
+        <PrimaryButton
+          onClick={() => {
+            navigate("/kyc-document/?query=biodata-kyc")
+          }}
+          className="verificationLearnMore"
+          Title="KYC Verification"
         />
       </div>
     </div>

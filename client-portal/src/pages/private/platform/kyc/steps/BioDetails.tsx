@@ -109,7 +109,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
   console.log(formData)
   const onSubmit: SubmitHandler<SignUpFormData> = () => {
 
-    const dob = formData.dob ?? `${formData.year}-${formData.month}-${formData.day}`
+    const dob = formData.dob.trim() !== "" ? formData.dob : `${formData.year}-${formData.month}-${formData.day}`
     const profileImage = formData.image ?? null
     const formDataParse = new FormData();
     formDataParse.append("full_name", formData.full_name);
@@ -117,8 +117,11 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
     formDataParse.append("address", formData.address);
     formDataParse.append("id_type", formData.id_type);
     formDataParse.append("id_number", formData.id_number);
-    profileImage && formDataParse.append("selfie", profileImage as Blob);
     formDataParse.append("dob", dob);
+
+    profileImage && formDataParse.append("selfie", profileImage as Blob);
+
+
 
     if(doesKycExist){
       mutateUpdate({
@@ -130,9 +133,6 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
 
     }
     else{   
-
-         console.log(Object.fromEntries(formDataParse))
-       
         mutate({
           token: cookies.access_token,
           formData: formDataParse,
@@ -177,7 +177,6 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
           <div className="flex-1">
             <Form.Item
               name="full_name"
-              initialValue={"full_name"}
               validateStatus={errors.full_name ? "error" : ""}
               help={errors.full_name?.message}
             >
