@@ -30,7 +30,7 @@ const initialState: TradeStates = {
   selectedForexTrade:null,
   tradeTransaction: 'error',
   socket:null,
-  tradeResult:null,
+  tradeResult:null
   
 };
 

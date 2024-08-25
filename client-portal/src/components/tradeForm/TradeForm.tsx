@@ -17,6 +17,8 @@ import { WalletSliceState } from "@store/slices/wallet";
 import { AssetPairSliceState } from "@store/slices/pairs";
 import useTrade from "api/wallet/useTrade";
 import { useCookies } from "react-cookie";
+import CustomTimeSelector from "components/customTimeSelector/CustomTimeSelector";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface TradeFormProps {
   bottomSidebarHeight?: number;
@@ -66,11 +68,12 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   socketData,
 }) => {
 
-  const {selectedForexTrade, duration,socket,amount,trade } = useAppSelector(
+  const { duration,amount } = useAppSelector(
     (state: { trades: TradeStates }) => state.trades
   );
   const [cookies] = useCookies(["access_token"]);
-
+  const [toggleTimeSelector, setToggleTimeSelector] = useState(false)
+  const amountContainerRef = useRef()
   const  {assetPairs} = useAppSelector(
     (state: {assetPair: AssetPairSliceState }) => state.assetPair
   )
@@ -78,7 +81,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
   const { selectedWallet } = useAppSelector(
     (state: { wallet: WalletSliceState }) => state.wallet
   );
-
+  
   const { mutate, isPending } = useTrade({
     onSuccess: (data:any) => {
     
@@ -183,6 +186,26 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
       dispatch(changeAmount('decrease'))
     }
   }
+  const handleClickOutside = (e) => {
+    if (amountContainerRef.current && !amountContainerRef.current.contains(e.target)) {
+      setToggleTimeSelector(false);
+      console.log('triggered');
+    }
+  };
+
+
+  useEffect(() => {
+    if (toggleTimeSelector) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [toggleTimeSelector]);
+
   return (
     <div
       className={`trade-form ${disabled ? "disabled" : ""}`}
@@ -190,6 +213,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
       style={{
         marginBottom: window.innerWidth <= 767 ? bottomSidebarHeight : 0,
       }}
+      onClick={handleClickOutside}
     >
       {coinInfo ? (
         <div className="coinInfo">
@@ -239,7 +263,10 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
           </div>
         </div>
 
-        <div className="amountContainer">
+        <div className="amountContainer" 
+        >
+          
+       
           <Tooltip
             rootClassName="walkthroughTooltip amountTooltip"
             placement={durationTooltipPlacement}
@@ -247,7 +274,14 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
             color="#1973FA"
             open={durationTooltip}
           >
-            <div className="amount duration">
+      
+            <div className="amount duration "  
+              onClick={(e)=>{
+                setToggleTimeSelector(true)
+                e.stopPropagation()
+              }} 
+              ref={amountContainerRef} >
+                {toggleTimeSelector && <CustomTimeSelector setToggleTimeSelector={setToggleTimeSelector}/>} 
               <label htmlFor="duration">Duration</label>
               <input
                 type={disabled ? "text" : "text"}
@@ -263,7 +297,7 @@ const TradeForm: React.FunctionComponent<TradeFormProps> = ({
 
           <div className="mathButtons">
             <button
-              disabled={ duration == 10}
+              disabled={ duration == 5}
               className={`${hintDuration ? "hint" : ""}`}
               onClick={handleDecreaseDuration}
             >
