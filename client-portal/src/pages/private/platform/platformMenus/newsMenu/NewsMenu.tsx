@@ -13,6 +13,7 @@ import {  NewsIcon, SearchIcon2, TimerIcon } from "../../../../../assets/icons";
 import { useAppSelector } from "@store/hooks";
 
 import { INews } from "@interfaces";
+import NewsModal from "components/newsModal/newModal";
 
 // const filterListButtons = ["Forex", "Stock", "Commodities", "Crypto"];
 
@@ -43,7 +44,7 @@ const RenderTab = ({
 
   return (
     <div className="newsMenuWrapper">
-      <p className="newsHeading">{title}</p>
+      <p className="newsHeading capitalize">{title}</p>
       <div className="newsIconWrapper">
         <NewsIcon />
       </div>
@@ -60,12 +61,17 @@ interface NewsFeedProps {
 
 
 
-const NewsFeed: React.FC<NewsFeedProps> = ({articles, label}) => (
+const NewsFeed: React.FC<NewsFeedProps> = ({articles, label}) => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [selectedArticle, setSelectedArticle] = useState<INews>()
+  return(
   <>
  {articles?.length && articles.length > 0 ? (
         articles.map((item, index) => (
-          <div className="textContainer" key={index}>
-            <h2>{item?.title?.substring(0, 65)}</h2>
+          <div 
+          onClick={()=> {setSelectedArticle(item); setModalOpen(true)} }          
+          className="textContainer cursor-pointer" key={index}>
+            <h2 onClick={()=> setModalOpen(true)}>{item?.title?.substring(0, 65)}</h2>
             <p>{item?.description?.substring(0, 190)}...</p>
             <div className="textFooter">
               <TimerIcon />
@@ -77,8 +83,23 @@ const NewsFeed: React.FC<NewsFeedProps> = ({articles, label}) => (
             </div>
           </div>) 
         )) : (<RenderTab  title={`${label} News`} description="No News on Stock" />) }
+
+
+        <NewsModal
+        open={modalOpen}
+        setOpen={setModalOpen}
+        closable={true}
+        article={selectedArticle}
+        label={label}
+
+
+
+        />
+
+
 </>
 )
+}
 
 
 interface NewsMenuProps {}
