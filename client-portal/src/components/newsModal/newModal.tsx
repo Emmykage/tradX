@@ -6,6 +6,7 @@ import { useNewsArticle } from 'api/news/useNewsArticle';
 import { useCookies } from 'react-cookie';
 import { INews } from '@interfaces';
 import './newsModal.scss';
+import moment from 'moment';
 
 export interface NewsModalProps {
   open: boolean;
@@ -102,11 +103,12 @@ const NewsModal: React.FC<NewsModalProps> = ({
       }
     >
       <div className={`${themeSelect} newsModal py-10`}>
-        <h2 className="font-bold text-2xl text-center my-7 capitalize">{label} News</h2>
+        <h2 className="font-bold text-2xl text-center my-7 capitalize">{article?.creator}</h2>
+            
         <h3 className="max-w-md m-auto text-lg text-center">
           {article?.title?.substring(0, 65)}
         </h3>
-        <h3 className="text-center text-lg font-semibold my-3">01.23.2024</h3>
+        <h3 className="text-center text-lg font-semibold my-3">{moment(article?.pubDate).format("dd.mm.yy")}</h3>
         {renderContent()}
       </div>
     </Modal>

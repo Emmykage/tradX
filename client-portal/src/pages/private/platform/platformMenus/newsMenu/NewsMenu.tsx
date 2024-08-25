@@ -80,8 +80,10 @@ const NewsFeed: React.FC<NewsFeedProps> = ({ articles, label }) => {
             <h2>{item?.title?.substring(0, 65)}</h2>
             <p>{item?.description?.substring(0, 190)}...</p>
             <div className="textFooter">
-              <TimerIcon />
-              <span> 15 min Read</span>
+           
+                <TimerIcon />
+                <span className="text-[#0094FF]" > 15 min Read</span>            
+              
             </div>
           </div>
         ))
