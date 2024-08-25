@@ -64,7 +64,7 @@ const LanguageSelectorDropDown = () => {
       const browserLanguage = navigator.language;
       const matchedLanguage = languages.find(language => language.languageKey.toLowerCase() === browserLanguage.toLocaleLowerCase());
       console.log(browserLanguage);
-  
+      console.log(countryCode);
       console.log(languages);
       if (matchedLanguage) {
         console.log(matchedLanguage);

@@ -221,5 +221,17 @@
   "economicCalendar": "आर्थिक कैलेंडर",
   "cfdAssetList": "सीएफडी एसेट सूची",
   "tradingConditions": "ट्रेडिंग शर्तें",
-  "expirationDates": "समाप्ति तिथियां"
+  "expirationDates": "समाप्ति तिथियां",
+
+  "walkthroughFixedDurationOffers": "निश्चित अवधि के ट्रेड जो एक निश्चित लाभ प्रदान करते हैं उन्हें फिक्स्ड टाइम ट्रेड या एफटीटी के रूप में जाना जाता है।",
+  "trainingInvestmentMoneyTooltip": "निवेश राशि $100 पर निर्धारित करें। चिंता न करें, यह प्रशिक्षण का पैसा है।",
+  "trainingInvestmentTimeTooltip": "व्यापार की अवधि के रूप में 1 मिनट चुनें।",
+  "trainingInvestmentButtonTooltip": "चार्ट को देखें और तय करें कि यह आगे कहाँ जाएगा: ऊपर या नीचे",
+  "waitForTradeResult": "व्यापार के परिणाम की प्रतीक्षा करें",
+  "walkthroughChooseTradeSubTexts": "बधाई हो! आपका व्यापार सफल रहा. $100 का निवेश करके, आपने $85 अर्जित किया है - केवल 1 मिनट में 85% रिटर्न।",
+  "completeTraining": "पूर्ण प्रशिक्षण",
+  "doYouWantToFinishTraining": "क्या आप प्रशिक्षण समाप्त करना चाहते हैं?",
+  "resumeTrainingInHelpSection": "सहायता अनुभाग में प्रशिक्षण फिर से शुरू करें",
+  "cancel": "रद्द करना",
+  "finish": "खत्म करना"
 }

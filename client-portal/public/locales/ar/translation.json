@@ -422,5 +422,17 @@
   "expirationBtn": "تواريخ الانتهاء",
   "tradingConditionsBtn": "شروط التداول",
   "holdiadysBtn": "عطلات",
-  "tradingScheduleBtn": "جداول التداول"
+  "tradingScheduleBtn": "جداول التداول",
+
+  "walkthroughFixedDurationOffers": "تُعرف الصفقات ذات المدة الثابتة التي تقدم ربحًا ثابتًا باسم Fixed Time Trades أو FTT.",
+  "trainingInvestmentMoneyTooltip": "حدد مبلغ الاستثمار بـ 100 دولار. لا تقلق، هذا هو المال للتدريب.",
+  "trainingInvestmentTimeTooltip": "حدد دقيقة واحدة كمدة للتداول.",
+  "trainingInvestmentButtonTooltip": "انظر إلى الرسم البياني وقرر أين سيتجه بعد ذلك: لأعلى أو لأسفل",
+  "waitForTradeResult": "انتظر نتيجة التجارة",
+  "walkthroughChooseTradeSubTexts": "تهانينا! لقد كانت تجارتك ناجحة. من خلال استثمار 100 دولار، حصلت على 85 دولارًا - عائدًا بنسبة 85% في دقيقة واحدة فقط.",
+  "completeTraining": "التدريب الكامل",
+  "doYouWantToFinishTraining": "هل تريد إنهاء التدريب؟",
+  "resumeTrainingInHelpSection": "استئناف التدريب في قسم المساعدة",
+  "cancel": "يلغي",
+  "finish": "ينهي"
 }

@@ -3,7 +3,7 @@ import Sidebar from "../../../components/sidebar/Sidebar";
 import Topbar from "../../../components/topbar/Topbar";
 import TradeForm from "../../../components/tradeForm/TradeForm";
 import "./platform.scss";
-import { Drawer } from "antd";
+import { Button, Drawer, Modal } from "antd";
 import { AreaChartIcon, ArrowLeftOS, BarChartIcon, CandleStickIcon, CloseIcon, MainChartAnalysisIcon, MainChartChangeIcon, MainChartSignalsIcon, ZoomInChartIcon, ZoomOutChartIcon } from "../../../assets/icons";
 
 import useQueryParamHandler from "./hooks/useQueryParamHandler";
@@ -46,6 +46,7 @@ import { setAssetPairs, setSelectedAssetPair } from "@store/slices/pairs";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import useWebSocketTicket from "api/user/useWebSocketTicket";
+import CustomModal from "components/customModal/CustomModal";
 
 interface PlatformProps {}
 
@@ -439,7 +440,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       
       if (priceCoordinate && timeCoordinate) {
         marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
-        marker.style.left = `${timeCoordinate - 3}px`;
+        marker.style.left = `${timeCoordinate - 5}px`;
         // console.log('Text position updated');
       }else{
         // console.log('failed to get coordinates');
@@ -529,7 +530,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
       setTimeout(() => {
       marker.remove()
-      }, 20000);
+      }, 6000);
     }
   
     updateMarkerPosition()
@@ -740,6 +741,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
   return (
     <div className="platformWrapper"  data-theme={themeSelect}>
+    {/* <CustomModal/> */}
       {windowWidth >= 768 ? (
         <MainSidebar id="main_sidebar" />
       ) : (
@@ -897,6 +899,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           <TradeForm bottomSidebarHeight={bottomSidebarHeight}  socketData={socketData?.barchart}/>
         </div>
       </div>
+      
 
       {/* {!isWalkthroughSkipped && !loading && (
         <WalkThrough
