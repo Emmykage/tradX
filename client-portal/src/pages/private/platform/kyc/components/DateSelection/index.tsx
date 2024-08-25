@@ -1,8 +1,16 @@
 import React, { useEffect, useReducer, useState } from 'react';
 import FormSelect from '../FormSelect';
-import { isObjectEmpty, splitDateToDayMothYear } from 'utils/utils';
 
-const DateSelection = () => {
+
+interface dateSelectionProps {
+    setFormData: any
+    formData: any
+}
+
+const DateSelection: React.FC<dateSelectionProps> = ({setFormData, formData}) => {
+    const fetchDate = formData?.dob
+    const [year, month, day] = fetchDate?.split("-")
+    console.log("year", year)
     const [daysArray, setDaysArray] = useState([]);
     const initialState = {
         days: 31,
@@ -14,10 +22,11 @@ const DateSelection = () => {
         dayValue: 1,
         // daysArray: [],
         monthsArray: [],
-        yearsArray: [],
-        initialLoading: true,
+        yearsArray: []
     };
     const [state, setState] = useReducer((state: any, newState: any) => ({ ...state, ...newState }), initialState);
+
+    console.log("state", state.dayValue)
     const{
         days,
         months,
@@ -28,8 +37,7 @@ const DateSelection = () => {
         dayValue,
         // daysArray,
         monthsArray,
-        yearsArray,
-        initialLoading
+        yearsArray
     } = state;
 
     const formatInitialData = () => {
@@ -61,6 +69,7 @@ const DateSelection = () => {
     };
 
     const buildDays = (length: number) => {
+       
         let daysArry: any = [];
         let d = 1;
         while(d <= 31){
@@ -132,6 +141,12 @@ const DateSelection = () => {
                 ...state,
                 monthValue: selectedMonth
             });
+
+            setFormData({
+                ...formData,
+                month: selectedMonth
+
+            })
         }
     };
 
@@ -141,7 +156,15 @@ const DateSelection = () => {
                 ...state,
                 dayValue: selectedDay
             })
+
+            setFormData({
+                ...formData,
+                day: selectedDay
+    
+            })
         }
+
+      
     };
 
     const handleYearChange = (selectedYear: string|number) => {
@@ -151,30 +174,19 @@ const DateSelection = () => {
                 ...state,
                 yearValue: selectedYear
             })
+
+            setFormData({
+                ...formData,
+                year: selectedYear
+    
+            })
+            console.log("selected year", selectedYear )
         }
     };
 
-    const formatInitialDate = () => {
-        const dateObj: any =  splitDateToDayMothYear("2024-08-23");
-        if(!isObjectEmpty(dateObj)){
-            const {year, month, day} = dateObj;
-            checkMonth(`${month}`);
-            setState({
-                yearValue: year,
-                monthValue: month,
-                dayValue: day,
-                initialLoading: false
-            });
-        }
-
-    };
-
-    useEffect(() => {
-        formatInitialDate();
-    }, []);
+    console.log("fuldate", day, month, year, monthsArray)
 
     return(
-    
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
             <div className="flex-grow">
                 <FormSelect
@@ -184,7 +196,7 @@ const DateSelection = () => {
                     className="w-full "
                     id="month"
                     name="month"
-                    selectedId={monthValue}
+                    selectedId={month}
                     onSelect={handleMonthChange}
                 />
             </div>
@@ -196,7 +208,7 @@ const DateSelection = () => {
                     className="w-full"
                     id="day"
                     name="day"
-                    selectedId={dayValue}
+                    selectedId={day}
                     onSelect={handleDayChange}
                 />
             </div>
@@ -206,9 +218,9 @@ const DateSelection = () => {
                     label="Year"
                     placeholder="Select year"
                     className="w-full"
+                    selectedId={year}
                     id="year"
                     name="year"
-                    selectedId={yearValue}
                     onSelect={handleYearChange}
                 />
             </div>

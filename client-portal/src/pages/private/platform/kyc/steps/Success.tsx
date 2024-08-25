@@ -3,10 +3,14 @@ import successIcon from '../../../../../assets/icons/kyc/Illustration.svg'
 import { useNavigate } from 'react-router-dom'
 import KYCButton from '../components/Button'
 
-const SuccessView = () => {
+interface successProps {
+  handleNext: (dir: string) => void
+}
+const SuccessView: React.FC<successProps> = ({handleNext}) => {
   const navigate = useNavigate()
   const handleNav = () => {
-    navigate('/platform') 
+    // navigate('/platform') 
+    handleNext("next")
 
   }
   return (

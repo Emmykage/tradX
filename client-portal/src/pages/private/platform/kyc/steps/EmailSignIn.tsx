@@ -39,6 +39,9 @@ const EmailSignInForm: React.FC<SignInFormProps> = ({handleNext}) => {
   const { mutate, isPending } = useLogin({
     onSuccess: (data) => {
       const expirationInSeconds = 270;
+      toast.success(
+        "Success! Login was successful."
+      );
       setCookie("access_token", data.access, { maxAge: expirationInSeconds });
       setCookie("refresh_token", data.refresh);
       setCookie("step",'')
@@ -61,7 +64,7 @@ const EmailSignInForm: React.FC<SignInFormProps> = ({handleNext}) => {
     })
   };
   const onSubmit: SubmitHandler<ISignInForm> = (data) => {
-    mutate(formData);
+    mutate(formData as ISignInForm);
   };
 
   return (
