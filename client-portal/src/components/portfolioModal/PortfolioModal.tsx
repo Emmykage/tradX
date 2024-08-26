@@ -61,18 +61,18 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
             maskClosable={true}
             centered
             >
-        <div className='portfolioWrapper grid gap-6'>
-            <div className='px-5 py-16 bg-[#0f1a2b] rounded-2xl sideNav'>
+        <div className='portfolioWrapper  grid gap-6'>
+            <div className='px-2 md:px-5 py-12 bg-black rounded-2xl max-h-[780px] sideNav overflow-y-auto'>
 
                 <div className=' '>
-                    <img src={userImg} alt='' className='w-32 h-32 rounded-full bg-red-200 block m-auto' />
-                    <p className='my-4 text-center'>User</p>
-                    <p className='text-blue-600'>dfdfsdfdsfdjlsjl.....fdfdfdf</p>
+                    <img src={userImg} alt='' className='w-20 h-20 md:w-32 md:h-32 rounded-full bg-red-200 block m-auto' />
+                    <p className='my-4 text-base text-center'>User</p>
+                    <p className='text-blue-600 text-sm text-center'>dfdfsdfdsfdjlsjl.....fdfdfdf</p>
                 </div>
-                <ul className='my-10 '>
+                <ul className='mt-6 mb-10'>
                     {sideItems.map(item => (
                                         
-                        <li className={`my-5 py-2 px-4 rounded-2xl text-white cursor-pointer font-medium ${item.name == selectedNav && "bg-white text-[#0F1A2B]" }`}  onClick={() => setSlectedNav(item.name)}><span className='text-sm font-medium'>{item.label} </span></li>
+                        <li className={`my-2 py-2 px-4 rounded-2xl cursor-pointer font-medium ${item.name == selectedNav && "bg-white text-[#0F1A2B]" }`}  onClick={() => setSlectedNav(item.name)}><span className='text-xs md:text-sm font-medium'>{item.label} </span></li>
 
 
                     ))}
@@ -82,16 +82,16 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
                 </ul>
 
 
-                <ul className='my-10 text-center mt-24'>
+                <ul className='mt-10 text-center mt-16'>
                 {bottomItems.map(item => (
                                         
-                        <li className='my-5 py-2 px-4 rounded-lg text-white'><span className='text-sm font-medium'>{item.label} </span></li>
+                        <li className='my-2 py-2 px-2 rounded-lg text-white'><span className='text-sm font-medium'>{item.label} </span></li>
                 
                 
                       ))}     
                 </ul>
             </div>
-            <div className='bg-gray-900 p-5 text-white rounded font-bold'>
+            <div className='bg-black px-3 py-3 text-white h-full max-h-[780px] overflow-y-auto rounded font-bold main-conatain hide-scrollbar'>
 
                 {[...sideItems].map(item => {
                     if(item.name == selectedNav){

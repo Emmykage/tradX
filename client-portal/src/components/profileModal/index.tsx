@@ -152,17 +152,17 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
 
               {/* Account Balance Section */}
               <div className='summary items-center'>
-                <div className='flex my-5 gap-5'>
-                  <div className='w-full max-w-[50%] basis-[50%] rounded account gap-7'>
+                <div className='flex flex-col sm:flex-row my-5 gap-5'>
+                  <div className='w-full  md:max-w-[50%] basis-[50%] rounded account gap-7'>
                     <div className='flex '>
 
                     <div className='flex flex-1 flex-col justify-between'>
-                      <span className='text-white/50 text-lg font-semibold block'>ACCOUNT BALANCE</span>
+                      <span className='text-white/50 text-base font-semibold block'>ACCOUNT BALANCE</span>
                       {/* <span className='text-white'>USD</span> */}
 
                       <div className='flex justi gap-[10%] items-center px-4'>
                       <UpArrowIcon />
-                      <p className='text-white text-3xl font-medium text-[green]  max-w-sm w-full overflow-x-auto'>
+                      <p className='text-white text-2xl font-medium text-[green]  max-w-sm w-full overflow-x-auto'>
                         {walletDetails.map(item => {
 
                             if(item.currencyName == selectedCurrency){
@@ -177,7 +177,6 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
             
                    <FormSelect
                    id='currency'
-                //    label="currency"
                    data={currencyData}
                    className='dropdown'
                    selectedId='usd'
@@ -191,9 +190,7 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
                   <div className='flex '>
 
                 <div className='flex flex-1 flex-col justify-between'>
-                    <span className='text-white/50 text-lg font-semibold block'>PORTFOLIO</span>
-                    {/* <span className='text-white'>USD</span> */}
-
+                    <span className='text-white/50 text-base font-semibold block'>PORTFOLIO</span>
                     <div className='flex justi gap-[10%] items-center px-4'>
                     <UpArrowIcon />
                     <p className='text-white flex flex-col py-3 items-center h-10  leading-[100%] text-lg font-medium text-[green] overflow-y-auto  max-w-sm w-full overflow-x-auto hide-scrollbar'>
