@@ -47,6 +47,7 @@ import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import useWebSocketTicket from "api/user/useWebSocketTicket";
 import CustomModal from "components/customModal/CustomModal";
+import PortfolioModal from "components/portfolioModal/PortfolioModal";
 
 interface PlatformProps {}
 
@@ -899,6 +900,9 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           <TradeForm bottomSidebarHeight={bottomSidebarHeight}  socketData={socketData?.barchart}/>
         </div>
       </div>
+
+
+   
       
 
       {/* {!isWalkthroughSkipped && !loading && (

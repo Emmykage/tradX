@@ -32,6 +32,7 @@ const WireTransfer = () => {
   });
 
   return (
+    
     <div className="wireTransfer">
       <h2>Wire Transfer</h2>
       <form onSubmit={formik.handleSubmit}>

@@ -41,8 +41,8 @@ const PaymentMethod: FC<PaymentMethodProps> = ({
   // }, []);
 
   const {themeSelect} = useAppSelector(state => state.themeBg)
-  console.log(paymentMethodList);
-  console.log(paymentMethodList?.map((item)=>item.type));
+  console.log("unmapped",paymentMethodList);
+  console.log("mapped list",paymentMethodList?.map((item)=>item.type));
   const paymentMethodListWithAll = [
     { type: "all" },
     ...(paymentMethodList || []),

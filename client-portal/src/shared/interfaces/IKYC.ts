@@ -1,6 +1,8 @@
+import { IUserKYCProps } from "@interfaces";
 
 export default interface IKYC {
 
         id: number,
-        user: {}
+        selfie: string
+        user: IUserKYCProps
   }

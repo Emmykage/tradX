@@ -13,6 +13,7 @@ import {  NewsIcon, SearchIcon2, TimerIcon } from "../../../../../assets/icons";
 import { useAppSelector } from "@store/hooks";
 
 import { INews } from "@interfaces";
+import NewsModal from "components/newsModal/newModal";
 
 // const filterListButtons = ["Forex", "Stock", "Commodities", "Crypto"];
 
@@ -43,7 +44,7 @@ const RenderTab = ({
 
   return (
     <div className="newsMenuWrapper">
-      <p className="newsHeading">{title}</p>
+      <p className="newsHeading capitalize">{title}</p>
       <div className="newsIconWrapper">
         <NewsIcon />
       </div>
@@ -55,30 +56,50 @@ const RenderTab = ({
 
 interface NewsFeedProps {
   articles: INews[];
-  label: string
+  label: string;
 }
 
+const NewsFeed: React.FC<NewsFeedProps> = ({ articles, label }) => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [selectedArticle, setSelectedArticle] = useState<INews | undefined>();
 
+  const handleArticleClick = (article: INews) => {
+    setSelectedArticle(article);
+    setModalOpen(true);
+  };
 
-const NewsFeed: React.FC<NewsFeedProps> = ({articles, label}) => (
-  <>
- {articles?.length && articles.length > 0 ? (
+  return (
+    <>
+      {articles?.length > 0 ? (
         articles.map((item, index) => (
-          <div className="textContainer" key={index}>
+          <div
+            key={index}
+            onClick={() => handleArticleClick(item)}
+            className="textContainer cursor-pointer"
+          >
             <h2>{item?.title?.substring(0, 65)}</h2>
             <p>{item?.description?.substring(0, 190)}...</p>
             <div className="textFooter">
-              <TimerIcon />
-              <h3>15 Min Read</h3>
-              <li>{item.creator}</li>
-              <div className="time">
-                {moment(item.pubDate).format("dd.mm.yy")}
-              </div>
+           
+                <TimerIcon />
+                <span className="text-[#0094FF]" > 15 min Read</span>            
+              
             </div>
-          </div>) 
-        )) : (<RenderTab  title={`${label} News`} description="No News on Stock" />) }
-</>
-)
+          </div>
+        ))
+      ) : (
+        <RenderTab title={`${label} News`} description="No News on Stock" />
+      )}
+      <NewsModal
+        open={modalOpen}
+        setOpen={setModalOpen}
+        closable={true}
+        article={selectedArticle}
+        label={label}
+      />
+    </>
+  );
+};
 
 
 interface NewsMenuProps {}
