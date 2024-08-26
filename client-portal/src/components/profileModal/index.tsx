@@ -196,7 +196,7 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
                     <p className='text-white flex flex-col py-3 items-center h-10  leading-[100%] text-lg font-medium text-[green] overflow-y-auto  max-w-sm w-full overflow-x-auto hide-scrollbar'>
                     {selectedItem ? (
                                 <div>
-                                {selectedItem.portfolios[0]?.label.substring(0, 10)}
+                                {selectedItem.portfolios[0]?.label.substring(0, 14)}
                                 </div>
                             ) : (
                                 <p>Apple Stock</p>

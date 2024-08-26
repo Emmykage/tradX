@@ -67,7 +67,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
                 <div className=' '>
                     <img src={userImg} alt='' className='w-20 h-20 md:w-32 md:h-32 rounded-full bg-red-200 block m-auto' />
                     <p className='my-4 text-base text-center'>User</p>
-                    <p className='text-blue-600 text-sm text-center'>dfdfsdfdsfdjlsjl.....fdfdfdf</p>
+                    <p className='text-blue-600 text-sm text-center'>Hrefugew....239857bfhvm</p>
                 </div>
                 <ul className='mt-6 mb-10'>
                     {sideItems.map(item => (
