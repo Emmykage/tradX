@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, WheelEvent } from 'react';
 import './ScrollList.scss';
 
-const ScrollList = ({ items }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+// Define the type for items in the list
+interface Item {
+  value: string;
+}
 
-  const handleScroll = (event) => {
+// Define the props type for the ScrollList component
+interface ScrollListProps {
+  items: Item[];
+}
+
+const ScrollList: React.FC<ScrollListProps> = ({ items }) => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  // Type the event parameter as WheelEvent
+  const handleScroll = (event: WheelEvent<HTMLDivElement>) => {
     if (event.deltaY > 0) {
       setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, items.length - 1));
     } else {
