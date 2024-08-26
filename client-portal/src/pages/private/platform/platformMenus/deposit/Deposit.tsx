@@ -146,7 +146,7 @@ const Deposit: FC<DepositProps> = ({
                 setIsRightSubDrawerOpen(true);
                 paymentCheckoutHandler();
               }}
-              className="payment-card-next-button"
+              className={`${amount && "active"} payment-card-next-button`}
               Title="Next"
             />
           </Col>
