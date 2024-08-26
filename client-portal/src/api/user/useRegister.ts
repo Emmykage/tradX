@@ -19,6 +19,7 @@ export async function fethRegister(data: any): Promise<boolean> {
     if (!response.ok) {
       Object.keys(result).forEach((field) => {
         const errors = result[field];
+
         errors.forEach((errorMessage: string) => {
           toast.error(`${field}: ${errorMessage}`);
         });

@@ -28,7 +28,7 @@ const SignInForm: React.FunctionComponent<SignInFormProps> = ({
      
       
     },
-    onError: () => {},
+   
   });
 
 

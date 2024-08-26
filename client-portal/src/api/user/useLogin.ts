@@ -19,7 +19,7 @@ export async function fethLogin(data: ISignInForm): Promise<boolean> {
     const result = await response.json();
 
     if (!response.ok) {
-      toast.error(result.detail);
+      toast.error(result.non_field_errors[0]);
       throw new Error(`${result}`);
     }
     return result;
