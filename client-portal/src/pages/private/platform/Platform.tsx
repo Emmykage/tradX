@@ -902,12 +902,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       </div>
 
 
-      <PortfolioModal/>
-
-
-
-
-      
+   
       
 
       {/* {!isWalkthroughSkipped && !loading && (

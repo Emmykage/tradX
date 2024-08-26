@@ -20,7 +20,8 @@ import Loading from "components/loading";
 import { useNavigate } from "react-router-dom";
 
 interface SignUpFormData {
-  full_name: string;
+  last_name: string;
+  first_name: string;
   country: string;
   address: string;
   year: string;
@@ -47,7 +48,8 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
   const [form] = Form.useForm()
   const [formData, setFormData] = useState<SignUpFormData>({
     id: null,
-    full_name:  '',
+    first_name:  '',
+    last_name:  '',
     country: '',
     address: '',
     year: '',
@@ -86,7 +88,8 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
   
         form.setFieldsValue({
           id_number: updatedFormData.id_number,
-          full_name: updatedFormData.full_name,
+          first_name: updatedFormData.user.first_name,
+          last_name: updatedFormData.user.last_name,
           address: updatedFormData.address,      
 
         });
@@ -114,7 +117,8 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
     const dob = formData.dob.trim() !== "" ? formData.dob : `${formData.year}-${formData.month}-${formData.day}`
     const profileImage = formData.image ?? null
     const formDataParse = new FormData();
-    formDataParse.append("full_name", formData.full_name);
+    formDataParse.append("first_name", formData.first_name);
+    formDataParse.append("last_name", formData.last_name);
     formDataParse.append("country", formData.country);
     formDataParse.append("address", formData.address);
     formDataParse.append("id_type", formData.id_type);
@@ -157,6 +161,8 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
 
   }, [])
 
+  console.log(formData)
+
 
   if(isLoading){
     return <Loading/>
@@ -164,7 +170,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
 
   return (
     <div className="w-full formContainer px-5">
-      <div className="m-auto w-max ">
+      {/* <div className="m-auto w-max ">
       <ProfilePic 
         profilePic={formData?.selfie}
           handleProfileImg={(file) => {
@@ -176,24 +182,41 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
         />
 
 
-      </div>
+      </div> */}
       <h5 className="text-white text-2xl font-semibold mb-4">Enter your details</h5>
 
       <Form form={form} layout="vertical" onFinish={handleSubmit(onSubmit)}>
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
           <div className="flex-1">
             <Form.Item
-              name="full_name"
-              validateStatus={errors.full_name ? "error" : ""}
-              help={errors.full_name?.message}
+              name="first_name"
+              validateStatus={errors.first_name ? "error" : ""}
+              help={errors.first_name?.message}
             >
               <FormInput
-                label="Full name"
+                label="First name"
                 type="text"
-                id="full_name"
-                placeholder="Enter your name"
-                inputValue={formData.full_name}
-                inputName="full_name"
+                id="first_name"
+                placeholder="Enter your First"
+                inputValue={formData.first_name}
+                inputName="first_name"
+                onChange={handleInputChange}
+              />
+            </Form.Item>
+          </div>
+          <div className="flex-1">
+            <Form.Item
+              name="last_name"
+              validateStatus={errors.last_name ? "error" : ""}
+              help={errors.last_name?.message}
+            >
+              <FormInput
+                label="Last name"
+                type="text"
+                id="last_name"
+                placeholder="Enter your Last"
+                inputValue={formData.last_name}
+                inputName="last_name"
                 onChange={handleInputChange}
               />
             </Form.Item>
@@ -203,22 +226,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
 
 
         <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
-          <div className="flex-1">
-            <Form.Item
-              validateStatus={errors.country ? "error" : ""}
-              help={errors.country?.message}
-            >
-              <FormSelect
-                data={countries}
-                label="Country"
-                placeholder="Select your country"
-                className="w-full"
-                id="country"
-                name="country"
-                onSelect={(value) => setFormData({ ...formData, country: value })}
-              />
-            </Form.Item>
-          </div>
+         
 
           <div className="flex-1">
             <Form.Item

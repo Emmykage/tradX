@@ -1,4 +1,4 @@
-export const portfolioDatus = [
+export const portfolioDatum = [
     {value: "stock", label: "USD", portfolios: [{
 
     }]},
@@ -140,6 +140,69 @@ export const portfolioData = [
         { value: "XLE", label: "Energy Select Sector SPDR Fund (XLE)" },
         { value: "SOXX", label: "iShares PHLX Semiconductor ETF (SOXX)" }
       ]
-    }
-  ];
+    },        // ... previous categories
+        {
+          value: "REITs",
+          label: "REITs",
+          portfolios: [
+            { value: "AMT", label: "American Tower Corporation (AMT)" },
+            { value: "PLD", label: "Prologis, Inc. (PLD)" },
+            { value: "EQIX", label: "Equinix, Inc. (EQIX)" },
+            { value: "PSA", label: "Public Storage (PSA)" },
+            { value: "CCI", label: "Crown Castle International Corp. (CCI)" },
+            { value: "DLR", label: "Digital Realty Trust, Inc. (DLR)" },
+            { value: "WELL", label: "Welltower Inc. (WELL)" },
+            { value: "AVB", label: "AvalonBay Communities, Inc. (AVB)" },
+            { value: "O", label: "Realty Income Corporation (O)" },
+            { value: "SPG", label: "Simon Property Group, Inc. (SPG)" },
+            { value: "EQR", label: "Equity Residential (EQR)" },
+            { value: "BXP", label: "Boston Properties, Inc. (BXP)" },
+            { value: "VNO", label: "Vornado Realty Trust (VNO)" },
+            { value: "REG", label: "Regency Centers Corporation (REG)" },
+            { value: "KIM", label: "Kimco Realty Corporation (KIM)" },
+            { value: "ARE", label: "Alexandria Real Estate Equities, Inc. (ARE)" },
+            { value: "PEAK", label: "Healthpeak Properties, Inc. (PEAK)" },
+            { value: "UDR", label: "UDR, Inc. (UDR)" },
+            { value: "MAA", label: "Mid-America Apartment Communities, Inc. (MAA)" },
+            { value: "ESS", label: "Essex Property Trust, Inc. (ESS)" },
+            { value: "HCP", label: "HCP, Inc. (HCP)" },
+            { value: "DRE", label: "Duke Realty Corporation (DRE)" },
+            { value: "HST", label: "Host Hotels & Resorts, Inc. (HST)" },
+            { value: "EXR", label: "Extra Space Storage Inc. (EXR)" },
+            { value: "CPT", label: "Camden Property Trust (CPT)" }
+          ]
+        },
+        {
+          value: "crypto",
+          label: "Cryptocurrency",
+          portfolios: [
+            { value: "BTC", label: "Bitcoin (BTC)" },
+            { value: "ETH", label: "Ethereum (ETH)" },
+            { value: "BNB", label: "Binance Coin (BNB)" },
+            { value: "ADA", label: "Cardano (ADA)" },
+            { value: "SOL", label: "Solana (SOL)" },
+            { value: "XRP", label: "Ripple (XRP)" },
+            { value: "DOT", label: "Polkadot (DOT)" },
+            { value: "LINK", label: "Chainlink (LINK)" },
+            { value: "AVAX", label: "Avalanche (AVAX)" },
+            { value: "MATIC", label: "Polygon (MATIC)" },
+            { value: "LTC", label: "Litecoin (LTC)" },
+            { value: "XLM", label: "Stellar (XLM)" },
+            { value: "VET", label: "VeChain (VET)" },
+            { value: "TRX", label: "Tron (TRX)" },
+            { value: "ATOM", label: "Cosmos (ATOM)" },
+            { value: "ALGO", label: "Algorand (ALGO)" },
+            { value: "XTZ", label: "Tezos (XTZ)" },
+            { value: "AAVE", label: "Aave (AAVE)" },
+            { value: "UNI", label: "Uniswap (UNI)" },
+            { value: "SHIB", label: "Shiba Inu (SHIB)" },
+            { value: "FIL", label: "Filecoin (FIL)" },
+            { value: "THETA", label: "Theta Network (THETA)" },
+            { value: "LUNA", label: "Terra (LUNA)" },
+            { value: "EGLD", label: "Elrond (EGLD)" },
+            { value: "HBAR", label: "Hedera Hashgraph (HBAR)" }
+          ]
+        }
+      ];
+      
   

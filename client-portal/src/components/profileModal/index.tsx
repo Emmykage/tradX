@@ -12,11 +12,11 @@ import FormSelect from 'pages/private/platform/kyc/components/FormSelect';
 import { currencyData } from './data/currencyData';
 import useWallet from 'api/wallet/useWallet';
 import { IWallet } from '@interfaces';
-import { portfolioData } from './data/portfolioData';
+import { portfolioData, portfolioDatum } from './data/portfolioData';
 
 interface ProfileModalProps {
-  isModalOpen: boolean;
-  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isModalOpen?: boolean;
+  setModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface UpdateData {
@@ -29,10 +29,11 @@ interface walletDetailsProps{
     currencySymbol: string
 }
 
-const ProfileModal: React.FC<ProfileModalProps> = ({ isModalOpen, setModalOpen }) => {
+const ProfileModal: React.FC<ProfileModalProps> = () => {
   const [form] = Form.useForm();
   const [cookies] = useCookies(['access_token']);
   const [selectedCurrency, setSelectedCurrency ] = useState<string>()
+  const [selectedPortfolio, setSelectedPortfolio ] = useState<string>()
   const [currencies, setCurrencies] = useState<IWallet[]>()
   const [walletDetails, setWalletDetails] = useState<walletDetailsProps[]>([])
   const [userProfile, setUserProfile] = useState<IKYC>();
@@ -95,11 +96,14 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isModalOpen, setModalOpen }
       image: file,
     }));
   };
+  console.log(portfolioData)
+  const selectedItem = portfolioData.find(item => item.value === selectedPortfolio);
+
 
   return (
-    <>
+    <div className='profileModal m-auto max-w-3xl'>
 
-    <Modal
+    {/* <Modal
       rootClassName='profileModal'
       open={isModalOpen}
       onOk={() => setModalOpen(false)}
@@ -108,10 +112,10 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isModalOpen, setModalOpen }
       width={800}
       maskClosable={true}
       centered
-    >
+    > */}
       <div className='grid gap-6 profileContent'>
         {/* Profile Picture Section */}
-        <div className='profilePicture w-full h-80 text-center'>
+        {/* <div className='profilePicture w-full h-80 text-center'>
           <div className='px-6 py-10 bg-[#17273E] rounded'>
             <ProfilePic profilePic={userProfile?.selfie ?? null} handleProfileImg={handleProfileImg} />
             <p className='text-white my-6'>
@@ -123,7 +127,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isModalOpen, setModalOpen }
               <p className='text-white text-xl font-semibold'>Chat</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Biodata Form Section */}
         <div className='content'>
@@ -170,17 +174,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isModalOpen, setModalOpen }
                       </p>
                     </div>
                     </div>
-                   
-
-
-                    {/* <Select
-                    suffixIcon={<DownArrowIcon />}
-                   popupClassName="currency-dropdown"
-                   rootClassName='currencySelect'
-                   defaultValue={"usd"}
-                   options={[{value: "usd", label: "USD"}, {value: "usd", label: "USD"},  {value: "btc", label: "BTC"}, {value: "crypto", label: "Crypto"}]}
-                   
-                   /> */}
+            
                    <FormSelect
                    id='currency'
                 //    label="currency"
@@ -193,36 +187,34 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isModalOpen, setModalOpen }
                     </div>
                     
                   </div>
-                  <div className='basis-[50%] portfolio'>
+                  <div className='basis-[50%] rounded portfolio'>
                   <div className='flex '>
 
                 <div className='flex flex-1 flex-col justify-between'>
-                <span className='text-white/50 text-lg font-semibold block'>PORTFOLIO</span>
-                {/* <span className='text-white'>USD</span> */}
+                    <span className='text-white/50 text-lg font-semibold block'>PORTFOLIO</span>
+                    {/* <span className='text-white'>USD</span> */}
 
-                <div className='flex justi gap-[10%] items-center px-4'>
-                <UpArrowIcon />
-                <p className='text-white text-base font-medium text-[green]  max-w-sm w-full overflow-x-auto'>
-                    {walletDetails.map(item => {
-
-                        if(item.currencyName == selectedCurrency){
-                            return (`${item.currencySymbol} ${item.accountBalance}`)
-
-                        }
-                        return  "Apple Stock"
-                    })}
-                </p>
+                    <div className='flex justi gap-[10%] items-center px-4'>
+                    <UpArrowIcon />
+                    <p className='text-white flex flex-col py-3 items-center h-10  leading-[100%] text-lg font-medium text-[green] overflow-y-auto  max-w-sm w-full overflow-x-auto hide-scrollbar'>
+                    {selectedItem ? (
+                                <div>
+                                {selectedItem.portfolios[0]?.label.substring(0, 10)}
+                                </div>
+                            ) : (
+                                <p>Apple Stock</p>
+                            )}
+                                        </p>
                 </div>
                 </div>
                         <FormSelect
-                            id='currency'
-                            //    label="currency"
+                            id='portfolio'
                             data={portfolioData}
                             className='dropdown right-0'
                             selectedId='apple Stock'
                             position = 'bottom-right'
-                            onSelect={(value)=> handleFetchWallet(value)}
-                                /> 
+                            onSelect={(value)=> setSelectedPortfolio(value)}
+                            /> 
 
                         </div>
 
@@ -236,11 +228,11 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isModalOpen, setModalOpen }
           <EnhanceSecurityCard variant1={3} variant2={3} onClick={clickSecurityCardItem} />
         </div>
       </div>
-    </Modal>
+    {/* </Modal> */}
     
 
 
-    </>
+    </div>
 
   );
 };
