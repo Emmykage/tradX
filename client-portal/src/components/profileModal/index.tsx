@@ -162,7 +162,7 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
 
                       <div className='flex justi gap-[10%] items-center px-4'>
                       <UpArrowIcon />
-                      <p className='text-white text-2xl font-medium text-[green]  max-w-sm w-full overflow-x-auto'>
+                      <p className='text-white text-lg font-medium text-[green]  max-w-sm w-full overflow-x-auto'>
                         {walletDetails.map(item => {
 
                             if(item.currencyName == selectedCurrency){
