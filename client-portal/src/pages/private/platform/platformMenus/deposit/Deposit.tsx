@@ -35,7 +35,7 @@ const Deposit: FC<DepositProps> = ({
    const { mutate } = useQRCodeList({
     onSuccess: (data) => {
      dispatch(setPaymentMethodList(data.results))
-     console.log(data.results[0]);
+     console.log("seting payment method",data.results[0]);
      if(selectedPaymentMethod == null){
 
        dispatch(setPaymentMethod(data.results[0]))
@@ -146,7 +146,7 @@ const Deposit: FC<DepositProps> = ({
                 setIsRightSubDrawerOpen(true);
                 paymentCheckoutHandler();
               }}
-              className="payment-card-next-button"
+              className={`${amount && "active"} payment-card-next-button`}
               Title="Next"
             />
           </Col>

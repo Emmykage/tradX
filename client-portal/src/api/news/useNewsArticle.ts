@@ -2,72 +2,67 @@ import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { INews } from "@interfaces";
 import getEnv from "utils/env";
 
-type useNewsProps = {
+// Type for the fetchNews function's parameters
+type FetchNewsParams = {
+  token: string;
+  articleId?: string;
+};
+
+// Type for the useNewsArticle hook's properties
+type UseNewsProps = {
   onSuccess?: (
     data: INews,
-    variables: { token: string; articleId?: string },
+    variables: FetchNewsParams,
     context: unknown
   ) => void;
   onError?: (
     error: unknown,
-    variables: { token: string; articleId?: string },
+    variables: FetchNewsParams,
     context: unknown
   ) => void;
 };
 
-export async function fetchNews(data: {
-  token: string;
-  articleId?: string;
-}): Promise<INews> {
+// Function to fetch the news article data from the API
+export async function fetchNewsArticle({ token, articleId }: FetchNewsParams): Promise<INews> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
+  
   try {
-
-      const response = await fetch(`${BASE_URL}/news/${data.articleId}`, {
+    const response = await fetch(`${BASE_URL}/news/${articleId}`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${data.token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
-    const result = await response.json();
-
-
-    
     if (!response.ok) {
-      throw new Error(`${result}`);
+      const errorData = await response.json();
+      throw new Error(errorData.message || `Failed to fetch the news article. HTTP status: ${response.status}`);
     }
 
-    return result;
+    return response.json();
   } catch (error) {
-    throw new Error(error as string);
+    throw new Error((error as Error).message || "An unexpected error occurred while fetching the news article.");
   }
 }
 
+// Custom hook to use the fetchNews function with react-query's useMutation
 export const useNewsArticle = (
-  props: useNewsProps
-): UseMutationResult<
-INews,
-  unknown,
-  { token: string; articleId?: string }
-> => {
-  const {
-    onSuccess: onSuccessOverride,
-    onError: onErrorOverride,
-    ...rest
-  } = props || ({} as useNewsProps);
+  props: UseNewsProps = {}
+): UseMutationResult<INews, unknown, FetchNewsParams> => {
+  const { onSuccess, onError } = props;
 
-  return useMutation<INews,unknown,{ token: string; articleId?: string }>({
-    mutationFn: (data) => fetchNews(data),
+  return useMutation<INews, unknown, FetchNewsParams>({
+    mutationFn: fetchNewsArticle,
     onSuccess: (data, variables, context) => {
-      if (onSuccessOverride) {
-        onSuccessOverride(data, variables, context);
+      if (onSuccess) {
+        onSuccess(data, variables, context);
       }
     },
     onError: (error, variables, context) => {
-      if (onErrorOverride) {
-        onErrorOverride(error, variables, context);
+      console.error("Error fetching news article:", error);
+      if (onError) {
+        onError(error, variables, context);
       }
     },
-    ...rest,
   });
 };

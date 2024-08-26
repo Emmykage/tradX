@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useForm, Controller } from "react-hook-form";
 
-import useChangePassowrd, {
+import useChangePassword, {
   ChangePasswordForm,
 } from "api/user/useChangePassword";
 import Input from "components/input/Input";
@@ -13,8 +13,8 @@ import { RightSubDrawerContent } from "../../types";
 import PrimaryButton from "../../../../../components/primaryButton/PrimaryButton";
 
 interface ChangePasswordProps {
-  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
-  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+  setIsRightSubDrawerOpen?: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent?: Dispatch<SetStateAction<RightSubDrawerContent>>;
 }
 
 const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
@@ -31,23 +31,25 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
 
   const newPass = watch("new_password");
 
-  const { mutate, isPending } = useChangePassowrd({
+  const { mutate, isPending } = useChangePassword({
     onSuccess: () => {
-      setIsRightSubDrawerContent("password-success");
+      if (setIsRightSubDrawerContent) {
+        setIsRightSubDrawerContent("password-success");
+      }
     },
   });
 
-  const onSubmit = (data: any) =>
+  const onSubmit = (data: ChangePasswordForm) =>
     mutate({ token: cookies.access_token, formData: data });
+
   useEffect(() => {
     console.log({ errors });
   }, [errors]);
 
   return (
-    <div className="changePassword">
+    <div className={`changePassword  m-auto max-w-3xl`}>
       <form
         className="forgotPassContainer w-100"
-        // layout="vertical"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div>
@@ -66,7 +68,7 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
             )}
           />
           <p className="error_msg">
-            {errors?.old_password?.type === "required" &&
+            {errors.old_password?.type === "required" &&
               "Old password is required."}
           </p>
         </div>
@@ -86,7 +88,7 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
             )}
           />
           <p className="error_msg">
-            {errors?.old_password?.type === "required" &&
+            {errors.new_password?.type === "required" &&
               "New password is required."}
           </p>
         </div>
@@ -106,7 +108,7 @@ const ChangePassword: React.FunctionComponent<ChangePasswordProps> = ({
             )}
           />
           <p className="error_msg">
-            {errors?.old_password?.type === "required" &&
+            {errors.new_password_confirm?.type === "required" &&
               "Confirm password is required."}
           </p>
         </div>

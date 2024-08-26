@@ -88,4 +88,5 @@ export type LeftSubDrawer =
     | "crypto-payment"
     | "crypto-payment-processing"
     | "deposit-confirm-payment"
+    | "wire-transfer"
     | null;
