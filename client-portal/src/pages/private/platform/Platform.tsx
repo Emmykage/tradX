@@ -440,7 +440,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       
       if (priceCoordinate && timeCoordinate) {
         marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
-        marker.style.left = `${timeCoordinate - 3}px`;
+        marker.style.left = `${timeCoordinate - 5}px`;
         // console.log('Text position updated');
       }else{
         // console.log('failed to get coordinates');
@@ -530,7 +530,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
 
       setTimeout(() => {
       marker.remove()
-      }, 20000);
+      }, 6000);
     }
   
     updateMarkerPosition()
