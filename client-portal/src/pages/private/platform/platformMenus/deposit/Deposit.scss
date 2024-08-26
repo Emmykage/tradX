@@ -41,6 +41,10 @@
     .payment-card-next-button {
       margin-bottom: 1.5rem;
       margin-top: 1.5rem;
+      &.active{
+        background-color: #1f385e;
+
+      }
     }
   }
   .pending-spinner{
