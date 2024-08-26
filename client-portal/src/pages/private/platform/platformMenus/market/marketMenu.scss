@@ -1,54 +1,117 @@
 .market-menu {
-  .market-link {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  .mainItemCardv2 {
+    box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+      0 0.063rem 0 0.063rem inset rgba(255, 255, 255, 0.3);
+  }
+  .menufirstCard {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 1.75rem;
-    cursor: pointer;
-    border-radius: 1.25rem;
-    background: #1a1d21;
-    margin-top: 1.5rem;
-    p {
-      font-size: 1.125rem;
+    .menufirstCardText {
+      font-size: 0.9rem;
+      font-weight: 500;
+      flex: 1;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    svg {
+      width: 1.3rem;
+      height: 1.3rem;
     }
   }
-  .carousel-wrapper {
-    border-radius: 1.25rem;
-    margin-top: 3.95rem;
-    background: linear-gradient(262deg, #6956b3 2.57%, #3a0590 66.21%);
-    padding: 1.4375rem 0.4375rem 0.5625rem 1.375rem;
-    p.giftHead {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+  .menuthirdCardCon {
+    margin-top: -1rem;
+    margin-bottom: 0.5rem;
+    .mainItemCard {
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.3),
+        rgba(0, 0, 0, 0)
+      );
     }
-    .flexItems {
+    .mainItemCard::before {
+      background-image: linear-gradient(to right, rgb(60, 61, 64), rgb(45, 46, 50));
+    }
+    .menuthirdCard {
       display: flex;
-      align-items: center;
-    }
-  }
-  .trade-conditions {
-    border-radius: 1.25rem;
-    background: radial-gradient(
-      834.95% 196.61% at 129.33% -51.93%,
-      #6956b3 0%,
-      rgba(105, 86, 179, 0) 100%
-    );
-    margin-top: 3rem;
-    .imgWrap {
-      display: flex;
-      justify-content: flex-end;
-    }
-    .texts {
-      padding: 1.1rem;
-      p.tr-head {
-        font-size: 1.5rem;
-        font-weight: 500;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      .menuThirdCardRow {
+        display: flex;
+        align-items: center;
+        .menuthirdCardText1 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: #fff;
+          line-height: 2rem;
+        }
+        .menuthirdCardText2 {
+          font-size: 0.7rem;
+          font-weight: 400;
+          color: rgba(150, 151, 152, 1);
+        }
+        .svgs {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          img {
+            width: 4rem;
+            height: 4rem;
+          }
+        }
       }
-      p.tr-txt {
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        margin-top: 0.5rem;
+    }
+  }
+}
+
+.day.market-menu {
+
+  .mainItemCardv2 {
+    box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.05),
+      0 0.063rem 0 0.063rem inset rgba(0, 0, 0, 0.3);
+  }
+  .menufirstCard {
+
+    .menufirstCardText {
+      color: #000000;
+
+    }
+      path{
+        stroke: #000
+    }
+  }
+  .menuthirdCardCon {
+
+    .mainItemCard {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3),
+        rgba(255, 255, 255, 0)
+      );
+    }
+    .mainItemCard::before {
+      background-image: linear-gradient(to right, rgb(195, 194, 191), #2d2e32);
+    }
+    .menuthirdCard {
+
+      .menuThirdCardRow {
+
+        .menuthirdCardText1 {
+
+          color: #000000;
+          line-height: 2rem;
+        }
+        .menuthirdCardText2 {
+
+          color: rgb(18, 20, 22);
+        }
+
       }
     }
   }
