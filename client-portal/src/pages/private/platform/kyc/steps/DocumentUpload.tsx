@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import useKycFilesPostForm from 'api/kyc/useKycFilesPost'
 import { useCookies } from 'react-cookie'
 import useKyc from 'api/kyc/useKycInfo'
+import KYCButton from '../components/Button'
 interface documentProps {
   handleNext: (dir: string) => void
 }
@@ -18,8 +19,6 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
 
   const {kyc} = useAppSelector(state => state.userBio)
   const [kycId, setKycId] = useState(kyc || "")
-
-  console.log(kyc, "view user")
 
 
   const { mutate, isPending } = useKycFilesPostForm({
@@ -48,6 +47,10 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
   
 
   const handleFileUpload = () => {
+    if(!identityDoc){
+      toast.error("Upload your identity Document. Cannot upload files.");
+
+    }
     if (!kyc && !kycId ) {
       toast.error("KYC data is missing. Cannot upload files.");
       return;
@@ -93,18 +96,27 @@ const DocumnetUpload: React.FC<documentProps>  = ({handleNext}) => {
          handleChange={(value: FormData) => setAddressDoc(value)}
         />
 
-        <div className='flex justify-between my-6'>
-          <button
-          onClick={()=> handleNext("prev")}
-          
-          className='border back w-52 rounded-lg py-4 px-8 back'>
-            Back
-          </button>
-          <button
-          onClick={handleFileUpload} 
-          className='border w-52 border-gray-500 py-4 px-8 text-base text-white rounded-lg next'>
-            Next
-          </button>
+        <div className="flex my-8 gap-5 lg:gap-x-10 justify-between">
+          <div className="flex-grow">
+            <KYCButton
+              text="Back"
+              isLoading={false}
+              disable={isPending}
+              type="button"
+              className="kyc-button text-base font-semibold back"
+              onClick={() => handleNext("back")}
+            />
+          </div>
+          <div className="flex-grow">
+            <KYCButton
+              text="Next"
+              isLoading={isPending}
+              onClick={handleFileUpload} 
+              disable={isPending}
+              type="submit"
+              className="kyc-button text-base font-semibold"
+            />
+          </div>
         </div>
     
         

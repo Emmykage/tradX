@@ -16,6 +16,8 @@ import ProfilePic from "../components/profilePic/pic";
 import { IDType } from "../data/id_type";
 import useKyc from "api/kyc/useKycInfo";
 import useVerificationUpdate from "api/kyc/useVerificationUpdate";
+import Loading from "components/loading";
+import { useNavigate } from "react-router-dom";
 
 interface SignUpFormData {
   full_name: string;
@@ -37,12 +39,11 @@ interface BioDetailsProps {
 }
 
 const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
-  const { userBio } = useAppSelector((state) => state.userBio);
   const [doesKycExist, setDoesKycExist] = useState(false)
   const dispatch = useAppDispatch()
   const [cookies] = useCookies(["access_token"]);
   const { handleSubmit, register, reset, setValue, formState: { errors } } = useForm<SignUpFormData>();
-  // console.log(cookies)
+  const navigate = useNavigate()
   const [form] = Form.useForm()
   const [formData, setFormData] = useState<SignUpFormData>({
     id: null,
@@ -71,7 +72,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
     },
   });
 
-  const { mutate: mutateKYCData } = useKyc({
+  const { mutate: mutateKYCData, isPending: isLoading } = useKyc({
     onSuccess: (data) => {      
       if (data.results.length > 0) {
         const updatedFormData = {
@@ -104,6 +105,11 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
   })
 
   const onSubmit: SubmitHandler<SignUpFormData> = () => {
+
+    if(!cookies?.access_token){
+      console.log(cookies.access_token)
+      toast.error("Session expired: Please go to login")
+    }
 
     const dob = formData.dob.trim() !== "" ? formData.dob : `${formData.year}-${formData.month}-${formData.day}`
     const profileImage = formData.image ?? null
@@ -150,6 +156,11 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
     })
 
   }, [])
+
+
+  if(isLoading){
+    return <Loading/>
+  }
 
   return (
     <div className="w-full formContainer px-5">
@@ -285,7 +296,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
               disable={isPending}
               type="button"
               className="kyc-button text-base font-semibold back"
-              // onClick={() => handleNext("back")}
+              onClick={() => navigate(-1)}
             />
           </div>
           <div className="flex-grow">

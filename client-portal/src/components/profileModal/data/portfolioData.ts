@@ -1,0 +1,145 @@
+export const portfolioDatus = [
+    {value: "stock", label: "USD", portfolios: [{
+
+    }]},
+    {value: "bond", label: "Bonds"},
+    {value: "derivative", label: "Derivative"},
+    {value: "ETFs", label: "ETFs"},
+    {value: "mutual Funds", label: "Mutual Funds"},
+    {value: "REITs", label: "REITs"},
+    {value: "ADRs", label: "ADRs"},
+    {value: "Commodity-Linked Securities", label: "Commodity-Linked Securities"},
+    {value: "Foreign Exchange-Traded Securitie", label: "Foreign Exchange-Traded Securitie"},
+    {value: "Hybrid Securities", label: "Hybrid Securities"},
+
+  
+]
+
+
+export const portfolioData = [
+    {
+      value: "stock",
+      label: "Stocks",
+      portfolios: [
+        { value: "AAPL", label: "Apple Inc. (AAPL)" },
+        { value: "MSFT", label: "Microsoft Corporation (MSFT)" },
+        { value: "AMZN", label: "Amazon.com, Inc. (AMZN)" },
+        { value: "GOOGL", label: "Alphabet Inc. (GOOGL)" },
+        { value: "TSLA", label: "Tesla, Inc. (TSLA)" },
+        { value: "BRK.B", label: "Berkshire Hathaway Inc. (BRK.B)" },
+        { value: "NVDA", label: "NVIDIA Corporation (NVDA)" },
+        { value: "META", label: "Meta Platforms, Inc. (META)" },
+        { value: "JNJ", label: "Johnson & Johnson (JNJ)" },
+        { value: "JPM", label: "JPMorgan Chase & Co. (JPM)" },
+        { value: "PG", label: "Procter & Gamble Co. (PG)" },
+        { value: "V", label: "Visa Inc. (V)" },
+        { value: "WMT", label: "Walmart Inc. (WMT)" },
+        { value: "MA", label: "Mastercard Incorporated (MA)" },
+        { value: "PFE", label: "Pfizer Inc. (PFE)" },
+        { value: "CVX", label: "Chevron Corporation (CVX)" },
+        { value: "HD", label: "The Home Depot, Inc. (HD)" },
+        { value: "KO", label: "Coca-Cola Company (KO)" },
+        { value: "INTC", label: "Intel Corporation (INTC)" },
+        { value: "PEP", label: "PepsiCo, Inc. (PEP)" },
+        { value: "XOM", label: "Exxon Mobil Corporation (XOM)" },
+        { value: "ABBV", label: "AbbVie Inc. (ABBV)" },
+        { value: "ADBE", label: "Adobe Inc. (ADBE)" },
+        { value: "CSCO", label: "Cisco Systems, Inc. (CSCO)" },
+        { value: "NFLX", label: "Netflix, Inc. (NFLX)" }
+      ]
+    },
+    {
+      value: "bond",
+      label: "Bonds",
+      portfolios: [
+        { value: "UST10Y", label: "U.S. Treasury 10-Year Bonds" },
+        { value: "UST30Y", label: "U.S. Treasury 30-Year Bonds" },
+        { value: "TIPS", label: "U.S. Treasury Inflation-Protected Securities (TIPS)" },
+        { value: "AAPL_CB", label: "Apple Inc. Corporate Bonds" },
+        { value: "MSFT_CB", label: "Microsoft Corporation Corporate Bonds" },
+        { value: "AMZN_CB", label: "Amazon.com, Inc. Corporate Bonds" },
+        { value: "GOOGL_CB", label: "Alphabet Inc. Corporate Bonds" },
+        { value: "BRK_CB", label: "Berkshire Hathaway Corporate Bonds" },
+        { value: "Muni_CA", label: "Municipal Bonds (State of California)" },
+        { value: "Muni_NY", label: "Municipal Bonds (State of New York)" },
+        { value: "JNJ_CB", label: "Johnson & Johnson Corporate Bonds" },
+        { value: "JPM_CB", label: "JPMorgan Chase & Co. Corporate Bonds" },
+        { value: "XOM_CB", label: "Exxon Mobil Corporation Corporate Bonds" },
+        { value: "PFE_CB", label: "Pfizer Inc. Corporate Bonds" },
+        { value: "CVX_CB", label: "Chevron Corporation Corporate Bonds" },
+        { value: "IBM_CB", label: "IBM Corporate Bonds" },
+        { value: "PG_CB", label: "Procter & Gamble Co. Corporate Bonds" },
+        { value: "GE_CB", label: "General Electric Company Corporate Bonds" },
+        { value: "EM_SB", label: "Emerging Market Sovereign Bonds (e.g., Brazil, Mexico)" },
+        { value: "HY_CB", label: "High-Yield Corporate Bonds (Junk Bonds)" },
+        { value: "IGB", label: "International Government Bonds (German Bunds)" },
+        { value: "Eurobonds", label: "Eurobonds" },
+        { value: "CB_TESLA", label: "Convertible Bonds (e.g., Tesla Inc.)" },
+        { value: "Bank_Loans", label: "Bank Loans (Senior Secured Loans)" },
+        { value: "ABS", label: "Asset-Backed Securities (ABS)" }
+      ]
+    },
+    {
+      value: "derivative",
+      label: "Derivatives",
+      portfolios: [
+        { value: "SPX", label: "S&P 500 Index Options (SPX)" },
+        { value: "NDX", label: "NASDAQ-100 Index Options (NDX)" },
+        { value: "CL", label: "Crude Oil Futures (CL)" },
+        { value: "GC", label: "Gold Futures (GC)" },
+        { value: "BTC_F", label: "Bitcoin Futures (BTC)" },
+        { value: "AAPL_OP", label: "Apple Inc. Call/Put Options" },
+        { value: "TSLA_OP", label: "Tesla, Inc. Call/Put Options" },
+        { value: "MSFT_OP", label: "Microsoft Corporation Call/Put Options" },
+        { value: "AMZN_OP", label: "Amazon.com, Inc. Call/Put Options" },
+        { value: "GOOGL_OP", label: "Alphabet Inc. Call/Put Options" },
+        { value: "VIX_F", label: "CBOE Volatility Index (VIX) Futures" },
+        { value: "Eurodollar_F", label: "Eurodollar Futures" },
+        { value: "EUR_USD", label: "Currency Futures (EUR/USD)" },
+        { value: "IRS", label: "Interest Rate Swaps" },
+        { value: "CDS", label: "Credit Default Swaps (CDS)" },
+        { value: "TSLA_CW", label: "Tesla, Inc. Convertible Warrants" },
+        { value: "NVDA_OP", label: "NVIDIA Corporation Call/Put Options" },
+        { value: "AG_F", label: "Agricultural Futures (Corn, Wheat)" },
+        { value: "NG_F", label: "Natural Gas Futures (NG)" },
+        { value: "SI_F", label: "Silver Futures (SI)" },
+        { value: "HG_F", label: "Copper Futures (HG)" },
+        { value: "ETF_OP", label: "Options on ETFs (SPY, QQQ)" },
+        { value: "FI_W", label: "Warrants on Financial Institutions" },
+        { value: "SS_F", label: "Single Stock Futures (e.g., TSLA, AAPL)" },
+        { value: "IC_OP", label: "Iron Condor Options Strategy on S&P 500" }
+      ]
+    },
+    {
+      value: "ETFs",
+      label: "ETFs",
+      portfolios: [
+        { value: "SPY", label: "SPDR S&P 500 ETF (SPY)" },
+        { value: "QQQ", label: "Invesco QQQ Trust (QQQ)" },
+        { value: "IWM", label: "iShares Russell 2000 ETF (IWM)" },
+        { value: "VTI", label: "Vanguard Total Stock Market ETF (VTI)" },
+        { value: "EEM", label: "iShares MSCI Emerging Markets ETF (EEM)" },
+        { value: "VEA", label: "Vanguard FTSE Developed Markets ETF (VEA)" },
+        { value: "VIG", label: "Vanguard Dividend Appreciation ETF (VIG)" },
+        { value: "LQD", label: "iShares iBoxx $ Investment Grade Corporate Bond ETF (LQD)" },
+        { value: "BND", label: "Vanguard Total Bond Market ETF (BND)" },
+        { value: "GLD", label: "SPDR Gold Shares ETF (GLD)" },
+        { value: "TLT", label: "iShares 20+ Year Treasury Bond ETF (TLT)" },
+        { value: "VNQ", label: "Vanguard REIT ETF (VNQ)" },
+        { value: "EFA", label: "iShares MSCI EAFE ETF (EFA)" },
+        { value: "ARKK", label: "ARK Innovation ETF (ARKK)" },
+        { value: "SDY", label: "SPDR S&P Dividend ETF (SDY)" },
+        { value: "IEMG", label: "iShares Core MSCI Emerging Markets ETF (IEMG)" },
+        { value: "VXUS", label: "Vanguard Total International Stock ETF (VXUS)" },
+        { value: "MUB", label: "iShares National Muni Bond ETF (MUB)" },
+        { value: "XLV", label: "Health Care Select Sector SPDR Fund (XLV)" },
+        { value: "XLF", label: "Financial Select Sector SPDR Fund (XLF)" },
+        { value: "XLY", label: "Consumer Discretionary Select Sector SPDR Fund (XLY)" },
+        { value: "GDX", label: "VanEck Vectors Gold Miners ETF (GDX)" },
+        { value: "XLK", label: "Technology Select Sector SPDR Fund (XLK)" },
+        { value: "XLE", label: "Energy Select Sector SPDR Fund (XLE)" },
+        { value: "SOXX", label: "iShares PHLX Semiconductor ETF (SOXX)" }
+      ]
+    }
+  ];
+  

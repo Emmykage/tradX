@@ -23,14 +23,16 @@ const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = ({
       <div className="verificationBadge">
         <img src="/menu-images/verification-img.png" />
       </div>
+      <div className="kycVerifyButton">
+        <PrimaryButton
+          onClick={() => {
+            navigate("/kyc-document/?query=biodata-kyc")
+          }}
+          className="verificationLearnMore"
+          Title="KYC Verification"
+        />
+      </div>
 
-      <MainItemCard pointer={false} className="infoCard" variant={2}>
-        <InfoCircleIcon />
-        <p>
-          You don`t need to get verified for now. We`ll you know when you need
-          to.
-        </p>
-      </MainItemCard>
 
       <MainItemCard pointer={false} className="verificationDetail" variant={2}>
         <p>
@@ -50,15 +52,7 @@ const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = ({
         />
       </div>
 
-      <div className="kycVerifyButton">
-        <PrimaryButton
-          onClick={() => {
-            navigate("/kyc-document/?query=biodata-kyc")
-          }}
-          className="verificationLearnMore"
-          Title="KYC Verification"
-        />
-      </div>
+      
     </div>
   );
 };

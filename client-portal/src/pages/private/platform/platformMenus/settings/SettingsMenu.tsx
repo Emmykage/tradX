@@ -19,6 +19,7 @@ import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./settingsMenu.scss";
 import { RightSubDrawerContent } from "../../types";
 import Modal from "../../../../../components/modal/Modal";
+import ProfileModal from "components/profileModal";
 
 interface SettingsMenuProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
@@ -31,6 +32,8 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
   const navigate = useNavigate();
   const [, , removeCookie] = useCookies(["access_token", "refresh_token"]);
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const [isUserModalOpen, setUserModalOpen] = useState<boolean>(false)
+
   const {themeSelect} = useAppSelector(state => state.themeBg)
   const handleLogout = () => {
     dispatch(setUser(null));
@@ -47,7 +50,8 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
         <p className="settingsMenuTitle">Profile</p>
         <div
           className="settingsMenuItem"
-          onClick={() => setIsRightSubDrawerContent("personalSettings")}
+          // onClick={() => setIsRightSubDrawerContent("personalSettings")}
+          onClick={()=> setUserModalOpen(true)}
         >
           <UserIcon />
           <div>
@@ -158,6 +162,15 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           </div>
         </div>
       </Modal>
+
+      <ProfileModal
+      isModalOpen={isUserModalOpen}
+      setModalOpen={setUserModalOpen}
+
+      
+
+      
+      />
     </div>
   );
 };

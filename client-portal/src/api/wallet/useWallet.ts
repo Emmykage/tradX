@@ -17,7 +17,7 @@ type useWalletProps = {
 
 export async function fethWallet(token: string): Promise<WalletsResponse> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
-  try {
+    try {
     const response = await fetch(`${BASE_URL}/wallet/wallets/`, {
       method: "GET",
       headers: {
