@@ -2,7 +2,7 @@ import { Form } from 'antd'
 import React, { useState } from 'react'
 import FormInput from '../components/FormInput'
 import { SubmitHandler, useForm } from 'react-hook-form';
-import './settingsprofile.scss'
+import './settingsProfile.scss'
 import DropDownOptions from '../components/dropDownOptions/DropDown';
 interface formDataProps{
     first_name: string;
