@@ -1,8 +1,10 @@
 .settings-dropdown{
     // background-color: green;
     .dropdown-options{
-        transition: all 0.3s ease-in-out;
-        background-color: red;
+        transition: all 0.1s ease-in-out;
+        background-color: #0c3b6423;
+        padding: 0 12px;
+        overflow: hidden;
         &.let-down{
             height: max-content;
             padding: 12px 3px;
