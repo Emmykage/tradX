@@ -1,12 +1,9 @@
 import { Modal } from 'antd'
-import React, { Component, useEffect, useState } from 'react'
-// import userImg from "../../assets/userP.png"
+import React, { useEffect, useState } from 'react'
 import userImg from "../../../../../assets/userP.png"
 import './portfolioModal.scss'
 import ProfileModal from 'components/profileModal';
-import VerificationMenu from 'pages/private/platform/platformMenus/verification/VerificationMenu';
 import ChangePassword from 'pages/private/platform/platformMenus/changePassword/ChangePassword';
-import TradingMenu from 'pages/private/platform/platformMenus/trading/TradingMenu';
 import PortfolioPage from 'pages/private/platform/platformMenus/portfolioSection/PortfolioPage';
 import Trading from './trading/Trading';
 import VerificationPage from './verification/VerificationPage';
@@ -33,7 +30,7 @@ interface PortfolioModalProps {
       case "trading":
         return "Trading";
       default:
-        return "Unknown"; // or return a default string like "Unknown"
+        return "Unknown"; 
     }
   };
 
@@ -66,7 +63,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
     },[])
 
     const sideItems = [
-        {name: "personal_info", label: "Personal", component: <ProfileModal /> },
+        {name: "personal_info", label: "Personal", component: <ProfileModal userProfile={userProfile} isPending={isPending} /> },
         {name: "verification", label: "Verification", component:  <VerificationPage />},
         {name: "portfolio", label: "Portfolio", component: <PortfolioPage/>},
         {name: "password", label: "Password", component:  <ChangePassword />},

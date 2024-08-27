@@ -1,44 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import verify from '../../../../../../../assets/portfolio/photo.png'
 import scan from '../../../../../../../assets/portfolio/verify-icon.png'
-import useKyc from 'api/kyc/useKycInfo'
-import { useCookies } from 'react-cookie'
 
-import { IUser, IUserKYCProps } from '@interfaces'
+import { IUserKYCProps } from '@interfaces'
 import Loading from 'components/loading'
-const ProfileInformation = () => {
-    const [userProfile, setUserProfile] = useState<IUserKYCProps>()
-
-    const [cookies] = useCookies(["access_token"])
 
 
 
-    const {mutate, isPending} = useKyc({
-        onSuccess: (data) => {
-            console.log("get kyc info",data)
-            setUserProfile(data.results[0].user)
-
-
-        },
-        onError: () => {
-
-        }
-    })
-
-    useEffect(()=> {
-        mutate({
-            token: cookies.access_token
-        })
-
-    },[])
-
-    // if(isPending){
-    //     return(
-    //     <div className='h-36'>
-
-    //     </div>
-    // )
-    // }
+interface profileInfoProps{
+    userProfile: IUserKYCProps | undefined,
+    isPending: boolean
+}
+const ProfileInformation: React.FC<profileInfoProps> = ({userProfile, isPending}) => {
 
   return (
     <div className='relative'>
