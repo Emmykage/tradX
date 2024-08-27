@@ -24,7 +24,7 @@ const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = ({
       <div className="verificationBadge">
         <img src="/menu-images/verification-img.png" />
       </div>
-      <div className="kycVerifyButton">
+      <div className="kycVerifyButton w-1/2 m-auto">
         <PrimaryButton
           onClick={() => {
             navigate("/kyc-document/?query=biodata-kyc");
@@ -34,14 +34,14 @@ const VerificationMenu: React.FunctionComponent<VerificationMenuProps> = ({
         />
       </div>
 
-      <MainItemCard pointer={false} className="verificationDetail" variant={2}>
+      {/* <MainItemCard pointer={false} className="verificationDetail" variant={2}>
         <p>
           Verification is a mandatory process for financial market participants.
           With its help, we're able to create a safe space for trading where
           you can be sure that your funds are secure.
         </p>
-      </MainItemCard>
-      <div className="learnMoreButton">
+      </MainItemCard> */}
+      <div className="learnMoreButton w-1/2 m-auto">
         <PrimaryButton
           onClick={() => {
             if (setIsRightSubDrawerOpen) {

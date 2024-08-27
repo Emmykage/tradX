@@ -17,7 +17,7 @@ const EnhanceSecurityCard: React.FunctionComponent<
   return (
     <div className={`enhanceSecurityContainer ${themeSelect}`}>
       <p className="securityTitle">Enhance your account security</p>
-      <p className="securitySubtitle">
+      <p className="securitySubtitle ">
         Add extra protection to your account and get a 50% deposit bonus
       </p>
       <Row gutter={[16, 16]} justify="start">

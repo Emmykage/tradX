@@ -103,31 +103,9 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
   return (
     <div className='profileModal m-auto max-w-3xl'>
 
-    {/* <Modal
-      rootClassName='profileModal'
-      open={isModalOpen}
-      onOk={() => setModalOpen(false)}
-      onCancel={() => setModalOpen(false)}
-      footer={null}
-      width={800}
-      maskClosable={true}
-      centered
-    > */}
+   
       <div className='grid gap-6 profileContent'>
-        {/* Profile Picture Section */}
-        {/* <div className='profilePicture w-full h-80 text-center'>
-          <div className='px-6 py-10 bg-[#17273E] rounded'>
-            <ProfilePic profilePic={userProfile?.selfie ?? null} handleProfileImg={handleProfileImg} />
-            <p className='text-white my-6'>
-              <span className='block'>Account Number</span>
-              <span className='block'>55625658</span>
-            </p>
-            <div className='chat-box px-10 flex items-center gap-6 justify-center'>
-              <ChatIcon />
-              <p className='text-white text-xl font-semibold'>Chat</p>
-            </div>
-          </div>
-        </div> */}
+       
 
         {/* Biodata Form Section */}
         <div className='content'>
@@ -157,12 +135,12 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
                     <div className='flex '>
 
                     <div className='flex flex-1 flex-col justify-between'>
-                      <span className='text-white/50 text-base font-semibold block'>ACCOUNT BALANCE</span>
+                      <span className='text-white text-sm font-semibold block'>ACCOUNT BALANCE</span>
                       {/* <span className='text-white'>USD</span> */}
 
                       <div className='flex justi gap-[10%] items-center px-4'>
                       <UpArrowIcon />
-                      <p className='text-white text-lg font-medium text-[green]  max-w-sm w-full overflow-x-auto'>
+                      <p className='text-white text-base font-medium text-[green]  max-w-sm w-full overflow-x-auto'>
                         {walletDetails.map(item => {
 
                             if(item.currencyName == selectedCurrency){
@@ -190,10 +168,10 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
                   <div className='flex '>
 
                 <div className='flex flex-1 flex-col justify-between'>
-                    <span className='text-white/50 text-base font-semibold block'>PORTFOLIO</span>
+                    <span className='text-white text-sm font-semibold block'>PORTFOLIO</span>
                     <div className='flex justi gap-[10%] items-center px-4'>
                     <UpArrowIcon />
-                    <p className='text-white flex flex-col py-3 items-center h-10  leading-[100%] text-lg font-medium text-[green] overflow-y-auto  max-w-sm w-full overflow-x-auto hide-scrollbar'>
+                    <p className='text-white text-base flex flex-col py-3 items-center h-10  leading-[100%] text-sm font-medium text-[green] overflow-y-auto  max-w-sm w-full overflow-x-auto hide-scrollbar'>
                     {selectedItem ? (
                                 <div>
                                 {selectedItem.portfolios[0]?.label.substring(0, 14)}
