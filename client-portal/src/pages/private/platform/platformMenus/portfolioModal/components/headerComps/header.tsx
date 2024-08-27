@@ -8,7 +8,7 @@ import downloadIcon from  "../../../../../../../assets/portfolio/download.png"
 const HeaderComponents = () => {
   return (
     <div>
-        <div className='flex justify-between'>
+        <div className='flex  flex- justify-between'>
             <CardRegular
                 desc="Total Portfolio Value"
                 amount={4500}
