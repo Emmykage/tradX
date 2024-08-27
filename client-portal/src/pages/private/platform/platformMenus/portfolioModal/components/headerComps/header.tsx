@@ -8,7 +8,7 @@ import downloadIcon from  "../../../../../../../assets/portfolio/download.png"
 const HeaderComponents = () => {
   return (
     <div>
-        <div className='flex  flex- justify-between'>
+        <div className='flex flex-col md:flex-row gap-3 flex- justify-between'>
             <CardRegular
                 desc="Total Portfolio Value"
                 amount={4500}
@@ -45,10 +45,10 @@ const HeaderComponents = () => {
                 </div>
             </div>
     </div>
-    <div className='flex gap-10'> 
-        <div className='flex flex-1 items-center justify-between bg-gray-100/10 rounded-lg px-4 py-4 my-4'>
+    <div className='flex flex-col sm:flex-row md:gap-10'> 
+        <div className='flex flex-1 flex-col md:flex-row items-center justify-between bg-gray-100/10 rounded-lg px-4 py-4 my-4'>
             <div className=''>
-                <p>Downloade PDF File</p>
+                <p className='text-sm'>Download PDF File</p>
                 <div className='flex items-center gap-5'>
                 <span>Portfolio</span><DownArrowIcon/>
 

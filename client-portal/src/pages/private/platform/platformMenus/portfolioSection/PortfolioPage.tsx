@@ -7,7 +7,7 @@ import AssetList from '../portfolioModal/components/assetList/AssetList'
 
 const PortfolioPage = () => {
   return (
-    <div>
+    <div className='h-full bg-[#1F324D66] p-8 rounded-lg overflow-y-auto'>
         <HeaderComponents/>
         <CapitalInformation/>
 
