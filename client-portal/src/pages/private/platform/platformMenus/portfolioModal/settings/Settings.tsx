@@ -106,7 +106,13 @@ const Settings = () => {
         {/* </Form> */}
 
 
-        <DropDownOptions/>
+        <DropDownOptions 
+        options='options'>
+            <div>
+                Very factor auth
+            </div>
+
+            </DropDownOptions>
 
         
     </div>
