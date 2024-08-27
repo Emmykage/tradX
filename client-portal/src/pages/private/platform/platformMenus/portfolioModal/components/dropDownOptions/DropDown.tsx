@@ -11,20 +11,15 @@ const DropDownOptions: React.FC<dropDownProps> = ({options, children}) => {
     const [toggleDropDown, setToggleDropDown] = useState<boolean>(false)
   return (
     <div className='settings-dropdown'>
-        <div className='bg-[#0C3B6499] h-12  flex items-center justify-between px-6 rounded-xl my-3
-'>
+        <div className='bg-[#0C3B6499] h-12  flex items-center justify-between px-6 rounded-xl my-1'>
             <p>{options}</p>
-            <span onClick={() =>  setToggleDropDown(prev => !prev)}>
+            <span className='cursor-pointer hover:bg-gray-50/10 rounded-full  p-1' onClick={() =>  setToggleDropDown(prev => !prev)}>
             <DownArrowIcon/>
-
             </span>
         </div>
-
-        <div className={`${toggleDropDown ? "let-down" : "let-up"}  dropdown-options`}>
-                {children}
-                hey
-
-        </div>
+        <div className={`${toggleDropDown ? "let-down" : "let-up"}  dropdown-options px-3`}>
+                {children}  
+         </div>
     </div>
   )
 }

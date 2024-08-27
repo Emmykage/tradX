@@ -1,9 +1,13 @@
-import { Form } from 'antd'
+import { Form, Input } from 'antd'
 import React, { useState } from 'react'
-import FormInput from '../components/FormInput'
+// import FormInput from '../components/FormInput'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import './settingsProfile.scss'
 import DropDownOptions from '../components/dropDownOptions/DropDown';
+import ChangePassword from '../../changePassword/ChangePassword';
+import { Editable } from 'assets/icons';
+import FormInput from '../components/FormInput';
+// import FormInput from 'pages/private/platform/kyc/components/FormInput';
 interface formDataProps{
     first_name: string;
     last_name: string;
@@ -33,86 +37,86 @@ const Settings = () => {
         <h3 className='text-xl text-white '>Personal Information</h3>
 
         <div className=''>
+            <div className="form-container mb-10">
 
-        <div className=' border bg-black'>
-                <input type="text" className='py-2 w-full'/>
+             <Form form={form} layout="vertical">
+              <div className='flex flex-col  gap-2'>
+
+                <div className='form-tool bg--200 relative'>                    
+                    <span className='absolute top-1/2 -translate-y-1/2 right-6 cursor-pointer'>
+                    <Editable/>
+
+                    </span>
+                    <span className='absolute top-1.5 left-3 text-gray-100/70'>First name</span>
+
+                    <FormInput inputValue="user" />
+                
+
+                </div>
+
+                <div className='form-tool bg--200 relative'>                    
+                    <span className='absolute top-1/2 -translate-y-1/2 right-6 cursor-pointer'>
+                    <Editable/>
+
+                    </span>
+                    <span className='absolute top-1.5 left-3 text-gray-100/70'>Last name</span>
+
+                    <FormInput inputValue="user"/>
+                
+
+                </div>
+
+                <div className='form-tool bg--200 relative'>                    
+                    <span className='absolute top-1/2 -translate-y-1/2 right-6 cursor-pointer'>
+                    <Editable/>
+
+                    </span>
+                    <span className='absolute top-1.5 left-3 text-gray-100/70'>email</span>
+
+                    <FormInput  inputValue="user"/>
+                
+
+                </div>
+
+              </div>
+        
+
+           
+            </Form>
+
             </div>
-        {/* <Form form={form} layout="vertical" onFinish={handleSubmit(onSubmit)}> */}
-
-            
 
 
-            {/* <input type="text" /> */}
-
-        {/* <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
-          <div className="flex-1 ">
-            <Form.Item
-              name="first_name"
-            //   validateStatus={errors.first_name ? "error" : ""}
-            //   help={errors.first_name?.message}
-            >
-              <FormInput
-                label="First name"
-                type="text"
-                id="first_name"
-                placeholder="Enter your First"
-                inputValue={formData.first_name}
-                inputName="first_name"
-                onChange={handleInputChange}
-              />
-            </Form.Item>
-          </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
-          <div className="flex-1">
-            <Form.Item
-              name="first_name"
-            //   validateStatus={errors.first_name ? "error" : ""}
-            //   help={errors.first_name?.message}
-            >
-              <FormInput
-                label="First name"
-                type="text"
-                id="first_name"
-                placeholder="Enter your First"
-                inputValue={formData.first_name}
-                inputName="first_name"
-                onChange={handleInputChange}
-              />
-            </Form.Item>
-          </div>
-        </div> */}
-
-        {/* <div className="flex flex-col md:flex-row gap-1 md:gap-4 justify-between">
-          <div className="flex-1">
-            <Form.Item
-              name="first_name"
-            //   validateStatus={errors.first_name ? "error" : ""}
-            //   help={errors.first_name?.message}
-            >
-              <FormInput
-                label="First name"
-                type="text"
-                id="first_name"
-                placeholder="Enter your First"
-                inputValue={formData.first_name}
-                inputName="first_name"
-                onChange={handleInputChange}
-              />
-            </Form.Item>
-          </div>
-        </div> */}
-        {/* </Form> */}
+          
 
 
         <DropDownOptions 
-        options='options'>
+            options='2 factor Authentication'>
             <div>
-                Very factor auth
+                <p>Use one-time passwords generated by an external app to log in. This will help protect your account from hackers.</p>
             </div>
 
             </DropDownOptions>
+
+            <DropDownOptions 
+            options='Password'>
+            <div>
+            <ChangePassword />
+            </div>
+
+            </DropDownOptions>
+
+            <DropDownOptions 
+            options='Notification'>
+                <div>
+                    <h2>   Notification Settings</h2>
+                    <p>
+                    Select the notifications you want to receive
+                    </p>
+                 </div> 
+
+            </DropDownOptions>
+
 
         
     </div>
