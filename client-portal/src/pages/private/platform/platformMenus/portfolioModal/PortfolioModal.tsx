@@ -1,6 +1,7 @@
 import { Modal } from 'antd'
 import React, { Component, useState } from 'react'
-import userImg from "../../assets/userP.png"
+// import userImg from "../../assets/userP.png"
+import userImg from "../../../../../assets/userP.png"
 import './portfolioModal.scss'
 import ProfileModal from 'components/profileModal';
 import VerificationMenu from 'pages/private/platform/platformMenus/verification/VerificationMenu';

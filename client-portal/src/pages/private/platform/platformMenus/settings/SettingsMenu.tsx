@@ -20,7 +20,7 @@ import "./settingsMenu.scss";
 import { RightSubDrawerContent } from "../../types";
 import Modal from "../../../../../components/modal/Modal";
 import ProfileModal from "components/profileModal";
-import PortfolioModal from "components/portfolioModal/PortfolioModal";
+import PortfolioModal from "pages/private/platform/platformMenus/portfolioModal/PortfolioModal";
 
 interface SettingsMenuProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
