@@ -8,6 +8,9 @@ import VerificationMenu from 'pages/private/platform/platformMenus/verification/
 import ChangePassword from 'pages/private/platform/platformMenus/changePassword/ChangePassword';
 import TradingMenu from 'pages/private/platform/platformMenus/trading/TradingMenu';
 import PortfolioPage from 'pages/private/platform/platformMenus/portfolioSection/PortfolioPage';
+import Trading from './trading/Trading';
+import VerificationPage from './verification/VerificationPage';
+import Settings from './settings/Settings';
 
 interface PortfolioModalProps {
     isModalOpen: boolean;
@@ -36,10 +39,11 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
 
     const sideItems = [
         {name: "personal_info", label: "Personal", component: <ProfileModal /> },
-        {name: "verification", label: "Verification", component:  <VerificationMenu />},
+        {name: "verification", label: "Verification", component:  <VerificationPage />},
         {name: "portfolio", label: "Portfolio", component: <PortfolioPage/>},
         {name: "password", label: "Password", component:  <ChangePassword />},
-        {name: "trading", label: "Trading", component:  <TradingMenu />},
+        {name: "trading", label: "Trading", component:  <Trading/>},
+        {name: "setting", label: "Setting", component:  <Settings />},
     ]
 
 
@@ -62,7 +66,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
             centered
             >
         <div className='portfolioWrapper  grid gap-6'>
-            <div className='px-2 md:px-5 py-12 bg-black rounded-2xl max-h-[780px] sideNav overflow-y-auto'>
+            <div className='px-2 md:px-5 py-12 bg-[#0F1A2B] rounded-2xl max-h-[780px] sideNav overflow-y-auto'>
 
                 <div className=' '>
                     <img src={userImg} alt='' className='w-20 h-20 md:w-32 md:h-32 rounded-full bg-red-200 block m-auto' />
@@ -80,18 +84,9 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
                 
                               
                 </ul>
-
-
-                {/* <ul className='mt-10 text-center mt-16'>
-                {bottomItems.map(item => (
-                                        
-                        <li className='my-2 py-2 px-2 rounded-lg text-white  text-center'><span className='text-sm font-medium'>{item.label} </span></li>
-                
-                
-                      ))}     
-                </ul> */}
+             
             </div>
-            <div className='bg-black px-3 py-3 text-white h-full max-h-[780px] overflow-y-auto rounded font-bold main-conatain hide-scrollbar'>
+            <div className='bg-black px-3 py-0 text-white h-full max-h-[780px] overflow-y-auto rounded font-bold main-conatain hide-scrollbar'>
 
                 {[...sideItems].map(item => {
                     if(item.name == selectedNav){
