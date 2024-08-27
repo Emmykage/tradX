@@ -11,7 +11,7 @@ const CapitalInformation = () => {
       </p>
 
     </div>
-    <div className='grid grid-cols-3 gap-[2%] gap-y-3 '>
+    <div className='grid sm:grid-cols-3 gap-[2%] gap-y-3 '>
         <CardRegular
         desc={`Capital Committed`}
         amount={250000}        
