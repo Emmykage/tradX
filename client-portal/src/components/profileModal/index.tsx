@@ -13,6 +13,8 @@ import { currencyData } from './data/currencyData';
 import useWallet from 'api/wallet/useWallet';
 import { IWallet } from '@interfaces';
 import { portfolioData, portfolioDatum } from './data/portfolioData';
+import VerificationStatus from 'pages/private/platform/platformMenus/portfolioModal/components/verification/VerificationStatus';
+import ProfileInformation from 'pages/private/platform/platformMenus/portfolioModal/components/personalInformation/PersonalInformation';
 
 interface ProfileModalProps {
   isModalOpen?: boolean;
@@ -103,36 +105,13 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
   return (
     <div className='profileModal m-auto max-w-3xl'>
 
-    {/* <Modal
-      rootClassName='profileModal'
-      open={isModalOpen}
-      onOk={() => setModalOpen(false)}
-      onCancel={() => setModalOpen(false)}
-      footer={null}
-      width={800}
-      maskClosable={true}
-      centered
-    > */}
+   
       <div className='grid gap-6 profileContent'>
-        {/* Profile Picture Section */}
-        {/* <div className='profilePicture w-full h-80 text-center'>
-          <div className='px-6 py-10 bg-[#17273E] rounded'>
-            <ProfilePic profilePic={userProfile?.selfie ?? null} handleProfileImg={handleProfileImg} />
-            <p className='text-white my-6'>
-              <span className='block'>Account Number</span>
-              <span className='block'>55625658</span>
-            </p>
-            <div className='chat-box px-10 flex items-center gap-6 justify-center'>
-              <ChatIcon />
-              <p className='text-white text-xl font-semibold'>Chat</p>
-            </div>
-          </div>
-        </div> */}
 
-        {/* Biodata Form Section */}
         <div className='content'>
-          <div className='biodata'>
-            <Form form={form} layout="vertical">
+          <div className='biodata p-4 rounded-lg bg-[#1F324D66] mb-4 '>
+            <ProfileInformation/>
+            {/* <Form form={form} layout="vertical">
               <div className='flex flex-col md:flex-row gap-2'>
                 <Form.Item className=' flex-1' label="First Name" name="first_name">
                   <Input />
@@ -150,79 +129,16 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
                 </Form.Item>
               </div>
 
-              {/* Account Balance Section */}
-              <div className='summary items-center'>
-                <div className='flex flex-col sm:flex-row my-5 gap-5'>
-                  <div className='w-full  md:max-w-[50%] basis-[50%] rounded account gap-7'>
-                    <div className='flex '>
-
-                    <div className='flex flex-1 flex-col justify-between'>
-                      <span className='text-white/50 text-base font-semibold block'>ACCOUNT BALANCE</span>
-                      {/* <span className='text-white'>USD</span> */}
-
-                      <div className='flex justi gap-[10%] items-center px-4'>
-                      <UpArrowIcon />
-                      <p className='text-white text-2xl font-medium text-[green]  max-w-sm w-full overflow-x-auto'>
-                        {walletDetails.map(item => {
-
-                            if(item.currencyName == selectedCurrency){
-                                return (`${item.currencySymbol} ${item.accountBalance}`)
-
-                            }
-                            return  0
-                        })}
-                      </p>
-                    </div>
-                    </div>
-            
-                   <FormSelect
-                   id='currency'
-                   data={currencyData}
-                   className='dropdown'
-                   selectedId='usd'
-                   onSelect={(value)=> handleFetchWallet(value)}
-                    />
-
-                    </div>
-                    
-                  </div>
-                  <div className='basis-[50%] rounded portfolio'>
-                  <div className='flex '>
-
-                <div className='flex flex-1 flex-col justify-between'>
-                    <span className='text-white/50 text-base font-semibold block'>PORTFOLIO</span>
-                    <div className='flex justi gap-[10%] items-center px-4'>
-                    <UpArrowIcon />
-                    <p className='text-white flex flex-col py-3 items-center h-10  leading-[100%] text-lg font-medium text-[green] overflow-y-auto  max-w-sm w-full overflow-x-auto hide-scrollbar'>
-                    {selectedItem ? (
-                                <div>
-                                {selectedItem.portfolios[0]?.label.substring(0, 10)}
-                                </div>
-                            ) : (
-                                <p>Apple Stock</p>
-                            )}
-                                        </p>
-                </div>
-                </div>
-                        <FormSelect
-                            id='portfolio'
-                            data={portfolioData}
-                            className='dropdown right-0'
-                            selectedId='apple Stock'
-                            position = 'bottom-right'
-                            onSelect={(value)=> setSelectedPortfolio(value)}
-                            /> 
-
-                        </div>
-
-                 
-                    </div>
-
-                </div>
-              </div>
-            </Form>
+           
+            </Form> */}
           </div>
-          <EnhanceSecurityCard variant1={3} variant2={3} onClick={clickSecurityCardItem} />
+
+         <div className='bg-[#1F324D66] p-4 rounded-lg mt-auto px-4 py-4'>
+          <VerificationStatus/>
+        </div>
+          {/* </div> */}
+          {/* <EnhanceSecurityCard variant1={3} variant2={3} onClick={clickSecurityCardItem} /> */}
+          
         </div>
       </div>
     {/* </Modal> */}

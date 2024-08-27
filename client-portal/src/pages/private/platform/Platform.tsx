@@ -47,7 +47,7 @@ import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import useWebSocketTicket from "api/user/useWebSocketTicket";
 import CustomModal from "components/customModal/CustomModal";
-import PortfolioModal from "components/portfolioModal/PortfolioModal";
+import PortfolioModal from "pages/private/platform/platformMenus/portfolioModal/PortfolioModal";
 
 interface PlatformProps {}
 

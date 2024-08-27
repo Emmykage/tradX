@@ -20,7 +20,7 @@ import "./settingsMenu.scss";
 import { RightSubDrawerContent } from "../../types";
 import Modal from "../../../../../components/modal/Modal";
 import ProfileModal from "components/profileModal";
-import PortfolioModal from "components/portfolioModal/PortfolioModal";
+import PortfolioModal from "pages/private/platform/platformMenus/portfolioModal/PortfolioModal";
 
 interface SettingsMenuProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
@@ -102,7 +102,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
             <p>Language, themes, and sounds</p>
           </div>
         </div>
-        {/* <div
+        <div
           className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("trading")}
         >
@@ -111,7 +111,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
             <h2>Trading</h2>
             <p>Trades, Forex, charts</p>
           </div>
-        </div> */}
+        </div>
         <div
           className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("notifications")}

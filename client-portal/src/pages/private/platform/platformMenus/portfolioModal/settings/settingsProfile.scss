@@ -1,0 +1,22 @@
+.settingProfile{
+    .form-container{
+        .form-tool{
+            // border: 1px solid white;
+            border-radius: 12px;
+
+            .ant-form-item{
+                margin-bottom: 0;
+            }
+
+        }
+
+             input {
+            border: 1px solid #90ACC1;
+            border-radius: 18px;
+            background: none;
+            padding: 24px 16px 12px;
+            width: 100%;
+            color: #fff;
+        }
+    }
+}
