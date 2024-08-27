@@ -3,7 +3,7 @@ import VerificationMenu from '../../verification/VerificationMenu'
 import PrimaryButton from 'components/primaryButton/PrimaryButton';
 import { useNavigate } from 'react-router-dom';
 import VerificationStatus from '../components/verification/VerificationStatus';
-import './verificationStatus.scss'
+import './verificationstatus.scss'
 const VerificationPage = () => {
     const navigate = useNavigate();
 
