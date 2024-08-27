@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './profileModal.scss';
-import { IUserKYCProps, IWallet } from '@interfaces';
+import { IUserKYCProps } from '@interfaces';
 import VerificationStatus from 'pages/private/platform/platformMenus/portfolioModal/components/verification/VerificationStatus';
 import ProfileInformation from 'pages/private/platform/platformMenus/portfolioModal/components/personalInformation/PersonalInformation';
 
