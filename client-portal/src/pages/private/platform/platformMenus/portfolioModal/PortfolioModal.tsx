@@ -1,5 +1,5 @@
 import { Modal } from 'antd'
-import React, { Component, useState } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 // import userImg from "../../assets/userP.png"
 import userImg from "../../../../../assets/userP.png"
 import './portfolioModal.scss'
@@ -11,6 +11,9 @@ import PortfolioPage from 'pages/private/platform/platformMenus/portfolioSection
 import Trading from './trading/Trading';
 import VerificationPage from './verification/VerificationPage';
 import Settings from './settings/Settings';
+import useKyc from 'api/kyc/useKycInfo';
+import { useCookies } from 'react-cookie';
+import { IUserKYCProps } from '@interfaces';
 
 interface PortfolioModalProps {
     isModalOpen: boolean;
@@ -35,7 +38,32 @@ interface PortfolioModalProps {
   };
 
 const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen }) => {
+  const [userProfile, setUserProfile] = useState<IUserKYCProps>()
+
     const [selectedNav, setSlectedNav] = useState("personal_info")
+
+    const [cookies] = useCookies(["access_token"])
+
+
+
+    const {mutate, isPending} = useKyc({
+        onSuccess: (data) => {
+            console.log("get kyc info",data)
+            setUserProfile(data.results[0].user)
+
+
+        },
+        onError: () => {
+
+        }
+    })
+
+    useEffect(()=> {
+        mutate({
+            token: cookies.access_token
+        })
+
+    },[])
 
     const sideItems = [
         {name: "personal_info", label: "Personal", component: <ProfileModal /> },
@@ -47,10 +75,6 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
     ]
 
 
-    const bottomItems = [
-        {name: "log_out", label: "Log Out", component:  "hey"},
-
-    ]
   return (
         
         <Modal
@@ -70,7 +94,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
 
                 <div className=' '>
                     <img src={userImg} alt='' className='w-20 h-20 md:w-32 md:h-32 rounded-full bg-red-200 block m-auto' />
-                    <p className='my-4 text-base text-center'>User</p>
+                    <p className='my-4 text-base text-center'>{`${userProfile?.first_name} ${userProfile?.last_name}`}</p>
                     <p className='text-blue-600 text-sm text-center'>Hrefugew....239857bfhvm</p>
                 </div>
                 <ul className='mt-6 mb-10'>
