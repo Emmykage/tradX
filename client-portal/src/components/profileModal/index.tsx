@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Input, Modal, Select } from 'antd';
+import { Form } from 'antd';
 import { useCookies } from 'react-cookie';
-import EnhanceSecurityCard from 'components/enhanceSecurityCard/EnhanceSecurityCard';
-import PrimaryButton from 'components/primaryButton/PrimaryButton';
-import ProfilePic from 'pages/private/platform/kyc/components/profilePic/pic';
 import useKyc from 'api/kyc/useKycInfo';
-import { ChatIcon, DownArrowIcon, UpArrowIcon } from 'assets/icons';
 import IKYC from '@interfaces/IKYC';
 import './profileModal.scss';
-import FormSelect from 'pages/private/platform/kyc/components/FormSelect';
-import { currencyData } from './data/currencyData';
 import useWallet from 'api/wallet/useWallet';
 import { IWallet } from '@interfaces';
-import { portfolioData, portfolioDatum } from './data/portfolioData';
+import { portfolioData } from './data/portfolioData';
 import VerificationStatus from 'pages/private/platform/platformMenus/portfolioModal/components/verification/VerificationStatus';
 import ProfileInformation from 'pages/private/platform/platformMenus/portfolioModal/components/personalInformation/PersonalInformation';
 
@@ -103,7 +97,7 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
 
 
   return (
-    <div className='profileModal m-auto max-w-3xl'>
+    <div className='profileModal h-full m-auto max-w-3xl'>
 
    
       <div className='grid gap-6 profileContent'>
@@ -141,7 +135,7 @@ const ProfileModal: React.FC<ProfileModalProps> = () => {
           
         </div>
       </div>
-    {/* </Modal> */}
+
     
 
 
