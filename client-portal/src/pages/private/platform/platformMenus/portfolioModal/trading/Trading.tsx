@@ -3,6 +3,7 @@ import TradingMenu from '../../trading/TradingMenu'
 import Statistics from '../components/statistics/Statistics'
 import Balance from '../components/balanceContainer/Balance'
 import ActiveRequest from '../components/activeRequets/ActiveRequest'
+import { requests } from '../data/request'
 
 
 const Trading = () => {
@@ -13,6 +14,7 @@ const Trading = () => {
         <Statistics/>
         <Balance/>
         <ActiveRequest 
+        requests={requests}
         />
         
     </div>
