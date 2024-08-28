@@ -19,6 +19,8 @@ import  LogOUTModal from 'components/modal/Modal';
 import { ExitIcon } from 'assets/icons';
 import MenuListCard from 'components/menuListCard/MenuListCard';
 import { setPortfolioWindow } from '@store/slices/app';
+import ProfilePic from '../../kyc/components/profilePic/pic';
+import PortfolioSideBar from './sidebar/SideBar';
 
 interface PortfolioModalProps {
     isModalOpen: boolean;
@@ -66,7 +68,8 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
     const [selectedNav, setSelectedNav] = useState("personal_info")
 
     const [cookies] = useCookies(["access_token"])
-    const handlePortfolio = () => {
+    
+    const handlePortfolioNavigation = () => {
       dispatch(setPortfolioWindow());
       setModalOpen(false)
       setIsRightSubDrawerOpen(false)
@@ -122,38 +125,16 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
             centered
             >
         <div className='portfolioWrapper  grid gap-6'>
-            <div className='px-2 md:px-5 py-12 bg-[#0F1A2B] rounded-2xl max-h-[780px] sideNav overflow-y-auto'>
-
-                <div className=' '>
-                    <img src={userImg} alt='' className='w-20 h-20 md:w-32 md:h-32 rounded-full bg-red-200 block m-auto' />
-                    <p className='my-4 text-base text-center'>{`${userProfile?.first_name} ${userProfile?.last_name}`}</p>
-                    <p className='text-blue-600 text-sm text-center'>Hrefugew....239857bfhvm</p>
-                </div>
-                <ul className='mt-6 mb-10'>
-                {sideItems.map(item => (
-                  <li 
-                      key={item.name} 
-                      className={`my-2 py-1 px-4 text-center rounded-2xl cursor-pointer font-medium ${item.name === selectedNav && "bg-white text-[#0F1A2B]"}`} 
-                      onClick={() => {
-                          if (item.name === "portfolio") {
-                            handlePortfolio()
-                          } else {
-                              setSelectedNav(item.name);
-                          }
-                      }}
-                  >
-        <span className='text-xs md:text-sm font-medium'>{item.label}</span>
-    </li>
-))}
-
-                
-                              
-                </ul>
-
-
-                <button className={`my-2 py-1 px-4 text-center rounded-2xl cursor-pointer font-medium bg-[#0094FF] w-full`}  onClick={handleLogout}><span className='text-xs md:text-sm font-medium'>Log Out </span></button>
-             
-            </div>
+          <PortfolioSideBar
+          userProfile={userProfile}
+          sideItems={sideItems} 
+          handlePortfolio={handlePortfolioNavigation}
+          setSelectedNav={setSelectedNav}
+          handleLogout={handleLogout}
+          selectedNav={selectedNav}
+          
+          />
+            
             <div className='bg-black px-3 py-0 text-white h-full max-h-[780px] overflow-y-auto rounded font-bold main-conatain hide-scrollbar'>
 
                 {[...sideItems].map(item => {

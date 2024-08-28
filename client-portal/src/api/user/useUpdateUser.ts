@@ -46,6 +46,7 @@ export async function fetcUpdateUser(
     });
 
     const result = await response.json();
+    console.log("user updated", result )
 
     if (!response.ok) {
       Object.keys(result).forEach((field) => {
