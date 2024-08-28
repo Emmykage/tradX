@@ -15,6 +15,9 @@ import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { setUser } from '@store/slices/user';
 import { setWallets } from '@store/slices/wallet';
 import { useNavigate } from 'react-router-dom';
+import  LogOUTModal from 'components/modal/Modal';
+import { ExitIcon } from 'assets/icons';
+import MenuListCard from 'components/menuListCard/MenuListCard';
 
 interface PortfolioModalProps {
     isModalOpen: boolean;
@@ -93,6 +96,8 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
 
 
   return (
+
+    <>
         
         <Modal
             rootClassName='portfolioProfile'
@@ -144,6 +149,40 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
         </div>
 
     </Modal>
+
+
+    {/* <LogOUTModal
+        closeable={false}
+        open={isModalOpen}
+        setOpen={setModalOpen}
+        rootClassName="logoutModal"
+      >
+        <p className="modalHeading">Are you sure you want to log out?</p>
+        <div className="logout-buttons">
+          <div className="settingsLogoutButton">
+            <MenuListCard
+              onClick={() => setModalOpen(false)}
+              variant={2}
+              primary
+              textCenter
+              title="Cancel"
+            />
+          </div>
+          <div className="settingsLogoutButton">
+            <MenuListCard
+              onClick={handleLogout}
+              variant={2}
+              danger
+              textCenter
+              title="Log out"
+              icon={<ExitIcon width="20" height="20" />}
+            />
+          </div>
+        </div>
+      </LogOUTModal> */}
+
+
+    </>
   )
 }
 
