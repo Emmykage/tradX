@@ -11,6 +11,10 @@ import Settings from './settings/Settings';
 import useKyc from 'api/kyc/useKycInfo';
 import { useCookies } from 'react-cookie';
 import { IUserKYCProps } from '@interfaces';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { setUser } from '@store/slices/user';
+import { setWallets } from '@store/slices/wallet';
+import { useNavigate } from 'react-router-dom';
 
 interface PortfolioModalProps {
     isModalOpen: boolean;
@@ -36,6 +40,22 @@ interface PortfolioModalProps {
 
 const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen }) => {
   const [userProfile, setUserProfile] = useState<IUserKYCProps>()
+  const {user} = useAppSelector(state => state.user)
+  const dispatch = useAppDispatch()
+
+  const navigate = useNavigate()
+
+  const [, , removeCookie] = useCookies(["access_token", "refresh_token"]);
+
+
+  const handleLogout = () => {
+    dispatch(setUser(null));
+    dispatch(setWallets([]));
+    removeCookie("access_token");
+    removeCookie("refresh_token");
+    navigate("/");
+  };
+  console.log(user)
 
     const [selectedNav, setSlectedNav] = useState("personal_info")
 
@@ -105,6 +125,9 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
                 
                               
                 </ul>
+
+
+                <button className={`my-2 py-1 px-4 text-center rounded-2xl cursor-pointer font-medium bg-[#0094FF] w-full`}  onClick={handleLogout}><span className='text-xs md:text-sm font-medium'>Log Out </span></button>
              
             </div>
             <div className='bg-black px-3 py-0 text-white h-full max-h-[780px] overflow-y-auto rounded font-bold main-conatain hide-scrollbar'>
