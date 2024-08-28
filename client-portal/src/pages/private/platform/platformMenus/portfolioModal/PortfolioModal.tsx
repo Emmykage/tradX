@@ -11,6 +11,13 @@ import Settings from './settings/Settings';
 import useKyc from 'api/kyc/useKycInfo';
 import { useCookies } from 'react-cookie';
 import { IUserKYCProps } from '@interfaces';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { setUser } from '@store/slices/user';
+import { setWallets } from '@store/slices/wallet';
+import { useNavigate } from 'react-router-dom';
+import  LogOUTModal from 'components/modal/Modal';
+import { ExitIcon } from 'assets/icons';
+import MenuListCard from 'components/menuListCard/MenuListCard';
 
 interface PortfolioModalProps {
     isModalOpen: boolean;
@@ -36,6 +43,22 @@ interface PortfolioModalProps {
 
 const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen }) => {
   const [userProfile, setUserProfile] = useState<IUserKYCProps>()
+  const {user} = useAppSelector(state => state.user)
+  const dispatch = useAppDispatch()
+
+  const navigate = useNavigate()
+
+  const [, , removeCookie] = useCookies(["access_token", "refresh_token"]);
+
+
+  const handleLogout = () => {
+    dispatch(setUser(null));
+    dispatch(setWallets([]));
+    removeCookie("access_token");
+    removeCookie("refresh_token");
+    navigate("/");
+  };
+  console.log(user)
 
     const [selectedNav, setSlectedNav] = useState("personal_info")
 
@@ -73,6 +96,8 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
 
 
   return (
+
+    <>
         
         <Modal
             rootClassName='portfolioProfile'
@@ -105,6 +130,9 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
                 
                               
                 </ul>
+
+
+                <button className={`my-2 py-1 px-4 text-center rounded-2xl cursor-pointer font-medium bg-[#0094FF] w-full`}  onClick={handleLogout}><span className='text-xs md:text-sm font-medium'>Log Out </span></button>
              
             </div>
             <div className='bg-black px-3 py-0 text-white h-full max-h-[780px] overflow-y-auto rounded font-bold main-conatain hide-scrollbar'>
@@ -121,6 +149,40 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
         </div>
 
     </Modal>
+
+
+    {/* <LogOUTModal
+        closeable={false}
+        open={isModalOpen}
+        setOpen={setModalOpen}
+        rootClassName="logoutModal"
+      >
+        <p className="modalHeading">Are you sure you want to log out?</p>
+        <div className="logout-buttons">
+          <div className="settingsLogoutButton">
+            <MenuListCard
+              onClick={() => setModalOpen(false)}
+              variant={2}
+              primary
+              textCenter
+              title="Cancel"
+            />
+          </div>
+          <div className="settingsLogoutButton">
+            <MenuListCard
+              onClick={handleLogout}
+              variant={2}
+              danger
+              textCenter
+              title="Log out"
+              icon={<ExitIcon width="20" height="20" />}
+            />
+          </div>
+        </div>
+      </LogOUTModal> */}
+
+
+    </>
   )
 }
 

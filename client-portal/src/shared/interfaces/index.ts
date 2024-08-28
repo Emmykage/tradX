@@ -10,3 +10,4 @@ export type { default as IBankCardPaymentForm } from "./IBankCardPaymentForm";
 export type { default as IOTPInputProps } from "./IOTPForm";
 export type { default as IKYCFilesProps } from "./IKYCFiles";
 export type { default as IUserKYCProps } from "./IUserInfo";
+export type { default as IUserPortfolioProps } from "./IPortfolio";
