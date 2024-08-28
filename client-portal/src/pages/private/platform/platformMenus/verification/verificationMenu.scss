@@ -51,16 +51,24 @@
     box-shadow: none;
   }
     .verificationLearnMore {
-    margin-top: 3.875rem;
+    margin-top: .875rem;
+    color: black;
+    background-color: white;
+
   }
 }
 
 .kycVerifyButton {
+
+.ButtonContainer{
+  background: #fff;
+  color: black;
+}
   .mainItemCardv2 {
  box-shadow: none;
 }
  .verificationLearnMore {
- margin-top: 3.875rem;
+ margin-top: 1.875rem;
 }
 }
 }

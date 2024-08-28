@@ -19,6 +19,8 @@ import MenuListCard from "../../../../../components/menuListCard/MenuListCard";
 import "./settingsMenu.scss";
 import { RightSubDrawerContent } from "../../types";
 import Modal from "../../../../../components/modal/Modal";
+import ProfileModal from "components/profileModal";
+import PortfolioModal from "pages/private/platform/platformMenus/portfolioModal/PortfolioModal";
 
 interface SettingsMenuProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
@@ -31,6 +33,9 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
   const navigate = useNavigate();
   const [, , removeCookie] = useCookies(["access_token", "refresh_token"]);
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const [isUserModalOpen, setUserModalOpen] = useState<boolean>(false)
+  const [isPortolioModalOpen, setPortfolioModalOpen] = useState<boolean>(false)
+
   const {themeSelect} = useAppSelector(state => state.themeBg)
   const handleLogout = () => {
     dispatch(setUser(null));
@@ -47,7 +52,8 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
         <p className="settingsMenuTitle">Profile</p>
         <div
           className="settingsMenuItem"
-          onClick={() => setIsRightSubDrawerContent("personalSettings")}
+          // onClick={() => setIsRightSubDrawerContent("personalSettings")}
+          onClick={()=> setPortfolioModalOpen(true)}
         >
           <UserIcon />
           <div>
@@ -55,7 +61,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
             <p>Name and contacts</p>
           </div>
         </div>
-        <div
+        {/* <div
           className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("verification")}
         >
@@ -64,7 +70,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
             <h2>Verification</h2>
             <p>Full check and identity confirmation</p>
           </div>
-        </div>
+        </div> */}
         <div
           className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("twofactor")}
@@ -75,7 +81,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
             <p>Set it up to enhance your security</p>
           </div>
         </div>
-        <div
+        {/* <div
           className="settingsMenuItem"
           onClick={() => setIsRightSubDrawerContent("change-password")}
         >
@@ -84,7 +90,7 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
             <h2>Password</h2>
             <p>Keep your account secure</p>
           </div>
-        </div>
+        </div> */}
         <p className="settingsMenuTitle2">Setup</p>
         <div
           className="settingsMenuItem"
@@ -158,6 +164,19 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
           </div>
         </div>
       </Modal>
+
+      {/* <ProfileModal
+      isModalOpen={isUserModalOpen}
+      setModalOpen={setUserModalOpen}     
+      /> */}
+
+      <PortfolioModal
+      isModalOpen={isPortolioModalOpen}
+      setModalOpen={setPortfolioModalOpen}
+
+
+      />
+
     </div>
   );
 };

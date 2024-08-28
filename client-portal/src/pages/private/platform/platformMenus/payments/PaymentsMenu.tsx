@@ -3,11 +3,14 @@ import {
   WithdrawIcon2,
   TransactionIcon2,
   HistoryIcon,
+  WireGlobe,
 } from "../../../../../assets/icons";
 import "./paymentsMenu.scss";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { RightSubDrawerContent } from "../../types";
 import { useNavigate } from "react-router-dom";
+import ModalWireTransfer from "components/modalWireTranfer/modalWireTransfer";
+import { boolean } from "yup";
 // import ConnectBanksModal from "./connect-banks/ConnectBanks";
 
 interface PaymentsMenuProps {
@@ -21,8 +24,10 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   return (
+    <>
     <div>
       <div className="paymentsMenu">
         <div
@@ -33,6 +38,15 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
           }}
         >
           <DepositsIcon2 /> <h2>Deposit</h2>
+        </div>
+        <div
+          className="paymentItem"
+          onClick={() => {
+            
+            setIsModalOpen(true)
+          }}
+        >
+          <WireGlobe /> <h2>Wire Transfer</h2>
         </div>
         <div
           className="paymentItem"
@@ -74,6 +88,14 @@ const PaymentsMenu: React.FunctionComponent<PaymentsMenuProps> = ({
         setIsModalOpen={setIsModalOpen}
       /> */}
     </div>
+
+    <ModalWireTransfer
+    isModalOpen={isModalOpen}
+    setIsModalOpen={setIsModalOpen}
+    
+    />
+    </>
+
   );
 };
 

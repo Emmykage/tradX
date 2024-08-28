@@ -14,4 +14,5 @@ export default interface INews {
   country: string[];
   category: string[];
   language: string;
+  article_id: string
 }

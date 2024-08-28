@@ -20,4 +20,5 @@ id?: number;
 created_at?: string;
 balance?: number;
 available_balance?: number;
+currency?: any
 }

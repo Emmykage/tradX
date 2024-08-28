@@ -14,7 +14,7 @@ interface DropdownItem {
 
 interface DropdownProps {
   id: string;
-  label: string;
+  label?: string;
   placeholder?: string;
   value?: string
   data: DropdownItem[];
@@ -78,7 +78,7 @@ const FormSelect = ({
   );
 
   return (
-    <div ref={dropdownRef} className='relative '>
+    <div ref={dropdownRef} className={`relative ${className}` }>
         <label className="text-base text-white font-medium">{label}</label>
       <div
         id={id}
@@ -101,7 +101,7 @@ const FormSelect = ({
       </div>
       {/* Open */}
       {isOpen && (
-        <div aria-label='Dropdown menu ' className={dropdownClass}>
+        <div aria-label='Dropdown menu ' className={`${dropdownClass} dropdown-menu`}>
           <ul
             role='menu'
             aria-labelledby={id}

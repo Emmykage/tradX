@@ -16,10 +16,10 @@ const EnhanceSecurityCard: React.FunctionComponent<
   const {themeSelect} = useAppSelector(state => state.themeBg)
   return (
     <div className={`enhanceSecurityContainer ${themeSelect}`}>
-      <p className="securityTitle">Enhance your account security</p>
-      <p className="securitySubtitle">
+      {/* <p className="securityTitle">Enhance your account security</p>
+      <p className="securitySubtitle ">
         Add extra protection to your account and get a 50% deposit bonus
-      </p>
+      </p> */}
       <Row gutter={[16, 16]} justify="start">
         <Col span={12}>
           <MainItemCard
