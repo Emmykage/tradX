@@ -8,14 +8,14 @@ import usePortfolio from 'api/portfolio/usePortfolio'
 import { useCookies } from 'react-cookie'
 
 const PortfolioPage = () => {
-  const [getPortfolioInfo, setPortfolioInfo] = useState();
-  const [cookies] = useCookies(["access_token"])
+  // const [getPortfolioInfo, setPortfolioInfo] = useState();
+  // const [cookies] = useCookies(["access_token"])
 
-  const {mutate , isPending } = usePortfolio({
-    onSuccess: ()=> {
+  // const {mutate , isPending } = usePortfolio({
+  //   onSuccess: ()=> {
 
-    }
-  })
+  //   }
+  // })
 
   // useEffect(()=> {
   //   mutate({
