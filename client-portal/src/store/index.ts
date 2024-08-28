@@ -8,7 +8,8 @@ import {
   tradeReducer,
   assetPairReducer,
   themeBackgroundReducer,
-  notificationReducer
+  notificationReducer,
+  appReducer
 } from "@slices";
 import userBio from "./slices/userBio";
 
@@ -24,7 +25,8 @@ export const store = configureStore({
     assetPair: assetPairReducer,
     themeBg: themeBackgroundReducer,
     notification: notificationReducer,
-    userBio: userBio
+    userBio: userBio,
+    app: appReducer
   },
 });
 

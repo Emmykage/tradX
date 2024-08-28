@@ -4,9 +4,9 @@ const CardRegular = ({desc, amount, className, number}: {desc: string , amount?:
   return (
     <div className={`bg-gray-100/10 px-5 py-1.5 rounded ${className}`}>
 
-        <p className='text-sm text-white my-2 font-normal '>{desc}</p>
-        {amount  &&    <p className='font-bold text-sm font-medium'>{amount}$</p>}
-        {number &&   <p className='font-bold text-sm font-medium'>{number}$</p>}
+        <p className='card-top text-sm text-white my-2 font-normal '>{desc}</p>
+        {amount  &&    <p className='card-bottom font-bold text-sm'>{amount}$</p>}
+        {number &&   <p className='card-bottom font-bold text-sm '>{number}$</p>}
 
 
      

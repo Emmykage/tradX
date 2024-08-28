@@ -1,0 +1,77 @@
+.ant-drawer{
+
+.ant-drawer-header-title{
+    // background-color: red;
+    // display: none;
+}
+}
+
+
+.portfolioMenu{
+    .header{
+        background-color: white;
+        border-radius: 12px;
+        margin-bottom: 0;
+
+        .searchIcon{
+            order: 1;
+
+            svg{
+                height: 17px;
+                // fill: black;
+                path{
+                    // fill: black;
+                    stroke: black;
+                } 
+            }
+        }
+        input{
+            order: 2;
+        }
+    }
+
+    .table-cards{
+        .card{
+            background: linear-gradient(265.24deg, rgba(0, 148, 255, 0.2) 3.04%, rgba(0, 148, 255, 0) 100.62%);
+
+        }
+        .card2{
+
+            background: linear-gradient(265.24deg,  rgba(31, 191, 117, 0.9)  -8.04%, rgba(0, 148, 255, 0.040) 60.62%);
+
+            // background: rgba(31, 191, 117, 1);
+
+        }
+    }
+
+    .portfolioTable{
+        // border: 1px solid ;
+        border-radius: 12px;
+        overflow: hidden;
+        padding: 12px;
+        border: 2px solid;
+        border-image-source: linear-gradient(180deg, rgba(177, 200, 221, 0.18) 0%, rgba(229, 238, 246, 0) 100%);
+        background: linear-gradient(265.24deg, rgba(0, 148, 255, 0.2) 3.04%, rgba(0, 148, 255, 0) 100.62%);
+
+        .overview-table-header{
+            border-bottom: 1px solid #ffffff80;
+            text-align: center;
+            align-items: center;
+        }
+
+        .body-tab{
+            background-color: white;
+            color: black;
+            margin: 4px 0;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 12px;
+            text-align: center;
+            align-items: center;
+            padding: 1px 4px;
+            line-height: 15px;
+            height: 34px;
+            
+        }
+    }
+}

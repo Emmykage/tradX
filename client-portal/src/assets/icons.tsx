@@ -11556,3 +11556,19 @@ export const Editable = () => (
 </svg>
 
 )
+
+export const IndicatorRed = () => (
+  
+  <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 1V15M7 15L1 9.16667M7 15L13 9.16667" stroke="#F15131" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+)
+
+export const IndicatorGreen = () => (
+  <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M7 15V1M7 1L1 6.83333M7 1L13 6.83333" stroke="#1FBF75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  
+
+)

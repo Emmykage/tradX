@@ -18,10 +18,14 @@ import { useNavigate } from 'react-router-dom';
 import  LogOUTModal from 'components/modal/Modal';
 import { ExitIcon } from 'assets/icons';
 import MenuListCard from 'components/menuListCard/MenuListCard';
+import { setPortfolioWindow } from '@store/slices/app';
 
 interface PortfolioModalProps {
     isModalOpen: boolean;
     setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsRightDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsRightSubDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>
+    
   }
 
   const getTitle = (name: string): string => {
@@ -41,7 +45,7 @@ interface PortfolioModalProps {
     }
   };
 
-const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen }) => {
+const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen, setIsRightDrawerOpen, setIsRightSubDrawerOpen }) => {
   const [userProfile, setUserProfile] = useState<IUserKYCProps>()
   const {user} = useAppSelector(state => state.user)
   const dispatch = useAppDispatch()
@@ -58,11 +62,17 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
     removeCookie("refresh_token");
     navigate("/");
   };
-  console.log(user)
 
-    const [selectedNav, setSlectedNav] = useState("personal_info")
+    const [selectedNav, setSelectedNav] = useState("personal_info")
 
     const [cookies] = useCookies(["access_token"])
+    const handlePortfolio = () => {
+      dispatch(setPortfolioWindow());
+      setModalOpen(false)
+      setIsRightSubDrawerOpen(false)
+      setIsRightDrawerOpen(false)
+
+    }
 
 
 
@@ -120,12 +130,21 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
                     <p className='text-blue-600 text-sm text-center'>Hrefugew....239857bfhvm</p>
                 </div>
                 <ul className='mt-6 mb-10'>
-                    {sideItems.map(item => (
-                                        
-                        <li className={`my-2 py-1 px-4 text-center rounded-2xl cursor-pointer font-medium ${item.name == selectedNav && "bg-white text-[#0F1A2B]" }`}  onClick={() => setSlectedNav(item.name)}><span className='text-xs md:text-sm font-medium'>{item.label} </span></li>
-
-
-                    ))}
+                {sideItems.map(item => (
+                  <li 
+                      key={item.name} 
+                      className={`my-2 py-1 px-4 text-center rounded-2xl cursor-pointer font-medium ${item.name === selectedNav && "bg-white text-[#0F1A2B]"}`} 
+                      onClick={() => {
+                          if (item.name === "portfolio") {
+                            handlePortfolio()
+                          } else {
+                              setSelectedNav(item.name);
+                          }
+                      }}
+                  >
+        <span className='text-xs md:text-sm font-medium'>{item.label}</span>
+    </li>
+))}
 
                 
                               

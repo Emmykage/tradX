@@ -9,6 +9,7 @@ import {
   LeftSubDrawer,
   RightDrawerContent,
   RightSubDrawerContent,
+  WindowDrawer,
 } from "./types";
 import HelpCenter from "./platformMenus/helpCenter/HelpCenter";
 import SupportMenu from "./platformMenus/support/SupportMenu";
@@ -80,6 +81,7 @@ import EducationMenu from "./platformMenus/educationMenu/EducationMenu";
 import JoinLeagues from "./platformMenus/joinLeagues/JoinLeagues";
 import TradingTutorials from "./platformMenus/tradingTutorials/TradingTutorials";
 import EventsSignalsClub from "./platformMenus/eventsSignalsClub/EventsSignalsClub";
+import PortfolioMenu from "./platformMenus/Portfolio/PortfolioMenu";
 
 // Left Drawer Handlers
 export function leftDarwerTitleHandler(
@@ -104,6 +106,35 @@ export function leftDarwerTitleHandler(
       return "";
   }
 }
+
+export const windowBodyHandler = (
+  windowDrawer: WindowDrawer, 
+  setWindowDrawer: Dispatch<SetStateAction<WindowDrawer>>,
+  setIsDrawerOpen: Dispatch<SetStateAction<boolean>>,
+   setIsLeftSubDrawerOpen: Dispatch<SetStateAction<boolean>>) =>{
+    console.log("first")
+
+    // switch(windowDrawer) {
+    //   case "portfolio":
+    //     return (
+    //       <PortfolioMenu/>
+    //     );
+    //     default: 
+    //     return ""
+
+
+    // }
+
+    return (
+         <PortfolioMenu/>
+       );
+
+
+
+
+
+}
+
 export function leftDrawerBodyHandler(
   currentDrawer: CurrentDrawerType,
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>,
@@ -391,6 +422,7 @@ export function rightSubDrawerTitleHandler(
 
 export function rightSubDrawerBodyHandler(
   rightSubDrawerContent: RightSubDrawerContent,
+  setIsRightDrawerOpen: Dispatch<React.SetStateAction<boolean>>,
   setIsRightSubDrawerOpen: Dispatch<React.SetStateAction<boolean>>,
   setIsRightSubDrawerContent: Dispatch<
     React.SetStateAction<RightSubDrawerContent>
@@ -400,7 +432,7 @@ export function rightSubDrawerBodyHandler(
   switch (rightSubDrawerContent) {
     case "settings":
       return (
-        <SettingsMenu setIsRightSubDrawerContent={setIsRightSubDrawerContent} />
+        <SettingsMenu setIsRightSubDrawerContent={setIsRightSubDrawerContent} setIsRightDrawerOpen={setIsRightDrawerOpen} setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}/>
       );
     case "status":
       return (
