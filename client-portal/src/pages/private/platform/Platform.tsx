@@ -51,6 +51,7 @@ import useWebSocketTicket from "api/user/useWebSocketTicket";
 import CustomModal from "components/customModal/CustomModal";
 import PortfolioModal from "pages/private/platform/platformMenus/portfolioModal/PortfolioModal";
 import { setPortfolioWindow } from "@store/slices/app";
+import useProfile from "api/user/useProfile";
 
 interface PlatformProps {}
 
@@ -86,6 +87,23 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   const { wsTicket } = useAppSelector((state) => state.user);
   const [cookies] = useCookies(["access_token"]);
 
+  // const {mutate: userMutate} = useProfile({
+  //   onSuccess: (data) => {
+  //     // console.log(first)
+  //     console.log("the code has been callerdsdsdsdsfasafdsdddsdsgd")
+
+  //     console.log("ueser data fectcher",data)
+  //   },
+  //   onError(){
+
+  //   }
+  // })
+
+  // useEffect(()=> {
+  //   userMutate(
+  //     cookies.access_token
+  //   )
+  // },[])
 
 
   const {togglePortfolioWindow} = useAppSelector(state => state.app)
@@ -816,7 +834,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         onClose={() => {
           setIsDrawerOpen(false);
           setIsWindowDrawerOen(false)
-          dispatch(setPortfolioWindow())
+          dispatch(setPortfolioWindow(false))
           console.log("trigger")
         }}
         open={togglePortfolioWindow}

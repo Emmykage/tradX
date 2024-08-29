@@ -9,7 +9,7 @@ const CardInfo = () => {
                                 Total Portfolio Balance Card
                             </p>
                             <p className='my-3 text-4xl'>
-                                +5000$
+                                650 000$
                             </p>
                         </div>
                         <div className='py-2 px-3 bg-gray-100/20 rounded-lg card2'>

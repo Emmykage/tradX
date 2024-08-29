@@ -70,7 +70,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
     const [cookies] = useCookies(["access_token"])
     
     const handlePortfolioNavigation = () => {
-      dispatch(setPortfolioWindow());
+      dispatch(setPortfolioWindow(true));
       setModalOpen(false)
       setIsRightSubDrawerOpen(false)
       setIsRightDrawerOpen(false)

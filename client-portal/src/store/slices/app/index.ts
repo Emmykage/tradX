@@ -13,9 +13,9 @@ export const appSlice = createSlice({
   name: "app",
   initialState,
   reducers: {
-    setPortfolioWindow: (state) => {
+    setPortfolioWindow: (state, action: PayloadAction<boolean>) => {
         console.log("clicked toggle")
-      state.togglePortfolioWindow = !state.togglePortfolioWindow
+      state.togglePortfolioWindow = action.payload
     },
   
   },

@@ -17,7 +17,7 @@ const PortfolioHeader = () => {
             <p className='text-base font-semibold'>23.08.2024 8:45:23</p>
         </div>
     </div>
-    <div className='hidden md:flex  flex-1 h-12 bg-red-20 items-center justify-end gap-6 bg--50 pr-10'>
+    <div className='hidden md:flex flex-1 h-12 bg-red-20 items-center justify-end gap-6 bg--50 pr-10'>
         <div className='basis-[40%]'>
         <SearchBar className='header w-full'/>
 

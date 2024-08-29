@@ -10,6 +10,8 @@ import {
 } from "../../assets/icons";
 import "./sidebar.scss";
 import { Spin } from "antd";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { setPortfolioWindow } from "@store/slices/app";
 
 type DrawerType =
   | "trades"
@@ -42,6 +44,8 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
   onlineTraders,
   id,
 }) => {
+  const {togglePortfolioWindow} = useAppSelector(state => state.app)
+  const dispatch = useAppDispatch()
   const onSelect = (activeDrawer: DrawerType) => {
     if (isLeftSubDrawerOpen) {
       setIsLeftSubDrawerOpen(false);
@@ -49,6 +53,9 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
       setIsDrawerOpen(
         isDrawerOpen && currentDrawer === activeDrawer ? false : true
       );
+    }
+    if(togglePortfolioWindow){
+      dispatch(setPortfolioWindow(false))
     }
     setCurrentDrawer(activeDrawer);
   };
