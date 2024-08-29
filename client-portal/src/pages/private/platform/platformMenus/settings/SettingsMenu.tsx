@@ -171,10 +171,8 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
       /> */}
 
       <PortfolioModal
-      isModalOpen={isPortolioModalOpen}
-      setModalOpen={setPortfolioModalOpen}
-
-
+        isModalOpen={isPortolioModalOpen}
+        setModalOpen={setPortfolioModalOpen}
       />
 
     </div>

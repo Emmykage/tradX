@@ -55,9 +55,9 @@ const NewsModal: React.FC<NewsModalProps> = ({
         <p className="max-w-xl m-auto text-center text-base">
           {article?.description?.substring(0, 190)}...
         </p>
-        <p className="text-center m-auto w-max flex gap-3 my-5 text-[#0094ff]">
+        {/* <p className="text-center m-auto w-max flex gap-3 my-5 text-[#0094ff]">
           <TimerIcon /> <span> 15 min Read</span>
-        </p>
+        </p> */}
       </>
     );
   };
@@ -108,7 +108,7 @@ const NewsModal: React.FC<NewsModalProps> = ({
         <h3 className="max-w-md m-auto text-lg text-center">
           {article?.title?.substring(0, 65)}
         </h3>
-        <h3 className="text-center text-lg font-semibold my-3">{moment(article?.pubDate).format("dd.mm.yy")}</h3>
+        {/* <h3 className="text-center text-lg font-semibold my-3">{moment(article?.pubDate).format("dd.mm.yy")}</h3> */}
         {renderContent()}
       </div>
     </Modal>
