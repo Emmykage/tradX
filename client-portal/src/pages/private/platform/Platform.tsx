@@ -17,6 +17,7 @@ import {
   rightSubDrawerBodyHandler,
   rightSubDrawerExtraHandler,
   rightSubDrawerTitleHandler,
+  windowBodyHandler,
 } from "./utils";
 
 import {
@@ -24,6 +25,7 @@ import {
   LeftSubDrawer,
   RightDrawerContent,
   RightSubDrawerContent,
+  WindowDrawer,
 } from "./types";
 import MainChart from "./MainChart";
 import { initialData } from "./MainChart/data";
@@ -46,10 +48,15 @@ import { useCookies } from "react-cookie";
 import useWebSocketTicket from "api/user/useWebSocketTicket";
 import CustomModal from "components/customModal/CustomModal";
 import PortfolioModal from "pages/private/platform/platformMenus/portfolioModal/PortfolioModal";
+import { setPortfolioWindow } from "@store/slices/app";
+import useProfile from "api/user/useProfile";
 
 interface PlatformProps {}
 
 const Platform: React.FunctionComponent<PlatformProps> = () => {
+  const [windowDrawer, setWindowDrawer] = useState<WindowDrawer>(null)
+  const [isWindowDrawerOpen, setIsWindowDrawerOen] = useState<boolean>(true)
+
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isLeftSubDrawerOpen, setIsLeftSubDrawerOpen] =
     useState<boolean>(false);
@@ -71,11 +78,33 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   // Area and bar data
 
   const [chartScale, setChartScale] = useState(6);
+
   const [selectedChart, setSelectedChart] = useState('area');
   const [selectedTimeScale, setSelectedTimeScale] = useState<any>(timeScaleMenu[8]);
   const storedScale = localStorage.getItem("scale");
   const { wsTicket } = useAppSelector((state) => state.user);
   const [cookies] = useCookies(["access_token"]);
+
+  // const {mutate: userMutate} = useProfile({
+  //   onSuccess: (data) => {
+  //     // console.log(first)
+  //     console.log("the code has been callerdsdsdsdsfasafdsdddsdsgd")
+
+  //     console.log("ueser data fectcher",data)
+  //   },
+  //   onError(){
+
+  //   }
+  // })
+
+  // useEffect(()=> {
+  //   userMutate(
+  //     cookies.access_token
+  //   )
+  // },[])
+
+
+  const {togglePortfolioWindow} = useAppSelector(state => state.app)
 
   // Chart refs and constants
   let chartContainerRef = useRef<HTMLDivElement>(null);
@@ -716,7 +745,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     <div className="platformWrapper"  data-theme={themeSelect}>
     {/* <CustomModal/> */}
       {windowWidth >= 768 ? (
-        <MainSidebar id="main_sidebar" />
+         <MainSidebar id="main_sidebar" />
+
       ) : (
         <MainSidebar id="bottom_sidebar" />
       )}
@@ -768,6 +798,35 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         <div>{leftSubDrawerBodyHandler(leftSubDrawer, setLeftSubDrawer)}</div>
       </Drawer>
 
+
+        {/* portfolio panel  */}
+
+        <Drawer
+        placement="left"
+        onClose={() => {
+          setIsDrawerOpen(false);
+          setIsWindowDrawerOen(false)
+          dispatch(setPortfolioWindow(false))
+          console.log("trigger")
+        }}
+        open={togglePortfolioWindow}
+        className={`${themeSelect} ml-106 windowDrawer`}
+        style={{ marginLeft: `${mainSidebarWidth}px`}}    
+        closeIcon={<CloseIcon />}
+        mask={false}
+        width={`calc(100% - ${mainSidebarWidth}px)`}
+      >
+        <div className="">
+          {windowBodyHandler(
+            windowDrawer,
+            setWindowDrawer,
+            setIsLeftSubDrawerOpen,
+            setIsDrawerOpen
+          )}
+        </div>
+      </Drawer>
+      
+
       <div className={isDrawerOpen ? "trade-section ml-378" : "trade-section"}>
         <Drawer
           title={rightDrawerTitleHandler(rightDrawerContent)}
@@ -814,6 +873,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
           {rightSubDrawerBodyHandler(
             rightSubDrawerContent,
             setIsRightSubDrawerOpen,
+            setIsRightDrawerOpen,
             setIsRightSubDrawerContent,
             setIsRightDrawerContent
           )}

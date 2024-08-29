@@ -24,10 +24,15 @@ import PortfolioModal from "pages/private/platform/platformMenus/portfolioModal/
 
 interface SettingsMenuProps {
   setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
   setIsRightSubDrawerContent,
+  setIsRightDrawerOpen,
+  setIsRightSubDrawerOpen
+
 }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -171,8 +176,12 @@ const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
       /> */}
 
       <PortfolioModal
-        isModalOpen={isPortolioModalOpen}
-        setModalOpen={setPortfolioModalOpen}
+      isModalOpen={isPortolioModalOpen}
+      setModalOpen={setPortfolioModalOpen}
+      setIsRightSubDrawerOpen={setIsRightSubDrawerOpen}
+      setIsRightDrawerOpen={setIsRightDrawerOpen}
+
+
       />
 
     </div>

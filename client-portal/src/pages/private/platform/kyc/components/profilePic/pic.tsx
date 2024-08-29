@@ -26,13 +26,12 @@ const ProfilePic: React.FC<ProfilePicProps> = ({ handleProfileImg, profilePic })
   useEffect(() => {
     if (profilePic) {
       setPreviewImage(profilePic);
-      setFileList([{ uid: '-1', url: profilePic,  name: 'profile-picture', }]); // Simulate an existing file in the list
+      setFileList([{ uid: '-1', url: profilePic, name: 'profile-picture' }]); // Simulate an existing file in the list
     }
   }, [profilePic]);
 
   const handlePreview = async (file: UploadFile) => {
     if (!file.url && !file.preview) {
-        console.log(file.originFileObj) 
       file.preview = await getBase64(file.originFileObj as FileType);
     }
 
@@ -52,10 +51,15 @@ const ProfilePic: React.FC<ProfilePicProps> = ({ handleProfileImg, profilePic })
     }
   };
 
+  const beforeUpload: UploadProps['beforeUpload'] = (file) => {
+    // Prevent the upload
+    return false;
+  };
+
   const uploadButton = (
     <div>
       <PlusOutlined className='text-white' />
-      <div style={{ marginTop: 8, color: "white" }}>Upload</div>
+      <div style={{ marginTop: 8, color: 'white' }}>Upload</div>
     </div>
   );
 
@@ -66,13 +70,14 @@ const ProfilePic: React.FC<ProfilePicProps> = ({ handleProfileImg, profilePic })
         fileList={fileList}
         onPreview={handlePreview}
         onChange={handleChange}
+        beforeUpload={beforeUpload}
         showUploadList={{ showPreviewIcon: true, showRemoveIcon: true }}
       >
         {fileList.length >= 1 ? null : uploadButton}
       </Upload>
       {previewImage && (
         <Image
-        wrapperStyle={{ display: 'none' }}
+          wrapperStyle={{ display: 'none' }}
           preview={{
             visible: previewOpen,
             onVisibleChange: (visible) => setPreviewOpen(visible),

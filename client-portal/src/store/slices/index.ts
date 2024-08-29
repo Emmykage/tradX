@@ -8,3 +8,4 @@ export { default as assetPairReducer } from "./pairs";
 export { default as themeBackgroundReducer } from "./theme";
 export { default as notificationReducer } from "./notification";
 export { default as userBioReducer } from "./userBio";
+export { default as appReducer } from "./app";

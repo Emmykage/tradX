@@ -16,6 +16,7 @@ export async function fethProfile(token: string): Promise<boolean> {
     if (!response.ok) {
       throw new Error(`${result}`);
     }
+
     return result;
   } catch (error) {
     throw new Error(error as string);

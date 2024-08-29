@@ -90,3 +90,6 @@ export type LeftSubDrawer =
     | "deposit-confirm-payment"
     | "wire-transfer"
     | null;
+
+
+    export type WindowDrawer = "portfolio" | null
