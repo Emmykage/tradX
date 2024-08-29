@@ -38,6 +38,8 @@ interface PortfolioModalProps {
         return "Password";
       case "trading":
         return "Trading";
+      case "setting":
+        return "Settings";
       default:
         return "Unknown"; 
     }
@@ -100,7 +102,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
         {name: "portfolio", label: "Portfolio", component: <PortfolioPage/>},
         {name: "password", label: "Password", component:  <Password />},
         {name: "trading", label: "Trading", component:  <Trading/>},
-        {name: "setting", label: "Setting", component:  <Settings />},
+        {name: "setting", label: "Settings", component:  <Settings />},
     ]
 
 
