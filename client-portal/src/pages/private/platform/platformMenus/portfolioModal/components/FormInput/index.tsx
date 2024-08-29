@@ -21,11 +21,12 @@ const FormInput = forwardRef(
         ref
     ) => (
         <>
-            <label htmlFor={inputName} className={labelClass}>{label}</label>
+           
 
-            <div className="relative mt-1">
+            <div className="relative ">
+                <label htmlFor={inputName} className={`${labelClass} text-white font-semibold opacity-50  pl-3 top-[5px] absolute `}>{label}</label>
                 <input
-                    className={`block w-full py-4 pl-3 pr-14 form-input text-sm border rounded-lg focus:ring-0 ${inputClass}`}
+                    className={`block w-full pb-2 pt-7 pl-3 pr-14 form-input text-sm border-[0.1px] rounded-lg focus:ring-0 ${inputClass}`}
                     name={inputName}
                     type={inputType}
                     onChange={onChange}
@@ -33,7 +34,7 @@ const FormInput = forwardRef(
                     {...rest}
                 />
                 {icon && (
-                    <div className="absolute right-2.5 bottom-4">{icon}</div>
+                    <div className="absolute right-4 bottom-4">{icon}</div>
                 )}
             </div>
         </>
