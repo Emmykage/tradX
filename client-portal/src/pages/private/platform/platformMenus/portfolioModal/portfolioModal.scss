@@ -1,11 +1,14 @@
 .portfolioProfile{
-   
+    .error_msg{
+        color: #ff4d4f;
+    }
     .ant-modal{
         .ant-modal-content{
             .ant-modal-title{
                 text-align: center;
             }
-
+            // max-height: 80vh;
+            // height: 100%;
             .ant-modal-header{
                 color: white;
                 background-color: transparent;
@@ -29,6 +32,8 @@
         }
 
     .portfolioWrapper{
+            max-height: 85vh;
+            height: 100%;
             grid-template-columns: 1fr 3fr;
             @media (max-width: 780px) {
                 grid-template-columns: 1fr;
@@ -42,10 +47,12 @@
                 }
             }
             .main-conatain{
-            &.hide-scrollbar{
+                // max-height: 85vh;
+                // height: 100%;
+            // &.hide-scrollbar{
 
-                scrollbar-width: none; /* For Firefox */
-            }
+            //     scrollbar-width: none; /* For Firefox */
+            // }
         }
         }
 

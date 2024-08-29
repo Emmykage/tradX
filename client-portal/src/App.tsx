@@ -131,6 +131,8 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route element={<RequireAuth  />}>
           <Route path="/platform" element={<Platform />} />
           {/* Private route using PrivateRoute component */}
+          <Route path="/kyc-document" element={<KYC/>}/>
+
           <Route path="/welcome" element={<PrivateRoute />}>
               <Route path="/welcome" element={<Welcome />} />
            </Route>
@@ -176,7 +178,6 @@ const App: React.FunctionComponent<AppProps> = () => {
         <Route path="/verify-email" element={<EmailVerification />} />
         <Route path="/password-reset" element={<ResetPassword />} />
 
-        <Route path="/kyc-document" element={<KYC/>}/>
        
         
         

@@ -166,8 +166,6 @@ const NewsMenu: React.FunctionComponent<NewsMenuProps> = () => {
   const handleNewsSelection = (feed: any ) => {
     setSelectedFeed(feed.tab)
 
-    console.log("clicked", feed)
-
     mutateNews({
       token: cookies.access_token,
       queryParams: feed.queryParams

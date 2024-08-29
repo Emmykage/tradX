@@ -303,6 +303,22 @@ export const creditCardExpiresFormat= (string: string) => {
     );
 };
 
+export const validateDate = (date: any) => {
+    // @ts-expect-error
+    return date instanceof Date && !isNaN(date);
+};
+
+export const splitDateToDayMothYear = (string: string) => {
+    let date = new Date(string);
+    if(validateDate(date)){
+        let day = date.getUTCDate(); 
+        let month = date.getUTCMonth() + 1; 
+        let year = date.getUTCFullYear(); 
+        return {day, month, year };
+    }
+    return null;
+}; 
+
 export const timeScaleMenu = [
     {
         text: '5s',

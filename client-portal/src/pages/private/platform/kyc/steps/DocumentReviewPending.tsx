@@ -48,7 +48,7 @@ const DocumentReviewPending = () => {
                 fileSize={300}
                 status={"pending"}
                 />
-                <span className='pending'>Pending</span>
+                <span className='pending text-sm'>Pending</span>
             </div>
         <div>
             <span className='text-[#0094FF]'>Change file</span>
@@ -66,7 +66,7 @@ const DocumentReviewPending = () => {
                 fileSize={300}
                 status={"pending"}
                 />
-                <span className='pending'>Pending</span>
+                <span className='pending text-sm'>Pending</span>
             </div>
         <div>
             <span className='text-[#0094FF]'>Change file</span>

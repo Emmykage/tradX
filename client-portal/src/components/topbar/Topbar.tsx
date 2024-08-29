@@ -64,9 +64,7 @@ const Topbar: React.FunctionComponent<TopbarProps> = ({
   const dispatch = useAppDispatch()
 
   const { symbol,assets } = useAppSelector((state: {markets: CryptoSliceState }) => state.markets);
-  console.log(symbol);
-  console.log(assets);
-  console.log(assetPairs)
+
   const ProfileImage = () => {
     if (loading) {
       return <Loading size="small" />;

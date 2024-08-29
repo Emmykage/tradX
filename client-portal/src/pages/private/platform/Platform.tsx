@@ -33,10 +33,8 @@ import { initialCandleData } from "./MainChart/candleData";
 import { setAppearanceBackground } from "../../lib/utils";
 import { useAppSelector } from "@store/hooks";
 import { setWSTicket, UserSliceState } from "@store/slices/user";
-import { AreaChart } from "./MainChart/AreaChart";
 import {  isArrayEmpty, isObjectEmpty, timeScaleMenu } from "utils/utils";
 import DropdownMenu from "components/dropdownMenu/DropdownMenu";
-// import BarChart from "./MainChart/BarChart";
 import { useNavigate } from "react-router-dom";
 import { ColorType, createChart, CrosshairMode, IChartApi, LineStyle, Time, UTCTimestamp } from "lightweight-charts";
 import useSocketConnect from "hooks/useSocketConnect";
@@ -159,10 +157,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     }, [cookies.access_token]);
     
   const { data: socketData,oldData, socket } = useSocketConnect(wsTicket as string);
-  console.log('socket data' + socketData?.barchart);
-  console.log('object');
-  // console.log('socket data' + socketData?.onlinetraders?.count);
-  // console.log(socket);
+
   const colors = {
     backgroundColor: "transparent",
     lineColor: "#0094FF",
@@ -348,7 +343,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         marker = createCustomMarker1(socketData.barchart?.open);
         marker.id = 'textElement1';
         chartContainerRef.current?.appendChild(marker);
-        console.log('Marker created and appended');
       }
   
   
@@ -381,7 +375,6 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
       if (priceCoordinate && timeCoordinate) {
         marker.style.top = `${(priceCoordinate - marker.offsetHeight  / 2) + 0}px`;
         marker.style.left = `${timeCoordinate + 0}px`;
-        // console.log('Text position updated');
       }else{
         // console.log('failed to get coordinates');
       }
@@ -420,15 +413,14 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     const createOrUpdateMarker = () => {
       let marker = document.getElementById('textElement2');
       if (!marker) {
-        console.log(tradeTransaction?.price_per_unit);
+        
         
         const formatedPricePerUnit = tradeTransaction?.price_per_unit.replace(/00$/, "");
-        console.log(formatedPricePerUnit);
+
         marker = createCustomMarker2(formatedPricePerUnit,trade);
-        console.log('called');
         marker.id = 'textElement2';
         chartContainerRef.current?.appendChild(marker);
-        console.log('Marker created and appended');
+        
       }else{
         marker = createCustomMarker2(tradeTransaction?.price_per_unit,trade);
         marker.id = 'textElement2';
@@ -452,19 +444,7 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
         const tradePrice = (parseInt(socketData.barchart?.open) + parseInt(socketData?.barchart?.close))/2
         const priceCoordinate = series.priceToCoordinate(tradePrice);
         const newTime = new Date(tradeTransaction?.created_at).getTime()
-        
-        console.log(tradeTransaction?.close);
-        console.log(tradeData);
-        // console.log(utcTimestamp);
-        // console.log(tradeData.timestamp);
-        console.log(tradeTransaction.created_at);
-
-
-        console.log(tradeData.timestamp, 'local');
-        console.log(typeof newTime, 'socket');
-        
         let timeCoordinate = chart.timeScale().timeToCoordinate(newTime);
-        console.log(timeCoordinate);
         
     
       
@@ -515,16 +495,11 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
     const series = seriesRef.current;
     const createOrUpdateMarker = () => {
       let marker = document.getElementById('textElement4');
-      console.log(marker);
-      console.log(tradeResult[0]?.price_per_unit);
       if (!marker) {
-        console.log(tradeResult[0]?.net);
-        console.log(tradeResult[0]?.net.startsWith('-') ? 'lose' : 'won');
         marker = FinishedTradeMarker(parseInt(tradeResult[0]?.price_per_unit),tradeResult[0]?.net.startsWith('-') ? 'lose' : 'won');
-        console.log('called');
+
         marker.id = 'textElement4';
         chartContainerRef.current?.appendChild(marker);
-        console.log('Marker created and appended');
       }else{
         marker = FinishedTradeMarker(parseInt(tradeResult[0]?.price_per_unit),'won');
         marker.id = 'textElement4';
@@ -535,11 +510,8 @@ const Platform: React.FunctionComponent<PlatformProps> = () => {
   
       const updateMarkerPosition = () => {
         if (!marker) return;
-
-        console.log(tradeResult[0]?.close);
-        console.log(tradeTransaction?.close, tradeTransaction?.open);
         const tradeResultPrice = (parseFloat(tradeTransaction?.close) + parseFloat(tradeTransaction?.open))/2
-        console.log(tradeResultPrice);
+
         const priceCoordinate = series.priceToCoordinate(socketData.barchart?.open);
         // console.log(tradeResult[0].created_at);
         // console.log(tradeData.timestamp + 60 * 10000);
