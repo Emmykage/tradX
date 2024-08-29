@@ -1,7 +1,6 @@
 import "./loan.scss";
 import { Col, Row } from "antd";
 import { Link } from "react-router-dom";
-// import LoanNavbar from "../../../components/loanNavbar/LoanNavbar";
 
 const Loan = () => {
   return (
