@@ -83,8 +83,8 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
 
     const {mutate, isPending} = useKyc({
         onSuccess: (data) => {
-            console.log("get kyc info",data)
-            setUserProfile(data.results[0].user)
+
+          setUserProfile(data.results[0].user)
 
 
         },

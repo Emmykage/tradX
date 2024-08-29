@@ -7,8 +7,34 @@ import { investMentPerformanceData } from './data/performacedData'
 import AssetSection from './tableAsset/AssetSection'
 import CardInfo from './card/CardInfo'
 import PortfolioHeader from './header/PortfolioHeader'
+import useUserStat from 'api/user/useStatistics'
+import { useEffect } from 'react'
+import { useCookies } from 'react-cookie'
+import { useAppSelector } from '@store/hooks'
 
 const PortfolioMenu = () => {
+    const {user} = useAppSelector(state => state.user)
+
+    console.log(user)
+    const [cookies] = useCookies(["access_token"])
+
+    const {mutate, isPending} = useUserStat({
+        onSuccess: () => {
+
+        },
+        onError: () => {
+
+        }
+    })
+
+    useEffect(()=>{
+        mutate({
+            token: cookies.access_token,
+            id: 185
+
+        })
+
+    }, [])
   return (
     <div className='text-white portfolioMenu'>
        <PortfolioHeader/>
