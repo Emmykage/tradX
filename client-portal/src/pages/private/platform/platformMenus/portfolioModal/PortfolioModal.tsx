@@ -23,6 +23,7 @@ import ProfilePic from '../../kyc/components/profilePic/pic';
 import PortfolioSideBar from './sidebar/SideBar';
 import Password from './password';
 
+
 interface PortfolioModalProps {
     isModalOpen: boolean;
     setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -43,8 +44,6 @@ interface PortfolioModalProps {
         return "Password";
       case "trading":
         return "Trading";
-      case "setting":
-        return "Settings";
       default:
         return "Unknown"; 
     }
@@ -84,7 +83,10 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
 
     const {mutate, isPending} = useKyc({
         onSuccess: (data) => {
+            console.log("get kyc info",data)
             setUserProfile(data.results[0].user)
+
+
         },
         onError: () => {
 
@@ -102,9 +104,9 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
         {name: "personal_info", label: "Personal", component: <ProfileModal userProfile={userProfile} isPending={isPending} /> },
         {name: "verification", label: "Verification", component:  <VerificationPage />},
         {name: "portfolio", label: "Portfolio", component: <PortfolioPage/>},
-        {name: "password", label: "Password", component:  <Password />},
+        {name: "password", label: "Password", component:  <ChangePassword />},
         {name: "trading", label: "Trading", component:  <Trading/>},
-        {name: "setting", label: "Settings", component:  <Settings />},
+        {name: "setting", label: "Setting", component:  <Settings />},
     ]
 
 
