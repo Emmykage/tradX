@@ -1,9 +1,7 @@
 import { Modal } from 'antd'
 import React, { useEffect, useState } from 'react'
-import userImg from "../../../../../assets/userP.png"
 import './portfolioModal.scss'
 import ProfileModal from 'components/profileModal';
-import ChangePassword from 'pages/private/platform/platformMenus/changePassword/ChangePassword';
 import PortfolioPage from 'pages/private/platform/platformMenus/portfolioSection/PortfolioPage';
 import Trading from './trading/Trading';
 import VerificationPage from './verification/VerificationPage';
@@ -15,11 +13,7 @@ import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { setUser } from '@store/slices/user';
 import { setWallets } from '@store/slices/wallet';
 import { useNavigate } from 'react-router-dom';
-import  LogOUTModal from 'components/modal/Modal';
-import { ExitIcon } from 'assets/icons';
-import MenuListCard from 'components/menuListCard/MenuListCard';
 import { setPortfolioWindow } from '@store/slices/app';
-import ProfilePic from '../../kyc/components/profilePic/pic';
 import PortfolioSideBar from './sidebar/SideBar';
 import Password from './password';
 
@@ -44,6 +38,8 @@ interface PortfolioModalProps {
         return "Password";
       case "trading":
         return "Trading";
+      case "setting":
+        return "Settings";
       default:
         return "Unknown"; 
     }
@@ -104,9 +100,9 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
         {name: "personal_info", label: "Personal", component: <ProfileModal userProfile={userProfile} isPending={isPending} /> },
         {name: "verification", label: "Verification", component:  <VerificationPage />},
         {name: "portfolio", label: "Portfolio", component: <PortfolioPage/>},
-        {name: "password", label: "Password", component:  <ChangePassword />},
+        {name: "password", label: "Password", component:  <Password />},
         {name: "trading", label: "Trading", component:  <Trading/>},
-        {name: "setting", label: "Setting", component:  <Settings />},
+        {name: "setting", label: "Settings", component:  <Settings />},
     ]
 
 
