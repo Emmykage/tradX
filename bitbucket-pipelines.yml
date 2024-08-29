@@ -4,7 +4,7 @@ pipelines:
   branches:
     development:
       - step:
-          name: Deploy to Server
+          name: Deploy to Server-prod
           caches:
             - custom-docker-cache
           script:
@@ -20,7 +20,7 @@ pipelines:
                   docker compose -f docker-compose.prod.yaml up --build -d
     development:
       - step:
-          name: Deploy to Server
+          name: Deploy to Server-dev
           caches:
             - custom-docker-cache
           script:
