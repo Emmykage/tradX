@@ -200,7 +200,7 @@ const NewsMenu: React.FunctionComponent<NewsMenuProps> = () => {
         <ArrowsSlider>
           {items.map((item) => (
             <Button className={`${selectedFeed == item.tab ?  "active" : ""} payment-methods-filter-btn`} key={item.tab}
-            onClick={()=> handleNewsSelection(item)}
+              onClick={()=> handleNewsSelection(item)}
             >
               {titleHandler(item.tab)}
             </Button>
