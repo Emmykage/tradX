@@ -47,7 +47,6 @@ interface PortfolioModalProps {
 
 const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen, setIsRightDrawerOpen, setIsRightSubDrawerOpen }) => {
   const [userProfile, setUserProfile] = useState<IUserKYCProps>()
-  const {user} = useAppSelector(state => state.user)
   const dispatch = useAppDispatch()
 
   const navigate = useNavigate()
@@ -64,9 +63,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
   };
 
     const [selectedNav, setSelectedNav] = useState("personal_info")
-
-    const [cookies] = useCookies(["access_token"])
-    
+    const [cookies] = useCookies(["access_token"])    
     const handlePortfolioNavigation = () => {
       dispatch(setPortfolioWindow(true));
       setModalOpen(false)
@@ -75,36 +72,32 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
 
     }
 
+    // const {mutate, isPending} = useKyc({
+    //     onSuccess: (data) => {
+    //       setUserProfile(data.results[0]?.user )
+
+    //       console.log("set userrrrrrrrrrrrrrrrrrrrrrrr", data.results[0])
 
 
-    const {mutate, isPending} = useKyc({
-        onSuccess: (data) => {
 
-          setUserProfile(data.results[0].user)
+    //     },
+    //     onError: () => {
+
+    //     }
+    // })
 
 
-        },
-        onError: () => {
 
-        }
-    })
 
-    useEffect(()=> {
-        mutate({
-            token: cookies.access_token
-        })
-
-    },[])
 
     const sideItems = [
-        {name: "personal_info", label: "Personal", component: <ProfileModal userProfile={userProfile} isPending={isPending} /> },
+        {name: "personal_info", label: "Personal", component: <ProfileModal /> },
         {name: "verification", label: "Verification", component:  <VerificationPage />},
         {name: "portfolio", label: "Portfolio", component: <PortfolioPage/>},
         {name: "password", label: "Password", component:  <Password />},
         {name: "trading", label: "Trading", component:  <Trading/>},
         {name: "setting", label: "Settings", component:  <Settings />},
     ]
-
 
   return (
 
@@ -124,7 +117,6 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
             >
         <div className='portfolioWrapper  grid gap-6'>
           <PortfolioSideBar
-          userProfile={userProfile}
           sideItems={sideItems} 
           handlePortfolio={handlePortfolioNavigation}
           setSelectedNav={setSelectedNav}

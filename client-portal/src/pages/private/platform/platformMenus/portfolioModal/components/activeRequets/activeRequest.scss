@@ -2,7 +2,10 @@
     h3{
         color: #ffffffc7;
     }
-    span{
-        
-    }
+   ul{
+    
+   }
+   ul::-webkit-scrollbar {
+    display: none;
+}
 }

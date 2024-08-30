@@ -6,7 +6,6 @@ import getEnv from "utils/env";
 
 export async function fethOTPVerification(data: IOTPInputProps): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
-  console.log(getEnv("VITE_API_BASE_URL"), BASE_URL, 'Here');
   try {
     const response = await fetch(`${BASE_URL}/user/token/`, {
       method: "POST",

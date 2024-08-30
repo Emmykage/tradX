@@ -51,7 +51,6 @@ async function fetchKycFilesPostForm(data: KycFilesPostVariables) {
         });
         throw new Error(`${result}`);
       }
-      console.log(`response for ${desc}`, result);
       return result;
     } catch (error) {
       throw new Error(error as string);

@@ -1,4 +1,4 @@
-interface IUserStat {
+export default interface IUserStat {
     
         total_trades: number,
         total_transactions: number,

@@ -27,7 +27,8 @@ const PortfolioHeader = () => {
         <NotificationIcon3 />
 
         </span>
-        <Selector/>
+        <Selector 
+        options={[]}/>
 
     </div>
     </div>

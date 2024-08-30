@@ -1,11 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
-import { IUser } from "@interfaces";
+import { IUser, IUserStat } from "@interfaces";
 import getEnv from "utils/env";
 
-export async function fetchUserStat({token, id}: {token: string, id: number}): Promise<boolean> {
+export async function fetchUserStat(token: string): Promise<boolean> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
+
   try {
-    const response = await fetch(`${BASE_URL}/api/admin/users/trade_statistics/${id}/`, {
+    const response = await fetch(`${BASE_URL}/user/trading_statistics/`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -14,10 +15,11 @@ export async function fetchUserStat({token, id}: {token: string, id: number}): P
     const result = await response.json();
 
     if (!response.ok) {
+
+      
       throw new Error(`${result}`);
     }
 
-    console.log("fetch user statsssssssssssssssssssssssssssssssssssssss", result)
     return result;
   } catch (error) {
     throw new Error(error as string);
@@ -25,7 +27,7 @@ export async function fetchUserStat({token, id}: {token: string, id: number}): P
 }
 
 type useProfileProps = {
-  onSuccess?: (data: IUser, variables: unknown, context: unknown) => void;
+  onSuccess?: (data: IUserStat, variables: unknown, context: unknown) => void;
   onError?: (error: unknown, variables: unknown, context: unknown) => void;
   [index: string]: any;
 };

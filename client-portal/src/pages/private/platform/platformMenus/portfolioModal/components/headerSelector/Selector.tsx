@@ -4,16 +4,17 @@ import './select.scss'
 import icon from '../../../../../../../assets/portfolio/Ellipse 41.png'
 
 interface selectorProps {
-    option: any
+    options: any[]
 }
 
-const Selector = () => {
+const Selector: React.FC<selectorProps> = ({options}) => {
     const {Option} = Select
-  return ( 
+
+    return ( 
     <Select className='notify-selector'
     defaultValue="label1">
 
-        <Option value="value1">
+        <Option value="label1">
             <img src={icon} alt="" />
             
          </Option>

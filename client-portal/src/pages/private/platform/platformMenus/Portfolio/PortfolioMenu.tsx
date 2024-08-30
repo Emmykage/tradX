@@ -28,11 +28,10 @@ const PortfolioMenu = () => {
     })
 
     useEffect(()=>{
-        mutate({
-            token: cookies.access_token,
-            id: 185
+        mutate(
+            cookies.access_token,
 
-        })
+        )
 
     }, [])
   return (

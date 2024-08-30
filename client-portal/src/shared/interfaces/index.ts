@@ -11,3 +11,5 @@ export type { default as IOTPInputProps } from "./IOTPForm";
 export type { default as IKYCFilesProps } from "./IKYCFiles";
 export type { default as IUserKYCProps } from "./IUserInfo";
 export type { default as IUserPortfolioProps } from "./IPortfolio";
+export type { default as IUserStat} from "./IUserStat"
+

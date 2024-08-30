@@ -55,6 +55,8 @@ export async function fetchKYC(data: {
       throw new Error(`${result}`);
     }
 
+    console.log("fetched kyc info", result)
+
     return result;
   } catch (error) {
     throw new Error(error as string);

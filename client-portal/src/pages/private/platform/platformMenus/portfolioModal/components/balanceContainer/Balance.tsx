@@ -1,23 +1,34 @@
 import React from 'react'
 import CardRegular from '../cards/Cards'
+interface balanceProps {
+  totalTrade: number,
+  revenue: number,
+  totalBalance: number,
+  totalWithdrawals: number,
+  totalDeposits: number,
+  monthlyCommission: number,
+  indicator?: boolean,
+  chart?: boolean
 
-const Balance = () => {
+}
+const Balance: React.FC<balanceProps> = ({totalBalance, totalTrade, totalWithdrawals, totalDeposits, monthlyCommission, indicator}) => {
   return (
     <div className='pt-3'>
       <h3 className='text-xl font-medium text-white/80'>Balance</h3>
       <div className='grid sm:grid-cols-3 gap-4'>
         <CardRegular 
-        desc='Number of trades'
+        desc='Total trades'
         amount={235}
         />
          <CardRegular 
-        desc='PNL'
-        number={"+7700 USDC"}
+        desc='Revenue'
+        amount={totalTrade}
+        indicator={indicator}
         />
 
         <CardRegular 
-          desc='Win Rate'
-          number={"65%"}
+          desc='Total Balance'
+          amount={totalBalance}
           />
 
 
@@ -25,16 +36,16 @@ const Balance = () => {
       <div className='my-4 grid sm:grid-cols-3 gap-4'>
         <CardRegular 
         desc='Total amount of withdrawals'
-        amount={650000}
+        amount={totalWithdrawals}
         />
          <CardRegular 
         desc='Total amount of of deposits'
-        amount={55000}
+        amount={totalDeposits}
         />
 
         <CardRegular 
           desc='Commission for the month amounted to'
-          amount={1000}
+          amount={monthlyCommission}
           />
 
 

@@ -66,7 +66,7 @@ const HeaderComponents = () => {
                 <div className='flex items-center gap-5'>
                     <div className='flex item-center gap-10  w-full justify-between'>
 
-                        <div className='basis-[60%] gap-[40%] flex basis-[60%] items-center'><UpArrowIcon/> 000 </div>  <span className='flex items-center basis-[40%] justify-between'> <DownArrowIcon/> USD</span>
+                        <div className='basis-[60%] gap-[40%] flex items-center'><UpArrowIcon/> 000 </div>  <span className='flex items-center basis-[40%] justify-between'> <DownArrowIcon/> USD</span>
 
                     </div>
 

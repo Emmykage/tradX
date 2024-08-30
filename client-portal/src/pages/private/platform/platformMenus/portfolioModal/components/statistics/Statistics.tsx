@@ -1,23 +1,31 @@
 import React from 'react'
 import CardRegular from '../cards/Cards'
 
-const Statistics = () => {
+
+interface statisticProp {
+  numberTrades: number,
+  pnl: number,
+  winRate: number,
+  chart?: boolean
+}
+const Statistics: React.FC<statisticProp> = ({chart, numberTrades, pnl, winRate}) => {
   return (
     <div className=''>
       <h3 className='text-xl font-medium'>Statistics</h3>
-      <div className='grid grid-cols-3 gap-4'>
+      <div className='grid sm:grid-cols-3 gap-4'>
         <CardRegular 
         desc='Number of trades'
-        amount={235}
+        amount={numberTrades}
         />
          <CardRegular 
         desc='PNL'
-        number={"+7700 USDC"}
+        amount={pnl}
         />
 
         <CardRegular 
           desc='Win Rate'
-          number={"65%"}
+          amount={winRate}
+          chart={chart}
           />
 
 

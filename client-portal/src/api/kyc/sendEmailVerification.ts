@@ -7,7 +7,7 @@ export interface emailProps {
 
 export async function sendEmailVerification(data: emailProps): Promise<boolean> {
     const BASE_URL = getEnv("VITE_API_BASE_URL");
-    console.log(data, "from response")
+
     try {
       const response = await fetch(`${BASE_URL}/user/send_email_verification/`, {
         method: "G",
