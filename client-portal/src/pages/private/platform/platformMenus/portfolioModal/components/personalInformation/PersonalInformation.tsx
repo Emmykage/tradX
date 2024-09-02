@@ -48,11 +48,11 @@ const ProfileInformation: React.FC = () => {
         </div>
 
 
-        <div className='flex-1  border rounded-lg py-2 px-3'>
+        {/* <div className='flex-1  border rounded-lg py-2 px-3'>
             <h5 className='text-sm font-semibold text-gray-400'>ID</h5>
             <p className='text-sm font-normal'>{`${user?.trader_id}`}</p>
 
-        </div>
+        </div> */}
 
 
        

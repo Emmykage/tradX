@@ -1,5 +1,5 @@
 import { Form } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useCookies } from "react-cookie";
 import { SubmitHandler, useForm, Controller } from 'react-hook-form';
 import './settingsProfile.scss'
@@ -18,6 +18,8 @@ import { setUser } from '@store/slices/user';
 import { toast } from 'react-toastify';
 import useChangePassowrd from 'api/user/useChangePassword';
 import StrengthMeter from '../../changePassword/StrengthMeter';
+import { data } from 'pages/public/trading/economicCalendar/economicCalenderTableComp/data';
+import useNotificationList from 'api/notification/useNotificationList';
 
 interface formDataProps{
     first_name: string;
@@ -41,6 +43,8 @@ const Settings = () => {
     const { mutate, isPending } = useNotificationToggle({
         onSuccess: (data) => {
           dispatch(updateNotificationList(data));
+
+          console.log(data)
         },
         onError: (error) => { },
     });
@@ -108,6 +112,23 @@ const Settings = () => {
     };
     const { errors } = formState;
     const { errors: passwordErrors } = passwordState;
+
+
+    const {mutate: mutateNotification, data: notifyData} = useNotificationList({
+        onSuccess: (data) =>{
+            console.log(data)
+        },
+        onError: ()=> {
+
+        }
+    
+    })
+
+    useEffect(()=> {
+        mutateNotification(cookies.access_token)
+    }, [])
+
+    console.log("ssfsfs", notifyData)
     return (
         <div className='settingProfile h-full bg-[#1F324D66] p-8 rounded-lg overflow-y-auto'>
             <h3 className='text-xl font-normal text-white '>Personal Information</h3>

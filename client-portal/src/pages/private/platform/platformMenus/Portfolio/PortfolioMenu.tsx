@@ -12,14 +12,13 @@ import { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { useAppSelector } from '@store/hooks'
 import useKyc from 'api/kyc/useKycInfo'
+import usePortfolioBalance from 'api/portfolio/portfolioBalance'
 
 const PortfolioMenu = () => {
     const {user} = useAppSelector(state => state.user)
-
-    console.log(user)
     const [cookies] = useCookies(["access_token"])
 
-    const {mutate, isPending} = useUserStat({
+    const {mutate, data, isPending} = usePortfolioBalance({
         onSuccess: () => {
 
         },
@@ -29,12 +28,14 @@ const PortfolioMenu = () => {
     })
 
 
+    console.log(data, "profit data")
+
 
     useEffect(()=> {
       mutate({
         token: cookies.access_token
       })
-    })
+    },[])
   return (
     <div className='text-white portfolioMenu'>
        <PortfolioHeader/>

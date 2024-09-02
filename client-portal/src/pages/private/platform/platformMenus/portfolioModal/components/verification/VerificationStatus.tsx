@@ -33,17 +33,17 @@ const VerificationStatus: React.FC<profileModalProps> = ({userKyc}) => {
         </div>
 
     <div>
-      <h3 className="text-base">KYC Verification Status</h3>
+      {/* <h3 className="text-base">KYC Verification Status</h3>
       <h4 className="text-gray-400 font-semibold text-sm">User</h4>
-      <p className="text-sm">{user?.first_name + " " + user?.last_name}</p>
+      <p className="text-sm">{user?.first_name + " " + user?.last_name}</p> */}
 
     </div>
-    <div className="mt-4">
+    {/* <div className="mt-4">
       <p className="text-gray-500">Account number</p>
       <p className="font-normal">{user?.trader_id}</p>
-    </div>
+    </div> */}
 
-    <div>
+    <div className='text-center'>
       <p className="text-gray-500">Current KYC status</p>
 
       {userKyc ? (<p className="text-green-500 text-sm">Verified</p>) : (<p className="text-red-500 text-sm">Unverified</p>)}

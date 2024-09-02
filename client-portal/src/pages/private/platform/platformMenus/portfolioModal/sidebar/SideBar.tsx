@@ -53,7 +53,7 @@ interface portfolioSideProps {
           </div>
 
         <p className='my-4 text-base text-center'> {`${user?.first_name} ${user?.last_name}`}</p>
-        <p className='text-blue-600 text-sm text-center'>Hrefugew....239857bfhvm</p>
+        <p className='text-white text-sm text-center'>{user?.trader_id}</p>
     </div>
     <ul className='mt-6 mb-10'>
     {sideItems.map((item: any) => (
