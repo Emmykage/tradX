@@ -136,6 +136,7 @@ const BioDetails: React.FC<BioDetailsProps> = ({ handleNext }) => {
         formData: formDataParse
 
       })
+      // console.log("kyc updaate not working", Object.fromEntries(formDataParse), "heysdsds", formData.first_name, formDataParse.get('first_name'))
 
     }
     else{   

@@ -61,11 +61,9 @@ interface portfolioSideProps {
           key={item.name} 
           className={`my-2 py-1 px-4 text-center rounded-2xl cursor-pointer font-medium ${item.name === selectedNav && "bg-white text-[#0F1A2B]"}`} 
           onClick={() => {
-              if (item.name === "portfolio") {
-                handlePortfolio()
-              } else {
+             
                   setSelectedNav(item.name);
-              }
+              
           }}
         >
         <span className='text-xs md:text-sm font-medium'>{item.label}</span>

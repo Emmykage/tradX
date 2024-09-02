@@ -3,8 +3,7 @@ import { toast } from "react-toastify";
 import getEnv from "utils/env";
 
 export async function fetchVerificationUpdate(data: any): Promise<boolean> {
-  const BASE_URL = getEnv("VITE_API_BASE_URL");
-  
+  const BASE_URL = getEnv("VITE_API_BASE_URL");  
   try {
     const response = await fetch(`${BASE_URL}/user/kyc/${data.id}`, {
       method: "PATCH",
@@ -16,7 +15,6 @@ export async function fetchVerificationUpdate(data: any): Promise<boolean> {
       body: data.formData,
     });
     const result = await response.json();
-    console.log("verification response:", response, result )
 
     if (!response.ok) {
       Object.keys(result).forEach((field) => {

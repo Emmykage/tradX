@@ -2,6 +2,8 @@ import { NotificationIcon3 } from 'assets/icons'
 import SearchBar from 'components/searchBar/SearchBar'
 import React from 'react'
 import Selector from '../../portfolioModal/components/headerSelector/Selector'
+import { getDate } from 'utils/utils'
+
 
 const PortfolioHeader = () => {
   return (
@@ -14,7 +16,7 @@ const PortfolioHeader = () => {
         </h2>
         <div>
             <p className='text-lg font-semibold '>Latest update</p>
-            <p className='text-base font-semibold'>23.08.2024 8:45:23</p>
+            <p className='text-base font-semibold'>{getDate()}</p>
         </div>
     </div>
     <div className='hidden md:flex flex-1 h-12 bg-red-20 items-center justify-end gap-6 bg--50 pr-10'>

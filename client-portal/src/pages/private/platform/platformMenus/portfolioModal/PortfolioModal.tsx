@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { setPortfolioWindow } from '@store/slices/app';
 import PortfolioSideBar from './sidebar/SideBar';
 import Password from './password';
+import IKYC from '@interfaces/IKYC';
 
 
 interface PortfolioModalProps {
@@ -47,6 +48,7 @@ interface PortfolioModalProps {
 
 const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen, setIsRightDrawerOpen, setIsRightSubDrawerOpen }) => {
   const [userProfile, setUserProfile] = useState<IUserKYCProps>()
+  const [kycInfo, setKycInfo ] = useState<IKYC> ()
   const dispatch = useAppDispatch()
 
   const navigate = useNavigate()
@@ -72,29 +74,36 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({isModalOpen,setModalOpen
 
     }
 
-    // const {mutate, isPending} = useKyc({
-    //     onSuccess: (data) => {
-    //       setUserProfile(data.results[0]?.user )
+    const {mutate, data, isPending} = useKyc({
+        onSuccess: (data) => {
+          setKycInfo(data?.results[0])
 
-    //       console.log("set userrrrrrrrrrrrrrrrrrrrrrrr", data.results[0])
+          console.log("set userrrrrrrrrrrrrrrrrrrrrrrr", data.results[0])
 
 
 
-    //     },
-    //     onError: () => {
+        },
+        onError: () => {
 
-    //     }
-    // })
+        }
+    })
+
+
+    useEffect(()=> {
+      mutate({
+        token: cookies.access_token
+      })
+    }, [])
 
 
 
 
 
     const sideItems = [
-        {name: "personal_info", label: "Personal", component: <ProfileModal /> },
-        {name: "verification", label: "Verification", component:  <VerificationPage />},
+        {name: "personal_info", label: "Personal", component: <ProfileModal userKyc={kycInfo}/> },
+        // {name: "verification", label: "Verification", component:  <VerificationPage userKyc={kycInfo} />},
         {name: "portfolio", label: "Portfolio", component: <PortfolioPage/>},
-        {name: "password", label: "Password", component:  <Password />},
+        // {name: "password", label: "Password", component:  <Password />},
         {name: "trading", label: "Trading", component:  <Trading/>},
         {name: "setting", label: "Settings", component:  <Settings />},
     ]

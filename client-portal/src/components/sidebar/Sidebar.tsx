@@ -6,6 +6,7 @@ import {
   LogoIcon,
   MarketIcon,
   NewsIcon,
+  Portfolio,
   TradesIcon,
 } from "../../assets/icons";
 import "./sidebar.scss";
@@ -21,6 +22,7 @@ type DrawerType =
   | "news"
   | "ai"
   | "assets"
+  | "portfolio"
   | null;
 
 interface SidebarProps {
@@ -56,9 +58,33 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
     }
     if(togglePortfolioWindow){
       dispatch(setPortfolioWindow(false))
+      // setIsDrawerOpen(false)
     }
     setCurrentDrawer(activeDrawer);
   };
+  const handlePortfolioNavigation = (activeDrawer: string) => {
+    if(isLeftSubDrawerOpen || isDrawerOpen){
+      setIsLeftSubDrawerOpen(false);
+      dispatch(setPortfolioWindow(true));
+      setIsDrawerOpen(false)
+      console.log("set  false")
+
+
+    }else if(togglePortfolioWindow){
+      dispatch(setPortfolioWindow(false));
+
+    }
+    else{
+      dispatch(setPortfolioWindow(true));
+    }
+    // dispatch(setPortfolioWindow(true));
+    // setModalOpen(false)
+    // setIsRightSubDrawerOpen(false)
+    // setIsRightDrawerOpen(false)
+    // setCurrentDrawer(activeDrawer);
+
+
+  }
 
 
 
@@ -94,6 +120,15 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({
             <EventsIcon />
           </div>
           <p className="text">Events</p>
+        </button>
+        <button
+          onClick={() => handlePortfolioNavigation("portfolio")}
+          className={isDrawerOpen && currentDrawer === "events" ? "active" : ""}
+        >
+          <div className="icon flex justify-center">
+            <Portfolio />
+          </div>
+          <p className="text">Portfolio</p>
         </button>
         <button
           onClick={() => onSelect("help")}

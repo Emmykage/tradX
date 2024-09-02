@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import CardRegular from '../portfolioModal/components/cards/Cards'
 import HeaderComponents from '../portfolioModal/components/headerComps/header'
 import CapitalInformation from '../portfolioModal/components/capitalInformation/CapitalInformation'

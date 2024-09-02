@@ -4,8 +4,14 @@ import PrimaryButton from 'components/primaryButton/PrimaryButton';
 import { useNavigate } from 'react-router-dom';
 import VerificationStatus from '../components/verification/VerificationStatus';
 import './verificationstatus.scss'
-const VerificationPage = () => {
-    const navigate = useNavigate();
+import IKYC from '@interfaces/IKYC';
+import { setUserKYC } from '@store/slices/userBio';
+
+interface verificationProps{
+    userKyc: IKYC | undefined
+}
+const VerificationPage: React.FC<verificationProps>  = ({userKyc}) => {
+    // const navigate = useNavigate();
 
   return (
     <div className='h-full  p-8 rounded-lg overflow-y-auto'>
@@ -14,7 +20,7 @@ const VerificationPage = () => {
         </div>
 
         <div className='bg-[#1F324D66] p-4 rounded-lg'>
-            <div className="kycVerifyButton w-1/3 m-auto">
+            {/* <div className="kycVerifyButton w-1/3 m-auto">
             <PrimaryButton
             onClick={() => {
                 navigate("/kyc-document/?query=biodata-kyc");
@@ -22,8 +28,8 @@ const VerificationPage = () => {
             className="verificationLearnMore"
             Title="KYC Verification"
             />
-        </div>
-        <VerificationStatus/>
+        </div> */}
+        <VerificationStatus userKyc={userKyc}/>
         </div>
     </div>
   )

@@ -46,13 +46,14 @@
     }
 
     .portfolioTable{
-        // border: 1px solid ;
+        width: 100%;
         border-radius: 12px;
-        overflow: hidden;
         padding: 12px;
         border: 2px solid;
         border-image-source: linear-gradient(180deg, rgba(177, 200, 221, 0.18) 0%, rgba(229, 238, 246, 0) 100%);
         background: linear-gradient(265.24deg, rgba(0, 148, 255, 0.2) 3.04%, rgba(0, 148, 255, 0) 100.62%);
+        margin-bottom: 30px;
+        overflow-x: hidden;
 
         .overview-table-header{
             border-bottom: 1px solid #ffffff80;
@@ -72,7 +73,6 @@
             padding: 1px 4px;
             line-height: 15px;
             height: 34px;
-            
         }
     }
 }

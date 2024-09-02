@@ -2,7 +2,7 @@ import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import getEnv from "utils/env";
 import IKYC from "@interfaces/IKYC";
 
-interface KYCResponse {
+export interface KYCResponse {
   count: number,
   next: string,
   previous: string,

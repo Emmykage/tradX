@@ -1,9 +1,17 @@
 // import Select from 'components/select/Select'
 import { Select } from 'antd'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import distribution from "../../../../../../../assets/portfolio/Chart.png"
+import { ColorType, createChart } from 'lightweight-charts'
 
 const Distributions = () => {
+  const distributionCharRef = useRef()
+
+
+  useEffect(()=> {
+    
+
+  }, [])
   return (
     <div className='py-2'>
         <div className='flex items-center justify-between'>

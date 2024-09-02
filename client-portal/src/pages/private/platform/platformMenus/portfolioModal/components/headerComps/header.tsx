@@ -1,11 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CardRegular from '../cards/Cards'
 import circleChart from "../../../../../../../assets/portfolio/circle-graph.png"
 import IndicatorBox from '../indicator/IndicatorBox'
 import { DownArrowIcon, UpArrowIcon } from 'assets/icons'
 import downloadIcon from  "../../../../../../../assets/portfolio/download.png"
+import FormSelect from '../FormSelect'
+import './headerComp.scss'
+import { useAppSelector } from '@store/hooks'
+import useWallet from 'api/wallet/useWallet'
+import { useCookies } from 'react-cookie'
+import { IWallet } from '@interfaces'
+// import FormSelect from 'pages/private/platform/kyc/components/FormSelect'
 
 const HeaderComponents = () => {
+    const [currencies, setCurrencies] = useState<IWallet[]>([])
+    const [selectedCurrency, setSelectedCurrency] = useState("Demo")
+    const [cookies] = useCookies(["access_token"]);
+    const {mutate, data} = useWallet({
+        onSuccess: (data) => {
+        //    console.log(data.map(item => (
+        //     {value: item.}
+        //    )))
+
+            // setCurrencies
+            setCurrencies(data.results)
+
+            console.log("sdfdsdfgfgfkjkjkdkgkkslljk",data)
+        },
+        onError: () => {}
+    })
+
+    useEffect(()=>{
+        mutate(cookies.access_token)
+
+    },[])
+
+    console.log("selected cuuresncy", selectedCurrency)
+    const selectedCurrencyItem = currencies.find(item => item.currency.longer_name === selectedCurrency);
+
   return (
     <div>
         <div className='flex flex-col md:flex-row gap-3 flex- justify-between'>
@@ -64,9 +96,24 @@ const HeaderComponents = () => {
             <div className=''>
                 <p>Account Balance</p>
                 <div className='flex items-center gap-5'>
-                    <div className='flex item-center gap-10  w-full justify-between'>
+                    <div className='flex item-center gap-10  w-full justify-between currency-select'>
 
-                        <div className='basis-[60%] gap-[40%] flex items-center'><UpArrowIcon/> 000 </div>  <span className='flex items-center basis-[40%] justify-between'> <DownArrowIcon/> USD</span>
+                        <div className='basis-[60%] gap-[20%] flex items-center'><UpArrowIcon/> 
+                            {selectedCurrencyItem ? (<><span className='flex flex-1'>{selectedCurrencyItem?.currency.symbol + " "+ selectedCurrencyItem?.balance}</span> </>) : "000"}
+                         </div> 
+                         <FormSelect
+                         className='currencyDrop'
+                         data={[{label: "USD", value: "USD"},
+                            {label: "EUR", value: "eur"},
+                            {label: "BTC", value: "btc"},
+                            {label: "Demo", value: "Demo"}
+                         ]}
+                         id="currency"
+                         selectedId='Demo'
+                         onSelect={(value)=> setSelectedCurrency(value)}
+
+
+                         /> 
 
                     </div>
 

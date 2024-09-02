@@ -30,14 +30,14 @@ const AssetTable = () => {
                         <p className="font-medium  leading-5">{item.assetName} </p>
                         </td>
                         <td className="my-2 text-center  whitespace-nowrap border-b border-gray-200 hidden px-3 py-4 text-sm font-normal sm:table-cell capitalize">
-                            {item.currentPrice}$
+                           ${item.currentPrice}
 
                         </td>
                         
                         <td className="whitespace-nowrap  border-b border-gray-200 hidden px-3 py-3 text-sm  sm:table-cell text-center">{item.numberOfAssets}</td>
-                        <td className="whitespace-nowrap border-b border-gray-200 hidden px-3 py-3 lg:table-cell text-sm  font-normal text-center">{item.totalValueAsset}</td>
+                        <td className="whitespace-nowrap border-b border-gray-200 hidden px-3 py-3 lg:table-cell text-sm  font-normal text-center">${item.totalValueAsset}</td>
 
-                        <td className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-sm font-normal text-sm  text-center">{item.priceChange}</td>
+                        <td className="whitespace-nowrap border-b border-gray-200 px-3 py-3 text-sm font-normal text-sm  text-center">${item.priceChange}</td>
 
                     </tr>
 

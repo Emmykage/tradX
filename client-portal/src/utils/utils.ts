@@ -411,4 +411,17 @@ export const timeScaleMenu = [
         id: 604800,
     },
 ];
-  
+
+
+export const  getDate = () => {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    const date = today.getDate();
+    const hours = today.getHours();
+    const minutes = today.getMinutes();
+    const seconds = today.getSeconds();
+
+    return `${date}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+
+ }
