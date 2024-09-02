@@ -103,6 +103,9 @@ useEffect(()=> {
   if(queryParam == "biodata-kyc"){
     setStep(6)
   }
+  if(queryParam == "document-kyc-result"){
+    setStep(8)
+  }
 }
 ,[])
   return(

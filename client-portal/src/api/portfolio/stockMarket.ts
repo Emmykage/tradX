@@ -26,6 +26,7 @@ export async function fetchMarket(data: {
   token: string;
 }): Promise<PortfolioResponse> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
+  const MAX_ITEMS = 1000
 
   // console.log("fetch stock market data function started", data.token);
 
@@ -44,7 +45,12 @@ export async function fetchMarket(data: {
       throw new Error(`${result}`);
     }
 
-    return result;
+    const limitedResults = {
+      ...result,
+      results: result.results.slice(0, MAX_ITEMS),
+    };
+
+    return limitedResults;
   } catch (error) {
     throw new Error(error as string);
   }

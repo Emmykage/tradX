@@ -54,10 +54,20 @@ const RenderTab = ({
 
 const RenderData: React.FunctionComponent = (props: any) => {
   const {themeSelect} = useAppSelector(state => state.themeBg)
+  const [selectedButton, setSelectedButton] = useState(1)
   const {handleMenuClick, marketData, isPending} = props;
   const dispatch = useAppDispatch();
 
+  const itemsPerPage = 100
 
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage 
+const currentItems = marketData.slice(indexOfFirstItem, indexOfLastItem)
+
+
+const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
   
   const {selectedForexTrade, forexData } = useAppSelector(
     (state: { trades: TradeStates }) => state.trades
@@ -77,6 +87,10 @@ const RenderData: React.FunctionComponent = (props: any) => {
   const style = {
     color: themeSelect == "night" ?  "#fff" : "#000",
     backgroundColor: themeSelect == "night" ?  "#000" : "#fff",
+  }
+
+  const handlePage = (index: number) => {
+    paginate(index + 1)
   }
 
   if(isPending){
@@ -133,7 +147,7 @@ const RenderData: React.FunctionComponent = (props: any) => {
           <p className="assetsListColTitle">24-hr changes</p>
         </Col>
 
-        {marketData?.map((item: any, index: any) => (
+        {currentItems?.map((item: any, index: any) => (
           <Col span={24} key={`assetListItem ${item.value + "_" + index}`}>
             <div
               className={`assetsListItem ${themeSelect}  ${
@@ -162,6 +176,16 @@ const RenderData: React.FunctionComponent = (props: any) => {
           </Col>
         ))}
       </Row>
+
+      <ul className="bg-red-50/10 my-2 flex flex-wrap gap-2 ">
+        {Array.from({length: Math.ceil(marketData.length/itemsPerPage)}, (_, index) => (
+          <li key={index} className="flex">
+            <button  onClick={()=>{paginate(index + 1); setSelectedButton(index)}} className={`${selectedButton == index ? "bg-slate-700": "bg-slate-500"} text-white px-2 py-1  rounded`}>
+              {index + 1}
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

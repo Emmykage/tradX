@@ -3,11 +3,13 @@ import verify from '../../../../../../../assets/portfolio/photo.png'
 import scan from '../../../../../../../assets/portfolio/verify-icon.png'
 import './personalInfo.scss'
 import { useAppSelector } from '@store/hooks'
+import { useNavigate } from 'react-router-dom'
 
 
 
 
 const ProfileInformation: React.FC = () => {
+    const navigate = useNavigate()
     const {user} = useAppSelector(state => state.user)
 
   return (
@@ -62,7 +64,7 @@ const ProfileInformation: React.FC = () => {
         <p className='text-green-600'>Verified</p>
 
         <div className='flex gap-4 mt-5'>
-            <span className=''>
+            <span className='' onClick={() =>  navigate("/kyc-document/?query=document-kyc-result")}>
                 <img src={verify} alt='' className='bg-[#0094FF] p-2 rounded-lg ' />
             </span>
             <span className='relative'>

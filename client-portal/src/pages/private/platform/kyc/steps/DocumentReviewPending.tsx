@@ -8,6 +8,8 @@ import { IKYCFilesProps } from '@interfaces'
 import { getLatestDoc } from '../components/fileSelection/processFile'
 
 const DocumentReviewPending = () => {
+
+    
     const [cookies] = useCookies(["access_token"])
     const navigate = useNavigate()
     const [kycFiles, setKycFiles] = useState<IKYCFilesProps[]>()

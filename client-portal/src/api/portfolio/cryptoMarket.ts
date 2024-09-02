@@ -26,7 +26,7 @@ export async function fetchCryptoMarket(data: {
   token: string;
 }): Promise<PortfolioResponse> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
-
+  const MAX_ITEMS = 1000
   console.log("fetch market data function started", data.token);
 
   try {
@@ -43,8 +43,13 @@ export async function fetchCryptoMarket(data: {
     if (!response.ok) {
       throw new Error(`${result}`);
     }
+    const limitedResults = {
+      ...result,
+      results: result.results.slice(0, MAX_ITEMS),
+    };
 
-    return result;
+    return limitedResults;
+    // return result;
   } catch (error) {
     throw new Error(error as string);
   }
