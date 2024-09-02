@@ -18,6 +18,10 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import useTradeList from "api/wallet/useTradeList";
 import { useCookies } from "react-cookie";
 import { TradeStates } from "@store/slices/trade";
+import useCrptoMarketData from "api/portfolio/cryptoMarket";
+import Loading from "components/loading";
+import useMarketData from "api/marketData/useMarketData";
+import useStockMarketData from "api/portfolio/stockMarket";
 
 interface TradesMenuProps {
   setLeftSubDrawer: Dispatch<SetStateAction<LeftSubDrawer>>;
@@ -50,14 +54,12 @@ const RenderTab = ({
 
 const RenderData: React.FunctionComponent = (props: any) => {
   const {themeSelect} = useAppSelector(state => state.themeBg)
-
-  const {handleMenuClick} = props;
+  const {handleMenuClick, marketData, isPending} = props;
   const dispatch = useAppDispatch();
-  const [cookies] = useCookies(["access_token"]);
 
 
   
-  const {selectedForexTrade,forexData } = useAppSelector(
+  const {selectedForexTrade, forexData } = useAppSelector(
     (state: { trades: TradeStates }) => state.trades
   );
 
@@ -69,12 +71,16 @@ const RenderData: React.FunctionComponent = (props: any) => {
   };
   const handleSelectedForex =(item: any) => {
     console.log(item);
-    dispatch(setAssetPairs(item))
-    dispatch(selectedForexTrade(item))
+    // dispatch(setAssetPairs(item))
+    // dispatch(selectedForexTrade(item))
   };
   const style = {
     color: themeSelect == "night" ?  "#fff" : "#000",
     backgroundColor: themeSelect == "night" ?  "#000" : "#fff",
+  }
+
+  if(isPending){
+    return(<Loading/>)
   }
   return (
     <div className={`${themeSelect} tradesAssetMenu`}>
@@ -127,7 +133,7 @@ const RenderData: React.FunctionComponent = (props: any) => {
           <p className="assetsListColTitle">24-hr changes</p>
         </Col>
 
-        {forexData?.map((item, index) => (
+        {marketData?.map((item: any, index: any) => (
           <Col span={24} key={`assetListItem ${item.value + "_" + index}`}>
             <div
               className={`assetsListItem ${themeSelect}  ${
@@ -136,16 +142,19 @@ const RenderData: React.FunctionComponent = (props: any) => {
               onClick={() => handleSelectedForex(item)}
             >
               <div className="contentLeft">
-                <img src={"https://cfcdn.olymptrade.com/assets1/instrument/vector/CRYPTO_X.499cebb9147e3cb84b40da3583890048.svg"} />
-                <p className="itemTitle">{item.name}</p>
+                <img src={"https://cfcdn.olymptrade.com/assets1/instrument/vector/CRYPTO_X.499cebb9147e3cb84b40da3583890048.svg"} alt="flag" />
+                <p className="itemTitle">
+                {item.T.includes(":") ? item.T.split(":")[1] : item.T}
+                </p>
               </div>
               <div className="contentRight">
                 <p
                   className={`itemText ${
-                    item?.inProfit ? "success" : "danger"
+                    (((item.c - item.o)/item.o)* 100) >0 ? "success" : "danger"
                   }`}
                 >
-                  {3.5}%
+
+                  {(((item.c - item.o)/item.o)* 100).toFixed(2)}%
                 </p>
                 <QuestionMarkIcon />
               </div>
@@ -157,38 +166,101 @@ const RenderData: React.FunctionComponent = (props: any) => {
   );
 };
 
-const RenderFixedTime: React.FunctionComponent = ({handleMenuClick}: any) =>(
-  // <RenderTab
-  //   title="Active Trades"
-  //   description="You have no open trades on this account"
-  // />
+const RenderFixedTime: React.FunctionComponent = ({handleMenuClick}: any) =>{
+  const [cookies] = useCookies(["access_token"]);
+
+  const [cryptoMarket, setcryptoMarket] = useState<any[]>([])
+
+  const {mutate, data, isPending} = useCrptoMarketData({onSuccess: (data) => { setcryptoMarket(data?.results)}, onError: () => { }})
+
+  useEffect(()=> {
+    mutate({
+      token: cookies.access_token
+    })
+
+  },[])
+  return(
+  <RenderTab
+    title="Active Trades"
+    description="You have no open trades on this account"
+  />
   // @ts-ignore
-  <RenderData handleMenuClick={handleMenuClick} />
+  // <RenderData handleMenuClick={handleMenuClick} marketData={cryptoMarket} isPending={isPending}/>
 );
-const RenderForex = () => (
+}
+const RenderForex = ({handleMenuClick}: any) => {
+  const [cookies] = useCookies(["access_token"]);
+
+  const [cryptoMarket, setcryptoMarket] = useState<any[]>([])
+
+  const {mutate, data, isPending} = useCrptoMarketData({onSuccess: (data) => { setcryptoMarket(data?.results)}, onError: () => { }})
+
+  useEffect(()=> {
+    mutate({
+      token: cookies.access_token
+    })
+
+  },[])
+  return(
+
+  // @ts-ignore
+    // <RenderData handleMenuClick={handleMenuClick} marketData={cryptoMarket} isPending={isPending}/>
   <RenderTab
     title="Forex"
     description="You have no open Forex Trades on this account"
   />
 );
-const RenderStocks = () => (
-  <RenderTab
-    title="Stocks"
-    description="You have no open Stock Trades on this account"
-  />
+
+}
+const RenderStocks = ({handleMenuClick}: any) => {
+  const [cookies] = useCookies(["access_token"]);
+
+  const [stockskMarket, setStocksMarket] = useState<any[]>([])
+
+  const {mutate, data, isPending} = useStockMarketData({onSuccess: (data) => { setStocksMarket(data?.results)}, onError: () => { }})
+
+  useEffect(()=> {
+    mutate({
+      token: cookies.access_token
+    })
+
+  },[])
+  return(
+      // @ts-ignore
+
+    <RenderData handleMenuClick={handleMenuClick} marketData={stockskMarket} isPending={isPending}/>
+
 );
+}
 const RenderCommodities = () => (
   <RenderTab
     title="Commodities"
     description="You have no open Commodity Trades on this account"
   />
 );
-const RenderCrypto = () => (
-  <RenderTab
-    title="Crypto"
-    description="You have no open Crypto Trades on this account"
-  />
+const RenderCrypto = ({handleMenuClick}: any) => {
+  const [cookies] = useCookies(["access_token"]);
+  const [cryptoMarket, setcryptoMarket] = useState<any[]>([])
+
+
+  const {mutate, data, isPending} = useCrptoMarketData({onSuccess: (data) => { setcryptoMarket(data?.results)}, onError: () => { }})
+
+  useEffect(()=> {
+    mutate({
+      token: cookies.access_token
+    })
+  },[])
+  return(
+    
+    // @ts-ignore
+    <RenderData handleMenuClick={handleMenuClick} marketData={cryptoMarket} isPending={isPending} />
+
+  // <RenderTab
+  //   title="Crypto"
+  //   description="You have no open Crypto Trades on this account"
+  // />
 );
+}
 const RenderBonds = () => (
   <RenderTab
     title="Bonds"
@@ -230,29 +302,31 @@ const TradesMenu: React.FunctionComponent<TradesMenuProps> = ({
       // @ts-ignore
       component: <RenderFixedTime handleMenuClick={handleMenuClick} />,
     },
-    {
-      key: "2",
-      tab: "Forex",
-      label: "forex",
-      component: <RenderForex />,
-    },
+   
     {
       key: "3",
       tab: "Stocks",
       label: "stocks",
-      component: <RenderStocks />,
+      component: <RenderStocks  handleMenuClick={handleMenuClick} />,
+    },
+   
+    {
+      key: "5",
+      tab: "Crypto",
+      label: "crypto",
+      component: <RenderCrypto  handleMenuClick={handleMenuClick} />,
+    },
+    {
+      key: "2",
+      tab: "Forex",
+      label: "forex",
+      component: <RenderForex handleMenuClick={handleMenuClick} />,
     },
     {
       key: "4",
       tab: "Commodities",
       label: "commodities",
       component: <RenderCommodities />,
-    },
-    {
-      key: "5",
-      tab: "Crypto",
-      label: "crypto",
-      component: <RenderCrypto />,
     },
     {
       key: "6",
@@ -293,7 +367,6 @@ const TradesMenu: React.FunctionComponent<TradesMenuProps> = ({
                {item.component}
               </>
             )
-            // return <TabComponent setLeftSubDrawer={setLeftSubDrawer}  setIsLeftSubDrawerOpen={setIsLeftSubDrawerOpen} />;
           }
           return null;
         })}

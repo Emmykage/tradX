@@ -6,7 +6,7 @@ interface PortfolioResponse {
   count: number;
   next: string;
   previous: string;
-  results: IKYC[];
+  results: any[];
 }
 
 type UsePortfolioProps = {
@@ -22,15 +22,15 @@ type UsePortfolioProps = {
   ) => void;
 };
 
-export async function fetchPortfolioBalance(data: {
+export async function fetchProfitLoss(data: {
   token: string;
 }): Promise<PortfolioResponse> {
   const BASE_URL = getEnv("VITE_API_BASE_URL");
 
-  console.log("fetchPortfolioBalance function started", data.token);
+  // console.log("fetch profit loss function started", data.token);
 
   try {
-    const response = await fetch(`${BASE_URL}/portfolio/total-balance/`, {
+    const response = await fetch(`${BASE_URL}/portfolio/total-profit-loss/`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${data.token}`,
@@ -38,13 +38,11 @@ export async function fetchPortfolioBalance(data: {
     });
 
     const result = await response.json();
-    console.log("API response", response, result);
+    console.log("API response fr profit loss", response, result);
 
     if (!response.ok) {
       throw new Error(`${result}`);
     }
-
-    console.log(result)
 
     return result;
   } catch (error) {
@@ -52,14 +50,14 @@ export async function fetchPortfolioBalance(data: {
   }
 }
 
-const usePortfolioBalance = (
+const useProfitLoss = (
   props: UsePortfolioProps
 ): UseMutationResult<PortfolioResponse, unknown, { token: string }> => {
   const { onSuccess: onSuccessOverride, onError: onErrorOverride, ...rest } =
     props || ({} as UsePortfolioProps);
 
   return useMutation<PortfolioResponse, unknown, { token: string }>({
-    mutationFn: (data) => fetchPortfolioBalance(data),
+    mutationFn: (data) => fetchProfitLoss(data),
     onSuccess: (data, variables, context) => {
       if (onSuccessOverride) {
         onSuccessOverride(data, variables, context);
@@ -74,4 +72,4 @@ const usePortfolioBalance = (
   });
 };
 
-export default usePortfolioBalance;
+export default useProfitLoss;
