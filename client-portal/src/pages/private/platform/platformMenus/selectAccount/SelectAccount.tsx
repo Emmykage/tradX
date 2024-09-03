@@ -1,0 +1,100 @@
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { SearchIcon } from "../../../../../assets/icons";
+import "./selectAccount.scss";
+import { RightSubDrawerContent } from "../../types";
+import { InitialAccountsList, InitialAccountsListProps } from "../add-account/constants";
+import { debounce } from "lodash";
+import MainItemCard from "../../../../../components/mainItemCard/MainItemCard";
+
+interface SelectAccountProps {
+  setIsRightSubDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  setIsRightSubDrawerContent: Dispatch<SetStateAction<RightSubDrawerContent>>;
+  hasParent: boolean | null;
+  onitemSelection?: Function;
+}
+
+const SelectAccount: React.FC<SelectAccountProps> = ({
+  setIsRightSubDrawerOpen,
+  setIsRightSubDrawerContent,
+  hasParent= false,
+  onitemSelection
+
+}) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [items, setItems] = useState(InitialAccountsList);
+  const [pinnedAccount, setPinnedAccount] = useState(InitialAccountsList[0]);
+
+  const handleSearch = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleItemClick = (item: InitialAccountsListProps): void => {
+    if(hasParent){
+      // @ts-ignore
+      onitemSelection(item)
+    }
+    else{
+      setPinnedAccount(item);
+    }
+  };
+
+  useEffect(() => {
+    const debouncedSearch = debounce(() => {
+      if (searchTerm === "") {
+        setItems(
+          InitialAccountsList.filter((item) => item.id !== pinnedAccount.id)
+        );
+      } else {
+        const filteredItems = InitialAccountsList.filter((item) =>
+          item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        ).filter((item) => item.id !== pinnedAccount.id);
+        setItems(filteredItems);
+      }
+    }, 300);
+    debouncedSearch();
+    return debouncedSearch.cancel;
+  }, [searchTerm, pinnedAccount]);
+  return (
+    <div className="selectAccountMenu">
+      <div className="searchAccount">
+        <SearchIcon />
+        <input type="text" value={searchTerm} onChange={handleSearch} />
+      </div>
+      <MainItemCard className="AccountPinned" variant={2}>
+        <div
+          className="PinnedValue"
+          onClick={() => {
+            setIsRightSubDrawerOpen(true);
+            setIsRightSubDrawerContent("transfer");
+          }}
+        >
+          {pinnedAccount.icon}
+          <div>
+            <h2>{pinnedAccount.title}</h2>
+            <p>{pinnedAccount.amount}</p>
+          </div>
+        </div>
+      </MainItemCard>
+      {items.map((item) => (
+        <div key={item.id} className="AccountPinnedData">
+          <div
+            className="AccountsData"
+            onClick={() => {
+              handleItemClick(item);
+            }}
+          >
+            {item.icon}
+            <div>
+              <h2>{item.title}</h2>
+              <p>{item.amount}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default SelectAccount;

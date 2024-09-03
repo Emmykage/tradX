@@ -1,0 +1,10 @@
+.selectAmountMenuCon {
+  display: flex;
+  flex-direction: column;
+  .selectedAmountdiv{
+    margin-bottom: 2rem;
+  }  
+  .confirmButton {
+    margin-top: 2.5rem;
+  }
+}

@@ -1,36 +1,104 @@
 .sidebar {
-  width: 106px;
+  min-width: 5rem;
+  max-width: 5rem;
   position: fixed;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  border: 1px solid #2b2d35;
-  background: #14161a;
+  background: var(--background-theme);
   justify-content: space-between;
-  padding: 2.5rem 0rem 6.25rem 0rem;
+  padding: 1.25rem 0rem;
   align-items: center;
-  z-index: 10000;
+  z-index: 1100;
+  transition: all 0.25s;
+
+  @media (max-width: 991px) {
+    min-width: 4.063rem;
+    max-width: 4.063rem;
+  }
+
+  @media (max-width: 767px) {
+    z-index: 100;
+    position: absolute;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem;
+  }
   .top {
     display: flex;
     flex-direction: column;
-    gap: 3.25rem;
+    gap: 1.2rem;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+
+      svg {
+        width: 1.5rem;
+      }
+
+      @media (max-width: 767px) {
+        display: none;
+      }
+      svg {
+        @media (max-width: 991px) {
+          width: 1.5rem;
+        }
+      }
+    }
     button {
-      color: #9cb0c2;
+      color: var(--text-theme);
       background-color: transparent;
       cursor: pointer;
+
+      svg {
+        width: 1.425rem;
+          }
+      p {
+        font-size: 0.75rem;
+      }
+
+      @media (max-width: 991px) {
+        p {
+          display: none;
+        }
+
+        svg {
+          width: 1.55rem;
+        }
+      }
+
+      @media (max-width: 767px) {
+        svg {
+          width: 1.3rem;
+        }
+      }
     }
     button:hover {
-      color: #fff;
+      color: var(--plain);
       transition: 0.3s ease-in;
-      svg {
+      svg.trades {
         path {
-          fill: #fff;
+          stroke: var(--plain);
+          transition: 0.3s ease-in;
+        }
+        rect {
+          stroke: var(--plain);
           transition: 0.3s ease-in;
         }
       }
-      svg.trades {
+      svg {
         path {
-          stroke: #fff;
+          fill: var(--plain);
           transition: 0.3s ease-in;
         }
       }
@@ -46,18 +114,45 @@
         path {
           stroke: #0094ff;
         }
+        rect {
+          stroke: #0094ff;
+        }
       }
     }
   }
   .bottom {
     justify-self: flex-end;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
     .online {
       text-align: center;
+
       p.numberOnline {
-        color: #fff;
+        color: var(--plain);
+        font-size: 0.875rem;
+
+        @media (max-width: 991px) {
+          font-size: 0.775rem;
+        }
+
+        @media (max-width: 767px) {
+          font-size: 0.675rem;
+        }
       }
       p.onl {
-        color: #9cb0c2;
+        color:var(--text-theme);
+
+        font-size: 0.75rem;
+
+        @media (max-width: 991px) {
+          font-size: 0.7rem;
+        }
+
+        @media (max-width: 767px) {
+          font-size: 0.65rem;
+        }
       }
     }
   }

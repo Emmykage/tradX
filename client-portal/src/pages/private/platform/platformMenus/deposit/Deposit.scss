@@ -1,0 +1,60 @@
+.deposit {
+  .deposit-subtext {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.6rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+  .hr {
+    width: 100%;
+    height: 0.0043rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .CurrentBalance {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    p {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(172, 173, 174, 1);
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+    }
+  }
+  .buttonsContainer {
+    display: flex;
+    align-items: center;
+    .PromoCode {
+      padding: 0.7rem !important;
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+    .payment-card-next-button {
+      margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+      &.active{
+        background-color: #1f385e;
+
+      }
+    }
+  }
+  .pending-spinner{
+    margin-top: 2rem;
+    width: 100%;
+    color: white;
+    .ant-spin-dot-spin {
+      .ant-spin-dot-item{
+        background-color: white;
+      }
+    }
+  }
+}

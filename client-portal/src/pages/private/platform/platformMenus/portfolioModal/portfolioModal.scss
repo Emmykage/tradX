@@ -1,0 +1,60 @@
+.portfolioProfile{
+    .error_msg{
+        color: #ff4d4f;
+    }
+    .ant-modal{
+        .ant-modal-content{
+            .ant-modal-title{
+                text-align: center;
+            }
+            // max-height: 80vh;
+            // height: 100%;
+            .ant-modal-header{
+                color: white;
+                background-color: transparent;
+                .ant-modal-title{
+                    color: white;
+                }
+            }
+            @media (max-width: 480px) {
+                padding: 10px 5px;
+                
+            }
+      
+            .ant-modal-close-x{
+                color: white;
+                top: 10px;
+                right: 0;
+            }
+        }
+   
+
+        }
+
+    .portfolioWrapper{
+            max-height: 85vh;
+            height: 100%;
+            grid-template-columns: 1fr 3fr;
+            @media (max-width: 780px) {
+                grid-template-columns: 1fr;
+
+                
+            }
+            .sideNav{
+                @media (max-width: 480px) {
+                    display: none;
+                    
+                }
+            }
+            .main-conatain{
+                // max-height: 85vh;
+                // height: 100%;
+            // &.hide-scrollbar{
+
+            //     scrollbar-width: none; /* For Firefox */
+            // }
+        }
+        }
+
+
+}

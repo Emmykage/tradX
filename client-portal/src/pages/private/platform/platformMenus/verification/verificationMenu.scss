@@ -1,0 +1,108 @@
+.verificationsContainer {
+
+  .verificationBadge {
+    background: linear-gradient(
+      230deg,
+      #458dbf,
+      #45b3e9,
+      #4591c3,
+      #446e99,
+      #3d5172,
+      #37425c,
+      rgba(105, 86, 179, 0)
+    );
+    min-height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.25rem;
+
+    img {
+      width: 100%;
+      max-width: 8.5rem;
+      height: auto;
+    }
+  }
+
+  .infoCard {
+    margin-top: 1.875rem;
+    display: flex;
+    align-items: center;
+
+    p {
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 400;
+      margin-left: 0.625rem;
+    }
+  }
+
+  .verificationDetail {
+    margin-top: 1.875rem;
+
+    p {
+      color: #ffffff99;
+      font-size: 0.775rem;
+      font-weight: 300;
+    }
+  }
+  .learnMoreButton {
+     .mainItemCardv2 {
+    box-shadow: none;
+  }
+    .verificationLearnMore {
+    margin-top: .875rem;
+    color: black;
+    background-color: white;
+
+  }
+}
+
+.kycVerifyButton {
+
+.ButtonContainer{
+  background: #fff;
+  color: black;
+}
+  .mainItemCardv2 {
+ box-shadow: none;
+}
+ .verificationLearnMore {
+ margin-top: 1.875rem;
+}
+}
+}
+
+.day.verificationsContainer {
+
+  .verificationBadge {
+
+
+    img {
+
+    }
+  }
+
+  .infoCard {
+
+
+    p {
+      color: #000000;
+
+    }
+  }
+
+  .verificationDetail {
+
+    p {
+      color: #1a161699;
+      font-weight: 500;
+    }
+  }
+  .learnMoreButton {
+     .mainItemCardv2 {
+  }
+    .verificationLearnMore {
+  }
+}
+}
