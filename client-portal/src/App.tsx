@@ -11,6 +11,7 @@ const App: React.FunctionComponent<AppProps> = () => {
       <Routes>
         <Route path="/" element={<SignIn />} />
         <Route path="/platform" element={<Platform />} />
+        {/* init  */}
         <Route path="/lender" element={<Lender />} />
       </Routes>
     </HashRouter>
