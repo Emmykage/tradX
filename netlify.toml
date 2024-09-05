@@ -1,4 +1,0 @@
-[build]
-  base    = "client-portal"
-  command = "vite build --mode prod"
-  publish = "client-portal/build"
